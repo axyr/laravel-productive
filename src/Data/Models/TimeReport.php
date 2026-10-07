@@ -1,0 +1,350 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Data\Models;
+
+use Axyr\Productive\Data\Attributes;
+use Axyr\Productive\Data\Model;
+
+/**
+ * One row of the time report, aggregated by the requested group.
+ *
+ * @see https://developer.productive.io/reference/resources/reports
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ * @SuppressWarnings("PHPMD.ExcessiveClassComplexity")
+ * @SuppressWarnings("PHPMD.TooManyFields")
+ */
+final readonly class TimeReport extends Model
+{
+    public const string TYPE = 'new_time_reports';
+
+    /** Expected number of work hours reduced for scheduled absence (i.e. vacation). */
+    public ?float $availableTime;
+
+    /** The average cost rate is calculated from the cost rate for each day defined in the date filter. */
+    public mixed $averageCostRate;
+
+    /** Average cost rate in the organization default currency. */
+    public mixed $averageCostRateDefault;
+
+    /** Average cost rate normalized to a common currency for cross-currency comparison. */
+    public mixed $averageCostRateNormalized;
+
+    /** Hours billable to clients. */
+    public ?float $billableTime;
+
+    /** Billing type of the service (e.g. fixed, hourly, non-billable). */
+    public ?int $billingType;
+
+    /** Expected number of worked hours. */
+    public ?float $capacity;
+
+    /** Hours tracked on client projects. */
+    public ?float $clientTime;
+
+    public ?string $cost;
+
+    /** Number of time entries in this row. */
+    public ?int $count;
+
+    /** Currency code for monetary values in this row. */
+    public ?string $currency;
+
+    /** Monetary values converted to the organization default currency. */
+    public mixed $currencyDefault;
+
+    /** Monetary values normalized to a common currency for cross-currency comparison. */
+    public ?string $currencyNormalized;
+
+    public ?string $date;
+
+    /** The date period label for this row (e.g. week, month, quarter range). */
+    public mixed $datePeriod;
+
+    /** Day of month this row represents, when grouped by day. */
+    public ?string $day;
+
+    /** Total tentative time scheduled on billable services. */
+    public ?float $draftScheduledBillableTime;
+
+    /** Total tentative time scheduled on client budgets and deals. */
+    public ?float $draftScheduledClientTime;
+
+    /** Total tentative time scheduled on internal projects. */
+    public ?float $draftScheduledInternalTime;
+
+    /** Total tentative time scheduled on budgets and deals. */
+    public ?float $draftScheduledTime;
+
+    /** Total number of hours scheduled on paid and unpaid time off (i.e. vacation, sick leave, etc.) */
+    public ?float $eventTime;
+
+    /** Custom formula field values computed for this row. */
+    public mixed $formulaFields;
+
+    /** Whether this row includes future scheduled data. */
+    public ?int $future;
+
+    /** Grouping dimension label for this row. */
+    public ?string $group;
+
+    /** The total time a person was on holiday during the selected reporting period. This time is excluded from their capacity. */
+    public ?float $holidayTime;
+
+    /** Hours tracked on internal projects. */
+    public ?float $internalTime;
+
+    /** Month number this row represents, when grouped by month. */
+    public ?string $month;
+
+    public ?int $nonbillableTime;
+
+    /** Total number of hours scheduled on paid time off (i.e. vacation). */
+    public ?float $paidEventTime;
+
+    /** Custom fields on people used for grouping. */
+    public ?string $peopleCustomFields;
+
+    public ?int $personId;
+
+    public ?int $projectId;
+
+    /** Quarter grouping for this new time report row. */
+    public ?string $quarter;
+
+    /** Recognized scheduled time for this new time report group. */
+    public ?float $recognizedScheduledTime;
+
+    /** Recognized time for this new time report group. */
+    public ?float $recognizedTime;
+
+    public ?string $revenue;
+
+    /** Total number of hours scheduled on billable services. */
+    public ?float $scheduledBillableTime;
+
+    /** Total number of hours scheduled on client budgets and deals. */
+    public ?float $scheduledClientTime;
+
+    /** Total number of scheduled hours for absence (time off) events. */
+    public ?float $scheduledEventTime;
+
+    /** Total number of hours scheduled on internal projects. */
+    public ?float $scheduledInternalTime;
+
+    /** Total number of scheduled remote work hours. */
+    public ?float $scheduledRemoteWorkTime;
+
+    /** Total number of hours scheduled on budgets and deals. */
+    public ?float $scheduledTime;
+
+    /** The deal stage type for this row. */
+    public ?int $stageType;
+
+    /** Total cost of tracked time, including work (cost rate) and overhead costs. */
+    public mixed $totalCost;
+
+    /** Total cost in the organization default currency. */
+    public mixed $totalCostDefault;
+
+    /** Total cost normalized to a common currency for cross-currency comparison. */
+    public mixed $totalCostNormalized;
+
+    /** Total scheduled cost based on past and future tentative bookings. */
+    public mixed $totalDraftScheduledCost;
+
+    /** Tentative scheduled cost in the organization default currency. */
+    public mixed $totalDraftScheduledCostDefault;
+
+    /** Sum of draft scheduled cost in the normalized currency across all records in this new time report group. */
+    public mixed $totalDraftScheduledCostNormalized;
+
+    /** Sum of draft scheduled revenue across all records in this new time report group. */
+    public mixed $totalDraftScheduledRevenue;
+
+    /** Sum of draft scheduled revenue in the organization's default currency across all records in this new time report group. */
+    public mixed $totalDraftScheduledRevenueDefault;
+
+    /** Sum of draft scheduled revenue in the normalized currency across all records in this new time report group. */
+    public mixed $totalDraftScheduledRevenueNormalized;
+
+    /** Sum of scheduled cost across all records in this new time report group. */
+    public mixed $totalScheduledCost;
+
+    /** Sum of scheduled cost in the organization's default currency across all records in this new time report group. */
+    public mixed $totalScheduledCostDefault;
+
+    /** Total scheduled cost normalized to a common currency for cross-currency comparison. */
+    public mixed $totalScheduledCostNormalized;
+
+    /** Total scheduled revenue including past and future bookings. */
+    public mixed $totalScheduledRevenue;
+
+    /** Total scheduled revenue in the organization default currency. */
+    public mixed $totalScheduledRevenueDefault;
+
+    /** Total scheduled revenue normalized to a common currency for cross-currency comparison. */
+    public mixed $totalScheduledRevenueNormalized;
+
+    public ?int $totalTime;
+
+    /** Total labor cost of tracked time. */
+    public mixed $totalWorkCost;
+
+    /** Total labor cost in the organization default currency. */
+    public mixed $totalWorkCostDefault;
+
+    /** Total labor cost normalized to a common currency for cross-currency comparison. */
+    public mixed $totalWorkCostNormalized;
+
+    /** Hours still waiting for approval. */
+    public ?float $unapprovedTime;
+
+    /** Total number of hours scheduled on unpaid time off (i.e. exams). */
+    public ?float $unpaidEventTime;
+
+    /** Expected number of worked hours for the user. */
+    public ?float $userCapacity;
+
+    /** Week number this row represents, when grouped by week. */
+    public ?string $week;
+
+    /** Hours tracked on client and internal projects. */
+    public ?float $workedTime;
+
+    /** Workload per person as a ratio or percentage. */
+    public ?float $workload;
+
+    /** Year this row represents, when grouped by year. */
+    public ?string $year;
+
+    protected function hydrate(Attributes $attributes): void
+    {
+        $this->availableTime = $attributes->float('available_time');
+        $this->averageCostRate = $attributes->mixed('average_cost_rate');
+        $this->averageCostRateDefault = $attributes->mixed('average_cost_rate_default');
+        $this->averageCostRateNormalized = $attributes->mixed('average_cost_rate_normalized');
+        $this->billableTime = $attributes->float('billable_time');
+        $this->billingType = $attributes->int('billing_type');
+        $this->capacity = $attributes->float('capacity');
+        $this->clientTime = $attributes->float('client_time');
+        $this->cost = $attributes->string('cost');
+        $this->count = $attributes->int('count');
+        $this->currency = $attributes->string('currency');
+        $this->currencyDefault = $attributes->mixed('currency_default');
+        $this->currencyNormalized = $attributes->string('currency_normalized');
+        $this->date = $attributes->string('date');
+        $this->datePeriod = $attributes->mixed('date_period');
+        $this->day = $attributes->string('day');
+        $this->draftScheduledBillableTime = $attributes->float('draft_scheduled_billable_time');
+        $this->draftScheduledClientTime = $attributes->float('draft_scheduled_client_time');
+        $this->draftScheduledInternalTime = $attributes->float('draft_scheduled_internal_time');
+        $this->draftScheduledTime = $attributes->float('draft_scheduled_time');
+        $this->eventTime = $attributes->float('event_time');
+        $this->formulaFields = $attributes->mixed('formula_fields');
+        $this->future = $attributes->int('future');
+        $this->group = $attributes->string('group');
+        $this->holidayTime = $attributes->float('holiday_time');
+        $this->internalTime = $attributes->float('internal_time');
+        $this->month = $attributes->string('month');
+        $this->nonbillableTime = $attributes->int('nonbillable_time');
+        $this->paidEventTime = $attributes->float('paid_event_time');
+        $this->peopleCustomFields = $attributes->string('people_custom_fields');
+        $this->personId = $attributes->int('person_id');
+        $this->projectId = $attributes->int('project_id');
+        $this->quarter = $attributes->string('quarter');
+        $this->recognizedScheduledTime = $attributes->float('recognized_scheduled_time');
+        $this->recognizedTime = $attributes->float('recognized_time');
+        $this->revenue = $attributes->string('revenue');
+        $this->scheduledBillableTime = $attributes->float('scheduled_billable_time');
+        $this->scheduledClientTime = $attributes->float('scheduled_client_time');
+        $this->scheduledEventTime = $attributes->float('scheduled_event_time');
+        $this->scheduledInternalTime = $attributes->float('scheduled_internal_time');
+        $this->scheduledRemoteWorkTime = $attributes->float('scheduled_remote_work_time');
+        $this->scheduledTime = $attributes->float('scheduled_time');
+        $this->stageType = $attributes->int('stage_type');
+        $this->totalCost = $attributes->mixed('total_cost');
+        $this->totalCostDefault = $attributes->mixed('total_cost_default');
+        $this->totalCostNormalized = $attributes->mixed('total_cost_normalized');
+        $this->totalDraftScheduledCost = $attributes->mixed('total_draft_scheduled_cost');
+        $this->totalDraftScheduledCostDefault = $attributes->mixed('total_draft_scheduled_cost_default');
+        $this->totalDraftScheduledCostNormalized = $attributes->mixed('total_draft_scheduled_cost_normalized');
+        $this->totalDraftScheduledRevenue = $attributes->mixed('total_draft_scheduled_revenue');
+        $this->totalDraftScheduledRevenueDefault = $attributes->mixed('total_draft_scheduled_revenue_default');
+        $this->totalDraftScheduledRevenueNormalized = $attributes->mixed('total_draft_scheduled_revenue_normalized');
+        $this->totalScheduledCost = $attributes->mixed('total_scheduled_cost');
+        $this->totalScheduledCostDefault = $attributes->mixed('total_scheduled_cost_default');
+        $this->totalScheduledCostNormalized = $attributes->mixed('total_scheduled_cost_normalized');
+        $this->totalScheduledRevenue = $attributes->mixed('total_scheduled_revenue');
+        $this->totalScheduledRevenueDefault = $attributes->mixed('total_scheduled_revenue_default');
+        $this->totalScheduledRevenueNormalized = $attributes->mixed('total_scheduled_revenue_normalized');
+        $this->totalTime = $attributes->int('total_time');
+        $this->totalWorkCost = $attributes->mixed('total_work_cost');
+        $this->totalWorkCostDefault = $attributes->mixed('total_work_cost_default');
+        $this->totalWorkCostNormalized = $attributes->mixed('total_work_cost_normalized');
+        $this->unapprovedTime = $attributes->float('unapproved_time');
+        $this->unpaidEventTime = $attributes->float('unpaid_event_time');
+        $this->userCapacity = $attributes->float('user_capacity');
+        $this->week = $attributes->string('week');
+        $this->workedTime = $attributes->float('worked_time');
+        $this->workload = $attributes->float('workload');
+        $this->year = $attributes->string('year');
+    }
+
+    public function person(): ?Model
+    {
+        return $this->belongsTo('person', Model::class);
+    }
+
+    public function project(): ?Model
+    {
+        return $this->belongsTo('project', Model::class);
+    }
+
+    public function service(): ?Model
+    {
+        return $this->belongsTo('service', Model::class);
+    }
+
+    public function serviceType(): ?Model
+    {
+        return $this->belongsTo('service_type', Model::class);
+    }
+
+    public function company(): ?Model
+    {
+        return $this->belongsTo('company', Model::class);
+    }
+
+    public function budget(): ?Model
+    {
+        return $this->belongsTo('budget', Model::class);
+    }
+
+    public function jobRole(): ?Model
+    {
+        return $this->belongsTo('job_role', Model::class);
+    }
+
+    public function manager(): ?Model
+    {
+        return $this->belongsTo('manager', Model::class);
+    }
+
+    public function event(): ?Model
+    {
+        return $this->belongsTo('event', Model::class);
+    }
+
+    public function subsidiary(): ?Model
+    {
+        return $this->belongsTo('subsidiary', Model::class);
+    }
+
+    public function organization(): ?Model
+    {
+        return $this->belongsTo('organization', Model::class);
+    }
+}

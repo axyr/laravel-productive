@@ -1,0 +1,84 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Data\Input;
+
+use Axyr\Productive\Data\InputData;
+use Axyr\Productive\Data\Undefined;
+use DateTimeInterface;
+
+/**
+ * Attributes for updating a task. Fields left out are not changed; null clears a field.
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveParameterList")
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ */
+final readonly class UpdateTaskData extends InputData
+{
+    /**
+     * @param  list<int|string>|Undefined|null  $attachmentIds  Files attached to this task.
+     * @param  array<string, mixed>|Undefined|null  $customFields  Custom field values set on this task.
+     * @param  list<int>|Undefined|null  $repeatOnWeekday  Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.
+     * @param  list<int|string>|Undefined|null  $subscriberIds  Array of IDs of people subscribed to notifications for this task.
+     * @param  list<string>|Undefined|null  $tagList  Tags applied to this task.
+     */
+    public function __construct(
+        public int|string|Undefined|null $assigneeId = Undefined::Value,
+        public array|Undefined|null $attachmentIds = Undefined::Value,
+        public array|Undefined|null $customFields = Undefined::Value,
+        public string|Undefined|null $description = Undefined::Value,
+        public DateTimeInterface|string|Undefined|null $dueDate = Undefined::Value,
+        public DateTimeInterface|string|Undefined|null $dueTime = Undefined::Value,
+        public int|Undefined|null $initialEstimate = Undefined::Value,
+        public int|string|Undefined|null $parentTaskId = Undefined::Value,
+        public bool|Undefined|null $private = Undefined::Value,
+        public int|string|Undefined|null $projectId = Undefined::Value,
+        public int|Undefined|null $remainingTime = Undefined::Value,
+        public DateTimeInterface|string|Undefined|null $repeatOnDate = Undefined::Value,
+        public int|Undefined|null $repeatOnInterval = Undefined::Value,
+        public int|Undefined|null $repeatOnMonthday = Undefined::Value,
+        public array|Undefined|null $repeatOnWeekday = Undefined::Value,
+        public int|string|Undefined|null $repeatScheduleId = Undefined::Value,
+        public int|string|Undefined|null $serviceId = Undefined::Value,
+        public bool|Undefined|null $skipReposition = Undefined::Value,
+        public DateTimeInterface|string|Undefined|null $startDate = Undefined::Value,
+        public array|Undefined|null $subscriberIds = Undefined::Value,
+        public array|Undefined|null $tagList = Undefined::Value,
+        public int|string|Undefined|null $taskListId = Undefined::Value,
+        public string|Undefined|null $title = Undefined::Value,
+        public int|string|Undefined|null $typeId = Undefined::Value,
+        public int|string|Undefined|null $workflowStatusId = Undefined::Value,
+    ) {}
+
+    public function toAttributes(): array
+    {
+        return self::filter([
+            'assignee_id' => $this->assigneeId,
+            'attachment_ids' => $this->attachmentIds,
+            'custom_fields' => $this->customFields,
+            'description' => $this->description,
+            'due_date' => self::date($this->dueDate),
+            'due_time' => self::time($this->dueTime),
+            'initial_estimate' => $this->initialEstimate,
+            'parent_task_id' => $this->parentTaskId,
+            'private' => $this->private,
+            'project_id' => $this->projectId,
+            'remaining_time' => $this->remainingTime,
+            'repeat_on_date' => self::date($this->repeatOnDate),
+            'repeat_on_interval' => $this->repeatOnInterval,
+            'repeat_on_monthday' => $this->repeatOnMonthday,
+            'repeat_on_weekday' => $this->repeatOnWeekday,
+            'repeat_schedule_id' => $this->repeatScheduleId,
+            'service_id' => $this->serviceId,
+            'skip_reposition' => $this->skipReposition,
+            'start_date' => self::date($this->startDate),
+            'subscriber_ids' => $this->subscriberIds,
+            'tag_list' => $this->tagList,
+            'task_list_id' => $this->taskListId,
+            'title' => $this->title,
+            'type_id' => $this->typeId,
+            'workflow_status_id' => $this->workflowStatusId,
+        ]);
+    }
+}

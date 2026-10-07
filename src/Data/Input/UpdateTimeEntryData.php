@@ -1,0 +1,57 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Data\Input;
+
+use Axyr\Productive\Data\InputData;
+use Axyr\Productive\Data\Undefined;
+use DateTimeInterface;
+
+/**
+ * Attributes for updating a time entry. Fields left out are not changed; null clears a field.
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveParameterList")
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ */
+final readonly class UpdateTimeEntryData extends InputData
+{
+    public function __construct(
+        public int|Undefined|null $billableTime = Undefined::Value,
+        public string|Undefined|null $calendarEventId = Undefined::Value,
+        public DateTimeInterface|string|Undefined|null $date = Undefined::Value,
+        public string|Undefined|null $jiraIssueId = Undefined::Value,
+        public string|Undefined|null $jiraIssueStatus = Undefined::Value,
+        public string|Undefined|null $jiraIssueSummary = Undefined::Value,
+        public string|Undefined|null $jiraOrganization = Undefined::Value,
+        public string|Undefined|null $jiraWorklogId = Undefined::Value,
+        public string|Undefined|null $note = Undefined::Value,
+        public int|string|Undefined|null $personId = Undefined::Value,
+        public int|string|Undefined|null $serviceId = Undefined::Value,
+        public DateTimeInterface|string|Undefined|null $startedAt = Undefined::Value,
+        public int|string|Undefined|null $taskId = Undefined::Value,
+        public int|Undefined|null $time = Undefined::Value,
+        public bool|Undefined|null $useSalaryCurrency = Undefined::Value,
+    ) {}
+
+    public function toAttributes(): array
+    {
+        return self::filter([
+            'billable_time' => $this->billableTime,
+            'calendar_event_id' => $this->calendarEventId,
+            'date' => self::date($this->date),
+            'jira_issue_id' => $this->jiraIssueId,
+            'jira_issue_status' => $this->jiraIssueStatus,
+            'jira_issue_summary' => $this->jiraIssueSummary,
+            'jira_organization' => $this->jiraOrganization,
+            'jira_worklog_id' => $this->jiraWorklogId,
+            'note' => $this->note,
+            'person_id' => $this->personId,
+            'service_id' => $this->serviceId,
+            'started_at' => $this->startedAt,
+            'task_id' => $this->taskId,
+            'time' => $this->time,
+            'use_salary_currency' => $this->useSalaryCurrency,
+        ]);
+    }
+}

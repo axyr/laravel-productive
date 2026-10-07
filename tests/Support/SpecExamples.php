@@ -1,0 +1,100 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Tests\Support;
+
+use RuntimeException;
+
+/**
+ * Reads example documents and request schemas from the vendored OpenAPI spec, so fixtures
+ * are Productive's own examples rather than hand-written guesses.
+ */
+final class SpecExamples
+{
+    /** @var array<string, mixed>|null */
+    private static ?array $spec = null;
+
+    /**
+     * The example document of an operation's success response.
+     *
+     * @return array<string, mixed>
+     */
+    public static function response(string $operationId): array
+    {
+        $operation = self::operation($operationId);
+
+        foreach ($operation['responses'] as $status => $response) {
+            if (str_starts_with((string) $status, '2')) {
+                $content = self::resolve($response)['content'] ?? [];
+                $schema = self::resolve(reset($content)['schema'] ?? []);
+
+                if (isset($schema['example'])) {
+                    return $schema['example'];
+                }
+            }
+        }
+
+        throw new RuntimeException(sprintf('Operation %s has no success response example.', $operationId));
+    }
+
+    /**
+     * The JSON pointer of an operation's request body schema inside the spec document.
+     */
+    public static function requestSchemaPointer(string $operationId): string
+    {
+        $body = self::operation($operationId)['requestBody'] ?? throw new RuntimeException(sprintf('Operation %s has no request body.', $operationId));
+        $name = substr($body['$ref'], strlen('#/components/requestBodies/'));
+        $contentType = array_key_first(self::spec()['components']['requestBodies'][$name]['content']);
+
+        return sprintf('#/components/requestBodies/%s/content/%s/schema', $name, str_replace('/', '~1', $contentType));
+    }
+
+    public static function path(): string
+    {
+        return dirname(__DIR__, 2) . '/resources/openapi/productive.json';
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public static function spec(): array
+    {
+        return self::$spec ??= json_decode((string) file_get_contents(self::path()), true, 512, JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function operation(string $operationId): array
+    {
+        foreach (self::spec()['paths'] as $operations) {
+            foreach ($operations as $operation) {
+                if (is_array($operation) && ($operation['operationId'] ?? null) === $operationId) {
+                    return $operation;
+                }
+            }
+        }
+
+        throw new RuntimeException(sprintf('Unknown operation %s.', $operationId));
+    }
+
+    /**
+     * @param  array<string, mixed>  $node
+     * @return array<string, mixed>
+     */
+    private static function resolve(array $node): array
+    {
+        while (isset($node['$ref'])) {
+            $target = self::spec();
+
+            foreach (explode('/', substr($node['$ref'], 2)) as $segment) {
+                $target = $target[str_replace(['~1', '~0'], ['/', '~'], $segment)];
+            }
+
+            $node = $target;
+        }
+
+        return $node;
+    }
+}

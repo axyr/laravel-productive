@@ -1,0 +1,54 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Testing\Factories;
+
+use Axyr\Productive\Data\Models\TimeEntry;
+
+/**
+ * Defaults are the attributes of the example in Productive's API reference.
+ *
+ * @extends Factory<TimeEntry>
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ */
+final class TimeEntryFactory extends Factory
+{
+    public static function new(): self
+    {
+        return new self();
+    }
+
+    protected function model(): string
+    {
+        return TimeEntry::class;
+    }
+
+    protected function definition(): array
+    {
+        return [
+            'date' => '2026-03-15',
+            'created_at' => '2026-03-15T09:30:00.000+00:00',
+            'time' => 480,
+            'note' => 'Implemented user authentication flow',
+            'track_method_id' => 1,
+            'started_at' => '2026-03-15T09:00:00.000+00:00',
+            'timer_started_at' => null,
+            'timer_stopped_at' => null,
+            'approved' => false,
+            'approved_at' => null,
+            'updated_at' => '2026-03-15T17:30:00.000+00:00',
+            'calendar_event_id' => null,
+            'invoice_attribution_id' => null,
+            'invoiced' => false,
+            'overhead' => false,
+            'rejected' => false,
+            'rejected_reason' => null,
+            'rejected_at' => null,
+            'last_activity_at' => '2026-03-15T09:30:00.000+00:00',
+            'submitted' => false,
+            'currency' => 'USD',
+        ];
+    }
+}

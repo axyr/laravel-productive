@@ -1,0 +1,42 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Testing\Factories;
+
+use Axyr\Productive\Data\Models\TimeReport;
+
+/**
+ * Defaults are the attributes of the example in Productive's API reference.
+ *
+ * @extends Factory<TimeReport>
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ */
+final class TimeReportFactory extends Factory
+{
+    public static function new(): self
+    {
+        return new self();
+    }
+
+    protected function model(): string
+    {
+        return TimeReport::class;
+    }
+
+    protected function definition(): array
+    {
+        return [
+            'billable_time' => 14400,
+            'nonbillable_time' => 1800,
+            'total_time' => 16200,
+            'revenue' => '3600.00',
+            'cost' => '1620.00',
+            'person_id' => 12,
+            'project_id' => 6899,
+            'date' => '2026-03-15',
+            'currency' => 'USD',
+        ];
+    }
+}
