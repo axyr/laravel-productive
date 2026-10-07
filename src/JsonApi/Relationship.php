@@ -9,8 +9,8 @@ use Axyr\Productive\Exceptions\InvalidResponseException;
 /**
  * A relationship as returned by Productive.
  *
- * Productive omits `data` for relationships that were not requested with `include`
- * and returns `"meta": {"included": false}` instead, so "no data" is not the same as "empty".
+ * Productive may omit `data` for relationships that were not requested with `include` and
+ * return `"meta": {"included": false}` instead, so "no data" is not the same as "empty".
  */
 final readonly class Relationship
 {

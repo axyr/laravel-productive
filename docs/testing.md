@@ -36,7 +36,19 @@ Productive::fake([
 $fake->respond('reports.time_reports.index', FakeResponse::collection([...]));
 ```
 
-Operation names are `{resource}.{action}`, e.g. `tasks.index`, `tasks.show`, `tasks.create`, `tasks.update`, `tasks.destroy`, `tasks.reposition`, `time_entries.create_bulk`, `reports.time_reports.index`.
+Operation names follow the API, not the PHP method names: `{path}.{action}`, where the action is the one in Productive's spec. Bulk operations add `_bulk`:
+
+| Method | Operation |
+|---|---|
+| `query()->get()` / `lazy()` / … | `tasks.index` |
+| `find()` | `tasks.show` |
+| `create()` / `update()` | `tasks.create` / `tasks.update` |
+| `delete()` | `tasks.destroy` |
+| `reposition()`, `moveDependent()` | `tasks.reposition`, `tasks.move_dependent` |
+| `bulkCreate()`, `bulkApprove()` | `time_entries.create_bulk`, `time_entries.approve_bulk` |
+| `reports()->timeReports()->query()` | `reports.time_reports.index` |
+
+The names are derived from the spec, so they stay stable when methods get friendlier names. A stray request's error message always names its operation.
 
 | Helper | Response |
 |---|---|

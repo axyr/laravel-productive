@@ -88,9 +88,7 @@ final readonly class Document
 
     public function metaInt(string $key): ?int
     {
-        $value = $this->meta[$key] ?? null;
-
-        return is_numeric($value) ? (int) $value : null;
+        return Meta::int($this->meta, $key);
     }
 
     /**

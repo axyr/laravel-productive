@@ -14,8 +14,15 @@ it('carries the page meta and links', function () {
         ->and($collection->totalCount())->toBe(42);
 });
 
+it('reads totals sent as numeric strings', function () {
+    $collection = ModelCollection::fromPage([], ['total_count' => '120', 'total_pages' => '4']);
+
+    expect($collection->totalCount())->toBe(120)
+        ->and($collection->metaInt('total_pages'))->toBe(4);
+});
+
 it('has no total without page meta', function () {
-    $collection = ModelCollection::fromPage([], ['total_count' => '42']);
+    $collection = ModelCollection::fromPage([], ['total_count' => 'many']);
 
     expect($collection->totalCount())->toBeNull()
         ->and((new ModelCollection())->meta())->toBe([])

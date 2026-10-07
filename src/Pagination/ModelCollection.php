@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Axyr\Productive\Pagination;
 
 use Axyr\Productive\Data\Model;
+use Axyr\Productive\JsonApi\Meta;
 use Illuminate\Support\Collection;
 
 /**
@@ -58,8 +59,14 @@ final class ModelCollection extends Collection
 
     public function totalCount(): ?int
     {
-        $total = $this->responseMeta['total_count'] ?? null;
+        return $this->metaInt('total_count');
+    }
 
-        return is_int($total) ? $total : null;
+    /**
+     * An integer from the page meta, e.g. total_pages. Numeric strings are accepted.
+     */
+    public function metaInt(string $key): ?int
+    {
+        return Meta::int($this->responseMeta, $key);
     }
 }

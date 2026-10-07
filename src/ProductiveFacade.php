@@ -37,7 +37,7 @@ class ProductiveFacade extends Facade
 
         $app = static::getFacadeApplication() ?? throw new LogicException('Productive::fake() needs a booted Laravel application.');
         $app->instance(ConnectorInterface::class, $fake->connector());
-        $app->forgetScopedInstances();
+        $app->forgetInstance(ProductiveClient::class);
         static::clearResolvedInstance(ProductiveClient::class);
 
         return $fake;

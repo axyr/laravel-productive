@@ -43,7 +43,7 @@ Not every endpoint supports operators. Productive answers an unsupported filter 
         ->where('date', '=', '2023-01-01')))
 ```
 
-A flat set of distinct conditions uses Productive's simple form (`filter[a]=1&filter[b]=2`), which every endpoint supports. Groups, and conditions repeated on one field, use the logical form (`filter[$op]=and&filter[0][…]`).
+A flat set of conditions uses Productive's simple form, which every endpoint supports. That includes a range on one field: `where('date', '>=', $a)->where('date', '<=', $b)` sends `filter[date][gt_eq]=…&filter[date][lt_eq]=…`. Groups, and the same field with the same operator twice, use the logical form (`filter[$op]=and&filter[0][…]`).
 
 ## Sorting
 

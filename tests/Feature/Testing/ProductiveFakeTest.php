@@ -202,3 +202,12 @@ it('uses the fake even when the facade was resolved before', function () {
 
     $fake->assertDeleted('tasks', 1);
 });
+
+it('leaves the host application\'s scoped services alone', function () {
+    app()->scoped('host.service', fn() => new stdClass());
+    $before = app('host.service');
+
+    Productive::fake();
+
+    expect(app('host.service'))->toBe($before);
+});

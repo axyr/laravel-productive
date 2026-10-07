@@ -32,10 +32,20 @@ it('serializes the logical example from the filtering guide', function () {
     );
 });
 
-it('uses the logical form when a field repeats', function () {
-    $query = (new Query())->where('date', '>=', '2026-01-01')->where('date', '<', '2026-02-01');
+it('keeps a range on one field in the simple form', function () {
+    $query = (new Query())->where('date', '>=', '2026-01-01')->where('date', '<', '2026-02-01')->where('project_id', 1);
 
-    expect($query->toQueryString())->toBe('filter[$op]=and&filter[0][date][gt_eq]=2026-01-01&filter[1][date][lt]=2026-02-01');
+    expect($query->toQueryString())->toBe('filter[date][gt_eq]=2026-01-01&filter[date][lt]=2026-02-01&filter[project_id]=1');
+});
+
+it('writes the operator for an implicit equality next to another operator on the same field', function () {
+    expect((new Query())->where('date', '2026-01-01')->where('date', '>', '2025-01-01')->toQueryString())
+        ->toBe('filter[date][eq]=2026-01-01&filter[date][gt]=2025-01-01');
+});
+
+it('uses the logical form when a field and operator repeat', function () {
+    expect((new Query())->where('date', 'a')->where('date', '=', 'b')->toQueryString())
+        ->toBe('filter[$op]=and&filter[0][date][eq]=a&filter[1][date][eq]=b');
 });
 
 it('mixes plain conditions with a nested group in the logical form', function () {
@@ -109,6 +119,9 @@ it('reports its pagination state', function () {
     $query = new Query();
 
     expect($query->hasSort())->toBeFalse()
+        ->and($query->hasPagePosition())->toBeFalse()
+        ->and((new Query())->page(2)->hasPagePosition())->toBeTrue()
+        ->and((new Query())->after('')->hasPagePosition())->toBeTrue()
         ->and($query->usesCursor())->toBeFalse()
         ->and($query->pageSize())->toBeNull();
 

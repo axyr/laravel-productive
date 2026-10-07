@@ -160,6 +160,14 @@ class Query
         return $this->cursor !== null;
     }
 
+    /**
+     * True when page() or after() selected a specific page.
+     */
+    public function hasPagePosition(): bool
+    {
+        return $this->pageNumber !== null || $this->cursor !== null;
+    }
+
     public function pageSize(): ?int
     {
         return $this->pageSize;

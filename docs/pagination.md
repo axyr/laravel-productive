@@ -28,6 +28,8 @@ Page numbers are used when cursors cannot be:
 - **Reports** do not support cursors; they are paged by number automatically.
 - **Sorts the cursor cannot follow**: when Productive answers `keyset_unsupported_sort`, iteration restarts with page numbers.
 
+`lazy()` and `all()` always start at the first page. Combining them with `page()` or `after()` throws an `InvalidQueryException`; use `get()` for a single page.
+
 You can also choose explicitly: `->page(3)->perPage(50)->get()` for one numbered page, or `->after($cursor)->get()` for a cursor page. Combining both throws an `InvalidQueryException`, as Productive would reject it.
 
 `links.next` URLs are only followed when they point at the configured API base URL, so the token is never sent anywhere else.

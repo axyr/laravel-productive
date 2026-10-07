@@ -87,6 +87,10 @@ abstract class Resource
      */
     protected function lazyPages(Query $query, string $operation): LazyCollection
     {
+        if ($query->hasPagePosition()) {
+            throw new InvalidQueryException('lazy() and all() read the whole collection from the first page; remove page() and after(), or use get() for a single page.');
+        }
+
         $query = clone $query;
 
         if ($query->pageSize() === null) {
@@ -284,7 +288,7 @@ abstract class Resource
                 yield $model;
             }
 
-            $totalPages = $this->metaInt($page->meta(), 'total_pages') ?? $number;
+            $totalPages = $page->metaInt('total_pages') ?? $number;
             $number++;
         } while ($number <= $totalPages && $page->isNotEmpty());
     }
@@ -331,15 +335,5 @@ abstract class Resource
         }
 
         return Document::fromArray($json);
-    }
-
-    /**
-     * @param  array<string, mixed>  $meta
-     */
-    private function metaInt(array $meta, string $key): ?int
-    {
-        $value = $meta[$key] ?? null;
-
-        return is_int($value) ? $value : null;
     }
 }

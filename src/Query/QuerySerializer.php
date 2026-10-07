@@ -39,15 +39,22 @@ final class QuerySerializer
     }
 
     /**
-     * A flat AND of distinct fields uses the simple form (`filter[project_id]=1`), which every
-     * endpoint supports. Anything else uses the logical form (`filter[$op]=or&filter[0][…]`).
+     * A flat AND without repeated field/operator pairs uses the simple form, which every endpoint
+     * supports: `filter[project_id]=1`, or `filter[date][gt_eq]=…&filter[date][lt_eq]=…` for a range.
+     * Anything else uses the logical form (`filter[$op]=or&filter[0][…]`).
      *
      * @return list<array{string, string}>
      */
     private static function filterPairs(FilterGroup $filters): array
     {
         if (self::isSimple($filters)) {
-            return array_map(fn(Condition $condition): array => self::conditionPair('filter', $condition), self::conditions($filters));
+            $conditions = self::conditions($filters);
+            $perField = array_count_values(array_map(fn(Condition $condition): string => $condition->field, $conditions));
+
+            return array_map(
+                fn(Condition $condition): array => self::conditionPair('filter', $condition, forceOperator: $perField[$condition->field] > 1),
+                $conditions,
+            );
         }
 
         return self::groupPairs('filter', $filters);
@@ -65,9 +72,9 @@ final class QuerySerializer
             return false;
         }
 
-        $fields = array_map(fn(Condition $condition): string => $condition->field, $conditions);
+        $pairs = array_map(fn(Condition $condition): array => [$condition->field, $condition->operator], $conditions);
 
-        return count(array_unique($fields)) === count($fields);
+        return count(array_unique($pairs, SORT_REGULAR)) === count($pairs);
     }
 
     /**

@@ -69,7 +69,12 @@ abstract readonly class Model implements JsonSerializable
     }
 
     /**
-     * The related resource ID, readable without including the relationship.
+     * The related resource ID from the relationship's linkage data. It does not need the related
+     * resource to be included, but Productive must have sent the linkage: when it sent only
+     * `"meta": {"included": false}`, this throws instead of guessing, because null would wrongly
+     * mean "no related resource".
+     *
+     * @throws RelationshipNotIncludedException
      */
     public function relationshipId(string $name): ?string
     {

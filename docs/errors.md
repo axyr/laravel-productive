@@ -53,13 +53,15 @@ try {
 | Connection failure | retried with backoff | **not retried** |
 | Other 4xx | not retried | not retried |
 
+Retries sleep in the calling process. In the worst case a call blocks for `(max_attempts - 1) × max_retry_after` seconds, which is two minutes with the defaults. In web requests, lower `PRODUCTIVE_RETRY_MAX_RETRY_AFTER` and leave long waits to queued jobs.
+
 A 429 is safe to retry for every method because Productive rejects the request before doing any work. A write that failed with a 5xx may already have been applied, and repeating "send invoice" is worse than reporting the error. Attempts are capped by `retry.max_attempts`, and a 429 whose reset is further away than `retry.max_retry_after` seconds is thrown straight away.
 
 ## Rate limits
 
 Productive enforces, per token, 100 requests per 10 seconds and 10 report requests per 30 seconds. Per organization, it enforces 4,000 requests per 30 minutes and a processing-time budget (30 minutes per hour, 6 hours per day).
 
-The client-side throttle counts requests in the Laravel cache and waits before a request would exceed a per-token limit. Use a shared cache store so all workers share one budget. The organization limits cannot be known client-side; they surface as a `RateLimitException`, where `isServerTimeLimit()` tells the processing-time limit apart.
+The client-side throttle counts requests in the Laravel cache and waits before a request would exceed a per-token limit. Use a shared cache store so all workers share one budget. Its windows are fixed to the clock, so a burst across a window boundary can still draw a 429; the retry absorbs it. The organization limits cannot be known client-side; they surface as a `RateLimitException`, where `isServerTimeLimit()` tells the processing-time limit apart.
 
 ### In queued jobs
 

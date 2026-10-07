@@ -41,6 +41,11 @@ return [
     | errors and connection failures are only retried for GET requests, so a
     | non-idempotent call (send an invoice, approve time) is never repeated.
     |
+    | Retries sleep in the calling process: in the worst case a call blocks for
+    | (max_attempts - 1) × max_retry_after seconds, two minutes by default. For
+    | web requests, lower max_retry_after (or max_attempts) and let queued jobs
+    | do the waiting.
+    |
     */
 
     'retry' => [
@@ -53,10 +58,11 @@ return [
     | Client-side throttling
     |--------------------------------------------------------------------------
     |
-    | Keeps requests within Productive's per-token limits (100 per 10 seconds,
-    | reports 10 per 30 seconds) before the API has to reject them. Counters
-    | live in the cache, so use a shared store (redis, database) when several
-    | queue workers share one token.
+    | Reduces 429s by pacing requests to Productive's per-token limits (100 per
+    | 10 seconds, reports 10 per 30 seconds). Counters live in the cache, so use
+    | a shared store (redis, database) when several workers share one token.
+    | Windows are fixed to the clock, so a burst across a window boundary can
+    | still exceed the limit; the 429 retry absorbs those.
     |
     */
 

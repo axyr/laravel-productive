@@ -38,7 +38,9 @@ $task->attachments();     // list<Model>
 $task->related('assignee'); // any relationship, hydrated into its registered model class
 ```
 
-A relationship that was not included throws a `RelationshipNotIncludedException` telling you which `include()` to add, so "not loaded" is never mistaken for "empty". The ID is often available without an include:
+A relationship that was not included throws a `RelationshipNotIncludedException` telling you which `include()` to add, so "not loaded" is never mistaken for "empty".
+
+The related ID comes from the linkage data, which Productive often sends without an include. When it sent only `"meta": {"included": false}`, `relationshipId()` throws too, rather than returning a misleading `null`:
 
 ```php
 $task->relationshipId('assignee');     // "12"

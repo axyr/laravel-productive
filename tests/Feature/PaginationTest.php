@@ -175,3 +175,23 @@ it('rejects a collection where a resource is expected', function () {
 
     Productive::tasks()->find(1);
 })->throws(InvalidResponseException::class, 'Expected a single resource');
+
+it('counts and pages with totals sent as strings', function () {
+    $row = ['type' => 'new_time_reports', 'id' => 'r-1', 'attributes' => []];
+    fakeHttp(['*' => Http::sequence()
+        ->push(taskPage(['1'], meta: ['total_count' => '120']))
+        ->push(['data' => [$row], 'meta' => ['total_pages' => '2']])
+        ->push(['data' => [[...$row, 'id' => 'r-2']], 'meta' => ['total_pages' => '2']])]);
+
+    expect(Productive::tasks()->query()->count())->toBe(120)
+        ->and(Productive::reports()->timeReports()->query()->all())->toHaveCount(2);
+});
+
+it('refuses to iterate everything from a page position', function (Closure $position) {
+    fakeHttp([]);
+
+    $position(Productive::tasks()->query())->lazy()->all();
+})->with([
+    'page number' => [fn($query) => $query->page(3)],
+    'cursor' => [fn($query) => $query->after('abc')],
+])->throws(Axyr\Productive\Exceptions\InvalidQueryException::class, 'lazy() and all() read the whole collection from the first page');

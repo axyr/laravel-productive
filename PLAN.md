@@ -372,6 +372,9 @@ P-18 ends with an **empty allowlist** in `SpecCoverageTest`: all 668 operations 
 
 **P-23 Sandbox verification** (blocked until the sandbox exists)
 - Enable the live suite against the sandbox.
+- Check that `links.next` starts with the exact configured base URL; otherwise page 2 of `lazy()` throws. This matters for a different host, or for `PRODUCTIVE_BASE_URL` pointing at a proxy.
+- Check that `X-RateLimit-Reset` is seconds remaining, as the guide says, and not a timestamp.
+- Check whether to-one relationships carry linkage `data` without `include`, which decides how often `relationshipId()` works without one.
 - Record real responses and swap them in for `synthesised` fixtures.
 - Fix any hydration mismatches.
 - Release `v0.2.0`.
