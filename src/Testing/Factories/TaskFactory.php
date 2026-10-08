@@ -1,0 +1,64 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Testing\Factories;
+
+use Axyr\Productive\Data\Models\Task;
+
+/**
+ * Defaults are the attributes of the example in Productive's API reference.
+ *
+ * @extends Factory<Task>
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ */
+final class TaskFactory extends Factory
+{
+    public static function new(): self
+    {
+        return new self();
+    }
+
+    protected function model(): string
+    {
+        return Task::class;
+    }
+
+    protected function definition(): array
+    {
+        return [
+            'title' => 'Implement user authentication',
+            'description' => 'Set up OAuth2 authentication with Google and GitHub providers',
+            'number' => '42',
+            'task_number' => '42',
+            'private' => false,
+            'due_date' => '2026-03-31',
+            'start_date' => '2026-03-15',
+            'closed_at' => null,
+            'closed' => false,
+            'created_at' => '2026-01-15T10:00:00.000+00:00',
+            'updated_at' => '2026-03-10T14:30:00.000+00:00',
+            'email_key' => '7a083181e1e5f5dc5c11920d72804716',
+            'custom_fields' => null,
+            'todo_count' => 3,
+            'open_todo_count' => 1,
+            'subtask_count' => 2,
+            'open_subtask_count' => 1,
+            'task_dependency_count' => 0,
+            'type_id' => 1,
+            'blocking_dependency_count' => 0,
+            'waiting_on_dependency_count' => 0,
+            'linked_dependency_count' => 0,
+            'placement' => 1000000,
+            'subtask_placement' => null,
+            'tag_list' => ['backend', 'security'],
+            'last_activity_at' => '2026-03-10T14:30:00.000+00:00',
+            'initial_estimate' => 480,
+            'remaining_time' => 240,
+            'billable_time' => 120,
+            'worked_time' => 240,
+            'deleted_at' => null,
+        ];
+    }
+}

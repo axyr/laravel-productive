@@ -1,0 +1,41 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Data\Input;
+
+use Axyr\Productive\Data\InputData;
+use Axyr\Productive\Data\Undefined;
+
+/**
+ * Attributes for copying a task (or creating one from a task template).
+ */
+final readonly class CopyTaskData extends InputData
+{
+    public function __construct(
+        public string $title,
+        public int|string $templateId,
+        public int|string $projectId,
+        public int|string $taskListId,
+        public int|string $workflowStatusId,
+        public bool $private,
+        public bool|Undefined|null $copyAsTaskTemplate = Undefined::Value,
+        public int|string|Undefined|null $parentTaskId = Undefined::Value,
+        public string|Undefined|null $templateDescription = Undefined::Value,
+    ) {}
+
+    public function toAttributes(): array
+    {
+        return self::filter([
+            'title' => $this->title,
+            'template_id' => $this->templateId,
+            'project_id' => $this->projectId,
+            'task_list_id' => $this->taskListId,
+            'workflow_status_id' => $this->workflowStatusId,
+            'private' => $this->private,
+            'copy_as_task_template' => $this->copyAsTaskTemplate,
+            'parent_task_id' => $this->parentTaskId,
+            'template_description' => $this->templateDescription,
+        ]);
+    }
+}

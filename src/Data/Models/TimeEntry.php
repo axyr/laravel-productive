@@ -1,0 +1,280 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Data\Models;
+
+use Axyr\Productive\Data\Attributes;
+use Axyr\Productive\Data\Model;
+use DateTimeImmutable;
+
+/**
+ * Time a person spent on a service, optionally on a task.
+ *
+ * @see https://developer.productive.io/reference/resources/time-entries
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ * @SuppressWarnings("PHPMD.ExcessiveClassComplexity")
+ * @SuppressWarnings("PHPMD.TooManyFields")
+ */
+final readonly class TimeEntry extends Model
+{
+    public const string TYPE = 'time_entries';
+
+    /** Whether this time entry has been approved. */
+    public ?bool $approved;
+
+    /** Timestamp when the time entry was approved. */
+    public ?DateTimeImmutable $approvedAt;
+
+    /** Hours billable to clients (time + correction for billable services, zero for non-billable). */
+    public ?int $billableTime;
+
+    /** ID of the calendar event this entry was created from, if applicable. */
+    public mixed $calendarEventId;
+
+    /** Total cost of tracked time, including labor and overhead costs. */
+    public mixed $cost;
+
+    /** Total cost in the organization's default currency. */
+    public mixed $costDefault;
+
+    /** Total cost in the normalized reporting currency. */
+    public mixed $costNormalized;
+
+    /** Date on which the time entry was created. */
+    public ?DateTimeImmutable $createdAt;
+
+    /** Currency code for financial values on this time entry. */
+    public ?string $currency;
+
+    /** Currency code in the organization's default currency. */
+    public mixed $currencyDefault;
+
+    /** Currency code in the normalized reporting currency. */
+    public mixed $currencyNormalized;
+
+    /** Date for which the time was tracked. */
+    public ?DateTimeImmutable $date;
+
+    /** Facility overhead portion of the cost. */
+    public mixed $facilityOverheadCost;
+
+    /** Facility overhead cost in the organization's default currency. */
+    public mixed $facilityOverheadCostDefault;
+
+    /** Facility overhead cost in the normalized reporting currency. */
+    public mixed $facilityOverheadCostNormalized;
+
+    /** Internal overhead portion of the cost. */
+    public mixed $internalOverheadCost;
+
+    /** Internal overhead cost in the organization's default currency. */
+    public mixed $internalOverheadCostDefault;
+
+    /** Internal overhead cost in the normalized reporting currency. */
+    public mixed $internalOverheadCostNormalized;
+
+    /** ID of the invoice attribution linking this entry to an invoice. */
+    public mixed $invoiceAttributionId;
+
+    /** Whether this time entry has been invoiced to the client. */
+    public ?bool $invoiced;
+
+    /** Jira Issue ID if tracked from a Jira integration. */
+    public mixed $jiraIssueId;
+
+    /** Current status of the linked Jira issue. */
+    public mixed $jiraIssueStatus;
+
+    /** Summary text of the linked Jira issue. */
+    public mixed $jiraIssueSummary;
+
+    /** Jira organization name for the linked issue. */
+    public mixed $jiraOrganization;
+
+    /** Jira Worklog ID for synced entries. */
+    public mixed $jiraWorklogId;
+
+    /** Date when the last change was made (edit, approval, move, etc.). */
+    public ?DateTimeImmutable $lastActivityAt;
+
+    /** Description of what the person was working on. */
+    public ?string $note;
+
+    /** Whether this time entry is included in overhead calculations. */
+    public ?bool $overhead;
+
+    /** Total overhead cost (internal + facility) of tracked time. */
+    public mixed $overheadCost;
+
+    /** Total overhead cost in the organization's default currency. */
+    public mixed $overheadCostDefault;
+
+    /** Total overhead cost in the normalized reporting currency. */
+    public mixed $overheadCostNormalized;
+
+    /** Recognized time used in budget spending and accrual-based revenue calculations. */
+    public ?int $recognizedTime;
+
+    /** Whether this time entry was rejected during approval. */
+    public ?bool $rejected;
+
+    /** Timestamp when the time entry was rejected. */
+    public ?DateTimeImmutable $rejectedAt;
+
+    /** Reason provided when the time entry was rejected. */
+    public mixed $rejectedReason;
+
+    /** Start date and time of the time entry. */
+    public ?DateTimeImmutable $startedAt;
+
+    /** Whether this time entry has been submitted for approval via a timesheet. */
+    public ?bool $submitted;
+
+    /** Duration of work in minutes. */
+    public ?int $time;
+
+    /** When the timer was started (if tracked via timer). */
+    public ?DateTimeImmutable $timerStartedAt;
+
+    /** When the timer was stopped. */
+    public ?DateTimeImmutable $timerStoppedAt;
+
+    /** How the time was recorded: manually, via timer, or mixed. */
+    public ?int $trackMethodId;
+
+    /** Timestamp of last modification. */
+    public ?DateTimeImmutable $updatedAt;
+
+    /** Labor cost based on the person's salary rate. */
+    public mixed $workCost;
+
+    /** Labor cost in the organization's default currency. */
+    public mixed $workCostDefault;
+
+    /** Labor cost in the normalized reporting currency. */
+    public mixed $workCostNormalized;
+
+    protected function hydrate(Attributes $attributes): void
+    {
+        $this->approved = $attributes->bool('approved');
+        $this->approvedAt = $attributes->dateTime('approved_at');
+        $this->billableTime = $attributes->int('billable_time');
+        $this->calendarEventId = $attributes->mixed('calendar_event_id');
+        $this->cost = $attributes->mixed('cost');
+        $this->costDefault = $attributes->mixed('cost_default');
+        $this->costNormalized = $attributes->mixed('cost_normalized');
+        $this->createdAt = $attributes->dateTime('created_at');
+        $this->currency = $attributes->string('currency');
+        $this->currencyDefault = $attributes->mixed('currency_default');
+        $this->currencyNormalized = $attributes->mixed('currency_normalized');
+        $this->date = $attributes->date('date');
+        $this->facilityOverheadCost = $attributes->mixed('facility_overhead_cost');
+        $this->facilityOverheadCostDefault = $attributes->mixed('facility_overhead_cost_default');
+        $this->facilityOverheadCostNormalized = $attributes->mixed('facility_overhead_cost_normalized');
+        $this->internalOverheadCost = $attributes->mixed('internal_overhead_cost');
+        $this->internalOverheadCostDefault = $attributes->mixed('internal_overhead_cost_default');
+        $this->internalOverheadCostNormalized = $attributes->mixed('internal_overhead_cost_normalized');
+        $this->invoiceAttributionId = $attributes->mixed('invoice_attribution_id');
+        $this->invoiced = $attributes->bool('invoiced');
+        $this->jiraIssueId = $attributes->mixed('jira_issue_id');
+        $this->jiraIssueStatus = $attributes->mixed('jira_issue_status');
+        $this->jiraIssueSummary = $attributes->mixed('jira_issue_summary');
+        $this->jiraOrganization = $attributes->mixed('jira_organization');
+        $this->jiraWorklogId = $attributes->mixed('jira_worklog_id');
+        $this->lastActivityAt = $attributes->dateTime('last_activity_at');
+        $this->note = $attributes->string('note');
+        $this->overhead = $attributes->bool('overhead');
+        $this->overheadCost = $attributes->mixed('overhead_cost');
+        $this->overheadCostDefault = $attributes->mixed('overhead_cost_default');
+        $this->overheadCostNormalized = $attributes->mixed('overhead_cost_normalized');
+        $this->recognizedTime = $attributes->int('recognized_time');
+        $this->rejected = $attributes->bool('rejected');
+        $this->rejectedAt = $attributes->dateTime('rejected_at');
+        $this->rejectedReason = $attributes->mixed('rejected_reason');
+        $this->startedAt = $attributes->dateTime('started_at');
+        $this->submitted = $attributes->bool('submitted');
+        $this->time = $attributes->int('time');
+        $this->timerStartedAt = $attributes->dateTime('timer_started_at');
+        $this->timerStoppedAt = $attributes->dateTime('timer_stopped_at');
+        $this->trackMethodId = $attributes->int('track_method_id');
+        $this->updatedAt = $attributes->dateTime('updated_at');
+        $this->workCost = $attributes->mixed('work_cost');
+        $this->workCostDefault = $attributes->mixed('work_cost_default');
+        $this->workCostNormalized = $attributes->mixed('work_cost_normalized');
+    }
+
+    public function person(): ?Model
+    {
+        return $this->belongsTo('person', Model::class);
+    }
+
+    public function service(): ?Model
+    {
+        return $this->belongsTo('service', Model::class);
+    }
+
+    public function task(): ?Task
+    {
+        return $this->belongsTo('task', Task::class);
+    }
+
+    public function timesheet(): ?Model
+    {
+        return $this->belongsTo('timesheet', Model::class);
+    }
+
+    public function approver(): ?Model
+    {
+        return $this->belongsTo('approver', Model::class);
+    }
+
+    public function rejecter(): ?Model
+    {
+        return $this->belongsTo('rejecter', Model::class);
+    }
+
+    public function creator(): ?Model
+    {
+        return $this->belongsTo('creator', Model::class);
+    }
+
+    public function updater(): ?Model
+    {
+        return $this->belongsTo('updater', Model::class);
+    }
+
+    public function lastActor(): ?Model
+    {
+        return $this->belongsTo('last_actor', Model::class);
+    }
+
+    public function invoiceAttribution(): ?Model
+    {
+        return $this->belongsTo('invoice_attribution', Model::class);
+    }
+
+    public function dealSubsidiary(): ?Model
+    {
+        return $this->belongsTo('deal_subsidiary', Model::class);
+    }
+
+    public function personSubsidiary(): ?Model
+    {
+        return $this->belongsTo('person_subsidiary', Model::class);
+    }
+
+    public function organization(): ?Model
+    {
+        return $this->belongsTo('organization', Model::class);
+    }
+
+    /**
+     * @return list<Model>
+     */
+    public function approvalStatuses(): array
+    {
+        return $this->hasMany('approval_statuses', Model::class);
+    }
+}

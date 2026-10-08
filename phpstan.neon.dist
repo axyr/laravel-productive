@@ -1,0 +1,11 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - src
+    level: max
+    checkMissingCallableSignature: true
+    reportUnmatchedIgnoredErrors: true
+    additionalConstructors:
+        - Axyr\Productive\Data\Model::hydrate

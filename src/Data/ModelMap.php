@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Axyr\Productive\Data;
+
+use Axyr\Productive\Data\Models\Task;
+use Axyr\Productive\Data\Models\TimeEntry;
+use Axyr\Productive\Data\Models\TimeReport;
+
+/**
+ * Built-in JSON:API type to model class map.
+ */
+final class ModelMap
+{
+    /** @var array<string, class-string<Model>> */
+    public const MODELS = [
+        Task::TYPE => Task::class,
+        TimeEntry::TYPE => TimeEntry::class,
+        TimeReport::TYPE => TimeReport::class,
+        'time_reports' => TimeReport::class,
+    ];
+}
