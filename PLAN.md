@@ -8,6 +8,7 @@ Local development: `/Users/martijn/www/packages/productive`
 **Decisions (2026-10-07)**
 - **Exceptions, not nulls.** Every non-2xx response throws a typed exception. Stability and correctness come first.
 - **PHP 8.3+**, Laravel 12 | 13.
+- **Operation keys follow the spec, not the PHP method names** (2026-10-08). The format is `{path}.{spec action}`, with `_bulk` for bulk operations, e.g. `tasks.destroy` and `time_entries.create_bulk`. Users type these keys in `fake()` and `assertSent()`. The generator must derive them from the spec's operationIds, so they stay stable if methods are renamed.
 - **No sandbox yet.** Fixtures and test cases come from the spec and docs examples. The live suite is scaffolded but stays dormant until a [Productive sandbox](https://help.productive.io/en/articles/9448080-sandbox) exists (P-23).
 - **Spec source:** `https://developer.productive.io/openapi.json`. The per-group download (`/reference/download_spec?group=…`) returns the same component schemas, filtered to one group's paths, so the full JSON is the one to vendor.
 
