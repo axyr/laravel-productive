@@ -386,6 +386,9 @@ P-18 ends with an **empty allowlist** in `SpecCoverageTest`: all 668 operations 
 - Check that `links.next` starts with the exact configured base URL; otherwise page 2 of `lazy()` throws. This matters for a different host, or for `PRODUCTIVE_BASE_URL` pointing at a proxy.
 - Check that `X-RateLimit-Reset` is seconds remaining, as the guide says, and not a timestamp.
 - Check whether to-one relationships carry linkage `data` without `include`, which decides how often `relationshipId()` works without one.
+- Check the resource types the generator could not take from the examples: `agent_roles`, `integration_exporter_configurations` and `timesheet_reports` have examples that show another resource's type. If the API really returns the example's type, `find()` throws and `query()` hydrates the other model; fix with the model map.
+- Check `deal_or_budget_report` (generic `Model` for now) and the 100 other untyped relationships, and add confirmed types to `generator/config/relationship-types.php`.
+- Check the bodies of `integrations`, `proposals`, `resource_requests` and `revenue_distributions` create/update (undocumented, sent from `array $data`), and the plain-JSON page body actions.
 - Record real responses and swap them in for `synthesised` fixtures.
 - Fix any hydration mismatches.
 - Release `v0.2.0`.

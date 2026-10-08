@@ -13,6 +13,7 @@ final readonly class Input
         public string $class,
         public string $requestBody,
         public array $attributes,
+        public bool $plain = false,
     ) {}
 
     /**
@@ -23,6 +24,7 @@ final readonly class Input
         return [
             'class' => $this->class,
             'request_body' => $this->requestBody,
+            'plain' => $this->plain,
             'attributes' => array_map(fn(Attribute $attribute): array => $attribute->toArray(), $this->attributes),
         ];
     }

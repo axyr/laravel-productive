@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Axyr\Productive\Generator;
 
+use Axyr\Productive\Generator\Ir\BodyKind;
 use Axyr\Productive\Generator\Ir\Input;
 use Axyr\Productive\Generator\Ir\Operation;
 use Axyr\Productive\Generator\Ir\OperationKind;
@@ -27,6 +28,7 @@ final readonly class OperationBuilder
     {
         $kind = self::kind($path, $httpMethod, self::isBulk($operation));
         $key = self::key($path, $kind);
+        $input = $this->input($kind, $operation, $path->actionName(), $model);
 
         return new Operation(
             key: $key,
@@ -39,8 +41,9 @@ final readonly class OperationBuilder
             bulk: $kind->isBulk(),
             requiresOrganization: self::requiresOrganization($operation),
             operationId: is_string($operation['operationId'] ?? null) ? $operation['operationId'] : null,
-            input: $this->input($kind, $operation, $path->actionName(), $model),
-            summary: is_string($operation['summary'] ?? null) ? $operation['summary'] : '',
+            input: $input,
+            summary: Spec::string($operation['summary'] ?? null),
+            body: self::body($kind, $input),
         );
     }
 
@@ -82,6 +85,19 @@ final readonly class OperationBuilder
         };
     }
 
+    /**
+     * Creates and updates always send a document; when the spec documents no attributes for
+     * them, the generated method takes an attribute array instead of an input object.
+     */
+    public static function body(OperationKind $kind, ?Input $input): BodyKind
+    {
+        return match (true) {
+            $input !== null => $input->plain ? BodyKind::Plain : BodyKind::Attributes,
+            in_array($kind, [OperationKind::Create, OperationKind::Update, OperationKind::CreateBulk, OperationKind::UpdateBulk], true) => BodyKind::Data,
+            default => BodyKind::None,
+        };
+    }
+
     public static function response(OperationKind $kind, ResponseShape $shape): ResponseKind
     {
         return match ($kind) {
@@ -104,6 +120,7 @@ final readonly class OperationBuilder
     private static function responseFromShape(ResponseShape $shape): ResponseKind
     {
         return match (true) {
+            $shape->plainJson => ResponseKind::Raw,
             $shape->collection => ResponseKind::Collection,
             $shape->resource => $shape->noContent || $shape->emptyOk ? ResponseKind::OptionalResource : ResponseKind::Resource,
             $shape->emptyOk => ResponseKind::Raw,

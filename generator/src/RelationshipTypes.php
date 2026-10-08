@@ -8,7 +8,8 @@ use Illuminate\Support\Str;
 
 /**
  * Works out the JSON:API type a relationship points to. The spec does not say, so the answer
- * comes from, in order: the response examples, the override map, and the relationship's name.
+ * comes from, in order: an "owner.relationship" override (which can correct a wrong example),
+ * the response examples, a "relationship" override, and the relationship's name.
  */
 final readonly class RelationshipTypes
 {
@@ -62,8 +63,8 @@ final readonly class RelationshipTypes
         $qualified = $ownerType . '.' . $relationship;
 
         return match (true) {
-            isset($this->observed[$ownerType][$relationship]) => $this->observed[$ownerType][$relationship],
             array_key_exists($qualified, $this->overrides) => $this->overrides[$qualified],
+            isset($this->observed[$ownerType][$relationship]) => $this->observed[$ownerType][$relationship],
             array_key_exists($relationship, $this->overrides) => $this->overrides[$relationship],
             default => $this->fromName($relationship),
         };

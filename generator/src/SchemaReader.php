@@ -59,13 +59,25 @@ final readonly class SchemaReader
     }
 
     /**
-     * The schema type, else the type of the example value, else a date-time for "*_at", else mixed.
+     * The schema type, else the type of the example value, else a type implied by the name, else mixed.
      *
      * @param  array<string, mixed>  $schema
      */
     public static function type(string $name, array $schema, mixed $example = null): AttributeType
     {
-        return self::schemaType($schema) ?? self::exampleType($example) ?? (str_ends_with($name, '_at') ? AttributeType::DateTime : AttributeType::Mixed);
+        return self::schemaType($schema) ?? self::exampleType($example) ?? self::nameType($name);
+    }
+
+    /**
+     * Untyped and without an example: "*_at" is a timestamp, "currency*" a currency code.
+     */
+    private static function nameType(string $name): AttributeType
+    {
+        return match (true) {
+            str_ends_with($name, '_at') => AttributeType::DateTime,
+            $name === 'currency' || str_starts_with($name, 'currency_') => AttributeType::String,
+            default => AttributeType::Mixed,
+        };
     }
 
     /**

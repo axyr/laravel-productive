@@ -56,7 +56,7 @@ Known spec quirks the SDK handles:
 composer generate:ir
 ```
 
-prints the IR as JSON. `tests/Generator/ApiTest.php` checks it against the spec and the reference resources, and snapshots it (`tests/.pest/snapshots`). So when the vendored spec changes, the snapshot diff shows exactly what changes for the SDK.
+writes the IR to `generator/api.json`. `tests/Generator/ApiTest.php` checks it against the spec and the reference resources, and compares it with the committed `generator/api.json`. When the vendored spec or a generator rule changes, run `composer generate:ir`: the diff of that file shows exactly what changes for the SDK.
 
 How the IR is derived:
 
@@ -65,10 +65,11 @@ How the IR is derived:
 | Resource | The path up to its first parameter (`tasks/{id}` → `tasks`). A path without parameters is an action of its parent when the parent is a resource (`tasks/copy`), otherwise a resource itself (`reports/time_reports`). |
 | Operation key | `{resource}.{action}`: `index`, `show`, `create`, `update`, `destroy`, the action segment (`reposition`), with `_bulk` for bulk operations. |
 | Method | `query`, `find`, `create`, `update`, `delete`, `bulkCreate`, `bulkUpdate`, `bulkDelete`, the camelCase action, `bulk` + action. `generator/config/method-names.php` overrides it per key. |
-| Response | Lists return a `ModelCollection`; a body returns the model, or `?Model` when the spec also documents a response without one; `204` returns `void`; an empty `200` returns the raw response. Bulk creates/updates return a collection, bulk deletes/actions `void`. |
-| Model | One per JSON:API type, read from the show response (else index, else any response with data): schema attributes plus the example's keys, typed by schema, then example, then `*_at` → date-time, else `mixed`. Attributes named `id` or `type` become `$idValue` / `$typeValue`. |
+| Response | Lists return a `ModelCollection`; a body returns the model, or `?Model` when the spec also documents a response without one; `204` returns `void`; an empty `200` or a plain `application/json` response (not JSON:API, e.g. `proposals/{id}/signed_pdf`) returns the raw response. Bulk creates/updates return a collection, bulk deletes/actions `void`. |
+| Request body | A typed input object for a JSON:API document; a typed input sent as plain JSON when the body is not JSON:API (the four `pages` body actions send `{"html": …}` / `{"markdown": …}`); an attribute array (`array $data`) for creates and updates whose attributes the spec does not document (`integrations`, `proposals`, `resource_requests`, `revenue_distributions`); otherwise none. |
+| Model | One per JSON:API type, read from the show response (else index, else any response with data): schema attributes plus the example's keys, typed by schema, then example, then the name (`*_at` → date-time, `currency*` → string), else `mixed`. Attributes named `id` or `type` become `$idValue` / `$typeValue`. |
 | Model type | The example's `type`, unless another resource path owns that type (some examples are copied from other resources). |
-| Relationship target | Seen in an example, else `generator/config/relationship-types.php`, else the longest trailing part of the name that pluralizes into a known type (`default_tax_rate` → `tax_rates`), else polymorphic (`Model`). A wrong guess fails loudly at runtime, never silently. |
+| Relationship target | An `owner.relationship` entry in `generator/config/relationship-types.php` (it can correct a wrong example), else seen in an example, else a `relationship` entry there, else the longest trailing part of the name that pluralizes into a known type (`default_tax_rate` → `tax_rates`), else polymorphic (`Model`). A wrong guess fails loudly at runtime, never silently. |
 | Input | `Create{Model}Data` / `Update{Model}Data` (all optional) / `{Action}{Model}Data`, required attributes first in spec order, then the rest by name. |
 | Synthesized | A bulk create hides its single twin (same path and method), so a `create` is added with the same input: time entries, line items, expense line items. |
 

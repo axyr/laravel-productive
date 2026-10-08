@@ -55,6 +55,7 @@ it('synthesizes the single create a bulk create hides, and orders operations by 
             'bulk' => false,
             'requires_organization' => true,
             'operation_id' => null,
+            'body' => 'attributes',
             'input' => 'CreateTimeEntryData',
             'summary' => 'Create a single resource (synthesized: the spec only documents the bulk variant).',
         ])
@@ -94,7 +95,8 @@ it('builds one model per type from the show response', function () {
         ->and($api->resource('webhooks')?->model)->toBeNull()
         ->and($api->resource('webhooks')?->type)->toBe('webhooks')
         ->and($api->resource('missing'))->toBeNull()
-        ->and(array_keys($api->toArray()))->toBe(['resources', 'models'])
+        ->and(array_keys($api->toArray()))->toBe(['resources', 'models', 'inputs'])
+        ->and(array_column($api->toArray()['inputs'], 'class'))->toBe(['CreateTimeEntryData'])
         ->and($api->operations())->toHaveCount(11);
 });
 

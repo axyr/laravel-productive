@@ -11,6 +11,7 @@ final readonly class ResponseShape
 {
     /**
      * @param  array<string, mixed>|null  $schema  The schema of the first success response that carries data.
+     * @param  bool  $plainJson  A success response is plain `application/json`, not a JSON:API document.
      */
     public function __construct(
         public bool $collection = false,
@@ -18,6 +19,7 @@ final readonly class ResponseShape
         public bool $noContent = false,
         public bool $emptyOk = false,
         public ?array $schema = null,
+        public bool $plainJson = false,
     ) {}
 
     /**
@@ -41,6 +43,7 @@ final readonly class ResponseShape
             noContent: in_array(true, array_column($shapes, 'noContent'), true),
             emptyOk: in_array(true, array_column($shapes, 'emptyOk'), true),
             schema: Spec::map(reset($schemas)) ?: null,
+            plainJson: in_array(true, array_column($shapes, 'plainJson'), true),
         );
     }
 
@@ -49,6 +52,10 @@ final readonly class ResponseShape
      */
     public static function fromResponse(Spec $spec, string $status, array $response): self
     {
+        if (array_key_exists('application/json', Spec::map($response['content'] ?? []))) {
+            return new self(plainJson: true);
+        }
+
         foreach (Spec::map($response['content'] ?? []) as $content) {
             $schema = $spec->resolve(Spec::map($content)['schema'] ?? []);
             $data = Spec::map(Spec::map($schema['properties'] ?? [])['data'] ?? []);

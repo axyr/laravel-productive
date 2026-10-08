@@ -65,5 +65,22 @@ it('names the input after the request body it references', function () {
         ->build(['requestBody' => ['$ref' => '#/components/requestBodies/time_entry']], 'X');
 
     expect($input?->requestBody)->toBe('time_entry')
-        ->and($input?->toArray())->toBe(['class' => 'X', 'request_body' => 'time_entry', 'attributes' => [['name' => 'a', 'property' => 'a', 'type' => 'mixed']]]);
+        ->and($input?->toArray())->toBe(['class' => 'X', 'request_body' => 'time_entry', 'plain' => false, 'attributes' => [['name' => 'a', 'property' => 'a', 'type' => 'mixed']]]);
+});
+
+it('reads plain JSON bodies that are not JSON:API documents', function () {
+    $input = inputBuilder()->build(['requestBody' => ['content' => ['application/vnd.api+json' => ['schema' => [
+        'description' => 'Plain JSON object (not a JSON:API document) carrying the `markdown` string.',
+        'properties' => ['markdown' => ['type' => 'string']],
+        'required' => ['markdown'],
+    ]]]]], 'AppendMarkdownPageData');
+
+    expect($input?->plain)->toBeTrue()
+        ->and(names($input->attributes))->toBe(['markdown'])
+        ->and($input->attributes[0]->required)->toBeTrue();
+});
+
+it('treats a JSON:API body without attributes as having no input', function () {
+    expect(inputBuilder()->build(['requestBody' => body(['properties' => ['attributes' => ['properties' => []]]])], 'X'))->toBeNull()
+        ->and(inputBuilder()->build(['requestBody' => ['content' => ['application/vnd.api+json' => ['schema' => ['properties' => []]]]]], 'X'))->toBeNull();
 });

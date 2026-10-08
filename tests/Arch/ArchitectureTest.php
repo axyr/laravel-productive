@@ -107,6 +107,7 @@ arch('the generator IR is immutable')
     ->toBeFinal()
     ->ignoring([
         'Axyr\\Productive\\Generator\\Ir\\AttributeType',
+        'Axyr\\Productive\\Generator\\Ir\\BodyKind',
         'Axyr\\Productive\\Generator\\Ir\\OperationKind',
         'Axyr\\Productive\\Generator\\Ir\\ResponseKind',
     ]);

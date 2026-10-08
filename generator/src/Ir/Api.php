@@ -57,6 +57,27 @@ final readonly class Api
         return [
             'resources' => array_map(fn(Resource $resource): array => $resource->toArray(), $this->resources),
             'models' => array_map(fn(Model $model): array => $model->toArray(), $this->models),
+            'inputs' => array_map(fn(Input $input): array => $input->toArray(), $this->inputs()),
         ];
+    }
+
+    /**
+     * Every input class once, sorted by class name.
+     *
+     * @return list<Input>
+     */
+    public function inputs(): array
+    {
+        $inputs = [];
+
+        foreach ($this->operations() as $operation) {
+            if ($operation->input !== null) {
+                $inputs[$operation->input->class] = $operation->input;
+            }
+        }
+
+        ksort($inputs);
+
+        return array_values($inputs);
     }
 }

@@ -186,6 +186,7 @@ final readonly class IrBuilder
                     operationId: null,
                     input: $operation->input,
                     summary: 'Create a single resource (synthesized: the spec only documents the bulk variant).',
+                    body: $operation->body,
                 );
             }
         }

@@ -169,11 +169,12 @@ abstract readonly class Model implements JsonSerializable
         }
 
         throw new InvalidResponseException(sprintf(
-            'The "%s" relationship of this %s resource was expected to contain %s, but contains %s.',
+            'The "%s" relationship of this %s resource was expected to contain %s, but contains %s. Use related(\'%s\') to read it as a generic model.',
             $name,
             $this->type,
             $class,
             is_array($related) ? 'a list' : '"' . $related->type . '"',
+            $name,
         ));
     }
 

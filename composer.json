@@ -71,7 +71,7 @@
         "install-hooks": [
             "bash -c 'if [ -d .git ]; then git config core.hooksPath .githooks && echo \"Pre-commit hook configured (core.hooksPath=.githooks)\"; fi'"
         ],
-        "generate:ir": "php generator/bin/ir"
+        "generate:ir": "php generator/bin/ir > generator/api.json"
     },
     "config": {
         "allow-plugins": {

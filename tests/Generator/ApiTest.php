@@ -215,6 +215,66 @@ it('lists the sort and group values of the golden enums', function () {
         ->and(api()->resource('tasks')->groups)->toBe([]);
 });
 
-it('matches the reviewed snapshot of the whole API', function () {
-    expect(json_encode(api()->toArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR))->toMatchSnapshot();
+it('matches the committed API description', function () {
+    $current = json_encode(api()->toArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n";
+    $committed = (string) file_get_contents(dirname(__DIR__, 2) . '/generator/api.json');
+
+    expect(sha1($current))->toBe(sha1($committed), 'generator/api.json is out of date: run `composer generate:ir` and review the diff.');
+});
+
+it('describes the operations that are not plain JSON:API', function () {
+    $operations = [];
+
+    foreach (api()->operations() as $operation) {
+        if ($operation->response === ResponseKind::Raw || $operation->body !== Axyr\Productive\Generator\Ir\BodyKind::None && $operation->body !== Axyr\Productive\Generator\Ir\BodyKind::Attributes) {
+            $operations[$operation->key] = $operation->response->value . ' / ' . $operation->body->value;
+        }
+    }
+
+    ksort($operations);
+
+    expect($operations)->toBe([
+        'integrations.create' => 'resource / data',
+        'pages.append_html' => 'resource / plain',
+        'pages.append_markdown' => 'resource / plain',
+        'pages.replace_body_with_html' => 'resource / plain',
+        'pages.replace_body_with_markdown' => 'resource / plain',
+        'proposals.create' => 'resource / data',
+        'proposals.signed_pdf' => 'raw / none',
+        'proposals.update' => 'resource / data',
+        'public.artifacts.attachments_auth' => 'raw / none',
+        'resource_requests.create' => 'resource / data',
+        'resource_requests.update' => 'resource / data',
+        'revenue_distributions.create' => 'resource / data',
+        'revenue_distributions.update' => 'resource / data',
+        'sessions.machine' => 'raw / none',
+    ]);
+});
+
+it('exports every input with its attributes', function () {
+    $exported = api()->toArray()['inputs'];
+
+    expect($exported)->toHaveCount(216)
+        ->and(array_column($exported, 'class'))->toContain('CreateTaskData', 'AppendMarkdownPageData')
+        ->and($exported[array_search('CreateTaskData', array_column($exported, 'class'), true)]['attributes'][0]['name'])->toBe('title');
+});
+
+it('types currency codes and leaves the deal-or-budget report polymorphic', function () {
+    foreach (api()->models as $model) {
+        foreach ($model->attributes as $attribute) {
+            if (str_starts_with($attribute->name, 'currency')) {
+                expect($attribute->type)->not->toBe(Axyr\Productive\Generator\Ir\AttributeType::Mixed, $model->class . '.' . $attribute->name);
+            }
+        }
+
+        foreach ($model->relationships as $relationship) {
+            if ($relationship->name === 'deal_or_budget_report') {
+                expect($relationship->targetType)->toBeNull();
+            }
+
+            if ($relationship->name === 'project_manager') {
+                expect($relationship->targetType)->toBe('people');
+            }
+        }
+    }
 });

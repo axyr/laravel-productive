@@ -54,3 +54,14 @@ it('is empty without success responses', function () {
 
     expect([$shape->collection, $shape->resource, $shape->noContent, $shape->emptyOk, $shape->schema])->toBe([false, false, false, false, null]);
 });
+
+it('marks plain JSON responses', function () {
+    $shape = ResponseShape::fromOperation(shapeSpec(), ['responses' => [
+        '200' => ['$ref' => '#/components/responses/single'],
+        '201' => ['content' => ['application/json' => ['schema' => ['properties' => ['data' => ['type' => 'object']]]]]],
+    ]]);
+
+    expect($shape->plainJson)->toBeTrue()
+        ->and($shape->resource)->toBeTrue()
+        ->and(ResponseShape::fromOperation(shapeSpec(), ['responses' => ['200' => ['$ref' => '#/components/responses/single']]])->plainJson)->toBeFalse();
+});

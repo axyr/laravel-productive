@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Axyr\Productive\Generator\ClassifiedPath;
 use Axyr\Productive\Generator\InputBuilder;
+use Axyr\Productive\Generator\Ir\BodyKind;
+use Axyr\Productive\Generator\Ir\Input;
 use Axyr\Productive\Generator\Ir\OperationKind;
 use Axyr\Productive\Generator\Ir\ResponseKind;
 use Axyr\Productive\Generator\OperationBuilder;
@@ -69,6 +71,24 @@ it('derives the response kind', function (OperationKind $kind, ResponseShape $sh
     [OperationKind::Action, new ResponseShape(emptyOk: true), ResponseKind::Raw],
     [OperationKind::Destroy, new ResponseShape(noContent: true), ResponseKind::NoContent],
     [OperationKind::Destroy, new ResponseShape(), ResponseKind::NoContent],
+    [OperationKind::Show, new ResponseShape(resource: true, plainJson: true), ResponseKind::Raw],
+    [OperationKind::Action, new ResponseShape(resource: true, noContent: true, plainJson: true), ResponseKind::Raw],
+]);
+
+it('derives the request body kind', function (OperationKind $kind, ?Input $input, BodyKind $body) {
+    expect(OperationBuilder::body($kind, $input))->toBe($body);
+})->with([
+    [OperationKind::Create, new Input('CreateTaskData', 'task', []), BodyKind::Attributes],
+    [OperationKind::Action, new Input('AppendMarkdownPageData', 'page', [], plain: true), BodyKind::Plain],
+    [OperationKind::Create, null, BodyKind::Data],
+    [OperationKind::Update, null, BodyKind::Data],
+    [OperationKind::CreateBulk, null, BodyKind::Data],
+    [OperationKind::UpdateBulk, null, BodyKind::Data],
+    [OperationKind::Action, null, BodyKind::None],
+    [OperationKind::Show, null, BodyKind::None],
+    [OperationKind::Destroy, null, BodyKind::None],
+    [OperationKind::DestroyBulk, null, BodyKind::None],
+    [OperationKind::ActionBulk, null, BodyKind::None],
 ]);
 
 it('recognises bulk operations by tag or operation id', function (array $operation, bool $bulk) {
@@ -111,6 +131,7 @@ it('builds a complete operation', function () {
         'bulk' => false,
         'requires_organization' => true,
         'operation_id' => 'tasks-copy-copy',
+        'body' => 'attributes',
         'input' => 'CopyTaskData',
         'summary' => 'Copy a task',
     ])->and($copy->input?->requestBody)->toBe('task_copy')

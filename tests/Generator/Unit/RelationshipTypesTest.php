@@ -41,3 +41,10 @@ it('collects relationship types from example documents', function () {
         ->and($types->resolve('tasks', 'service'))->toBeNull()
         ->and($types->resolve('tasks', 'project'))->toBeNull();
 });
+
+it('lets an owner-specific override correct a wrong example', function () {
+    $types = new RelationshipTypes(['tasks' => ['assignee' => 'teams']], ['tasks.assignee' => 'people', 'assignee' => 'companies'], []);
+
+    expect($types->resolve('tasks', 'assignee'))->toBe('people')
+        ->and((new RelationshipTypes(['tasks' => ['assignee' => 'teams']], ['assignee' => 'companies'], []))->resolve('tasks', 'assignee'))->toBe('teams');
+});

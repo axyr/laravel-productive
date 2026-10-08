@@ -24,6 +24,7 @@ final readonly class Operation
         public ?string $operationId,
         public ?Input $input = null,
         public string $summary = '',
+        public BodyKind $body = BodyKind::None,
     ) {}
 
     public function isSynthesized(): bool
@@ -46,6 +47,7 @@ final readonly class Operation
             'bulk' => $this->bulk,
             'requires_organization' => $this->requiresOrganization,
             'operation_id' => $this->operationId,
+            'body' => $this->body->value,
             'input' => $this->input?->class,
             'summary' => $this->summary,
         ];
