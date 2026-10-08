@@ -33,12 +33,14 @@ jobs:
           composer require "illuminate/support:^${{ matrix.laravel }}.0" --no-update --no-interaction
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
+      # The generated-code and API description checks depend on exact inflector output, so they
+      # run once in the generated-code job instead of on every dependency set.
       - name: Run tests
-        run: vendor/bin/pest
+        run: vendor/bin/pest --exclude-group=drift
 
   coverage:
     runs-on: ubuntu-latest
-    name: Coverage (line 100%, type 100%, mutation)
+    name: Coverage (line 100%, type 100%)
 
     steps:
       - uses: actions/checkout@v4
@@ -60,9 +62,29 @@ jobs:
       - name: Type coverage
         run: vendor/bin/pest --type-coverage --min=100
 
-      # Not --parallel: parallel mutation runs report escaped mutants as killed.
-      - name: Mutation testing
-        run: vendor/bin/pest --mutate --everything --covered-only --min=100
+
+  generated-code:
+    runs-on: ubuntu-latest
+    name: Generated code is up to date
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: dom, curl, libxml, mbstring, zip
+          coverage: none
+
+      - name: Install dependencies
+        run: composer update --prefer-stable --prefer-dist --no-interaction
+
+      - name: Check generated code
+        run: composer generate:check
+
+      - name: Check the API description
+        run: vendor/bin/pest --group=drift
 
   static-analysis:
     runs-on: ubuntu-latest

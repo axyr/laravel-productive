@@ -115,7 +115,7 @@ Full reference in [docs/](docs/README.md):
 
 ## Endpoint coverage
 
-The SDK is built against Productive's OpenAPI spec, vendored at `resources/openapi/productive.json`: 668 operations across 117 resource groups. This release contains the core and the reference resources (**tasks**, **time entries** with bulk operations, and the **time report**). The remaining resources are generated from the spec, following the exact pattern of these reference resources. See [Development](docs/development.md).
+The SDK is built against Productive's OpenAPI spec, vendored at `resources/openapi/productive.json`: 668 operations across 117 resource groups. Resources are generated from that spec by `composer generate`. This release enables the reference resources: **tasks**, **time entries** (with bulk operations) and the **time report**. The generator already produces valid code for the whole API, and the remaining domains are enabled and reviewed one at a time. See [Development](docs/development.md).
 
 ## Quality
 
@@ -126,7 +126,7 @@ Every change must pass `composer quality`:
 - PHPMD
 - Pest with **100% line coverage** and **100% type coverage**
 
-Mutation testing (`composer test:mutate`) runs in CI. Request bodies in the contract tests are validated against the spec's JSON Schemas, and fixtures are Productive's own examples.
+Mutation testing (`composer test:mutate`, 100% gate) runs nightly in CI. Request bodies in the contract tests are validated against the spec's JSON Schemas, and fixtures are Productive's own examples.
 
 ## License
 

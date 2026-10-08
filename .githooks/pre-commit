@@ -18,6 +18,10 @@ echo "==> PHPMD (complexity)"
 php -d error_reporting='E_ALL & ~E_DEPRECATED' vendor/bin/phpmd src,generator/src text phpmd.xml
 
 echo ""
+echo "==> Generated code is up to date"
+php generator/bin/generate --check
+
+echo ""
 echo "==> Pest (tests, 100% coverage)"
 php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --coverage --min=100
 

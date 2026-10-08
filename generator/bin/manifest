@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Axyr\Productive\Generator\Emit\CodeGenerator;
+use Axyr\Productive\Generator\Ir\Resource;
+use Axyr\Productive\Generator\IrBuilder;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+// Hashes of the raw generator output (before Pint) for the whole API, so any change to an
+// emitter, in any branch, shows up in tests and as a reviewable diff of this manifest.
+
+$root = dirname(__DIR__, 2);
+$config = $root . '/generator/config';
+$api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $config)->build();
+$files = (new CodeGenerator($api, array_map(fn(Resource $resource): string => $resource->path, $api->resources), require $config . '/type-aliases.php'))->files();
+
+echo json_encode(array_map(sha1(...), $files), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR), "\n";

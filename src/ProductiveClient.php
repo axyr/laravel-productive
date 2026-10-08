@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Axyr\Productive;
 
+use Axyr\Productive\Concerns\ProvidesResources;
 use Axyr\Productive\Config\ProductiveConfig;
 use Axyr\Productive\Contracts\ConnectorInterface;
 use Axyr\Productive\Data\ModelRegistry;
-use Axyr\Productive\Resources\Reports\Reports;
-use Axyr\Productive\Resources\TaskResource;
-use Axyr\Productive\Resources\TimeEntryResource;
 use Closure;
 
 /**
@@ -17,6 +15,8 @@ use Closure;
  */
 final class ProductiveClient
 {
+    use ProvidesResources;
+
     private ?ConnectorInterface $connector = null;
 
     /**
@@ -52,20 +52,5 @@ final class ProductiveClient
     public function connector(): ConnectorInterface
     {
         return $this->connector ??= ($this->connectorFactory)($this->config);
-    }
-
-    public function tasks(): TaskResource
-    {
-        return new TaskResource($this->connector(), $this->registry);
-    }
-
-    public function timeEntries(): TimeEntryResource
-    {
-        return new TimeEntryResource($this->connector(), $this->registry);
-    }
-
-    public function reports(): Reports
-    {
-        return new Reports($this->connector(), $this->registry);
     }
 }

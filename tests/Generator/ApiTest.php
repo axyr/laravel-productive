@@ -220,7 +220,7 @@ it('matches the committed API description', function () {
     $committed = (string) file_get_contents(dirname(__DIR__, 2) . '/generator/api.json');
 
     expect(sha1($current))->toBe(sha1($committed), 'generator/api.json is out of date: run `composer generate:ir` and review the diff.');
-});
+})->group('drift');
 
 it('describes the operations that are not plain JSON:API', function () {
     $operations = [];

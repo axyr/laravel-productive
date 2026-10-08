@@ -24,7 +24,11 @@ Mutation testing:
 composer test:mutate
 ```
 
-Do not add `--parallel`: in parallel mode Pest's mutation plugin reports escaped mutants as killed. The parallel run here claimed 100%, while the real score was 88.6%.
+Mutation testing covers the package and the generator, about 4,000 mutants, and takes over an hour. It runs nightly and on demand in `.github/workflows/mutation.yml`, at a 100% gate, rather than on every pull request.
+
+While iterating, scope it to the code you changed, e.g. `--class='Axyr\Productive\Generator\Emit'`. Without `--everything`; that flag overrides `--class`.
+
+Do not add `--parallel`: in parallel mode Pest's mutation plugin reports escaped mutants as killed. The parallel run here claimed 100%, while the real score was 88.6%. `--no-cache` keeps a previous run's results from being reused after tests change.
 
 ## Test suites
 
@@ -73,9 +77,35 @@ How the IR is derived:
 | Input | `Create{Model}Data` / `Update{Model}Data` (all optional) / `{Action}{Model}Data`, required attributes first in spec order, then the rest by name. |
 | Synthesized | A bulk create hides its single twin (same path and method), so a `create` is added with the same input: time entries, line items, expense line items. |
 
+## Generating code
+
+```bash
+composer generate          # write the code for the enabled resources
+composer generate:check    # fail when committed generated code differs from the generator
+```
+
+`generator/config/resources.php` lists the resources that are generated. For each one, the generator writes:
+
+- the resource class
+- its model and factory
+- its input classes
+- its sort/group enums
+- one contract test per operation, in `tests/Contract/Generated`
+
+It also writes the shared entry points:
+
+- `Concerns\ProvidesResources` (the client's accessors)
+- the `Reports` and `PublicResources` groups
+- the facade's docblock
+- `ModelMap`
+
+Generated files start with a "do not edit" marker. Change the generator, its config or the spec instead, then run `composer generate`. Files that carry the marker but are no longer produced are deleted. `composer quality`, the pre-commit hook and CI all run `generate:check`.
+
+Generated contract tests call every method with sample arguments. They assert the exact HTTP method, URL, content type and body, validate the body against the spec's schema, and check the hydrated result. Responses come from the spec's examples, with the resource type forced to the one the generator chose.
+
 ## Adding resources
 
-Tasks, time entries and the time report are the reference resources. Every other resource follows the same pattern:
+Tasks, time entries and the time report were written by hand first and are now generated; they are the reference for review. To add a domain, add its resource paths to `generator/config/resources.php`, run `composer generate`, and review the result. Each generated resource consists of:
 
 1. A model in `src/Data/Models`: a typed nullable property per attribute, hydrated in `hydrate()`, plus relationship accessors named after the snake_case relationship.
 2. An input class per request body in `src/Data/Input`: required fields first, optional fields defaulting to `Undefined::Value`, and `toAttributes()` mapping to API names.

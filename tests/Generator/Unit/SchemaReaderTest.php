@@ -31,6 +31,7 @@ it('infers untyped properties from the example, then from the name', function (s
     ['a', [1, 2], AttributeType::List],
     ['a', ['k' => 1], AttributeType::Object],
     ['approved_at', null, AttributeType::DateTime],
+    ['started_at', '2026-03-15T09:00:00+00:00', AttributeType::DateTime],
     ['currency', null, AttributeType::String],
     ['currency_normalized', null, AttributeType::String],
     ['currency_rate', 1.5, AttributeType::Float],

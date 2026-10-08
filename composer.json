@@ -32,7 +32,8 @@
         "orchestra/testbench": "^10.6|^11.0",
         "pestphp/pest": "^4.7",
         "pestphp/pest-plugin-type-coverage": "^4.0",
-        "phpmd/phpmd": "^2.15"
+        "phpmd/phpmd": "^2.15",
+        "symfony/process": "^7.2|^8.0"
     },
     "autoload": {
         "psr-4": {
@@ -49,7 +50,7 @@
         "test": "pest",
         "test:coverage": "php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --coverage --min=100",
         "test:types": "pest --type-coverage --min=100",
-        "test:mutate": "php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --mutate --everything --covered-only --min=100",
+        "test:mutate": "php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --mutate --everything --covered-only --no-cache --min=100",
         "test:arch": "pest --testsuite=Arch",
         "analyse": "phpstan analyse",
         "format": "pint",
@@ -59,6 +60,7 @@
             "@format:test",
             "@analyse",
             "@complexity",
+            "@generate:check",
             "@test:coverage",
             "@test:types"
         ],
@@ -71,7 +73,10 @@
         "install-hooks": [
             "bash -c 'if [ -d .git ]; then git config core.hooksPath .githooks && echo \"Pre-commit hook configured (core.hooksPath=.githooks)\"; fi'"
         ],
-        "generate:ir": "php generator/bin/ir > generator/api.json"
+        "generate:ir": "php generator/bin/ir > generator/api.json",
+        "generate": "php generator/bin/generate",
+        "generate:check": "php generator/bin/generate --check",
+        "generate:manifest": "php generator/bin/manifest > generator/full-api.sha1.json"
     },
     "config": {
         "allow-plugins": {

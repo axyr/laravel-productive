@@ -15440,7 +15440,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "custom",
@@ -15498,7 +15498,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "target_type",
@@ -15941,7 +15941,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "creation_offset",
@@ -16165,7 +16165,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -18872,7 +18872,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "end_date",
@@ -20137,7 +20137,7 @@
                 {
                     "name": "updated_at",
                     "property": "updatedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "validate_expense_when_closing",
@@ -21218,7 +21218,7 @@
                 {
                     "name": "deleted_at",
                     "property": "deletedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "deleter_id",
@@ -21301,7 +21301,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "excerpt",
@@ -21312,7 +21312,7 @@
                 {
                     "name": "last_activity_at",
                     "property": "lastActivityAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "note",
@@ -21339,7 +21339,7 @@
                 {
                     "name": "updated_at",
                     "property": "updatedAt",
-                    "type": "string"
+                    "type": "date-time"
                 }
             ],
             "relationships": [
@@ -21370,7 +21370,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "name",
@@ -25230,7 +25230,7 @@
                 {
                     "name": "connected_at",
                     "property": "connectedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "datev_client_account_code",
@@ -25282,7 +25282,7 @@
                 {
                     "name": "last_synced_at",
                     "property": "lastSyncedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "name",
@@ -26044,7 +26044,7 @@
                 {
                     "name": "attributed_at",
                     "property": "attributedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -26606,7 +26606,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "custom_fields",
@@ -27566,7 +27566,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -29621,7 +29621,7 @@
                 {
                     "name": "updated_at",
                     "property": "updatedAt",
-                    "type": "string"
+                    "type": "date-time"
                 }
             ],
             "relationships": [],
@@ -29655,7 +29655,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -32795,7 +32795,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "deactivated_at",
@@ -33798,7 +33798,7 @@
                 {
                     "name": "recognized_at",
                     "property": "recognizedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "start_on",
@@ -35939,7 +35939,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "device",
@@ -36641,7 +36641,7 @@
                 {
                     "name": "submitted_at",
                     "property": "submittedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "survey_fields",
@@ -37106,7 +37106,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "dependency_type",
@@ -37946,7 +37946,7 @@
                 {
                     "name": "last_activity_at",
                     "property": "lastActivityAt",
-                    "type": "string",
+                    "type": "date-time",
                     "description": "Date when the last change was made (edit, approval, move, etc.)."
                 },
                 {
@@ -38006,7 +38006,7 @@
                 {
                     "name": "started_at",
                     "property": "startedAt",
-                    "type": "string",
+                    "type": "date-time",
                     "description": "Start date and time of the time entry."
                 },
                 {
@@ -39662,7 +39662,7 @@
                 {
                     "name": "submitted_at",
                     "property": "submittedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "total_time",
@@ -39808,7 +39808,7 @@
                 {
                     "name": "submitted_at",
                     "property": "submittedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "sunday_available",
@@ -40184,7 +40184,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "custom_headers",
@@ -40379,7 +40379,7 @@
                 {
                     "name": "sent_at",
                     "property": "sentAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "status_code",

@@ -1,0 +1,33 @@
+name: Mutation testing
+
+# The full run mutates the package and the generator (about 4,000 mutants) and takes over an
+# hour, so it runs nightly and on demand instead of on every pull request.
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  mutation:
+    runs-on: ubuntu-latest
+    name: Mutation testing (100%)
+    timeout-minutes: 240
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: dom, curl, libxml, mbstring, zip
+          coverage: pcov
+          ini-values: pcov.directory=., pcov.exclude="~(vendor|tests)~"
+
+      - name: Install dependencies
+        run: composer update --prefer-stable --prefer-dist --no-interaction
+
+      # Not --parallel: parallel mutation runs report escaped mutants as killed.
+      - name: Mutation testing
+        run: vendor/bin/pest --mutate --everything --covered-only --no-cache --min=100

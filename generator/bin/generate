@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Axyr\Productive\Generator\Emit\CodeGenerator;
+use Axyr\Productive\Generator\Emit\GeneratedFiles;
+use Axyr\Productive\Generator\IrBuilder;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$root = dirname(__DIR__, 2);
+$config = $root . '/generator/config';
+$api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $config)->build();
+$files = (new CodeGenerator($api, require $config . '/resources.php', require $config . '/type-aliases.php'))->files();
+$generated = new GeneratedFiles($root, $files);
+
+if (in_array('--check', $argv, true)) {
+    $problems = $generated->check();
+
+    foreach ($problems as $problem) {
+        fwrite(STDERR, $problem . "\n");
+    }
+
+    if ($problems !== []) {
+        fwrite(STDERR, "\nGenerated code is out of date: run `composer generate` and commit the result.\n");
+        exit(1);
+    }
+
+    echo "Generated code is up to date (" . count($files) . " files).\n";
+    exit(0);
+}
+
+$generated->write();
+
+echo "Generated " . count($files) . " files.\n";
