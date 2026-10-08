@@ -48,6 +48,31 @@ Known spec quirks the SDK handles:
 - **Integer enums have no labels in the spec.** The labels are only on the HTML reference pages.
 - **Some descriptions are filter text** ("Filter by assigned person") and are rewritten for the attribute docs.
 
+## The generator
+
+`generator/` (not shipped with the package) turns the spec into an intermediate representation (IR): every resource, operation, model and input, already named and typed. P-08 adds the emitters that write PHP from it.
+
+```bash
+composer generate:ir
+```
+
+writes the IR to `generator/api.json`. `tests/Generator/ApiTest.php` checks it against the spec and the reference resources, and compares it with the committed `generator/api.json`. When the vendored spec or a generator rule changes, run `composer generate:ir`: the diff of that file shows exactly what changes for the SDK.
+
+How the IR is derived:
+
+| Concept | Rule |
+|---|---|
+| Resource | The path up to its first parameter (`tasks/{id}` → `tasks`). A path without parameters is an action of its parent when the parent is a resource (`tasks/copy`), otherwise a resource itself (`reports/time_reports`). |
+| Operation key | `{resource}.{action}`: `index`, `show`, `create`, `update`, `destroy`, the action segment (`reposition`), with `_bulk` for bulk operations. |
+| Method | `query`, `find`, `create`, `update`, `delete`, `bulkCreate`, `bulkUpdate`, `bulkDelete`, the camelCase action, `bulk` + action. `generator/config/method-names.php` overrides it per key. |
+| Response | Lists return a `ModelCollection`; a body returns the model, or `?Model` when the spec also documents a response without one; `204` returns `void`; an empty `200` or a plain `application/json` response (not JSON:API, e.g. `proposals/{id}/signed_pdf`) returns the raw response. Bulk creates/updates return a collection, bulk deletes/actions `void`. |
+| Request body | A typed input object for a JSON:API document; a typed input sent as plain JSON when the body is not JSON:API (the four `pages` body actions send `{"html": …}` / `{"markdown": …}`); an attribute array (`array $data`) for creates and updates whose attributes the spec does not document (`integrations`, `proposals`, `resource_requests`, `revenue_distributions`); otherwise none. |
+| Model | One per JSON:API type, read from the show response (else index, else any response with data): schema attributes plus the example's keys, typed by schema, then example, then the name (`*_at` → date-time, `currency*` → string), else `mixed`. Attributes named `id` or `type` become `$idValue` / `$typeValue`. |
+| Model type | The example's `type`, unless another resource path owns that type (some examples are copied from other resources). |
+| Relationship target | An `owner.relationship` entry in `generator/config/relationship-types.php` (it can correct a wrong example), else seen in an example, else a `relationship` entry there, else the longest trailing part of the name that pluralizes into a known type (`default_tax_rate` → `tax_rates`), else polymorphic (`Model`). A wrong guess fails loudly at runtime, never silently. |
+| Input | `Create{Model}Data` / `Update{Model}Data` (all optional) / `{Action}{Model}Data`, required attributes first in spec order, then the rest by name. |
+| Synthesized | A bulk create hides its single twin (same path and method), so a `create` is added with the same input: time entries, line items, expense line items. |
+
 ## Adding resources
 
 Tasks, time entries and the time report are the reference resources. Every other resource follows the same pattern:

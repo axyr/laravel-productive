@@ -49,6 +49,7 @@ jobs:
           php-version: 8.4
           extensions: dom, curl, libxml, mbstring, zip
           coverage: pcov
+          ini-values: pcov.directory=., pcov.exclude="~(vendor|tests)~"
 
       - name: Install dependencies
         run: composer update --prefer-stable --prefer-dist --no-interaction
@@ -121,4 +122,4 @@ jobs:
         run: composer update --prefer-stable --prefer-dist --no-interaction
 
       - name: Run PHPMD
-        run: php -d error_reporting='E_ALL & ~E_DEPRECATED' vendor/bin/phpmd src text phpmd.xml
+        run: php -d error_reporting='E_ALL & ~E_DEPRECATED' vendor/bin/phpmd src,generator/src text phpmd.xml

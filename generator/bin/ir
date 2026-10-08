@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Axyr\Productive\Generator\IrBuilder;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$ir = IrBuilder::fromFiles(__DIR__ . '/../../resources/openapi/productive.json', __DIR__ . '/../config')->build();
+
+echo json_encode($ir->toArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR), "\n";

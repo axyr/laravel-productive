@@ -15,11 +15,11 @@ echo ""
 echo "==> PHPMD (complexity)"
 # Suppress PHP 8.4 E_DEPRECATED notices emitted by the phpmd/pdepend vendor code
 # (implicit-nullable params). Real violations still set a non-zero exit code.
-php -d error_reporting='E_ALL & ~E_DEPRECATED' vendor/bin/phpmd src text phpmd.xml
+php -d error_reporting='E_ALL & ~E_DEPRECATED' vendor/bin/phpmd src,generator/src text phpmd.xml
 
 echo ""
 echo "==> Pest (tests, 100% coverage)"
-vendor/bin/pest --coverage --min=100
+php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --coverage --min=100
 
 echo ""
 echo "==> Pest (100% type coverage)"

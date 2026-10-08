@@ -4,6 +4,7 @@ includes:
 parameters:
     paths:
         - src
+        - generator/src
     level: max
     checkMissingCallableSignature: true
     reportUnmatchedIgnoredErrors: true

@@ -2,7 +2,14 @@
     "name": "axyr/laravel-productive",
     "description": "Laravel SDK for the Productive.io API",
     "type": "library",
-    "keywords": ["laravel", "productive", "productive.io", "sdk", "api", "json-api"],
+    "keywords": [
+        "laravel",
+        "productive",
+        "productive.io",
+        "sdk",
+        "api",
+        "json-api"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -34,19 +41,20 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Axyr\\Productive\\Generator\\": "generator/src/"
         }
     },
     "scripts": {
         "test": "pest",
-        "test:coverage": "pest --coverage --min=100",
+        "test:coverage": "php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --coverage --min=100",
         "test:types": "pest --type-coverage --min=100",
-        "test:mutate": "pest --mutate --everything --covered-only --min=100",
+        "test:mutate": "php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --mutate --everything --covered-only --min=100",
         "test:arch": "pest --testsuite=Arch",
         "analyse": "phpstan analyse",
         "format": "pint",
         "format:test": "pint --test",
-        "complexity": "php -d error_reporting='E_ALL & ~E_DEPRECATED' vendor/bin/phpmd src text phpmd.xml",
+        "complexity": "php -d error_reporting='E_ALL & ~E_DEPRECATED' vendor/bin/phpmd src,generator/src text phpmd.xml",
         "quality": [
             "@format:test",
             "@analyse",
@@ -62,13 +70,15 @@
         ],
         "install-hooks": [
             "bash -c 'if [ -d .git ]; then git config core.hooksPath .githooks && echo \"Pre-commit hook configured (core.hooksPath=.githooks)\"; fi'"
-        ]
+        ],
+        "generate:ir": "php generator/bin/ir > generator/api.json"
     },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "process-timeout": 0
     },
     "minimum-stability": "stable",
     "prefer-stable": true,

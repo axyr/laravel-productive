@@ -8,6 +8,7 @@ use Axyr\Productive\Data\Model;
 use Axyr\Productive\Data\ModelRegistry;
 use Axyr\Productive\Data\Models\Task;
 use Axyr\Productive\Data\Models\TimeEntry;
+use Axyr\Productive\Exceptions\InvalidResponseException;
 use Axyr\Productive\Exceptions\RelationshipNotIncludedException;
 use Axyr\Productive\JsonApi\Document;
 
@@ -98,17 +99,25 @@ it('returns any relationship generically', function () {
         ->and($task->related('attachments'))->toBeArray()->toHaveCount(2);
 });
 
-it('filters typed accessors by class', function () {
-    $task = task();
+it('returns every related model from generic to-many accessors', function () {
+    expect(task()->customFieldPeople())->toHaveCount(2);
+});
 
-    expect($task->customFieldPeople())->toHaveCount(2);
-
+it('fails loudly when a typed to-one accessor finds another type', function () {
     $repeated = Document::fromArray(['data' => ['type' => 'tasks', 'id' => '5', 'relationships' => ['repeated_task' => ['data' => ['type' => 'people', 'id' => '1']]]], 'included' => [['type' => 'people', 'id' => '1']]]);
     $model = (new ModelRegistry())->hydrate($repeated->resource(), $repeated->index());
     assert($model instanceof Task);
 
-    expect($model->repeatedTask())->toBeNull();
-});
+    $model->repeatedTask();
+})->throws(InvalidResponseException::class, 'The "repeated_task" relationship of this tasks resource was expected to contain Axyr\Productive\Data\Models\Task, but contains "people".');
+
+it('fails loudly when a to-one accessor receives a list', function () {
+    $document = Document::fromArray(['data' => ['type' => 'tasks', 'id' => '5', 'relationships' => ['parent_task' => ['data' => [['type' => 'tasks', 'id' => '6']]]]], 'included' => [['type' => 'tasks', 'id' => '6']]]);
+    $model = (new ModelRegistry())->hydrate($document->resource(), $document->index());
+    assert($model instanceof Task);
+
+    $model->parentTask();
+})->throws(InvalidResponseException::class, 'but contains a list.');
 
 it('throws a helpful error for relationships that were not included', function () {
     $task = task();
@@ -140,14 +149,13 @@ final readonly class ModelTestProject extends Model
     }
 }
 
-it('keeps only models of the requested class in typed to-many accessors', function () {
+it('returns typed models from typed to-many accessors', function () {
     $document = Document::fromArray([
         'data' => ['type' => 'projects', 'id' => '1', 'relationships' => ['tasks' => ['data' => [
-            ['type' => 'people', 'id' => '1'],
             ['type' => 'tasks', 'id' => '2'],
             ['type' => 'tasks', 'id' => '3'],
         ]]]],
-        'included' => [['type' => 'people', 'id' => '1'], ['type' => 'tasks', 'id' => '2'], ['type' => 'tasks', 'id' => '3']],
+        'included' => [['type' => 'tasks', 'id' => '2'], ['type' => 'tasks', 'id' => '3']],
     ]);
     $project = new ModelTestProject($document->resource(), $document->index());
     $tasks = $project->tasks();
@@ -157,3 +165,12 @@ it('keeps only models of the requested class in typed to-many accessors', functi
         ->and($tasks[0]->id)->toBe('2')
         ->and($tasks[1]->id)->toBe('3');
 });
+
+it('fails loudly when a typed to-many accessor finds another type', function () {
+    $document = Document::fromArray([
+        'data' => ['type' => 'projects', 'id' => '1', 'relationships' => ['tasks' => ['data' => [['type' => 'tasks', 'id' => '2'], ['type' => 'people', 'id' => '1']]]]],
+        'included' => [['type' => 'tasks', 'id' => '2'], ['type' => 'people', 'id' => '1']],
+    ]);
+
+    (new ModelTestProject($document->resource(), $document->index()))->tasks();
+})->throws(InvalidResponseException::class, 'contains "people"');

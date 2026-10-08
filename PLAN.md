@@ -47,6 +47,16 @@ As built, these differ from the original plan:
   - **Filter text in attribute descriptions** ("Filter by assigned person") needs a cleanup map.
   - **Attribute names that collide with `Model` members** (`id`, `type`) must be renamed.
   - Generated classes carry `@SuppressWarnings` for PHPMD length and parameter-count rules (as the golden ones do). `phpstan.neon.dist` treats `Model::hydrate` as a constructor.
+- **P-07 results (2026-10-08):**
+  - The IR covers all 668 spec operations plus 3 synthesized single creates: 140 resources and 137 models.
+  - It matches the golden resources exactly: methods, keys, return types, model properties, relationship accessors, inputs and enums.
+  - More spec quirks the generator handles:
+    - Example types copied from other resources (`agent_roles` claims `roles`, `integration_exporter_configurations` claims `integrations`, `timesheet_reports` claims `timesheets`).
+    - Attributes named `id`/`type` (`$idValue`, `$typeValue`).
+    - 17 operations documenting both a body and no body (`?Model`).
+    - One empty `200` (raw response).
+  - Relationship targets: 749 of 849 are typed. The other 100 are polymorphic or unknown and return `Model`.
+  - Typed accessors now **throw** on a type mismatch instead of returning null, so a wrong guess can never silently lose data.
 - **P-08 acceptance, sharpened:** a generator restricted to the three golden tags must reproduce the golden files byte for byte. The golden models only have typed relationship accessors for models that already exist (Task, TimeEntry); others return `Model`. Once every model exists, all accessors are typed.
 - **The prototype emitter rules** (type mapping, naming, ordering, docblocks) are written down in `docs/development.md` → *Adding resources*. The generator must follow them.
 
@@ -314,7 +324,7 @@ Each task is one branch + PR, sized for one developer run (opus, 120 turns), wit
 
 ### Phase 2 — Generator
 
-**P-07 Spec loader & intermediate representation**
+**P-07 Spec loader & intermediate representation** — ✅ built
 - `generator/`: load the spec, resolve `$ref`s, and build an IR per resource. Also extract spec-example fixtures, including the synthesised ones (see §1). The IR covers operations → method names, response attributes (from `collection_*`/`single_*`), request attributes (from `requestBodies`), relationships, sort/group enums, path params, content types, and binary responses. Plus an operation-naming table with overrides (`generator/overrides.php`).
 - Acceptance: IR snapshot tests; every one of the 668 operations appears in the IR with a unique SDK method name.
 
@@ -376,6 +386,9 @@ P-18 ends with an **empty allowlist** in `SpecCoverageTest`: all 668 operations 
 - Check that `links.next` starts with the exact configured base URL; otherwise page 2 of `lazy()` throws. This matters for a different host, or for `PRODUCTIVE_BASE_URL` pointing at a proxy.
 - Check that `X-RateLimit-Reset` is seconds remaining, as the guide says, and not a timestamp.
 - Check whether to-one relationships carry linkage `data` without `include`, which decides how often `relationshipId()` works without one.
+- Check the resource types the generator could not take from the examples: `agent_roles`, `integration_exporter_configurations` and `timesheet_reports` have examples that show another resource's type. If the API really returns the example's type, `find()` throws and `query()` hydrates the other model; fix with the model map.
+- Check `deal_or_budget_report` (generic `Model` for now) and the 100 other untyped relationships, and add confirmed types to `generator/config/relationship-types.php`.
+- Check the bodies of `integrations`, `proposals`, `resource_requests` and `revenue_distributions` create/update (undocumented, sent from `array $data`), and the plain-JSON page body actions.
 - Record real responses and swap them in for `synthesised` fixtures.
 - Fix any hydration mismatches.
 - Release `v0.2.0`.

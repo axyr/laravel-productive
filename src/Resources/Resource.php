@@ -75,7 +75,7 @@ abstract class Resource
             throw new InvalidQueryException(sprintf('%s does not support cursor pagination; use page() instead.', static::PATH));
         }
 
-        return $this->collect($this->send(Method::Get, static::PATH, $operation, Expect::Collection, query: $query->toQueryString()));
+        return $this->collect($this->sendRequest(Method::Get, static::PATH, $operation, Expect::Collection, query: $query->toQueryString()));
     }
 
     /**
@@ -122,7 +122,7 @@ abstract class Resource
      */
     protected function fetchOne(string $model, string $path, string $operation, Query $query = new Query()): Model
     {
-        return $this->hydrate($model, $this->send(Method::Get, $path, $operation, Expect::Resource, query: $query->toQueryString()));
+        return $this->hydrate($model, $this->sendRequest(Method::Get, $path, $operation, Expect::Resource, query: $query->toQueryString()));
     }
 
     /**
@@ -134,7 +134,7 @@ abstract class Resource
      */
     protected function write(string $model, Method $method, string $path, string $operation, InputData|array|null $attributes, ?string $id = null): Model
     {
-        return $this->hydrate($model, $this->send($method, $path, $operation, Expect::Resource, $this->requestDocument($attributes, $id)));
+        return $this->hydrate($model, $this->sendRequest($method, $path, $operation, Expect::Resource, $this->requestDocument($attributes, $id)));
     }
 
     /**
@@ -142,7 +142,7 @@ abstract class Resource
      */
     protected function writeWithoutResponse(Method $method, string $path, string $operation, InputData|array|null $attributes = null, ?string $id = null): void
     {
-        $this->send($method, $path, $operation, Expect::NoContent, $this->requestDocument($attributes, $id));
+        $this->sendRequest($method, $path, $operation, Expect::NoContent, $this->requestDocument($attributes, $id));
     }
 
     /**
@@ -153,7 +153,7 @@ abstract class Resource
     {
         $body = DocumentBuilder::bulk(static::TYPE, $items);
 
-        return $this->collect($this->send($method, static::PATH, $operation, Expect::Collection, $body, ContentType::JsonApiBulk));
+        return $this->collect($this->sendRequest($method, static::PATH, $operation, Expect::Collection, $body, ContentType::JsonApiBulk));
     }
 
     /**
@@ -163,7 +163,7 @@ abstract class Resource
     {
         $body = DocumentBuilder::identifiers(static::TYPE, $ids);
 
-        $this->send($method, $path, $operation, Expect::NoContent, $body, ContentType::JsonApiBulk);
+        $this->sendRequest($method, $path, $operation, Expect::NoContent, $body, ContentType::JsonApiBulk);
     }
 
     protected function path(int|string ...$segments): string
@@ -193,7 +193,7 @@ abstract class Resource
     /**
      * @param  array<string, mixed>|null  $body
      */
-    private function send(
+    private function sendRequest(
         Method $method,
         string $path,
         string $operation,
@@ -273,7 +273,7 @@ abstract class Resource
             return null;
         }
 
-        return $this->collect($this->send(Method::Get, $next, $operation, Expect::Collection));
+        return $this->collect($this->sendRequest(Method::Get, $next, $operation, Expect::Collection));
     }
 
     /**
