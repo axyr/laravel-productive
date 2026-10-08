@@ -72,9 +72,29 @@ final class QuerySerializer
             return false;
         }
 
-        $pairs = array_map(fn(Condition $condition): array => [$condition->field, $condition->operator], $conditions);
+        return ! self::repeatsOperator($conditions);
+    }
 
-        return count(array_unique($pairs, SORT_REGULAR)) === count($pairs);
+    /**
+     * Compares operator strings per field: enums cannot be ordered, so array_unique(SORT_REGULAR) misses some duplicates.
+     *
+     * @param  list<Condition>  $conditions
+     */
+    private static function repeatsOperator(array $conditions): bool
+    {
+        $operators = [];
+
+        foreach ($conditions as $condition) {
+            $operators[$condition->field][] = $condition->operator->value;
+        }
+
+        foreach ($operators as $values) {
+            if (count(array_unique($values)) !== count($values)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
