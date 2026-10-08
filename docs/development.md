@@ -48,6 +48,30 @@ Known spec quirks the SDK handles:
 - **Integer enums have no labels in the spec.** The labels are only on the HTML reference pages.
 - **Some descriptions are filter text** ("Filter by assigned person") and are rewritten for the attribute docs.
 
+## The generator
+
+`generator/` (not shipped with the package) turns the spec into an intermediate representation (IR): every resource, operation, model and input, already named and typed. P-08 adds the emitters that write PHP from it.
+
+```bash
+composer generate:ir
+```
+
+prints the IR as JSON. `tests/Generator/ApiTest.php` checks it against the spec and the reference resources, and snapshots it (`tests/.pest/snapshots`). So when the vendored spec changes, the snapshot diff shows exactly what changes for the SDK.
+
+How the IR is derived:
+
+| Concept | Rule |
+|---|---|
+| Resource | The path up to its first parameter (`tasks/{id}` → `tasks`). A path without parameters is an action of its parent when the parent is a resource (`tasks/copy`), otherwise a resource itself (`reports/time_reports`). |
+| Operation key | `{resource}.{action}`: `index`, `show`, `create`, `update`, `destroy`, the action segment (`reposition`), with `_bulk` for bulk operations. |
+| Method | `query`, `find`, `create`, `update`, `delete`, `bulkCreate`, `bulkUpdate`, `bulkDelete`, the camelCase action, `bulk` + action. `generator/config/method-names.php` overrides it per key. |
+| Response | Lists return a `ModelCollection`; a body returns the model, or `?Model` when the spec also documents a response without one; `204` returns `void`; an empty `200` returns the raw response. Bulk creates/updates return a collection, bulk deletes/actions `void`. |
+| Model | One per JSON:API type, read from the show response (else index, else any response with data): schema attributes plus the example's keys, typed by schema, then example, then `*_at` → date-time, else `mixed`. Attributes named `id` or `type` become `$idValue` / `$typeValue`. |
+| Model type | The example's `type`, unless another resource path owns that type (some examples are copied from other resources). |
+| Relationship target | Seen in an example, else `generator/config/relationship-types.php`, else the longest trailing part of the name that pluralizes into a known type (`default_tax_rate` → `tax_rates`), else polymorphic (`Model`). A wrong guess fails loudly at runtime, never silently. |
+| Input | `Create{Model}Data` / `Update{Model}Data` (all optional) / `{Action}{Model}Data`, required attributes first in spec order, then the rest by name. |
+| Synthesized | A bulk create hides its single twin (same path and method), so a `create` is added with the same input: time entries, line items, expense line items. |
+
 ## Adding resources
 
 Tasks, time entries and the time report are the reference resources. Every other resource follows the same pattern:

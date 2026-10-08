@@ -10,6 +10,9 @@
     <testsuite name="Contract">
       <directory>tests/Contract</directory>
     </testsuite>
+    <testsuite name="Generator">
+      <directory>tests/Generator</directory>
+    </testsuite>
     <testsuite name="Arch">
       <directory>tests/Arch</directory>
     </testsuite>
@@ -17,6 +20,7 @@
   <source restrictNotices="true" restrictWarnings="true" ignoreIndirectDeprecations="true">
     <include>
       <directory>src</directory>
+      <directory>generator/src</directory>
     </include>
   </source>
   <php>

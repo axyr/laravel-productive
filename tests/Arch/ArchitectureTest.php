@@ -95,3 +95,22 @@ arch('facade extends the Laravel facade')
 arch('service provider extends the Laravel service provider')
     ->expect('Axyr\\Productive\\ProductiveServiceProvider')
     ->toExtend('Illuminate\\Support\\ServiceProvider');
+
+arch('the package never depends on the generator')
+    ->expect('Axyr\\Productive\\Generator')
+    ->toOnlyBeUsedIn('Axyr\\Productive\\Generator');
+
+arch('the generator IR is immutable')
+    ->expect('Axyr\\Productive\\Generator\\Ir')
+    ->classes()
+    ->toBeReadonly()
+    ->toBeFinal()
+    ->ignoring([
+        'Axyr\\Productive\\Generator\\Ir\\AttributeType',
+        'Axyr\\Productive\\Generator\\Ir\\OperationKind',
+        'Axyr\\Productive\\Generator\\Ir\\ResponseKind',
+    ]);
+
+arch('the generator uses strict types')
+    ->expect('Axyr\\Productive\\Generator')
+    ->toUseStrictTypes();

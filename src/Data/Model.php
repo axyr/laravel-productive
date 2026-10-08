@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Axyr\Productive\Data;
 
+use Axyr\Productive\Exceptions\InvalidResponseException;
 use Axyr\Productive\Exceptions\RelationshipNotIncludedException;
 use Axyr\Productive\JsonApi\Relationship;
 use Axyr\Productive\JsonApi\ResourceIdentifier;
@@ -134,7 +135,7 @@ abstract readonly class Model implements JsonSerializable
     {
         $related = $this->related($name);
 
-        return $related instanceof $class ? $related : null;
+        return $related === null ? null : $this->expectInstance($related, $class, $name);
     }
 
     /**
@@ -145,11 +146,34 @@ abstract readonly class Model implements JsonSerializable
      */
     protected function hasMany(string $name, string $class): array
     {
-        $relationship = $this->loadedRelationship($name);
+        return array_map(
+            fn(Model $model): Model => $this->expectInstance($model, $class, $name),
+            $this->hydrateRelated($this->loadedRelationship($name), $name),
+        );
+    }
 
-        return array_values(array_filter(
-            $this->hydrateRelated($relationship, $name),
-            fn(Model $model): bool => $model instanceof $class,
+    /**
+     * Typed accessors are generated from the related type the spec implies. A different type
+     * means that mapping is wrong, which must surface instead of reading as "no relation".
+     *
+     * @template TModel of Model
+     *
+     * @param  Model|list<Model>  $related
+     * @param  class-string<TModel>  $class
+     * @return TModel
+     */
+    private function expectInstance(Model|array $related, string $class, string $name): Model
+    {
+        if ($related instanceof $class) {
+            return $related;
+        }
+
+        throw new InvalidResponseException(sprintf(
+            'The "%s" relationship of this %s resource was expected to contain %s, but contains %s.',
+            $name,
+            $this->type,
+            $class,
+            is_array($related) ? 'a list' : '"' . $related->type . '"',
         ));
     }
 
