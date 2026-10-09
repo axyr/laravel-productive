@@ -99,6 +99,8 @@ As built, these differ from the original plan:
        - A mutation run without the drift group, with survivors pinned by unit tests.
        - Tests for the test helpers, and honest names for the "golden" tests.
     7. Mutation scope, decided from the run data.
+       - The baseline nightly before Phase 3 took 2 h 6 min for 4,034 mutants and left one untested (fixed). With all generated code the run no longer fits 240 minutes.
+       - Until this step, the CI check is paused (a red nightly only warns, `MUTATION_GATE` in ci.yml) and the nightly job gets 360 minutes to measure the real cost. The options are splitting the run across parallel jobs (Pest `--path` works with `--everything`) or limiting it to hand-written code.
 - **P-08 acceptance, sharpened:** a generator restricted to the three golden tags must reproduce the golden files byte for byte. The golden models only have typed relationship accessors for models that already exist (Task, TimeEntry); others return `Model`. Once every model exists, all accessors are typed.
 - **The prototype emitter rules** (type mapping, naming, ordering, docblocks) are written down in `docs/development.md` → *Adding resources*. The generator must follow them.
 
