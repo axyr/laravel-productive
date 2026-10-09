@@ -130,6 +130,9 @@ The SDK is built against Productive's OpenAPI spec, vendored at `resources/opena
 
 How the code is generated is described in [Development](docs/development.md).
 
+> [!IMPORTANT]
+> **Not yet verified against the live API.** Every method is generated from Productive's OpenAPI spec and tested against the spec's own examples and schemas, but no request has been sent to Productive yet. Only the tasks, time entries and time report resources were checked by hand against the documentation. Where the spec is wrong or incomplete, the SDK will be too: please open an issue if a call behaves differently from what is documented here.
+
 ## Quality
 
 Every change must pass `composer quality`:
