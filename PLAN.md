@@ -78,15 +78,15 @@ As built, these differ from the original plan:
     - The generator's mutation score comes mostly from checksum snapshots.
   - **One PR per step:**
     1. Security and runtime fixes. Redirects are never followed, because Guzzle forwards `X-Auth-Token`. A repeated next link throws instead of looping. Plus tests for http downgrades, the throttle scope and config wiring.
-    2. A read-only recorder (`composer record`, `record:scrub`):
-       - GET `index`/`show` and the reports, taken from the IR. GET actions such as `integrations/{id}/sync` are skipped.
+    2. A read-only recorder (`composer record`), built in #9:
+       - GET `index`/`show` and the reports, taken from the IR. GET actions such as `integrations/{id}/sync` are skipped, as are `sessions`, `passwords` and `public/*`.
        - The include call uses `page[size]=5` and splits a failing include list in halves to isolate the relationships that cannot be included.
        - It refuses to run unless the organization matches `RECORDING_ORGANIZATION_ID`, stops on the first 429, and never stores a 429.
-       - Secrets are redacted before anything touches disk. Raw recordings stay local in `recordings/raw/`, which is gitignored.
-       - Scrubbed fixtures are committed. IDs are renumbered everywhere: `id`, relationships, `*_id` attributes, `custom_fields` keys, URLs and links.
-       - A leak check covers the values the scrubber replaced, plus the organization ID, the token and the owner's name and email.
+       - It paces one request per second and refuses redirects. The 6 reports that document `after`/`before` are limited to the last month.
+       - Secret strings are redacted before anything touches disk. Responses are saved to `recordings/<date-time>/`, which is gitignored. Nothing recorded is committed.
        - It also probes the 17 resources the Ruby client knows but the spec does not, recording only the status code.
        - The trial organization is seeded first, so the index calls return data.
+       - Committing anything from the recordings (scrubbed fixtures, a leak check) is decided after the first run.
     3. Recorded types in the generator.
        - Rules: `null` and empty lists never override the spec; int vs float widens to float; an override needs a non-null value that the lenient reader cannot read.
        - `docs/api-differences.md` lists every override.
