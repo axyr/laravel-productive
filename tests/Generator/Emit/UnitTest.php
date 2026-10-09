@@ -256,3 +256,10 @@ it('refuses a bulk-document action without an optional resource response', funct
 
     (new ResourceMethod(new Resource('deals', 'DealResource', 'Axyr\\Productive\\Resources', 'deals', 'Deal', [$operation]), $operation, 'Deal'))->lines();
 })->throws(RuntimeException::class, 'deals.copy: a bulk-document action must document an optional resource response.');
+
+it('lists the imports of a resource method as a list', function () {
+    $operation = new Operation('tasks.show', 'find', OperationKind::Show, 'GET', 'tasks/{id}', ['id'], ResponseKind::Resource, false, true, 'tasks-show');
+    $method = new ResourceMethod(new Resource('tasks', 'TaskResource', 'Axyr\\Productive\\Resources', 'tasks', 'Task', [$operation]), $operation, 'Task');
+
+    expect($method->imports())->toBe(['Axyr\\Productive\\Query\\Query']);
+});
