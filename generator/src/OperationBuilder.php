@@ -43,7 +43,7 @@ final readonly class OperationBuilder
             operationId: is_string($operation['operationId'] ?? null) ? $operation['operationId'] : null,
             input: $input,
             summary: Spec::string($operation['summary'] ?? null),
-            body: self::body($kind, $input),
+            body: self::body($kind, $input, $httpMethod, $path->member),
         );
     }
 
@@ -87,15 +87,26 @@ final readonly class OperationBuilder
 
     /**
      * Creates and updates always send a document; when the spec documents no attributes for
-     * them, the generated method takes an attribute array instead of an input object.
+     * them, the generated method takes an attribute array instead of an input object. Actions
+     * that cannot work without one take an optional attribute array (see needsData()).
      */
-    public static function body(OperationKind $kind, ?Input $input): BodyKind
+    public static function body(OperationKind $kind, ?Input $input, string $httpMethod, bool $member = false): BodyKind
     {
         return match (true) {
             $input !== null => $input->plain ? BodyKind::Plain : BodyKind::Attributes,
             in_array($kind, [OperationKind::Create, OperationKind::Update, OperationKind::CreateBulk, OperationKind::UpdateBulk], true) => BodyKind::Data,
+            $kind === OperationKind::Action && self::needsData($httpMethod, $member) => BodyKind::OptionalData,
             default => BodyKind::None,
         };
+    }
+
+    /**
+     * A body-less POST action, or a body-less write on the whole collection (people/merge), can
+     * only work with attributes the spec does not document. Member actions have their ID.
+     */
+    private static function needsData(string $httpMethod, bool $member): bool
+    {
+        return $httpMethod === 'POST' || ($httpMethod !== 'GET' && ! $member);
     }
 
     public static function response(OperationKind $kind, ResponseShape $shape): ResponseKind

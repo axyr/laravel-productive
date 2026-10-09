@@ -6,9 +6,45 @@ declare(strict_types=1);
 
 namespace Axyr\Productive\Data;
 
+use Axyr\Productive\Data\Models\Activity;
+use Axyr\Productive\Data\Models\Attachment;
+use Axyr\Productive\Data\Models\Board;
+use Axyr\Productive\Data\Models\Booking;
+use Axyr\Productive\Data\Models\Comment;
+use Axyr\Productive\Data\Models\Company;
+use Axyr\Productive\Data\Models\ContactEntry;
+use Axyr\Productive\Data\Models\DealStatus;
+use Axyr\Productive\Data\Models\Discussion;
+use Axyr\Productive\Data\Models\Email;
+use Axyr\Productive\Data\Models\Entitlement;
+use Axyr\Productive\Data\Models\Event;
+use Axyr\Productive\Data\Models\Folder;
+use Axyr\Productive\Data\Models\Holiday;
+use Axyr\Productive\Data\Models\HolidayCalendar;
+use Axyr\Productive\Data\Models\LostReason;
+use Axyr\Productive\Data\Models\Membership;
+use Axyr\Productive\Data\Models\Page;
+use Axyr\Productive\Data\Models\PageVersion;
+use Axyr\Productive\Data\Models\Person;
+use Axyr\Productive\Data\Models\Pipeline;
+use Axyr\Productive\Data\Models\Placeholder;
+use Axyr\Productive\Data\Models\PlaceholderUsage;
+use Axyr\Productive\Data\Models\Project;
+use Axyr\Productive\Data\Models\ProjectPreference;
+use Axyr\Productive\Data\Models\ResourceRequest;
+use Axyr\Productive\Data\Models\Tag;
 use Axyr\Productive\Data\Models\Task;
+use Axyr\Productive\Data\Models\TaskDependency;
+use Axyr\Productive\Data\Models\TaskList;
 use Axyr\Productive\Data\Models\TimeEntry;
+use Axyr\Productive\Data\Models\TimeEntryVersion;
+use Axyr\Productive\Data\Models\Timer;
 use Axyr\Productive\Data\Models\TimeReport;
+use Axyr\Productive\Data\Models\Timesheet;
+use Axyr\Productive\Data\Models\TimeTrackingPolicy;
+use Axyr\Productive\Data\Models\Todo;
+use Axyr\Productive\Data\Models\Workflow;
+use Axyr\Productive\Data\Models\WorkflowStatus;
 
 /**
  * Built-in JSON:API type to model class map.
@@ -17,9 +53,45 @@ final class ModelMap
 {
     /** @var array<string, class-string<Model>> */
     public const MODELS = [
+        Activity::TYPE => Activity::class,
+        Attachment::TYPE => Attachment::class,
+        Board::TYPE => Board::class,
+        Booking::TYPE => Booking::class,
+        Comment::TYPE => Comment::class,
+        Company::TYPE => Company::class,
+        ContactEntry::TYPE => ContactEntry::class,
+        DealStatus::TYPE => DealStatus::class,
+        Discussion::TYPE => Discussion::class,
+        Email::TYPE => Email::class,
+        Entitlement::TYPE => Entitlement::class,
+        Event::TYPE => Event::class,
+        Folder::TYPE => Folder::class,
+        Holiday::TYPE => Holiday::class,
+        HolidayCalendar::TYPE => HolidayCalendar::class,
+        LostReason::TYPE => LostReason::class,
+        Membership::TYPE => Membership::class,
+        Page::TYPE => Page::class,
+        PageVersion::TYPE => PageVersion::class,
+        Person::TYPE => Person::class,
+        Pipeline::TYPE => Pipeline::class,
+        Placeholder::TYPE => Placeholder::class,
+        PlaceholderUsage::TYPE => PlaceholderUsage::class,
+        Project::TYPE => Project::class,
+        ProjectPreference::TYPE => ProjectPreference::class,
+        ResourceRequest::TYPE => ResourceRequest::class,
+        Tag::TYPE => Tag::class,
         Task::TYPE => Task::class,
+        TaskDependency::TYPE => TaskDependency::class,
+        TaskList::TYPE => TaskList::class,
         TimeEntry::TYPE => TimeEntry::class,
+        TimeEntryVersion::TYPE => TimeEntryVersion::class,
         TimeReport::TYPE => TimeReport::class,
+        TimeTrackingPolicy::TYPE => TimeTrackingPolicy::class,
+        Timer::TYPE => Timer::class,
+        Timesheet::TYPE => Timesheet::class,
+        Todo::TYPE => Todo::class,
+        Workflow::TYPE => Workflow::class,
+        WorkflowStatus::TYPE => WorkflowStatus::class,
         'time_reports' => TimeReport::class,
     ];
 }

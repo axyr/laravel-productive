@@ -234,20 +234,33 @@ it('describes the operations that are not plain JSON:API', function () {
     ksort($operations);
 
     expect($operations)->toBe([
+        'boards.copy' => 'optional_resource / optional_data',
+        'contracts.generate' => 'resource / optional_data',
+        'dashboards.copy' => 'optional_resource / optional_data',
+        'deal_statuses.merge' => 'resource / optional_data',
+        'deals.create_from_origin' => 'optional_resource / optional_data',
+        'document_styles.copy' => 'optional_resource / optional_data',
+        'document_types.copy' => 'optional_resource / optional_data',
         'integrations.create' => 'resource / data',
+        'line_items.generate' => 'resource / optional_data',
         'pages.append_html' => 'resource / plain',
         'pages.append_markdown' => 'resource / plain',
         'pages.replace_body_with_html' => 'resource / plain',
         'pages.replace_body_with_markdown' => 'resource / plain',
+        'people.merge' => 'resource / optional_data',
         'proposals.create' => 'resource / data',
         'proposals.signed_pdf' => 'raw / none',
         'proposals.update' => 'resource / data',
         'public.artifacts.attachments_auth' => 'raw / none',
+        'rate_cards.copy' => 'optional_resource / optional_data',
         'resource_requests.create' => 'resource / data',
+        'resource_requests.resolve' => 'resource / optional_data',
         'resource_requests.update' => 'resource / data',
         'revenue_distributions.create' => 'resource / data',
         'revenue_distributions.update' => 'resource / data',
-        'sessions.machine' => 'raw / none',
+        'service_types.merge' => 'resource / optional_data',
+        'sessions.machine' => 'raw / optional_data',
+        'surveys.copy' => 'optional_resource / optional_data',
     ]);
 });
 

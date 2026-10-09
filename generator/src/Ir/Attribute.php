@@ -8,7 +8,7 @@ final readonly class Attribute
 {
     /**
      * @param  list<int|string>  $enum  Allowed values, when the spec lists them.
-     * @param  AttributeType|null  $items  The item type of a list, when the spec says.
+     * @param  AttributeType|null  $items  The item type of a list, or the value type of an object map, when the spec says.
      */
     public function __construct(
         public string $name,

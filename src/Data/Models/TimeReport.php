@@ -300,9 +300,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('budget', Model::class);
     }
 
-    public function company(): ?Model
+    public function company(): ?Company
     {
-        return $this->belongsTo('company', Model::class);
+        return $this->belongsTo('company', Company::class);
     }
 
     public function companyReport(): ?Model
@@ -315,9 +315,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('deal_or_budget_report', Model::class);
     }
 
-    public function event(): ?Model
+    public function event(): ?Event
     {
-        return $this->belongsTo('event', Model::class);
+        return $this->belongsTo('event', Event::class);
     }
 
     public function jobRole(): ?Model
@@ -325,9 +325,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('job_role', Model::class);
     }
 
-    public function manager(): ?Model
+    public function manager(): ?Person
     {
-        return $this->belongsTo('manager', Model::class);
+        return $this->belongsTo('manager', Person::class);
     }
 
     public function organization(): ?Model
@@ -335,9 +335,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('organization', Model::class);
     }
 
-    public function person(): ?Model
+    public function person(): ?Person
     {
-        return $this->belongsTo('person', Model::class);
+        return $this->belongsTo('person', Person::class);
     }
 
     public function personReport(): ?Model
@@ -345,9 +345,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('person_report', Model::class);
     }
 
-    public function project(): ?Model
+    public function project(): ?Project
     {
-        return $this->belongsTo('project', Model::class);
+        return $this->belongsTo('project', Project::class);
     }
 
     public function projectReport(): ?Model

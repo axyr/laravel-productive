@@ -43,10 +43,23 @@ final class FactoryEmitter
      */
     private static function definition(Model $model): array
     {
+        $example = self::attributes($model);
+
         return array_map(
             fn(int|string $key, mixed $value): string => '            ' . Literal::export($key) . ' => ' . Literal::export($value) . ',',
-            array_keys($model->example),
-            $model->example,
+            array_keys($example),
+            $example,
         );
+    }
+
+    /**
+     * The example's attributes without "id" and "type": JSON:API forbids attributes with those
+     * names, and a factory reads "id" as the resource ID. A few spec examples include them anyway.
+     *
+     * @return array<string, mixed>
+     */
+    public static function attributes(Model $model): array
+    {
+        return array_diff_key($model->example, ['id' => true, 'type' => true]);
     }
 }

@@ -93,7 +93,7 @@ it('picks a sample value per type', function (AttributeType $type, mixed $value)
     [AttributeType::Date, '2026-01-15'],
     [AttributeType::DateTime, '2026-01-15T09:00:00+00:00'],
     [AttributeType::Time, '09:00'],
-    [AttributeType::Object, ['key' => 'value']],
+    [AttributeType::Object, ['1' => 'value']],
     [AttributeType::List, ['value']],
     [AttributeType::String, 'Example'],
     [AttributeType::Mixed, 'Example'],
@@ -237,4 +237,16 @@ it('documents the item type of input lists; model lists stay lenient', function 
     [AttributeType::Bool, 'list<bool>'],
     [AttributeType::String, 'list<string>'],
     [null, 'list<mixed>'],
+]);
+
+it('samples list items and map values of the documented type', function (?AttributeType $items, mixed $value) {
+    expect(Samples::value(new Attribute('a', 'a', AttributeType::List, items: $items)))->toBe([$value])
+        ->and(Samples::value(new Attribute('a', 'a', AttributeType::Object, items: $items)))->toBe(['1' => $value])
+        ->and(Types::input(new Attribute('a', 'a', AttributeType::Object, items: $items))['doc'])->toBe('array<string, ' . ($items === null ? 'mixed' : get_debug_type($value)) . '>');
+})->with([
+    [AttributeType::Int, 1],
+    [AttributeType::Float, 1.5],
+    [AttributeType::Bool, true],
+    [AttributeType::String, 'value'],
+    [null, 'value'],
 ]);

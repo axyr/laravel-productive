@@ -4,11 +4,38 @@ declare(strict_types=1);
 
 use Axyr\Productive\Data\Model;
 use Axyr\Productive\Data\ModelRegistry;
-use Axyr\Productive\Data\Models\Task;
-use Axyr\Productive\Data\Models\TimeEntry;
-use Axyr\Productive\Data\Models\TimeReport;
 use Axyr\Productive\JsonApi\Document;
 use Illuminate\Support\Str;
+
+/**
+ * Every generated model class.
+ *
+ * @return list<class-string>
+ */
+function generatedModels(): array
+{
+    return array_map(
+        fn(string $file): string => 'Axyr\\Productive\\Data\\Models\\' . basename($file, '.php'),
+        glob(dirname(__DIR__, 4) . '/src/Data/Models/*.php') ?: [],
+    );
+}
+
+/**
+ * The model class an accessor returns: its return type, or the item class of `@return list<X>`.
+ */
+function accessorTarget(ReflectionMethod $method): string
+{
+    $type = ltrim((string) $method->getReturnType(), '?');
+
+    if ($type !== 'array') {
+        return $type;
+    }
+
+    preg_match('/@return list<(\w+)>/', (string) $method->getDocComment(), $match);
+    $class = 'Axyr\\Productive\\Data\\Models\\' . ($match[1] ?? 'Model');
+
+    return class_exists($class) ? $class : Model::class;
+}
 
 /**
  * @return list<ReflectionMethod>
@@ -29,9 +56,9 @@ it('resolves every relationship accessor by its snake_case name', function (stri
     $included = [];
 
     foreach ($accessors as $index => $method) {
-        $returnType = ltrim((string) $method->getReturnType(), '?');
+        $returnType = accessorTarget($method);
         $type = is_subclass_of($returnType, Model::class) ? $returnType::TYPE : 'related_' . $index;
-        $toMany = $returnType === 'array';
+        $toMany = (string) $method->getReturnType() === 'array';
         $identifier = ['type' => $type, 'id' => '1'];
         $relationships[Str::snake($method->getName())] = ['data' => $toMany ? [$identifier] : $identifier];
         $included[] = $identifier;
@@ -40,12 +67,10 @@ it('resolves every relationship accessor by its snake_case name', function (stri
     $document = Document::fromArray(['data' => ['type' => $class::TYPE, 'id' => '1', 'relationships' => $relationships], 'included' => $included]);
     $model = (new ModelRegistry())->hydrate($document->resource(), $document->index());
 
-    expect($accessors)->not->toBeEmpty();
+    expect($model)->toBeInstanceOf($class);
 
     foreach ($accessors as $method) {
         $result = $method->invoke($model);
-        $returnType = ltrim((string) $method->getReturnType(), '?');
-
-        expect(is_array($result) ? $result[0] : $result)->toBeInstanceOf($returnType === 'array' ? Model::class : $returnType);
+        expect(is_array($result) ? $result[0] : $result)->toBeInstanceOf(accessorTarget($method));
     }
-})->with([Task::class, TimeEntry::class, TimeReport::class]);
+})->with(fn(): array => generatedModels());

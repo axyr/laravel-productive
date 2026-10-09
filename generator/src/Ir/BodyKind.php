@@ -20,4 +20,11 @@ enum BodyKind: string
 
     /** A plain JSON object (not JSON:API) built from a typed input object, e.g. {"markdown": "…"}. */
     case Plain = 'plain';
+
+    /**
+     * An optional attribute array, for actions the spec documents without a body that cannot work
+     * without one: POST actions (mostly copies) and collection writes (merges). Nothing is sent
+     * when it is empty.
+     */
+    case OptionalData = 'optional_data';
 }

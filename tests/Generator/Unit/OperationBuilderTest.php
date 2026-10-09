@@ -75,20 +75,26 @@ it('derives the response kind', function (OperationKind $kind, ResponseShape $sh
     [OperationKind::Action, new ResponseShape(resource: true, noContent: true, plainJson: true), ResponseKind::Raw],
 ]);
 
-it('derives the request body kind', function (OperationKind $kind, ?Input $input, BodyKind $body) {
-    expect(OperationBuilder::body($kind, $input))->toBe($body);
+it('derives the request body kind', function (OperationKind $kind, ?Input $input, string $method, BodyKind $body, bool $member = true) {
+    expect(OperationBuilder::body($kind, $input, $method, $member))->toBe($body);
 })->with([
-    [OperationKind::Create, new Input('CreateTaskData', 'task', []), BodyKind::Attributes],
-    [OperationKind::Action, new Input('AppendMarkdownPageData', 'page', [], plain: true), BodyKind::Plain],
-    [OperationKind::Create, null, BodyKind::Data],
-    [OperationKind::Update, null, BodyKind::Data],
-    [OperationKind::CreateBulk, null, BodyKind::Data],
-    [OperationKind::UpdateBulk, null, BodyKind::Data],
-    [OperationKind::Action, null, BodyKind::None],
-    [OperationKind::Show, null, BodyKind::None],
-    [OperationKind::Destroy, null, BodyKind::None],
-    [OperationKind::DestroyBulk, null, BodyKind::None],
-    [OperationKind::ActionBulk, null, BodyKind::None],
+    'collection merge' => [OperationKind::Action, null, 'PATCH', BodyKind::OptionalData, false],
+    'collection get' => [OperationKind::Action, null, 'GET', BodyKind::None, false],
+    'collection post' => [OperationKind::Action, null, 'POST', BodyKind::OptionalData, false],
+    [OperationKind::Create, new Input('CreateTaskData', 'task', []), 'POST', BodyKind::Attributes],
+    [OperationKind::Action, new Input('AppendMarkdownPageData', 'page', [], plain: true), 'PATCH', BodyKind::Plain],
+    [OperationKind::Action, new Input('CopyTaskData', 'task_copy', []), 'POST', BodyKind::Attributes],
+    [OperationKind::Create, null, 'POST', BodyKind::Data],
+    [OperationKind::Update, null, 'PATCH', BodyKind::Data],
+    [OperationKind::CreateBulk, null, 'POST', BodyKind::Data],
+    [OperationKind::UpdateBulk, null, 'PATCH', BodyKind::Data],
+    [OperationKind::Action, null, 'POST', BodyKind::OptionalData],
+    [OperationKind::Action, null, 'PATCH', BodyKind::None],
+    [OperationKind::Action, null, 'GET', BodyKind::None],
+    [OperationKind::Show, null, 'GET', BodyKind::None],
+    [OperationKind::Destroy, null, 'DELETE', BodyKind::None],
+    [OperationKind::DestroyBulk, null, 'DELETE', BodyKind::None],
+    [OperationKind::ActionBulk, null, 'PATCH', BodyKind::None],
 ]);
 
 it('recognises bulk operations by tag or operation id', function (array $operation, bool $bulk) {

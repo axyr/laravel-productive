@@ -45,6 +45,19 @@ final class Samples
         return $partial ? array_slice($input->attributes, 0, 1) : $required;
     }
 
+    /**
+     * A sample list item or map value of the given scalar type; a string when the spec does not say.
+     */
+    private static function scalar(?AttributeType $type): int|float|bool|string
+    {
+        return match ($type) {
+            AttributeType::Int => 1,
+            AttributeType::Float => 1.5,
+            AttributeType::Bool => true,
+            default => 'value',
+        };
+    }
+
     public static function value(Attribute $attribute): mixed
     {
         if ($attribute->enum !== []) {
@@ -58,8 +71,8 @@ final class Samples
             AttributeType::Date => '2026-01-15',
             AttributeType::DateTime => '2026-01-15T09:00:00+00:00',
             AttributeType::Time => '09:00',
-            AttributeType::Object => ['key' => 'value'],
-            AttributeType::List => ['value'],
+            AttributeType::Object => ['1' => self::scalar($attribute->items)],
+            AttributeType::List => [self::scalar($attribute->items)],
             AttributeType::String, AttributeType::Mixed => 'Example',
         };
     }

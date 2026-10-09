@@ -215,14 +215,14 @@ final readonly class TimeEntry extends Model
         return $this->hasMany('approval_statuses', Model::class);
     }
 
-    public function approver(): ?Model
+    public function approver(): ?Person
     {
-        return $this->belongsTo('approver', Model::class);
+        return $this->belongsTo('approver', Person::class);
     }
 
-    public function creator(): ?Model
+    public function creator(): ?Person
     {
-        return $this->belongsTo('creator', Model::class);
+        return $this->belongsTo('creator', Person::class);
     }
 
     public function dealSubsidiary(): ?Model
@@ -235,9 +235,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('invoice_attribution', Model::class);
     }
 
-    public function lastActor(): ?Model
+    public function lastActor(): ?Person
     {
-        return $this->belongsTo('last_actor', Model::class);
+        return $this->belongsTo('last_actor', Person::class);
     }
 
     public function organization(): ?Model
@@ -245,9 +245,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('organization', Model::class);
     }
 
-    public function person(): ?Model
+    public function person(): ?Person
     {
-        return $this->belongsTo('person', Model::class);
+        return $this->belongsTo('person', Person::class);
     }
 
     public function personSubsidiary(): ?Model
@@ -255,9 +255,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('person_subsidiary', Model::class);
     }
 
-    public function rejecter(): ?Model
+    public function rejecter(): ?Person
     {
-        return $this->belongsTo('rejecter', Model::class);
+        return $this->belongsTo('rejecter', Person::class);
     }
 
     public function service(): ?Model
@@ -270,13 +270,13 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('task', Task::class);
     }
 
-    public function timesheet(): ?Model
+    public function timesheet(): ?Timesheet
     {
-        return $this->belongsTo('timesheet', Model::class);
+        return $this->belongsTo('timesheet', Timesheet::class);
     }
 
-    public function updater(): ?Model
+    public function updater(): ?Person
     {
-        return $this->belongsTo('updater', Model::class);
+        return $this->belongsTo('updater', Person::class);
     }
 }

@@ -44,14 +44,14 @@ final class Types
             AttributeType::Date => ['type' => 'DateTimeInterface|string', 'doc' => null, 'format' => 'date'],
             AttributeType::Time => ['type' => 'DateTimeInterface|string', 'doc' => null, 'format' => 'time'],
             AttributeType::DateTime => ['type' => 'DateTimeInterface|string', 'doc' => null, 'format' => null],
-            AttributeType::Object => ['type' => 'array', 'doc' => 'array<string, mixed>', 'format' => null],
+            AttributeType::Object => ['type' => 'array', 'doc' => 'array<string, ' . self::item($attribute) . '>', 'format' => null],
             AttributeType::List => ['type' => 'array', 'doc' => 'list<' . self::item($attribute) . '>', 'format' => null],
             AttributeType::Mixed => self::untypedInput($attribute->name),
         };
     }
 
     /**
-     * The PHP type of a list's items: int, float, bool or string when the spec says, else mixed.
+     * The PHP type of a list's items or an object's values: int, float, bool or string when the spec says, else mixed.
      */
     private static function item(Attribute $attribute): string
     {

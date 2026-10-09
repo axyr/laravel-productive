@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Axyr\Productive\Data\Attributes;
-use Axyr\Productive\Data\GenericModel;
 use Axyr\Productive\Data\Model;
 use Axyr\Productive\Data\ModelRegistry;
 use Axyr\Productive\Data\Models\Task;
@@ -78,7 +77,7 @@ it('hydrates included relationships, including cycles', function () {
     expect($parent)->toBeInstanceOf(Task::class)
         ->and($parent?->title)->toBe('Grandparent')
         ->and($parent?->parentTask()?->title)->toBe('Parent')
-        ->and($task->assignee())->toBeInstanceOf(GenericModel::class)
+        ->and($task->assignee())->toBeInstanceOf(Axyr\Productive\Data\Models\Person::class)
         ->and($task->assignee()?->attribute('first_name'))->toBe('Ada')
         ->and($task->service())->toBeNull();
 });
@@ -99,8 +98,11 @@ it('returns any relationship generically', function () {
         ->and($task->related('attachments'))->toBeArray()->toHaveCount(2);
 });
 
-it('returns every related model from generic to-many accessors', function () {
-    expect(task()->customFieldPeople())->toHaveCount(2);
+it('returns every related model, whatever its type, through related()', function () {
+    $related = task()->related('custom_field_people');
+
+    expect($related)->toHaveCount(2)
+        ->and($related[1])->toBeInstanceOf(Task::class);
 });
 
 it('fails loudly when a typed to-one accessor finds another type', function () {

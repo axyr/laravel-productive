@@ -76,7 +76,7 @@ final class ContractTestEmitter
             $operation->kind === OperationKind::CreateBulk => [Literal::export([$sample])],
             $operation->kind === OperationKind::UpdateBulk => [Literal::export(['1' => $sample])],
             in_array($operation->kind, [OperationKind::DestroyBulk, OperationKind::ActionBulk], true) => ['[1, 2]'],
-            $operation->body !== BodyKind::None => [Literal::export($sample)],
+            ! in_array($operation->body, [BodyKind::None, BodyKind::OptionalData], true) => [Literal::export($sample)],
             default => [],
         };
 
@@ -146,7 +146,7 @@ final class ContractTestEmitter
             $operation->kind === OperationKind::CreateBulk => ['data' => [$object(null, $sample)]],
             $operation->kind === OperationKind::UpdateBulk => ['data' => [$object('1', $sample)]],
             in_array($operation->kind, [OperationKind::DestroyBulk, OperationKind::ActionBulk], true) => ['data' => [$object('1', []), $object('2', [])]],
-            $operation->body === BodyKind::None => null,
+            in_array($operation->body, [BodyKind::None, BodyKind::OptionalData], true) => null,
             $operation->body === BodyKind::Plain => $sample,
             default => ['data' => $object(self::memberId($resource, $operation), $sample)],
         };
