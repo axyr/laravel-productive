@@ -41,6 +41,9 @@ abstract class Resource
     /** Whether list endpoints support cursor pagination (reports do not). */
     protected const bool SUPPORTS_CURSOR = true;
 
+    /** Whether requests carry the X-Organization-Id header (the public endpoints do not). */
+    protected const bool REQUIRES_ORGANIZATION = true;
+
     final public function __construct(
         protected readonly ConnectorInterface $connector,
         protected readonly ModelRegistry $registry = new ModelRegistry(),
@@ -138,6 +141,46 @@ abstract class Resource
     }
 
     /**
+     * For endpoints that answer with the changed resource or without a body, depending on the case.
+     *
+     * @template TModel of Model
+     *
+     * @param  class-string<TModel>  $model
+     * @param  InputData|array<string, mixed>|null  $attributes
+     * @return TModel|null
+     */
+    protected function writeOptional(string $model, Method $method, string $path, string $operation, InputData|array|null $attributes, ?string $id = null): ?Model
+    {
+        $response = $this->sendRequest($method, $path, $operation, Expect::Resource, $this->requestDocument($attributes, $id));
+
+        return $response->isEmpty() ? null : $this->hydrate($model, $response);
+    }
+
+    /**
+     * For the few endpoints that take a plain JSON object instead of a JSON:API document.
+     *
+     * @template TModel of Model
+     *
+     * @param  class-string<TModel>  $model
+     * @param  InputData|array<string, mixed>  $attributes
+     * @return TModel
+     */
+    protected function writePlain(string $model, Method $method, string $path, string $operation, InputData|array $attributes): Model
+    {
+        return $this->hydrate($model, $this->sendRequest($method, $path, $operation, Expect::Resource, self::attributes($attributes)));
+    }
+
+    /**
+     * For endpoints whose response is not a JSON:API document: a file, a URL or a redirect.
+     *
+     * @param  InputData|array<string, mixed>|null  $attributes
+     */
+    protected function raw(Method $method, string $path, string $operation, InputData|array|null $attributes = null, ?string $id = null): Response
+    {
+        return $this->sendRequest($method, $path, $operation, Expect::Binary, $this->requestDocument($attributes, $id));
+    }
+
+    /**
      * @param  InputData|array<string, mixed>|null  $attributes
      */
     protected function writeWithoutResponse(Method $method, string $path, string $operation, InputData|array|null $attributes = null, ?string $id = null): void
@@ -210,6 +253,7 @@ abstract class Resource
             contentType: $contentType,
             expect: $expect,
             operation: $operation,
+            requiresOrganization: static::REQUIRES_ORGANIZATION,
             rateLimits: $this->rateLimits(),
         ));
     }

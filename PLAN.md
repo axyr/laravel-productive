@@ -328,7 +328,7 @@ Each task is one branch + PR, sized for one developer run (opus, 120 turns), wit
 - `generator/`: load the spec, resolve `$ref`s, and build an IR per resource. Also extract spec-example fixtures, including the synthesised ones (see §1). The IR covers operations → method names, response attributes (from `collection_*`/`single_*`), request attributes (from `requestBodies`), relationships, sort/group enums, path params, content types, and binary responses. Plus an operation-naming table with overrides (`generator/overrides.php`).
 - Acceptance: IR snapshot tests; every one of the 668 operations appears in the IR with a unique SDK method name.
 
-**P-08 Emitters + drift check**
+**P-08 Emitters + drift check** — ✅ built
 - Emit resource, model, input DTO, enum, factory, contract test and facade `@method` docblocks with nette/php-generator, then run Pint.
 - **Regenerating the three golden resources must produce byte-identical output to P-05.** That is the acceptance test.
 - Add `composer generate`, `composer generate:check`, the CI drift job, and `SpecCoverageTest` with an allowlist of all not-yet-generated tags.

@@ -15440,7 +15440,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "custom",
@@ -15498,7 +15498,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "target_type",
@@ -15941,7 +15941,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "creation_offset",
@@ -16165,7 +16165,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -18302,7 +18302,8 @@
                     "name": "domains",
                     "property": "domains",
                     "type": "list",
-                    "description": "Email domains associated with this company."
+                    "description": "Email domains associated with this company.",
+                    "items": "string"
                 },
                 {
                     "name": "due_days",
@@ -18872,7 +18873,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "end_date",
@@ -20103,7 +20104,8 @@
                     "name": "time_entry_requirements",
                     "property": "timeEntryRequirements",
                     "type": "list",
-                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`."
+                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
+                    "items": "string"
                 },
                 {
                     "name": "time_to_close",
@@ -20137,7 +20139,7 @@
                 {
                     "name": "updated_at",
                     "property": "updatedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "validate_expense_when_closing",
@@ -21218,7 +21220,7 @@
                 {
                     "name": "deleted_at",
                     "property": "deletedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "deleter_id",
@@ -21301,7 +21303,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "excerpt",
@@ -21312,7 +21314,7 @@
                 {
                     "name": "last_activity_at",
                     "property": "lastActivityAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "note",
@@ -21339,7 +21341,7 @@
                 {
                     "name": "updated_at",
                     "property": "updatedAt",
-                    "type": "string"
+                    "type": "date-time"
                 }
             ],
             "relationships": [
@@ -21370,7 +21372,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "name",
@@ -25230,7 +25232,7 @@
                 {
                     "name": "connected_at",
                     "property": "connectedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "datev_client_account_code",
@@ -25282,7 +25284,7 @@
                 {
                     "name": "last_synced_at",
                     "property": "lastSyncedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "name",
@@ -25361,7 +25363,8 @@
                 {
                     "name": "jira_screens",
                     "property": "jiraScreens",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ],
             "relationships": [
@@ -26044,7 +26047,7 @@
                 {
                     "name": "attributed_at",
                     "property": "attributedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -26606,7 +26609,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "custom_fields",
@@ -27503,7 +27506,8 @@
                     "name": "ai_allowed_models",
                     "property": "aiAllowedModels",
                     "type": "list",
-                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models."
+                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models.",
+                    "items": "string"
                 },
                 {
                     "name": "ai_enabled",
@@ -27566,7 +27570,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -29621,7 +29625,7 @@
                 {
                     "name": "updated_at",
                     "property": "updatedAt",
-                    "type": "string"
+                    "type": "date-time"
                 }
             ],
             "relationships": [],
@@ -29655,7 +29659,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -32795,7 +32799,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "deactivated_at",
@@ -33798,7 +33802,7 @@
                 {
                     "name": "recognized_at",
                     "property": "recognizedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "start_on",
@@ -35939,7 +35943,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "device",
@@ -36071,7 +36075,8 @@
                 {
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 },
                 {
                     "name": "updated_at",
@@ -36641,7 +36646,7 @@
                 {
                     "name": "submitted_at",
                     "property": "submittedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "survey_fields",
@@ -36885,7 +36890,8 @@
                     "name": "repeat_on_weekday",
                     "property": "repeatOnWeekday",
                     "type": "list",
-                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays."
+                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.",
+                    "items": "int"
                 },
                 {
                     "name": "repeat_origin_id",
@@ -37106,7 +37112,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "dependency_type",
@@ -37946,7 +37952,7 @@
                 {
                     "name": "last_activity_at",
                     "property": "lastActivityAt",
-                    "type": "string",
+                    "type": "date-time",
                     "description": "Date when the last change was made (edit, approval, move, etc.)."
                 },
                 {
@@ -38006,7 +38012,7 @@
                 {
                     "name": "started_at",
                     "property": "startedAt",
-                    "type": "string",
+                    "type": "date-time",
                     "description": "Start date and time of the time entry."
                 },
                 {
@@ -39662,7 +39668,7 @@
                 {
                     "name": "submitted_at",
                     "property": "submittedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "total_time",
@@ -39808,7 +39814,7 @@
                 {
                     "name": "submitted_at",
                     "property": "submittedAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "sunday_available",
@@ -40184,7 +40190,7 @@
                 {
                     "name": "created_at",
                     "property": "createdAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "custom_headers",
@@ -40379,7 +40385,7 @@
                 {
                     "name": "sent_at",
                     "property": "sentAt",
-                    "type": "string"
+                    "type": "date-time"
                 },
                 {
                     "name": "status_code",
@@ -41981,7 +41987,8 @@
                     "name": "domains",
                     "property": "domains",
                     "type": "list",
-                    "description": "Email domains associated with this company."
+                    "description": "Email domains associated with this company.",
+                    "items": "string"
                 },
                 {
                     "name": "due_days",
@@ -42837,7 +42844,8 @@
                     "name": "time_entry_requirements",
                     "property": "timeEntryRequirements",
                     "type": "list",
-                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`."
+                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
+                    "items": "string"
                 },
                 {
                     "name": "tracking_type_id",
@@ -43786,7 +43794,8 @@
                 {
                     "name": "jira_screens",
                     "property": "jiraScreens",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 },
                 {
                     "name": "project_id",
@@ -45840,7 +45849,8 @@
                 {
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ]
         },
@@ -46193,7 +46203,8 @@
                     "name": "repeat_on_weekday",
                     "property": "repeatOnWeekday",
                     "type": "list",
-                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays."
+                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.",
+                    "items": "int"
                 },
                 {
                     "name": "repeat_schedule_id",
@@ -47332,7 +47343,8 @@
                     "property": "to",
                     "type": "list",
                     "description": "List of recipient email addresses. At least one is required.",
-                    "required": true
+                    "required": true,
+                    "items": "string"
                 },
                 {
                     "name": "subject",
@@ -47352,19 +47364,22 @@
                     "name": "attachment_ids",
                     "property": "attachmentIds",
                     "type": "list",
-                    "description": "Attachment IDs to include with the email."
+                    "description": "Attachment IDs to include with the email.",
+                    "items": "int"
                 },
                 {
                     "name": "bcc",
                     "property": "bcc",
                     "type": "list",
-                    "description": "List of BCC recipient email addresses."
+                    "description": "List of BCC recipient email addresses.",
+                    "items": "string"
                 },
                 {
                     "name": "cc",
                     "property": "cc",
                     "type": "list",
-                    "description": "List of CC recipient email addresses."
+                    "description": "List of CC recipient email addresses.",
+                    "items": "string"
                 },
                 {
                     "name": "from",
@@ -48171,7 +48186,8 @@
                     "name": "domains",
                     "property": "domains",
                     "type": "list",
-                    "description": "Email domains associated with this company."
+                    "description": "Email domains associated with this company.",
+                    "items": "string"
                 },
                 {
                     "name": "due_days",
@@ -48987,7 +49003,8 @@
                     "name": "time_entry_requirements",
                     "property": "timeEntryRequirements",
                     "type": "list",
-                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`."
+                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
+                    "items": "string"
                 },
                 {
                     "name": "tracking_type_id",
@@ -49906,7 +49923,8 @@
                 {
                     "name": "jira_screens",
                     "property": "jiraScreens",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ]
         },
@@ -50449,7 +50467,8 @@
                     "name": "ai_allowed_models",
                     "property": "aiAllowedModels",
                     "type": "list",
-                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models."
+                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models.",
+                    "items": "string"
                 },
                 {
                     "name": "ai_enabled",
@@ -52592,7 +52611,8 @@
                 {
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ]
         },
@@ -52899,7 +52919,8 @@
                     "name": "repeat_on_weekday",
                     "property": "repeatOnWeekday",
                     "type": "list",
-                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays."
+                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.",
+                    "items": "int"
                 },
                 {
                     "name": "repeat_schedule_id",

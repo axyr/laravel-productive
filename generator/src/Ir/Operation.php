@@ -27,6 +27,16 @@ final readonly class Operation
         public BodyKind $body = BodyKind::None,
     ) {}
 
+    /**
+     * The last part of the key: "reposition" for "tasks.reposition".
+     */
+    public function actionName(): string
+    {
+        $parts = explode('.', $this->key);
+
+        return end($parts);
+    }
+
     public function isSynthesized(): bool
     {
         return $this->operationId === null;

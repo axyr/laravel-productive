@@ -42,6 +42,7 @@ final readonly class SchemaReader
                 description: $this->description($name, $schema),
                 required: in_array($name, $required, true),
                 enum: self::enum($schema),
+                items: $this->items($schema),
             );
         }
 
@@ -59,25 +60,29 @@ final readonly class SchemaReader
     }
 
     /**
-     * The schema type, else the type of the example value, else a type implied by the name, else mixed.
+     * The schema type, else a timestamp for "*_at", else the type of the example value, else a type implied by the name, else mixed.
      *
      * @param  array<string, mixed>  $schema
      */
     public static function type(string $name, array $schema, mixed $example = null): AttributeType
     {
-        return self::schemaType($schema) ?? self::exampleType($example) ?? self::nameType($name);
+        return self::schemaType($schema) ?? self::timestampType($name) ?? self::exampleType($example) ?? self::nameType($name);
     }
 
     /**
-     * Untyped and without an example: "*_at" is a timestamp, "currency*" a currency code.
+     * An untyped "*_at" attribute is a timestamp, even when its example is a plain string.
+     */
+    private static function timestampType(string $name): ?AttributeType
+    {
+        return str_ends_with($name, '_at') ? AttributeType::DateTime : null;
+    }
+
+    /**
+     * Untyped and without an example: "currency*" is a currency code.
      */
     private static function nameType(string $name): AttributeType
     {
-        return match (true) {
-            str_ends_with($name, '_at') => AttributeType::DateTime,
-            $name === 'currency' || str_starts_with($name, 'currency_') => AttributeType::String,
-            default => AttributeType::Mixed,
-        };
+        return $name === 'currency' || str_starts_with($name, 'currency_') ? AttributeType::String : AttributeType::Mixed;
     }
 
     /**
@@ -127,6 +132,18 @@ final readonly class SchemaReader
         $firstLine = trim(explode("\n", trim($description))[0]);
 
         return str_replace('*/', '* /', $firstLine);
+    }
+
+    /**
+     * The scalar item type of an array schema, e.g. integer weekday IDs.
+     *
+     * @param  array<string, mixed>  $schema
+     */
+    private function items(array $schema): ?AttributeType
+    {
+        $items = ($schema['type'] ?? null) === 'array' ? self::schemaType($this->spec->resolve($schema['items'] ?? [])) : null;
+
+        return in_array($items, [AttributeType::Int, AttributeType::Float, AttributeType::Bool, AttributeType::String], true) ? $items : null;
     }
 
     /**
