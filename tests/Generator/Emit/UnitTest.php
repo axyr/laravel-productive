@@ -126,6 +126,7 @@ it('writes files, removes stale generated files and reports drift', function () 
     mkdir($root . '/src/Old', 0o777, true);
     file_put_contents($root . '/src/Old/Stale.php', "<?php\n" . PhpFile::MARKER . "\n");
     file_put_contents($root . '/src/Old/Handwritten.php', "<?php\n");
+    file_put_contents($root . '/src/Old/MentionsMarker.php', "<?php\n\n\n\n\n\n// Example of the marker:\n" . PhpFile::MARKER . "\n");
     file_put_contents($root . '/src/Old/notes.txt', PhpFile::MARKER);
     $formatted = [];
     $format = function (string $directory, array $paths) use (&$formatted): void {
@@ -145,6 +146,7 @@ it('writes files, removes stale generated files and reports drift', function () 
     expect(file_get_contents($root . '/src/New/A.php'))->toBe("<?php // a\n")
         ->and(is_file($root . '/src/Old/Stale.php'))->toBeFalse()
         ->and(is_file($root . '/src/Old/Handwritten.php'))->toBeTrue()
+        ->and(is_file($root . '/src/Old/MentionsMarker.php'))->toBeTrue()
         ->and(is_file($root . '/src/Old/notes.txt'))->toBeTrue()
         ->and($files->check())->toBe([])
         ->and($formatted[1][1])->toBe(['src/New/A.php', 'tests/Contract/Generated/BTest.php']);
@@ -159,7 +161,7 @@ it('formats with Pint by default and reports a failure', function () {
     mkdir($root);
 
     (new GeneratedFiles($root, ['Broken.php' => "<?php\nclass {"]))->write();
-})->throws(RuntimeException::class, 'Pint failed');
+})->throws(RuntimeException::class, 'Pint failed')->group('drift');
 
 it('sorts accessors and groups however the config lists resources', function () {
     $resource = fn(string $path, string $class): Resource => new Resource($path, $class, str_starts_with($path, 'reports/') ? 'Axyr\\Productive\\Resources\\Reports' : 'Axyr\\Productive\\Resources', $path, 'X', []);
@@ -222,4 +224,17 @@ it('formats only the generated files', function () {
 
     expect(file_get_contents($root . '/src/Other.php'))->toBe($untouched)
         ->and(file_get_contents($root . '/src/A.php'))->not->toContain('class  A');
-});
+})->group('drift');
+
+it('documents the item type of input lists; model lists stay lenient', function (?AttributeType $items, string $input) {
+    $attribute = new Attribute('a', 'a', AttributeType::List, items: $items);
+
+    expect(Types::input($attribute)['doc'])->toBe($input)
+        ->and(Types::model($attribute)['doc'])->toBe('list<mixed>|null');
+})->with([
+    [AttributeType::Int, 'list<int>'],
+    [AttributeType::Float, 'list<float>'],
+    [AttributeType::Bool, 'list<bool>'],
+    [AttributeType::String, 'list<string>'],
+    [null, 'list<mixed>'],
+]);

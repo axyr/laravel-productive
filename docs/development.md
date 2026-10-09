@@ -24,7 +24,7 @@ Mutation testing:
 composer test:mutate
 ```
 
-Mutation testing covers the package and the generator, about 4,000 mutants, and takes over an hour. It runs nightly and on demand in `.github/workflows/mutation.yml`, at a 100% gate, rather than on every pull request.
+Mutation testing covers the package and the generator, about 4,000 mutants, and takes over an hour. It runs nightly and on demand in `.github/workflows/mutation.yml`, at a 100% gate, rather than on every pull request. A red nightly run on `main` fails the "Nightly mutation testing is green" check on every pull request until it is fixed.
 
 While iterating, scope it to the code you changed, e.g. `--class='Axyr\Productive\Generator\Emit'`. Without `--everything`; that flag overrides `--class`.
 
@@ -99,7 +99,7 @@ It also writes the shared entry points:
 - the facade's docblock
 - `ModelMap`
 
-Generated files start with a "do not edit" marker. Change the generator, its config or the spec instead, then run `composer generate`. Files that carry the marker but are no longer produced are deleted. `composer quality`, the pre-commit hook and CI all run `generate:check`.
+Generated files start with a "do not edit" marker on its own line in the file header. Change the generator, its config or the spec instead, then run `composer generate`. Files that carry the marker but are no longer produced are deleted. `composer quality`, the pre-commit hook and CI all run `generate:check`.
 
 Generated contract tests call every method with sample arguments. They assert the exact HTTP method, URL, content type and body, validate the body against the spec's schema, and check the hydrated result. Responses come from the spec's examples, with the resource type forced to the one the generator chose.
 

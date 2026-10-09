@@ -81,3 +81,26 @@ it('reads numeric property names and trims descriptions', function () {
     expect($attributes['42']->name)->toBe('42')
         ->and($attributes['42']->description)->toBe('First line.');
 });
+
+it('records the scalar item type of lists', function () {
+    $spec = new Spec(['components' => ['schemas' => ['id' => ['type' => 'integer']]]]);
+    $attributes = (new SchemaReader($spec))->attributes([
+        'weekdays' => ['type' => 'array', 'items' => ['$ref' => '#/components/schemas/id']],
+        'tags' => ['type' => 'array', 'items' => ['type' => 'string']],
+        'rates' => ['type' => 'array', 'items' => ['type' => 'number']],
+        'flags' => ['type' => 'array', 'items' => ['type' => 'boolean']],
+        'rows' => ['type' => 'array', 'items' => ['type' => 'object']],
+        'anything' => ['type' => 'array'],
+        'name' => ['type' => 'string', 'items' => ['type' => 'string']],
+    ]);
+
+    expect(array_map(fn($attribute) => $attribute->items, $attributes))->toBe([
+        'weekdays' => AttributeType::Int,
+        'tags' => AttributeType::String,
+        'rates' => AttributeType::Float,
+        'flags' => AttributeType::Bool,
+        'rows' => null,
+        'anything' => null,
+        'name' => null,
+    ])->and($attributes['weekdays']->toArray()['items'])->toBe('int');
+});

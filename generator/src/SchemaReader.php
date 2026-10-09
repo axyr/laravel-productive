@@ -42,6 +42,7 @@ final readonly class SchemaReader
                 description: $this->description($name, $schema),
                 required: in_array($name, $required, true),
                 enum: self::enum($schema),
+                items: $this->items($schema),
             );
         }
 
@@ -131,6 +132,18 @@ final readonly class SchemaReader
         $firstLine = trim(explode("\n", trim($description))[0]);
 
         return str_replace('*/', '* /', $firstLine);
+    }
+
+    /**
+     * The scalar item type of an array schema, e.g. integer weekday IDs.
+     *
+     * @param  array<string, mixed>  $schema
+     */
+    private function items(array $schema): ?AttributeType
+    {
+        $items = ($schema['type'] ?? null) === 'array' ? self::schemaType($this->spec->resolve($schema['items'] ?? [])) : null;
+
+        return in_array($items, [AttributeType::Int, AttributeType::Float, AttributeType::Bool, AttributeType::String], true) ? $items : null;
     }
 
     /**

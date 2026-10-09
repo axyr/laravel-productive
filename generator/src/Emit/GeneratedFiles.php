@@ -109,9 +109,18 @@ final readonly class GeneratedFiles
 
     private function isStale(string $file): bool
     {
-        $path = substr($file, strlen($this->root) + 1);
+        return ! isset($this->files[substr($file, strlen($this->root) + 1)]) && self::isGenerated($file);
+    }
 
-        return ! isset($this->files[$path]) && str_contains((string) file_get_contents($file), PhpFile::MARKER);
+    /**
+     * Generated files carry the marker on its own line in their header (the first lines),
+     * so a file that merely mentions the marker text is never treated as generated.
+     */
+    private static function isGenerated(string $file): bool
+    {
+        $header = array_slice(explode("\n", (string) file_get_contents($file)), 0, 6);
+
+        return in_array(PhpFile::MARKER, $header, true);
     }
 
     private static function compare(string $path, string $committed, string $expected): ?string

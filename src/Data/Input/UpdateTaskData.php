@@ -21,7 +21,7 @@ final readonly class UpdateTaskData extends InputData
     /**
      * @param  list<int|string>|Undefined|null  $attachmentIds  Files attached to this task.
      * @param  array<string, mixed>|Undefined|null  $customFields  Custom field values set on this task.
-     * @param  list<mixed>|Undefined|null  $repeatOnWeekday  Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.
+     * @param  list<int>|Undefined|null  $repeatOnWeekday  Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.
      * @param  list<int|string>|Undefined|null  $subscriberIds  Array of IDs of people subscribed to notifications for this task.
      * @param  list<string>|Undefined|null  $tagList  Tags applied to this task.
      */

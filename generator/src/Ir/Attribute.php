@@ -8,6 +8,7 @@ final readonly class Attribute
 {
     /**
      * @param  list<int|string>  $enum  Allowed values, when the spec lists them.
+     * @param  AttributeType|null  $items  The item type of a list, when the spec says.
      */
     public function __construct(
         public string $name,
@@ -16,6 +17,7 @@ final readonly class Attribute
         public string $description = '',
         public bool $required = false,
         public array $enum = [],
+        public ?AttributeType $items = null,
     ) {}
 
     /**
@@ -30,6 +32,7 @@ final readonly class Attribute
             'description' => $this->description,
             'required' => $this->required,
             'enum' => $this->enum,
-        ], fn(mixed $value): bool => $value !== '' && $value !== false && $value !== []);
+            'items' => $this->items?->value,
+        ], fn(mixed $value): bool => $value !== '' && $value !== false && $value !== [] && $value !== null);
     }
 }

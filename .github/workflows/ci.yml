@@ -7,6 +7,26 @@ on:
     branches: [main]
 
 jobs:
+  nightly-mutation:
+    runs-on: ubuntu-latest
+    name: Nightly mutation testing is green
+    permissions:
+      actions: read
+
+    # Mutation testing runs nightly (it takes over an hour). A red nightly run on main blocks
+    # merging until it is fixed, so the 100% gate keeps its meaning.
+    steps:
+      - name: Check the latest nightly run on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          conclusion=$(gh run list --repo "${{ github.repository }}" --workflow mutation.yml --branch main --status completed --limit 1 --json conclusion --jq '.[0].conclusion // "none"')
+          echo "Latest nightly mutation run: $conclusion"
+          if [ "$conclusion" = "failure" ]; then
+            echo "::error::The latest nightly mutation run on main failed. Fix the surviving mutants before merging."
+            exit 1
+          fi
+
   tests:
     runs-on: ubuntu-latest
     strategy:

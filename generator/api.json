@@ -18302,7 +18302,8 @@
                     "name": "domains",
                     "property": "domains",
                     "type": "list",
-                    "description": "Email domains associated with this company."
+                    "description": "Email domains associated with this company.",
+                    "items": "string"
                 },
                 {
                     "name": "due_days",
@@ -20103,7 +20104,8 @@
                     "name": "time_entry_requirements",
                     "property": "timeEntryRequirements",
                     "type": "list",
-                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`."
+                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
+                    "items": "string"
                 },
                 {
                     "name": "time_to_close",
@@ -25361,7 +25363,8 @@
                 {
                     "name": "jira_screens",
                     "property": "jiraScreens",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ],
             "relationships": [
@@ -27503,7 +27506,8 @@
                     "name": "ai_allowed_models",
                     "property": "aiAllowedModels",
                     "type": "list",
-                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models."
+                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models.",
+                    "items": "string"
                 },
                 {
                     "name": "ai_enabled",
@@ -36071,7 +36075,8 @@
                 {
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 },
                 {
                     "name": "updated_at",
@@ -36885,7 +36890,8 @@
                     "name": "repeat_on_weekday",
                     "property": "repeatOnWeekday",
                     "type": "list",
-                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays."
+                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.",
+                    "items": "int"
                 },
                 {
                     "name": "repeat_origin_id",
@@ -41981,7 +41987,8 @@
                     "name": "domains",
                     "property": "domains",
                     "type": "list",
-                    "description": "Email domains associated with this company."
+                    "description": "Email domains associated with this company.",
+                    "items": "string"
                 },
                 {
                     "name": "due_days",
@@ -42837,7 +42844,8 @@
                     "name": "time_entry_requirements",
                     "property": "timeEntryRequirements",
                     "type": "list",
-                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`."
+                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
+                    "items": "string"
                 },
                 {
                     "name": "tracking_type_id",
@@ -43786,7 +43794,8 @@
                 {
                     "name": "jira_screens",
                     "property": "jiraScreens",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 },
                 {
                     "name": "project_id",
@@ -45840,7 +45849,8 @@
                 {
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ]
         },
@@ -46193,7 +46203,8 @@
                     "name": "repeat_on_weekday",
                     "property": "repeatOnWeekday",
                     "type": "list",
-                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays."
+                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.",
+                    "items": "int"
                 },
                 {
                     "name": "repeat_schedule_id",
@@ -47332,7 +47343,8 @@
                     "property": "to",
                     "type": "list",
                     "description": "List of recipient email addresses. At least one is required.",
-                    "required": true
+                    "required": true,
+                    "items": "string"
                 },
                 {
                     "name": "subject",
@@ -47352,19 +47364,22 @@
                     "name": "attachment_ids",
                     "property": "attachmentIds",
                     "type": "list",
-                    "description": "Attachment IDs to include with the email."
+                    "description": "Attachment IDs to include with the email.",
+                    "items": "int"
                 },
                 {
                     "name": "bcc",
                     "property": "bcc",
                     "type": "list",
-                    "description": "List of BCC recipient email addresses."
+                    "description": "List of BCC recipient email addresses.",
+                    "items": "string"
                 },
                 {
                     "name": "cc",
                     "property": "cc",
                     "type": "list",
-                    "description": "List of CC recipient email addresses."
+                    "description": "List of CC recipient email addresses.",
+                    "items": "string"
                 },
                 {
                     "name": "from",
@@ -48171,7 +48186,8 @@
                     "name": "domains",
                     "property": "domains",
                     "type": "list",
-                    "description": "Email domains associated with this company."
+                    "description": "Email domains associated with this company.",
+                    "items": "string"
                 },
                 {
                     "name": "due_days",
@@ -48987,7 +49003,8 @@
                     "name": "time_entry_requirements",
                     "property": "timeEntryRequirements",
                     "type": "list",
-                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`."
+                    "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
+                    "items": "string"
                 },
                 {
                     "name": "tracking_type_id",
@@ -49906,7 +49923,8 @@
                 {
                     "name": "jira_screens",
                     "property": "jiraScreens",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ]
         },
@@ -50449,7 +50467,8 @@
                     "name": "ai_allowed_models",
                     "property": "aiAllowedModels",
                     "type": "list",
-                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models."
+                    "description": "IDs of the AI models allowed for this organization. An empty list allows all models.",
+                    "items": "string"
                 },
                 {
                     "name": "ai_enabled",
@@ -52592,7 +52611,8 @@
                 {
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
-                    "type": "list"
+                    "type": "list",
+                    "items": "string"
                 }
             ]
         },
@@ -52899,7 +52919,8 @@
                     "name": "repeat_on_weekday",
                     "property": "repeatOnWeekday",
                     "type": "list",
-                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays."
+                    "description": "Array of ISO weekday IDs (1..7) on which a recurring task fires. Example: `[1, 3, 5]` for Mondays, Wednesdays, and Fridays.",
+                    "items": "int"
                 },
                 {
                     "name": "repeat_schedule_id",

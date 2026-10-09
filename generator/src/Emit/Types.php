@@ -25,6 +25,7 @@ final class Types
             AttributeType::Date => ['type' => '?DateTimeImmutable', 'reader' => 'date', 'doc' => null],
             AttributeType::DateTime => ['type' => '?DateTimeImmutable', 'reader' => 'dateTime', 'doc' => null],
             AttributeType::Object => ['type' => '?array', 'reader' => 'object', 'doc' => 'array<array-key, mixed>|null'],
+            // Reads stay lenient (Attributes::list() returns list<mixed>), so only inputs carry the item type.
             AttributeType::List => ['type' => '?array', 'reader' => 'list', 'doc' => 'list<mixed>|null'],
             AttributeType::Mixed => ['type' => 'mixed', 'reader' => 'mixed', 'doc' => null],
         };
@@ -44,8 +45,22 @@ final class Types
             AttributeType::Time => ['type' => 'DateTimeInterface|string', 'doc' => null, 'format' => 'time'],
             AttributeType::DateTime => ['type' => 'DateTimeInterface|string', 'doc' => null, 'format' => null],
             AttributeType::Object => ['type' => 'array', 'doc' => 'array<string, mixed>', 'format' => null],
-            AttributeType::List => ['type' => 'array', 'doc' => 'list<mixed>', 'format' => null],
+            AttributeType::List => ['type' => 'array', 'doc' => 'list<' . self::item($attribute) . '>', 'format' => null],
             AttributeType::Mixed => self::untypedInput($attribute->name),
+        };
+    }
+
+    /**
+     * The PHP type of a list's items: int, float, bool or string when the spec says, else mixed.
+     */
+    private static function item(Attribute $attribute): string
+    {
+        return match ($attribute->items) {
+            AttributeType::Int => 'int',
+            AttributeType::Float => 'float',
+            AttributeType::Bool => 'bool',
+            AttributeType::String => 'string',
+            default => 'mixed',
         };
     }
 
