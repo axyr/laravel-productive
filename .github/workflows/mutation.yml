@@ -1,7 +1,8 @@
 name: Mutation testing
 
-# The full run mutates the package and the generator (about 4,000 mutants) and takes over an
-# hour, so it runs nightly and on demand instead of on every pull request.
+# The full run mutates the package, the generated code and the generator, so it runs nightly and
+# on demand instead of on every pull request. Without generated code it took 2 hours (4,034
+# mutants); with it, the run gets GitHub's 6-hour maximum until Phase 4 settles the scope.
 
 on:
   schedule:
@@ -12,7 +13,7 @@ jobs:
   mutation:
     runs-on: ubuntu-latest
     name: Mutation testing (100%)
-    timeout-minutes: 240
+    timeout-minutes: 360
 
     steps:
       - uses: actions/checkout@v4
