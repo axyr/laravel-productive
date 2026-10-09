@@ -76,7 +76,9 @@ final readonly class Connector implements ConnectorInterface
 
     private function pendingRequest(Request $request): PendingRequest
     {
+        // A redirect would carry X-Auth-Token to wherever it points: Guzzle only strips Authorization and Cookie.
         $pending = $this->http
+            ->withoutRedirecting()
             ->withHeaders($this->headers($request))
             ->timeout($this->config->timeout)
             ->connectTimeout($this->config->connectTimeout);

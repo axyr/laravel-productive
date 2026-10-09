@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Axyr\Productive\Config\ProductiveConfig;
 use Axyr\Productive\Contracts\ConnectorInterface;
+use Axyr\Productive\Contracts\ThrottleInterface;
+use Axyr\Productive\Exceptions\ApiException;
 use Axyr\Productive\Exceptions\ConfigurationException;
 use Axyr\Productive\Exceptions\ConnectionException;
 use Axyr\Productive\Exceptions\InvalidResponseException;
@@ -87,6 +89,15 @@ it('omits the organization header for public endpoints', function () {
     Http::assertSent(fn(HttpRequest $request): bool => ! $request->hasHeader('X-Organization-Id'));
 });
 
+it('omits the organization header for public endpoints even when one is configured', function () {
+    fakeHttp(['*' => Http::response(['data' => null])]);
+
+    connector()->send(new Request(Method::Get, 'public/pages/abc', requiresOrganization: false));
+
+    Http::assertSent(fn(HttpRequest $request): bool => ! $request->hasHeader('X-Organization-Id')
+        && $request->header('X-Auth-Token') === ['test-token']);
+});
+
 it('refuses to send without credentials', function () {
     fakeHttp([]);
 
@@ -111,6 +122,49 @@ it('never sends the token to another host', function () {
         ->toThrow(InvalidResponseException::class, 'Refusing to send credentials to "https://evil.test/api/v2/tasks"');
 
     Http::assertNothingSent();
+});
+
+it('never sends the token over plain http, even to the API host', function () {
+    fakeHttp([]);
+
+    expect(fn() => connector()->send(new Request(Method::Get, 'http://api.productive.test/api/v2/tasks')))
+        ->toThrow(InvalidResponseException::class, 'Refusing to send credentials to "http://api.productive.test/api/v2/tasks"');
+
+    Http::assertNothingSent();
+});
+
+it('never follows a redirect, so the token cannot travel to where it points', function () {
+    $options = [];
+    fakeHttp(['*' => function (HttpRequest $request, array $requestOptions) use (&$options) {
+        $options = $requestOptions;
+
+        return Http::response('', 302, ['Location' => 'https://evil.test/collect']);
+    }]);
+
+    expect(fn() => connector()->send(new Request(Method::Get, 'tasks')))->toThrow(ApiException::class, 'Productive API error 302');
+
+    expect($options['allow_redirects'] ?? null)->toBeFalse();
+    Http::assertSentCount(1);
+});
+
+it('throttles every attempt by the token fingerprint, never by the raw token', function () {
+    $throttle = new class () implements ThrottleInterface {
+        /** @var list<string> */
+        public array $scopes = [];
+
+        public function acquire(Request $request, string $scope): void
+        {
+            $this->scopes[] = $scope;
+        }
+    };
+    $config = new ProductiveConfig(token: 'secret-token', organizationId: '4242', baseUrl: 'https://api.productive.test/api/v2');
+    fakeHttp(['*' => Http::sequence()->push('', 429, ['X-RateLimit-Reset' => '0'])->push(['data' => []])]);
+
+    (new Connector($config, app(Factory::class), $throttle, new RetryPolicy(3, 60)))->send(new Request(Method::Get, 'tasks'));
+
+    expect($throttle->scopes)->toBe([$config->tokenFingerprint(), $config->tokenFingerprint()])
+        ->and($config->withToken('other')->tokenFingerprint())->not->toBe($config->tokenFingerprint())
+        ->and(implode(',', $throttle->scopes))->not->toContain('secret-token');
 });
 
 it('throws a typed exception for error responses', function () {
