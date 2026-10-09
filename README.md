@@ -142,7 +142,7 @@ Every change must pass `composer quality`:
 - PHPMD
 - Pest with **100% line coverage** and **100% type coverage**
 
-Mutation testing (`composer test:mutate`, 100% gate) runs nightly in CI. Request bodies in the contract tests are validated against the spec's JSON Schemas, and fixtures are Productive's own examples.
+Mutation testing of the hand-written code and the generator (`composer test:mutate`, 100% gate) runs nightly in CI. Request bodies in the contract tests are validated against the spec's JSON Schemas, and fixtures are Productive's own examples.
 
 ## License
 

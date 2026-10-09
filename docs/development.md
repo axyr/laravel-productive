@@ -24,7 +24,7 @@ Mutation testing:
 composer test:mutate
 ```
 
-Mutation testing covers the package and the generator, about 4,000 mutants, and takes over an hour. It runs nightly and on demand in `.github/workflows/mutation.yml`, at a 100% gate, rather than on every pull request. Unless the latest nightly run on `main` succeeded (a failure, time-out or cancellation all count), the "Nightly mutation testing is green" check fails every pull request. The pull request that fixes it unblocks itself: start "Mutation testing" manually on its branch, and a successful run for its head commit makes the check pass.
+Mutation testing covers the hand-written code: the package core and the generator, about 4,000 mutants, which takes about two hours. Generated classes are left out (`generator/bin/mutate` skips files with the generated marker): their faults come from the emitters, which are mutated. It runs nightly and on demand in `.github/workflows/mutation.yml`, at a 100% gate, rather than on every pull request. Unless the latest nightly run on `main` succeeded (a failure, time-out or cancellation all count), the "Nightly mutation testing is green" check fails every pull request (while `MUTATION_GATE` in `ci.yml` is `blocking`; `paused` turns the failure into a warning). The pull request that fixes it unblocks itself: start "Mutation testing" manually on its branch, and a successful run for its head commit makes the check pass.
 
 While iterating, scope it to the code you changed, e.g. `--class='Axyr\Productive\Generator\Emit'`. Without `--everything`; that flag overrides `--class`.
 

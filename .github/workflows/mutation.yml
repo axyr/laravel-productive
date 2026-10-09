@@ -1,8 +1,8 @@
 name: Mutation testing
 
-# The full run mutates the package, the generated code and the generator, so it runs nightly and
-# on demand instead of on every pull request. Without generated code it took 2 hours (4,034
-# mutants); with it, the run gets GitHub's 6-hour maximum until Phase 4 settles the scope.
+# Mutates the hand-written code: the package core and the generator (about 4,000 mutants, two
+# hours), so it runs nightly and on demand instead of on every pull request. Generated classes are
+# left out: their faults come from the emitters, which are mutated (PLAN.md, Phase 4 step 7).
 
 on:
   schedule:
@@ -13,7 +13,7 @@ jobs:
   mutation:
     runs-on: ubuntu-latest
     name: Mutation testing (100%)
-    timeout-minutes: 360
+    timeout-minutes: 240
 
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +29,5 @@ jobs:
       - name: Install dependencies
         run: composer update --prefer-stable --prefer-dist --no-interaction
 
-      # Not --parallel: parallel mutation runs report escaped mutants as killed.
       - name: Mutation testing
-        run: vendor/bin/pest --mutate --everything --covered-only --no-cache --min=100
+        run: php generator/bin/mutate

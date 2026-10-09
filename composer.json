@@ -51,7 +51,7 @@
         "test": "pest",
         "test:coverage": "php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --coverage --min=100",
         "test:types": "pest --type-coverage --min=100",
-        "test:mutate": "php -d pcov.directory=. -d 'pcov.exclude=~(vendor|tests)~' vendor/bin/pest --mutate --everything --covered-only --no-cache --min=100",
+        "test:mutate": "php generator/bin/mutate",
         "test:arch": "pest --testsuite=Arch",
         "analyse": "phpstan analyse",
         "format": "pint",

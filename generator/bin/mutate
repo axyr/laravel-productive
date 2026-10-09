@@ -1,0 +1,46 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Mutation testing of the hand-written code: the package core and the generator. Generated
+ * classes are left out: their faults come from the emitters, which are mutated here, and their
+ * output is covered by the contract tests and the drift check (PLAN.md, Phase 4 step 7).
+ * Extra arguments are passed to Pest, e.g. `composer test:mutate -- --id=abc123`.
+ */
+
+use Axyr\Productive\Generator\Emit\GeneratedFiles;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$root = dirname(__DIR__, 2);
+chdir($root);
+
+$paths = [];
+
+foreach (['src', 'generator/src'] as $directory) {
+    $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS));
+
+    foreach ($files as $file) {
+        if ($file->getExtension() === 'php' && ! GeneratedFiles::isGenerated($file->getPathname())) {
+            $paths[] = $file->getPathname();
+        }
+    }
+}
+
+sort($paths);
+
+echo 'Mutating ' . count($paths) . " hand-written files.\n";
+
+// Not --parallel: parallel mutation runs report escaped mutants as killed.
+$command = [
+    PHP_BINARY, '-d', 'pcov.directory=.', '-d', 'pcov.exclude=~(vendor|tests)~',
+    'vendor/bin/pest', '--mutate', '--everything', '--covered-only', '--no-cache', '--min=100',
+    '--path=' . implode(',', $paths),
+    ...array_slice($argv, 1),
+];
+
+passthru(implode(' ', array_map(escapeshellarg(...), $command)), $code);
+
+exit($code);

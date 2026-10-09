@@ -98,9 +98,11 @@ As built, these differ from the original plan:
     6. Honest generator tests:
        - A mutation run without the drift group, with survivors pinned by unit tests.
        - Tests for the test helpers, and honest names for the "golden" tests.
-    7. Mutation scope, decided from the run data.
-       - The baseline nightly before Phase 3 took 2 h 6 min for 4,034 mutants and left one untested (fixed). With all generated code the run no longer fits 240 minutes.
-       - Until this step, the CI check is paused (a red nightly only warns, `MUTATION_GATE` in ci.yml) and the nightly job gets 360 minutes to measure the real cost. The options are splitting the run across parallel jobs (Pest `--path` works with `--everything`) or limiting it to hand-written code.
+    7. Mutation scope, **decided 2026-10-09: hand-written code only.**
+       - The baseline nightly before Phase 3 took 2 h 6 min for 4,034 mutants. With all generated code the run would need about 12 hours of runner time every night.
+       - `generator/bin/mutate` (`composer test:mutate`, and the nightly) mutates the 108 files without the generated marker: the package core and the generator, emitters included. A fault in generated code comes from an emitter.
+       - The caveat from the audit: the contract tests check requests in full, but responses only by class. Generated models get value tests in step 3. Until then, generated code has neither value tests nor mutants.
+       - `MUTATION_GATE` in ci.yml goes back to "blocking" once a manual run of the scoped workflow on main is green.
 - **P-08 acceptance, sharpened:** a generator restricted to the three golden tags must reproduce the golden files byte for byte. The golden models only have typed relationship accessors for models that already exist (Task, TimeEntry); others return `Model`. Once every model exists, all accessors are typed.
 - **The prototype emitter rules** (type mapping, naming, ordering, docblocks) are written down in `docs/development.md` → *Adding resources*. The generator must follow them.
 
