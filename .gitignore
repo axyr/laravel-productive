@@ -24,3 +24,6 @@ phpstan.neon
 phpunit.xml
 
 /build/
+
+# Real API responses from `composer record`: never committed.
+/recordings/

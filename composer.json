@@ -77,7 +77,8 @@
         "generate:ir": "php generator/bin/ir > generator/api.json",
         "generate": "php generator/bin/generate",
         "generate:check": "php generator/bin/generate --check",
-        "generate:manifest": "php generator/bin/manifest > generator/full-api.sha1.json"
+        "generate:manifest": "php generator/bin/manifest > generator/full-api.sha1.json",
+        "record": "php generator/bin/record"
     },
     "config": {
         "allow-plugins": {
