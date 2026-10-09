@@ -10,6 +10,11 @@ use Tests\TestCase;
 
 pest()->extend(TestCase::class)->in('Feature', 'Contract');
 
+// No test may ever reach a real server: every request must match an Http::fake() response.
+pest()->beforeEach(function (): void {
+    Http::preventStrayRequests();
+})->in('Feature', 'Contract');
+
 pest()->beforeEach(function (): void {
     Sleep::fake(syncWithCarbon: true);
 })->afterEach(function (): void {
@@ -26,13 +31,11 @@ function apiUrl(string $path = ''): string
 }
 
 /**
- * Fake the Laravel HTTP client and prevent any request from leaving the test.
+ * Fake the Laravel HTTP client. Stray requests are already prevented for every Feature and Contract test.
  *
  * @param  array<string, mixed>  $responses
  */
 function fakeHttp(array $responses): Factory
 {
-    Http::preventStrayRequests();
-
     return Http::fake($responses);
 }
