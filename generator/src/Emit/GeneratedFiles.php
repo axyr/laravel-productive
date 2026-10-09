@@ -116,7 +116,7 @@ final readonly class GeneratedFiles
      * Generated files carry the marker on its own line in their header (the first lines),
      * so a file that merely mentions the marker text is never treated as generated.
      */
-    private static function isGenerated(string $file): bool
+    public static function isGenerated(string $file): bool
     {
         $header = array_slice(explode("\n", (string) file_get_contents($file)), 0, 6);
 
