@@ -13,19 +13,40 @@ jobs:
     permissions:
       actions: read
 
-    # Mutation testing runs nightly (it takes over an hour). A red nightly run on main blocks
-    # merging until it is fixed, so the 100% gate keeps its meaning.
+    # Mutation testing runs nightly (it takes over an hour). Unless the latest nightly run on
+    # main succeeded, pull requests are blocked, so the 100% gate keeps its meaning. The PR
+    # that repairs a red run can unblock itself: start "Mutation testing" manually on the PR
+    # branch, and a successful run for the PR's head commit makes this check pass.
     steps:
       - name: Check the latest nightly run on main
         env:
           GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
-          conclusion=$(gh run list --repo "${{ github.repository }}" --workflow mutation.yml --branch main --status completed --limit 1 --json conclusion --jq '.[0].conclusion // "none"')
-          echo "Latest nightly mutation run: $conclusion"
-          if [ "$conclusion" = "failure" ]; then
-            echo "::error::The latest nightly mutation run on main failed. Fix the surviving mutants before merging."
-            exit 1
+          # Before mutation.yml reaches the default branch there is no nightly run to wait for.
+          if ! gh api "repos/$REPOSITORY/actions/workflows/mutation.yml" --silent 2>/dev/null; then
+            echo "mutation.yml is not on the default branch yet."
+            exit 0
           fi
+
+          nightly=$(gh run list --repo "$REPOSITORY" --workflow mutation.yml --branch main --status completed --limit 1 --json conclusion --jq '.[0].conclusion // "none"')
+          echo "Latest nightly mutation run on main: $nightly"
+
+          if [ "$nightly" = "success" ] || [ "$nightly" = "none" ]; then
+            exit 0
+          fi
+
+          manual=$(gh run list --repo "$REPOSITORY" --workflow mutation.yml --branch "$BRANCH" --event workflow_dispatch --status success --limit 20 --json headSha --jq "map(select(.headSha == \"$HEAD_SHA\")) | length")
+
+          if [ "$manual" -gt 0 ]; then
+            echo "A manual mutation run succeeded for $HEAD_SHA on $BRANCH."
+            exit 0
+          fi
+
+          echo "::error::The latest nightly mutation run on main ended as '$nightly'. Fix it, then run 'Mutation testing' manually on this branch to unblock this pull request."
+          exit 1
 
   tests:
     runs-on: ubuntu-latest
