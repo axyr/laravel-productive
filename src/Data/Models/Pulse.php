@@ -105,9 +105,9 @@ final readonly class Pulse extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function filter(): ?Model
+    public function filter(): ?Filter
     {
-        return $this->belongsTo('filter', Model::class);
+        return $this->belongsTo('filter', Filter::class);
     }
 
     /**
@@ -118,8 +118,8 @@ final readonly class Pulse extends Model
         return $this->hasMany('memberships', Membership::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 }

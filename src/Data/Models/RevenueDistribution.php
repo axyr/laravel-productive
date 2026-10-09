@@ -77,8 +77,8 @@ final readonly class RevenueDistribution extends Model
         return $this->belongsTo('deal', Deal::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 }

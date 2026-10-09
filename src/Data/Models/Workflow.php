@@ -35,9 +35,9 @@ final readonly class Workflow extends Model
         $this->name = $attributes->string('name');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     /**

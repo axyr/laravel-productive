@@ -412,9 +412,9 @@ final readonly class Invoice extends Model
         return $this->belongsTo('issuer', Model::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function parentInvoice(): ?Invoice
@@ -422,8 +422,8 @@ final readonly class Invoice extends Model
         return $this->belongsTo('parent_invoice', Invoice::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 }

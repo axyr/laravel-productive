@@ -165,9 +165,9 @@ final readonly class PersonReport extends Model
         $this->year = $attributes->string('year');
     }
 
-    public function approvalPolicy(): ?Model
+    public function approvalPolicy(): ?ApprovalPolicy
     {
-        return $this->belongsTo('approval_policy', Model::class);
+        return $this->belongsTo('approval_policy', ApprovalPolicy::class);
     }
 
     public function company(): ?Company
@@ -180,14 +180,14 @@ final readonly class PersonReport extends Model
         return $this->belongsTo('company_report', CompanyReport::class);
     }
 
-    public function customRole(): ?Model
+    public function customRole(): ?Role
     {
-        return $this->belongsTo('custom_role', Model::class);
+        return $this->belongsTo('custom_role', Role::class);
     }
 
-    public function jobRole(): ?Model
+    public function jobRole(): ?JobRole
     {
-        return $this->belongsTo('job_role', Model::class);
+        return $this->belongsTo('job_role', JobRole::class);
     }
 
     public function manager(): ?Person
@@ -200,9 +200,9 @@ final readonly class PersonReport extends Model
         return $this->belongsTo('manager_report', Model::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person
@@ -215,8 +215,8 @@ final readonly class PersonReport extends Model
         return $this->belongsTo('report', Model::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 }

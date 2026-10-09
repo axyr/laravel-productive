@@ -71,6 +71,13 @@ it('covers every operation in the spec exactly once', function () {
         ->and(sorted($irIds))->toBe(sorted($specIds));
 });
 
+it('enables every resource in the spec', function () {
+    $paths = array_map(fn(Resource $resource): string => $resource->path, api()->resources);
+    $enabled = require dirname(__DIR__, 2) . '/generator/config/resources.php';
+
+    expect(sorted($enabled))->toBe(sorted($paths));
+});
+
 it('synthesizes only the single creates that bulk operations hide', function () {
     $synthesized = array_values(array_filter(api()->operations(), fn(Operation $operation): bool => $operation->isSynthesized()));
 

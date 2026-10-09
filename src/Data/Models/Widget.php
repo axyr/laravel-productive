@@ -67,13 +67,13 @@ final readonly class Widget extends Model
         return $this->belongsTo('dashboard', Dashboard::class);
     }
 
-    public function filter(): ?Model
+    public function filter(): ?Filter
     {
-        return $this->belongsTo('filter', Model::class);
+        return $this->belongsTo('filter', Filter::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 }

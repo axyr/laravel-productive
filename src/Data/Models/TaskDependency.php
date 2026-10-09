@@ -42,9 +42,9 @@ final readonly class TaskDependency extends Model
         return $this->belongsTo('dependent_task', Task::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function reverseDependency(): ?Model

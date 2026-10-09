@@ -132,11 +132,11 @@ final readonly class Booking extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<ApprovalStatus>
      */
     public function approvalStatuses(): array
     {
-        return $this->hasMany('approval_statuses', Model::class);
+        return $this->hasMany('approval_statuses', ApprovalStatus::class);
     }
 
     public function approver(): ?Person
@@ -183,9 +183,9 @@ final readonly class Booking extends Model
         return $this->belongsTo('event', Event::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function origin(): ?Model

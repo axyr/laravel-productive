@@ -7,6 +7,14 @@ declare(strict_types=1);
 namespace Axyr\Productive\Data;
 
 use Axyr\Productive\Data\Models\Activity;
+use Axyr\Productive\Data\Models\Agent;
+use Axyr\Productive\Data\Models\AgentConfig;
+use Axyr\Productive\Data\Models\AgentRole;
+use Axyr\Productive\Data\Models\ApprovalPolicy;
+use Axyr\Productive\Data\Models\ApprovalPolicyAssignment;
+use Axyr\Productive\Data\Models\ApprovalStatus;
+use Axyr\Productive\Data\Models\ApprovalWorkflow;
+use Axyr\Productive\Data\Models\Artifact;
 use Axyr\Productive\Data\Models\Attachment;
 use Axyr\Productive\Data\Models\AutomaticInvoicingRule;
 use Axyr\Productive\Data\Models\AutomationReport;
@@ -21,12 +29,17 @@ use Axyr\Productive\Data\Models\Company;
 use Axyr\Productive\Data\Models\CompanyReport;
 use Axyr\Productive\Data\Models\ContactEntry;
 use Axyr\Productive\Data\Models\Contract;
+use Axyr\Productive\Data\Models\CustomDomain;
+use Axyr\Productive\Data\Models\CustomField;
+use Axyr\Productive\Data\Models\CustomFieldOption;
+use Axyr\Productive\Data\Models\CustomFieldSection;
 use Axyr\Productive\Data\Models\Dashboard;
 use Axyr\Productive\Data\Models\Deal;
 use Axyr\Productive\Data\Models\DealCostRate;
 use Axyr\Productive\Data\Models\DealFunnelReport;
 use Axyr\Productive\Data\Models\DealReport;
 use Axyr\Productive\Data\Models\DealStatus;
+use Axyr\Productive\Data\Models\DeletedItem;
 use Axyr\Productive\Data\Models\Discussion;
 use Axyr\Productive\Data\Models\DocumentStyle;
 use Axyr\Productive\Data\Models\DocumentType;
@@ -39,22 +52,33 @@ use Axyr\Productive\Data\Models\ExchangeRate;
 use Axyr\Productive\Data\Models\Expense;
 use Axyr\Productive\Data\Models\ExpenseLineItem;
 use Axyr\Productive\Data\Models\ExpenseReport;
+use Axyr\Productive\Data\Models\Filter;
 use Axyr\Productive\Data\Models\FinancialItemReport;
 use Axyr\Productive\Data\Models\Folder;
 use Axyr\Productive\Data\Models\Holiday;
 use Axyr\Productive\Data\Models\HolidayCalendar;
+use Axyr\Productive\Data\Models\Integration;
+use Axyr\Productive\Data\Models\IntegrationExporterConfiguration;
+use Axyr\Productive\Data\Models\IntegrationTaskManagementConfiguration;
+use Axyr\Productive\Data\Models\Invitation;
 use Axyr\Productive\Data\Models\Invoice;
 use Axyr\Productive\Data\Models\InvoiceAttribution;
 use Axyr\Productive\Data\Models\InvoiceReport;
 use Axyr\Productive\Data\Models\InvoiceTemplate;
+use Axyr\Productive\Data\Models\JobRole;
 use Axyr\Productive\Data\Models\LineItem;
 use Axyr\Productive\Data\Models\LineItemReport;
 use Axyr\Productive\Data\Models\LostReason;
 use Axyr\Productive\Data\Models\Membership;
+use Axyr\Productive\Data\Models\Notification;
+use Axyr\Productive\Data\Models\Organization;
+use Axyr\Productive\Data\Models\OrganizationMembership;
+use Axyr\Productive\Data\Models\OrganizationSubscription;
 use Axyr\Productive\Data\Models\Overhead;
 use Axyr\Productive\Data\Models\Page;
 use Axyr\Productive\Data\Models\PageReport;
 use Axyr\Productive\Data\Models\PageVersion;
+use Axyr\Productive\Data\Models\Password;
 use Axyr\Productive\Data\Models\Payment;
 use Axyr\Productive\Data\Models\PaymentReminderSequence;
 use Axyr\Productive\Data\Models\PaymentReport;
@@ -78,6 +102,7 @@ use Axyr\Productive\Data\Models\ReportCategory;
 use Axyr\Productive\Data\Models\ResourceRequest;
 use Axyr\Productive\Data\Models\ResourceRequestReport;
 use Axyr\Productive\Data\Models\RevenueDistribution;
+use Axyr\Productive\Data\Models\Role;
 use Axyr\Productive\Data\Models\Salary;
 use Axyr\Productive\Data\Models\SalaryReport;
 use Axyr\Productive\Data\Models\Section;
@@ -86,13 +111,23 @@ use Axyr\Productive\Data\Models\ServiceAssignment;
 use Axyr\Productive\Data\Models\ServiceReport;
 use Axyr\Productive\Data\Models\ServiceType;
 use Axyr\Productive\Data\Models\ServiceTypeAssignment;
+use Axyr\Productive\Data\Models\Session;
+use Axyr\Productive\Data\Models\Skill;
+use Axyr\Productive\Data\Models\Subsidiary;
+use Axyr\Productive\Data\Models\Survey;
+use Axyr\Productive\Data\Models\SurveyField;
+use Axyr\Productive\Data\Models\SurveyFieldOption;
 use Axyr\Productive\Data\Models\SurveyReport;
+use Axyr\Productive\Data\Models\SurveyResponse;
 use Axyr\Productive\Data\Models\Tag;
 use Axyr\Productive\Data\Models\Task;
 use Axyr\Productive\Data\Models\TaskDependency;
 use Axyr\Productive\Data\Models\TaskList;
 use Axyr\Productive\Data\Models\TaskReport;
 use Axyr\Productive\Data\Models\TaxRate;
+use Axyr\Productive\Data\Models\Team;
+use Axyr\Productive\Data\Models\TeamMembership;
+use Axyr\Productive\Data\Models\Template;
 use Axyr\Productive\Data\Models\TimeEntry;
 use Axyr\Productive\Data\Models\TimeEntryReport;
 use Axyr\Productive\Data\Models\TimeEntryVersion;
@@ -102,6 +137,9 @@ use Axyr\Productive\Data\Models\Timesheet;
 use Axyr\Productive\Data\Models\TimesheetReport;
 use Axyr\Productive\Data\Models\TimeTrackingPolicy;
 use Axyr\Productive\Data\Models\Todo;
+use Axyr\Productive\Data\Models\User;
+use Axyr\Productive\Data\Models\Webhook;
+use Axyr\Productive\Data\Models\WebhookLog;
 use Axyr\Productive\Data\Models\Widget;
 use Axyr\Productive\Data\Models\Workflow;
 use Axyr\Productive\Data\Models\WorkflowStatus;
@@ -114,6 +152,14 @@ final class ModelMap
     /** @var array<string, class-string<Model>> */
     public const MODELS = [
         Activity::TYPE => Activity::class,
+        Agent::TYPE => Agent::class,
+        AgentConfig::TYPE => AgentConfig::class,
+        AgentRole::TYPE => AgentRole::class,
+        ApprovalPolicy::TYPE => ApprovalPolicy::class,
+        ApprovalPolicyAssignment::TYPE => ApprovalPolicyAssignment::class,
+        ApprovalStatus::TYPE => ApprovalStatus::class,
+        ApprovalWorkflow::TYPE => ApprovalWorkflow::class,
+        Artifact::TYPE => Artifact::class,
         Attachment::TYPE => Attachment::class,
         AutomaticInvoicingRule::TYPE => AutomaticInvoicingRule::class,
         AutomationReport::TYPE => AutomationReport::class,
@@ -128,12 +174,17 @@ final class ModelMap
         CompanyReport::TYPE => CompanyReport::class,
         ContactEntry::TYPE => ContactEntry::class,
         Contract::TYPE => Contract::class,
+        CustomDomain::TYPE => CustomDomain::class,
+        CustomField::TYPE => CustomField::class,
+        CustomFieldOption::TYPE => CustomFieldOption::class,
+        CustomFieldSection::TYPE => CustomFieldSection::class,
         Dashboard::TYPE => Dashboard::class,
         Deal::TYPE => Deal::class,
         DealCostRate::TYPE => DealCostRate::class,
         DealFunnelReport::TYPE => DealFunnelReport::class,
         DealReport::TYPE => DealReport::class,
         DealStatus::TYPE => DealStatus::class,
+        DeletedItem::TYPE => DeletedItem::class,
         Discussion::TYPE => Discussion::class,
         DocumentStyle::TYPE => DocumentStyle::class,
         DocumentType::TYPE => DocumentType::class,
@@ -146,22 +197,33 @@ final class ModelMap
         Expense::TYPE => Expense::class,
         ExpenseLineItem::TYPE => ExpenseLineItem::class,
         ExpenseReport::TYPE => ExpenseReport::class,
+        Filter::TYPE => Filter::class,
         FinancialItemReport::TYPE => FinancialItemReport::class,
         Folder::TYPE => Folder::class,
         Holiday::TYPE => Holiday::class,
         HolidayCalendar::TYPE => HolidayCalendar::class,
+        Integration::TYPE => Integration::class,
+        IntegrationExporterConfiguration::TYPE => IntegrationExporterConfiguration::class,
+        IntegrationTaskManagementConfiguration::TYPE => IntegrationTaskManagementConfiguration::class,
+        Invitation::TYPE => Invitation::class,
         Invoice::TYPE => Invoice::class,
         InvoiceAttribution::TYPE => InvoiceAttribution::class,
         InvoiceReport::TYPE => InvoiceReport::class,
         InvoiceTemplate::TYPE => InvoiceTemplate::class,
+        JobRole::TYPE => JobRole::class,
         LineItem::TYPE => LineItem::class,
         LineItemReport::TYPE => LineItemReport::class,
         LostReason::TYPE => LostReason::class,
         Membership::TYPE => Membership::class,
+        Notification::TYPE => Notification::class,
+        Organization::TYPE => Organization::class,
+        OrganizationMembership::TYPE => OrganizationMembership::class,
+        OrganizationSubscription::TYPE => OrganizationSubscription::class,
         Overhead::TYPE => Overhead::class,
         Page::TYPE => Page::class,
         PageReport::TYPE => PageReport::class,
         PageVersion::TYPE => PageVersion::class,
+        Password::TYPE => Password::class,
         Payment::TYPE => Payment::class,
         PaymentReminderSequence::TYPE => PaymentReminderSequence::class,
         PaymentReport::TYPE => PaymentReport::class,
@@ -185,6 +247,7 @@ final class ModelMap
         ResourceRequest::TYPE => ResourceRequest::class,
         ResourceRequestReport::TYPE => ResourceRequestReport::class,
         RevenueDistribution::TYPE => RevenueDistribution::class,
+        Role::TYPE => Role::class,
         Salary::TYPE => Salary::class,
         SalaryReport::TYPE => SalaryReport::class,
         Section::TYPE => Section::class,
@@ -193,13 +256,23 @@ final class ModelMap
         ServiceReport::TYPE => ServiceReport::class,
         ServiceType::TYPE => ServiceType::class,
         ServiceTypeAssignment::TYPE => ServiceTypeAssignment::class,
+        Session::TYPE => Session::class,
+        Skill::TYPE => Skill::class,
+        Subsidiary::TYPE => Subsidiary::class,
+        Survey::TYPE => Survey::class,
+        SurveyField::TYPE => SurveyField::class,
+        SurveyFieldOption::TYPE => SurveyFieldOption::class,
         SurveyReport::TYPE => SurveyReport::class,
+        SurveyResponse::TYPE => SurveyResponse::class,
         Tag::TYPE => Tag::class,
         Task::TYPE => Task::class,
         TaskDependency::TYPE => TaskDependency::class,
         TaskList::TYPE => TaskList::class,
         TaskReport::TYPE => TaskReport::class,
         TaxRate::TYPE => TaxRate::class,
+        Team::TYPE => Team::class,
+        TeamMembership::TYPE => TeamMembership::class,
+        Template::TYPE => Template::class,
         TimeEntry::TYPE => TimeEntry::class,
         TimeEntryReport::TYPE => TimeEntryReport::class,
         TimeEntryVersion::TYPE => TimeEntryVersion::class,
@@ -209,6 +282,9 @@ final class ModelMap
         Timesheet::TYPE => Timesheet::class,
         TimesheetReport::TYPE => TimesheetReport::class,
         Todo::TYPE => Todo::class,
+        User::TYPE => User::class,
+        Webhook::TYPE => Webhook::class,
+        WebhookLog::TYPE => WebhookLog::class,
         Widget::TYPE => Widget::class,
         Workflow::TYPE => Workflow::class,
         WorkflowStatus::TYPE => WorkflowStatus::class,

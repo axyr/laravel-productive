@@ -70,13 +70,13 @@ final readonly class Contract extends Model
         $this->useRolloverHours = $attributes->bool('use_rollover_hours');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
-    public function template(): ?Model
+    public function template(): ?Template
     {
-        return $this->belongsTo('template', Model::class);
+        return $this->belongsTo('template', Template::class);
     }
 }

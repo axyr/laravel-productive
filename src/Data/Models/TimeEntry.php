@@ -208,11 +208,11 @@ final readonly class TimeEntry extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<ApprovalStatus>
      */
     public function approvalStatuses(): array
     {
-        return $this->hasMany('approval_statuses', Model::class);
+        return $this->hasMany('approval_statuses', ApprovalStatus::class);
     }
 
     public function approver(): ?Person
@@ -225,9 +225,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function dealSubsidiary(): ?Model
+    public function dealSubsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('deal_subsidiary', Model::class);
+        return $this->belongsTo('deal_subsidiary', Subsidiary::class);
     }
 
     public function invoiceAttribution(): ?InvoiceAttribution
@@ -240,9 +240,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('last_actor', Person::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person
@@ -250,9 +250,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('person', Person::class);
     }
 
-    public function personSubsidiary(): ?Model
+    public function personSubsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('person_subsidiary', Model::class);
+        return $this->belongsTo('person_subsidiary', Subsidiary::class);
     }
 
     public function rejecter(): ?Person

@@ -115,7 +115,7 @@ Full reference in [docs/](docs/README.md):
 
 ## Endpoint coverage
 
-The SDK is built against Productive's OpenAPI spec, vendored at `resources/openapi/productive.json`: 668 operations across 117 resource groups. Resources are generated from that spec by `composer generate`. Enabled so far:
+The SDK is built against Productive's OpenAPI spec, vendored at `resources/openapi/productive.json`: 668 operations across 117 resource groups. Every resource is generated from that spec by `composer generate`:
 
 - **work management:** projects, tasks, task lists, folders/boards, task dependencies, to-dos, workflows and statuses, pages and docs, discussions, comments, attachments
 - **resource planning:** bookings, events, holidays, entitlements, resource requests, placeholders, memberships
@@ -124,8 +124,11 @@ The SDK is built against Productive's OpenAPI spec, vendored at `resources/opena
 - **financials:** deals and budgets, services and service types, prices, rate cards, sections, contracts, expenses (with bulk operations), purchase orders, bills, salaries, overheads, revenue distributions, proposals, document types and styles, tax rates, bank accounts, exchange rates
 - **invoicing:** invoices, line items (with bulk operations), invoice attributions and templates, automatic invoicing rules, payments, payment reminder sequences, e-invoice identities
 - **reports and dashboards:** all 26 reports, report categories, dashboards, widgets, pulses
+- **organization and administration:** organizations, memberships and subscriptions, users, teams, roles, subsidiaries, custom fields, filters, templates, skills, job roles, approvals, surveys, notifications, activities, deleted items, custom domains, integrations, webhooks, agents, artifacts
+- **authentication:** sessions, passwords, invitations
+- **public links:** shared pages, artifacts and proposals by uuid (`Productive::public()->pages()->find($uuid)`), sent without the organization header
 
-The generator already produces valid code for the whole API; organization and administration are enabled next. See [Development](docs/development.md).
+How the code is generated is described in [Development](docs/development.md).
 
 ## Quality
 

@@ -43,11 +43,35 @@ final class SpecExamples
      */
     public static function requestSchemaPointer(string $operationId): string
     {
+        [$path, $method] = self::location($operationId);
         $body = self::operation($operationId)['requestBody'] ?? throw new RuntimeException(sprintf('Operation %s has no request body.', $operationId));
-        $name = substr($body['$ref'], strlen('#/components/requestBodies/'));
-        $contentType = array_key_first(self::spec()['components']['requestBodies'][$name]['content']);
+        $base = isset($body['$ref'])
+            ? $body['$ref']
+            : '#/paths/' . rawurlencode(self::escape($path)) . '/' . $method . '/requestBody';
+        $contentType = array_key_first(self::resolve($body)['content']);
 
-        return sprintf('#/components/requestBodies/%s/content/%s/schema', $name, rawurlencode(str_replace('/', '~1', $contentType)));
+        return $base . '/content/' . rawurlencode(self::escape($contentType)) . '/schema';
+    }
+
+    /**
+     * @return array{string, string}  The path and HTTP method of an operation.
+     */
+    private static function location(string $operationId): array
+    {
+        foreach (self::spec()['paths'] as $path => $operations) {
+            foreach ($operations as $method => $operation) {
+                if (is_array($operation) && ($operation['operationId'] ?? null) === $operationId) {
+                    return [$path, $method];
+                }
+            }
+        }
+
+        throw new RuntimeException(sprintf('Unknown operation %s.', $operationId));
+    }
+
+    private static function escape(string $segment): string
+    {
+        return str_replace(['~', '/'], ['~0', '~1'], $segment);
     }
 
     public static function path(): string

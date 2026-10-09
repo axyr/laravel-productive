@@ -51,9 +51,9 @@ final readonly class Entitlement extends Model
         $this->used = $attributes->float('used');
     }
 
-    public function approvalWorkflow(): ?Model
+    public function approvalWorkflow(): ?ApprovalWorkflow
     {
-        return $this->belongsTo('approval_workflow', Model::class);
+        return $this->belongsTo('approval_workflow', ApprovalWorkflow::class);
     }
 
     public function event(): ?Event
@@ -61,9 +61,9 @@ final readonly class Entitlement extends Model
         return $this->belongsTo('event', Event::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person

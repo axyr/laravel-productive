@@ -56,7 +56,7 @@ arch('resource classes are suffixed')
     ->expect('Axyr\\Productive\\Resources')
     ->classes()
     ->toHaveSuffix('Resource')
-    ->ignoring(['Axyr\\Productive\\Resources\\PendingQuery', 'Axyr\\Productive\\Resources\\Reports\\Reports']);
+    ->ignoring(['Axyr\\Productive\\Resources\\PendingQuery', 'Axyr\\Productive\\Resources\\Reports\\Reports', 'Axyr\\Productive\\Resources\\Public\\PublicResources']);
 
 arch('enums are string backed')
     ->expect('Axyr\\Productive\\Enums')

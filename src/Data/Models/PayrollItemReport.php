@@ -153,9 +153,9 @@ final readonly class PayrollItemReport extends Model
         return $this->belongsTo('company', Company::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person
@@ -178,9 +178,9 @@ final readonly class PayrollItemReport extends Model
         return $this->belongsTo('salary', Salary::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 
     public function timeEntry(): ?TimeEntry

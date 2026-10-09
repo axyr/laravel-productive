@@ -270,9 +270,9 @@ final readonly class BookingReport extends Model
         return $this->belongsTo('event', Event::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person

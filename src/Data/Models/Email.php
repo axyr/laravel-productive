@@ -141,9 +141,9 @@ final readonly class Email extends Model
         return $this->belongsTo('deal', Deal::class);
     }
 
-    public function integration(): ?Model
+    public function integration(): ?Integration
     {
-        return $this->belongsTo('integration', Model::class);
+        return $this->belongsTo('integration', Integration::class);
     }
 
     public function invoice(): ?Invoice
@@ -151,9 +151,9 @@ final readonly class Email extends Model
         return $this->belongsTo('invoice', Invoice::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     /**

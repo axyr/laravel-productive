@@ -82,9 +82,9 @@ final readonly class PageReport extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function page(): ?Page

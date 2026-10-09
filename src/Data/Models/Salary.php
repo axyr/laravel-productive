@@ -112,9 +112,9 @@ final readonly class Salary extends Model
         return $this->belongsTo('holiday_calendar', HolidayCalendar::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person

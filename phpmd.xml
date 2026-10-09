@@ -52,6 +52,14 @@
     <rule ref="rulesets/naming.xml">
         <exclude name="ShortVariable" />
         <exclude name="LongVariable" />
+        <exclude name="LongClassName" />
+    </rule>
+
+    <!-- Class names follow the spec's resource names, e.g. CreateIntegrationTaskManagementConfigurationData. -->
+    <rule ref="rulesets/naming.xml/LongClassName">
+        <properties>
+            <property name="maximum" value="50" />
+        </properties>
     </rule>
 
 </ruleset>

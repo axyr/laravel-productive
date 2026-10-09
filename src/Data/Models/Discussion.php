@@ -54,9 +54,9 @@ final readonly class Discussion extends Model
         $this->updatedAt = $attributes->dateTime('updated_at');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function page(): ?Page

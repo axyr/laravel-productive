@@ -51,13 +51,13 @@ final readonly class TaxRate extends Model
         $this->secondaryComponentValue = $attributes->float('secondary_component_value');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 }

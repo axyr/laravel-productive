@@ -221,9 +221,9 @@ final readonly class ProjectReport extends Model
         return $this->belongsTo('company_report', CompanyReport::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function project(): ?Project

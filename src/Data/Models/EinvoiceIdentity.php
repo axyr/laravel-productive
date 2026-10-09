@@ -57,8 +57,8 @@ final readonly class EinvoiceIdentity extends Model
         return $this->belongsTo('company', Company::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 }
