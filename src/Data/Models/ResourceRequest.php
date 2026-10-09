@@ -175,8 +175,8 @@ final readonly class ResourceRequest extends Model
         return $this->belongsTo('resolver', Person::class);
     }
 
-    public function service(): ?Model
+    public function service(): ?Service
     {
-        return $this->belongsTo('service', Model::class);
+        return $this->belongsTo('service', Service::class);
     }
 }

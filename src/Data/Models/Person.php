@@ -275,11 +275,11 @@ final readonly class Person extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<ServiceType>
      */
     public function serviceTypes(): array
     {
-        return $this->hasMany('service_types', Model::class);
+        return $this->hasMany('service_types', ServiceType::class);
     }
 
     public function subsidiary(): ?Model

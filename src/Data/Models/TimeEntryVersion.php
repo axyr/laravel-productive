@@ -68,9 +68,9 @@ final readonly class TimeEntryVersion extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function deal(): ?Model
+    public function deal(): ?Deal
     {
-        return $this->belongsTo('deal', Model::class);
+        return $this->belongsTo('deal', Deal::class);
     }
 
     public function organization(): ?Model
@@ -83,8 +83,8 @@ final readonly class TimeEntryVersion extends Model
         return $this->belongsTo('person', Person::class);
     }
 
-    public function service(): ?Model
+    public function service(): ?Service
     {
-        return $this->belongsTo('service', Model::class);
+        return $this->belongsTo('service', Service::class);
     }
 }

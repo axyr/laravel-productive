@@ -273,9 +273,9 @@ final readonly class Task extends Model
         return $this->belongsTo('repeated_task', Task::class);
     }
 
-    public function service(): ?Model
+    public function service(): ?Service
     {
-        return $this->belongsTo('service', Model::class);
+        return $this->belongsTo('service', Service::class);
     }
 
     public function taskList(): ?TaskList

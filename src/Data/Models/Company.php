@@ -170,14 +170,14 @@ final readonly class Company extends Model
         return $this->hasMany('custom_field_people', Person::class);
     }
 
-    public function defaultDocumentType(): ?Model
+    public function defaultDocumentType(): ?DocumentType
     {
-        return $this->belongsTo('default_document_type', Model::class);
+        return $this->belongsTo('default_document_type', DocumentType::class);
     }
 
-    public function defaultPaymentReminderSequence(): ?Model
+    public function defaultPaymentReminderSequence(): ?PaymentReminderSequence
     {
-        return $this->belongsTo('default_payment_reminder_sequence', Model::class);
+        return $this->belongsTo('default_payment_reminder_sequence', PaymentReminderSequence::class);
     }
 
     public function defaultSubsidiary(): ?Model
@@ -185,14 +185,14 @@ final readonly class Company extends Model
         return $this->belongsTo('default_subsidiary', Model::class);
     }
 
-    public function defaultTaxRate(): ?Model
+    public function defaultTaxRate(): ?TaxRate
     {
-        return $this->belongsTo('default_tax_rate', Model::class);
+        return $this->belongsTo('default_tax_rate', TaxRate::class);
     }
 
-    public function einvoiceIdentity(): ?Model
+    public function einvoiceIdentity(): ?EinvoiceIdentity
     {
-        return $this->belongsTo('einvoice_identity', Model::class);
+        return $this->belongsTo('einvoice_identity', EinvoiceIdentity::class);
     }
 
     public function import(): ?Model

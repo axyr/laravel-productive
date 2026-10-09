@@ -93,10 +93,19 @@ final readonly class OperationBuilder
     public static function body(OperationKind $kind, ?Input $input, string $httpMethod, bool $member = false): BodyKind
     {
         return match (true) {
-            $input !== null => $input->plain ? BodyKind::Plain : BodyKind::Attributes,
+            $input !== null => self::inputBody($kind, $input),
             in_array($kind, [OperationKind::Create, OperationKind::Update, OperationKind::CreateBulk, OperationKind::UpdateBulk], true) => BodyKind::Data,
             $kind === OperationKind::Action && self::needsData($httpMethod, $member) => BodyKind::OptionalData,
             default => BodyKind::None,
+        };
+    }
+
+    private static function inputBody(OperationKind $kind, Input $input): BodyKind
+    {
+        return match (true) {
+            $input->plain => BodyKind::Plain,
+            $input->bulk && $kind === OperationKind::Action => BodyKind::BulkItem,
+            default => BodyKind::Attributes,
         };
     }
 

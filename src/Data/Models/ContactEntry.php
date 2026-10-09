@@ -87,14 +87,14 @@ final readonly class ContactEntry extends Model
         return $this->belongsTo('company', Company::class);
     }
 
-    public function invoice(): ?Model
+    public function invoice(): ?Invoice
     {
-        return $this->belongsTo('invoice', Model::class);
+        return $this->belongsTo('invoice', Invoice::class);
     }
 
-    public function invoiceTemplate(): ?Model
+    public function invoiceTemplate(): ?InvoiceTemplate
     {
-        return $this->belongsTo('invoice_template', Model::class);
+        return $this->belongsTo('invoice_template', InvoiceTemplate::class);
     }
 
     public function organization(): ?Model
@@ -107,9 +107,9 @@ final readonly class ContactEntry extends Model
         return $this->belongsTo('person', Person::class);
     }
 
-    public function purchaseOrder(): ?Model
+    public function purchaseOrder(): ?PurchaseOrder
     {
-        return $this->belongsTo('purchase_order', Model::class);
+        return $this->belongsTo('purchase_order', PurchaseOrder::class);
     }
 
     public function subsidiary(): ?Model

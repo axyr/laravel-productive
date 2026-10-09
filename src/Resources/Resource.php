@@ -171,6 +171,23 @@ abstract class Resource
     }
 
     /**
+     * For actions that only accept a bulk document: one resource object sent with `ext=bulk`.
+     *
+     * @template TModel of Model
+     *
+     * @param  class-string<TModel>  $model
+     * @param  InputData|array<string, mixed>  $attributes
+     * @return TModel|null
+     */
+    protected function writeAsBulk(string $model, Method $method, string $path, string $operation, InputData|array $attributes): ?Model
+    {
+        $body = DocumentBuilder::bulk(static::TYPE, [['attributes' => self::attributes($attributes)]]);
+        $response = $this->sendRequest($method, $path, $operation, Expect::Resource, $body, ContentType::JsonApiBulk);
+
+        return $response->isEmpty() ? null : $this->hydrate($model, $response);
+    }
+
+    /**
      * For endpoints whose response is not a JSON:API document: a file, a URL or a redirect.
      *
      * @param  InputData|array<string, mixed>|null  $attributes

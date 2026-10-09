@@ -21,6 +21,9 @@ enum BodyKind: string
     /** A plain JSON object (not JSON:API) built from a typed input object, e.g. {"markdown": "…"}. */
     case Plain = 'plain';
 
+    /** One typed input sent as a bulk document (`ext=bulk`), for actions that only accept that format (deals/copy). */
+    case BulkItem = 'bulk_item';
+
     /**
      * An optional attribute array, for actions the spec documents without a body that cannot work
      * without one: POST actions (mostly copies) and collection writes (merges). Nothing is sent

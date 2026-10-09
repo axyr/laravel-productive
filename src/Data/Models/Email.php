@@ -136,9 +136,9 @@ final readonly class Email extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function deal(): ?Model
+    public function deal(): ?Deal
     {
-        return $this->belongsTo('deal', Model::class);
+        return $this->belongsTo('deal', Deal::class);
     }
 
     public function integration(): ?Model
@@ -146,9 +146,9 @@ final readonly class Email extends Model
         return $this->belongsTo('integration', Model::class);
     }
 
-    public function invoice(): ?Model
+    public function invoice(): ?Invoice
     {
-        return $this->belongsTo('invoice', Model::class);
+        return $this->belongsTo('invoice', Invoice::class);
     }
 
     public function organization(): ?Model

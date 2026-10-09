@@ -121,9 +121,11 @@ The SDK is built against Productive's OpenAPI spec, vendored at `resources/opena
 - **resource planning:** bookings, events, holidays, entitlements, resource requests, placeholders, memberships
 - **time tracking:** time entries (with bulk operations), timers, timesheets, time tracking policies
 - **CRM:** companies, people, contact entries, pipelines, deal statuses, lost reasons, emails, tags
-- **reports:** the time report
+- **financials:** deals and budgets, services and service types, prices, rate cards, sections, contracts, expenses (with bulk operations), purchase orders, bills, salaries, overheads, revenue distributions, proposals, document types and styles, tax rates, bank accounts, exchange rates
+- **invoicing:** invoices, line items (with bulk operations), invoice attributions and templates, automatic invoicing rules, payments, payment reminder sequences, e-invoice identities
+- **reports and dashboards:** all 26 reports, report categories, dashboards, widgets, pulses
 
-The generator already produces valid code for the whole API; the remaining domains (financials, invoicing, reports, organization and administration) are being enabled one group at a time. See [Development](docs/development.md).
+The generator already produces valid code for the whole API; organization and administration are enabled next. See [Development](docs/development.md).
 
 ## Quality
 

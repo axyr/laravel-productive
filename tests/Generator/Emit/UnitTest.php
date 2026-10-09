@@ -250,3 +250,9 @@ it('samples list items and map values of the documented type', function (?Attrib
     [AttributeType::String, 'value'],
     [null, 'value'],
 ]);
+
+it('refuses a bulk-document action without an optional resource response', function () {
+    $operation = new Operation('deals.copy', 'copy', OperationKind::Action, 'POST', 'deals/copy', [], ResponseKind::Resource, false, true, 'x', new Input('CopyDealData', 'deal_bulk_copy', [], bulk: true), body: Axyr\Productive\Generator\Ir\BodyKind::BulkItem);
+
+    (new ResourceMethod(new Resource('deals', 'DealResource', 'Axyr\\Productive\\Resources', 'deals', 'Deal', [$operation]), $operation, 'Deal'))->lines();
+})->throws(RuntimeException::class, 'deals.copy: a bulk-document action must document an optional resource response.');

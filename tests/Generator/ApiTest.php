@@ -238,6 +238,7 @@ it('describes the operations that are not plain JSON:API', function () {
         'contracts.generate' => 'resource / optional_data',
         'dashboards.copy' => 'optional_resource / optional_data',
         'deal_statuses.merge' => 'resource / optional_data',
+        'deals.copy' => 'optional_resource / bulk_item',
         'deals.create_from_origin' => 'optional_resource / optional_data',
         'document_styles.copy' => 'optional_resource / optional_data',
         'document_types.copy' => 'optional_resource / optional_data',

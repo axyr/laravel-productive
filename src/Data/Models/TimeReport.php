@@ -295,9 +295,9 @@ final readonly class TimeReport extends Model
         $this->year = $attributes->string('year');
     }
 
-    public function budget(): ?Model
+    public function budget(): ?Deal
     {
-        return $this->belongsTo('budget', Model::class);
+        return $this->belongsTo('budget', Deal::class);
     }
 
     public function company(): ?Company
@@ -305,9 +305,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('company', Company::class);
     }
 
-    public function companyReport(): ?Model
+    public function companyReport(): ?CompanyReport
     {
-        return $this->belongsTo('company_report', Model::class);
+        return $this->belongsTo('company_report', CompanyReport::class);
     }
 
     public function dealOrBudgetReport(): ?Model
@@ -340,9 +340,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('person', Person::class);
     }
 
-    public function personReport(): ?Model
+    public function personReport(): ?PersonReport
     {
-        return $this->belongsTo('person_report', Model::class);
+        return $this->belongsTo('person_report', PersonReport::class);
     }
 
     public function project(): ?Project
@@ -350,9 +350,9 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('project', Project::class);
     }
 
-    public function projectReport(): ?Model
+    public function projectReport(): ?ProjectReport
     {
-        return $this->belongsTo('project_report', Model::class);
+        return $this->belongsTo('project_report', ProjectReport::class);
     }
 
     public function report(): ?Model
@@ -360,14 +360,14 @@ final readonly class TimeReport extends Model
         return $this->belongsTo('report', Model::class);
     }
 
-    public function service(): ?Model
+    public function service(): ?Service
     {
-        return $this->belongsTo('service', Model::class);
+        return $this->belongsTo('service', Service::class);
     }
 
-    public function serviceType(): ?Model
+    public function serviceType(): ?ServiceType
     {
-        return $this->belongsTo('service_type', Model::class);
+        return $this->belongsTo('service_type', ServiceType::class);
     }
 
     public function subsidiary(): ?Model

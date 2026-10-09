@@ -53,7 +53,9 @@ it('reads the item attributes of bulk bodies', function () {
     $input = inputBuilder()->build(['requestBody' => body(['type' => 'array', 'items' => ['properties' => ['attributes' => ['properties' => ['time' => ['type' => 'integer']]]]]])], 'B');
 
     expect(names($input->attributes))->toBe(['time'])
-        ->and($input->attributes[0]->required)->toBeFalse();
+        ->and($input->attributes[0]->required)->toBeFalse()
+        ->and($input->bulk)->toBeTrue()
+        ->and(inputBuilder()->build(['requestBody' => body(['properties' => ['attributes' => ['properties' => ['a' => []]]]])], 'S')?->bulk)->toBeFalse();
 });
 
 it('stops on a malformed required list', function () {
@@ -65,7 +67,7 @@ it('names the input after the request body it references', function () {
         ->build(['requestBody' => ['$ref' => '#/components/requestBodies/time_entry']], 'X');
 
     expect($input?->requestBody)->toBe('time_entry')
-        ->and($input?->toArray())->toBe(['class' => 'X', 'request_body' => 'time_entry', 'plain' => false, 'attributes' => [['name' => 'a', 'property' => 'a', 'type' => 'mixed']]]);
+        ->and($input?->toArray())->toBe(['class' => 'X', 'request_body' => 'time_entry', 'plain' => false, 'bulk' => false, 'attributes' => [['name' => 'a', 'property' => 'a', 'type' => 'mixed']]]);
 });
 
 it('reads plain JSON bodies that are not JSON:API documents', function () {

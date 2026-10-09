@@ -99,9 +99,9 @@ final readonly class Comment extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function deal(): ?Model
+    public function deal(): ?Deal
     {
-        return $this->belongsTo('deal', Model::class);
+        return $this->belongsTo('deal', Deal::class);
     }
 
     public function discussion(): ?Discussion
@@ -109,9 +109,9 @@ final readonly class Comment extends Model
         return $this->belongsTo('discussion', Discussion::class);
     }
 
-    public function invoice(): ?Model
+    public function invoice(): ?Invoice
     {
-        return $this->belongsTo('invoice', Model::class);
+        return $this->belongsTo('invoice', Invoice::class);
     }
 
     public function organization(): ?Model
@@ -134,9 +134,9 @@ final readonly class Comment extends Model
         return $this->belongsTo('project', Project::class);
     }
 
-    public function purchaseOrder(): ?Model
+    public function purchaseOrder(): ?PurchaseOrder
     {
-        return $this->belongsTo('purchase_order', Model::class);
+        return $this->belongsTo('purchase_order', PurchaseOrder::class);
     }
 
     public function task(): ?Task

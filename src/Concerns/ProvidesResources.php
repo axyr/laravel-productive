@@ -8,41 +8,76 @@ namespace Axyr\Productive\Concerns;
 
 use Axyr\Productive\Resources\ActivityResource;
 use Axyr\Productive\Resources\AttachmentResource;
+use Axyr\Productive\Resources\AutomaticInvoicingRuleResource;
+use Axyr\Productive\Resources\BankAccountResource;
+use Axyr\Productive\Resources\BillResource;
 use Axyr\Productive\Resources\BoardResource;
 use Axyr\Productive\Resources\BookingResource;
 use Axyr\Productive\Resources\CommentResource;
 use Axyr\Productive\Resources\CompanyResource;
 use Axyr\Productive\Resources\ContactEntryResource;
+use Axyr\Productive\Resources\ContractResource;
+use Axyr\Productive\Resources\DashboardResource;
+use Axyr\Productive\Resources\DealCostRateResource;
+use Axyr\Productive\Resources\DealResource;
 use Axyr\Productive\Resources\DealStatusResource;
 use Axyr\Productive\Resources\DiscussionResource;
+use Axyr\Productive\Resources\DocumentStyleResource;
+use Axyr\Productive\Resources\DocumentTypeResource;
+use Axyr\Productive\Resources\EinvoiceIdentityResource;
 use Axyr\Productive\Resources\EmailResource;
 use Axyr\Productive\Resources\EntitlementResource;
 use Axyr\Productive\Resources\EventResource;
+use Axyr\Productive\Resources\ExchangeRateResource;
+use Axyr\Productive\Resources\ExpenseLineItemResource;
+use Axyr\Productive\Resources\ExpenseResource;
 use Axyr\Productive\Resources\FolderResource;
 use Axyr\Productive\Resources\HolidayCalendarResource;
 use Axyr\Productive\Resources\HolidayResource;
+use Axyr\Productive\Resources\InvoiceAttributionResource;
+use Axyr\Productive\Resources\InvoiceResource;
+use Axyr\Productive\Resources\InvoiceTemplateResource;
+use Axyr\Productive\Resources\LineItemResource;
 use Axyr\Productive\Resources\LostReasonResource;
 use Axyr\Productive\Resources\MembershipResource;
+use Axyr\Productive\Resources\OverheadResource;
 use Axyr\Productive\Resources\PageResource;
 use Axyr\Productive\Resources\PageVersionResource;
+use Axyr\Productive\Resources\PaymentReminderSequenceResource;
+use Axyr\Productive\Resources\PaymentResource;
 use Axyr\Productive\Resources\PersonResource;
 use Axyr\Productive\Resources\PipelineResource;
 use Axyr\Productive\Resources\PlaceholderResource;
 use Axyr\Productive\Resources\PlaceholderUsageResource;
+use Axyr\Productive\Resources\PriceResource;
 use Axyr\Productive\Resources\ProjectPreferenceResource;
 use Axyr\Productive\Resources\ProjectResource;
+use Axyr\Productive\Resources\ProposalResource;
+use Axyr\Productive\Resources\PulseResource;
+use Axyr\Productive\Resources\PurchaseOrderResource;
+use Axyr\Productive\Resources\RateCardResource;
+use Axyr\Productive\Resources\ReportCategoryResource;
 use Axyr\Productive\Resources\Reports\Reports;
 use Axyr\Productive\Resources\ResourceRequestResource;
+use Axyr\Productive\Resources\RevenueDistributionResource;
+use Axyr\Productive\Resources\SalaryResource;
+use Axyr\Productive\Resources\SectionResource;
+use Axyr\Productive\Resources\ServiceAssignmentResource;
+use Axyr\Productive\Resources\ServiceResource;
+use Axyr\Productive\Resources\ServiceTypeAssignmentResource;
+use Axyr\Productive\Resources\ServiceTypeResource;
 use Axyr\Productive\Resources\TagResource;
 use Axyr\Productive\Resources\TaskDependencyResource;
 use Axyr\Productive\Resources\TaskListResource;
 use Axyr\Productive\Resources\TaskResource;
+use Axyr\Productive\Resources\TaxRateResource;
 use Axyr\Productive\Resources\TimeEntryResource;
 use Axyr\Productive\Resources\TimeEntryVersionResource;
 use Axyr\Productive\Resources\TimerResource;
 use Axyr\Productive\Resources\TimesheetResource;
 use Axyr\Productive\Resources\TimeTrackingPolicyResource;
 use Axyr\Productive\Resources\TodoResource;
+use Axyr\Productive\Resources\WidgetResource;
 use Axyr\Productive\Resources\WorkflowResource;
 use Axyr\Productive\Resources\WorkflowStatusResource;
 
@@ -59,6 +94,21 @@ trait ProvidesResources
     public function attachments(): AttachmentResource
     {
         return new AttachmentResource($this->connector(), $this->registry);
+    }
+
+    public function automaticInvoicingRules(): AutomaticInvoicingRuleResource
+    {
+        return new AutomaticInvoicingRuleResource($this->connector(), $this->registry);
+    }
+
+    public function bankAccounts(): BankAccountResource
+    {
+        return new BankAccountResource($this->connector(), $this->registry);
+    }
+
+    public function bills(): BillResource
+    {
+        return new BillResource($this->connector(), $this->registry);
     }
 
     public function boards(): BoardResource
@@ -86,14 +136,49 @@ trait ProvidesResources
         return new ContactEntryResource($this->connector(), $this->registry);
     }
 
+    public function contracts(): ContractResource
+    {
+        return new ContractResource($this->connector(), $this->registry);
+    }
+
+    public function dashboards(): DashboardResource
+    {
+        return new DashboardResource($this->connector(), $this->registry);
+    }
+
+    public function dealCostRates(): DealCostRateResource
+    {
+        return new DealCostRateResource($this->connector(), $this->registry);
+    }
+
     public function dealStatuses(): DealStatusResource
     {
         return new DealStatusResource($this->connector(), $this->registry);
     }
 
+    public function deals(): DealResource
+    {
+        return new DealResource($this->connector(), $this->registry);
+    }
+
     public function discussions(): DiscussionResource
     {
         return new DiscussionResource($this->connector(), $this->registry);
+    }
+
+    public function documentStyles(): DocumentStyleResource
+    {
+        return new DocumentStyleResource($this->connector(), $this->registry);
+    }
+
+    public function documentTypes(): DocumentTypeResource
+    {
+        return new DocumentTypeResource($this->connector(), $this->registry);
+    }
+
+    public function einvoiceIdentities(): EinvoiceIdentityResource
+    {
+        return new EinvoiceIdentityResource($this->connector(), $this->registry);
     }
 
     public function emails(): EmailResource
@@ -111,6 +196,21 @@ trait ProvidesResources
         return new EventResource($this->connector(), $this->registry);
     }
 
+    public function exchangeRates(): ExchangeRateResource
+    {
+        return new ExchangeRateResource($this->connector(), $this->registry);
+    }
+
+    public function expenseLineItems(): ExpenseLineItemResource
+    {
+        return new ExpenseLineItemResource($this->connector(), $this->registry);
+    }
+
+    public function expenses(): ExpenseResource
+    {
+        return new ExpenseResource($this->connector(), $this->registry);
+    }
+
     public function folders(): FolderResource
     {
         return new FolderResource($this->connector(), $this->registry);
@@ -126,6 +226,26 @@ trait ProvidesResources
         return new HolidayResource($this->connector(), $this->registry);
     }
 
+    public function invoiceAttributions(): InvoiceAttributionResource
+    {
+        return new InvoiceAttributionResource($this->connector(), $this->registry);
+    }
+
+    public function invoiceTemplates(): InvoiceTemplateResource
+    {
+        return new InvoiceTemplateResource($this->connector(), $this->registry);
+    }
+
+    public function invoices(): InvoiceResource
+    {
+        return new InvoiceResource($this->connector(), $this->registry);
+    }
+
+    public function lineItems(): LineItemResource
+    {
+        return new LineItemResource($this->connector(), $this->registry);
+    }
+
     public function lostReasons(): LostReasonResource
     {
         return new LostReasonResource($this->connector(), $this->registry);
@@ -136,6 +256,11 @@ trait ProvidesResources
         return new MembershipResource($this->connector(), $this->registry);
     }
 
+    public function overheads(): OverheadResource
+    {
+        return new OverheadResource($this->connector(), $this->registry);
+    }
+
     public function pageVersions(): PageVersionResource
     {
         return new PageVersionResource($this->connector(), $this->registry);
@@ -144,6 +269,16 @@ trait ProvidesResources
     public function pages(): PageResource
     {
         return new PageResource($this->connector(), $this->registry);
+    }
+
+    public function paymentReminderSequences(): PaymentReminderSequenceResource
+    {
+        return new PaymentReminderSequenceResource($this->connector(), $this->registry);
+    }
+
+    public function payments(): PaymentResource
+    {
+        return new PaymentResource($this->connector(), $this->registry);
     }
 
     public function people(): PersonResource
@@ -166,6 +301,11 @@ trait ProvidesResources
         return new PlaceholderResource($this->connector(), $this->registry);
     }
 
+    public function prices(): PriceResource
+    {
+        return new PriceResource($this->connector(), $this->registry);
+    }
+
     public function projectPreferences(): ProjectPreferenceResource
     {
         return new ProjectPreferenceResource($this->connector(), $this->registry);
@@ -176,6 +316,31 @@ trait ProvidesResources
         return new ProjectResource($this->connector(), $this->registry);
     }
 
+    public function proposals(): ProposalResource
+    {
+        return new ProposalResource($this->connector(), $this->registry);
+    }
+
+    public function pulses(): PulseResource
+    {
+        return new PulseResource($this->connector(), $this->registry);
+    }
+
+    public function purchaseOrders(): PurchaseOrderResource
+    {
+        return new PurchaseOrderResource($this->connector(), $this->registry);
+    }
+
+    public function rateCards(): RateCardResource
+    {
+        return new RateCardResource($this->connector(), $this->registry);
+    }
+
+    public function reportCategories(): ReportCategoryResource
+    {
+        return new ReportCategoryResource($this->connector(), $this->registry);
+    }
+
     public function reports(): Reports
     {
         return new Reports($this->connector(), $this->registry);
@@ -184,6 +349,41 @@ trait ProvidesResources
     public function resourceRequests(): ResourceRequestResource
     {
         return new ResourceRequestResource($this->connector(), $this->registry);
+    }
+
+    public function revenueDistributions(): RevenueDistributionResource
+    {
+        return new RevenueDistributionResource($this->connector(), $this->registry);
+    }
+
+    public function salaries(): SalaryResource
+    {
+        return new SalaryResource($this->connector(), $this->registry);
+    }
+
+    public function sections(): SectionResource
+    {
+        return new SectionResource($this->connector(), $this->registry);
+    }
+
+    public function serviceAssignments(): ServiceAssignmentResource
+    {
+        return new ServiceAssignmentResource($this->connector(), $this->registry);
+    }
+
+    public function serviceTypeAssignments(): ServiceTypeAssignmentResource
+    {
+        return new ServiceTypeAssignmentResource($this->connector(), $this->registry);
+    }
+
+    public function serviceTypes(): ServiceTypeResource
+    {
+        return new ServiceTypeResource($this->connector(), $this->registry);
+    }
+
+    public function services(): ServiceResource
+    {
+        return new ServiceResource($this->connector(), $this->registry);
     }
 
     public function tags(): TagResource
@@ -204,6 +404,11 @@ trait ProvidesResources
     public function tasks(): TaskResource
     {
         return new TaskResource($this->connector(), $this->registry);
+    }
+
+    public function taxRates(): TaxRateResource
+    {
+        return new TaxRateResource($this->connector(), $this->registry);
     }
 
     public function timeEntries(): TimeEntryResource
@@ -234,6 +439,11 @@ trait ProvidesResources
     public function todos(): TodoResource
     {
         return new TodoResource($this->connector(), $this->registry);
+    }
+
+    public function widgets(): WidgetResource
+    {
+        return new WidgetResource($this->connector(), $this->registry);
     }
 
     public function workflowStatuses(): WorkflowStatusResource

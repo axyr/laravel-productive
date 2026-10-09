@@ -86,9 +86,9 @@ final readonly class Attachment extends Model
         $this->url = $attributes->mixed('url');
     }
 
-    public function bill(): ?Model
+    public function bill(): ?Bill
     {
-        return $this->belongsTo('bill', Model::class);
+        return $this->belongsTo('bill', Bill::class);
     }
 
     public function comment(): ?Comment
@@ -101,19 +101,19 @@ final readonly class Attachment extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function deal(): ?Model
+    public function deal(): ?Deal
     {
-        return $this->belongsTo('deal', Model::class);
+        return $this->belongsTo('deal', Deal::class);
     }
 
-    public function documentStyle(): ?Model
+    public function documentStyle(): ?DocumentStyle
     {
-        return $this->belongsTo('document_style', Model::class);
+        return $this->belongsTo('document_style', DocumentStyle::class);
     }
 
-    public function documentType(): ?Model
+    public function documentType(): ?DocumentType
     {
-        return $this->belongsTo('document_type', Model::class);
+        return $this->belongsTo('document_type', DocumentType::class);
     }
 
     public function email(): ?Email
@@ -121,14 +121,14 @@ final readonly class Attachment extends Model
         return $this->belongsTo('email', Email::class);
     }
 
-    public function expense(): ?Model
+    public function expense(): ?Expense
     {
-        return $this->belongsTo('expense', Model::class);
+        return $this->belongsTo('expense', Expense::class);
     }
 
-    public function invoice(): ?Model
+    public function invoice(): ?Invoice
     {
-        return $this->belongsTo('invoice', Model::class);
+        return $this->belongsTo('invoice', Invoice::class);
     }
 
     public function organization(): ?Model
@@ -141,9 +141,9 @@ final readonly class Attachment extends Model
         return $this->belongsTo('page', Page::class);
     }
 
-    public function purchaseOrder(): ?Model
+    public function purchaseOrder(): ?PurchaseOrder
     {
-        return $this->belongsTo('purchase_order', Model::class);
+        return $this->belongsTo('purchase_order', PurchaseOrder::class);
     }
 
     public function task(): ?Task

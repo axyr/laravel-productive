@@ -47,7 +47,7 @@ final class SpecExamples
         $name = substr($body['$ref'], strlen('#/components/requestBodies/'));
         $contentType = array_key_first(self::spec()['components']['requestBodies'][$name]['content']);
 
-        return sprintf('#/components/requestBodies/%s/content/%s/schema', $name, str_replace('/', '~1', $contentType));
+        return sprintf('#/components/requestBodies/%s/content/%s/schema', $name, rawurlencode(str_replace('/', '~1', $contentType)));
     }
 
     public static function path(): string
