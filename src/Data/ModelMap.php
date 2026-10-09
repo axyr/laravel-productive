@@ -8,41 +8,101 @@ namespace Axyr\Productive\Data;
 
 use Axyr\Productive\Data\Models\Activity;
 use Axyr\Productive\Data\Models\Attachment;
+use Axyr\Productive\Data\Models\AutomaticInvoicingRule;
+use Axyr\Productive\Data\Models\AutomationReport;
+use Axyr\Productive\Data\Models\BankAccount;
+use Axyr\Productive\Data\Models\Bill;
 use Axyr\Productive\Data\Models\Board;
 use Axyr\Productive\Data\Models\Booking;
+use Axyr\Productive\Data\Models\BookingReport;
+use Axyr\Productive\Data\Models\BudgetReport;
 use Axyr\Productive\Data\Models\Comment;
 use Axyr\Productive\Data\Models\Company;
+use Axyr\Productive\Data\Models\CompanyReport;
 use Axyr\Productive\Data\Models\ContactEntry;
+use Axyr\Productive\Data\Models\Contract;
+use Axyr\Productive\Data\Models\Dashboard;
+use Axyr\Productive\Data\Models\Deal;
+use Axyr\Productive\Data\Models\DealCostRate;
+use Axyr\Productive\Data\Models\DealFunnelReport;
+use Axyr\Productive\Data\Models\DealReport;
 use Axyr\Productive\Data\Models\DealStatus;
 use Axyr\Productive\Data\Models\Discussion;
+use Axyr\Productive\Data\Models\DocumentStyle;
+use Axyr\Productive\Data\Models\DocumentType;
+use Axyr\Productive\Data\Models\EinvoiceIdentity;
 use Axyr\Productive\Data\Models\Email;
 use Axyr\Productive\Data\Models\Entitlement;
+use Axyr\Productive\Data\Models\EntitlementReport;
 use Axyr\Productive\Data\Models\Event;
+use Axyr\Productive\Data\Models\ExchangeRate;
+use Axyr\Productive\Data\Models\Expense;
+use Axyr\Productive\Data\Models\ExpenseLineItem;
+use Axyr\Productive\Data\Models\ExpenseReport;
+use Axyr\Productive\Data\Models\FinancialItemReport;
 use Axyr\Productive\Data\Models\Folder;
 use Axyr\Productive\Data\Models\Holiday;
 use Axyr\Productive\Data\Models\HolidayCalendar;
+use Axyr\Productive\Data\Models\Invoice;
+use Axyr\Productive\Data\Models\InvoiceAttribution;
+use Axyr\Productive\Data\Models\InvoiceReport;
+use Axyr\Productive\Data\Models\InvoiceTemplate;
+use Axyr\Productive\Data\Models\LineItem;
+use Axyr\Productive\Data\Models\LineItemReport;
 use Axyr\Productive\Data\Models\LostReason;
 use Axyr\Productive\Data\Models\Membership;
+use Axyr\Productive\Data\Models\Overhead;
 use Axyr\Productive\Data\Models\Page;
+use Axyr\Productive\Data\Models\PageReport;
 use Axyr\Productive\Data\Models\PageVersion;
+use Axyr\Productive\Data\Models\Payment;
+use Axyr\Productive\Data\Models\PaymentReminderSequence;
+use Axyr\Productive\Data\Models\PaymentReport;
+use Axyr\Productive\Data\Models\PayrollItemReport;
 use Axyr\Productive\Data\Models\Person;
+use Axyr\Productive\Data\Models\PersonReport;
 use Axyr\Productive\Data\Models\Pipeline;
 use Axyr\Productive\Data\Models\Placeholder;
 use Axyr\Productive\Data\Models\PlaceholderUsage;
+use Axyr\Productive\Data\Models\Price;
+use Axyr\Productive\Data\Models\PriceReport;
 use Axyr\Productive\Data\Models\Project;
 use Axyr\Productive\Data\Models\ProjectPreference;
+use Axyr\Productive\Data\Models\ProjectReport;
+use Axyr\Productive\Data\Models\Proposal;
+use Axyr\Productive\Data\Models\ProposalReport;
+use Axyr\Productive\Data\Models\Pulse;
+use Axyr\Productive\Data\Models\PurchaseOrder;
+use Axyr\Productive\Data\Models\RateCard;
+use Axyr\Productive\Data\Models\ReportCategory;
 use Axyr\Productive\Data\Models\ResourceRequest;
+use Axyr\Productive\Data\Models\ResourceRequestReport;
+use Axyr\Productive\Data\Models\RevenueDistribution;
+use Axyr\Productive\Data\Models\Salary;
+use Axyr\Productive\Data\Models\SalaryReport;
+use Axyr\Productive\Data\Models\Section;
+use Axyr\Productive\Data\Models\Service;
+use Axyr\Productive\Data\Models\ServiceAssignment;
+use Axyr\Productive\Data\Models\ServiceReport;
+use Axyr\Productive\Data\Models\ServiceType;
+use Axyr\Productive\Data\Models\ServiceTypeAssignment;
+use Axyr\Productive\Data\Models\SurveyReport;
 use Axyr\Productive\Data\Models\Tag;
 use Axyr\Productive\Data\Models\Task;
 use Axyr\Productive\Data\Models\TaskDependency;
 use Axyr\Productive\Data\Models\TaskList;
+use Axyr\Productive\Data\Models\TaskReport;
+use Axyr\Productive\Data\Models\TaxRate;
 use Axyr\Productive\Data\Models\TimeEntry;
+use Axyr\Productive\Data\Models\TimeEntryReport;
 use Axyr\Productive\Data\Models\TimeEntryVersion;
 use Axyr\Productive\Data\Models\Timer;
 use Axyr\Productive\Data\Models\TimeReport;
 use Axyr\Productive\Data\Models\Timesheet;
+use Axyr\Productive\Data\Models\TimesheetReport;
 use Axyr\Productive\Data\Models\TimeTrackingPolicy;
 use Axyr\Productive\Data\Models\Todo;
+use Axyr\Productive\Data\Models\Widget;
 use Axyr\Productive\Data\Models\Workflow;
 use Axyr\Productive\Data\Models\WorkflowStatus;
 
@@ -55,41 +115,101 @@ final class ModelMap
     public const MODELS = [
         Activity::TYPE => Activity::class,
         Attachment::TYPE => Attachment::class,
+        AutomaticInvoicingRule::TYPE => AutomaticInvoicingRule::class,
+        AutomationReport::TYPE => AutomationReport::class,
+        BankAccount::TYPE => BankAccount::class,
+        Bill::TYPE => Bill::class,
         Board::TYPE => Board::class,
         Booking::TYPE => Booking::class,
+        BookingReport::TYPE => BookingReport::class,
+        BudgetReport::TYPE => BudgetReport::class,
         Comment::TYPE => Comment::class,
         Company::TYPE => Company::class,
+        CompanyReport::TYPE => CompanyReport::class,
         ContactEntry::TYPE => ContactEntry::class,
+        Contract::TYPE => Contract::class,
+        Dashboard::TYPE => Dashboard::class,
+        Deal::TYPE => Deal::class,
+        DealCostRate::TYPE => DealCostRate::class,
+        DealFunnelReport::TYPE => DealFunnelReport::class,
+        DealReport::TYPE => DealReport::class,
         DealStatus::TYPE => DealStatus::class,
         Discussion::TYPE => Discussion::class,
+        DocumentStyle::TYPE => DocumentStyle::class,
+        DocumentType::TYPE => DocumentType::class,
+        EinvoiceIdentity::TYPE => EinvoiceIdentity::class,
         Email::TYPE => Email::class,
         Entitlement::TYPE => Entitlement::class,
+        EntitlementReport::TYPE => EntitlementReport::class,
         Event::TYPE => Event::class,
+        ExchangeRate::TYPE => ExchangeRate::class,
+        Expense::TYPE => Expense::class,
+        ExpenseLineItem::TYPE => ExpenseLineItem::class,
+        ExpenseReport::TYPE => ExpenseReport::class,
+        FinancialItemReport::TYPE => FinancialItemReport::class,
         Folder::TYPE => Folder::class,
         Holiday::TYPE => Holiday::class,
         HolidayCalendar::TYPE => HolidayCalendar::class,
+        Invoice::TYPE => Invoice::class,
+        InvoiceAttribution::TYPE => InvoiceAttribution::class,
+        InvoiceReport::TYPE => InvoiceReport::class,
+        InvoiceTemplate::TYPE => InvoiceTemplate::class,
+        LineItem::TYPE => LineItem::class,
+        LineItemReport::TYPE => LineItemReport::class,
         LostReason::TYPE => LostReason::class,
         Membership::TYPE => Membership::class,
+        Overhead::TYPE => Overhead::class,
         Page::TYPE => Page::class,
+        PageReport::TYPE => PageReport::class,
         PageVersion::TYPE => PageVersion::class,
+        Payment::TYPE => Payment::class,
+        PaymentReminderSequence::TYPE => PaymentReminderSequence::class,
+        PaymentReport::TYPE => PaymentReport::class,
+        PayrollItemReport::TYPE => PayrollItemReport::class,
         Person::TYPE => Person::class,
+        PersonReport::TYPE => PersonReport::class,
         Pipeline::TYPE => Pipeline::class,
         Placeholder::TYPE => Placeholder::class,
         PlaceholderUsage::TYPE => PlaceholderUsage::class,
+        Price::TYPE => Price::class,
+        PriceReport::TYPE => PriceReport::class,
         Project::TYPE => Project::class,
         ProjectPreference::TYPE => ProjectPreference::class,
+        ProjectReport::TYPE => ProjectReport::class,
+        Proposal::TYPE => Proposal::class,
+        ProposalReport::TYPE => ProposalReport::class,
+        Pulse::TYPE => Pulse::class,
+        PurchaseOrder::TYPE => PurchaseOrder::class,
+        RateCard::TYPE => RateCard::class,
+        ReportCategory::TYPE => ReportCategory::class,
         ResourceRequest::TYPE => ResourceRequest::class,
+        ResourceRequestReport::TYPE => ResourceRequestReport::class,
+        RevenueDistribution::TYPE => RevenueDistribution::class,
+        Salary::TYPE => Salary::class,
+        SalaryReport::TYPE => SalaryReport::class,
+        Section::TYPE => Section::class,
+        Service::TYPE => Service::class,
+        ServiceAssignment::TYPE => ServiceAssignment::class,
+        ServiceReport::TYPE => ServiceReport::class,
+        ServiceType::TYPE => ServiceType::class,
+        ServiceTypeAssignment::TYPE => ServiceTypeAssignment::class,
+        SurveyReport::TYPE => SurveyReport::class,
         Tag::TYPE => Tag::class,
         Task::TYPE => Task::class,
         TaskDependency::TYPE => TaskDependency::class,
         TaskList::TYPE => TaskList::class,
+        TaskReport::TYPE => TaskReport::class,
+        TaxRate::TYPE => TaxRate::class,
         TimeEntry::TYPE => TimeEntry::class,
+        TimeEntryReport::TYPE => TimeEntryReport::class,
         TimeEntryVersion::TYPE => TimeEntryVersion::class,
         TimeReport::TYPE => TimeReport::class,
         TimeTrackingPolicy::TYPE => TimeTrackingPolicy::class,
         Timer::TYPE => Timer::class,
         Timesheet::TYPE => Timesheet::class,
+        TimesheetReport::TYPE => TimesheetReport::class,
         Todo::TYPE => Todo::class,
+        Widget::TYPE => Widget::class,
         Workflow::TYPE => Workflow::class,
         WorkflowStatus::TYPE => WorkflowStatus::class,
         'time_reports' => TimeReport::class,

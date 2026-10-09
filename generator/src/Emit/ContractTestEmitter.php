@@ -117,7 +117,7 @@ final class ContractTestEmitter
      */
     private static function schemaOperation(Operation $operation): ?string
     {
-        return ! $operation->bulk && in_array($operation->body, [BodyKind::Attributes, BodyKind::Plain], true) ? $operation->operationId : null;
+        return ! $operation->bulk && in_array($operation->body, [BodyKind::Attributes, BodyKind::Plain, BodyKind::BulkItem], true) ? $operation->operationId : null;
     }
 
     private static function bodyExpectation(Resource $resource, Operation $operation): string
@@ -128,7 +128,7 @@ final class ContractTestEmitter
             return '$request->body() === \'\'';
         }
 
-        $contentType = $operation->bulk ? 'application/vnd.api+json; ext=bulk' : 'application/vnd.api+json';
+        $contentType = $operation->bulk || $operation->body === BodyKind::BulkItem ? 'application/vnd.api+json; ext=bulk' : 'application/vnd.api+json';
 
         return '$request->header(\'Content-Type\') === [' . Literal::string($contentType) . ']'
             . "\n            && json_decode(\$request->body(), true) === " . Literal::export($expected);
@@ -148,6 +148,7 @@ final class ContractTestEmitter
             in_array($operation->kind, [OperationKind::DestroyBulk, OperationKind::ActionBulk], true) => ['data' => [$object('1', []), $object('2', [])]],
             in_array($operation->body, [BodyKind::None, BodyKind::OptionalData], true) => null,
             $operation->body === BodyKind::Plain => $sample,
+            $operation->body === BodyKind::BulkItem => ['data' => [$object(null, $sample)]],
             default => ['data' => $object(self::memberId($resource, $operation), $sample)],
         };
     }

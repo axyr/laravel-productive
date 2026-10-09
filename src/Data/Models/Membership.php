@@ -55,14 +55,14 @@ final readonly class Membership extends Model
         return $this->belongsTo('agent', Model::class);
     }
 
-    public function dashboard(): ?Model
+    public function dashboard(): ?Dashboard
     {
-        return $this->belongsTo('dashboard', Model::class);
+        return $this->belongsTo('dashboard', Dashboard::class);
     }
 
-    public function deal(): ?Model
+    public function deal(): ?Deal
     {
-        return $this->belongsTo('deal', Model::class);
+        return $this->belongsTo('deal', Deal::class);
     }
 
     public function filter(): ?Model

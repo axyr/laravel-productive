@@ -24,7 +24,7 @@ final readonly class InputBuilder
     public function build(array $operation, string $class, bool $allOptional = false): ?Input
     {
         $body = Spec::map($operation['requestBody'] ?? []);
-        [$attributes, $plain] = $this->bodySchema($body);
+        [$attributes, $plain, $bulk] = $this->bodySchema($body);
         $properties = Spec::map($attributes['properties'] ?? []);
 
         if ($properties === []) {
@@ -33,21 +33,24 @@ final readonly class InputBuilder
 
         $required = $allOptional ? [] : Spec::strings($attributes['required'] ?? [], 'Required attributes');
 
-        return new Input($class, self::bodyName($body), self::order($this->reader->attributes($properties, required: $required, model: false), $required), $plain);
+        return new Input($class, self::bodyName($body), self::order($this->reader->attributes($properties, required: $required, model: false), $required), $plain, $bulk);
     }
 
     /**
-     * The schema holding the attributes, and whether it is a plain JSON object rather than JSON:API.
+     * The schema holding the attributes, whether the body is a plain JSON object rather than
+     * JSON:API, and whether it is a bulk document (`data` is a list).
      *
      * @param  array<string, mixed>  $body
-     * @return array{array<string, mixed>, bool}
+     * @return array{array<string, mixed>, bool, bool}
      */
     private function bodySchema(array $body): array
     {
         $root = $this->rootSchema($body);
-        $plain = $root !== [] && ! array_key_exists('data', Spec::map($root['properties'] ?? []));
+        $properties = Spec::map($root['properties'] ?? []);
+        $plain = $root !== [] && ! array_key_exists('data', $properties);
+        $bulk = ($this->spec->resolve($properties['data'] ?? [])['type'] ?? null) === 'array';
 
-        return [$plain ? $root : $this->attributesSchema($root), $plain];
+        return [$plain ? $root : $this->attributesSchema($root), $plain, $bulk];
     }
 
     /**

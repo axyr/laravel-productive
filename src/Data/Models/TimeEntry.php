@@ -230,9 +230,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('deal_subsidiary', Model::class);
     }
 
-    public function invoiceAttribution(): ?Model
+    public function invoiceAttribution(): ?InvoiceAttribution
     {
-        return $this->belongsTo('invoice_attribution', Model::class);
+        return $this->belongsTo('invoice_attribution', InvoiceAttribution::class);
     }
 
     public function lastActor(): ?Person
@@ -260,9 +260,9 @@ final readonly class TimeEntry extends Model
         return $this->belongsTo('rejecter', Person::class);
     }
 
-    public function service(): ?Model
+    public function service(): ?Service
     {
-        return $this->belongsTo('service', Model::class);
+        return $this->belongsTo('service', Service::class);
     }
 
     public function task(): ?Task

@@ -2656,7 +2656,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "deals-copy-copy",
-                    "body": "attributes",
+                    "body": "bulk_item",
                     "input": "CopyDealData",
                     "summary": "Copies a deal"
                 },
@@ -40624,6 +40624,7 @@
             "class": "AcceptProposalData",
             "request_body": "public_proposal_accept",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "responder_name",
@@ -40665,6 +40666,7 @@
             "class": "AppendHtmlPageData",
             "request_body": "page_html_body",
             "plain": true,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "html",
@@ -40679,6 +40681,7 @@
             "class": "AppendMarkdownPageData",
             "request_body": "page_markdown_body",
             "plain": true,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "markdown",
@@ -40693,6 +40696,7 @@
             "class": "ApplyNavigationTabsProjectData",
             "request_body": "project_apply_navigation_tabs",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "template_id",
@@ -40714,6 +40718,7 @@
             "class": "ApplyTemplateAsDocPageData",
             "request_body": "page_apply_template_as_doc",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "template_id",
@@ -40734,6 +40739,7 @@
             "class": "ApplyTemplateAsTargetPageData",
             "request_body": "page_apply_template",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "template_id",
@@ -40748,6 +40754,7 @@
             "class": "ApplyTemplateOnParentPageData",
             "request_body": "page_apply_template",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "template_id",
@@ -40762,6 +40769,7 @@
             "class": "ApproveApprovalStatusData",
             "request_body": "",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "note",
@@ -40774,6 +40782,7 @@
             "class": "ApproveExpenseData",
             "request_body": "expense_approve",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "approver_id",
@@ -40792,6 +40801,7 @@
             "class": "ChangeWorkflowProjectData",
             "request_body": "project_change_workflow",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "workflow_id",
@@ -40814,6 +40824,7 @@
             "class": "ConfirmIdentityProposalData",
             "request_body": "proposal_identity_confirmation",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "token",
@@ -40827,6 +40838,7 @@
             "class": "CopyDealData",
             "request_body": "deal_bulk_copy",
             "plain": false,
+            "bulk": true,
             "attributes": [
                 {
                     "name": "name",
@@ -40938,6 +40950,7 @@
             "class": "CopyExpenseData",
             "request_body": "expense_copy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "service_id",
@@ -40964,6 +40977,7 @@
             "class": "CopyFolderData",
             "request_body": "folder_copy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -40992,6 +41006,7 @@
             "class": "CopyPageData",
             "request_body": "page_copy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "template_id",
@@ -41018,6 +41033,7 @@
             "class": "CopyProjectData",
             "request_body": "project_copy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -41080,6 +41096,7 @@
             "class": "CopyPurchaseOrderData",
             "request_body": "purchase_order_copy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "template_id",
@@ -41101,6 +41118,7 @@
             "class": "CopyTaskData",
             "request_body": "task_copy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "title",
@@ -41168,6 +41186,7 @@
             "class": "CopyTaskListData",
             "request_body": "task_list_copy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -41203,6 +41222,7 @@
             "class": "CreateAgentConfigData",
             "request_body": "agent_config",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "agent_id",
@@ -41240,6 +41260,7 @@
             "class": "CreateAgentData",
             "request_body": "agent",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -41279,6 +41300,7 @@
             "class": "CreateApprovalPolicyAssignmentData",
             "request_body": "approval_policy_assignment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "target_type",
@@ -41292,6 +41314,7 @@
             "class": "CreateApprovalPolicyData",
             "request_body": "approval_policy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "type_id",
@@ -41329,6 +41352,7 @@
             "class": "CreateApprovalWorkflowData",
             "request_body": "approval_workflow",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "approval_policy_id",
@@ -41394,6 +41418,7 @@
             "class": "CreateAttachmentData",
             "request_body": "attachment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -41514,6 +41539,7 @@
             "class": "CreateAutomaticInvoicingRuleData",
             "request_body": "automatic_invoicing_rule",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "budget_id",
@@ -41560,6 +41586,7 @@
             "class": "CreateBankAccountData",
             "request_body": "bank_account",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "bank_address",
@@ -41609,6 +41636,7 @@
             "class": "CreateBillData",
             "request_body": "bill",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "purchase_order_id",
@@ -41647,6 +41675,7 @@
             "class": "CreateBoardData",
             "request_body": "board",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -41679,6 +41708,7 @@
             "class": "CreateBookingData",
             "request_body": "booking",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -41814,6 +41844,7 @@
             "class": "CreateCommentData",
             "request_body": "comment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_ids",
@@ -41911,6 +41942,7 @@
             "class": "CreateCompanyData",
             "request_body": "company",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -42044,6 +42076,7 @@
             "class": "CreateContactEntryData",
             "request_body": "contact_entry",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "type",
@@ -42179,6 +42212,7 @@
             "class": "CreateContractData",
             "request_body": "contract",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "interval_id",
@@ -42230,6 +42264,7 @@
             "class": "CreateCustomDomainData",
             "request_body": "custom_domain",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "allow_user_email",
@@ -42261,6 +42296,7 @@
             "class": "CreateCustomFieldData",
             "request_body": "custom_field",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -42383,6 +42419,7 @@
             "class": "CreateCustomFieldOptionData",
             "request_body": "custom_field_option",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -42416,6 +42453,7 @@
             "class": "CreateCustomFieldSectionData",
             "request_body": "custom_field_section",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -42442,6 +42480,7 @@
             "class": "CreateDashboardData",
             "request_body": "dashboard",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -42468,6 +42507,7 @@
             "class": "CreateDealCostRateData",
             "request_body": "deal_cost_rate",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "currency",
@@ -42499,6 +42539,7 @@
             "class": "CreateDealData",
             "request_body": "deal",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -42871,6 +42912,7 @@
             "class": "CreateDealStatusData",
             "request_body": "deal_status",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -42952,6 +42994,7 @@
             "class": "CreateDiscussionData",
             "request_body": "discussion",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "excerpt",
@@ -42971,6 +43014,7 @@
             "class": "CreateDocumentStyleData",
             "request_body": "document_style",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_ids",
@@ -42996,6 +43040,7 @@
             "class": "CreateDocumentTypeData",
             "request_body": "document_type",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_ids",
@@ -43132,6 +43177,7 @@
             "class": "CreateEinvoiceIdentityData",
             "request_body": "einvoice_identity",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "buyer_reference",
@@ -43184,6 +43230,7 @@
             "class": "CreateEntitlementData",
             "request_body": "entitlement",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "allocated",
@@ -43227,6 +43274,7 @@
             "class": "CreateEventData",
             "request_body": "event",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -43298,6 +43346,7 @@
             "class": "CreateExpenseData",
             "request_body": "expense",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -43434,6 +43483,7 @@
             "class": "CreateExpenseLineItemData",
             "request_body": "expense_line_item_bulk_create",
             "plain": false,
+            "bulk": true,
             "attributes": [
                 {
                     "name": "name",
@@ -43475,6 +43525,7 @@
             "class": "CreateFilterData",
             "request_body": "filter",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "chart_type_id",
@@ -43625,6 +43676,7 @@
             "class": "CreateFolderData",
             "request_body": "folder",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -43658,6 +43710,7 @@
             "class": "CreateHolidayCalendarData",
             "request_body": "holiday_calendar",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -43690,6 +43743,7 @@
             "class": "CreateHolidayData",
             "request_body": "holiday",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -43718,6 +43772,7 @@
             "class": "CreateIntegrationExporterConfigurationData",
             "request_body": "integration_exporter_configuration",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_id",
@@ -43754,6 +43809,7 @@
             "class": "CreateIntegrationTaskManagementConfigurationData",
             "request_body": "integration_task_management_configuration",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "integration_id",
@@ -43809,6 +43865,7 @@
             "class": "CreateInvitationData",
             "request_body": "invitation",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "first_name",
@@ -43840,6 +43897,7 @@
             "class": "CreateInvoiceAttributionData",
             "request_body": "invoice_attribution",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "invoice_id",
@@ -43880,6 +43938,7 @@
             "class": "CreateInvoiceData",
             "request_body": "invoice",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_id",
@@ -44097,6 +44156,7 @@
             "class": "CreateInvoiceTemplateData",
             "request_body": "invoice_template",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "bank_account_details",
@@ -44158,6 +44218,7 @@
             "class": "CreateJobRoleData",
             "request_body": "job_role",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -44171,6 +44232,7 @@
             "class": "CreateLineItemData",
             "request_body": "line_item",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "invoice_id",
@@ -44270,6 +44332,7 @@
             "class": "CreateLostReasonData",
             "request_body": "lost_reason",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -44284,6 +44347,7 @@
             "class": "CreateMembershipData",
             "request_body": "membership",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "agent_id",
@@ -44345,6 +44409,7 @@
             "class": "CreatePageVersionData",
             "request_body": "page_version",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -44370,6 +44435,7 @@
             "class": "CreatePasswordData",
             "request_body": "password",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "password",
@@ -44389,6 +44455,7 @@
             "class": "CreatePaymentData",
             "request_body": "payment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "invoice_id",
@@ -44428,6 +44495,7 @@
             "class": "CreatePaymentReminderSequenceData",
             "request_body": "payment_reminder_sequence",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "default_sequence",
@@ -44447,6 +44515,7 @@
             "class": "CreatePersonData",
             "request_body": "person",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_id",
@@ -44652,6 +44721,7 @@
             "class": "CreatePipelineData",
             "request_body": "pipeline",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -44688,6 +44758,7 @@
             "class": "CreatePlaceholderData",
             "request_body": "placeholder",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "category",
@@ -44744,6 +44815,7 @@
             "class": "CreatePlaceholderUsageData",
             "request_body": "placeholder_usage",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "field",
@@ -44823,6 +44895,7 @@
             "class": "CreatePriceData",
             "request_body": "price",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -44961,6 +45034,7 @@
             "class": "CreateProjectData",
             "request_body": "project",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45053,6 +45127,7 @@
             "class": "CreateProjectPreferenceData",
             "request_body": "project_preference",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -45102,6 +45177,7 @@
             "class": "CreatePulseData",
             "request_body": "pulse",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "document_format_id",
@@ -45230,6 +45306,7 @@
             "class": "CreatePurchaseOrderData",
             "request_body": "purchase_order",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "currency",
@@ -45315,6 +45392,7 @@
             "class": "CreateRateCardData",
             "request_body": "rate_card",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45336,6 +45414,7 @@
             "class": "CreateReportCategoryData",
             "request_body": "report_category",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45362,6 +45441,7 @@
             "class": "CreateRoleData",
             "request_body": "role",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45420,6 +45500,7 @@
             "class": "CreateSalaryData",
             "request_body": "salary",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -45498,6 +45579,7 @@
             "class": "CreateSectionData",
             "request_body": "section",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "deal_id",
@@ -45536,6 +45618,7 @@
             "class": "CreateServiceAssignmentData",
             "request_body": "service_assignment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "service_id",
@@ -45557,6 +45640,7 @@
             "class": "CreateServiceData",
             "request_body": "service",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45716,6 +45800,7 @@
             "class": "CreateServiceTypeAssignmentData",
             "request_body": "service_type_assignment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "service_type_id",
@@ -45737,6 +45822,7 @@
             "class": "CreateServiceTypeData",
             "request_body": "service_type",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45751,6 +45837,7 @@
             "class": "CreateSessionData",
             "request_body": "session",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "app_version",
@@ -45824,6 +45911,7 @@
             "class": "CreateSkillData",
             "request_body": "skill",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45859,6 +45947,7 @@
             "class": "CreateSubsidiaryData",
             "request_body": "subsidiary",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -45933,6 +46022,7 @@
             "class": "CreateSurveyData",
             "request_body": "survey",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "title",
@@ -45966,6 +46056,7 @@
             "class": "CreateSurveyFieldData",
             "request_body": "survey_field",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "data_type_id",
@@ -46045,6 +46136,7 @@
             "class": "CreateSurveyFieldOptionData",
             "request_body": "survey_field_option",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "color_id",
@@ -46076,6 +46168,7 @@
             "class": "CreateSurveyResponseData",
             "request_body": "survey_response",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "custom_fields",
@@ -46101,6 +46194,7 @@
             "class": "CreateTaskData",
             "request_body": "task",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "title",
@@ -46272,6 +46366,7 @@
             "class": "CreateTaskDependencyData",
             "request_body": "task_dependency",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "dependent_task_id",
@@ -46305,6 +46400,7 @@
             "class": "CreateTaskListData",
             "request_body": "task_list",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -46339,6 +46435,7 @@
             "class": "CreateTaxRateData",
             "request_body": "tax_rate",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -46384,6 +46481,7 @@
             "class": "CreateTeamData",
             "request_body": "team",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -46410,6 +46508,7 @@
             "class": "CreateTeamMembershipData",
             "request_body": "team_membership",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -46431,6 +46530,7 @@
             "class": "CreateTemplateData",
             "request_body": "template",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "copy_attributes",
@@ -46482,6 +46582,7 @@
             "class": "CreateTimeEntryData",
             "request_body": "time_entry",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "service_id",
@@ -46583,6 +46684,7 @@
             "class": "CreateTimeTrackingPolicyData",
             "request_body": "time_tracking_policy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "disabled_tracking_message",
@@ -46650,6 +46752,7 @@
             "class": "CreateTimerData",
             "request_body": "timer",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -46681,6 +46784,7 @@
             "class": "CreateTimesheetData",
             "request_body": "timesheet",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "date",
@@ -46700,6 +46804,7 @@
             "class": "CreateTodoData",
             "request_body": "todo",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "description",
@@ -46750,6 +46855,7 @@
             "class": "CreateWebhookData",
             "request_body": "webhook",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "event_id",
@@ -46831,6 +46937,7 @@
             "class": "CreateWidgetData",
             "request_body": "widget",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "height",
@@ -46920,6 +47027,7 @@
             "class": "CreateWithMarkdownPageData",
             "request_body": "page_create_with_markdown",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "markdown",
@@ -46994,6 +47102,7 @@
             "class": "CreateWorkflowData",
             "request_body": "workflow",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -47008,6 +47117,7 @@
             "class": "CreateWorkflowStatusData",
             "request_body": "workflow_status",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -47053,6 +47163,7 @@
             "class": "ExportExpenseData",
             "request_body": "expense_export",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "account_reference_id",
@@ -47076,6 +47187,7 @@
             "class": "ExportPurchaseOrderData",
             "request_body": "purchase_order_export",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_reference_id",
@@ -47095,6 +47207,7 @@
             "class": "ExportUpdatePurchaseOrderData",
             "request_body": "purchase_order_export",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_reference_id",
@@ -47114,6 +47227,7 @@
             "class": "MoveDependentTaskData",
             "request_body": "task_move_dependent",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "days_count",
@@ -47134,6 +47248,7 @@
             "class": "MoveFolderData",
             "request_body": "folder_move",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "project_id",
@@ -47155,6 +47270,7 @@
             "class": "MovePageData",
             "request_body": "page_move",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "target_doc_id",
@@ -47169,6 +47285,7 @@
             "class": "MoveTaskListData",
             "request_body": "task_list_move",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "folder_id",
@@ -47190,6 +47307,7 @@
             "class": "RejectApprovalStatusData",
             "request_body": "",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "note",
@@ -47202,6 +47320,7 @@
             "class": "RejectExpenseData",
             "request_body": "expense_reject",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "approver_id",
@@ -47226,6 +47345,7 @@
             "class": "ReplaceBodyWithHtmlPageData",
             "request_body": "page_html_body",
             "plain": true,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "html",
@@ -47240,6 +47360,7 @@
             "class": "ReplaceBodyWithMarkdownPageData",
             "request_body": "page_markdown_body",
             "plain": true,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "markdown",
@@ -47254,6 +47375,7 @@
             "class": "RepositionFolderData",
             "request_body": "folder_reposition",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "move_after_id",
@@ -47273,6 +47395,7 @@
             "class": "RepositionTaskData",
             "request_body": "task_reposition",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "move_after_id",
@@ -47298,6 +47421,7 @@
             "class": "RepositionTaskListData",
             "request_body": "task_list_reposition",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "move_after_id",
@@ -47317,6 +47441,7 @@
             "class": "SendEinvoiceInvoiceData",
             "request_body": "send_einvoice",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "business_process",
@@ -47340,6 +47465,7 @@
             "class": "SendPurchaseOrderData",
             "request_body": "purchase_order_send",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "to",
@@ -47396,6 +47522,7 @@
             "class": "UnrejectExpenseData",
             "request_body": "expense_unreject",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "approver_id",
@@ -47414,6 +47541,7 @@
             "class": "UpdateAgentConfigData",
             "request_body": "agent_config_update",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "ai_model",
@@ -47444,6 +47572,7 @@
             "class": "UpdateAgentData",
             "request_body": "agent",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "avatar_url",
@@ -47481,6 +47610,7 @@
             "class": "UpdateAgentRoleData",
             "request_body": "agent_role",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "permissions",
@@ -47494,6 +47624,7 @@
             "class": "UpdateApprovalPolicyAssignmentData",
             "request_body": "approval_policy_assignment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "target_type",
@@ -47507,6 +47638,7 @@
             "class": "UpdateApprovalPolicyData",
             "request_body": "approval_policy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "custom",
@@ -47543,6 +47675,7 @@
             "class": "UpdateApprovalWorkflowData",
             "request_body": "approval_workflow",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "approval_policy_id",
@@ -47608,6 +47741,7 @@
             "class": "UpdateAttachmentData",
             "request_body": "attachment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachable_type",
@@ -47727,6 +47861,7 @@
             "class": "UpdateAutomaticInvoicingRuleData",
             "request_body": "automatic_invoicing_rule",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "budget_id",
@@ -47773,6 +47908,7 @@
             "class": "UpdateBankAccountData",
             "request_body": "bank_account",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "bank_address",
@@ -47822,6 +47958,7 @@
             "class": "UpdateBillData",
             "request_body": "bill",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_id",
@@ -47859,6 +47996,7 @@
             "class": "UpdateBoardData",
             "request_body": "board",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "hidden",
@@ -47890,6 +48028,7 @@
             "class": "UpdateBookingData",
             "request_body": "booking",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "approver_id",
@@ -48022,6 +48161,7 @@
             "class": "UpdateCommentData",
             "request_body": "comment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_ids",
@@ -48119,6 +48259,7 @@
             "class": "UpdateCompanyData",
             "request_body": "company",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "avatar_url",
@@ -48251,6 +48392,7 @@
             "class": "UpdateContactEntryData",
             "request_body": "contact_entry",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "address",
@@ -48384,6 +48526,7 @@
             "class": "UpdateContractData",
             "request_body": "contract",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "copy_expenses",
@@ -48433,6 +48576,7 @@
             "class": "UpdateCustomFieldData",
             "request_body": "custom_field",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "aggregation_type_id",
@@ -48552,6 +48696,7 @@
             "class": "UpdateCustomFieldOptionData",
             "request_body": "custom_field_option",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "color_id",
@@ -48583,6 +48728,7 @@
             "class": "UpdateCustomFieldSectionData",
             "request_body": "custom_field_section",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "customizable_type",
@@ -48608,6 +48754,7 @@
             "class": "UpdateDashboardData",
             "request_body": "dashboard",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "is_private",
@@ -48633,6 +48780,7 @@
             "class": "UpdateDealCostRateData",
             "request_body": "deal_cost_rate",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "currency",
@@ -48664,6 +48812,7 @@
             "class": "UpdateDealData",
             "request_body": "deal",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "budget",
@@ -49032,6 +49181,7 @@
             "class": "UpdateDealStatusData",
             "request_body": "deal_status",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "booking_tracking_enabled",
@@ -49111,6 +49261,7 @@
             "class": "UpdateDiscussionData",
             "request_body": "discussion",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "excerpt",
@@ -49130,6 +49281,7 @@
             "class": "UpdateDocumentStyleData",
             "request_body": "document_style",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_ids",
@@ -49155,6 +49307,7 @@
             "class": "UpdateDocumentTypeData",
             "request_body": "document_type",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_ids",
@@ -49291,6 +49444,7 @@
             "class": "UpdateEinvoiceIdentityData",
             "request_body": "einvoice_identity",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "buyer_reference",
@@ -49343,6 +49497,7 @@
             "class": "UpdateEntitlementData",
             "request_body": "entitlement",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "allocated",
@@ -49386,6 +49541,7 @@
             "class": "UpdateEventData",
             "request_body": "event",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "absence_type",
@@ -49454,6 +49610,7 @@
             "class": "UpdateExpenseData",
             "request_body": "expense",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "amount",
@@ -49587,6 +49744,7 @@
             "class": "UpdateExpenseLineItemData",
             "request_body": "expense_line_item_bulk_update",
             "plain": false,
+            "bulk": true,
             "attributes": [
                 {
                     "name": "expense_id",
@@ -49624,6 +49782,7 @@
             "class": "UpdateFilterData",
             "request_body": "filter",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "chart_type_id",
@@ -49774,6 +49933,7 @@
             "class": "UpdateFolderData",
             "request_body": "folder",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "hidden",
@@ -49805,6 +49965,7 @@
             "class": "UpdateHolidayCalendarData",
             "request_body": "holiday_calendar",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "autogenerate_holidays",
@@ -49836,6 +49997,7 @@
             "class": "UpdateHolidayData",
             "request_body": "holiday",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "date",
@@ -49861,6 +50023,7 @@
             "class": "UpdateIntegrationExporterConfigurationData",
             "request_body": "integration_exporter_configuration",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_id",
@@ -49897,6 +50060,7 @@
             "class": "UpdateIntegrationTaskManagementConfigurationData",
             "request_body": "integration_task_management_configuration_update",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "default_person_id",
@@ -49935,6 +50099,7 @@
             "class": "UpdateInvitationData",
             "request_body": "invitation",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "first_name",
@@ -49966,6 +50131,7 @@
             "class": "UpdateInvoiceAttributionData",
             "request_body": "invoice_attribution",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "amount",
@@ -50003,6 +50169,7 @@
             "class": "UpdateInvoiceData",
             "request_body": "invoice",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_id",
@@ -50217,6 +50384,7 @@
             "class": "UpdateInvoiceTemplateData",
             "request_body": "invoice_template",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "bank_account_details",
@@ -50278,6 +50446,7 @@
             "class": "UpdateJobRoleData",
             "request_body": "job_role",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -50290,6 +50459,7 @@
             "class": "UpdateLineItemData",
             "request_body": "line_item",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "discount",
@@ -50385,6 +50555,7 @@
             "class": "UpdateLostReasonData",
             "request_body": "lost_reason",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -50398,6 +50569,7 @@
             "class": "UpdateMembershipData",
             "request_body": "membership",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "agent_id",
@@ -50459,6 +50631,7 @@
             "class": "UpdateOrganizationData",
             "request_body": "organization",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "addons",
@@ -50972,6 +51145,7 @@
             "class": "UpdateOrganizationMembershipData",
             "request_body": "organization_membership",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "booking_approvals_filter_id",
@@ -51153,6 +51327,7 @@
             "class": "UpdateOrganizationSubscriptionData",
             "request_body": "organization_subscription",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "billing_address",
@@ -51220,6 +51395,7 @@
             "class": "UpdateOverheadData",
             "request_body": "overhead",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "averaging_period",
@@ -51257,6 +51433,7 @@
             "class": "UpdatePageVersionData",
             "request_body": "page_version",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -51282,6 +51459,7 @@
             "class": "UpdatePasswordData",
             "request_body": "password",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "password",
@@ -51301,6 +51479,7 @@
             "class": "UpdatePaymentData",
             "request_body": "payment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "amount",
@@ -51338,6 +51517,7 @@
             "class": "UpdatePaymentReminderSequenceData",
             "request_body": "payment_reminder_sequence",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "default_sequence",
@@ -51357,6 +51537,7 @@
             "class": "UpdatePersonData",
             "request_body": "person",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "account_id",
@@ -51560,6 +51741,7 @@
             "class": "UpdatePipelineData",
             "request_body": "pipeline",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "icon_id",
@@ -51595,6 +51777,7 @@
             "class": "UpdatePlaceholderData",
             "request_body": "placeholder",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "category",
@@ -51645,6 +51828,7 @@
             "class": "UpdatePlaceholderUsageData",
             "request_body": "placeholder_usage_update",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "interval_direction",
@@ -51698,6 +51882,7 @@
             "class": "UpdatePriceData",
             "request_body": "price",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "billing_type_id",
@@ -51830,6 +52015,7 @@
             "class": "UpdateProjectData",
             "request_body": "project_update",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_id",
@@ -51913,6 +52099,7 @@
             "class": "UpdateProjectPreferenceData",
             "request_body": "project_preference",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -51962,6 +52149,7 @@
             "class": "UpdatePulseData",
             "request_body": "pulse",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "document_format_id",
@@ -52090,6 +52278,7 @@
             "class": "UpdatePurchaseOrderData",
             "request_body": "purchase_order_bulk_update",
             "plain": false,
+            "bulk": true,
             "attributes": [
                 {
                     "name": "attachment_id",
@@ -52173,6 +52362,7 @@
             "class": "UpdateRateCardData",
             "request_body": "rate_card",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "company_id",
@@ -52192,6 +52382,7 @@
             "class": "UpdateReportCategoryData",
             "request_body": "report_category",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "color_id",
@@ -52217,6 +52408,7 @@
             "class": "UpdateRoleData",
             "request_body": "role",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "base_role_id",
@@ -52273,6 +52465,7 @@
             "class": "UpdateSalaryData",
             "request_body": "salary",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "alternating_hours",
@@ -52346,6 +52539,7 @@
             "class": "UpdateSectionData",
             "request_body": "section",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "deal_id",
@@ -52383,6 +52577,7 @@
             "class": "UpdateServiceAssignmentData",
             "request_body": "service_assignment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -52402,6 +52597,7 @@
             "class": "UpdateServiceData",
             "request_body": "service",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "billing_type_id",
@@ -52558,6 +52754,7 @@
             "class": "UpdateServiceTypeAssignmentData",
             "request_body": "service_type_assignment",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "person_id",
@@ -52577,6 +52774,7 @@
             "class": "UpdateServiceTypeData",
             "request_body": "service_type",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -52590,6 +52788,7 @@
             "class": "UpdateSkillData",
             "request_body": "skill",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "auto_load",
@@ -52623,6 +52822,7 @@
             "class": "UpdateSubsidiaryData",
             "request_body": "subsidiary",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "custom_domain_id",
@@ -52696,6 +52896,7 @@
             "class": "UpdateSurveyData",
             "request_body": "survey",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "project_id",
@@ -52727,6 +52928,7 @@
             "class": "UpdateSurveyFieldData",
             "request_body": "survey_field",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "aggregation_type_id",
@@ -52803,6 +53005,7 @@
             "class": "UpdateSurveyFieldOptionData",
             "request_body": "survey_field_option",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "color_id",
@@ -52834,6 +53037,7 @@
             "class": "UpdateTaskData",
             "request_body": "task",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "assignee_id",
@@ -53002,6 +53206,7 @@
             "class": "UpdateTaskDependencyData",
             "request_body": "task_dependency",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "dependent_task_id",
@@ -53032,6 +53237,7 @@
             "class": "UpdateTaskListData",
             "request_body": "task_list",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "folder_id",
@@ -53063,6 +53269,7 @@
             "class": "UpdateTaxRateData",
             "request_body": "tax_rate",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -53106,6 +53313,7 @@
             "class": "UpdateTeamData",
             "request_body": "team",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "color_id",
@@ -53131,6 +53339,7 @@
             "class": "UpdateTemplateData",
             "request_body": "template",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "copy_attributes",
@@ -53182,6 +53391,7 @@
             "class": "UpdateTimeEntryData",
             "request_body": "time_entry",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "billable_time",
@@ -53279,6 +53489,7 @@
             "class": "UpdateTimeTrackingPolicyData",
             "request_body": "time_tracking_policy",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "disabled_tracking_message",
@@ -53346,6 +53557,7 @@
             "class": "UpdateTodoData",
             "request_body": "todo",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "assignee_id",
@@ -53395,6 +53607,7 @@
             "class": "UpdateUserData",
             "request_body": "user",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "account_access_expires_at",
@@ -53475,6 +53688,7 @@
             "class": "UpdateWidgetData",
             "request_body": "widget",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "attachment_ids",
@@ -53560,6 +53774,7 @@
             "class": "UpdateWorkflowData",
             "request_body": "workflow",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "name",
@@ -53573,6 +53788,7 @@
             "class": "UpdateWorkflowStatusData",
             "request_body": "workflow_status",
             "plain": false,
+            "bulk": false,
             "attributes": [
                 {
                     "name": "category_id",

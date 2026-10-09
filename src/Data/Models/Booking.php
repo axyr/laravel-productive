@@ -213,9 +213,9 @@ final readonly class Booking extends Model
         return $this->belongsTo('scenario_item', Model::class);
     }
 
-    public function service(): ?Model
+    public function service(): ?Service
     {
-        return $this->belongsTo('service', Model::class);
+        return $this->belongsTo('service', Service::class);
     }
 
     public function task(): ?Task

@@ -164,6 +164,10 @@ final readonly class ResourceMethod
         $optional = implode(', ', array_filter([...$common, $this->bodyArguments()]));
         $required = implode(', ', [...$common, $this->bodyArguments() === '' ? 'null' : $this->bodyArguments()]);
 
+        if ($this->operation->body === BodyKind::BulkItem) {
+            return [$this->bulkItemWrite(implode(', ', $common))];
+        }
+
         return match ($this->operation->response) {
             ResponseKind::Resource => [$this->modelWrite(implode(', ', $common), $required)],
             ResponseKind::OptionalResource => ['return $this->writeOptional(' . $this->model . '::class, ' . $required . ');'],
@@ -171,6 +175,15 @@ final readonly class ResourceMethod
             ResponseKind::Raw => ['return $this->raw(' . $optional . ');'],
             ResponseKind::Collection => throw new RuntimeException(sprintf('%s: actions returning a collection are not supported yet.', $this->operation->key)),
         };
+    }
+
+    private function bulkItemWrite(string $common): string
+    {
+        if ($this->operation->response !== ResponseKind::OptionalResource) {
+            throw new RuntimeException(sprintf('%s: a bulk-document action must document an optional resource response.', $this->operation->key));
+        }
+
+        return 'return $this->writeAsBulk(' . $this->model . '::class, ' . $common . ', $data);';
     }
 
     private function modelWrite(string $common, string $arguments): string

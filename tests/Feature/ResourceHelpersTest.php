@@ -31,6 +31,11 @@ final class ResourceHelpersTestResource extends Resource
     {
         return $this->raw(Method::Get, $this->path($id, 'signed_pdf'), 'tasks.signed_pdf');
     }
+
+    public function copyAsBulk(array $data): ?Task
+    {
+        return $this->writeAsBulk(Task::class, Method::Post, $this->path('copy'), 'tasks.copy', $data);
+    }
 }
 
 final class ResourceHelpersTestPublicResource extends Resource
@@ -91,4 +96,17 @@ it('leaves out the organization header for public resources', function () {
     expect($request->requiresOrganization)->toBeFalse()
         ->and($request->path)->toBe('public/pages/abc/accept')
         ->and($request->body)->toBe(['data' => ['type' => 'pages', 'id' => 'abc', 'attributes' => ['signed' => true]]]);
+});
+
+it('sends one resource as a bulk document', function () {
+    $connector = new FakeConnector([
+        'tasks.copy' => FakeResponse::sequence(FakeResponse::resource(['type' => 'tasks', 'id' => '9', 'attributes' => ['title' => 'Copy']]), FakeResponse::noContent()),
+    ]);
+    $resource = new ResourceHelpersTestResource($connector);
+
+    expect($resource->copyAsBulk(['template_id' => 5])?->title)->toBe('Copy')
+        ->and($resource->copyAsBulk(['template_id' => 5]))->toBeNull()
+        ->and($connector->recorded()[0]->body)->toBe(['data' => [['type' => 'tasks', 'attributes' => ['template_id' => 5]]]])
+        ->and($connector->recorded()[0]->contentType)->toBe(Axyr\Productive\Http\ContentType::JsonApiBulk)
+        ->and($connector->recorded()[0]->expect)->toBe(Expect::Resource);
 });

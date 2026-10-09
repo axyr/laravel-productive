@@ -93,6 +93,11 @@ it('generates raw, optional, plain and untyped body methods', function () {
         ->and(generated('src/Resources/BoardResource.php'))
         ->toContain('public function copy(array $data = []): ?Board')
         ->toContain("return \$this->writeOptional(Board::class, Method::Post, \$this->path('copy'), 'boards.copy', \$data === [] ? null : \$data);")
+        ->and(generated('src/Resources/DealResource.php'))
+        ->toContain("return \$this->writeAsBulk(Deal::class, Method::Post, \$this->path('copy'), 'deals.copy', \$data);")
+        ->and(generated('tests/Contract/Generated/DealResourceTest.php'))
+        ->toContain("RequestSchema::assertValid('deals-copy-copy'")
+        ->toContain("'application/vnd.api+json; ext=bulk'")
         ->and(generated('src/Resources/InvoiceResource.php'))
         ->toContain("return \$this->fetchOne(Invoice::class, \$this->path(\$id, 'preview'), 'invoices.preview');");
 });

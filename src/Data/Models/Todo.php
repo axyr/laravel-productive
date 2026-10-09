@@ -64,9 +64,9 @@ final readonly class Todo extends Model
         return $this->belongsTo('assignee', Person::class);
     }
 
-    public function deal(): ?Model
+    public function deal(): ?Deal
     {
-        return $this->belongsTo('deal', Model::class);
+        return $this->belongsTo('deal', Deal::class);
     }
 
     public function organization(): ?Model

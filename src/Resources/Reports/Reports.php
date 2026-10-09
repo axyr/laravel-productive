@@ -18,8 +18,133 @@ final readonly class Reports
         private ConnectorInterface $connector,
         private ModelRegistry $registry,
     ) {}
+    public function automationReports(): AutomationReportResource
+    {
+        return new AutomationReportResource($this->connector, $this->registry);
+    }
+
+    public function bookingReports(): BookingReportResource
+    {
+        return new BookingReportResource($this->connector, $this->registry);
+    }
+
+    public function budgetReports(): BudgetReportResource
+    {
+        return new BudgetReportResource($this->connector, $this->registry);
+    }
+
+    public function companyReports(): CompanyReportResource
+    {
+        return new CompanyReportResource($this->connector, $this->registry);
+    }
+
+    public function dealFunnelReports(): DealFunnelReportResource
+    {
+        return new DealFunnelReportResource($this->connector, $this->registry);
+    }
+
+    public function dealReports(): DealReportResource
+    {
+        return new DealReportResource($this->connector, $this->registry);
+    }
+
+    public function entitlementReports(): EntitlementReportResource
+    {
+        return new EntitlementReportResource($this->connector, $this->registry);
+    }
+
+    public function expenseReports(): ExpenseReportResource
+    {
+        return new ExpenseReportResource($this->connector, $this->registry);
+    }
+
+    public function financialItemReports(): FinancialItemReportResource
+    {
+        return new FinancialItemReportResource($this->connector, $this->registry);
+    }
+
+    public function invoiceReports(): InvoiceReportResource
+    {
+        return new InvoiceReportResource($this->connector, $this->registry);
+    }
+
+    public function lineItemReports(): LineItemReportResource
+    {
+        return new LineItemReportResource($this->connector, $this->registry);
+    }
+
+    public function pageReports(): PageReportResource
+    {
+        return new PageReportResource($this->connector, $this->registry);
+    }
+
+    public function paymentReports(): PaymentReportResource
+    {
+        return new PaymentReportResource($this->connector, $this->registry);
+    }
+
+    public function payrollItemReports(): PayrollItemReportResource
+    {
+        return new PayrollItemReportResource($this->connector, $this->registry);
+    }
+
+    public function personReports(): PersonReportResource
+    {
+        return new PersonReportResource($this->connector, $this->registry);
+    }
+
+    public function priceReports(): PriceReportResource
+    {
+        return new PriceReportResource($this->connector, $this->registry);
+    }
+
+    public function projectReports(): ProjectReportResource
+    {
+        return new ProjectReportResource($this->connector, $this->registry);
+    }
+
+    public function proposalReports(): ProposalReportResource
+    {
+        return new ProposalReportResource($this->connector, $this->registry);
+    }
+
+    public function resourceRequestReports(): ResourceRequestReportResource
+    {
+        return new ResourceRequestReportResource($this->connector, $this->registry);
+    }
+
+    public function salaryReports(): SalaryReportResource
+    {
+        return new SalaryReportResource($this->connector, $this->registry);
+    }
+
+    public function serviceReports(): ServiceReportResource
+    {
+        return new ServiceReportResource($this->connector, $this->registry);
+    }
+
+    public function surveyReports(): SurveyReportResource
+    {
+        return new SurveyReportResource($this->connector, $this->registry);
+    }
+
+    public function taskReports(): TaskReportResource
+    {
+        return new TaskReportResource($this->connector, $this->registry);
+    }
+
+    public function timeEntryReports(): TimeEntryReportResource
+    {
+        return new TimeEntryReportResource($this->connector, $this->registry);
+    }
+
     public function timeReports(): TimeReportResource
     {
         return new TimeReportResource($this->connector, $this->registry);
+    }
+
+    public function timesheetReports(): TimesheetReportResource
+    {
+        return new TimesheetReportResource($this->connector, $this->registry);
     }
 }
