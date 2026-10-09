@@ -1,0 +1,56 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Axyr\Productive\Config\ProductiveConfig;
+use Axyr\Productive\Exceptions\RateLimitException;
+use Axyr\Productive\Generator\IrBuilder;
+use Axyr\Productive\Generator\Recording\Recorder;
+use Axyr\Productive\Http\CacheThrottle;
+use Axyr\Productive\Http\Connector;
+use Axyr\Productive\Http\RetryPolicy;
+use Dotenv\Dotenv;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
+use Illuminate\Http\Client\Factory;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$root = dirname(__DIR__, 2);
+Dotenv::createImmutable($root)->safeLoad();
+
+$env = fn(string $key): string => is_string($_ENV[$key] ?? null) ? $_ENV[$key] : '';
+$organization = $env('PRODUCTIVE_ORGANIZATION_ID');
+
+// Never record a real client's organization by mistake: only the one named for recording.
+if ($organization === '' || $organization !== $env('RECORDING_ORGANIZATION_ID')) {
+    fwrite(STDERR, "Refusing to record: PRODUCTIVE_ORGANIZATION_ID must equal RECORDING_ORGANIZATION_ID in .env.\n");
+    exit(1);
+}
+
+// One attempt only: a 429 stops the run instead of being retried or recorded.
+$config = new ProductiveConfig(
+    token: $env('PRODUCTIVE_API_TOKEN'),
+    organizationId: $organization,
+    baseUrl: $env('PRODUCTIVE_BASE_URL') !== '' ? $env('PRODUCTIVE_BASE_URL') : ProductiveConfig::DEFAULT_BASE_URL,
+    maxAttempts: 1,
+);
+$connector = new Connector($config, new Factory(), new CacheThrottle(new Repository(new ArrayStore())), new RetryPolicy(1, 0));
+$api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $root . '/generator/config')->build();
+$recorder = new Recorder($api, $connector, require $root . '/generator/config/undocumented.php');
+
+$directory = $root . '/recordings/' . date('Y-m-d-His');
+mkdir($directory, 0o700, true);
+
+try {
+    foreach ($recorder->record() as $name => $recording) {
+        file_put_contents($directory . '/' . $name . '.json', json_encode($recording, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR) . "\n");
+        echo str_pad((string) $recording['status'], 5) . $name . "\n";
+    }
+} catch (RateLimitException $exception) {
+    fwrite(STDERR, "\nStopped on a 429: " . $exception->getMessage() . "\n");
+    exit(1);
+}
+
+echo "\nRecorded to " . $directory . "\n";
