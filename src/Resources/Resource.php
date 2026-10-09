@@ -20,6 +20,7 @@ use Axyr\Productive\Http\Response;
 use Axyr\Productive\JsonApi\Document;
 use Axyr\Productive\JsonApi\DocumentBuilder;
 use Axyr\Productive\JsonApi\ResourceObject;
+use Axyr\Productive\Pagination\FollowedLinks;
 use Axyr\Productive\Pagination\ModelCollection;
 use Axyr\Productive\Query\Query;
 use Generator;
@@ -301,12 +302,14 @@ abstract class Resource
             return;
         }
 
+        $followed = new FollowedLinks($operation);
+
         while ($page !== null) {
             foreach ($page as $model) {
                 yield $model;
             }
 
-            $page = $this->nextCursorPage($page, $operation);
+            $page = $this->nextCursorPage($page, $operation, $followed);
         }
     }
 
@@ -326,13 +329,15 @@ abstract class Resource
      * @param  ModelCollection<Model>  $page
      * @return ModelCollection<Model>|null
      */
-    private function nextCursorPage(ModelCollection $page, string $operation): ?ModelCollection
+    private function nextCursorPage(ModelCollection $page, string $operation, FollowedLinks $followed): ?ModelCollection
     {
         $next = $page->links()['next'] ?? null;
 
         if (! is_string($next) || $next === '' || $page->isEmpty()) {
             return null;
         }
+
+        $followed->follow($next);
 
         return $this->collect($this->sendRequest(Method::Get, $next, $operation, Expect::Collection));
     }

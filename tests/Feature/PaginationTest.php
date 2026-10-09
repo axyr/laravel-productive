@@ -59,6 +59,30 @@ it('stops when the next link is empty', function () {
     Http::assertSentCount(1);
 });
 
+it('stops with an exception when Productive repeats a next link', function () {
+    $next = apiUrl('tasks?page[after]=c1&page[size]=200');
+    fakeHttp(['*' => Http::sequence()
+        ->push(taskPage(['1'], $next))
+        ->push(taskPage(['2'], $next))
+        ->push(taskPage(['3']))]);
+
+    expect(fn() => Productive::tasks()->query()->all())
+        ->toThrow(InvalidResponseException::class, 'Productive returned the next page link "' . $next . '" twice [tasks.index]; stopping instead of looping.');
+
+    Http::assertSentCount(2);
+});
+
+it('streams page by page instead of fetching everything up front', function () {
+    fakeHttp(['*' => Http::sequence()
+        ->push(taskPage(['1', '2'], apiUrl('tasks?page[after]=c1&page[size]=200')))
+        ->push(taskPage(['3']))]);
+
+    $ids = Productive::tasks()->query()->lazy()->take(2)->map(fn(Task $task): string => $task->id)->all();
+
+    expect($ids)->toBe(['1', '2']);
+    Http::assertSentCount(1);
+});
+
 it('falls back to page numbers when the sort cannot be paginated by cursor', function () {
     fakeHttp(['*' => Http::sequence()
         ->push(['errors' => [['status' => 400, 'title' => 'Bad Request', 'code' => 'keyset_unsupported_sort']]], 400)
