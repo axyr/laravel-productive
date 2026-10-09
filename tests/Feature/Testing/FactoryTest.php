@@ -22,16 +22,19 @@ it('makes models from realistic defaults', function () {
         ->and($row->billableTime)->toBe(14400.0);
 });
 
-it('uses the attributes of Productive\'s own examples as defaults', function (string $factory, string $operationId) {
-    $example = Tests\Support\SpecExamples::response($operationId)['data'];
-    $example = array_is_list($example) ? $example[0] : $example;
+it('uses the attributes of Productive\'s own examples as defaults', function (string $factory) {
+    $model = (new ReflectionClass($factory))->getShortName();
+    $models = array_column(json_decode((string) file_get_contents(dirname(__DIR__, 3) . '/generator/api.json'), true)['models'], null, 'class');
+    $resource = $factory::new()->resource();
+    $hydrated = $factory::new()->make();
 
-    expect($factory::new()->resource()['attributes'])->toBe($example['attributes']);
-})->with([
-    [TaskFactory::class, 'tasks-show'],
-    [TimeEntryFactory::class, 'time_entries-show'],
-    [TimeReportFactory::class, 'reports-time_reports-index'],
-]);
+    expect($resource['attributes'])->toBe(array_diff_key($models[substr($model, 0, -strlen('Factory'))]['example'], ['id' => true, 'type' => true]))
+        ->and($resource['type'])->toBe($hydrated->type)
+        ->and($hydrated->attributes())->toBe($resource['attributes']);
+})->with(fn(): array => array_map(
+    fn(string $file): string => 'Axyr\\Productive\\Testing\\Factories\\' . basename($file, '.php'),
+    array_values(array_filter(glob(dirname(__DIR__, 3) . '/src/Testing/Factories/*Factory.php') ?: [], fn(string $file): bool => basename($file) !== 'Factory.php')),
+));
 
 it('merges consecutive states', function () {
     $resource = TaskFactory::new()->state(['title' => 'A'])->state(['private' => true])->resource();

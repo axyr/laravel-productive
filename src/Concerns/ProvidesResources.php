@@ -6,18 +6,199 @@ declare(strict_types=1);
 
 namespace Axyr\Productive\Concerns;
 
+use Axyr\Productive\Resources\ActivityResource;
+use Axyr\Productive\Resources\AttachmentResource;
+use Axyr\Productive\Resources\BoardResource;
+use Axyr\Productive\Resources\BookingResource;
+use Axyr\Productive\Resources\CommentResource;
+use Axyr\Productive\Resources\CompanyResource;
+use Axyr\Productive\Resources\ContactEntryResource;
+use Axyr\Productive\Resources\DealStatusResource;
+use Axyr\Productive\Resources\DiscussionResource;
+use Axyr\Productive\Resources\EmailResource;
+use Axyr\Productive\Resources\EntitlementResource;
+use Axyr\Productive\Resources\EventResource;
+use Axyr\Productive\Resources\FolderResource;
+use Axyr\Productive\Resources\HolidayCalendarResource;
+use Axyr\Productive\Resources\HolidayResource;
+use Axyr\Productive\Resources\LostReasonResource;
+use Axyr\Productive\Resources\MembershipResource;
+use Axyr\Productive\Resources\PageResource;
+use Axyr\Productive\Resources\PageVersionResource;
+use Axyr\Productive\Resources\PersonResource;
+use Axyr\Productive\Resources\PipelineResource;
+use Axyr\Productive\Resources\PlaceholderResource;
+use Axyr\Productive\Resources\PlaceholderUsageResource;
+use Axyr\Productive\Resources\ProjectPreferenceResource;
+use Axyr\Productive\Resources\ProjectResource;
 use Axyr\Productive\Resources\Reports\Reports;
+use Axyr\Productive\Resources\ResourceRequestResource;
+use Axyr\Productive\Resources\TagResource;
+use Axyr\Productive\Resources\TaskDependencyResource;
+use Axyr\Productive\Resources\TaskListResource;
 use Axyr\Productive\Resources\TaskResource;
 use Axyr\Productive\Resources\TimeEntryResource;
+use Axyr\Productive\Resources\TimeEntryVersionResource;
+use Axyr\Productive\Resources\TimerResource;
+use Axyr\Productive\Resources\TimesheetResource;
+use Axyr\Productive\Resources\TimeTrackingPolicyResource;
+use Axyr\Productive\Resources\TodoResource;
+use Axyr\Productive\Resources\WorkflowResource;
+use Axyr\Productive\Resources\WorkflowStatusResource;
 
 /**
  * Accessors for every generated resource. Used by ProductiveClient.
  */
 trait ProvidesResources
 {
+    public function activities(): ActivityResource
+    {
+        return new ActivityResource($this->connector(), $this->registry);
+    }
+
+    public function attachments(): AttachmentResource
+    {
+        return new AttachmentResource($this->connector(), $this->registry);
+    }
+
+    public function boards(): BoardResource
+    {
+        return new BoardResource($this->connector(), $this->registry);
+    }
+
+    public function bookings(): BookingResource
+    {
+        return new BookingResource($this->connector(), $this->registry);
+    }
+
+    public function comments(): CommentResource
+    {
+        return new CommentResource($this->connector(), $this->registry);
+    }
+
+    public function companies(): CompanyResource
+    {
+        return new CompanyResource($this->connector(), $this->registry);
+    }
+
+    public function contactEntries(): ContactEntryResource
+    {
+        return new ContactEntryResource($this->connector(), $this->registry);
+    }
+
+    public function dealStatuses(): DealStatusResource
+    {
+        return new DealStatusResource($this->connector(), $this->registry);
+    }
+
+    public function discussions(): DiscussionResource
+    {
+        return new DiscussionResource($this->connector(), $this->registry);
+    }
+
+    public function emails(): EmailResource
+    {
+        return new EmailResource($this->connector(), $this->registry);
+    }
+
+    public function entitlements(): EntitlementResource
+    {
+        return new EntitlementResource($this->connector(), $this->registry);
+    }
+
+    public function events(): EventResource
+    {
+        return new EventResource($this->connector(), $this->registry);
+    }
+
+    public function folders(): FolderResource
+    {
+        return new FolderResource($this->connector(), $this->registry);
+    }
+
+    public function holidayCalendars(): HolidayCalendarResource
+    {
+        return new HolidayCalendarResource($this->connector(), $this->registry);
+    }
+
+    public function holidays(): HolidayResource
+    {
+        return new HolidayResource($this->connector(), $this->registry);
+    }
+
+    public function lostReasons(): LostReasonResource
+    {
+        return new LostReasonResource($this->connector(), $this->registry);
+    }
+
+    public function memberships(): MembershipResource
+    {
+        return new MembershipResource($this->connector(), $this->registry);
+    }
+
+    public function pageVersions(): PageVersionResource
+    {
+        return new PageVersionResource($this->connector(), $this->registry);
+    }
+
+    public function pages(): PageResource
+    {
+        return new PageResource($this->connector(), $this->registry);
+    }
+
+    public function people(): PersonResource
+    {
+        return new PersonResource($this->connector(), $this->registry);
+    }
+
+    public function pipelines(): PipelineResource
+    {
+        return new PipelineResource($this->connector(), $this->registry);
+    }
+
+    public function placeholderUsages(): PlaceholderUsageResource
+    {
+        return new PlaceholderUsageResource($this->connector(), $this->registry);
+    }
+
+    public function placeholders(): PlaceholderResource
+    {
+        return new PlaceholderResource($this->connector(), $this->registry);
+    }
+
+    public function projectPreferences(): ProjectPreferenceResource
+    {
+        return new ProjectPreferenceResource($this->connector(), $this->registry);
+    }
+
+    public function projects(): ProjectResource
+    {
+        return new ProjectResource($this->connector(), $this->registry);
+    }
+
     public function reports(): Reports
     {
         return new Reports($this->connector(), $this->registry);
+    }
+
+    public function resourceRequests(): ResourceRequestResource
+    {
+        return new ResourceRequestResource($this->connector(), $this->registry);
+    }
+
+    public function tags(): TagResource
+    {
+        return new TagResource($this->connector(), $this->registry);
+    }
+
+    public function taskDependencies(): TaskDependencyResource
+    {
+        return new TaskDependencyResource($this->connector(), $this->registry);
+    }
+
+    public function taskLists(): TaskListResource
+    {
+        return new TaskListResource($this->connector(), $this->registry);
     }
 
     public function tasks(): TaskResource
@@ -28,5 +209,40 @@ trait ProvidesResources
     public function timeEntries(): TimeEntryResource
     {
         return new TimeEntryResource($this->connector(), $this->registry);
+    }
+
+    public function timeEntryVersions(): TimeEntryVersionResource
+    {
+        return new TimeEntryVersionResource($this->connector(), $this->registry);
+    }
+
+    public function timeTrackingPolicies(): TimeTrackingPolicyResource
+    {
+        return new TimeTrackingPolicyResource($this->connector(), $this->registry);
+    }
+
+    public function timers(): TimerResource
+    {
+        return new TimerResource($this->connector(), $this->registry);
+    }
+
+    public function timesheets(): TimesheetResource
+    {
+        return new TimesheetResource($this->connector(), $this->registry);
+    }
+
+    public function todos(): TodoResource
+    {
+        return new TodoResource($this->connector(), $this->registry);
+    }
+
+    public function workflowStatuses(): WorkflowStatusResource
+    {
+        return new WorkflowStatusResource($this->connector(), $this->registry);
+    }
+
+    public function workflows(): WorkflowResource
+    {
+        return new WorkflowResource($this->connector(), $this->registry);
     }
 }

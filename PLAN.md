@@ -57,6 +57,16 @@ As built, these differ from the original plan:
     - One empty `200` (raw response).
   - Relationship targets: 749 of 849 are typed. The other 100 are polymorphic or unknown and return `Model`.
   - Typed accessors now **throw** on a type mismatch instead of returning null, so a wrong guess can never silently lose data.
+- **Phase 3, done as 3 grouped PRs (2026-10-09):**
+  - **A — work management:** tasks and docs, projects and resource planning, time tracking, CRM.
+  - **B — money:** financials, invoicing, reports, dashboards.
+  - **C — organization:** organization, admin, auth and public endpoints.
+  - **A changes the generator for every domain:**
+    - Actions documented without a body that cannot work without one get `array $data = []`. That covers the copy/generate `POST`s and the collection-level `merge` writes.
+    - Inputs keep `type`/`id` as property names (only models need `$typeValue`).
+    - Object maps record their value type (`array<string, int>`).
+    - Factories drop `id`/`type` attributes, which JSON:API forbids.
+  - Coverage tests now iterate every generated model and factory.
 - **P-08 acceptance, sharpened:** a generator restricted to the three golden tags must reproduce the golden files byte for byte. The golden models only have typed relationship accessors for models that already exist (Task, TimeEntry); others return `Model`. Once every model exists, all accessors are typed.
 - **The prototype emitter rules** (type mapping, naming, ordering, docblocks) are written down in `docs/development.md` → *Adding resources*. The generator must follow them.
 

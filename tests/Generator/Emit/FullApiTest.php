@@ -83,7 +83,7 @@ it('generates raw, optional, plain and untyped body methods', function () {
         ->toContain("return \$this->write(Proposal::class, Method::Post, \$this->path(), 'proposals.create', \$data);")
         ->toContain('public function update(int|string $id, array $data): Proposal')
         ->and(generated('src/Resources/SessionResource.php'))
-        ->toContain("return \$this->raw(Method::Post, \$this->path('machine'), 'sessions.machine');")
+        ->toContain("return \$this->raw(Method::Post, \$this->path('machine'), 'sessions.machine', \$data === [] ? null : \$data);")
         ->and(generated('src/Resources/PageResource.php'))
         ->toContain('public function appendMarkdown(int|string $id, AppendMarkdownPageData|array $data): Page')
         ->toContain("return \$this->writePlain(Page::class, Method::Patch, \$this->path(\$id, 'append_markdown'), 'pages.append_markdown', \$data);")
@@ -91,7 +91,8 @@ it('generates raw, optional, plain and untyped body methods', function () {
         ->toContain('public function copy(CopyExpenseData|array $data): ?Expense')
         ->toContain("return \$this->writeOptional(Expense::class, Method::Post, \$this->path('copy'), 'expenses.copy', \$data);")
         ->and(generated('src/Resources/BoardResource.php'))
-        ->toContain('public function copy(): ?Board')
+        ->toContain('public function copy(array $data = []): ?Board')
+        ->toContain("return \$this->writeOptional(Board::class, Method::Post, \$this->path('copy'), 'boards.copy', \$data === [] ? null : \$data);")
         ->and(generated('src/Resources/InvoiceResource.php'))
         ->toContain("return \$this->fetchOne(Invoice::class, \$this->path(\$id, 'preview'), 'invoices.preview');");
 });

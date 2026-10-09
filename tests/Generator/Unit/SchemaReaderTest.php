@@ -104,3 +104,20 @@ it('records the scalar item type of lists', function () {
         'name' => null,
     ])->and($attributes['weekdays']->toArray()['items'])->toBe('int');
 });
+
+it('records the scalar value type of object maps', function () {
+    $attributes = (new SchemaReader(new Spec([])))->attributes([
+        'map' => ['type' => 'object', 'additionalProperties' => ['type' => 'integer']],
+        'free' => ['type' => 'object'],
+    ]);
+
+    expect($attributes['map']->items)->toBe(AttributeType::Int)
+        ->and($attributes['free']->items)->toBeNull();
+});
+
+it('keeps input property names as they are', function () {
+    $attributes = (new SchemaReader(new Spec([])))->attributes(['type' => [], 'id' => []], model: false);
+
+    expect($attributes['type']->property)->toBe('type')
+        ->and($attributes['id']->property)->toBe('id');
+});

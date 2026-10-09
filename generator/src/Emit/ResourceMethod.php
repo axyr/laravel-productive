@@ -83,6 +83,7 @@ final readonly class ResourceMethod
             $this->operation->kind === OperationKind::UpdateBulk => ['array $updates'],
             in_array($this->operation->kind, [OperationKind::DestroyBulk, OperationKind::ActionBulk], true) => ['array $ids'],
             $this->operation->body === BodyKind::Data => ['array $data'],
+            $this->operation->body === BodyKind::OptionalData => ['array $data = []'],
             $this->operation->input !== null => [$this->operation->input->class . '|array $data'],
             default => [],
         }];
@@ -100,6 +101,7 @@ final readonly class ResourceMethod
             $this->operation->kind === OperationKind::CreateBulk => ['@param  list<' . $input . 'array<string, mixed>>  $entries'],
             $this->operation->kind === OperationKind::UpdateBulk => ['@param  array<int|string, ' . $input . 'array<string, mixed>>  $updates  Keyed by ID.'],
             in_array($this->operation->kind, [OperationKind::DestroyBulk, OperationKind::ActionBulk], true) => ['@param  list<int|string>  $ids'],
+            $this->operation->body === BodyKind::OptionalData => ['@param  array<string, mixed>  $data  Attributes, if the endpoint needs any: the spec documents none. Nothing is sent when empty.'],
             $this->operation->body !== BodyKind::None => ['@param  ' . $input . 'array<string, mixed>  $data'],
             default => [],
         };
@@ -188,11 +190,12 @@ final readonly class ResourceMethod
         }
 
         $member = self::memberParameter($this->resource, $this->operation);
+        $data = $this->operation->body === BodyKind::OptionalData ? '$data === [] ? null : $data' : '$data';
 
         return match ($member) {
-            null => '$data',
-            'id' => '$data, (string) $id',
-            default => '$data, $' . Naming::camel($member),
+            null => $data,
+            'id' => $data . ', (string) $id',
+            default => $data . ', $' . Naming::camel($member),
         };
     }
 

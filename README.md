@@ -115,7 +115,15 @@ Full reference in [docs/](docs/README.md):
 
 ## Endpoint coverage
 
-The SDK is built against Productive's OpenAPI spec, vendored at `resources/openapi/productive.json`: 668 operations across 117 resource groups. Resources are generated from that spec by `composer generate`. This release enables the reference resources: **tasks**, **time entries** (with bulk operations) and the **time report**. The generator already produces valid code for the whole API, and the remaining domains are enabled and reviewed one at a time. See [Development](docs/development.md).
+The SDK is built against Productive's OpenAPI spec, vendored at `resources/openapi/productive.json`: 668 operations across 117 resource groups. Resources are generated from that spec by `composer generate`. Enabled so far:
+
+- **work management:** projects, tasks, task lists, folders/boards, task dependencies, to-dos, workflows and statuses, pages and docs, discussions, comments, attachments
+- **resource planning:** bookings, events, holidays, entitlements, resource requests, placeholders, memberships
+- **time tracking:** time entries (with bulk operations), timers, timesheets, time tracking policies
+- **CRM:** companies, people, contact entries, pipelines, deal statuses, lost reasons, emails, tags
+- **reports:** the time report
+
+The generator already produces valid code for the whole API; the remaining domains (financials, invoicing, reports, organization and administration) are being enabled one group at a time. See [Development](docs/development.md).
 
 ## Quality
 

@@ -33,7 +33,7 @@ final readonly class InputBuilder
 
         $required = $allOptional ? [] : Spec::strings($attributes['required'] ?? [], 'Required attributes');
 
-        return new Input($class, self::bodyName($body), self::order($this->reader->attributes($properties, required: $required), $required), $plain);
+        return new Input($class, self::bodyName($body), self::order($this->reader->attributes($properties, required: $required, model: false), $required), $plain);
     }
 
     /**

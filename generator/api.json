@@ -1178,7 +1178,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "boards-copy-copy",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Copy a board"
                 },
@@ -1785,7 +1785,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "contracts-generate-generate",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Generates new budget"
                 }
@@ -2223,7 +2223,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "dashboards-copy-copy",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Copy a dashboard"
                 }
@@ -2445,7 +2445,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "deal_statuses-merge-merge",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Merges a deal status"
                 }
@@ -2670,7 +2670,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "deals-create_from_origin-create_from_origin",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Creates a budget from origin deal"
                 },
@@ -3012,7 +3012,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "document_styles-copy-copy",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Duplicates a document style"
                 }
@@ -3114,7 +3114,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "document_types-copy-copy",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Duplicates a document type"
                 }
@@ -5328,7 +5328,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "line_items-generate-generate",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Create line items"
                 },
@@ -6829,7 +6829,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "people-merge-merge",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Merge a person"
                 },
@@ -8298,7 +8298,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "rate_cards-copy-copy",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Copy a rate card"
                 },
@@ -11556,7 +11556,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "resource_requests-resolve-resolve",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Resolve a resource request by creating bookings"
                 }
@@ -12216,7 +12216,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "service_types-merge-merge",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Merge a service type"
                 }
@@ -12390,7 +12390,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "sessions-machine-machine",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Create a machine session"
                 },
@@ -12968,7 +12968,7 @@
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "surveys-copy-copy",
-                    "body": "none",
+                    "body": "optional_data",
                     "input": null,
                     "summary": "Copies a survey"
                 }
@@ -40805,7 +40805,8 @@
                     "property": "map",
                     "type": "object",
                     "description": "Mapping from each status ID in the project's current workflow to a status ID in the target workflow. Every status in the current workflow must appear as a key, and each value must be a valid status in the target workflow.",
-                    "required": true
+                    "required": true,
+                    "items": "int"
                 }
             ]
         },
@@ -42046,7 +42047,7 @@
             "attributes": [
                 {
                     "name": "type",
-                    "property": "typeValue",
+                    "property": "type",
                     "type": "string",
                     "description": "The type of this contact entry, indicating the context (e.g. company or person contact).",
                     "required": true
@@ -44728,7 +44729,7 @@
                 },
                 {
                     "name": "type",
-                    "property": "typeValue",
+                    "property": "type",
                     "type": "string",
                     "description": "The type of placeholder, either person or date.",
                     "required": true,
@@ -47145,7 +47146,8 @@
                     "name": "map",
                     "property": "map",
                     "type": "object",
-                    "description": "Workflow status ID mapping, required when the target project uses a different workflow than the source. Keys are source workflow status IDs, values are target workflow status IDs; the map must cover every status in the source workflow."
+                    "description": "Workflow status ID mapping, required when the target project uses a different workflow than the source. Keys are source workflow status IDs, values are target workflow status IDs; the map must cover every status in the source workflow.",
+                    "items": "int"
                 }
             ]
         },
@@ -47179,7 +47181,8 @@
                     "name": "map",
                     "property": "map",
                     "type": "object",
-                    "description": "Workflow status ID mapping, required when the target project uses a different workflow than the source. Keys are source workflow status IDs, values are the target workflow status IDs to remap each task to."
+                    "description": "Workflow status ID mapping, required when the target project uses a different workflow than the source. Keys are source workflow status IDs, values are the target workflow status IDs to remap each task to.",
+                    "items": "int"
                 }
             ]
         },
@@ -48353,7 +48356,7 @@
                 },
                 {
                     "name": "type",
-                    "property": "typeValue",
+                    "property": "type",
                     "type": "string",
                     "description": "The type of this contact entry, indicating the context (e.g. company or person contact)."
                 },
@@ -51628,7 +51631,7 @@
                 },
                 {
                     "name": "type",
-                    "property": "typeValue",
+                    "property": "type",
                     "type": "string",
                     "description": "The type of placeholder, either person or date.",
                     "enum": [

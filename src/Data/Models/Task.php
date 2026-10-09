@@ -214,43 +214,43 @@ final readonly class Task extends Model
         $this->workedTime = $attributes->int('worked_time');
     }
 
-    public function assignee(): ?Model
+    public function assignee(): ?Person
     {
-        return $this->belongsTo('assignee', Model::class);
+        return $this->belongsTo('assignee', Person::class);
     }
 
     /**
-     * @return list<Model>
+     * @return list<Attachment>
      */
     public function attachments(): array
     {
-        return $this->hasMany('attachments', Model::class);
+        return $this->hasMany('attachments', Attachment::class);
     }
 
-    public function creator(): ?Model
+    public function creator(): ?Person
     {
-        return $this->belongsTo('creator', Model::class);
+        return $this->belongsTo('creator', Person::class);
     }
 
     /**
-     * @return list<Model>
+     * @return list<Attachment>
      */
     public function customFieldAttachments(): array
     {
-        return $this->hasMany('custom_field_attachments', Model::class);
+        return $this->hasMany('custom_field_attachments', Attachment::class);
     }
 
     /**
-     * @return list<Model>
+     * @return list<Person>
      */
     public function customFieldPeople(): array
     {
-        return $this->hasMany('custom_field_people', Model::class);
+        return $this->hasMany('custom_field_people', Person::class);
     }
 
-    public function lastActor(): ?Model
+    public function lastActor(): ?Person
     {
-        return $this->belongsTo('last_actor', Model::class);
+        return $this->belongsTo('last_actor', Person::class);
     }
 
     public function organization(): ?Model
@@ -263,9 +263,9 @@ final readonly class Task extends Model
         return $this->belongsTo('parent_task', Task::class);
     }
 
-    public function project(): ?Model
+    public function project(): ?Project
     {
-        return $this->belongsTo('project', Model::class);
+        return $this->belongsTo('project', Project::class);
     }
 
     public function repeatedTask(): ?Task
@@ -278,9 +278,9 @@ final readonly class Task extends Model
         return $this->belongsTo('service', Model::class);
     }
 
-    public function taskList(): ?Model
+    public function taskList(): ?TaskList
     {
-        return $this->belongsTo('task_list', Model::class);
+        return $this->belongsTo('task_list', TaskList::class);
     }
 
     public function templateObject(): ?Model
@@ -288,8 +288,8 @@ final readonly class Task extends Model
         return $this->belongsTo('template_object', Model::class);
     }
 
-    public function workflowStatus(): ?Model
+    public function workflowStatus(): ?WorkflowStatus
     {
-        return $this->belongsTo('workflow_status', Model::class);
+        return $this->belongsTo('workflow_status', WorkflowStatus::class);
     }
 }

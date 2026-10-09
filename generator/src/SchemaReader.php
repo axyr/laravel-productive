@@ -26,9 +26,10 @@ final readonly class SchemaReader
      * @param  array<string, mixed>  $properties
      * @param  array<string, mixed>  $example  Example values, used to type untyped properties and to add undocumented ones.
      * @param  list<string>  $required
+     * @param  bool  $model  Model properties may not shadow Model::$id and Model::$type; input properties may.
      * @return array<string, Attribute>  Keyed by name.
      */
-    public function attributes(array $properties, array $example = [], array $required = []): array
+    public function attributes(array $properties, array $example = [], array $required = [], bool $model = true): array
     {
         $attributes = [];
 
@@ -37,7 +38,7 @@ final readonly class SchemaReader
             $schema = $this->spec->resolve($properties[$name] ?? []);
             $attributes[$name] = new Attribute(
                 name: $name,
-                property: self::property($name),
+                property: $model ? self::property($name) : Naming::camel($name),
                 type: self::type($name, $schema, $example[$name] ?? null),
                 description: $this->description($name, $schema),
                 required: in_array($name, $required, true),
@@ -135,13 +136,18 @@ final readonly class SchemaReader
     }
 
     /**
-     * The scalar item type of an array schema, e.g. integer weekday IDs.
+     * The scalar item type of an array schema (integer weekday IDs), or the scalar value type of
+     * an object schema with additionalProperties (a map of IDs to integers).
      *
      * @param  array<string, mixed>  $schema
      */
     private function items(array $schema): ?AttributeType
     {
-        $items = ($schema['type'] ?? null) === 'array' ? self::schemaType($this->spec->resolve($schema['items'] ?? [])) : null;
+        $items = match ($schema['type'] ?? null) {
+            'array' => self::schemaType($this->spec->resolve($schema['items'] ?? [])),
+            'object' => self::schemaType($this->spec->resolve($schema['additionalProperties'] ?? [])),
+            default => null,
+        };
 
         return in_array($items, [AttributeType::Int, AttributeType::Float, AttributeType::Bool, AttributeType::String], true) ? $items : null;
     }
