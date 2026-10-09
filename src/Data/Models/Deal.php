@@ -550,9 +550,9 @@ final readonly class Deal extends Model
         $this->workedTime = $attributes->int('worked_time');
     }
 
-    public function approvalPolicyAssignment(): ?Model
+    public function approvalPolicyAssignment(): ?ApprovalPolicyAssignment
     {
-        return $this->belongsTo('approval_policy_assignment', Model::class);
+        return $this->belongsTo('approval_policy_assignment', ApprovalPolicyAssignment::class);
     }
 
     public function automaticInvoicingRule(): ?AutomaticInvoicingRule
@@ -619,9 +619,9 @@ final readonly class Deal extends Model
         return $this->belongsTo('document_type', DocumentType::class);
     }
 
-    public function expenseApprovalWorkflow(): ?Model
+    public function expenseApprovalWorkflow(): ?ApprovalWorkflow
     {
-        return $this->belongsTo('expense_approval_workflow', Model::class);
+        return $this->belongsTo('expense_approval_workflow', ApprovalWorkflow::class);
     }
 
     public function import(): ?Model
@@ -644,9 +644,9 @@ final readonly class Deal extends Model
         return $this->belongsTo('next_todo', Todo::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function originDeal(): ?Deal
@@ -679,9 +679,9 @@ final readonly class Deal extends Model
         return $this->belongsTo('responsible', Person::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 
     public function taxRate(): ?TaxRate
@@ -689,13 +689,13 @@ final readonly class Deal extends Model
         return $this->belongsTo('tax_rate', TaxRate::class);
     }
 
-    public function template(): ?Model
+    public function template(): ?Template
     {
-        return $this->belongsTo('template', Model::class);
+        return $this->belongsTo('template', Template::class);
     }
 
-    public function timeApprovalWorkflow(): ?Model
+    public function timeApprovalWorkflow(): ?ApprovalWorkflow
     {
-        return $this->belongsTo('time_approval_workflow', Model::class);
+        return $this->belongsTo('time_approval_workflow', ApprovalWorkflow::class);
     }
 }

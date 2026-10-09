@@ -183,9 +183,9 @@ final readonly class SalaryReport extends Model
         $this->workDays = $attributes->float('work_days');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person

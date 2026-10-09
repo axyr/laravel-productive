@@ -492,9 +492,9 @@ final readonly class ServiceReport extends Model
         return $this->belongsTo('deal_status', DealStatus::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function originDeal(): ?Deal
@@ -552,8 +552,8 @@ final readonly class ServiceReport extends Model
         return $this->belongsTo('service_type', ServiceType::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 }

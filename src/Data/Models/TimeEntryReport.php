@@ -334,9 +334,9 @@ final readonly class TimeEntryReport extends Model
         $this->year = $attributes->string('year');
     }
 
-    public function approvalPolicy(): ?Model
+    public function approvalPolicy(): ?ApprovalPolicy
     {
-        return $this->belongsTo('approval_policy', Model::class);
+        return $this->belongsTo('approval_policy', ApprovalPolicy::class);
     }
 
     public function approver(): ?Person
@@ -379,9 +379,9 @@ final readonly class TimeEntryReport extends Model
         return $this->belongsTo('deal_or_budget_report', Model::class);
     }
 
-    public function dealSubsidiary(): ?Model
+    public function dealSubsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('deal_subsidiary', Model::class);
+        return $this->belongsTo('deal_subsidiary', Subsidiary::class);
     }
 
     public function designatedApprover(): ?Person
@@ -404,9 +404,9 @@ final readonly class TimeEntryReport extends Model
         return $this->belongsTo('last_actor_report', Model::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person
@@ -419,9 +419,9 @@ final readonly class TimeEntryReport extends Model
         return $this->belongsTo('person_report', PersonReport::class);
     }
 
-    public function personSubsidiary(): ?Model
+    public function personSubsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('person_subsidiary', Model::class);
+        return $this->belongsTo('person_subsidiary', Subsidiary::class);
     }
 
     public function project(): ?Project

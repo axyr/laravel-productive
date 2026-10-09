@@ -223,9 +223,9 @@ final readonly class Person extends Model
         $this->virtual = $attributes->bool('virtual');
     }
 
-    public function approvalPolicyAssignment(): ?Model
+    public function approvalPolicyAssignment(): ?ApprovalPolicyAssignment
     {
-        return $this->belongsTo('approval_policy_assignment', Model::class);
+        return $this->belongsTo('approval_policy_assignment', ApprovalPolicyAssignment::class);
     }
 
     public function company(): ?Company
@@ -249,9 +249,9 @@ final readonly class Person extends Model
         return $this->hasMany('custom_field_people', Person::class);
     }
 
-    public function customRole(): ?Model
+    public function customRole(): ?Role
     {
-        return $this->belongsTo('custom_role', Model::class);
+        return $this->belongsTo('custom_role', Role::class);
     }
 
     public function import(): ?Model
@@ -259,9 +259,9 @@ final readonly class Person extends Model
         return $this->belongsTo('import', Model::class);
     }
 
-    public function jobRole(): ?Model
+    public function jobRole(): ?JobRole
     {
-        return $this->belongsTo('job_role', Model::class);
+        return $this->belongsTo('job_role', JobRole::class);
     }
 
     public function manager(): ?Person
@@ -269,9 +269,9 @@ final readonly class Person extends Model
         return $this->belongsTo('manager', Person::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     /**
@@ -282,17 +282,17 @@ final readonly class Person extends Model
         return $this->hasMany('service_types', ServiceType::class);
     }
 
-    public function subsidiary(): ?Model
+    public function subsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('subsidiary', Model::class);
+        return $this->belongsTo('subsidiary', Subsidiary::class);
     }
 
     /**
-     * @return list<Model>
+     * @return list<Team>
      */
     public function teams(): array
     {
-        return $this->hasMany('teams', Model::class);
+        return $this->hasMany('teams', Team::class);
     }
 
     public function timeTrackingPolicy(): ?TimeTrackingPolicy

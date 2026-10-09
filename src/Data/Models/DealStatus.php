@@ -78,9 +78,9 @@ final readonly class DealStatus extends Model
         $this->used = $attributes->bool('used');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function pipeline(): ?Pipeline

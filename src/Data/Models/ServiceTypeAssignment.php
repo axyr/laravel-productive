@@ -22,9 +22,9 @@ final readonly class ServiceTypeAssignment extends Model
 
     protected function hydrate(Attributes $attributes): void {}
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function person(): ?Person

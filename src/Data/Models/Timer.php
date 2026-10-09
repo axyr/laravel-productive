@@ -43,9 +43,9 @@ final readonly class Timer extends Model
         $this->totalTime = $attributes->int('total_time');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function timeEntry(): ?TimeEntry

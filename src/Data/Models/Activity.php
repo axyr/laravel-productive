@@ -159,13 +159,13 @@ final readonly class Activity extends Model
         return $this->belongsTo('email', Email::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
-    public function role(): ?Model
+    public function role(): ?Role
     {
-        return $this->belongsTo('role', Model::class);
+        return $this->belongsTo('role', Role::class);
     }
 }

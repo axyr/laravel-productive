@@ -46,8 +46,8 @@ final readonly class ServiceType extends Model
         return $this->hasMany('assignees', Model::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 }

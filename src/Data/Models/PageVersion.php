@@ -62,9 +62,9 @@ final readonly class PageVersion extends Model
         $this->versionNumber = $attributes->int('version_number');
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function page(): ?Page

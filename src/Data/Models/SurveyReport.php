@@ -76,9 +76,9 @@ final readonly class SurveyReport extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function project(): ?Project
@@ -91,9 +91,9 @@ final readonly class SurveyReport extends Model
         return $this->belongsTo('report', Model::class);
     }
 
-    public function survey(): ?Model
+    public function survey(): ?Survey
     {
-        return $this->belongsTo('survey', Model::class);
+        return $this->belongsTo('survey', Survey::class);
     }
 
     public function updater(): ?Person

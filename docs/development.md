@@ -105,7 +105,7 @@ Generated contract tests call every method with sample arguments. They assert th
 
 ## Adding resources
 
-Tasks, time entries and the time report were written by hand first and are now generated; they are the reference for review. To add a domain, add its resource paths to `generator/config/resources.php`, run `composer generate`, and review the result. Each generated resource consists of:
+Tasks, time entries and the time report were written by hand first and are now generated; they are the reference for review. Every resource in the spec is enabled. When a spec update adds a resource, `ApiTest` fails until its path is added to `generator/config/resources.php`; then run `composer generate` and review the result. Each generated resource consists of:
 
 1. A model in `src/Data/Models`: a typed nullable property per attribute, hydrated in `hydrate()`, plus relationship accessors named after the snake_case relationship.
 2. An input class per request body in `src/Data/Input`: required fields first, optional fields defaulting to `Undefined::Value`, and `toAttributes()` mapping to API names.

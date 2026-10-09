@@ -68,6 +68,9 @@ As built, these differ from the original plan:
     - Factories drop `id`/`type` attributes, which JSON:API forbids.
   - Coverage tests now iterate every generated model and factory.
   - **B** adds a `bulk_item` body kind: `deals.copy` only accepts a bulk document (`data: [...]`, `ext=bulk`) even though it copies one deal.
+  - **C** enables the remaining 40 resources, so every resource in the spec is generated (`ApiTest` fails when a spec update adds one that is not listed).
+    - The `public/*` endpoints (uuid links to shared pages, artifacts and proposals) skip the organization header. The spec marks them unauthenticated; the SDK still requires and sends the token, which only goes to the configured host.
+    - Contract tests now resolve inline request bodies (`approval_statuses` approve/reject) as well as `$ref`s.
 - **P-08 acceptance, sharpened:** a generator restricted to the three golden tags must reproduce the golden files byte for byte. The golden models only have typed relationship accessors for models that already exist (Task, TimeEntry); others return `Model`. Once every model exists, all accessors are typed.
 - **The prototype emitter rules** (type mapping, naming, ordering, docblocks) are written down in `docs/development.md` → *Adding resources*. The generator must follow them.
 

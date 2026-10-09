@@ -151,9 +151,9 @@ final readonly class Price extends Model
         return $this->hasMany('custom_field_people', Person::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function rateCard(): ?RateCard

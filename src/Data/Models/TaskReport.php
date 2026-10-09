@@ -213,9 +213,9 @@ final readonly class TaskReport extends Model
         return $this->belongsTo('last_actor_report', Model::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function parentTask(): ?Task

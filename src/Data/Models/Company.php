@@ -180,9 +180,9 @@ final readonly class Company extends Model
         return $this->belongsTo('default_payment_reminder_sequence', PaymentReminderSequence::class);
     }
 
-    public function defaultSubsidiary(): ?Model
+    public function defaultSubsidiary(): ?Subsidiary
     {
-        return $this->belongsTo('default_subsidiary', Model::class);
+        return $this->belongsTo('default_subsidiary', Subsidiary::class);
     }
 
     public function defaultTaxRate(): ?TaxRate
@@ -200,14 +200,14 @@ final readonly class Company extends Model
         return $this->belongsTo('import', Model::class);
     }
 
-    public function integrationExporterConfiguration(): ?Model
+    public function integrationExporterConfiguration(): ?IntegrationExporterConfiguration
     {
-        return $this->belongsTo('integration_exporter_configuration', Model::class);
+        return $this->belongsTo('integration_exporter_configuration', IntegrationExporterConfiguration::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function parentCompany(): ?Company

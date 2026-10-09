@@ -50,9 +50,9 @@ final readonly class Membership extends Model
         $this->typeId = $attributes->int('type_id');
     }
 
-    public function agent(): ?Model
+    public function agent(): ?Agent
     {
-        return $this->belongsTo('agent', Model::class);
+        return $this->belongsTo('agent', Agent::class);
     }
 
     public function dashboard(): ?Dashboard
@@ -65,14 +65,14 @@ final readonly class Membership extends Model
         return $this->belongsTo('deal', Deal::class);
     }
 
-    public function filter(): ?Model
+    public function filter(): ?Filter
     {
-        return $this->belongsTo('filter', Model::class);
+        return $this->belongsTo('filter', Filter::class);
     }
 
-    public function organization(): ?Model
+    public function organization(): ?Organization
     {
-        return $this->belongsTo('organization', Model::class);
+        return $this->belongsTo('organization', Organization::class);
     }
 
     public function page(): ?Page
@@ -90,13 +90,13 @@ final readonly class Membership extends Model
         return $this->belongsTo('project', Project::class);
     }
 
-    public function survey(): ?Model
+    public function survey(): ?Survey
     {
-        return $this->belongsTo('survey', Model::class);
+        return $this->belongsTo('survey', Survey::class);
     }
 
-    public function team(): ?Model
+    public function team(): ?Team
     {
-        return $this->belongsTo('team', Model::class);
+        return $this->belongsTo('team', Team::class);
     }
 }
