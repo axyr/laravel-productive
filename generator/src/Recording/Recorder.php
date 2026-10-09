@@ -33,12 +33,22 @@ final readonly class Recorder
 
     /**
      * @param  list<string>  $undocumented  Paths outside the spec, probed for their status only.
+     * @param  array<string, string>  $filters  Extra query per index path, e.g. a date range for reports, which are expensive without one.
      */
     public function __construct(
         private Api $api,
         private ConnectorInterface $connector,
         private array $undocumented = [],
+        private array $filters = [],
     ) {}
+
+    /**
+     * Applied to every request on top of Productive's own limits, so a run is paced instead of bursting.
+     */
+    public static function pace(): RateLimit
+    {
+        return new RateLimit('recorder', 1, 1);
+    }
 
     /**
      * @return Generator<string, array<string, mixed>> Recordings by name, e.g. "tasks.index".
@@ -83,7 +93,7 @@ final readonly class Recorder
         }
 
         $limits = $resource->reportRateLimit ? [RateLimit::reports()] : [];
-        $recording = $this->get($index->path, 'page[size]=' . self::PAGE_SIZE, $index->key, $index->requiresOrganization, $limits);
+        $recording = $this->get($index->path, $this->indexQuery($index, self::PAGE_SIZE), $index->key, $index->requiresOrganization, $limits);
 
         yield $index->key => $recording;
 
@@ -121,25 +131,42 @@ final readonly class Recorder
      * @param  list<RateLimit>  $limits
      * @return Generator<string, array<string, mixed>>
      */
-    private function recordIncludes(Operation $index, array $relationships, array $limits): Generator
+    private function recordIncludes(Operation $index, array $relationships, array $limits, bool $complete = true): Generator
     {
         if ($relationships === []) {
             return;
         }
 
-        $query = 'page[size]=' . self::INCLUDE_PAGE_SIZE . '&include=' . implode(',', $relationships);
+        $query = $this->indexQuery($index, self::INCLUDE_PAGE_SIZE) . '&include=' . implode(',', $relationships);
         $recording = $this->get($index->path, $query, $index->key, $index->requiresOrganization, $limits);
 
         if ($recording['status'] !== 400 || count($relationships) === 1) {
-            yield $index->key . '.include.' . $relationships[0] => $recording;
+            yield self::includeName($index, $relationships, $complete) => $recording;
 
             return;
         }
 
         $half = intdiv(count($relationships), 2);
 
-        yield from $this->recordIncludes($index, array_slice($relationships, 0, $half), $limits);
-        yield from $this->recordIncludes($index, array_slice($relationships, $half), $limits);
+        yield from $this->recordIncludes($index, array_slice($relationships, 0, $half), $limits, false);
+        yield from $this->recordIncludes($index, array_slice($relationships, $half), $limits, false);
+    }
+
+    /**
+     * "tasks.index.include" for the full list, "tasks.index.include.project+assignee" for part of it.
+     *
+     * @param  list<string>  $relationships
+     */
+    private static function includeName(Operation $index, array $relationships, bool $complete): string
+    {
+        return $index->key . '.include' . ($complete ? '' : '.' . implode('+', $relationships));
+    }
+
+    private function indexQuery(Operation $index, string $size): string
+    {
+        $filter = $this->filters[$index->path] ?? '';
+
+        return ($filter === '' ? '' : $filter . '&') . 'page[size]=' . $size;
     }
 
     /**
@@ -148,7 +175,7 @@ final readonly class Recorder
      */
     private function get(string $path, string $query, string $operation, bool $requiresOrganization, array $limits): array
     {
-        $request = new Request(Method::Get, $path, $query, operation: $operation, requiresOrganization: $requiresOrganization, rateLimits: $limits);
+        $request = new Request(Method::Get, $path, $query, operation: $operation, requiresOrganization: $requiresOrganization, rateLimits: [...$limits, self::pace()]);
 
         try {
             $response = $this->connector->send($request);

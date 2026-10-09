@@ -75,7 +75,7 @@ it('records the index, the first record and the index with every relationship in
 
     $recordings = iterator_to_array((new Recorder($api, $connector))->record());
 
-    expect(array_keys($recordings))->toBe(['tasks.index', 'tasks.show', 'tasks.index.include.assignee'])
+    expect(array_keys($recordings))->toBe(['tasks.index', 'tasks.show', 'tasks.index.include'])
         ->and($recordings['tasks.index'])->toBe([
             'request' => ['method' => 'GET', 'path' => 'tasks', 'query' => 'page[size]=20'],
             'status' => 200,
@@ -83,7 +83,7 @@ it('records the index, the first record and the index with every relationship in
             'body' => ['data' => [['id' => 7, 'type' => 'tasks']]],
         ])
         ->and($recordings['tasks.show']['request'])->toBe(['method' => 'GET', 'path' => 'tasks/7', 'query' => ''])
-        ->and($recordings['tasks.index.include.assignee']['request']['query'])->toBe('page[size]=5&include=assignee,project')
+        ->and($recordings['tasks.index.include']['request']['query'])->toBe('page[size]=5&include=assignee,project')
         ->and(array_map(fn(Request $request): string => $request->method->value . ' ' . $request->operation, $connector->sent))
         ->toBe(['GET tasks.index', 'GET tasks.show', 'GET tasks.index']);
 });
@@ -99,7 +99,7 @@ it('splits the include list until every relationship that cannot be included is 
 
     expect(array_map(fn(array $recording): string => $recording['status'] . ' ' . $recording['request']['query'], $recordings))->toBe([
         'tasks.index' => '200 page[size]=20',
-        'tasks.index.include.a' => '200 page[size]=5&include=a,b',
+        'tasks.index.include.a+b' => '200 page[size]=5&include=a,b',
         'tasks.index.include.c' => '400 page[size]=5&include=c',
         'tasks.index.include.d' => '200 page[size]=5&include=d',
     ])
@@ -160,7 +160,7 @@ it('records a resource without a show or a model as its index only', function ()
     $recordings = iterator_to_array((new Recorder($api, $connector))->record());
 
     expect(array_keys($recordings))->toBe(['reports.time_reports.index'])
-        ->and($connector->sent[0]->rateLimits)->toEqual([RateLimit::reports()])
+        ->and($connector->sent[0]->rateLimits)->toEqual([RateLimit::reports(), Recorder::pace()])
         ->and($connector->sent[0]->requiresOrganization)->toBeTrue();
 });
 
@@ -171,7 +171,7 @@ it('sends public and organization-less requests as the operation says', function
     iterator_to_array((new Recorder($api, $connector))->record());
 
     expect($connector->sent[0]->requiresOrganization)->toBeFalse()
-        ->and($connector->sent[0]->rateLimits)->toBe([]);
+        ->and($connector->sent[0]->rateLimits)->toEqual([Recorder::pace()]);
 });
 
 it('probes undocumented resources for their status only', function () {
@@ -215,4 +215,24 @@ it('redacts secrets in recorded bodies', function () {
     $recordings = iterator_to_array((new Recorder($api, $connector))->record());
 
     expect($recordings['webhooks.index']['body'])->toBe(['data' => [], 'meta' => ['secret' => '[redacted]']]);
+});
+
+it('paces every request to one per second', function () {
+    expect(Recorder::pace())->toEqual(new RateLimit('recorder', 1, 1));
+});
+
+it('adds the configured filter to the index and include queries of a path', function () {
+    $api = new Api([
+        recordingResource('reports/time_reports', [recordingOperation('reports.time_reports.index', OperationKind::Index, 'reports/time_reports')], 'TimeReport', reports: true),
+        recordingResource('tasks', [recordingOperation('tasks.index', OperationKind::Index, 'tasks')]),
+    ], [recordingModel('TimeReport', ['person'])]);
+    $connector = new RecordingTestConnector(fn(): Response => jsonResponse(200, ['data' => [['id' => '1', 'type' => 'time_reports']]]));
+
+    iterator_to_array((new Recorder($api, $connector, filters: ['reports/time_reports' => 'filter[after]=2026-09-09&filter[before]=2026-10-09']))->record());
+
+    expect(array_column($connector->sent, 'query'))->toBe([
+        'filter[after]=2026-09-09&filter[before]=2026-10-09&page[size]=20',
+        'filter[after]=2026-09-09&filter[before]=2026-10-09&page[size]=5&include=person',
+        'page[size]=20',
+    ]);
 });

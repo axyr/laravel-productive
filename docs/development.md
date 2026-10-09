@@ -124,13 +124,17 @@ Previous: [Architecture](architecture.md)
 
 The spec contradicts its own examples in places. `composer record` records what the real API returns, so the SDK can be checked against it.
 
-- **Read-only.** It sends GET requests only: one page of every index (`page[size]=20`), the first record of each, and the index again with every relationship included (`page[size]=5`). If an include fails with 400, the list is split in halves until each relationship that cannot be included is recorded on its own. Resources the official Ruby client knows but the spec does not (`generator/config/undocumented.php`) get one GET each, recorded with their status only.
+- **Read-only.** It sends GET requests only: one page of every index (`page[size]=20`), the first record of each, and the index again with every relationship included (`page[size]=5`, saved as `<operation>.include`). If an include fails with 400, the list is split in halves until each relationship that cannot be included is recorded on its own (`<operation>.include.<relationship>`). Resources the official Ruby client knows but the spec does not (`generator/config/undocumented.php`) get one GET each, recorded with their status only.
 - **Skipped:**
   - writes, and GET actions such as `integrations/{id}/sync`;
   - `sessions` and `passwords`;
   - the `public/*` uuid links.
-- **Guarded.** It runs only when `PRODUCTIVE_ORGANIZATION_ID` equals `RECORDING_ORGANIZATION_ID` in `.env`, so it cannot record a client's organization by mistake. It stops on the first 429 and never records one.
-- **Local.** Responses are written to `recordings/<date-time>/`, which git ignores. Values under keys that look like secrets (`token`, `secret`, `password`, `api_key`, `signature`) are blanked before anything is written.
+- **Guarded.** It runs only when `PRODUCTIVE_ORGANIZATION_ID` equals `RECORDING_ORGANIZATION_ID` (from `.env` or the environment), so it cannot record a client's organization by mistake. It stops on the first 429 and never records one.
+- **Gentle.**
+  - It sends one request per second, on top of Productive's own limits, so a full run takes about five minutes.
+  - Redirects are refused, so the token never leaves the API host.
+  - The reports that document `filter[after]`/`filter[before]` (`generator/config/recording-date-filters.php`) are limited to the last month.
+- **Local.** Responses are written to `recordings/<date-time>/`, which git ignores. String values under keys that look like secrets (`token`, `secret`, `password`, `api_key`, `signature`) are blanked before anything is written. Metadata such as `token_expires_at` or `api_key_id` is kept.
 
 ```dotenv
 PRODUCTIVE_API_TOKEN=...

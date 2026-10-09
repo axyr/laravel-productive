@@ -20,7 +20,12 @@ require __DIR__ . '/../../vendor/autoload.php';
 $root = dirname(__DIR__, 2);
 Dotenv::createImmutable($root)->safeLoad();
 
-$env = fn(string $key): string => is_string($_ENV[$key] ?? null) ? $_ENV[$key] : '';
+// .env first, then the process environment, so an exported token works too.
+$env = function (string $key): string {
+    $value = $_ENV[$key] ?? getenv($key);
+
+    return is_string($value) ? $value : '';
+};
 $organization = $env('PRODUCTIVE_ORGANIZATION_ID');
 
 // Never record a real client's organization by mistake: only the one named for recording.
@@ -36,9 +41,15 @@ $config = new ProductiveConfig(
     baseUrl: $env('PRODUCTIVE_BASE_URL') !== '' ? $env('PRODUCTIVE_BASE_URL') : ProductiveConfig::DEFAULT_BASE_URL,
     maxAttempts: 1,
 );
-$connector = new Connector($config, new Factory(), new CacheThrottle(new Repository(new ArrayStore())), new RetryPolicy(1, 0));
+// Redirects stay off here as well as in the connector: a redirect would carry X-Auth-Token along.
+$http = (new Factory())->globalOptions(['allow_redirects' => false]);
+$connector = new Connector($config, $http, new CacheThrottle(new Repository(new ArrayStore())), new RetryPolicy(1, 0));
 $api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $root . '/generator/config')->build();
-$recorder = new Recorder($api, $connector, require $root . '/generator/config/undocumented.php');
+
+$lastMonth = sprintf('filter[after]=%s&filter[before]=%s', date('Y-m-d', strtotime('-1 month')), date('Y-m-d'));
+$filters = array_fill_keys(require $root . '/generator/config/recording-date-filters.php', $lastMonth);
+
+$recorder = new Recorder($api, $connector, require $root . '/generator/config/undocumented.php', $filters);
 
 $directory = $root . '/recordings/' . date('Y-m-d-His');
 mkdir($directory, 0o700, true);
