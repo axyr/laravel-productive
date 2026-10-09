@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Axyr\Productive\Config\ProductiveConfig;
 use Axyr\Productive\Contracts\ThrottleInterface;
+use Axyr\Productive\Exceptions\ServerException;
 use Axyr\Productive\Http\CacheThrottle;
 use Axyr\Productive\Http\NullThrottle;
 use Axyr\Productive\ProductiveClient;
@@ -13,6 +14,8 @@ use Axyr\Productive\Resources\Reports\Reports;
 use Axyr\Productive\Resources\TaskResource;
 use Axyr\Productive\Resources\TimeEntryResource;
 use Illuminate\Http\Client\Request as HttpRequest;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 
@@ -82,4 +85,86 @@ it('reuses one connector per client', function () {
 
     expect($client->connector())->toBe($client->connector())
         ->and($client->withOrganization('1')->connector())->not->toBe($client->connector());
+});
+
+it('reads every setting from the environment', function () {
+    $env = [
+        'PRODUCTIVE_API_TOKEN' => 'env-token',
+        'PRODUCTIVE_ORGANIZATION_ID' => '777',
+        'PRODUCTIVE_BASE_URL' => 'https://proxy.example.test/api/v2',
+        'PRODUCTIVE_TIMEOUT' => '7',
+        'PRODUCTIVE_CONNECT_TIMEOUT' => '3',
+        'PRODUCTIVE_RETRY_MAX_ATTEMPTS' => '5',
+        'PRODUCTIVE_RETRY_MAX_RETRY_AFTER' => '9',
+        'PRODUCTIVE_THROTTLE' => 'false',
+        'PRODUCTIVE_THROTTLE_CACHE_STORE' => 'redis',
+        'PRODUCTIVE_FEATURE_FLAGS' => 'a, b',
+    ];
+
+    foreach ($env as $key => $value) {
+        putenv($key . '=' . $value);
+    }
+
+    try {
+        $config = ProductiveConfig::fromArray(require dirname(__DIR__, 2) . '/config/productive.php');
+    } finally {
+        foreach (array_keys($env) as $key) {
+            putenv($key);
+        }
+    }
+
+    expect(get_object_vars($config))->toBe([
+        'token' => 'env-token',
+        'organizationId' => '777',
+        'baseUrl' => 'https://proxy.example.test/api/v2',
+        'timeout' => 7,
+        'connectTimeout' => 3,
+        'maxAttempts' => 5,
+        'maxRetryAfter' => 9,
+        'throttle' => false,
+        'cacheStore' => 'redis',
+        'featureFlags' => ['a', 'b'],
+    ]);
+});
+
+it('gives the connector the configured retry attempts', function () {
+    config()->set('productive.retry.max_attempts', 2);
+    app()->forgetScopedInstances();
+    fakeHttp(['*' => Http::response('', 503)]);
+
+    expect(fn() => Productive::tasks()->find(1))->toThrow(ServerException::class);
+
+    Http::assertSentCount(2);
+});
+
+it('gives the connector the configured timeouts', function () {
+    config()->set('productive.timeout', 7);
+    config()->set('productive.connect_timeout', 3);
+    app()->forgetScopedInstances();
+    $options = [];
+    fakeHttp(['*' => function (HttpRequest $request, array $requestOptions) use (&$options) {
+        $options = $requestOptions;
+
+        return Http::response(null, 204);
+    }]);
+
+    Productive::tasks()->delete(1);
+
+    expect($options['timeout'] ?? null)->toBe(7)
+        ->and($options['connect_timeout'] ?? null)->toBe(3);
+});
+
+it('counts requests in the configured cache store', function () {
+    Carbon::setTestNow('2026-10-09 12:00:05');
+    config()->set('cache.stores.throttle', ['driver' => 'array']);
+    config()->set('productive.throttle.cache_store', 'throttle');
+    app()->forgetScopedInstances();
+    fakeHttp(['*' => Http::response(null, 204)]);
+
+    Productive::tasks()->delete(1);
+
+    $key = sprintf('productive:throttle:%s:token:%d', app(ProductiveConfig::class)->tokenFingerprint(), intdiv(Carbon::now()->getTimestamp(), 10));
+
+    expect(Cache::store('throttle')->get($key))->toBe(1)
+        ->and(Cache::store()->get($key))->toBeNull();
 });

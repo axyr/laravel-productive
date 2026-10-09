@@ -71,6 +71,34 @@ As built, these differ from the original plan:
   - **C** enables the remaining 40 resources, so every resource in the spec is generated (`ApiTest` fails when a spec update adds one that is not listed).
     - The `public/*` endpoints (uuid links to shared pages, artifacts and proposals) skip the organization header. The spec marks them unauthenticated; the SDK still requires and sends the token, which only goes to the configured host.
     - Contract tests now resolve inline request bodies (`approval_statuses` approve/reject) as well as `$ref`s.
+- **Phase 4: verification against the real API (agreed 2026-10-09).**
+  - **Why:** a test audit found that 100% line coverage hid weak checks.
+    - For 134 of 137 models, no test checks hydrated values. 23 attributes always hydrate as `null` because the spec's schemas contradict its own examples.
+    - The generated request checks mostly compare the code with the IR it was generated from.
+    - The generator's mutation score comes mostly from checksum snapshots.
+  - **One PR per step:**
+    1. Security and runtime fixes. Redirects are never followed, because Guzzle forwards `X-Auth-Token`. A repeated next link throws instead of looping. Plus tests for http downgrades, the throttle scope and config wiring.
+    2. A read-only recorder (`composer record`, `record:scrub`):
+       - GET `index`/`show` and the reports, taken from the IR. GET actions such as `integrations/{id}/sync` are skipped.
+       - The include call uses `page[size]=5` and splits a failing include list in halves to isolate the relationships that cannot be included.
+       - It refuses to run unless the organization matches `RECORDING_ORGANIZATION_ID`, stops on the first 429, and never stores a 429.
+       - Secrets are redacted before anything touches disk. Raw recordings stay local in `recordings/raw/`, which is gitignored.
+       - Scrubbed fixtures are committed. IDs are renumbered everywhere: `id`, relationships, `*_id` attributes, `custom_fields` keys, URLs and links.
+       - A leak check covers the values the scrubber replaced, plus the organization ID, the token and the owner's name and email.
+       - It also probes the 17 resources the Ruby client knows but the spec does not, recording only the status code.
+       - The trial organization is seeded first, so the index calls return data.
+    3. Recorded types in the generator.
+       - Rules: `null` and empty lists never override the spec; int vs float widens to float; an override needs a non-null value that the lenient reader cannot read.
+       - `docs/api-differences.md` lists every override.
+       - Tests hydrate every recorded resource and check each value, and every recorded relationship must have an accessor. This fixes the 23 conflicts and the 29 missing relationships.
+    4. Strict request validation: a `data` wrapper and the right `type` are required, unknown keys fail, every input class is validated in full, and the response kind and organization header are recomputed from the raw spec.
+    5. Fake fixes:
+       - The seeded paging loop, public page and artifact defaults, and JSON-encoding recorded bodies.
+       - Seed precedence, recording which organization a request went to, and the vacuous rate-limit test.
+    6. Honest generator tests:
+       - A mutation run without the drift group, with survivors pinned by unit tests.
+       - Tests for the test helpers, and honest names for the "golden" tests.
+    7. Mutation scope, decided from the run data.
 - **P-08 acceptance, sharpened:** a generator restricted to the three golden tags must reproduce the golden files byte for byte. The golden models only have typed relationship accessors for models that already exist (Task, TimeEntry); others return `Model`. Once every model exists, all accessors are typed.
 - **The prototype emitter rules** (type mapping, naming, ordering, docblocks) are written down in `docs/development.md` → *Adding resources*. The generator must follow them.
 
