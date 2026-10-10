@@ -69,7 +69,7 @@ final readonly class ExpenseReport extends Model
     public ?string $group;
 
     /** Invoiced for this expense report group. */
-    public ?int $invoiced;
+    public ?bool $invoiced;
 
     /** Invoicing status for this expense report group. */
     public ?int $invoicingStatus;
@@ -194,7 +194,7 @@ final readonly class ExpenseReport extends Model
         $this->datePeriod = $attributes->mixed('date_period');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
-        $this->invoiced = $attributes->int('invoiced');
+        $this->invoiced = $attributes->bool('invoiced');
         $this->invoicingStatus = $attributes->int('invoicing_status');
         $this->month = $attributes->string('month');
         $this->paidOnPeriod = $attributes->mixed('paid_on_period');

@@ -34,6 +34,9 @@ final readonly class ApprovalPolicy extends Model
     /** Indicates whether this is the default approval policy for its type. */
     public ?bool $default;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $description;
+
     /** The display name of the approval policy. */
     public ?string $name;
 
@@ -48,6 +51,7 @@ final readonly class ApprovalPolicy extends Model
         $this->createdAt = $attributes->dateTime('created_at');
         $this->custom = $attributes->bool('custom');
         $this->default = $attributes->bool('default');
+        $this->description = $attributes->string('description');
         $this->name = $attributes->string('name');
         $this->policyType = $attributes->string('policy_type');
         $this->typeId = $attributes->int('type_id');

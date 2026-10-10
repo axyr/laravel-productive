@@ -1,0 +1,185 @@
+{
+    "data": [
+        {
+            "id": "Text 139",
+            "type": "project_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "project",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "project_status": 1,
+                "project_type": 1,
+                "custom_fields": [],
+                "total_worked_time": 600,
+                "total_estimated_time": 1800,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "average_profit_margin": null,
+                "average_profit_margin_default": null,
+                "average_profit_margin_normalized": null,
+                "total_revenue": 0,
+                "total_revenue_default": 0,
+                "total_revenue_normalized": null,
+                "total_projected_revenue": 0,
+                "total_projected_revenue_default": 0,
+                "total_projected_revenue_normalized": null,
+                "total_cost": 45455,
+                "total_cost_default": 45455,
+                "total_cost_normalized": null,
+                "total_profit": -45455,
+                "total_profit_default": -45455,
+                "total_profit_normalized": null,
+                "total_pending_invoicing": 0,
+                "total_pending_invoicing_default": 0,
+                "total_pending_invoicing_normalized": null,
+                "total_needs_invoicing": 0,
+                "total_needs_invoicing_default": 0,
+                "total_needs_invoicing_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 140",
+            "type": "project_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "project",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "project_status": 1,
+                "project_type": 2,
+                "custom_fields": [],
+                "total_worked_time": 6300,
+                "total_estimated_time": 18060,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "average_profit_margin": "85.8784",
+                "average_profit_margin_default": "85.8784",
+                "average_profit_margin_normalized": null,
+                "total_revenue": 4800000,
+                "total_revenue_default": 4800000,
+                "total_revenue_normalized": null,
+                "total_projected_revenue": 0,
+                "total_projected_revenue_default": 0,
+                "total_projected_revenue_normalized": null,
+                "total_cost": 677837,
+                "total_cost_default": 677837,
+                "total_cost_normalized": null,
+                "total_profit": 4122163,
+                "total_profit_default": 4122163,
+                "total_profit_normalized": null,
+                "total_pending_invoicing": 3400000,
+                "total_pending_invoicing_default": 3400000,
+                "total_pending_invoicing_normalized": null,
+                "total_needs_invoicing": 0,
+                "total_needs_invoicing_default": 0,
+                "total_needs_invoicing_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 139",
+            "type": "project_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "project",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "project_status": 1,
+                "project_type": 1,
+                "custom_fields": [],
+                "total_worked_time": 600,
+                "total_estimated_time": 1800,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "average_profit_margin": null,
+                "average_profit_margin_default": null,
+                "average_profit_margin_normalized": null,
+                "total_revenue": 0,
+                "total_revenue_default": 0,
+                "total_revenue_normalized": null,
+                "total_projected_revenue": 0,
+                "total_projected_revenue_default": 0,
+                "total_projected_revenue_normalized": null,
+                "total_cost": 45455,
+                "total_cost_default": 45455,
+                "total_cost_normalized": null,
+                "total_profit": -45455,
+                "total_profit_default": -45455,
+                "total_profit_normalized": null,
+                "total_pending_invoicing": 0,
+                "total_pending_invoicing_default": 0,
+                "total_pending_invoicing_normalized": null,
+                "total_needs_invoicing": 0,
+                "total_needs_invoicing_default": 0,
+                "total_needs_invoicing_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1058"
+                    }
+                }
+            }
+        }
+    ]
+}

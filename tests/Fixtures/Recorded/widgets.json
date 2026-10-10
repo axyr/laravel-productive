@@ -1,0 +1,112 @@
+{
+    "data": [
+        {
+            "id": "1118",
+            "type": "widgets",
+            "attributes": {
+                "column_position": 0,
+                "content": null,
+                "height": 11,
+                "row_position": 2,
+                "title": null,
+                "widget_type_id": 1119,
+                "width": 13
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "dashboard": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1120",
+            "type": "widgets",
+            "attributes": {
+                "column_position": 0,
+                "content": "Text 190",
+                "height": 2,
+                "row_position": 0,
+                "title": null,
+                "widget_type_id": 1121,
+                "width": 40
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "dashboard": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1118",
+            "type": "widgets",
+            "attributes": {
+                "column_position": 0,
+                "content": null,
+                "height": 11,
+                "row_position": 2,
+                "title": null,
+                "widget_type_id": 1119,
+                "width": 13
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "dashboard": {
+                    "data": {
+                        "type": "dashboards",
+                        "id": "1039"
+                    }
+                },
+                "filter": {
+                    "data": {
+                        "type": "filters",
+                        "id": "Text 67"
+                    }
+                },
+                "attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

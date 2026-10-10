@@ -1,0 +1,51 @@
+{
+    "data": [
+        {
+            "id": "1111",
+            "type": "workflow_statuses",
+            "attributes": {
+                "name": "Text 191",
+                "color_id": "1122",
+                "position": 1,
+                "category_id": 1021
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1111",
+            "type": "workflow_statuses",
+            "attributes": {
+                "name": "Text 191",
+                "color_id": "1122",
+                "position": 1,
+                "category_id": 1021
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "workflow": {
+                    "data": {
+                        "type": "workflows",
+                        "id": "1095"
+                    }
+                }
+            }
+        }
+    ]
+}

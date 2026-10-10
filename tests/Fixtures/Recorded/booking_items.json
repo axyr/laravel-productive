@@ -1,0 +1,26 @@
+{
+    "data": [
+        {
+            "id": "1014",
+            "type": "booking_items",
+            "attributes": {
+                "date": "2026-10-09",
+                "time": 480,
+                "draft": false
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

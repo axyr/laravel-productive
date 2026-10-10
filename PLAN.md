@@ -87,7 +87,11 @@ As built, these differ from the original plan:
        - It also probes the 17 resources the Ruby client knows but the spec does not, recording only the status code.
        - The trial organization is seeded first, so the index calls return data.
        - Committing anything from the recordings (scrubbed fixtures, a leak check) is decided after the first run.
-    3. Recorded types in the generator.
+    3. Recorded types in the generator. **Built (2026-10-10), first recording of 2026-10-09:**
+       - The generator reads only `generator/recorded-types.json` (value kinds, no values). Scrubbed fixtures exist only for `RecordedHydrationTest`.
+       - Result: 30 type overrides, 73 undocumented attributes, 2 undocumented relationships. `boards` is removed, and `board` is gone from task lists and task reports. On the old models the hydration test fails for 38 of 72 types.
+       - Checked before becoming a rule, and left alone: the missing X-RateLimit headers (only 200s were seen; the retry logic is unchanged), money staying int where the spec says integer (number fields keep the float reader), and the 403s on agents and skills (listed as not checked).
+       - Still to do before merging: seed the 58 empty resources, record again, then `record:types`, `record:fixtures` and `generate`.
        - Rules: `null` and empty lists never override the spec; int vs float widens to float; an override needs a non-null value that the lenient reader cannot read.
        - `docs/api-differences.md` lists every override.
        - Tests hydrate every recorded resource and check each value, and every recorded relationship must have an accessor. This fixes the 23 conflicts and the 29 missing relationships.

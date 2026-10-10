@@ -1,0 +1,482 @@
+{
+    "data": [
+        {
+            "id": "Text 120",
+            "type": "payroll_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payroll_item",
+                "count": 10,
+                "formula_fields": [],
+                "payroll_item_id": 1020,
+                "payroll_item_type": "booking",
+                "salary_type_id": 1013,
+                "role_id": 1084,
+                "person_type": 1,
+                "person_status": 1,
+                "start_date": null,
+                "end_date": null,
+                "total_time": 0,
+                "total_time_off_time": 0,
+                "total_scheduled_time": 2880,
+                "total_capacity": 0,
+                "total_availability": -2880,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_time_off_cost": 0,
+                "total_time_off_cost_default": 0,
+                "total_time_off_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "salary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 121",
+            "type": "payroll_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payroll_item",
+                "count": 11,
+                "formula_fields": [],
+                "payroll_item_id": 1085,
+                "payroll_item_type": "booking",
+                "salary_type_id": null,
+                "role_id": 1021,
+                "person_type": 1,
+                "person_status": 1,
+                "start_date": null,
+                "end_date": null,
+                "total_time": 0,
+                "total_time_off_time": 0,
+                "total_scheduled_time": 3360,
+                "total_capacity": 0,
+                "total_availability": -3360,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_time_off_cost": 0,
+                "total_time_off_cost_default": 0,
+                "total_time_off_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "salary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 122",
+            "type": "payroll_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payroll_item",
+                "count": 449,
+                "formula_fields": [],
+                "payroll_item_id": 1078,
+                "payroll_item_type": "salary",
+                "salary_type_id": 1013,
+                "role_id": 1013,
+                "person_type": 1,
+                "person_status": 1,
+                "start_date": "2026-10-09",
+                "end_date": null,
+                "total_time": 0,
+                "total_time_off_time": 0,
+                "total_scheduled_time": 0,
+                "total_capacity": 154080,
+                "total_availability": 154080,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_time_off_cost": 0,
+                "total_time_off_cost_default": 0,
+                "total_time_off_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "salary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 120",
+            "type": "payroll_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payroll_item",
+                "count": 10,
+                "formula_fields": [],
+                "payroll_item_id": 1020,
+                "payroll_item_type": "booking",
+                "salary_type_id": 1013,
+                "role_id": 1084,
+                "person_type": 1,
+                "person_status": 1,
+                "start_date": null,
+                "end_date": null,
+                "total_time": 0,
+                "total_time_off_time": 0,
+                "total_scheduled_time": 2880,
+                "total_capacity": 0,
+                "total_availability": -2880,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_time_off_cost": 0,
+                "total_time_off_cost_default": 0,
+                "total_time_off_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "salary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking": {
+                    "data": {
+                        "type": "bookings",
+                        "id": "1020"
+                    }
+                },
+                "company": {
+                    "data": {
+                        "type": "companies",
+                        "id": "1026"
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 120",
+            "type": "payroll_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payroll_item",
+                "count": 10,
+                "formula_fields": [],
+                "payroll_item_id": 1020,
+                "payroll_item_type": "booking",
+                "salary_type_id": 1013,
+                "role_id": 1084,
+                "person_type": 1,
+                "person_status": 1,
+                "start_date": null,
+                "end_date": null,
+                "total_time": 0,
+                "total_time_off_time": 0,
+                "total_scheduled_time": 2880,
+                "total_capacity": 0,
+                "total_availability": -2880,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_time_off_cost": 0,
+                "total_time_off_cost_default": 0,
+                "total_time_off_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "salary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 120",
+            "type": "payroll_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payroll_item",
+                "count": 10,
+                "formula_fields": [],
+                "payroll_item_id": 1020,
+                "payroll_item_type": "booking",
+                "salary_type_id": 1013,
+                "role_id": 1084,
+                "person_type": 1,
+                "person_status": 1,
+                "start_date": null,
+                "end_date": null,
+                "total_time": 0,
+                "total_time_off_time": 0,
+                "total_scheduled_time": 2880,
+                "total_capacity": 0,
+                "total_availability": -2880,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_time_off_cost": 0,
+                "total_time_off_cost_default": 0,
+                "total_time_off_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "salary": {
+                    "data": null
+                },
+                "time_entry": {
+                    "data": null
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1034"
+                    }
+                }
+            }
+        }
+    ]
+}

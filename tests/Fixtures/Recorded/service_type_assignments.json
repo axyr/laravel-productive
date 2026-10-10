@@ -1,0 +1,50 @@
+{
+    "data": [
+        {
+            "id": "1103",
+            "type": "service_type_assignments",
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1103",
+            "type": "service_type_assignments",
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1009"
+                    }
+                },
+                "service_type": {
+                    "data": {
+                        "type": "service_types",
+                        "id": "1056"
+                    }
+                }
+            }
+        }
+    ]
+}

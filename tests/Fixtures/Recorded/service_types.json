@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "1056",
+            "type": "service_types",
+            "attributes": {
+                "name": "Text 154",
+                "archived_at": null,
+                "deleted_at": null,
+                "description": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

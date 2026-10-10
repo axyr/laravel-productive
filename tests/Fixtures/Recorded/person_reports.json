@@ -1,0 +1,164 @@
+{
+    "data": [
+        {
+            "id": "Text 136",
+            "type": "person_reports",
+            "attributes": {
+                "group": "person",
+                "count": 1,
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "role_id": 1013,
+                "status": 1,
+                "offboarding_status": "not_initiated",
+                "autotracking": false,
+                "shared_seat": false,
+                "type": 1,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "contact_phone": null,
+                "contact_email": null,
+                "contact_website": null,
+                "contact_city": null,
+                "contact_state": null,
+                "contact_country": null,
+                "contact_zipcode": null,
+                "contact_address": null,
+                "created_at_period": null,
+                "joined_at_period": null,
+                "deactivated_at_period": null,
+                "last_activity_at_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 137",
+            "type": "person_reports",
+            "attributes": {
+                "group": "person",
+                "count": 1,
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "role_id": null,
+                "status": 1,
+                "offboarding_status": "not_initiated",
+                "autotracking": false,
+                "shared_seat": false,
+                "type": 2,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "contact_phone": null,
+                "contact_email": null,
+                "contact_website": null,
+                "contact_city": null,
+                "contact_state": null,
+                "contact_country": null,
+                "contact_zipcode": null,
+                "contact_address": null,
+                "created_at_period": null,
+                "joined_at_period": null,
+                "deactivated_at_period": null,
+                "last_activity_at_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 136",
+            "type": "person_reports",
+            "attributes": {
+                "group": "person",
+                "count": 1,
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "role_id": 1013,
+                "status": 1,
+                "offboarding_status": "not_initiated",
+                "autotracking": false,
+                "shared_seat": false,
+                "type": 1,
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "contact_phone": null,
+                "contact_email": null,
+                "contact_website": null,
+                "contact_city": null,
+                "contact_state": null,
+                "contact_country": null,
+                "contact_zipcode": null,
+                "contact_address": null,
+                "created_at_period": null,
+                "joined_at_period": null,
+                "deactivated_at_period": null,
+                "last_activity_at_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "data": [
+        {
+            "id": "1042",
+            "type": "deal_statuses",
+            "attributes": {
+                "name": "Text 47",
+                "position": 1,
+                "color_id": "1043",
+                "archived_at": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "status_id": 1013,
+                "probability_enabled": false,
+                "probability": null,
+                "lost_reason_enabled": false,
+                "used": true
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "pipeline": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1042",
+            "type": "deal_statuses",
+            "attributes": {
+                "name": "Text 47",
+                "position": 1,
+                "color_id": "1043",
+                "archived_at": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "status_id": 1013,
+                "probability_enabled": false,
+                "probability": null,
+                "lost_reason_enabled": false,
+                "used": true
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "pipeline": {
+                    "data": {
+                        "type": "pipelines",
+                        "id": "1041"
+                    }
+                }
+            }
+        }
+    ]
+}

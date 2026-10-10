@@ -1,0 +1,155 @@
+{
+    "data": [
+        {
+            "id": "Text 10",
+            "type": "booking_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "booking",
+                "count": 1,
+                "formula_fields": [],
+                "start_date": "2026-10-09",
+                "end_date": "2026-10-09",
+                "approved_at": "2026-10-09",
+                "created_at": "2026-10-09",
+                "rejected_at": null,
+                "canceled_at": null,
+                "billing_type": 3,
+                "booking_type": "service",
+                "project_type": 1,
+                "approval_status": 1,
+                "stage_type": 2,
+                "absence_type": null,
+                "mandays": 1,
+                "draft": false,
+                "autotracking": false,
+                "average_recognized_margin": null,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "custom_fields": [],
+                "total_recognized_time": 0,
+                "time": 480,
+                "date_period": null,
+                "approved_at_period": null,
+                "created_at_period": null,
+                "rejected_at_period": null,
+                "canceled_at_period": null,
+                "average_blended_rate": 10000,
+                "average_blended_rate_default": 10000,
+                "average_blended_rate_normalized": 10000,
+                "total_recognized_revenue": 0,
+                "total_recognized_revenue_default": 0,
+                "total_recognized_revenue_normalized": 0,
+                "total_cost": 36364,
+                "total_cost_default": 36364,
+                "total_cost_normalized": 36364,
+                "total_base_cost": 36364,
+                "total_base_cost_default": 36364,
+                "total_base_cost_normalized": 36364,
+                "total_recognized_profit": -36364,
+                "total_recognized_profit_default": -36364,
+                "total_recognized_profit_normalized": -36364
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 10",
+            "type": "booking_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "booking",
+                "count": 1,
+                "formula_fields": [],
+                "start_date": "2026-10-09",
+                "end_date": "2026-10-09",
+                "approved_at": "2026-10-09",
+                "created_at": "2026-10-09",
+                "rejected_at": null,
+                "canceled_at": null,
+                "billing_type": 3,
+                "booking_type": "service",
+                "project_type": 1,
+                "approval_status": 1,
+                "stage_type": 2,
+                "absence_type": null,
+                "mandays": 1,
+                "draft": false,
+                "autotracking": false,
+                "average_recognized_margin": null,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "custom_fields": [],
+                "total_recognized_time": 0,
+                "time": 480,
+                "date_period": null,
+                "approved_at_period": null,
+                "created_at_period": null,
+                "rejected_at_period": null,
+                "canceled_at_period": null,
+                "average_blended_rate": 10000,
+                "average_blended_rate_default": 10000,
+                "average_blended_rate_normalized": 10000,
+                "total_recognized_revenue": 0,
+                "total_recognized_revenue_default": 0,
+                "total_recognized_revenue_normalized": 0,
+                "total_cost": 36364,
+                "total_cost_default": 36364,
+                "total_cost_normalized": 36364,
+                "total_base_cost": 36364,
+                "total_base_cost_default": 36364,
+                "total_base_cost_normalized": 36364,
+                "total_recognized_profit": -36364,
+                "total_recognized_profit_default": -36364,
+                "total_recognized_profit_normalized": -36364
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking": {
+                    "data": {
+                        "type": "bookings",
+                        "id": "1020"
+                    }
+                }
+            }
+        }
+    ]
+}

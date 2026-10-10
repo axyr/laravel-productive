@@ -78,7 +78,9 @@
         "generate": "php generator/bin/generate",
         "generate:check": "php generator/bin/generate --check",
         "generate:manifest": "php generator/bin/manifest > generator/full-api.sha1.json",
-        "record": "php generator/bin/record"
+        "record": "php generator/bin/record",
+        "record:types": "php generator/bin/recorded-types",
+        "record:fixtures": "php generator/bin/recorded-fixtures"
     },
     "config": {
         "allow-plugins": {

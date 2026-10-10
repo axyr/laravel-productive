@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "id": "1013",
+            "type": "exchange_rates",
+            "attributes": {
+                "date": "2013-11-13",
+                "out_of_date": false,
+                "rates": [
+                    {
+                        "base": "USD",
+                        "target": "AED",
+                        "rate": 3.673093
+                    },
+                    {
+                        "base": "USD",
+                        "target": "AFN",
+                        "rate": 56.904425
+                    },
+                    {
+                        "base": "USD",
+                        "target": "ALL",
+                        "rate": 104.2781
+                    },
+                    {
+                        "base": "USD",
+                        "target": "AMD",
+                        "rate": 408.71
+                    },
+                    {
+                        "base": "USD",
+                        "target": "ANG",
+                        "rate": 1.789
+                    }
+                ]
+            }
+        }
+    ]
+}

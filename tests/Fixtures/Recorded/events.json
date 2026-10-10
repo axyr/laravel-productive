@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": "1051",
+            "type": "events",
+            "attributes": {
+                "name": "Text 58",
+                "event_type_id": 1013,
+                "icon_id": null,
+                "color_id": "1013",
+                "archived_at": null,
+                "limitation_type_id": 1021,
+                "sync_personal_integrations": true,
+                "half_day_bookings": true,
+                "description": null,
+                "absence_type": "time_off"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,73 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Writes tests/Fixtures/Recorded/<type>.json from a `composer record` run (the latest by default):
+ * per type the few resources that show every recorded kind of value, scrubbed. Nothing is written
+ * when the organization ID, the token, the git user's name or email, or any replaced value remains.
+ */
+
+use Axyr\Productive\Generator\Recording\FixtureSelector;
+use Axyr\Productive\Generator\Recording\LeakCheck;
+use Axyr\Productive\Generator\Recording\Scrubber;
+use Dotenv\Dotenv;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$root = dirname(__DIR__, 2);
+Dotenv::createImmutable($root)->safeLoad();
+$runs = glob($root . '/recordings/*', GLOB_ONLYDIR) ?: [];
+rsort($runs);
+$directory = $argv[1] ?? ($runs[0] ?? null);
+
+if ($directory === null || ! is_dir($directory)) {
+    fwrite(STDERR, "No recordings found: run `composer record` first.\n");
+    exit(1);
+}
+
+$recordings = [];
+
+foreach (glob($directory . '/*.json') ?: [] as $file) {
+    $recordings[basename($file, '.json')] = json_decode((string) file_get_contents($file), true, flags: JSON_THROW_ON_ERROR);
+}
+
+$scrubber = new Scrubber();
+$fixtures = [];
+
+foreach (FixtureSelector::select($recordings) as $type => $resources) {
+    $fixtures[$type] = json_encode(['data' => array_map($scrubber->scrub(...), $resources)], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR) . "\n";
+}
+
+$env = function (string $key): string {
+    $value = $_ENV[$key] ?? getenv($key);
+
+    return is_string($value) ? $value : '';
+};
+$git = fn(string $key): string => trim((string) shell_exec('git -C ' . escapeshellarg($root) . ' config ' . $key));
+$email = $git('user.email');
+$terms = array_filter([
+    'the organization ID' => $env('PRODUCTIVE_ORGANIZATION_ID'),
+    'the API token' => $env('PRODUCTIVE_API_TOKEN'),
+    'the git user name' => $git('user.name'),
+    'the git user email' => $email,
+    'the git email name' => explode('@', $email)[0],
+], fn(string $value): bool => $value !== '');
+
+$leaks = LeakCheck::leaks(implode("\n", $fixtures), $terms, $scrubber->replaced());
+
+if ($leaks !== []) {
+    fwrite(STDERR, 'Refusing to write fixtures: the scrubbed output still contains ' . implode(', ', array_unique($leaks)) . ".\n");
+    exit(1);
+}
+
+$target = $root . '/tests/Fixtures/Recorded';
+is_dir($target) || mkdir($target, 0o755, true);
+array_map(unlink(...), glob($target . '/*.json') ?: []);
+
+foreach ($fixtures as $type => $json) {
+    file_put_contents($target . '/' . $type . '.json', $json);
+}
+
+echo 'Wrote ' . count($fixtures) . ' scrubbed fixtures to tests/Fixtures/Recorded (' . count($scrubber->replaced()) . " values replaced).\n";

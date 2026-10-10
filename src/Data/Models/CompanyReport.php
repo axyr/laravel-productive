@@ -87,7 +87,7 @@ final readonly class CompanyReport extends Model
     /** Payment terms in days — number of days after invoice issue that payment is due. */
     public ?int $paymentTerms;
 
-    public ?int $paymentTermsType;
+    public ?string $paymentTermsType;
 
     public ?string $payments;
 
@@ -130,7 +130,7 @@ final readonly class CompanyReport extends Model
         $this->month = $attributes->string('month');
         $this->outstanding = $attributes->string('outstanding');
         $this->paymentTerms = $attributes->int('payment_terms');
-        $this->paymentTermsType = $attributes->int('payment_terms_type');
+        $this->paymentTermsType = $attributes->string('payment_terms_type');
         $this->payments = $attributes->string('payments');
         $this->quarter = $attributes->string('quarter');
         $this->revenue = $attributes->string('revenue');

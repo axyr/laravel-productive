@@ -1,0 +1,463 @@
+{
+    "data": [
+        {
+            "id": "1068",
+            "type": "invoices",
+            "attributes": {
+                "number": "Text 86",
+                "subject": "Text 87",
+                "invoiced_on": "2026-07-09",
+                "sent_on": "2026-06-09",
+                "pay_on": "2026-08-09",
+                "delivery_on": null,
+                "paid_on": null,
+                "finalized_on": "2026-06-09",
+                "finalized_at": null,
+                "discount": null,
+                "tax1_name": "Text 88",
+                "tax1_value": "10.0",
+                "tax2_name": null,
+                "tax2_value": null,
+                "deleted_at": null,
+                "tag_list": [],
+                "note": "",
+                "footer": null,
+                "exported": false,
+                "exported_at": null,
+                "export_integration_type_id": null,
+                "export_id": null,
+                "export_invoice_url": null,
+                "company_reference_id": null,
+                "note_interpolated": "",
+                "footer_interpolated": null,
+                "email_key": "Text 89",
+                "purchase_order_number": null,
+                "created_at": "2026-10-09T13:02:40.142+02:00",
+                "exchange_rate": "1.0",
+                "exchange_date": "2026-07-09",
+                "custom_fields": null,
+                "updated_at": "2026-10-09T13:02:40.698+02:00",
+                "sample_data": true,
+                "payment_terms_type": null,
+                "payment_terms_days": null,
+                "invoice_type_id": 1013,
+                "credited": false,
+                "line_item_tax": false,
+                "last_activity_at": "2026-10-09T13:02:40.144+02:00",
+                "creation_options": [],
+                "payment_terms": 31,
+                "bank_account_details": null,
+                "invoice_template_id": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 3750000,
+                "amount_default": 3750000,
+                "amount_normalized": 3750000,
+                "amount_tax": 0,
+                "amount_tax_default": 0,
+                "amount_tax_normalized": 0,
+                "amount_with_tax": 3750000,
+                "amount_with_tax_default": 3750000,
+                "amount_with_tax_normalized": 3750000,
+                "amount_paid": 0,
+                "amount_paid_default": 0,
+                "amount_paid_normalized": 0,
+                "amount_written_off": 0,
+                "amount_written_off_default": 0,
+                "amount_written_off_normalized": 0,
+                "amount_unpaid": 3750000,
+                "amount_unpaid_default": 3750000,
+                "amount_unpaid_normalized": 3750000,
+                "amount_credited": 0,
+                "amount_credited_default": 0,
+                "amount_credited_normalized": 0,
+                "amount_credited_with_tax": 0,
+                "amount_credited_with_tax_default": 0,
+                "amount_credited_with_tax_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "bill_to": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bill_from": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "parent_invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "issuer": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bank_account": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_attributions": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoiced_budgets": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachment": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1069",
+            "type": "invoices",
+            "attributes": {
+                "number": "Text 90",
+                "subject": "Text 91",
+                "invoiced_on": "2026-08-09",
+                "sent_on": null,
+                "pay_on": "2026-09-09",
+                "delivery_on": null,
+                "paid_on": null,
+                "finalized_on": null,
+                "finalized_at": null,
+                "discount": null,
+                "tax1_name": "Text 88",
+                "tax1_value": "10.0",
+                "tax2_name": null,
+                "tax2_value": null,
+                "deleted_at": null,
+                "tag_list": [],
+                "note": "",
+                "footer": null,
+                "exported": false,
+                "exported_at": null,
+                "export_integration_type_id": null,
+                "export_id": null,
+                "export_invoice_url": null,
+                "company_reference_id": null,
+                "note_interpolated": "",
+                "footer_interpolated": null,
+                "email_key": "Text 92",
+                "purchase_order_number": null,
+                "created_at": "2026-10-09T13:02:40.196+02:00",
+                "exchange_rate": "1.0",
+                "exchange_date": "2026-08-09",
+                "custom_fields": null,
+                "updated_at": "2026-10-09T13:02:40.796+02:00",
+                "sample_data": true,
+                "payment_terms_type": null,
+                "payment_terms_days": null,
+                "invoice_type_id": 1013,
+                "credited": false,
+                "line_item_tax": false,
+                "last_activity_at": "2026-10-09T13:02:40.197+02:00",
+                "creation_options": [],
+                "payment_terms": 31,
+                "bank_account_details": null,
+                "invoice_template_id": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 500000,
+                "amount_default": 500000,
+                "amount_normalized": 500000,
+                "amount_tax": 0,
+                "amount_tax_default": 0,
+                "amount_tax_normalized": 0,
+                "amount_with_tax": 500000,
+                "amount_with_tax_default": 500000,
+                "amount_with_tax_normalized": 500000,
+                "amount_paid": 0,
+                "amount_paid_default": 0,
+                "amount_paid_normalized": 0,
+                "amount_written_off": 0,
+                "amount_written_off_default": 0,
+                "amount_written_off_normalized": 0,
+                "amount_unpaid": 500000,
+                "amount_unpaid_default": 500000,
+                "amount_unpaid_normalized": 500000,
+                "amount_credited": 0,
+                "amount_credited_default": 0,
+                "amount_credited_normalized": 0,
+                "amount_credited_with_tax": 0,
+                "amount_credited_with_tax_default": 0,
+                "amount_credited_with_tax_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "bill_to": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bill_from": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "parent_invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "issuer": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bank_account": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_attributions": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoiced_budgets": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachment": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1068",
+            "type": "invoices",
+            "attributes": {
+                "number": "Text 86",
+                "subject": "Text 87",
+                "invoiced_on": "2026-07-09",
+                "sent_on": "2026-06-09",
+                "pay_on": "2026-08-09",
+                "delivery_on": null,
+                "paid_on": null,
+                "finalized_on": "2026-06-09",
+                "finalized_at": null,
+                "discount": null,
+                "tax1_name": "Text 88",
+                "tax1_value": "10.0",
+                "tax2_name": null,
+                "tax2_value": null,
+                "deleted_at": null,
+                "tag_list": [],
+                "note": "",
+                "footer": null,
+                "exported": false,
+                "exported_at": null,
+                "export_integration_type_id": null,
+                "export_id": null,
+                "export_invoice_url": null,
+                "company_reference_id": null,
+                "note_interpolated": "",
+                "footer_interpolated": null,
+                "email_key": "Text 89",
+                "purchase_order_number": null,
+                "created_at": "2026-10-09T13:02:40.142+02:00",
+                "exchange_rate": "1.0",
+                "exchange_date": "2026-07-09",
+                "custom_fields": null,
+                "updated_at": "2026-10-09T13:02:40.698+02:00",
+                "sample_data": true,
+                "payment_terms_type": null,
+                "payment_terms_days": null,
+                "invoice_type_id": 1013,
+                "credited": false,
+                "line_item_tax": false,
+                "last_activity_at": "2026-10-09T13:02:40.144+02:00",
+                "creation_options": [],
+                "payment_terms": 31,
+                "bank_account_details": null,
+                "invoice_template_id": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 3750000,
+                "amount_default": 3750000,
+                "amount_normalized": 3750000,
+                "amount_tax": 0,
+                "amount_tax_default": 0,
+                "amount_tax_normalized": 0,
+                "amount_with_tax": 3750000,
+                "amount_with_tax_default": 3750000,
+                "amount_with_tax_normalized": 3750000,
+                "amount_paid": 0,
+                "amount_paid_default": 0,
+                "amount_paid_normalized": 0,
+                "amount_written_off": 0,
+                "amount_written_off_default": 0,
+                "amount_written_off_normalized": 0,
+                "amount_unpaid": 3750000,
+                "amount_unpaid_default": 3750000,
+                "amount_unpaid_normalized": 3750000,
+                "amount_credited": 0,
+                "amount_credited_default": 0,
+                "amount_credited_normalized": 0,
+                "amount_credited_with_tax": 0,
+                "amount_credited_with_tax_default": 0,
+                "amount_credited_with_tax_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "bill_to": {
+                    "data": null
+                },
+                "bill_from": {
+                    "data": null
+                },
+                "company": {
+                    "data": {
+                        "type": "companies",
+                        "id": "1045"
+                    }
+                },
+                "document_type": {
+                    "data": {
+                        "type": "document_types",
+                        "id": "1070"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1034"
+                    }
+                },
+                "parent_invoice": {
+                    "data": null
+                },
+                "issuer": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "bank_account": {
+                    "data": null
+                },
+                "invoice_attributions": {
+                    "data": [
+                        {
+                            "type": "invoice_attributions",
+                            "id": "1067"
+                        }
+                    ]
+                },
+                "invoiced_budgets": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                },
+                "attachment": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

@@ -36,7 +36,7 @@ final readonly class BookingReport extends Model
     public mixed $approvedAtPeriod;
 
     /** Autotracking for this booking report group. */
-    public ?int $autotracking;
+    public ?bool $autotracking;
 
     /** Average blended rate for this booking report group. */
     public mixed $averageBlendedRate;
@@ -54,6 +54,9 @@ final readonly class BookingReport extends Model
 
     /** Billing type for this booking report group. */
     public ?int $billingType;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $bookingType;
 
     /** Canceled at for this booking report group. */
     public ?DateTimeImmutable $canceledAt;
@@ -88,7 +91,7 @@ final readonly class BookingReport extends Model
     public mixed $datePeriod;
 
     /** Draft for this booking report group. */
-    public ?int $draft;
+    public ?bool $draft;
 
     /** End date for this booking report group. */
     public ?DateTimeImmutable $endDate;
@@ -106,8 +109,12 @@ final readonly class BookingReport extends Model
 
     public ?int $nonbillableTime;
 
-    /** People custom fields for this booking report group. */
-    public ?string $peopleCustomFields;
+    /**
+     * People custom fields for this booking report group.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $peopleCustomFields;
 
     public ?int $personId;
 
@@ -186,13 +193,14 @@ final readonly class BookingReport extends Model
         $this->approvalStatus = $attributes->int('approval_status');
         $this->approvedAt = $attributes->date('approved_at');
         $this->approvedAtPeriod = $attributes->mixed('approved_at_period');
-        $this->autotracking = $attributes->int('autotracking');
+        $this->autotracking = $attributes->bool('autotracking');
         $this->averageBlendedRate = $attributes->mixed('average_blended_rate');
         $this->averageBlendedRateDefault = $attributes->mixed('average_blended_rate_default');
         $this->averageBlendedRateNormalized = $attributes->mixed('average_blended_rate_normalized');
         $this->averageRecognizedMargin = $attributes->float('average_recognized_margin');
         $this->billableTime = $attributes->int('billable_time');
         $this->billingType = $attributes->int('billing_type');
+        $this->bookingType = $attributes->string('booking_type');
         $this->canceledAt = $attributes->date('canceled_at');
         $this->canceledAtPeriod = $attributes->mixed('canceled_at_period');
         $this->cost = $attributes->string('cost');
@@ -204,14 +212,14 @@ final readonly class BookingReport extends Model
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->customFields = $attributes->string('custom_fields');
         $this->datePeriod = $attributes->mixed('date_period');
-        $this->draft = $attributes->int('draft');
+        $this->draft = $attributes->bool('draft');
         $this->endDate = $attributes->date('end_date');
         $this->endedOn = $attributes->string('ended_on');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->mandays = $attributes->float('mandays');
         $this->nonbillableTime = $attributes->int('nonbillable_time');
-        $this->peopleCustomFields = $attributes->string('people_custom_fields');
+        $this->peopleCustomFields = $attributes->object('people_custom_fields');
         $this->personId = $attributes->int('person_id');
         $this->projectId = $attributes->int('project_id');
         $this->projectType = $attributes->int('project_type');

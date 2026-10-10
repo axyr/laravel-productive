@@ -1,0 +1,175 @@
+{
+    "data": [
+        {
+            "id": "1065",
+            "type": "projects",
+            "attributes": {
+                "name": "Text 141",
+                "number": "2",
+                "preferences": {
+                    "navigation_order": [
+                        "Text 142",
+                        "Text 143",
+                        "Text 144",
+                        "time"
+                    ]
+                },
+                "project_number": "2",
+                "project_type_id": 1021,
+                "project_color_id": null,
+                "last_activity_at": "2026-10-09T13:02:38.000+02:00",
+                "tag_colors": [],
+                "archived_at": null,
+                "created_at": "2026-10-09T13:02:35.487+02:00",
+                "template": false,
+                "duplication_status": "idle",
+                "custom_fields": null,
+                "task_custom_fields_ids": null,
+                "task_custom_fields_positions": null,
+                "page_custom_fields_ids": null,
+                "page_custom_fields_positions": null,
+                "sample_data": true,
+                "external_deal_id": null,
+                "exported": false,
+                "exported_at": null,
+                "export_id": null,
+                "export_url": null,
+                "export_status": "unexported",
+                "export_error": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project_manager": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "last_actor": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1065",
+            "type": "projects",
+            "attributes": {
+                "name": "Text 141",
+                "number": "2",
+                "preferences": {
+                    "navigation_order": [
+                        "Text 142",
+                        "Text 143",
+                        "Text 144",
+                        "time"
+                    ]
+                },
+                "project_number": "2",
+                "project_type_id": 1021,
+                "project_color_id": null,
+                "last_activity_at": "2026-10-09T13:02:38.000+02:00",
+                "tag_colors": [],
+                "archived_at": null,
+                "created_at": "2026-10-09T13:02:35.487+02:00",
+                "template": false,
+                "duplication_status": "idle",
+                "custom_fields": null,
+                "task_custom_fields_ids": null,
+                "task_custom_fields_positions": null,
+                "page_custom_fields_ids": null,
+                "page_custom_fields_positions": null,
+                "sample_data": true,
+                "external_deal_id": null,
+                "exported": false,
+                "exported_at": null,
+                "export_id": null,
+                "export_url": null,
+                "export_status": "unexported",
+                "export_error": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "data": {
+                        "type": "companies",
+                        "id": "1094"
+                    }
+                },
+                "project_manager": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "last_actor": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "workflow": {
+                    "data": {
+                        "type": "workflows",
+                        "id": "1095"
+                    }
+                },
+                "import": {
+                    "data": {
+                        "type": "imports",
+                        "id": "1030"
+                    }
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                },
+                "template_object": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

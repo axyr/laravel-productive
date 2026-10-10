@@ -1,0 +1,51 @@
+{
+    "data": [
+        {
+            "id": "1035",
+            "type": "custom_field_options",
+            "attributes": {
+                "name": "Text 37",
+                "archived_at": null,
+                "position": 1,
+                "color_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "custom_field": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1035",
+            "type": "custom_field_options",
+            "attributes": {
+                "name": "Text 37",
+                "archived_at": null,
+                "position": 1,
+                "color_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "custom_field": {
+                    "data": {
+                        "type": "custom_fields",
+                        "id": "1017"
+                    }
+                }
+            }
+        }
+    ]
+}

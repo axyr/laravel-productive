@@ -1,0 +1,61 @@
+{
+    "data": [
+        {
+            "id": "1052",
+            "type": "expense_line_items",
+            "attributes": {
+                "name": "Text 59",
+                "quantity": "1.0",
+                "unit_price": 1400000,
+                "unit_price_default": 1400000,
+                "unit_price_normalized": 1400000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "expense": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1052",
+            "type": "expense_line_items",
+            "attributes": {
+                "name": "Text 59",
+                "quantity": "1.0",
+                "unit_price": 1400000,
+                "unit_price_default": 1400000,
+                "unit_price_normalized": 1400000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "expense": {
+                    "data": {
+                        "type": "expenses",
+                        "id": "1053"
+                    }
+                },
+                "tax_rate": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

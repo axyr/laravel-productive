@@ -47,11 +47,6 @@ final readonly class TaskList extends Model
         $this->position = $attributes->int('position');
     }
 
-    public function board(): ?Board
-    {
-        return $this->belongsTo('board', Board::class);
-    }
-
     public function folder(): ?Folder
     {
         return $this->belongsTo('folder', Folder::class);

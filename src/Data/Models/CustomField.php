@@ -38,6 +38,9 @@ final readonly class CustomField extends Model
     /** ID of the data type that determines what kind of value this custom field stores (e.g. text, number, date). */
     public ?int $dataTypeId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     public ?string $fieldType;
 
     public ?bool $filterable;
@@ -47,6 +50,12 @@ final readonly class CustomField extends Model
 
     /** Whether this custom field is available globally across all projects, rather than scoped to a specific project. */
     public ?bool $global;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $maximumValue;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $minimumValue;
 
     /** The display name of this custom field. */
     public ?string $name;
@@ -66,6 +75,9 @@ final readonly class CustomField extends Model
     /** The show in add edit views. */
     public ?bool $showInAddEditViews;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $tagField;
+
     /** Timestamp when this custom field was last updated. */
     public ?DateTimeImmutable $updatedAt;
 
@@ -76,16 +88,20 @@ final readonly class CustomField extends Model
         $this->createdAt = $attributes->dateTime('created_at');
         $this->customizableType = $attributes->string('customizable_type');
         $this->dataTypeId = $attributes->int('data_type_id');
+        $this->description = $attributes->mixed('description');
         $this->fieldType = $attributes->string('field_type');
         $this->filterable = $attributes->bool('filterable');
         $this->formattingTypeId = $attributes->int('formatting_type_id');
         $this->global = $attributes->bool('global');
+        $this->maximumValue = $attributes->mixed('maximum_value');
+        $this->minimumValue = $attributes->mixed('minimum_value');
         $this->name = $attributes->string('name');
         $this->position = $attributes->int('position');
         $this->quickAddEnabled = $attributes->bool('quick_add_enabled');
         $this->required = $attributes->bool('required');
         $this->sensitive = $attributes->bool('sensitive');
         $this->showInAddEditViews = $attributes->bool('show_in_add_edit_views');
+        $this->tagField = $attributes->bool('tag_field');
         $this->updatedAt = $attributes->dateTime('updated_at');
     }
 

@@ -111,7 +111,8 @@ Full reference in [docs/](docs/README.md):
 - [Errors, retries and rate limits](docs/errors.md): the exception hierarchy, retry policy and queue jobs
 - [Testing](docs/testing.md): `Productive::fake()`, fake responses, factories, assertions
 - [Architecture](docs/architecture.md): how the layers fit together
-- [Development](docs/development.md): quality gate, the vendored spec and how endpoints are added
+- [Development](docs/development.md): quality gate, the vendored spec, recording real responses and how endpoints are added
+- [API differences](docs/api-differences.md): where the live API differs from Productive's spec, and what the SDK does about it
 
 ## Endpoint coverage
 
@@ -131,7 +132,7 @@ The SDK is built against Productive's OpenAPI spec, vendored at `resources/opena
 How the code is generated is described in [Development](docs/development.md).
 
 > [!IMPORTANT]
-> **Not yet verified against the live API.** Every method is generated from Productive's OpenAPI spec and tested against the spec's own examples and schemas, but no request has been sent to Productive yet. Only the tasks, time entries and time report resources were checked by hand against the documentation. Where the spec is wrong or incomplete, the SDK will be too: please open an issue if a call behaves differently from what is documented here.
+> **Reads are checked against the live API; writes are not yet.** Every method is generated from Productive's OpenAPI spec. The models are also checked against real responses recorded from a trial organization (GET only): where the spec's types are wrong, the SDK follows the API, and [API differences](docs/api-differences.md) lists every case. Resources whose lists were empty in the recording, and every create, update and delete call, are still checked against the spec only. Please open an issue if a call behaves differently from what is documented here.
 
 ## Quality
 

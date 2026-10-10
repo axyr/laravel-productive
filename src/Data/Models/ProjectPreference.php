@@ -43,6 +43,11 @@ final readonly class ProjectPreference extends Model
         $this->watched = $attributes->bool('watched');
     }
 
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
+    }
+
     public function person(): ?Person
     {
         return $this->belongsTo('person', Person::class);

@@ -173,11 +173,6 @@ final readonly class TaskReport extends Model
         return $this->belongsTo('assignee_report', Model::class);
     }
 
-    public function board(): ?Board
-    {
-        return $this->belongsTo('board', Board::class);
-    }
-
     public function company(): ?Company
     {
         return $this->belongsTo('company', Company::class);

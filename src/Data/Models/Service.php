@@ -143,6 +143,9 @@ final readonly class Service extends Model
     /** Whether expenses can be logged against this service. */
     public ?bool $expenseTrackingEnabled;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $externalId;
+
     /** Future scheduled time remaining. */
     public ?int $futureBookedTime;
 
@@ -173,6 +176,9 @@ final readonly class Service extends Model
     /** Revenue projected from future bookings in the organization's normalized currency. */
     public mixed $futureRevenueNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $futureTentativeBookedTime;
+
     /** ID of the first service in a rollover chain. */
     public ?int $initialServiceId;
 
@@ -197,6 +203,9 @@ final readonly class Service extends Model
     /** ID of the original service if this was duplicated or rolled over. */
     public mixed $originServiceId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $overtimeTime;
+
     /** Sort order within the deal's service list. */
     public ?int $position;
 
@@ -210,7 +219,7 @@ final readonly class Service extends Model
     public mixed $priceNormalized;
 
     /** Service profit: revenue minus costs. */
-    public ?int $profit;
+    public ?float $profit;
 
     /** Service profit in the organization's default currency. */
     public mixed $profitDefault;
@@ -244,6 +253,9 @@ final readonly class Service extends Model
 
     /** Time rolled over from a previous retainer period. */
     public ?int $rolledOverTime;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $tentativeBookedTime;
 
     /** Whether team members can track time against this service. */
     public ?bool $timeTrackingEnabled;
@@ -307,6 +319,7 @@ final readonly class Service extends Model
         $this->expenseBillableAmountDefault = $attributes->mixed('expense_billable_amount_default');
         $this->expenseBillableAmountNormalized = $attributes->mixed('expense_billable_amount_normalized');
         $this->expenseTrackingEnabled = $attributes->bool('expense_tracking_enabled');
+        $this->externalId = $attributes->mixed('external_id');
         $this->futureBookedTime = $attributes->int('future_booked_time');
         $this->futureBudgetUsed = $attributes->mixed('future_budget_used');
         $this->futureBudgetUsedDefault = $attributes->mixed('future_budget_used_default');
@@ -317,6 +330,7 @@ final readonly class Service extends Model
         $this->futureRevenue = $attributes->mixed('future_revenue');
         $this->futureRevenueDefault = $attributes->mixed('future_revenue_default');
         $this->futureRevenueNormalized = $attributes->mixed('future_revenue_normalized');
+        $this->futureTentativeBookedTime = $attributes->int('future_tentative_booked_time');
         $this->initialServiceId = $attributes->int('initial_service_id');
         $this->limitationType = $attributes->string('limitation_type');
         $this->markup = $attributes->mixed('markup');
@@ -325,11 +339,12 @@ final readonly class Service extends Model
         $this->markupAmountNormalized = $attributes->mixed('markup_amount_normalized');
         $this->name = $attributes->string('name');
         $this->originServiceId = $attributes->mixed('origin_service_id');
+        $this->overtimeTime = $attributes->int('overtime_time');
         $this->position = $attributes->int('position');
         $this->price = $attributes->float('price');
         $this->priceDefault = $attributes->mixed('price_default');
         $this->priceNormalized = $attributes->mixed('price_normalized');
-        $this->profit = $attributes->int('profit');
+        $this->profit = $attributes->float('profit');
         $this->profitDefault = $attributes->mixed('profit_default');
         $this->profitMargin = $attributes->mixed('profit_margin');
         $this->profitNormalized = $attributes->mixed('profit_normalized');
@@ -341,6 +356,7 @@ final readonly class Service extends Model
         $this->revenueDefault = $attributes->mixed('revenue_default');
         $this->revenueNormalized = $attributes->mixed('revenue_normalized');
         $this->rolledOverTime = $attributes->int('rolled_over_time');
+        $this->tentativeBookedTime = $attributes->int('tentative_booked_time');
         $this->timeTrackingEnabled = $attributes->bool('time_tracking_enabled');
         $this->unapprovedTime = $attributes->int('unapproved_time');
         $this->unitId = $attributes->int('unit_id');

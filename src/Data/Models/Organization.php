@@ -51,18 +51,17 @@ final readonly class Organization extends Model
     /** URL of the organization's avatar image (thumbnail size). */
     public ?string $avatarUrl;
 
-    /**
-     * Email address used for billing correspondence.
-     *
-     * @var array<array-key, mixed>|null
-     */
-    public ?array $billingEmail;
+    /** Email address used for billing correspondence. */
+    public ?string $billingEmail;
 
     /** Whether the organization has booked a demo with Productive. */
     public ?bool $bookedDemo;
 
     /** Whether the scheduling conflict resolver is active, automatically detecting and flagging overbooking conflicts. */
     public ?bool $conflictResolverActive;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $createTimeEntryOnTimerStart;
 
     public ?DateTimeImmutable $createdAt;
 
@@ -246,6 +245,12 @@ final readonly class Organization extends Model
     /** Quick start configuration used during initial setup. */
     public ?string $quickStartConfig;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $releaseChannel;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $remainingHoursCalculationMode;
+
     /** Whether the Productive branding is removed from outgoing documents and emails. */
     public ?bool $removeBranding;
 
@@ -367,9 +372,10 @@ final readonly class Organization extends Model
         $this->analyticsUid = $attributes->mixed('analytics_uid');
         $this->autotrackingScheduleId = $attributes->int('autotracking_schedule_id');
         $this->avatarUrl = $attributes->string('avatar_url');
-        $this->billingEmail = $attributes->object('billing_email');
+        $this->billingEmail = $attributes->string('billing_email');
         $this->bookedDemo = $attributes->bool('booked_demo');
         $this->conflictResolverActive = $attributes->bool('conflict_resolver_active');
+        $this->createTimeEntryOnTimerStart = $attributes->bool('create_time_entry_on_timer_start');
         $this->createdAt = $attributes->dateTime('created_at');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
@@ -423,6 +429,8 @@ final readonly class Organization extends Model
         $this->overheadTypeId = $attributes->int('overhead_type_id');
         $this->paymentTermsType = $attributes->string('payment_terms_type');
         $this->quickStartConfig = $attributes->string('quick_start_config');
+        $this->releaseChannel = $attributes->string('release_channel');
+        $this->remainingHoursCalculationMode = $attributes->string('remaining_hours_calculation_mode');
         $this->removeBranding = $attributes->bool('remove_branding');
         $this->requestForResourceEnabled = $attributes->bool('request_for_resource_enabled');
         $this->revenueRecognitionTypeId = $attributes->int('revenue_recognition_type_id');

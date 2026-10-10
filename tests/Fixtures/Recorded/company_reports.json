@@ -1,0 +1,93 @@
+{
+    "data": [
+        {
+            "id": "Text 28",
+            "type": "company_reports",
+            "attributes": {
+                "group": "company",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "status": 1,
+                "payment_terms": 10,
+                "payment_terms_type": "days_after_invoice_date",
+                "custom_fields": [],
+                "contact_phone": null,
+                "contact_email": null,
+                "contact_website": null,
+                "contact_city": null,
+                "contact_state": null,
+                "contact_country": null,
+                "contact_zipcode": null,
+                "contact_address": null,
+                "created_at_period": null,
+                "last_activity_at_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 28",
+            "type": "company_reports",
+            "attributes": {
+                "group": "company",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "status": 1,
+                "payment_terms": 10,
+                "payment_terms_type": "days_after_invoice_date",
+                "custom_fields": [],
+                "contact_phone": null,
+                "contact_email": null,
+                "contact_website": null,
+                "contact_city": null,
+                "contact_state": null,
+                "contact_country": null,
+                "contact_zipcode": null,
+                "contact_address": null,
+                "created_at_period": null,
+                "last_activity_at_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "data": {
+                        "type": "companies",
+                        "id": "1026"
+                    }
+                }
+            }
+        }
+    ]
+}

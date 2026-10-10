@@ -1,0 +1,21 @@
+{
+    "data": [
+        {
+            "id": "1036",
+            "type": "custom_field_sections",
+            "attributes": {
+                "name": "Text 38",
+                "description": null,
+                "position": 1
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -263,3 +263,70 @@ it('lists the imports of a resource method as a list', function () {
 
     expect($method->imports())->toBe(['Axyr\\Productive\\Query\\Query']);
 });
+
+it('formats only the PHP files it writes', function () {
+    $root = sys_get_temp_dir() . '/generated-files-' . uniqid();
+    mkdir($root);
+    $formatted = [];
+
+    (new GeneratedFiles($root, ['docs/a.md' => "# A\n", 'src/New/A.php' => "<?php // a\n"], function (string $directory, array $paths) use (&$formatted): void {
+        $formatted = $paths;
+    }))->write();
+
+    expect($formatted)->toBe(['src/New/A.php'])
+        ->and(file_get_contents($root . '/docs/a.md'))->toBe("# A\n");
+
+    array_map(unlink(...), [$root . '/docs/a.md', $root . '/src/New/A.php']);
+    array_map(rmdir(...), [$root . '/docs', $root . '/src/New', $root . '/src', $root]);
+});
+
+it('treats a file as generated only when the marker is on one of its first six lines', function (int $line, bool $generated) {
+    $root = sys_get_temp_dir() . '/generated-files-' . uniqid();
+    mkdir($root . '/src', 0o777, true);
+    file_put_contents($root . '/src/A.php', str_repeat("//\n", $line - 1) . PhpFile::MARKER . "\n");
+
+    expect(GeneratedFiles::isGenerated($root . '/src/A.php'))->toBe($generated)
+        ->and((new GeneratedFiles($root, [], fn() => null))->check())->toBe($generated ? ['src/A.php is generated but no longer produced.'] : []);
+
+    unlink($root . '/src/A.php');
+    rmdir($root . '/src');
+    rmdir($root);
+})->with([[1, true], [6, true], [7, false]]);
+
+it('keeps generated files that are still produced and lists stale ones in order', function () {
+    $root = sys_get_temp_dir() . '/generated-files-' . uniqid();
+    mkdir($root . '/src', 0o777, true);
+    $generated = "<?php\n" . PhpFile::MARKER . "\n";
+
+    foreach (['Kept', 'E', 'B', 'D', 'A', 'C'] as $name) {
+        file_put_contents($root . '/src/' . $name . '.php', $generated);
+    }
+
+    $files = new GeneratedFiles($root, ['src/Kept.php' => $generated], fn() => null);
+
+    expect($files->check())->toBe(array_map(fn(string $name): string => 'src/' . $name . '.php is generated but no longer produced.', ['A', 'B', 'C', 'D', 'E']));
+
+    $files->write();
+
+    expect(array_map(basename(...), glob($root . '/src/*.php') ?: []))->toBe(['Kept.php']);
+
+    unlink($root . '/src/Kept.php');
+    rmdir($root . '/src');
+    rmdir($root);
+});
+
+it('checks an empty set of files without warnings and cleans up its scratch directory', function () {
+    $root = sys_get_temp_dir() . '/generated-files-' . uniqid();
+    $scratch = sys_get_temp_dir() . '/generated-scratch-' . uniqid() . '/nested';
+    mkdir($root);
+    set_error_handler(fn(int $severity, string $message): never => throw new ErrorException($message, 0, $severity));
+
+    try {
+        expect((new GeneratedFiles($root, [], fn() => null, $scratch))->check())->toBe([])
+            ->and(is_dir($scratch))->toBeFalse();
+    } finally {
+        restore_error_handler();
+        rmdir($root);
+        @rmdir(dirname($scratch));
+    }
+});

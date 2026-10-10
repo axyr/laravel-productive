@@ -65,6 +65,9 @@ final readonly class OrganizationMembership extends Model
     /** ID of the member's default filter for the expenses list view. */
     public ?int $expensesFilterId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $favoritedModels;
+
     /**
      * Granular per-event email notification preferences for this member.
      *
@@ -77,6 +80,13 @@ final readonly class OrganizationMembership extends Model
 
     /** ID of the member's default filter for the invoices list view. */
     public ?int $invoicesFilterId;
+
+    /**
+     * Not in the spec: seen in recorded API responses.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $notetakerSettings;
 
     /** ID of the member's default filter for the payments list view. */
     public ?int $paymentsFilterId;
@@ -95,6 +105,13 @@ final readonly class OrganizationMembership extends Model
 
     /** Configuration for the quick-start onboarding experience for this member. */
     public ?string $quickStartConfig;
+
+    /**
+     * Not in the spec: seen in recorded API responses.
+     *
+     * @var list<mixed>|null
+     */
+    public ?array $recentData;
 
     /** ID of the saved salary report filter applied by default for this organization membership. */
     public ?int $salaryReportsFilterId;
@@ -139,15 +156,18 @@ final readonly class OrganizationMembership extends Model
         $this->employeesFilterId = $attributes->int('employees_filter_id');
         $this->expenseApprovalsFilterId = $attributes->int('expense_approvals_filter_id');
         $this->expensesFilterId = $attributes->int('expenses_filter_id');
+        $this->favoritedModels = $attributes->mixed('favorited_models');
         $this->granularNotificationPreferences = $attributes->object('granular_notification_preferences');
         $this->internalBudgetServicesFilterId = $attributes->int('internal_budget_services_filter_id');
         $this->invoicesFilterId = $attributes->int('invoices_filter_id');
+        $this->notetakerSettings = $attributes->object('notetaker_settings');
         $this->paymentsFilterId = $attributes->int('payments_filter_id');
         $this->peopleFilterId = $attributes->int('people_filter_id');
         $this->position = $attributes->int('position');
         $this->preferences = $attributes->string('preferences');
         $this->projectsFilterId = $attributes->int('projects_filter_id');
         $this->quickStartConfig = $attributes->string('quick_start_config');
+        $this->recentData = $attributes->list('recent_data');
         $this->salaryReportsFilterId = $attributes->int('salary_reports_filter_id');
         $this->tasksFilterId = $attributes->int('tasks_filter_id');
         $this->tasksLayoutId = $attributes->int('tasks_layout_id');

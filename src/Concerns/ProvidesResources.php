@@ -19,7 +19,6 @@ use Axyr\Productive\Resources\AttachmentResource;
 use Axyr\Productive\Resources\AutomaticInvoicingRuleResource;
 use Axyr\Productive\Resources\BankAccountResource;
 use Axyr\Productive\Resources\BillResource;
-use Axyr\Productive\Resources\BoardResource;
 use Axyr\Productive\Resources\BookingResource;
 use Axyr\Productive\Resources\CommentResource;
 use Axyr\Productive\Resources\CompanyResource;
@@ -188,11 +187,6 @@ trait ProvidesResources
     public function bills(): BillResource
     {
         return new BillResource($this->connector(), $this->registry);
-    }
-
-    public function boards(): BoardResource
-    {
-        return new BoardResource($this->connector(), $this->registry);
     }
 
     public function bookings(): BookingResource

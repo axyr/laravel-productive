@@ -41,6 +41,27 @@ final readonly class Project extends Model
     /** Background duplication status when copying from a template. One of: idle, in_progress, done, failed. */
     public ?string $duplicationStatus;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportError;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportId;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $exportStatus;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportUrl;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $exported;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportedAt;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $externalDealId;
+
     /** Timestamp of the most recent activity on this project. */
     public ?DateTimeImmutable $lastActivityAt;
 
@@ -101,7 +122,7 @@ final readonly class Project extends Model
     public ?array $taskCustomFieldsPositions;
 
     /** Whether this project is a template. */
-    public ?string $template;
+    public ?bool $template;
 
     protected function hydrate(Attributes $attributes): void
     {
@@ -110,6 +131,13 @@ final readonly class Project extends Model
         $this->customFields = $attributes->object('custom_fields');
         $this->description = $attributes->mixed('description');
         $this->duplicationStatus = $attributes->string('duplication_status');
+        $this->exportError = $attributes->mixed('export_error');
+        $this->exportId = $attributes->mixed('export_id');
+        $this->exportStatus = $attributes->string('export_status');
+        $this->exportUrl = $attributes->mixed('export_url');
+        $this->exported = $attributes->bool('exported');
+        $this->exportedAt = $attributes->mixed('exported_at');
+        $this->externalDealId = $attributes->mixed('external_deal_id');
         $this->lastActivityAt = $attributes->dateTime('last_activity_at');
         $this->name = $attributes->string('name');
         $this->number = $attributes->string('number');
@@ -123,7 +151,7 @@ final readonly class Project extends Model
         $this->tagColors = $attributes->string('tag_colors');
         $this->taskCustomFieldsIds = $attributes->object('task_custom_fields_ids');
         $this->taskCustomFieldsPositions = $attributes->object('task_custom_fields_positions');
-        $this->template = $attributes->string('template');
+        $this->template = $attributes->bool('template');
     }
 
     public function company(): ?Company

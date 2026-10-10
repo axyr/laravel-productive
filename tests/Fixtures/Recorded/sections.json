@@ -1,0 +1,53 @@
+{
+    "data": [
+        {
+            "id": "1100",
+            "type": "sections",
+            "attributes": {
+                "name": "Text 154",
+                "description": null,
+                "preferences": [],
+                "position": 1,
+                "editor_config": []
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1100",
+            "type": "sections",
+            "attributes": {
+                "name": "Text 154",
+                "description": null,
+                "preferences": [],
+                "position": 1,
+                "editor_config": []
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1101"
+                    }
+                }
+            }
+        }
+    ]
+}

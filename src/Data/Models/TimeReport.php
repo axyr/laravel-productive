@@ -103,11 +103,18 @@ final readonly class TimeReport extends Model
 
     public ?int $nonbillableTime;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $overtimeTime;
+
     /** Total number of hours scheduled on paid time off (i.e. vacation). */
     public ?float $paidEventTime;
 
-    /** Custom fields on people used for grouping. */
-    public ?string $peopleCustomFields;
+    /**
+     * Custom fields on people used for grouping.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $peopleCustomFields;
 
     public ?int $personId;
 
@@ -216,6 +223,9 @@ final readonly class TimeReport extends Model
     /** Hours tracked on client and internal projects. */
     public ?float $workedTime;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $workingDays;
+
     /** Workload per person as a ratio or percentage. */
     public ?float $workload;
 
@@ -252,8 +262,9 @@ final readonly class TimeReport extends Model
         $this->internalTime = $attributes->float('internal_time');
         $this->month = $attributes->string('month');
         $this->nonbillableTime = $attributes->int('nonbillable_time');
+        $this->overtimeTime = $attributes->int('overtime_time');
         $this->paidEventTime = $attributes->float('paid_event_time');
-        $this->peopleCustomFields = $attributes->string('people_custom_fields');
+        $this->peopleCustomFields = $attributes->object('people_custom_fields');
         $this->personId = $attributes->int('person_id');
         $this->projectId = $attributes->int('project_id');
         $this->quarter = $attributes->string('quarter');
@@ -291,6 +302,7 @@ final readonly class TimeReport extends Model
         $this->userCapacity = $attributes->float('user_capacity');
         $this->week = $attributes->string('week');
         $this->workedTime = $attributes->float('worked_time');
+        $this->workingDays = $attributes->int('working_days');
         $this->workload = $attributes->float('workload');
         $this->year = $attributes->string('year');
     }

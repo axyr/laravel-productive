@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "id": "1012",
+            "type": "approval_policies",
+            "attributes": {
+                "archived_at": null,
+                "custom": false,
+                "default": false,
+                "description": "Text 8",
+                "name": "Text 9",
+                "type_id": 1013
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,95 @@
+{
+    "data": [
+        {
+            "id": "Text 57",
+            "type": "entitlement_reports",
+            "attributes": {
+                "group": "entitlement",
+                "count": 1,
+                "formula_fields": [],
+                "description": null,
+                "absence_type": "time_off",
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_allocated": "22.0",
+                "total_used": "0.0",
+                "total_pending": "0.0",
+                "total_available": "22.0",
+                "total_allocated_minutes": 0,
+                "total_used_minutes": 0,
+                "total_pending_minutes": 0,
+                "total_available_minutes": 0,
+                "start_date_period": null,
+                "end_date_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "entitlement": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 57",
+            "type": "entitlement_reports",
+            "attributes": {
+                "group": "entitlement",
+                "count": 1,
+                "formula_fields": [],
+                "description": null,
+                "absence_type": "time_off",
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "total_allocated": "22.0",
+                "total_used": "0.0",
+                "total_pending": "0.0",
+                "total_available": "22.0",
+                "total_allocated_minutes": 0,
+                "total_used_minutes": 0,
+                "total_pending_minutes": 0,
+                "total_available_minutes": 0,
+                "start_date_period": null,
+                "end_date_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "entitlement": {
+                    "data": {
+                        "type": "entitlements",
+                        "id": "1050"
+                    }
+                }
+            }
+        }
+    ]
+}

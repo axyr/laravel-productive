@@ -262,6 +262,12 @@ final readonly class Deal extends Model
     /** ID of the original deal if duplicated or generated from a contract. */
     public ?int $originDealId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $overtimeEnabled;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $overtimeTime;
+
     /** Amount ready to invoice but not yet invoiced (budget currency). */
     public mixed $pendingInvoicing;
 
@@ -337,8 +343,17 @@ final readonly class Deal extends Model
     /** Total revenue from services (organization default currency). */
     public mixed $revenueDefault;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $revenueDistributionBase;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?DateTimeImmutable $revenueDistributionEndOn;
+
     /** Method for distributing revenue recognition across periods. */
     public ?string $revenueDistributionMethod;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?DateTimeImmutable $revenueDistributionStartOn;
 
     /** How revenue is distributed across services. */
     public ?string $revenueDistributionType;
@@ -498,6 +513,8 @@ final readonly class Deal extends Model
         $this->noteInterpolated = $attributes->mixed('note_interpolated');
         $this->number = $attributes->string('number');
         $this->originDealId = $attributes->int('origin_deal_id');
+        $this->overtimeEnabled = $attributes->bool('overtime_enabled');
+        $this->overtimeTime = $attributes->int('overtime_time');
         $this->pendingInvoicing = $attributes->mixed('pending_invoicing');
         $this->pendingInvoicingDefault = $attributes->mixed('pending_invoicing_default');
         $this->pendingInvoicingNormalized = $attributes->mixed('pending_invoicing_normalized');
@@ -523,7 +540,10 @@ final readonly class Deal extends Model
         $this->retainerIntervalCount = $attributes->int('retainer_interval_count');
         $this->revenue = $attributes->mixed('revenue');
         $this->revenueDefault = $attributes->mixed('revenue_default');
+        $this->revenueDistributionBase = $attributes->string('revenue_distribution_base');
+        $this->revenueDistributionEndOn = $attributes->date('revenue_distribution_end_on');
         $this->revenueDistributionMethod = $attributes->string('revenue_distribution_method');
+        $this->revenueDistributionStartOn = $attributes->date('revenue_distribution_start_on');
         $this->revenueDistributionType = $attributes->string('revenue_distribution_type');
         $this->revenueNormalized = $attributes->mixed('revenue_normalized');
         $this->roundingIntervalId = $attributes->int('rounding_interval_id');

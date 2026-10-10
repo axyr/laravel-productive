@@ -33,8 +33,12 @@ final readonly class ExchangeRate extends Model
 
     public ?string $rate;
 
-    /** An array of currency conversion rates, each with a base currency, target currency, and the corresponding rate value. */
-    public ?string $rates;
+    /**
+     * An array of currency conversion rates, each with a base currency, target currency, and the corresponding rate value.
+     *
+     * @var list<mixed>|null
+     */
+    public ?array $rates;
 
     public ?string $toCurrency;
 
@@ -44,7 +48,7 @@ final readonly class ExchangeRate extends Model
         $this->fromCurrency = $attributes->string('from_currency');
         $this->outOfDate = $attributes->bool('out_of_date');
         $this->rate = $attributes->string('rate');
-        $this->rates = $attributes->string('rates');
+        $this->rates = $attributes->list('rates');
         $this->toCurrency = $attributes->string('to_currency');
     }
 }

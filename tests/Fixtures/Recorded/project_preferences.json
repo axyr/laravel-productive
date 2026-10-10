@@ -1,0 +1,62 @@
+{
+    "data": [
+        {
+            "id": "1093",
+            "type": "project_preferences",
+            "attributes": {
+                "tasks_layout_id": null,
+                "created_at": "2026-10-09T13:02:35.434+02:00",
+                "preferences": null,
+                "watched": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1093",
+            "type": "project_preferences",
+            "attributes": {
+                "tasks_layout_id": null,
+                "created_at": "2026-10-09T13:02:35.434+02:00",
+                "preferences": null,
+                "watched": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1058"
+                    }
+                }
+            }
+        }
+    ]
+}

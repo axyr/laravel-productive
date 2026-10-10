@@ -1,0 +1,70 @@
+{
+    "data": [
+        {
+            "id": "1067",
+            "type": "invoice_attributions",
+            "attributes": {
+                "date_from": null,
+                "date_to": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 3750000,
+                "amount_default": 3750000,
+                "amount_normalized": 3750000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "budget": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1067",
+            "type": "invoice_attributions",
+            "attributes": {
+                "date_from": null,
+                "date_to": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 3750000,
+                "amount_default": 3750000,
+                "amount_normalized": 3750000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "invoice": {
+                    "data": {
+                        "type": "invoices",
+                        "id": "1068"
+                    }
+                },
+                "budget": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1055"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,95 @@
+{
+    "data": [
+        {
+            "id": "Text 169",
+            "type": "task_reports",
+            "attributes": {
+                "group": "task",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "status": 1,
+                "workflow_status_category_id": 1021,
+                "repeating": 0,
+                "custom_fields": [],
+                "total_billable_time": 0,
+                "total_worked_time": 0,
+                "total_initial_estimate": 0,
+                "total_remaining_time": 0,
+                "total_estimation_offset_time": 0,
+                "total_estimate_at_completion": 0,
+                "created_at_period": null,
+                "closed_at_period": null,
+                "last_activity_at_period": null,
+                "due_date_period": null,
+                "start_date_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "task": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 169",
+            "type": "task_reports",
+            "attributes": {
+                "group": "task",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "status": 1,
+                "workflow_status_category_id": 1021,
+                "repeating": 0,
+                "custom_fields": [],
+                "total_billable_time": 0,
+                "total_worked_time": 0,
+                "total_initial_estimate": 0,
+                "total_remaining_time": 0,
+                "total_estimation_offset_time": 0,
+                "total_estimate_at_completion": 0,
+                "created_at_period": null,
+                "closed_at_period": null,
+                "last_activity_at_period": null,
+                "due_date_period": null,
+                "start_date_period": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "task": {
+                    "data": {
+                        "type": "tasks",
+                        "id": "1109"
+                    }
+                }
+            }
+        }
+    ]
+}

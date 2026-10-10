@@ -22,6 +22,9 @@ final readonly class Section extends Model
 {
     public const string TYPE = 'sections';
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     /**
      * Rich text editor configuration and content for this section's description.
      *
@@ -44,6 +47,7 @@ final readonly class Section extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->description = $attributes->mixed('description');
         $this->editorConfig = $attributes->object('editor_config');
         $this->name = $attributes->string('name');
         $this->position = $attributes->int('position');

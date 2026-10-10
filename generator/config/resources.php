@@ -20,7 +20,6 @@ return [
     'automatic_invoicing_rules',
     'bank_accounts',
     'bills',
-    'boards',
     'bookings',
     'comments',
     'companies',

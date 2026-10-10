@@ -1,0 +1,95 @@
+{
+    "data": [
+        {
+            "id": "Text 93",
+            "type": "line_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "line_item",
+                "count": 1,
+                "formula_fields": [],
+                "unit_id": 1013,
+                "tax_rate": null,
+                "discount": null,
+                "quantity": "35.0",
+                "unit_price": 12000,
+                "unit_price_default": 12000,
+                "unit_price_normalized": null,
+                "total_amount": 420000,
+                "total_amount_default": 420000,
+                "total_amount_normalized": null,
+                "total_amount_tax": 0,
+                "total_amount_tax_default": 0,
+                "total_amount_tax_normalized": null,
+                "total_amount_with_tax": 420000,
+                "total_amount_with_tax_default": 420000,
+                "total_amount_with_tax_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "line_item": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 93",
+            "type": "line_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "line_item",
+                "count": 1,
+                "formula_fields": [],
+                "unit_id": 1013,
+                "tax_rate": null,
+                "discount": null,
+                "quantity": "35.0",
+                "unit_price": 12000,
+                "unit_price_default": 12000,
+                "unit_price_normalized": null,
+                "total_amount": 420000,
+                "total_amount_default": 420000,
+                "total_amount_normalized": null,
+                "total_amount_tax": 0,
+                "total_amount_tax_default": 0,
+                "total_amount_tax_normalized": null,
+                "total_amount_with_tax": 420000,
+                "total_amount_with_tax_default": 420000,
+                "total_amount_with_tax_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "line_item": {
+                    "data": {
+                        "type": "line_items",
+                        "id": "1071"
+                    }
+                }
+            }
+        }
+    ]
+}

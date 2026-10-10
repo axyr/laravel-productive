@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "id": "1108",
+            "type": "task_lists",
+            "attributes": {
+                "name": "Text 167",
+                "position": null,
+                "placement": 1010000,
+                "archived_at": null,
+                "email_key": "Text 168"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "folder": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1108",
+            "type": "task_lists",
+            "attributes": {
+                "name": "Text 167",
+                "position": null,
+                "placement": 1010000,
+                "archived_at": null,
+                "email_key": "Text 168"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1065"
+                    }
+                },
+                "folder": {
+                    "data": {
+                        "type": "folders",
+                        "id": "1064"
+                    }
+                }
+            }
+        }
+    ]
+}

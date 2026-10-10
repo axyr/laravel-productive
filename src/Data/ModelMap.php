@@ -20,7 +20,6 @@ use Axyr\Productive\Data\Models\AutomaticInvoicingRule;
 use Axyr\Productive\Data\Models\AutomationReport;
 use Axyr\Productive\Data\Models\BankAccount;
 use Axyr\Productive\Data\Models\Bill;
-use Axyr\Productive\Data\Models\Board;
 use Axyr\Productive\Data\Models\Booking;
 use Axyr\Productive\Data\Models\BookingReport;
 use Axyr\Productive\Data\Models\BudgetReport;
@@ -165,7 +164,6 @@ final class ModelMap
         AutomationReport::TYPE => AutomationReport::class,
         BankAccount::TYPE => BankAccount::class,
         Bill::TYPE => Bill::class,
-        Board::TYPE => Board::class,
         Booking::TYPE => Booking::class,
         BookingReport::TYPE => BookingReport::class,
         BudgetReport::TYPE => BudgetReport::class,

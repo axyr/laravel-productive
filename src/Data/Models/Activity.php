@@ -54,6 +54,9 @@ final readonly class Activity extends Model
     /** The type of change event (e.g. create, update, destroy). */
     public ?string $event;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $externalAuthorName;
+
     /** ID of the related invoice, if applicable. */
     public ?int $invoiceId;
 
@@ -119,6 +122,7 @@ final readonly class Activity extends Model
         $this->discussionId = $attributes->int('discussion_id');
         $this->engagementId = $attributes->int('engagement_id');
         $this->event = $attributes->string('event');
+        $this->externalAuthorName = $attributes->mixed('external_author_name');
         $this->invoiceId = $attributes->int('invoice_id');
         $this->itemDeletedAt = $attributes->dateTime('item_deleted_at');
         $this->itemId = $attributes->int('item_id');
