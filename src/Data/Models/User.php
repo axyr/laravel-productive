@@ -69,6 +69,9 @@ final readonly class User extends Model
     /** User interface preferences and settings stored as key-value pairs. */
     public ?string $preferences;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $slackProductUpdates;
+
     /** When true, this user account was provisioned via single sign-on. */
     public ?bool $ssoProvision;
 
@@ -107,6 +110,7 @@ final readonly class User extends Model
         $this->newsletterConsent = $attributes->bool('newsletter_consent');
         $this->newsletterConsentAt = $attributes->dateTime('newsletter_consent_at');
         $this->preferences = $attributes->string('preferences');
+        $this->slackProductUpdates = $attributes->bool('slack_product_updates');
         $this->ssoProvision = $attributes->bool('sso_provision');
         $this->sysadmin = $attributes->bool('sysadmin');
         $this->sysadminPermissions = $attributes->object('sysadmin_permissions');

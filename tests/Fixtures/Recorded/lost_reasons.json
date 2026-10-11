@@ -1,0 +1,21 @@
+{
+    "data": [
+        {
+            "id": "1047",
+            "type": "lost_reasons",
+            "attributes": {
+                "name": "Text 95",
+                "archived_at": null,
+                "position": 3
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

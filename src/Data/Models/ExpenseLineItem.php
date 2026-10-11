@@ -53,6 +53,11 @@ final readonly class ExpenseLineItem extends Model
         return $this->belongsTo('expense', Expense::class);
     }
 
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
+    }
+
     public function taxRate(): ?TaxRate
     {
         return $this->belongsTo('tax_rate', TaxRate::class);

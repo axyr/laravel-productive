@@ -43,6 +43,12 @@ final readonly class TimeEntryReport extends Model
     /** Average profit margin calculated from recognized revenue and costs. */
     public ?float $averageRecognizedMargin;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $averageRecognizedMarginDefault;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $averageRecognizedMarginNormalized;
+
     public ?int $billableTime;
 
     /** The billing type of the service (hourly, fixed price, etc.). */
@@ -92,7 +98,7 @@ final readonly class TimeEntryReport extends Model
     public ?int $intercompanyHours;
 
     /** Indicates whether this time entry has been invoiced to the client. */
-    public ?int $invoiced;
+    public ?bool $invoiced;
 
     /** The invoicing status of this time entry. */
     public ?int $invoicingStatus;
@@ -115,10 +121,20 @@ final readonly class TimeEntryReport extends Model
     public ?int $nonbillableTime;
 
     /** Indicates whether this time entry is classified as overhead. */
-    public ?int $overhead;
+    public ?bool $overhead;
 
-    /** Custom field values associated with the person who tracked time. */
-    public ?string $peopleCustomFields;
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $overtime;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $overtimeCostMultiplier;
+
+    /**
+     * Custom field values associated with the person who tracked time.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $peopleCustomFields;
 
     public ?int $personId;
 
@@ -152,6 +168,9 @@ final readonly class TimeEntryReport extends Model
 
     /** Status for this time entry report group. */
     public ?int $status;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalBillableApprovedTime;
 
     /** Sum of billable revenue across all records in this time entry report group. */
     public mixed $totalBillableRevenue;
@@ -259,6 +278,8 @@ final readonly class TimeEntryReport extends Model
         $this->averageBlendedRateDefault = $attributes->mixed('average_blended_rate_default');
         $this->averageBlendedRateNormalized = $attributes->mixed('average_blended_rate_normalized');
         $this->averageRecognizedMargin = $attributes->float('average_recognized_margin');
+        $this->averageRecognizedMarginDefault = $attributes->string('average_recognized_margin_default');
+        $this->averageRecognizedMarginNormalized = $attributes->string('average_recognized_margin_normalized');
         $this->billableTime = $attributes->int('billable_time');
         $this->billingType = $attributes->int('billing_type');
         $this->cost = $attributes->string('cost');
@@ -276,7 +297,7 @@ final readonly class TimeEntryReport extends Model
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->intercompanyHours = $attributes->int('intercompany_hours');
-        $this->invoiced = $attributes->int('invoiced');
+        $this->invoiced = $attributes->bool('invoiced');
         $this->invoicingStatus = $attributes->int('invoicing_status');
         $this->jiraIssueId = $attributes->string('jira_issue_id');
         $this->jiraIssueStatus = $attributes->string('jira_issue_status');
@@ -284,8 +305,10 @@ final readonly class TimeEntryReport extends Model
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
         $this->nonbillableTime = $attributes->int('nonbillable_time');
-        $this->overhead = $attributes->int('overhead');
-        $this->peopleCustomFields = $attributes->string('people_custom_fields');
+        $this->overhead = $attributes->bool('overhead');
+        $this->overtime = $attributes->bool('overtime');
+        $this->overtimeCostMultiplier = $attributes->string('overtime_cost_multiplier');
+        $this->peopleCustomFields = $attributes->object('people_custom_fields');
         $this->personId = $attributes->int('person_id');
         $this->profit = $attributes->string('profit');
         $this->profitMargin = $attributes->float('profit_margin');
@@ -299,6 +322,7 @@ final readonly class TimeEntryReport extends Model
         $this->startedAt = $attributes->date('started_at');
         $this->startedAtPeriod = $attributes->mixed('started_at_period');
         $this->status = $attributes->int('status');
+        $this->totalBillableApprovedTime = $attributes->int('total_billable_approved_time');
         $this->totalBillableRevenue = $attributes->mixed('total_billable_revenue');
         $this->totalBillableRevenueDefault = $attributes->mixed('total_billable_revenue_default');
         $this->totalBillableRevenueNormalized = $attributes->mixed('total_billable_revenue_normalized');

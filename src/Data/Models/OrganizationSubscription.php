@@ -33,12 +33,8 @@ final readonly class OrganizationSubscription extends Model
      */
     public ?array $billingAddress;
 
-    /**
-     * The email address used for billing communications and invoices.
-     *
-     * @var array<array-key, mixed>|null
-     */
-    public ?array $billingEmail;
+    /** The email address used for billing communications and invoices. */
+    public ?string $billingEmail;
 
     /** Whether this organization is the admin of a billing group (manages billing for member organizations). */
     public ?bool $billingGroupAdmin;
@@ -126,7 +122,7 @@ final readonly class OrganizationSubscription extends Model
     public ?int $seatsUsed;
 
     /** The Stripe customer ID associated with this organization's billing account. */
-    public ?int $stripeCustomerId;
+    public ?string $stripeCustomerId;
 
     /** Timestamp when the subscription ended, or null if still active. */
     public ?DateTimeImmutable $subscriptionEndedAt;
@@ -162,7 +158,7 @@ final readonly class OrganizationSubscription extends Model
     {
         $this->balance = $attributes->mixed('balance');
         $this->billingAddress = $attributes->object('billing_address');
-        $this->billingEmail = $attributes->object('billing_email');
+        $this->billingEmail = $attributes->string('billing_email');
         $this->billingGroupAdmin = $attributes->bool('billing_group_admin');
         $this->billingGroupMember = $attributes->mixed('billing_group_member');
         $this->billingGroupSeats = $attributes->int('billing_group_seats');
@@ -191,7 +187,7 @@ final readonly class OrganizationSubscription extends Model
         $this->seatsMax = $attributes->int('seats_max');
         $this->seatsPending = $attributes->mixed('seats_pending');
         $this->seatsUsed = $attributes->int('seats_used');
-        $this->stripeCustomerId = $attributes->int('stripe_customer_id');
+        $this->stripeCustomerId = $attributes->string('stripe_customer_id');
         $this->subscriptionEndedAt = $attributes->dateTime('subscription_ended_at');
         $this->subscriptionStartedAt = $attributes->dateTime('subscription_started_at');
         $this->subscriptionStateId = $attributes->int('subscription_state_id');

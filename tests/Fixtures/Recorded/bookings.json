@@ -1,0 +1,302 @@
+{
+    "data": [
+        {
+            "id": "1020",
+            "type": "bookings",
+            "attributes": {
+                "hours": 2,
+                "time": 120,
+                "started_on": "2026-10-09",
+                "ended_on": "2026-10-18",
+                "note": "Text 11",
+                "total_time": 2880,
+                "total_working_days": 6,
+                "percentage": 100,
+                "created_at": "2026-10-09T13:02:40.889+02:00",
+                "updated_at": "2026-10-09T13:02:40.889+02:00",
+                "people_custom_fields": null,
+                "approved": true,
+                "approved_at": "2026-10-09T13:02:40.845+02:00",
+                "rejected": false,
+                "rejected_reason": null,
+                "rejected_at": null,
+                "canceled": false,
+                "canceled_at": null,
+                "booking_method_id": 1021,
+                "autotracking": false,
+                "draft": false,
+                "custom_fields": null,
+                "external_id": null,
+                "last_activity_at": "2026-10-09T13:02:40.000+02:00",
+                "stage_type": 2
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "event": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "updater": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approver": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "rejecter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "canceler": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "origin": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_statuses": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1022",
+            "type": "bookings",
+            "attributes": {
+                "hours": 8,
+                "time": 480,
+                "started_on": "2026-12-10",
+                "ended_on": "2026-12-18",
+                "note": "",
+                "total_time": 3360,
+                "total_working_days": 7,
+                "percentage": 100,
+                "created_at": "2026-10-09T13:02:41.957+02:00",
+                "updated_at": "2026-10-09T13:02:41.957+02:00",
+                "people_custom_fields": null,
+                "approved": true,
+                "approved_at": "2026-10-09T13:02:40.845+02:00",
+                "rejected": false,
+                "rejected_reason": null,
+                "rejected_at": null,
+                "canceled": false,
+                "canceled_at": null,
+                "booking_method_id": 1021,
+                "autotracking": false,
+                "draft": false,
+                "custom_fields": null,
+                "external_id": null,
+                "last_activity_at": "2026-10-09T13:02:41.000+02:00",
+                "stage_type": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "event": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "updater": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approver": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "rejecter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "canceler": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "origin": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_statuses": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1020",
+            "type": "bookings",
+            "attributes": {
+                "hours": 2,
+                "time": 120,
+                "started_on": "2026-10-09",
+                "ended_on": "2026-10-18",
+                "note": "Text 11",
+                "total_time": 2880,
+                "total_working_days": 6,
+                "percentage": 100,
+                "created_at": "2026-10-09T13:02:40.889+02:00",
+                "updated_at": "2026-10-09T13:02:40.889+02:00",
+                "people_custom_fields": null,
+                "approved": true,
+                "approved_at": "2026-10-09T13:02:40.845+02:00",
+                "rejected": false,
+                "rejected_reason": null,
+                "rejected_at": null,
+                "canceled": false,
+                "canceled_at": null,
+                "booking_method_id": 1021,
+                "autotracking": false,
+                "draft": false,
+                "custom_fields": null,
+                "external_id": null,
+                "last_activity_at": "2026-10-09T13:02:40.000+02:00",
+                "stage_type": 2
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service": {
+                    "data": {
+                        "type": "services",
+                        "id": "1023"
+                    }
+                },
+                "event": {
+                    "data": null
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "updater": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "approver": {
+                    "data": null
+                },
+                "rejecter": {
+                    "data": null
+                },
+                "canceler": {
+                    "data": null
+                },
+                "origin": {
+                    "data": null
+                },
+                "approval_statuses": {
+                    "data": []
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                },
+                "attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

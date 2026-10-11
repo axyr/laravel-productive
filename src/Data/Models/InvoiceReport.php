@@ -23,7 +23,7 @@ final readonly class InvoiceReport extends Model
     public const string TYPE = 'invoice_reports';
 
     /** Whether this invoice was automatically created from a recurring contract budget, rather than manually by a user. */
-    public ?int $automaticallyCreated;
+    public ?bool $automaticallyCreated;
 
     /** Average number of days until the invoice is due (calculated from invoiced_on to pay_on) across invoices in this report group. */
     public ?int $averageDueIn;
@@ -53,6 +53,9 @@ final readonly class InvoiceReport extends Model
 
     /** Custom field values for the invoice in this row, as a JSON hash keyed by custom field ID. */
     public ?string $customFields;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $deliveryMethod;
 
     /** Time period grouping for the delivery date (e.g. week, month, quarter). */
     public mixed $deliveryOnPeriod;
@@ -211,7 +214,7 @@ final readonly class InvoiceReport extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
-        $this->automaticallyCreated = $attributes->int('automatically_created');
+        $this->automaticallyCreated = $attributes->bool('automatically_created');
         $this->averageDueIn = $attributes->int('average_due_in');
         $this->averagePaidIn = $attributes->int('average_paid_in');
         $this->companyId = $attributes->int('company_id');
@@ -222,6 +225,7 @@ final readonly class InvoiceReport extends Model
         $this->currencyId = $attributes->string('currency_id');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->customFields = $attributes->string('custom_fields');
+        $this->deliveryMethod = $attributes->int('delivery_method');
         $this->deliveryOnPeriod = $attributes->mixed('delivery_on_period');
         $this->einvoiceStatus = $attributes->int('einvoice_status');
         $this->fiscalizationStatus = $attributes->int('fiscalization_status');

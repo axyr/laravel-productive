@@ -39,6 +39,9 @@ final readonly class EntitlementReport extends Model
     /** Financial values normalized for cross-currency comparison. */
     public ?string $currencyNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     /** The end date period descriptor used for grouping in time-based reports. */
     public mixed $endDatePeriod;
 
@@ -94,6 +97,7 @@ final readonly class EntitlementReport extends Model
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
+        $this->description = $attributes->mixed('description');
         $this->endDatePeriod = $attributes->mixed('end_date_period');
         $this->eventId = $attributes->int('event_id');
         $this->formulaFields = $attributes->mixed('formula_fields');

@@ -52,6 +52,9 @@ final readonly class DealReport extends Model
     /** The average number of interval units per retainer period across grouped deals. */
     public ?int $averageRetainerIntervalCount;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $averageTimeToClose;
+
     public ?int $billableTime;
 
     public ?string $cost;
@@ -78,6 +81,9 @@ final readonly class DealReport extends Model
     public mixed $datePeriod;
 
     public ?int $dealId;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $dealValueSource;
 
     /** Computed values for custom formula fields defined on the report. */
     public mixed $formulaFields;
@@ -111,6 +117,15 @@ final readonly class DealReport extends Model
     public ?string $retainerInterval;
 
     public ?string $revenue;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $revenueDistributionBase;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $revenueDistributionEndOnPeriod;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $revenueDistributionStartOnPeriod;
 
     /** Time period grouping for the sales closed-at timestamp (e.g. week, month, quarter). */
     public mixed $salesClosedAtPeriod;
@@ -190,6 +205,9 @@ final readonly class DealReport extends Model
     /** Sum of expense costs in the normalized currency across all deals in this report group. */
     public mixed $totalExpenseNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalOvertimeTime;
+
     /** Sum of profit amounts across all deals in this report group. */
     public mixed $totalProfit;
 
@@ -261,6 +279,7 @@ final readonly class DealReport extends Model
         $this->averageRateDefault = $attributes->mixed('average_rate_default');
         $this->averageRateNormalized = $attributes->mixed('average_rate_normalized');
         $this->averageRetainerIntervalCount = $attributes->int('average_retainer_interval_count');
+        $this->averageTimeToClose = $attributes->mixed('average_time_to_close');
         $this->billableTime = $attributes->int('billable_time');
         $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
@@ -271,6 +290,7 @@ final readonly class DealReport extends Model
         $this->customFields = $attributes->string('custom_fields');
         $this->datePeriod = $attributes->mixed('date_period');
         $this->dealId = $attributes->int('deal_id');
+        $this->dealValueSource = $attributes->string('deal_value_source');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
@@ -283,6 +303,9 @@ final readonly class DealReport extends Model
         $this->retainer = $attributes->int('retainer');
         $this->retainerInterval = $attributes->string('retainer_interval');
         $this->revenue = $attributes->string('revenue');
+        $this->revenueDistributionBase = $attributes->string('revenue_distribution_base');
+        $this->revenueDistributionEndOnPeriod = $attributes->mixed('revenue_distribution_end_on_period');
+        $this->revenueDistributionStartOnPeriod = $attributes->mixed('revenue_distribution_start_on_period');
         $this->salesClosedAtPeriod = $attributes->mixed('sales_closed_at_period');
         $this->salesClosedOnPeriod = $attributes->mixed('sales_closed_on_period');
         $this->stageStatusId = $attributes->int('stage_status_id');
@@ -309,6 +332,7 @@ final readonly class DealReport extends Model
         $this->totalExpense = $attributes->mixed('total_expense');
         $this->totalExpenseDefault = $attributes->mixed('total_expense_default');
         $this->totalExpenseNormalized = $attributes->mixed('total_expense_normalized');
+        $this->totalOvertimeTime = $attributes->int('total_overtime_time');
         $this->totalProfit = $attributes->mixed('total_profit');
         $this->totalProfitDefault = $attributes->mixed('total_profit_default');
         $this->totalProfitNormalized = $attributes->mixed('total_profit_normalized');

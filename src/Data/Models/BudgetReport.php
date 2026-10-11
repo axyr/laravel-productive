@@ -40,6 +40,9 @@ final readonly class BudgetReport extends Model
     /** Average budget usage percentage normalized across currencies. */
     public mixed $averageBudgetUsageNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $averageEstimatedTimeUsage;
+
     /** Average forecasted budget overrun amount across grouped budgets. */
     public ?float $averageForecastedBudgetOverrun;
 
@@ -166,7 +169,7 @@ final readonly class BudgetReport extends Model
     public ?string $quarter;
 
     /** Indicates whether this budget automatically recurs on a schedule. */
-    public ?int $recurring;
+    public ?bool $recurring;
 
     /** Time period grouping for the recurring end date (e.g. week, month, quarter). */
     public mixed $recurringEndsOnPeriod;
@@ -347,6 +350,9 @@ final readonly class BudgetReport extends Model
     /** Sum of manually invoiced amounts in the normalized currency across all budgets in this report group. */
     public mixed $totalManuallyInvoicedNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalOvertimeTime;
+
     /** Sum of pending invoicing amounts across all budgets in this report group. */
     public mixed $totalPendingInvoicing;
 
@@ -415,6 +421,7 @@ final readonly class BudgetReport extends Model
         $this->averageBudgetUsage = $attributes->float('average_budget_usage');
         $this->averageBudgetUsageDefault = $attributes->float('average_budget_usage_default');
         $this->averageBudgetUsageNormalized = $attributes->mixed('average_budget_usage_normalized');
+        $this->averageEstimatedTimeUsage = $attributes->string('average_estimated_time_usage');
         $this->averageForecastedBudgetOverrun = $attributes->float('average_forecasted_budget_overrun');
         $this->averageForecastedBudgetOverrunDefault = $attributes->float('average_forecasted_budget_overrun_default');
         $this->averageForecastedBudgetOverrunNormalized = $attributes->mixed('average_forecasted_budget_overrun_normalized');
@@ -460,7 +467,7 @@ final readonly class BudgetReport extends Model
         $this->projectType = $attributes->int('project_type');
         $this->purchaseOrderNumber = $attributes->string('purchase_order_number');
         $this->quarter = $attributes->string('quarter');
-        $this->recurring = $attributes->int('recurring');
+        $this->recurring = $attributes->bool('recurring');
         $this->recurringEndsOnPeriod = $attributes->mixed('recurring_ends_on_period');
         $this->recurringIntervalId = $attributes->int('recurring_interval_id');
         $this->recurringStartsOnPeriod = $attributes->mixed('recurring_starts_on_period');
@@ -521,6 +528,7 @@ final readonly class BudgetReport extends Model
         $this->totalManuallyInvoiced = $attributes->mixed('total_manually_invoiced');
         $this->totalManuallyInvoicedDefault = $attributes->mixed('total_manually_invoiced_default');
         $this->totalManuallyInvoicedNormalized = $attributes->mixed('total_manually_invoiced_normalized');
+        $this->totalOvertimeTime = $attributes->int('total_overtime_time');
         $this->totalPendingInvoicing = $attributes->mixed('total_pending_invoicing');
         $this->totalPendingInvoicingDefault = $attributes->mixed('total_pending_invoicing_default');
         $this->totalPendingInvoicingNormalized = $attributes->mixed('total_pending_invoicing_normalized');

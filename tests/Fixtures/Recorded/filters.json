@@ -1,0 +1,382 @@
+{
+    "data": [
+        {
+            "id": "Text 63",
+            "type": "filters",
+            "attributes": {
+                "name": "Text 64",
+                "filterable_id": 1058,
+                "filterable_type": "project",
+                "filterable_collection": "tasks",
+                "original_id": 1059,
+                "public": true,
+                "default": false,
+                "columns": null,
+                "params": {
+                    "workflow_status_category_id": {
+                        "eq": [
+                            "1",
+                            "2"
+                        ]
+                    }
+                },
+                "sort_by": null,
+                "group_by": null,
+                "layout_id": null,
+                "transpose_by": null,
+                "report": false,
+                "description": null,
+                "chart_type_id": null,
+                "report_layout_id": null,
+                "column_settings": null,
+                "settings": null,
+                "created_at": "2026-10-09T13:02:35.711+02:00",
+                "updated_at": "2026-10-09T13:02:35.711+02:00",
+                "formulas": null,
+                "predefined_id": null,
+                "hidden": false,
+                "type_id": 1013,
+                "exchange_currency": null,
+                "exchange_date": [],
+                "shared": false,
+                "last_viewed_at": null,
+                "last_pulse_sent_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "report_category": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "memberships": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 65",
+            "type": "filters",
+            "attributes": {
+                "name": "Text 66",
+                "filterable_id": 1058,
+                "filterable_type": "project",
+                "filterable_collection": "budgets",
+                "original_id": 1060,
+                "public": true,
+                "default": false,
+                "columns": null,
+                "params": [],
+                "sort_by": null,
+                "group_by": null,
+                "layout_id": null,
+                "transpose_by": null,
+                "report": false,
+                "description": null,
+                "chart_type_id": null,
+                "report_layout_id": null,
+                "column_settings": null,
+                "settings": null,
+                "created_at": "2026-10-09T13:02:35.740+02:00",
+                "updated_at": "2026-10-09T13:02:35.740+02:00",
+                "formulas": null,
+                "predefined_id": null,
+                "hidden": false,
+                "type_id": 1013,
+                "exchange_currency": null,
+                "exchange_date": [],
+                "shared": false,
+                "last_viewed_at": null,
+                "last_pulse_sent_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "report_category": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "memberships": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 67",
+            "type": "filters",
+            "attributes": {
+                "name": "Text 68",
+                "filterable_id": null,
+                "filterable_type": null,
+                "filterable_collection": "tasks",
+                "original_id": 1061,
+                "public": false,
+                "default": false,
+                "columns": "Text 69",
+                "params": {
+                    "0": {
+                        "0": {
+                            "project.status": {
+                                "eq": "1"
+                            }
+                        },
+                        "1": {
+                            "folder_status": {
+                                "eq": "1"
+                            }
+                        },
+                        "2": {
+                            "task_list_status": {
+                                "eq": "1"
+                            }
+                        },
+                        "3": {
+                            "workflow_status_category_id": {
+                                "eq": [
+                                    "1",
+                                    "2"
+                                ]
+                            }
+                        },
+                        "$op": "and"
+                    },
+                    "$op": "and"
+                },
+                "sort_by": "",
+                "group_by": "Text 70",
+                "layout_id": null,
+                "transpose_by": "",
+                "report": false,
+                "description": "Text 71",
+                "chart_type_id": 1013,
+                "report_layout_id": 1021,
+                "column_settings": "Text 72",
+                "settings": null,
+                "created_at": "2026-10-09T17:03:08.656+02:00",
+                "updated_at": "2026-10-09T17:03:08.656+02:00",
+                "formulas": null,
+                "predefined_id": null,
+                "hidden": false,
+                "type_id": 1037,
+                "exchange_currency": null,
+                "exchange_date": [],
+                "shared": false,
+                "last_viewed_at": null,
+                "last_pulse_sent_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "report_category": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "memberships": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 73",
+            "type": "filters",
+            "attributes": {
+                "name": "Text 74",
+                "filterable_id": null,
+                "filterable_type": null,
+                "filterable_collection": "new_time_reports",
+                "original_id": 1062,
+                "public": false,
+                "default": false,
+                "columns": "Text 75",
+                "params": {
+                    "0": {
+                        "0": {
+                            "date": {
+                                "eq": "204"
+                            }
+                        },
+                        "1": {
+                            "role_id": {
+                                "eq": [
+                                    "1",
+                                    "2",
+                                    "10",
+                                    "12",
+                                    "13"
+                                ]
+                            }
+                        },
+                        "$op": "and"
+                    },
+                    "$op": "and"
+                },
+                "sort_by": "group",
+                "group_by": "Text 76",
+                "layout_id": null,
+                "transpose_by": "available-time",
+                "report": false,
+                "description": "",
+                "chart_type_id": null,
+                "report_layout_id": 1021,
+                "column_settings": "Text 77",
+                "settings": null,
+                "created_at": "2026-10-09T17:03:11.841+02:00",
+                "updated_at": "2026-10-09T17:03:11.841+02:00",
+                "formulas": "Text 78",
+                "predefined_id": null,
+                "hidden": false,
+                "type_id": 1037,
+                "exchange_currency": null,
+                "exchange_date": [],
+                "shared": false,
+                "last_viewed_at": null,
+                "last_pulse_sent_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "report_category": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "memberships": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 63",
+            "type": "filters",
+            "attributes": {
+                "name": "Text 64",
+                "filterable_id": 1058,
+                "filterable_type": "project",
+                "filterable_collection": "tasks",
+                "original_id": 1059,
+                "public": true,
+                "default": false,
+                "columns": null,
+                "params": {
+                    "workflow_status_category_id": {
+                        "eq": [
+                            "1",
+                            "2"
+                        ]
+                    }
+                },
+                "sort_by": null,
+                "group_by": null,
+                "layout_id": null,
+                "transpose_by": null,
+                "report": false,
+                "description": null,
+                "chart_type_id": null,
+                "report_layout_id": null,
+                "column_settings": null,
+                "settings": null,
+                "created_at": "2026-10-09T13:02:35.711+02:00",
+                "updated_at": "2026-10-09T13:02:35.711+02:00",
+                "formulas": null,
+                "predefined_id": null,
+                "hidden": false,
+                "type_id": 1013,
+                "exchange_currency": null,
+                "exchange_date": [],
+                "shared": false,
+                "last_viewed_at": null,
+                "last_pulse_sent_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "report_category": {
+                    "data": null
+                },
+                "template_object": {
+                    "data": null
+                },
+                "memberships": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

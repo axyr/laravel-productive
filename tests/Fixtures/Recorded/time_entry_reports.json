@@ -1,0 +1,203 @@
+{
+    "data": [
+        {
+            "id": "Text 180",
+            "type": "time_entry_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "time_entry",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 61",
+                "week": "Text 62",
+                "day": "2026-09-13",
+                "status": 1,
+                "jira_issue_id": null,
+                "jira_issue_status": null,
+                "jira_issue_summary": null,
+                "invoicing_status": 1,
+                "section_name": null,
+                "billing_type": 1,
+                "unit_id": 1013,
+                "project_type_id": 1021,
+                "track_method_id": 1013,
+                "autotracked": 0,
+                "stage_type": 2,
+                "intercompany_hours": 2,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "invoiced": false,
+                "overhead": false,
+                "overtime": false,
+                "overtime_cost_multiplier": "1.0",
+                "total_time": 300,
+                "total_billable_time": 300,
+                "total_billable_approved_time": 300,
+                "total_recognized_time": 300,
+                "date_period": null,
+                "created_at_period": null,
+                "approved_at_period": null,
+                "last_activity_at_period": null,
+                "started_at_period": null,
+                "ended_at_period": null,
+                "started_at": null,
+                "ended_at": null,
+                "average_recognized_margin": "54.5455",
+                "average_recognized_margin_default": "54.5455",
+                "average_recognized_margin_normalized": "54.5455",
+                "total_cost": 22727,
+                "total_cost_default": 22727,
+                "total_cost_normalized": 22727,
+                "average_blended_rate": 10000,
+                "average_blended_rate_default": 10000,
+                "average_blended_rate_normalized": 10000,
+                "total_recognized_revenue": 50000,
+                "total_recognized_revenue_default": 50000,
+                "total_recognized_revenue_normalized": 50000,
+                "total_recognized_profit": 27273,
+                "total_recognized_profit_default": 27273,
+                "total_recognized_profit_normalized": 27273,
+                "total_billable_revenue": 50000,
+                "total_billable_revenue_default": 50000,
+                "total_billable_revenue_normalized": 50000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person_manager": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 180",
+            "type": "time_entry_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "time_entry",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 61",
+                "week": "Text 62",
+                "day": "2026-09-13",
+                "status": 1,
+                "jira_issue_id": null,
+                "jira_issue_status": null,
+                "jira_issue_summary": null,
+                "invoicing_status": 1,
+                "section_name": null,
+                "billing_type": 1,
+                "unit_id": 1013,
+                "project_type_id": 1021,
+                "track_method_id": 1013,
+                "autotracked": 0,
+                "stage_type": 2,
+                "intercompany_hours": 2,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "invoiced": false,
+                "overhead": false,
+                "overtime": false,
+                "overtime_cost_multiplier": "1.0",
+                "total_time": 300,
+                "total_billable_time": 300,
+                "total_billable_approved_time": 300,
+                "total_recognized_time": 300,
+                "date_period": null,
+                "created_at_period": null,
+                "approved_at_period": null,
+                "last_activity_at_period": null,
+                "started_at_period": null,
+                "ended_at_period": null,
+                "started_at": null,
+                "ended_at": null,
+                "average_recognized_margin": "54.5455",
+                "average_recognized_margin_default": "54.5455",
+                "average_recognized_margin_normalized": "54.5455",
+                "total_cost": 22727,
+                "total_cost_default": 22727,
+                "total_cost_normalized": 22727,
+                "average_blended_rate": 10000,
+                "average_blended_rate_default": 10000,
+                "average_blended_rate_normalized": 10000,
+                "total_recognized_revenue": 50000,
+                "total_recognized_revenue_default": 50000,
+                "total_recognized_revenue_normalized": 50000,
+                "total_recognized_profit": 27273,
+                "total_recognized_profit_default": 27273,
+                "total_recognized_profit_normalized": 27273,
+                "total_billable_revenue": 50000,
+                "total_billable_revenue_default": 50000,
+                "total_billable_revenue_normalized": 50000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "time_entry": {
+                    "data": {
+                        "type": "time_entries",
+                        "id": "1113"
+                    }
+                },
+                "person_manager": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

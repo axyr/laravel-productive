@@ -1,0 +1,61 @@
+{
+    "data": [
+        {
+            "id": "1096",
+            "type": "revenue_distributions",
+            "attributes": {
+                "start_on": "2026-08-09",
+                "end_on": "2026-08-09",
+                "amount_percent": "100.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 0,
+                "amount_default": 0,
+                "amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1096",
+            "type": "revenue_distributions",
+            "attributes": {
+                "start_on": "2026-08-09",
+                "end_on": "2026-08-09",
+                "amount_percent": "100.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 0,
+                "amount_default": 0,
+                "amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1040"
+                    }
+                }
+            }
+        }
+    ]
+}

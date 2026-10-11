@@ -26,18 +26,17 @@ final readonly class Person extends Model
     /** The AI agent account linked to this person, if this person represents an AI agent. */
     public ?bool $agent;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $aiAssistantInstructions;
+
     /** Timestamp when this person was archived, or null if not archived. */
     public ?DateTimeImmutable $archivedAt;
 
     /** Whether automatic time tracking is enabled for this person. */
     public ?bool $autotracking;
 
-    /**
-     * The person's work availability windows.
-     *
-     * @var list<mixed>|null
-     */
-    public ?array $availabilities;
+    /** The person's work availability windows. */
+    public ?string $availabilities;
 
     /** URL of the person's avatar thumbnail. */
     public ?string $avatarUrl;
@@ -176,9 +175,10 @@ final readonly class Person extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->agent = $attributes->bool('agent');
+        $this->aiAssistantInstructions = $attributes->mixed('ai_assistant_instructions');
         $this->archivedAt = $attributes->dateTime('archived_at');
         $this->autotracking = $attributes->bool('autotracking');
-        $this->availabilities = $attributes->list('availabilities');
+        $this->availabilities = $attributes->string('availabilities');
         $this->avatarUrl = $attributes->string('avatar_url');
         $this->champion = $attributes->bool('champion');
         $this->colorId = $attributes->int('color_id');

@@ -1,0 +1,777 @@
+{
+    "data": [
+        {
+            "id": "1023",
+            "type": "services",
+            "attributes": {
+                "name": "Text 161",
+                "position": 1,
+                "deleted_at": null,
+                "external_id": null,
+                "billable": false,
+                "description": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "origin_service_id": null,
+                "initial_service_id": 1023,
+                "budget_cap_enabled": false,
+                "editor_config": null,
+                "custom_fields": null,
+                "billing_type_id": 1037,
+                "worked_time": 300,
+                "overtime_time": 0,
+                "billable_time": 0,
+                "estimated_time": 600,
+                "budgeted_time": 600,
+                "profit_margin": 0,
+                "booked_time": 6720,
+                "unit_id": 1013,
+                "future_booked_time": 6720,
+                "tentative_booked_time": 0,
+                "future_tentative_booked_time": 0,
+                "markup": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "quantity": "10.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "profit": -22727.272725,
+                "profit_default": -22727.272725,
+                "profit_normalized": -22727.272725,
+                "work_cost": 22727.272725,
+                "work_cost_default": 22727.272725,
+                "work_cost_normalized": 22727.272725,
+                "future_cost": 509090.90904,
+                "future_cost_default": 509090.90904,
+                "future_cost_normalized": 509090.90904,
+                "cost": 22727.272725,
+                "cost_default": 22727.272725,
+                "cost_normalized": 22727.272725,
+                "price": 10000,
+                "price_default": 10000,
+                "price_normalized": 10000,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0,
+                "revenue": 0,
+                "revenue_default": 0,
+                "revenue_normalized": 0,
+                "projected_revenue": 0,
+                "projected_revenue_default": 0,
+                "projected_revenue_normalized": 0,
+                "expense_amount": 0,
+                "expense_amount_default": 0,
+                "expense_amount_normalized": 0,
+                "expense_billable_amount": 0,
+                "expense_billable_amount_default": 0,
+                "expense_billable_amount_normalized": 0,
+                "budget_total": 100000,
+                "budget_total_default": 100000,
+                "budget_total_normalized": 100000,
+                "budget_used": 50000,
+                "budget_used_default": 50000,
+                "budget_used_normalized": 50000,
+                "future_revenue": 0,
+                "future_revenue_default": 0,
+                "future_revenue_normalized": 0,
+                "future_budget_used": 1120000,
+                "future_budget_used_default": 1120000,
+                "future_budget_used_normalized": 1120000,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "markup_amount": 0,
+                "markup_amount_default": 0,
+                "markup_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "section": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1104",
+            "type": "services",
+            "attributes": {
+                "name": "Text 94",
+                "position": 1,
+                "deleted_at": null,
+                "external_id": null,
+                "billable": true,
+                "description": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "origin_service_id": null,
+                "initial_service_id": 1104,
+                "budget_cap_enabled": false,
+                "editor_config": null,
+                "custom_fields": null,
+                "billing_type_id": 1021,
+                "worked_time": 4200,
+                "overtime_time": 0,
+                "billable_time": 4200,
+                "estimated_time": 1200,
+                "budgeted_time": 1200,
+                "profit_margin": "54.35",
+                "booked_time": 4320,
+                "unit_id": 1013,
+                "future_booked_time": 4320,
+                "tentative_booked_time": 0,
+                "future_tentative_booked_time": 0,
+                "markup": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "quantity": "20.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "profit": 380453.60438,
+                "profit_default": 380453.60438,
+                "profit_normalized": 380453.60438,
+                "work_cost": 319546.39562,
+                "work_cost_default": 319546.39562,
+                "work_cost_normalized": 319546.39562,
+                "future_cost": 327272.72724,
+                "future_cost_default": 327272.72724,
+                "future_cost_normalized": 327272.72724,
+                "cost": 319546.39562,
+                "cost_default": 319546.39562,
+                "cost_normalized": 319546.39562,
+                "price": 10000,
+                "price_default": 10000,
+                "price_normalized": 10000,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0,
+                "revenue": 700000,
+                "revenue_default": 700000,
+                "revenue_normalized": 700000,
+                "projected_revenue": 0,
+                "projected_revenue_default": 0,
+                "projected_revenue_normalized": 0,
+                "expense_amount": 0,
+                "expense_amount_default": 0,
+                "expense_amount_normalized": 0,
+                "expense_billable_amount": 0,
+                "expense_billable_amount_default": 0,
+                "expense_billable_amount_normalized": 0,
+                "budget_total": 200000,
+                "budget_total_default": 200000,
+                "budget_total_normalized": 200000,
+                "budget_used": 700000,
+                "budget_used_default": 700000,
+                "budget_used_normalized": 700000,
+                "future_revenue": 0,
+                "future_revenue_default": 0,
+                "future_revenue_normalized": 0,
+                "future_budget_used": 720000,
+                "future_budget_used_default": 720000,
+                "future_budget_used_normalized": 720000,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "markup_amount": 0,
+                "markup_amount_default": 0,
+                "markup_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "section": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1057",
+            "type": "services",
+            "attributes": {
+                "name": "Text 162",
+                "position": 1,
+                "deleted_at": null,
+                "external_id": null,
+                "billable": true,
+                "description": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "origin_service_id": null,
+                "initial_service_id": 1057,
+                "budget_cap_enabled": false,
+                "editor_config": null,
+                "custom_fields": null,
+                "billing_type_id": 1021,
+                "worked_time": 0,
+                "overtime_time": 0,
+                "billable_time": 0,
+                "estimated_time": 60,
+                "budgeted_time": 60,
+                "profit_margin": "12.5",
+                "booked_time": 0,
+                "unit_id": 1021,
+                "future_booked_time": 0,
+                "tentative_booked_time": 0,
+                "future_tentative_booked_time": 0,
+                "markup": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "quantity": "1.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "profit": 200000,
+                "profit_default": 200000,
+                "profit_normalized": 200000,
+                "work_cost": 0,
+                "work_cost_default": 0,
+                "work_cost_normalized": 0,
+                "future_cost": 0,
+                "future_cost_default": 0,
+                "future_cost_normalized": 0,
+                "cost": 1400000,
+                "cost_default": 1400000,
+                "cost_normalized": 1400000,
+                "price": 0,
+                "price_default": 0,
+                "price_normalized": 0,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0,
+                "revenue": 1600000,
+                "revenue_default": 1600000,
+                "revenue_normalized": 1600000,
+                "projected_revenue": 0,
+                "projected_revenue_default": 0,
+                "projected_revenue_normalized": 0,
+                "expense_amount": 1400000,
+                "expense_amount_default": 1400000,
+                "expense_amount_normalized": 1400000,
+                "expense_billable_amount": 1600000,
+                "expense_billable_amount_default": 1600000,
+                "expense_billable_amount_normalized": 1600000,
+                "budget_total": 0,
+                "budget_total_default": 0,
+                "budget_total_normalized": 0,
+                "budget_used": 1600000,
+                "budget_used_default": 1600000,
+                "budget_used_normalized": 1600000,
+                "future_revenue": 0,
+                "future_revenue_default": 0,
+                "future_revenue_normalized": 0,
+                "future_budget_used": 0,
+                "future_budget_used_default": 0,
+                "future_budget_used_normalized": 0,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "markup_amount": 0,
+                "markup_amount_default": 0,
+                "markup_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "section": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1105",
+            "type": "services",
+            "attributes": {
+                "name": "Text 163",
+                "position": 1,
+                "deleted_at": null,
+                "external_id": null,
+                "billable": true,
+                "description": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "origin_service_id": null,
+                "initial_service_id": 1105,
+                "budget_cap_enabled": false,
+                "editor_config": null,
+                "custom_fields": null,
+                "billing_type_id": 1021,
+                "worked_time": 0,
+                "overtime_time": 0,
+                "billable_time": 0,
+                "estimated_time": 60,
+                "budgeted_time": 60,
+                "profit_margin": "-3.8",
+                "booked_time": 0,
+                "unit_id": 1021,
+                "future_booked_time": 0,
+                "tentative_booked_time": 0,
+                "future_tentative_booked_time": 0,
+                "markup": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "quantity": "1.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "profit": -3346.307554,
+                "profit_default": -3346.307554,
+                "profit_normalized": -3346.307554,
+                "work_cost": 0,
+                "work_cost_default": 0,
+                "work_cost_normalized": 0,
+                "future_cost": 0,
+                "future_cost_default": 0,
+                "future_cost_normalized": 0,
+                "cost": 91346.307554,
+                "cost_default": 91346.307554,
+                "cost_normalized": 91346.307554,
+                "price": 0,
+                "price_default": 0,
+                "price_normalized": 0,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0,
+                "revenue": 88000,
+                "revenue_default": 88000,
+                "revenue_normalized": 88000,
+                "projected_revenue": 0,
+                "projected_revenue_default": 0,
+                "projected_revenue_normalized": 0,
+                "expense_amount": 91346.307554,
+                "expense_amount_default": 91346.307554,
+                "expense_amount_normalized": 91346.307554,
+                "expense_billable_amount": 88000,
+                "expense_billable_amount_default": 88000,
+                "expense_billable_amount_normalized": 88000,
+                "budget_total": 0,
+                "budget_total_default": 0,
+                "budget_total_normalized": 0,
+                "budget_used": 88000,
+                "budget_used_default": 88000,
+                "budget_used_normalized": 88000,
+                "future_revenue": 0,
+                "future_revenue_default": 0,
+                "future_revenue_normalized": 0,
+                "future_budget_used": 0,
+                "future_budget_used_default": 0,
+                "future_budget_used_normalized": 0,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "markup_amount": 0,
+                "markup_amount_default": 0,
+                "markup_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "section": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1102",
+            "type": "services",
+            "attributes": {
+                "name": "Text 164",
+                "position": 1,
+                "deleted_at": null,
+                "external_id": null,
+                "billable": false,
+                "description": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "origin_service_id": null,
+                "initial_service_id": 1102,
+                "budget_cap_enabled": false,
+                "editor_config": null,
+                "custom_fields": null,
+                "billing_type_id": 1037,
+                "worked_time": 300,
+                "overtime_time": 0,
+                "billable_time": 0,
+                "estimated_time": 1200,
+                "budgeted_time": 1200,
+                "profit_margin": 0,
+                "booked_time": 0,
+                "unit_id": 1013,
+                "future_booked_time": 0,
+                "tentative_booked_time": 0,
+                "future_tentative_booked_time": 0,
+                "markup": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "quantity": "20.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "profit": -22727.272725,
+                "profit_default": -22727.272725,
+                "profit_normalized": -22727.272725,
+                "work_cost": 22727.272725,
+                "work_cost_default": 22727.272725,
+                "work_cost_normalized": 22727.272725,
+                "future_cost": 0,
+                "future_cost_default": 0,
+                "future_cost_normalized": 0,
+                "cost": 22727.272725,
+                "cost_default": 22727.272725,
+                "cost_normalized": 22727.272725,
+                "price": 10000,
+                "price_default": 10000,
+                "price_normalized": 10000,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0,
+                "revenue": 0,
+                "revenue_default": 0,
+                "revenue_normalized": 0,
+                "projected_revenue": 0,
+                "projected_revenue_default": 0,
+                "projected_revenue_normalized": 0,
+                "expense_amount": 0,
+                "expense_amount_default": 0,
+                "expense_amount_normalized": 0,
+                "expense_billable_amount": 0,
+                "expense_billable_amount_default": 0,
+                "expense_billable_amount_normalized": 0,
+                "budget_total": 200000,
+                "budget_total_default": 200000,
+                "budget_total_normalized": 200000,
+                "budget_used": 50000,
+                "budget_used_default": 50000,
+                "budget_used_normalized": 50000,
+                "future_revenue": 0,
+                "future_revenue_default": 0,
+                "future_revenue_normalized": 0,
+                "future_budget_used": 0,
+                "future_budget_used_default": 0,
+                "future_budget_used_normalized": 0,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "markup_amount": 0,
+                "markup_amount_default": 0,
+                "markup_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "data": {
+                        "type": "service_types",
+                        "id": "1091"
+                    }
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1025"
+                    }
+                },
+                "person": {
+                    "data": null
+                },
+                "section": {
+                    "data": null
+                },
+                "import": {
+                    "data": {
+                        "type": "imports",
+                        "id": "1030"
+                    }
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "1106",
+            "type": "services",
+            "attributes": {
+                "name": "Text 165",
+                "position": 1,
+                "deleted_at": null,
+                "external_id": null,
+                "billable": true,
+                "description": null,
+                "time_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "origin_service_id": null,
+                "initial_service_id": 1106,
+                "budget_cap_enabled": false,
+                "editor_config": null,
+                "custom_fields": null,
+                "billing_type_id": 1021,
+                "worked_time": 0,
+                "overtime_time": 0,
+                "billable_time": 0,
+                "estimated_time": 12000,
+                "budgeted_time": 12000,
+                "profit_margin": "100.0",
+                "booked_time": 0,
+                "unit_id": 1013,
+                "future_booked_time": 0,
+                "tentative_booked_time": 0,
+                "future_tentative_booked_time": 0,
+                "markup": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "quantity": "200.0",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "profit": 1800000,
+                "profit_default": 1800000,
+                "profit_normalized": 1800000,
+                "work_cost": 0,
+                "work_cost_default": 0,
+                "work_cost_normalized": 0,
+                "future_cost": 0,
+                "future_cost_default": 0,
+                "future_cost_normalized": 0,
+                "cost": 0,
+                "cost_default": 0,
+                "cost_normalized": 0,
+                "price": 9000,
+                "price_default": 9000,
+                "price_normalized": 9000,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0,
+                "revenue": 1800000,
+                "revenue_default": 1800000,
+                "revenue_normalized": 1800000,
+                "projected_revenue": 900000,
+                "projected_revenue_default": 900000,
+                "projected_revenue_normalized": 900000,
+                "expense_amount": 0,
+                "expense_amount_default": 0,
+                "expense_amount_normalized": 0,
+                "expense_billable_amount": 0,
+                "expense_billable_amount_default": 0,
+                "expense_billable_amount_normalized": 0,
+                "budget_total": 1800000,
+                "budget_total_default": 1800000,
+                "budget_total_normalized": 1800000,
+                "budget_used": 0,
+                "budget_used_default": 0,
+                "budget_used_normalized": 0,
+                "future_revenue": 0,
+                "future_revenue_default": 0,
+                "future_revenue_normalized": 0,
+                "future_budget_used": 0,
+                "future_budget_used_default": 0,
+                "future_budget_used_normalized": 0,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "markup_amount": 0,
+                "markup_amount_default": 0,
+                "markup_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "data": {
+                        "type": "service_types",
+                        "id": "1090"
+                    }
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1101"
+                    }
+                },
+                "person": {
+                    "data": null
+                },
+                "section": {
+                    "data": {
+                        "type": "sections",
+                        "id": "1107"
+                    }
+                },
+                "import": {
+                    "data": {
+                        "type": "imports",
+                        "id": "1030"
+                    }
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

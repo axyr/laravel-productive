@@ -1,0 +1,326 @@
+{
+    "data": [
+        {
+            "id": "Text 43",
+            "type": "deal_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "deal",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 45",
+                "week": "Text 46",
+                "stage_status_id": 1013,
+                "tracking_type_id": 1013,
+                "deal_value_source": "from_services",
+                "revenue_distribution_base": "weighted",
+                "probability": "0.4",
+                "previous_probability": null,
+                "average_days_since_last_activity": 0,
+                "average_days_since_created": 0,
+                "average_days_in_current_stage": 0,
+                "average_time_to_close": null,
+                "custom_fields": [],
+                "total_worked_time": 0,
+                "total_overtime_time": 0,
+                "total_billable_time": 0,
+                "total_estimated_time": 45660,
+                "total_budgeted_time": 45660,
+                "total_estimated_remaining_time": 45660,
+                "date_period": null,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "sales_closed_at_period": null,
+                "sales_closed_on_period": null,
+                "revenue_distribution_start_on_period": null,
+                "revenue_distribution_end_on_period": null,
+                "stage_updated_at_period": null,
+                "total_work_cost": 0,
+                "total_work_cost_default": 0,
+                "total_work_cost_normalized": null,
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_profit": 8780000,
+                "total_profit_default": 8780000,
+                "total_profit_normalized": null,
+                "total_estimated_cost": 0,
+                "total_estimated_cost_default": 0,
+                "total_estimated_cost_normalized": null,
+                "total_revenue": 8780000,
+                "total_revenue_default": 8780000,
+                "total_revenue_normalized": null,
+                "total_services_revenue": 8780000,
+                "total_services_revenue_default": 8780000,
+                "total_services_revenue_normalized": null,
+                "total_projected_revenue": 3512000,
+                "total_projected_revenue_default": 3512000,
+                "total_projected_revenue_normalized": null,
+                "total_budget_total": 8780000,
+                "total_budget_total_default": 8780000,
+                "total_budget_total_normalized": null,
+                "total_budget_used": 0,
+                "total_budget_used_default": 0,
+                "total_budget_used_normalized": null,
+                "average_actual_rate": 0,
+                "average_actual_rate_default": 0,
+                "average_actual_rate_normalized": null,
+                "average_rate": 0,
+                "average_rate_default": 0,
+                "average_rate_normalized": null,
+                "total_expense": 0,
+                "total_expense_default": 0,
+                "total_expense_normalized": null,
+                "total_budget_from_services": 8780000,
+                "total_budget_from_services_default": 8780000,
+                "total_budget_from_services_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "pipeline": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "previous_deal_status": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 43",
+            "type": "deal_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "deal",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 45",
+                "week": "Text 46",
+                "stage_status_id": 1013,
+                "tracking_type_id": 1013,
+                "deal_value_source": "from_services",
+                "revenue_distribution_base": "weighted",
+                "probability": "0.4",
+                "previous_probability": null,
+                "average_days_since_last_activity": 0,
+                "average_days_since_created": 0,
+                "average_days_in_current_stage": 0,
+                "average_time_to_close": null,
+                "custom_fields": [],
+                "total_worked_time": 0,
+                "total_overtime_time": 0,
+                "total_billable_time": 0,
+                "total_estimated_time": 45660,
+                "total_budgeted_time": 45660,
+                "total_estimated_remaining_time": 45660,
+                "date_period": null,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "sales_closed_at_period": null,
+                "sales_closed_on_period": null,
+                "revenue_distribution_start_on_period": null,
+                "revenue_distribution_end_on_period": null,
+                "stage_updated_at_period": null,
+                "total_work_cost": 0,
+                "total_work_cost_default": 0,
+                "total_work_cost_normalized": null,
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_profit": 8780000,
+                "total_profit_default": 8780000,
+                "total_profit_normalized": null,
+                "total_estimated_cost": 0,
+                "total_estimated_cost_default": 0,
+                "total_estimated_cost_normalized": null,
+                "total_revenue": 8780000,
+                "total_revenue_default": 8780000,
+                "total_revenue_normalized": null,
+                "total_services_revenue": 8780000,
+                "total_services_revenue_default": 8780000,
+                "total_services_revenue_normalized": null,
+                "total_projected_revenue": 3512000,
+                "total_projected_revenue_default": 3512000,
+                "total_projected_revenue_normalized": null,
+                "total_budget_total": 8780000,
+                "total_budget_total_default": 8780000,
+                "total_budget_total_normalized": null,
+                "total_budget_used": 0,
+                "total_budget_used_default": 0,
+                "total_budget_used_normalized": null,
+                "average_actual_rate": 0,
+                "average_actual_rate_default": 0,
+                "average_actual_rate_normalized": null,
+                "average_rate": 0,
+                "average_rate_default": 0,
+                "average_rate_normalized": null,
+                "total_expense": 0,
+                "total_expense_default": 0,
+                "total_expense_normalized": null,
+                "total_budget_from_services": 8780000,
+                "total_budget_from_services_default": 8780000,
+                "total_budget_from_services_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1040"
+                    }
+                },
+                "pipeline": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "previous_deal_status": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 43",
+            "type": "deal_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "deal",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 45",
+                "week": "Text 46",
+                "stage_status_id": 1013,
+                "tracking_type_id": 1013,
+                "deal_value_source": "from_services",
+                "revenue_distribution_base": "weighted",
+                "probability": "0.4",
+                "previous_probability": null,
+                "average_days_since_last_activity": 0,
+                "average_days_since_created": 0,
+                "average_days_in_current_stage": 0,
+                "average_time_to_close": null,
+                "custom_fields": [],
+                "total_worked_time": 0,
+                "total_overtime_time": 0,
+                "total_billable_time": 0,
+                "total_estimated_time": 45660,
+                "total_budgeted_time": 45660,
+                "total_estimated_remaining_time": 45660,
+                "date_period": null,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "sales_closed_at_period": null,
+                "sales_closed_on_period": null,
+                "revenue_distribution_start_on_period": null,
+                "revenue_distribution_end_on_period": null,
+                "stage_updated_at_period": null,
+                "total_work_cost": 0,
+                "total_work_cost_default": 0,
+                "total_work_cost_normalized": null,
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": null,
+                "total_profit": 8780000,
+                "total_profit_default": 8780000,
+                "total_profit_normalized": null,
+                "total_estimated_cost": 0,
+                "total_estimated_cost_default": 0,
+                "total_estimated_cost_normalized": null,
+                "total_revenue": 8780000,
+                "total_revenue_default": 8780000,
+                "total_revenue_normalized": null,
+                "total_services_revenue": 8780000,
+                "total_services_revenue_default": 8780000,
+                "total_services_revenue_normalized": null,
+                "total_projected_revenue": 3512000,
+                "total_projected_revenue_default": 3512000,
+                "total_projected_revenue_normalized": null,
+                "total_budget_total": 8780000,
+                "total_budget_total_default": 8780000,
+                "total_budget_total_normalized": null,
+                "total_budget_used": 0,
+                "total_budget_used_default": 0,
+                "total_budget_used_normalized": null,
+                "average_actual_rate": 0,
+                "average_actual_rate_default": 0,
+                "average_actual_rate_normalized": null,
+                "average_rate": 0,
+                "average_rate_default": 0,
+                "average_rate_normalized": null,
+                "total_expense": 0,
+                "total_expense_default": 0,
+                "total_expense_normalized": null,
+                "total_budget_from_services": 8780000,
+                "total_budget_from_services_default": 8780000,
+                "total_budget_from_services_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "pipeline": {
+                    "data": {
+                        "type": "pipelines",
+                        "id": "1041"
+                    }
+                },
+                "previous_deal_status": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

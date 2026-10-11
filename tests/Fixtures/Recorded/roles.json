@@ -1,0 +1,109 @@
+{
+    "data": [
+        {
+            "id": "1089",
+            "type": "roles",
+            "attributes": {
+                "base_role_id": 1084,
+                "description": "Text 145",
+                "access_description": "Text 146",
+                "best_when_description": "Text 147",
+                "name": "Text 148",
+                "people_count": 1,
+                "active_users_count": 1,
+                "inactive_users_count": 0,
+                "active_agents_count": 0,
+                "inactive_agents_count": 0,
+                "permissions": [],
+                "editable_by_user": false,
+                "user_type_id": 1013,
+                "principal_type": "user",
+                "resolved_permissions": {
+                    "assistant_view": true,
+                    "allocations_view": true,
+                    "automations_manage": true,
+                    "bank_accounts_manage": false,
+                    "billables_view": true
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        },
+        {
+            "id": "1097",
+            "type": "roles",
+            "attributes": {
+                "base_role_id": 1013,
+                "description": "Text 149",
+                "access_description": "Text 150",
+                "best_when_description": null,
+                "name": "Text 151",
+                "people_count": 1,
+                "active_users_count": 1,
+                "inactive_users_count": 0,
+                "active_agents_count": 0,
+                "inactive_agents_count": 0,
+                "permissions": [],
+                "editable_by_user": false,
+                "user_type_id": 1013,
+                "principal_type": "user",
+                "resolved_permissions": {
+                    "assistant_view": true,
+                    "allocations_view": true,
+                    "automations_manage": true,
+                    "bank_accounts_manage": true,
+                    "billables_view": true
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        },
+        {
+            "id": "1098",
+            "type": "roles",
+            "attributes": {
+                "base_role_id": 1038,
+                "description": "Text 152",
+                "access_description": null,
+                "best_when_description": null,
+                "name": "Text 153",
+                "people_count": 0,
+                "active_users_count": 0,
+                "inactive_users_count": 0,
+                "active_agents_count": 0,
+                "inactive_agents_count": 0,
+                "permissions": [],
+                "editable_by_user": false,
+                "user_type_id": 1021,
+                "principal_type": "user",
+                "resolved_permissions": {
+                    "assistant_view": true,
+                    "allocations_view": false,
+                    "automations_manage": false,
+                    "bank_accounts_manage": false,
+                    "billables_view": true
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

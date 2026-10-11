@@ -35,8 +35,12 @@ final readonly class PayrollItemReport extends Model
     /** Currency in the normalized currency for this payroll item report group. */
     public ?string $currencyNormalized;
 
-    /** Custom fields for this payroll item report group. */
-    public ?string $customFields;
+    /**
+     * Custom fields for this payroll item report group.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $customFields;
 
     /** End date for this payroll item report group. */
     public ?DateTimeImmutable $endDate;
@@ -115,7 +119,7 @@ final readonly class PayrollItemReport extends Model
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
-        $this->customFields = $attributes->string('custom_fields');
+        $this->customFields = $attributes->object('custom_fields');
         $this->endDate = $attributes->date('end_date');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->gross = $attributes->string('gross');

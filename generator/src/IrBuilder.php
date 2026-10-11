@@ -23,21 +23,32 @@ final readonly class IrBuilder
      * @param  array<string, string|null>  $relationshipTypes
      * @param  array<string, string>  $descriptions
      * @param  array<string, string>  $methodNames
+     * @param  array<string, string>  $removedRelationships  Reasons by "type.relationship", for relationships the API no longer has.
      */
     public function __construct(
         private Spec $spec,
         private array $relationshipTypes = [],
         private array $descriptions = [],
         private array $methodNames = [],
+        private RecordedTypes $recorded = new RecordedTypes(),
+        private array $removedRelationships = [],
     ) {}
 
+    /**
+     * Reads the curated maps from the config directory (removed.php is optional), and
+     * recorded-types.json, when present, from its parent.
+     */
     public static function fromFiles(string $specPath, string $configDirectory): self
     {
+        $removed = is_file($configDirectory . '/removed.php') ? self::config($configDirectory, 'removed') : [];
+
         return new self(
             Spec::fromFile($specPath),
             self::stringMap(self::config($configDirectory, 'relationship-types'), 'relationship-types', nullable: true),
             self::stringMap(self::config($configDirectory, 'descriptions'), 'descriptions'),
             self::stringMap(self::config($configDirectory, 'method-names'), 'method-names'),
+            RecordedTypes::fromFile(dirname($configDirectory) . '/recorded-types.json'),
+            self::stringMap(Spec::map($removed['relationships'] ?? []), 'removed'),
         );
     }
 
@@ -87,7 +98,14 @@ final readonly class IrBuilder
     {
         $types = array_map(fn(ModelSource $source): string => $source->type, $sources);
         $reader = new SchemaReader($this->spec, $this->descriptions);
-        $builder = new ModelBuilder($this->spec, $reader, RelationshipTypes::fromExamples($this->spec, $types, $this->relationshipTypes));
+        $builder = new ModelBuilder(
+            $this->spec,
+            $reader,
+            RelationshipTypes::fromExamples($this->spec, $types, $this->relationshipTypes),
+            $this->recorded,
+            $types,
+            array_keys($this->removedRelationships),
+        );
         $models = [];
 
         foreach ($sources as $path => $source) {

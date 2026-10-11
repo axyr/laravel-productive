@@ -1,0 +1,53 @@
+{
+    "data": [
+        {
+            "id": "1064",
+            "type": "folders",
+            "attributes": {
+                "name": "Text 81",
+                "position": null,
+                "placement": 1010000,
+                "archived_at": null,
+                "hidden": false
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1064",
+            "type": "folders",
+            "attributes": {
+                "name": "Text 81",
+                "position": null,
+                "placement": 1010000,
+                "archived_at": null,
+                "hidden": false
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1065"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -23,7 +23,7 @@ final readonly class PersonReport extends Model
     public const string TYPE = 'person_reports';
 
     /** Whether automatic time tracking is enabled for this person. */
-    public ?int $autotracking;
+    public ?bool $autotracking;
 
     public ?int $billableTime;
 
@@ -70,8 +70,12 @@ final readonly class PersonReport extends Model
     /** Whether monetary values in this row are normalized to the base currency. */
     public ?string $currencyNormalized;
 
-    /** Custom field values attached to this person. */
-    public ?string $customFields;
+    /**
+     * Custom field values attached to this person.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $customFields;
 
     /** The time period bucket for deactivation date, used when grouping by deactivated_at. */
     public mixed $deactivatedAtPeriod;
@@ -126,7 +130,7 @@ final readonly class PersonReport extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
-        $this->autotracking = $attributes->int('autotracking');
+        $this->autotracking = $attributes->bool('autotracking');
         $this->billableTime = $attributes->int('billable_time');
         $this->capacity = $attributes->int('capacity');
         $this->contactAddress = $attributes->mixed('contact_address');
@@ -143,7 +147,7 @@ final readonly class PersonReport extends Model
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
-        $this->customFields = $attributes->string('custom_fields');
+        $this->customFields = $attributes->object('custom_fields');
         $this->deactivatedAtPeriod = $attributes->mixed('deactivated_at_period');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');

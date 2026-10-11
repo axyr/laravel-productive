@@ -92,8 +92,12 @@ final readonly class DocumentType extends Model
     /** The default rate (as a percentage) for the second tax applied to documents of this type. */
     public ?float $tax2Value;
 
-    /** A hash of configuration options specific to the document template used by this type. */
-    public ?string $templateOptions;
+    /**
+     * A hash of configuration options specific to the document template used by this type.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $templateOptions;
 
     protected function hydrate(Attributes $attributes): void
     {
@@ -119,7 +123,7 @@ final readonly class DocumentType extends Model
         $this->tax1Value = $attributes->float('tax1_value');
         $this->tax2Name = $attributes->string('tax2_name');
         $this->tax2Value = $attributes->float('tax2_value');
-        $this->templateOptions = $attributes->string('template_options');
+        $this->templateOptions = $attributes->object('template_options');
     }
 
     /**

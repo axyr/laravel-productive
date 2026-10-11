@@ -79,10 +79,10 @@ final readonly class ServiceReport extends Model
     public ?int $billingType;
 
     /** Booking tracking enabled for this service report group. */
-    public ?int $bookingTrackingEnabled;
+    public ?bool $bookingTrackingEnabled;
 
     /** Budget cap enabled for this service report group. */
-    public ?int $budgetCapEnabled;
+    public ?bool $budgetCapEnabled;
 
     /** Budget custom fields for this service report group. */
     public ?string $budgetCustomFields;
@@ -122,7 +122,7 @@ final readonly class ServiceReport extends Model
     public ?int $estimatedTime;
 
     /** Expense tracking enabled for this service report group. */
-    public ?int $expenseTrackingEnabled;
+    public ?bool $expenseTrackingEnabled;
 
     /** Formula fields for this service report group. */
     public mixed $formulaFields;
@@ -143,7 +143,7 @@ final readonly class ServiceReport extends Model
     public ?int $projectType;
 
     /** Recurring for this service report group. */
-    public ?int $recurring;
+    public ?bool $recurring;
 
     public ?string $revenue;
 
@@ -159,7 +159,7 @@ final readonly class ServiceReport extends Model
     public ?int $stageType;
 
     /** Time tracking enabled for this service report group. */
-    public ?int $timeTrackingEnabled;
+    public ?bool $timeTrackingEnabled;
 
     /** Sum of billable time across all records in this service report group. */
     public ?float $totalBillableTime;
@@ -263,6 +263,9 @@ final readonly class ServiceReport extends Model
     /** Sum of future budget used in the normalized currency across all records in this service report group. */
     public mixed $totalFutureBudgetUsedNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalFutureTentativeBookedTime;
+
     /** Sum of left to schedule time across all records in this service report group. */
     public ?float $totalLeftToScheduleTime;
 
@@ -274,6 +277,12 @@ final readonly class ServiceReport extends Model
 
     /** Sum of markup amount in the normalized currency across all records in this service report group. */
     public mixed $totalMarkupAmountNormalized;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalNetUnplannedTime;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalOvertimeTime;
 
     /** Sum of price across all records in this service report group. */
     public mixed $totalPrice;
@@ -326,6 +335,9 @@ final readonly class ServiceReport extends Model
     /** Sum of rolled over time across all records in this service report group. */
     public ?float $totalRolledOverTime;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalTentativeBookedTime;
+
     /** Sum of unapproved time across all records in this service report group. */
     public ?float $totalUnapprovedTime;
 
@@ -367,8 +379,8 @@ final readonly class ServiceReport extends Model
         $this->billable = $attributes->int('billable');
         $this->billableTime = $attributes->int('billable_time');
         $this->billingType = $attributes->int('billing_type');
-        $this->bookingTrackingEnabled = $attributes->int('booking_tracking_enabled');
-        $this->budgetCapEnabled = $attributes->int('budget_cap_enabled');
+        $this->bookingTrackingEnabled = $attributes->bool('booking_tracking_enabled');
+        $this->budgetCapEnabled = $attributes->bool('budget_cap_enabled');
         $this->budgetCustomFields = $attributes->string('budget_custom_fields');
         $this->budgetStatus = $attributes->int('budget_status');
         $this->budgetTotal = $attributes->string('budget_total');
@@ -383,7 +395,7 @@ final readonly class ServiceReport extends Model
         $this->dealCustomFields = $attributes->string('deal_custom_fields');
         $this->dealId = $attributes->int('deal_id');
         $this->estimatedTime = $attributes->int('estimated_time');
-        $this->expenseTrackingEnabled = $attributes->int('expense_tracking_enabled');
+        $this->expenseTrackingEnabled = $attributes->bool('expense_tracking_enabled');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->limitationType = $attributes->string('limitation_type');
@@ -391,13 +403,13 @@ final readonly class ServiceReport extends Model
         $this->profit = $attributes->string('profit');
         $this->profitMargin = $attributes->float('profit_margin');
         $this->projectType = $attributes->int('project_type');
-        $this->recurring = $attributes->int('recurring');
+        $this->recurring = $attributes->bool('recurring');
         $this->revenue = $attributes->string('revenue');
         $this->sectionName = $attributes->string('section_name');
         $this->serviceId = $attributes->int('service_id');
         $this->stageStatusId = $attributes->int('stage_status_id');
         $this->stageType = $attributes->int('stage_type');
-        $this->timeTrackingEnabled = $attributes->int('time_tracking_enabled');
+        $this->timeTrackingEnabled = $attributes->bool('time_tracking_enabled');
         $this->totalBillableTime = $attributes->float('total_billable_time');
         $this->totalBookedTime = $attributes->float('total_booked_time');
         $this->totalBudgetRemaining = $attributes->mixed('total_budget_remaining');
@@ -432,10 +444,13 @@ final readonly class ServiceReport extends Model
         $this->totalFutureBudgetUsed = $attributes->mixed('total_future_budget_used');
         $this->totalFutureBudgetUsedDefault = $attributes->mixed('total_future_budget_used_default');
         $this->totalFutureBudgetUsedNormalized = $attributes->mixed('total_future_budget_used_normalized');
+        $this->totalFutureTentativeBookedTime = $attributes->int('total_future_tentative_booked_time');
         $this->totalLeftToScheduleTime = $attributes->float('total_left_to_schedule_time');
         $this->totalMarkupAmount = $attributes->mixed('total_markup_amount');
         $this->totalMarkupAmountDefault = $attributes->mixed('total_markup_amount_default');
         $this->totalMarkupAmountNormalized = $attributes->mixed('total_markup_amount_normalized');
+        $this->totalNetUnplannedTime = $attributes->int('total_net_unplanned_time');
+        $this->totalOvertimeTime = $attributes->int('total_overtime_time');
         $this->totalPrice = $attributes->mixed('total_price');
         $this->totalPriceDefault = $attributes->mixed('total_price_default');
         $this->totalPriceNormalized = $attributes->mixed('total_price_normalized');
@@ -453,6 +468,7 @@ final readonly class ServiceReport extends Model
         $this->totalRevenueDefault = $attributes->mixed('total_revenue_default');
         $this->totalRevenueNormalized = $attributes->mixed('total_revenue_normalized');
         $this->totalRolledOverTime = $attributes->float('total_rolled_over_time');
+        $this->totalTentativeBookedTime = $attributes->int('total_tentative_booked_time');
         $this->totalUnapprovedTime = $attributes->float('total_unapproved_time');
         $this->totalWorkedCost = $attributes->mixed('total_worked_cost');
         $this->totalWorkedCostDefault = $attributes->mixed('total_worked_cost_default');

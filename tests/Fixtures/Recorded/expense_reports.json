@@ -1,0 +1,236 @@
+{
+    "data": [
+        {
+            "id": "Text 60",
+            "type": "expense_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "expense",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 61",
+                "week": "Text 62",
+                "status": 2,
+                "invoiced": false,
+                "invoicing_status": 1,
+                "section_name": null,
+                "approval_status": 4,
+                "reimbursement": 1,
+                "project_id": 1054,
+                "stage_type": 2,
+                "quote_type": 2,
+                "quantity": 1,
+                "custom_fields": [],
+                "date_period": null,
+                "pay_on_period": null,
+                "paid_on_period": null,
+                "reimbursed_on_period": null,
+                "created_at_period": null,
+                "updated_at_period": null,
+                "approved_at_period": null,
+                "average_profit_margin": "12.5",
+                "average_profit_margin_default": "12.5",
+                "average_profit_margin_normalized": "12.5",
+                "total_amount": 1400000,
+                "total_amount_default": 1400000,
+                "total_amount_normalized": 1400000,
+                "total_profit": 200000,
+                "total_profit_default": 200000,
+                "total_profit_normalized": 200000,
+                "total_recognized_revenue": 1600000,
+                "total_recognized_revenue_default": 1600000,
+                "total_recognized_revenue_normalized": 1600000,
+                "total_billable_amount": 1600000,
+                "total_billable_amount_default": 1600000,
+                "total_billable_amount_normalized": 1600000,
+                "total_amount_with_tax": 1400000,
+                "total_amount_with_tax_default": 1400000,
+                "total_amount_with_tax_normalized": 1400000,
+                "total_tax_amount": 0,
+                "total_tax_amount_default": 0,
+                "total_tax_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "expense": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 60",
+            "type": "expense_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "expense",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 61",
+                "week": "Text 62",
+                "status": 2,
+                "invoiced": false,
+                "invoicing_status": 1,
+                "section_name": null,
+                "approval_status": 4,
+                "reimbursement": 1,
+                "project_id": 1054,
+                "stage_type": 2,
+                "quote_type": 2,
+                "quantity": 1,
+                "custom_fields": [],
+                "date_period": null,
+                "pay_on_period": null,
+                "paid_on_period": null,
+                "reimbursed_on_period": null,
+                "created_at_period": null,
+                "updated_at_period": null,
+                "approved_at_period": null,
+                "average_profit_margin": "12.5",
+                "average_profit_margin_default": "12.5",
+                "average_profit_margin_normalized": "12.5",
+                "total_amount": 1400000,
+                "total_amount_default": 1400000,
+                "total_amount_normalized": 1400000,
+                "total_profit": 200000,
+                "total_profit_default": 200000,
+                "total_profit_normalized": 200000,
+                "total_recognized_revenue": 1600000,
+                "total_recognized_revenue_default": 1600000,
+                "total_recognized_revenue_normalized": 1600000,
+                "total_billable_amount": 1600000,
+                "total_billable_amount_default": 1600000,
+                "total_billable_amount_normalized": 1600000,
+                "total_amount_with_tax": 1400000,
+                "total_amount_with_tax_default": 1400000,
+                "total_amount_with_tax_normalized": 1400000,
+                "total_tax_amount": 0,
+                "total_tax_amount_default": 0,
+                "total_tax_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense": {
+                    "data": {
+                        "type": "expenses",
+                        "id": "1053"
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 60",
+            "type": "expense_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "expense",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 61",
+                "week": "Text 62",
+                "status": 2,
+                "invoiced": false,
+                "invoicing_status": 1,
+                "section_name": null,
+                "approval_status": 4,
+                "reimbursement": 1,
+                "project_id": 1054,
+                "stage_type": 2,
+                "quote_type": 2,
+                "quantity": 1,
+                "custom_fields": [],
+                "date_period": null,
+                "pay_on_period": null,
+                "paid_on_period": null,
+                "reimbursed_on_period": null,
+                "created_at_period": null,
+                "updated_at_period": null,
+                "approved_at_period": null,
+                "average_profit_margin": "12.5",
+                "average_profit_margin_default": "12.5",
+                "average_profit_margin_normalized": "12.5",
+                "total_amount": 1400000,
+                "total_amount_default": 1400000,
+                "total_amount_normalized": 1400000,
+                "total_profit": 200000,
+                "total_profit_default": 200000,
+                "total_profit_normalized": 200000,
+                "total_recognized_revenue": 1600000,
+                "total_recognized_revenue_default": 1600000,
+                "total_recognized_revenue_normalized": 1600000,
+                "total_billable_amount": 1600000,
+                "total_billable_amount_default": 1600000,
+                "total_billable_amount_normalized": 1600000,
+                "total_amount_with_tax": 1400000,
+                "total_amount_with_tax_default": 1400000,
+                "total_amount_with_tax_normalized": 1400000,
+                "total_tax_amount": 0,
+                "total_tax_amount_default": 0,
+                "total_tax_amount_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "expense": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1054"
+                    }
+                }
+            }
+        }
+    ]
+}

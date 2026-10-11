@@ -54,8 +54,12 @@ final readonly class SalaryReport extends Model
     /** Overhead for this new salary report group. */
     public ?int $overhead;
 
-    /** People custom fields for this new salary report group. */
-    public ?string $peopleCustomFields;
+    /**
+     * People custom fields for this new salary report group.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $peopleCustomFields;
 
     public ?int $personId;
 
@@ -152,7 +156,7 @@ final readonly class SalaryReport extends Model
         $this->group = $attributes->string('group');
         $this->month = $attributes->string('month');
         $this->overhead = $attributes->int('overhead');
-        $this->peopleCustomFields = $attributes->string('people_custom_fields');
+        $this->peopleCustomFields = $attributes->object('people_custom_fields');
         $this->personId = $attributes->int('person_id');
         $this->salaryTypeId = $attributes->int('salary_type_id');
         $this->startDatePeriod = $attributes->mixed('start_date_period');

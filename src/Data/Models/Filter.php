@@ -38,6 +38,9 @@ final readonly class Filter extends Model
     /** Whether this filter is the default view loaded when navigating to the associated resource list. */
     public mixed $default;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $description;
+
     /** The currency used for exchange rate conversions when this filter displays monetary values. */
     public ?string $exchangeCurrency;
 
@@ -86,8 +89,12 @@ final readonly class Filter extends Model
     /** The internal numeric ID of this filter, as opposed to the slug-based id field. */
     public ?int $originalId;
 
-    /** A hash of filter criteria (field/value pairs) that define what records this filter matches. */
-    public ?string $params;
+    /**
+     * A hash of filter criteria (field/value pairs) that define what records this filter matches.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $params;
 
     /** The identifier of the predefined system filter this was created from, if applicable. */
     public ?string $predefinedId;
@@ -129,6 +136,7 @@ final readonly class Filter extends Model
         $this->columns = $attributes->string('columns');
         $this->createdAt = $attributes->dateTime('created_at');
         $this->default = $attributes->mixed('default');
+        $this->description = $attributes->string('description');
         $this->exchangeCurrency = $attributes->string('exchange_currency');
         $this->exchangeDate = $attributes->object('exchange_date');
         $this->filterData = $attributes->object('filter_data');
@@ -144,7 +152,7 @@ final readonly class Filter extends Model
         $this->layoutId = $attributes->int('layout_id');
         $this->name = $attributes->string('name');
         $this->originalId = $attributes->int('original_id');
-        $this->params = $attributes->string('params');
+        $this->params = $attributes->object('params');
         $this->predefinedId = $attributes->string('predefined_id');
         $this->public = $attributes->bool('public');
         $this->pulseCount = $attributes->mixed('pulse_count');

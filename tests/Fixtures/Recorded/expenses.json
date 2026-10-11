@@ -1,0 +1,315 @@
+{
+    "data": [
+        {
+            "id": "1053",
+            "type": "expenses",
+            "attributes": {
+                "name": "Text 59",
+                "description": null,
+                "date": "2026-09-09",
+                "pay_on": null,
+                "paid_on": null,
+                "position": 1,
+                "invoiced": false,
+                "approved": true,
+                "approved_at": "2026-10-09T13:02:39.715+02:00",
+                "rejected": false,
+                "rejected_reason": null,
+                "rejected_at": null,
+                "deleted_at": null,
+                "reimbursable": false,
+                "reimbursed_on": null,
+                "exchange_rate": "1.0",
+                "exchange_rate_normalized": "1.0",
+                "exchange_date": "2026-09-09",
+                "created_at": "2026-10-09T13:02:39.726+02:00",
+                "updated_at": "2026-10-09T13:02:39.896+02:00",
+                "quantity": "1.0",
+                "quantity_received": "0.0",
+                "custom_fields": null,
+                "draft": false,
+                "exported": false,
+                "exported_at": null,
+                "export_integration_type_id": null,
+                "export_id": null,
+                "export_url": null,
+                "company_reference_id": null,
+                "external_payment_id": null,
+                "tax_inclusion": false,
+                "line_items_count": 1,
+                "markup": "0.0",
+                "allocation_status": "allocated",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 1400000,
+                "amount_default": 1400000,
+                "amount_normalized": 1400000,
+                "total_amount": 1400000,
+                "total_amount_default": 1400000,
+                "total_amount_normalized": 1400000,
+                "billable_amount": 1600000,
+                "billable_amount_default": 1600000,
+                "billable_amount_normalized": 1600000,
+                "markup_amount": 200000,
+                "markup_amount_default": 200000,
+                "markup_amount_normalized": 200000,
+                "profit": 200000,
+                "profit_default": 200000,
+                "profit_normalized": 200000,
+                "recognized_revenue": 1600000,
+                "recognized_revenue_default": 1600000,
+                "recognized_revenue_normalized": 1600000,
+                "amount_with_tax": 1400000,
+                "amount_with_tax_default": 1400000,
+                "amount_with_tax_normalized": 1400000,
+                "total_amount_with_tax": 1400000,
+                "total_amount_with_tax_default": 1400000,
+                "total_amount_with_tax_normalized": 1400000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "updater": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approver": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "rejecter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "vendor": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "purchase_order": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_attribution": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_statuses": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense_line_items": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1053",
+            "type": "expenses",
+            "attributes": {
+                "name": "Text 59",
+                "description": null,
+                "date": "2026-09-09",
+                "pay_on": null,
+                "paid_on": null,
+                "position": 1,
+                "invoiced": false,
+                "approved": true,
+                "approved_at": "2026-10-09T13:02:39.715+02:00",
+                "rejected": false,
+                "rejected_reason": null,
+                "rejected_at": null,
+                "deleted_at": null,
+                "reimbursable": false,
+                "reimbursed_on": null,
+                "exchange_rate": "1.0",
+                "exchange_rate_normalized": "1.0",
+                "exchange_date": "2026-09-09",
+                "created_at": "2026-10-09T13:02:39.726+02:00",
+                "updated_at": "2026-10-09T13:02:39.896+02:00",
+                "quantity": "1.0",
+                "quantity_received": "0.0",
+                "custom_fields": null,
+                "draft": false,
+                "exported": false,
+                "exported_at": null,
+                "export_integration_type_id": null,
+                "export_id": null,
+                "export_url": null,
+                "company_reference_id": null,
+                "external_payment_id": null,
+                "tax_inclusion": false,
+                "line_items_count": 1,
+                "markup": "0.0",
+                "allocation_status": "allocated",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 1400000,
+                "amount_default": 1400000,
+                "amount_normalized": 1400000,
+                "total_amount": 1400000,
+                "total_amount_default": 1400000,
+                "total_amount_normalized": 1400000,
+                "billable_amount": 1600000,
+                "billable_amount_default": 1600000,
+                "billable_amount_normalized": 1600000,
+                "markup_amount": 200000,
+                "markup_amount_default": 200000,
+                "markup_amount_normalized": 200000,
+                "profit": 200000,
+                "profit_default": 200000,
+                "profit_normalized": 200000,
+                "recognized_revenue": 1600000,
+                "recognized_revenue_default": 1600000,
+                "recognized_revenue_normalized": 1600000,
+                "amount_with_tax": 1400000,
+                "amount_with_tax_default": 1400000,
+                "amount_with_tax_normalized": 1400000,
+                "total_amount_with_tax": 1400000,
+                "total_amount_with_tax_default": 1400000,
+                "total_amount_with_tax_normalized": 1400000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1055"
+                    }
+                },
+                "service_type": {
+                    "data": {
+                        "type": "service_types",
+                        "id": "1056"
+                    }
+                },
+                "person": {
+                    "data": null
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "updater": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "approver": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "rejecter": {
+                    "data": null
+                },
+                "vendor": {
+                    "data": null
+                },
+                "service": {
+                    "data": {
+                        "type": "services",
+                        "id": "1057"
+                    }
+                },
+                "purchase_order": {
+                    "data": null
+                },
+                "tax_rate": {
+                    "data": null
+                },
+                "invoice_attribution": {
+                    "data": null
+                },
+                "attachment": {
+                    "data": null
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                },
+                "approval_statuses": {
+                    "data": []
+                },
+                "expense_line_items": {
+                    "data": [
+                        {
+                            "type": "expense_line_items",
+                            "id": "1052"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

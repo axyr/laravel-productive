@@ -1,0 +1,136 @@
+{
+    "data": [
+        {
+            "id": "1071",
+            "type": "line_items",
+            "attributes": {
+                "unit_id": 1013,
+                "position": 1,
+                "quantity": "35.0",
+                "discount": null,
+                "description": "Text 94",
+                "tax_name": null,
+                "tax_value": null,
+                "manual_entry": false,
+                "budget_ids": null,
+                "service_ids": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "unit_price": 12000,
+                "unit_price_default": 12000,
+                "unit_price_normalized": 12000,
+                "amount": 420000,
+                "amount_default": 420000,
+                "amount_normalized": 420000,
+                "amount_tax": 0,
+                "amount_tax_default": 0,
+                "amount_tax_normalized": 0,
+                "amount_with_tax": 420000,
+                "amount_with_tax_default": 420000,
+                "amount_with_tax_normalized": 420000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "kpd_code": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1071",
+            "type": "line_items",
+            "attributes": {
+                "unit_id": 1013,
+                "position": 1,
+                "quantity": "35.0",
+                "discount": null,
+                "description": "Text 94",
+                "tax_name": null,
+                "tax_value": null,
+                "manual_entry": false,
+                "budget_ids": null,
+                "service_ids": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "unit_price": 12000,
+                "unit_price_default": 12000,
+                "unit_price_normalized": 12000,
+                "amount": 420000,
+                "amount_default": 420000,
+                "amount_normalized": 420000,
+                "amount_tax": 0,
+                "amount_tax_default": 0,
+                "amount_tax_normalized": 0,
+                "amount_with_tax": 420000,
+                "amount_with_tax_default": 420000,
+                "amount_with_tax_normalized": 420000
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "invoice": {
+                    "data": {
+                        "type": "invoices",
+                        "id": "1072"
+                    }
+                },
+                "service": {
+                    "data": null
+                },
+                "expense": {
+                    "data": null
+                },
+                "service_type": {
+                    "data": {
+                        "type": "service_types",
+                        "id": "1073"
+                    }
+                },
+                "tax_rate": {
+                    "data": null
+                },
+                "kpd_code": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

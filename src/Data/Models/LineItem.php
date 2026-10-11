@@ -49,6 +49,9 @@ final readonly class LineItem extends Model
     /** The amount with tax converted to the invoice currency. */
     public mixed $amountWithTaxNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $budgetIds;
+
     /** The currency of this line item, inherited from the associated invoice. */
     public ?string $currency;
 
@@ -57,6 +60,9 @@ final readonly class LineItem extends Model
 
     /** The invoice's currency for this line item. */
     public ?string $currencyNormalized;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $description;
 
     /** The discount applied to this line item, expressed as a percentage (0–100). */
     public ?float $discount;
@@ -70,6 +76,9 @@ final readonly class LineItem extends Model
 
     /** The quantity of units for this line item; for percentage billing types, expressed as a percentage value. */
     public ?float $quantity;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $serviceIds;
 
     /** The display name of the tax applied to this line item (e.g. VAT). */
     public ?string $taxName;
@@ -106,14 +115,17 @@ final readonly class LineItem extends Model
         $this->amountWithTax = $attributes->mixed('amount_with_tax');
         $this->amountWithTaxDefault = $attributes->mixed('amount_with_tax_default');
         $this->amountWithTaxNormalized = $attributes->mixed('amount_with_tax_normalized');
+        $this->budgetIds = $attributes->mixed('budget_ids');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
+        $this->description = $attributes->string('description');
         $this->discount = $attributes->float('discount');
         $this->manualEntry = $attributes->bool('manual_entry');
         $this->name = $attributes->string('name');
         $this->position = $attributes->int('position');
         $this->quantity = $attributes->float('quantity');
+        $this->serviceIds = $attributes->mixed('service_ids');
         $this->taxName = $attributes->string('tax_name');
         $this->taxRate = $attributes->string('tax_rate');
         $this->taxValue = $attributes->float('tax_value');

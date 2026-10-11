@@ -24,7 +24,7 @@ final readonly class Expense extends Model
     public const string TYPE = 'expenses';
 
     /** Whether this expense has been allocated to a service, or is unallocated (when the expense-without-service feature is enabled). */
-    public ?int $allocationStatus;
+    public ?string $allocationStatus;
 
     /** Unit cost of the expense in the expense currency. */
     public ?int $amount;
@@ -89,6 +89,9 @@ final readonly class Expense extends Model
     /** Soft-deletion timestamp. */
     public ?DateTimeImmutable $deletedAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     /** Whether this expense is still in draft status on the purchase order. */
     public ?bool $draft;
 
@@ -127,6 +130,15 @@ final readonly class Expense extends Model
 
     /** The markup percentage applied on top of the expense cost when billing to the client. Takes precedence over `billable_amount` if both are sent in the same request. */
     public ?float $markup;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $markupAmount;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $markupAmountDefault;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $markupAmountNormalized;
 
     /** What the expense was for (travel, software, external costs, etc.). */
     public ?string $name;
@@ -208,7 +220,7 @@ final readonly class Expense extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
-        $this->allocationStatus = $attributes->int('allocation_status');
+        $this->allocationStatus = $attributes->string('allocation_status');
         $this->amount = $attributes->int('amount');
         $this->amountDefault = $attributes->mixed('amount_default');
         $this->amountNormalized = $attributes->mixed('amount_normalized');
@@ -229,6 +241,7 @@ final readonly class Expense extends Model
         $this->customFields = $attributes->object('custom_fields');
         $this->date = $attributes->date('date');
         $this->deletedAt = $attributes->dateTime('deleted_at');
+        $this->description = $attributes->mixed('description');
         $this->draft = $attributes->bool('draft');
         $this->exchangeDate = $attributes->date('exchange_date');
         $this->exchangeRate = $attributes->float('exchange_rate');
@@ -242,6 +255,9 @@ final readonly class Expense extends Model
         $this->invoiced = $attributes->bool('invoiced');
         $this->lineItemsCount = $attributes->int('line_items_count');
         $this->markup = $attributes->float('markup');
+        $this->markupAmount = $attributes->int('markup_amount');
+        $this->markupAmountDefault = $attributes->int('markup_amount_default');
+        $this->markupAmountNormalized = $attributes->int('markup_amount_normalized');
         $this->name = $attributes->string('name');
         $this->note = $attributes->mixed('note');
         $this->paidOn = $attributes->date('paid_on');

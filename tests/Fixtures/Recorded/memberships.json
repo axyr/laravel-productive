@@ -1,0 +1,293 @@
+{
+    "data": [
+        {
+            "id": "1074",
+            "type": "memberships",
+            "attributes": {
+                "access_type_id": 1075,
+                "dynamic_group_id": null,
+                "options": [],
+                "target_type": "project",
+                "type_id": 1013
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "team": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "dashboard": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "meeting": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "page": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "survey": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "agent": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "skill": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "artifact": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1076",
+            "type": "memberships",
+            "attributes": {
+                "access_type_id": 1075,
+                "dynamic_group_id": 1077,
+                "options": [],
+                "target_type": "deal",
+                "type_id": 1021
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "team": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "dashboard": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "meeting": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "page": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "survey": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "agent": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "skill": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "artifact": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1074",
+            "type": "memberships",
+            "attributes": {
+                "access_type_id": 1075,
+                "dynamic_group_id": null,
+                "options": [],
+                "target_type": "project",
+                "type_id": 1013
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1024"
+                    }
+                },
+                "team": {
+                    "data": null
+                },
+                "dashboard": {
+                    "data": null
+                },
+                "deal": {
+                    "data": null
+                },
+                "filter": {
+                    "data": null
+                },
+                "meeting": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "page": {
+                    "data": null
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1058"
+                    }
+                },
+                "survey": {
+                    "data": null
+                },
+                "agent": {
+                    "data": null
+                },
+                "skill": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "artifact": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1076",
+            "type": "memberships",
+            "attributes": {
+                "access_type_id": 1075,
+                "dynamic_group_id": 1077,
+                "options": [],
+                "target_type": "deal",
+                "type_id": 1021
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": null
+                },
+                "team": {
+                    "data": null
+                },
+                "dashboard": {
+                    "data": null
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1025"
+                    }
+                },
+                "filter": {
+                    "data": null
+                },
+                "meeting": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "page": {
+                    "data": null
+                },
+                "project": {
+                    "data": null
+                },
+                "survey": {
+                    "data": null
+                },
+                "agent": {
+                    "data": null
+                },
+                "skill": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "artifact": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

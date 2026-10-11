@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "1066",
+            "type": "holiday_calendars",
+            "attributes": {
+                "name": "Text 32",
+                "country": "Text 32",
+                "state": null,
+                "autogenerate_holidays": true
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

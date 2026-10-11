@@ -1,0 +1,355 @@
+{
+    "data": [
+        {
+            "id": "1026",
+            "type": "companies",
+            "attributes": {
+                "name": "Text 3",
+                "billing_name": null,
+                "vat": null,
+                "default_currency": "USD",
+                "created_at": "2026-10-09T13:02:26.348+02:00",
+                "last_activity_at": "2026-10-09T13:02:26.348+02:00",
+                "archived_at": null,
+                "avatar_url": null,
+                "original_avatar_url": null,
+                "invoice_email_recipients": [],
+                "custom_fields": null,
+                "company_code": "Text 17",
+                "domain": null,
+                "domains": [],
+                "projectless_budgets": false,
+                "default_subsidiary_id": null,
+                "default_tax_rate_id": null,
+                "default_document_type_id": null,
+                "due_days": null,
+                "payment_terms_type": null,
+                "tag_list": [],
+                "contact": [],
+                "sample_data": false,
+                "settings": [],
+                "external_id": null,
+                "external_sync": false,
+                "parent_company_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_document_type": {
+                    "data": null
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "integration_exporter_configuration": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "einvoice_identity": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "parent_company": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": "1027",
+            "type": "companies",
+            "attributes": {
+                "name": "Text 18",
+                "billing_name": "Text 18",
+                "vat": "0000",
+                "default_currency": null,
+                "created_at": "2026-10-09T13:02:33.227+02:00",
+                "last_activity_at": "2026-10-09T13:02:40.781+02:00",
+                "archived_at": null,
+                "avatar_url": "https://example.test/19",
+                "original_avatar_url": "https://example.test/19",
+                "invoice_email_recipients": [],
+                "custom_fields": null,
+                "company_code": "Text 20",
+                "domain": null,
+                "domains": [],
+                "projectless_budgets": true,
+                "default_subsidiary_id": null,
+                "default_tax_rate_id": null,
+                "default_document_type_id": null,
+                "due_days": 25,
+                "payment_terms_type": "days_after_invoice_date",
+                "tag_list": [],
+                "contact": {
+                    "phones": [
+                        {
+                            "name": "Text 21",
+                            "phone": "Text 22",
+                            "contact_datum_id": 1028
+                        }
+                    ],
+                    "websites": [
+                        {
+                            "name": "Text 21",
+                            "website": "https://example.test/23",
+                            "contact_datum_id": 1029
+                        }
+                    ],
+                    "addresses": [
+                        {
+                            "city": "Text 24",
+                            "name": "Text 25",
+                            "state": "",
+                            "address": "Text 26",
+                            "country": "Text 27"
+                        }
+                    ]
+                },
+                "sample_data": true,
+                "settings": [],
+                "external_id": null,
+                "external_sync": false,
+                "parent_company_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_document_type": {
+                    "data": null
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "integration_exporter_configuration": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "einvoice_identity": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "parent_company": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": "1026",
+            "type": "companies",
+            "attributes": {
+                "name": "Text 3",
+                "billing_name": null,
+                "vat": null,
+                "default_currency": "USD",
+                "created_at": "2026-10-09T13:02:26.348+02:00",
+                "last_activity_at": "2026-10-09T13:02:26.348+02:00",
+                "archived_at": null,
+                "avatar_url": null,
+                "original_avatar_url": null,
+                "invoice_email_recipients": [],
+                "custom_fields": null,
+                "company_code": "Text 17",
+                "domain": null,
+                "domains": [],
+                "projectless_budgets": false,
+                "default_subsidiary_id": null,
+                "default_tax_rate_id": null,
+                "default_document_type_id": null,
+                "due_days": null,
+                "payment_terms_type": null,
+                "tag_list": [],
+                "contact": [],
+                "sample_data": false,
+                "settings": [],
+                "external_id": null,
+                "external_sync": false,
+                "parent_company_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "import": {
+                    "data": null
+                },
+                "default_subsidiary": {
+                    "data": null
+                },
+                "default_tax_rate": {
+                    "data": null
+                },
+                "default_document_type": {
+                    "data": null
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                },
+                "integration_exporter_configuration": {
+                    "data": null
+                },
+                "einvoice_identity": {
+                    "data": null
+                },
+                "parent_company": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": "1027",
+            "type": "companies",
+            "attributes": {
+                "name": "Text 18",
+                "billing_name": "Text 18",
+                "vat": "0000",
+                "default_currency": null,
+                "created_at": "2026-10-09T13:02:33.227+02:00",
+                "last_activity_at": "2026-10-09T13:02:40.781+02:00",
+                "archived_at": null,
+                "avatar_url": "https://example.test/19",
+                "original_avatar_url": "https://example.test/19",
+                "invoice_email_recipients": [],
+                "custom_fields": null,
+                "company_code": "Text 20",
+                "domain": null,
+                "domains": [],
+                "projectless_budgets": true,
+                "default_subsidiary_id": null,
+                "default_tax_rate_id": null,
+                "default_document_type_id": null,
+                "due_days": 25,
+                "payment_terms_type": "days_after_invoice_date",
+                "tag_list": [],
+                "contact": {
+                    "phones": [
+                        {
+                            "name": "Text 21",
+                            "phone": "Text 22",
+                            "contact_datum_id": 1028
+                        }
+                    ],
+                    "websites": [
+                        {
+                            "name": "Text 21",
+                            "website": "https://example.test/23",
+                            "contact_datum_id": 1029
+                        }
+                    ],
+                    "addresses": [
+                        {
+                            "city": "Text 24",
+                            "name": "Text 25",
+                            "state": "",
+                            "address": "Text 26",
+                            "country": "Text 27"
+                        }
+                    ]
+                },
+                "sample_data": true,
+                "settings": [],
+                "external_id": null,
+                "external_sync": false,
+                "parent_company_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "import": {
+                    "data": {
+                        "type": "imports",
+                        "id": "1030"
+                    }
+                },
+                "default_subsidiary": {
+                    "data": null
+                },
+                "default_tax_rate": {
+                    "data": null
+                },
+                "default_document_type": {
+                    "data": null
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                },
+                "integration_exporter_configuration": {
+                    "data": null
+                },
+                "einvoice_identity": {
+                    "data": null
+                },
+                "parent_company": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

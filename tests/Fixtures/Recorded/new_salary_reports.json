@@ -1,0 +1,135 @@
+{
+    "data": [
+        {
+            "id": "Text 96",
+            "type": "new_salary_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "salary",
+                "count": 1,
+                "formula_fields": [],
+                "salary_type_id": 1013,
+                "overhead": 1,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "time": 154080,
+                "capacity": 154080,
+                "work_days": 321,
+                "total_estimated_weekly_hours": 1077600,
+                "start_date_period": null,
+                "end_date_period": null,
+                "date_period": null,
+                "total_hourly_cost": 0,
+                "total_hourly_cost_default": 0,
+                "total_hourly_cost_normalized": null,
+                "total_weekly_cost": 0,
+                "total_weekly_cost_default": 0,
+                "total_weekly_cost_normalized": null,
+                "total_bi_weekly_cost": 0,
+                "total_bi_weekly_cost_default": 0,
+                "total_bi_weekly_cost_normalized": null,
+                "total_monthly_cost": 0,
+                "total_monthly_cost_default": 0,
+                "total_monthly_cost_normalized": null,
+                "total_annually_cost": 0,
+                "total_annually_cost_default": 0,
+                "total_annually_cost_normalized": null,
+                "total_period_cost": 0,
+                "total_period_cost_default": 0,
+                "total_period_cost_normalized": null,
+                "total_overhead_cost_per_hour": 0,
+                "total_overhead_cost_per_hour_default": 0,
+                "total_overhead_cost_per_hour_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "salary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 96",
+            "type": "new_salary_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "salary",
+                "count": 1,
+                "formula_fields": [],
+                "salary_type_id": 1013,
+                "overhead": 1,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                },
+                "time": 154080,
+                "capacity": 154080,
+                "work_days": 321,
+                "total_estimated_weekly_hours": 1077600,
+                "start_date_period": null,
+                "end_date_period": null,
+                "date_period": null,
+                "total_hourly_cost": 0,
+                "total_hourly_cost_default": 0,
+                "total_hourly_cost_normalized": null,
+                "total_weekly_cost": 0,
+                "total_weekly_cost_default": 0,
+                "total_weekly_cost_normalized": null,
+                "total_bi_weekly_cost": 0,
+                "total_bi_weekly_cost_default": 0,
+                "total_bi_weekly_cost_normalized": null,
+                "total_monthly_cost": 0,
+                "total_monthly_cost_default": 0,
+                "total_monthly_cost_normalized": null,
+                "total_annually_cost": 0,
+                "total_annually_cost_default": 0,
+                "total_annually_cost_normalized": null,
+                "total_period_cost": 0,
+                "total_period_cost_default": 0,
+                "total_period_cost_normalized": null,
+                "total_overhead_cost_per_hour": 0,
+                "total_overhead_cost_per_hour_default": 0,
+                "total_overhead_cost_per_hour_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "salary": {
+                    "data": {
+                        "type": "salaries",
+                        "id": "1078"
+                    }
+                }
+            }
+        }
+    ]
+}

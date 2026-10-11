@@ -1,0 +1,427 @@
+{
+    "data": [
+        {
+            "id": "1031",
+            "type": "contact_entries",
+            "attributes": {
+                "contactable_type": "subsidiary",
+                "type": "bill_from",
+                "name": "Text 3",
+                "email": null,
+                "phone": null,
+                "website": null,
+                "address": null,
+                "city": null,
+                "state": null,
+                "zipcode": null,
+                "country": "Text 32",
+                "vat": null,
+                "billing_address": null,
+                "billing_email": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "purchase_order": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1028",
+            "type": "contact_entries",
+            "attributes": {
+                "contactable_type": "company",
+                "type": "phone",
+                "name": "Text 21",
+                "email": null,
+                "phone": "Text 22",
+                "website": null,
+                "address": null,
+                "city": null,
+                "state": null,
+                "zipcode": null,
+                "country": null,
+                "vat": null,
+                "billing_address": null,
+                "billing_email": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "purchase_order": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1029",
+            "type": "contact_entries",
+            "attributes": {
+                "contactable_type": "company",
+                "type": "website",
+                "name": "Text 21",
+                "email": null,
+                "phone": null,
+                "website": "https://example.test/23",
+                "address": null,
+                "city": null,
+                "state": null,
+                "zipcode": null,
+                "country": null,
+                "vat": null,
+                "billing_address": null,
+                "billing_email": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "purchase_order": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1032",
+            "type": "contact_entries",
+            "attributes": {
+                "contactable_type": "company",
+                "type": "address",
+                "name": "Text 21",
+                "email": null,
+                "phone": null,
+                "website": null,
+                "address": "Text 26",
+                "city": "Text 24",
+                "state": "",
+                "zipcode": "28001",
+                "country": "Text 27",
+                "vat": null,
+                "billing_address": true,
+                "billing_email": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "purchase_order": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1033",
+            "type": "contact_entries",
+            "attributes": {
+                "contactable_type": "company",
+                "type": "address",
+                "name": "Text 21",
+                "email": null,
+                "phone": null,
+                "website": null,
+                "address": "Text 33",
+                "city": "Text 34",
+                "state": "",
+                "zipcode": "Text 35",
+                "country": "Text 36",
+                "vat": null,
+                "billing_address": true,
+                "billing_email": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "purchase_order": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1031",
+            "type": "contact_entries",
+            "attributes": {
+                "contactable_type": "subsidiary",
+                "type": "bill_from",
+                "name": "Text 3",
+                "email": null,
+                "phone": null,
+                "website": null,
+                "address": null,
+                "city": null,
+                "state": null,
+                "zipcode": null,
+                "country": "Text 32",
+                "vat": null,
+                "billing_address": null,
+                "billing_email": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "data": null
+                },
+                "person": {
+                    "data": null
+                },
+                "invoice": {
+                    "data": null
+                },
+                "subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1034"
+                    }
+                },
+                "purchase_order": {
+                    "data": null
+                },
+                "invoice_template": {
+                    "data": null
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1028",
+            "type": "contact_entries",
+            "attributes": {
+                "contactable_type": "company",
+                "type": "phone",
+                "name": "Text 21",
+                "email": null,
+                "phone": "Text 22",
+                "website": null,
+                "address": null,
+                "city": null,
+                "state": null,
+                "zipcode": null,
+                "country": null,
+                "vat": null,
+                "billing_address": null,
+                "billing_email": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "data": {
+                        "type": "companies",
+                        "id": "1027"
+                    }
+                },
+                "person": {
+                    "data": null
+                },
+                "invoice": {
+                    "data": null
+                },
+                "subsidiary": {
+                    "data": null
+                },
+                "purchase_order": {
+                    "data": null
+                },
+                "invoice_template": {
+                    "data": null
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

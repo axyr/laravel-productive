@@ -145,3 +145,48 @@ RECORDING_ORGANIZATION_ID=12345
 ```bash
 composer record
 ```
+
+### From recordings to code and tests
+
+Two commands turn a recording into committed files. Neither commits raw responses.
+
+```bash
+composer record:types
+```
+
+Writes `generator/recorded-types.json`: for every type, the *kinds* of value each attribute had (`int`, `decimal-string`, `date-time`, `list`, …), the relationships seen and their cardinality, the includes the API rejected, and the status of every call. It holds no values, names or IDs, and it is the only recording file the generator reads, so a scrubbing mistake can never change generated code.
+
+`composer generate` applies it under fixed rules:
+- An attribute keeps its spec type unless a recorded value is one its lenient reader cannot read. For example, the spec says `int`, the API sends `true`, and the reader would return `null`.
+- `null` and empty values never override, so a resource whose list was empty keeps the spec's types.
+- `int` and `float` together widen to `float`. A `number` field keeps its float reader even when only whole numbers were seen.
+- Attributes and relationships the spec does not document are added and flagged as undocumented. A relationship seen without data has no known cardinality, so it waits for a recording that includes it.
+- Resources and relationships the API no longer has are listed in `generator/config/removed.php`.
+
+Every difference is listed in the generated [API differences](api-differences.md) page.
+
+```bash
+composer record:fixtures
+```
+
+Writes `tests/Fixtures/Recorded/<type>.json`: per type, the few resources that together show every recorded kind of value, with long lists and maps cut to five entries. They are scrubbed first:
+- names, emails, URLs, free text, hashes and UUIDs are replaced;
+- IDs are renumbered consistently everywhere (`id`, `*_id`, `*_ids`, `custom_fields` keys);
+- keys, JSON types, numbers, booleans, dates and short status codes are kept.
+
+Nothing is written when the output still contains any of these:
+- the organization ID (as a whole number) or the API token;
+- the git user's name (word by word, any case) or email (the address and its domain);
+- the organization's name, email key and billing email, as recorded;
+- any term listed in `RECORDING_LEAK_TERMS` in `.env` (comma separated, for anything else you typed into the trial);
+- any value the scrubber replaced.
+
+Before the first push of new fixtures, also search them yourself:
+
+```bash
+grep -rli -e "<your name>" -e "<your company>" -e "<your organization ID>" tests/Fixtures/
+```
+
+It must print nothing.
+
+`RecordedHydrationTest` hydrates every fixture and checks that each non-empty value lands in its typed property unchanged, and that every relationship with data has an accessor. On the models from before the recording it fails for 38 of the 72 types.

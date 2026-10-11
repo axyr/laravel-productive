@@ -22,6 +22,9 @@ final readonly class Role extends Model
 {
     public const string TYPE = 'roles';
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $accessDescription;
+
     /** The number of active AI agents currently assigned to this role. */
     public ?int $activeAgentsCount;
 
@@ -30,6 +33,9 @@ final readonly class Role extends Model
 
     /** ID of the base role type this custom role is derived from (determines the permission baseline). */
     public ?int $baseRoleId;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $bestWhenDescription;
 
     public ?string $description;
 
@@ -55,6 +61,9 @@ final readonly class Role extends Model
      */
     public ?array $permissions;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $principalType;
+
     /** The effective resolved permissions for this role, including inherited permissions from the base role. */
     public mixed $resolvedPermissions;
 
@@ -63,9 +72,11 @@ final readonly class Role extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->accessDescription = $attributes->string('access_description');
         $this->activeAgentsCount = $attributes->int('active_agents_count');
         $this->activeUsersCount = $attributes->int('active_users_count');
         $this->baseRoleId = $attributes->int('base_role_id');
+        $this->bestWhenDescription = $attributes->string('best_when_description');
         $this->description = $attributes->string('description');
         $this->editableByUser = $attributes->bool('editable_by_user');
         $this->inactiveAgentsCount = $attributes->int('inactive_agents_count');
@@ -73,6 +84,7 @@ final readonly class Role extends Model
         $this->name = $attributes->string('name');
         $this->peopleCount = $attributes->int('people_count');
         $this->permissions = $attributes->object('permissions');
+        $this->principalType = $attributes->string('principal_type');
         $this->resolvedPermissions = $attributes->mixed('resolved_permissions');
         $this->userTypeId = $attributes->int('user_type_id');
     }

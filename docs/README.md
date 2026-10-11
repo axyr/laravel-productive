@@ -11,6 +11,7 @@ Laravel Productive: full reference. For installation and a quick start, see the 
 - [Errors, retries and rate limits](errors.md): the exception hierarchy, retry policy and queue jobs
 - [Testing](testing.md): `Productive::fake()`, fake responses, factories, assertions
 - [Architecture](architecture.md): how the layers fit together
-- [Development](development.md): quality gate, the vendored spec and how endpoints are added
+- [Development](development.md): quality gate, the vendored spec, recording real responses and how endpoints are added
+- [API differences](api-differences.md): where the live API differs from Productive's spec (generated)
 
 Productive's own guides are vendored in [vendor/](vendor) for reference.

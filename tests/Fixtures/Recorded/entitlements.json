@@ -1,0 +1,74 @@
+{
+    "data": [
+        {
+            "id": "1050",
+            "type": "entitlements",
+            "attributes": {
+                "start_date": "2026-01-01",
+                "end_date": "2027-06-30",
+                "allocated": "22.0",
+                "used": "0.0",
+                "pending": "0.0",
+                "note": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "event": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1050",
+            "type": "entitlements",
+            "attributes": {
+                "start_date": "2026-01-01",
+                "end_date": "2027-06-30",
+                "allocated": "22.0",
+                "used": "0.0",
+                "pending": "0.0",
+                "note": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "event": {
+                    "data": {
+                        "type": "events",
+                        "id": "1051"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "approval_workflow": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

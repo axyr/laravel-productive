@@ -15017,6 +15017,13 @@
                     "description": "The type of change event (e.g. create, update, destroy)."
                 },
                 {
+                    "name": "external_author_name",
+                    "property": "externalAuthorName",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "invoice_id",
                     "property": "invoiceId",
                     "type": "int",
@@ -15453,6 +15460,13 @@
                     "property": "default",
                     "type": "bool",
                     "description": "Indicates whether this is the default approval policy for its type."
+                },
+                {
+                    "name": "description",
+                    "property": "description",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "name",
@@ -16735,8 +16749,9 @@
                 {
                     "name": "autotracking",
                     "property": "autotracking",
-                    "type": "int",
-                    "description": "Autotracking for this booking report group."
+                    "type": "bool",
+                    "description": "Autotracking for this booking report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "average_blended_rate",
@@ -16772,6 +16787,13 @@
                     "property": "billingType",
                     "type": "int",
                     "description": "Billing type for this booking report group."
+                },
+                {
+                    "name": "booking_type",
+                    "property": "bookingType",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "canceled_at",
@@ -16841,8 +16863,9 @@
                 {
                     "name": "draft",
                     "property": "draft",
-                    "type": "int",
-                    "description": "Draft for this booking report group."
+                    "type": "bool",
+                    "description": "Draft for this booking report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "end_date",
@@ -16881,8 +16904,9 @@
                 {
                     "name": "people_custom_fields",
                     "property": "peopleCustomFields",
-                    "type": "string",
-                    "description": "People custom fields for this booking report group."
+                    "type": "object",
+                    "description": "People custom fields for this booking report group.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "person_id",
@@ -17191,6 +17215,13 @@
                     "description": "Average budget usage percentage normalized across currencies."
                 },
                 {
+                    "name": "average_estimated_time_usage",
+                    "property": "averageEstimatedTimeUsage",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "average_forecasted_budget_overrun",
                     "property": "averageForecastedBudgetOverrun",
                     "type": "float",
@@ -17457,8 +17488,9 @@
                 {
                     "name": "recurring",
                     "property": "recurring",
-                    "type": "int",
-                    "description": "Indicates whether this budget automatically recurs on a schedule."
+                    "type": "bool",
+                    "description": "Indicates whether this budget automatically recurs on a schedule.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "recurring_ends_on_period",
@@ -17835,6 +17867,13 @@
                     "property": "totalManuallyInvoicedNormalized",
                     "type": "mixed",
                     "description": "Sum of manually invoiced amounts in the normalized currency across all budgets in this report group."
+                },
+                {
+                    "name": "total_overtime_time",
+                    "property": "totalOvertimeTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "total_pending_invoicing",
@@ -18627,7 +18666,8 @@
                 {
                     "name": "payment_terms_type",
                     "property": "paymentTermsType",
-                    "type": "int"
+                    "type": "string",
+                    "spec_type": "int"
                 },
                 {
                     "name": "payments",
@@ -19078,6 +19118,13 @@
                     ]
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "field_type",
                     "property": "fieldType",
                     "type": "string"
@@ -19102,6 +19149,20 @@
                     "property": "global",
                     "type": "bool",
                     "description": "Whether this custom field is available globally across all projects, rather than scoped to a specific project."
+                },
+                {
+                    "name": "maximum_value",
+                    "property": "maximumValue",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "minimum_value",
+                    "property": "minimumValue",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "name",
@@ -19138,6 +19199,13 @@
                     "property": "showInAddEditViews",
                     "type": "bool",
                     "description": "The show in add edit views."
+                },
+                {
+                    "name": "tag_field",
+                    "property": "tagField",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "updated_at",
@@ -19241,6 +19309,13 @@
             "type": "custom_field_sections",
             "description": "The resource custom field section.",
             "attributes": [
+                {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
                 {
                     "name": "item_type",
                     "property": "itemType",
@@ -19818,6 +19893,20 @@
                     "description": "ID of the original deal if duplicated or generated from a contract."
                 },
                 {
+                    "name": "overtime_enabled",
+                    "property": "overtimeEnabled",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "overtime_time",
+                    "property": "overtimeTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "pending_invoicing",
                     "property": "pendingInvoicing",
                     "type": "mixed",
@@ -19980,6 +20069,20 @@
                     "description": "Total revenue from services (organization default currency)."
                 },
                 {
+                    "name": "revenue_distribution_base",
+                    "property": "revenueDistributionBase",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "revenue_distribution_end_on",
+                    "property": "revenueDistributionEndOn",
+                    "type": "date",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "revenue_distribution_method",
                     "property": "revenueDistributionMethod",
                     "type": "string",
@@ -19988,6 +20091,13 @@
                         "percentage",
                         "amount"
                     ]
+                },
+                {
+                    "name": "revenue_distribution_start_on",
+                    "property": "revenueDistributionStartOn",
+                    "type": "date",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "revenue_distribution_type",
@@ -20565,6 +20675,13 @@
                     "description": "The average number of interval units per retainer period across grouped deals."
                 },
                 {
+                    "name": "average_time_to_close",
+                    "property": "averageTimeToClose",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "billable_time",
                     "property": "billableTime",
                     "type": "int"
@@ -20620,6 +20737,13 @@
                     "name": "deal_id",
                     "property": "dealId",
                     "type": "int"
+                },
+                {
+                    "name": "deal_value_source",
+                    "property": "dealValueSource",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "formula_fields",
@@ -20697,6 +20821,27 @@
                     "name": "revenue",
                     "property": "revenue",
                     "type": "string"
+                },
+                {
+                    "name": "revenue_distribution_base",
+                    "property": "revenueDistributionBase",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "revenue_distribution_end_on_period",
+                    "property": "revenueDistributionEndOnPeriod",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "revenue_distribution_start_on_period",
+                    "property": "revenueDistributionStartOnPeriod",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "sales_closed_at_period",
@@ -20859,6 +21004,13 @@
                     "property": "totalExpenseNormalized",
                     "type": "mixed",
                     "description": "Sum of expense costs in the normalized currency across all deals in this report group."
+                },
+                {
+                    "name": "total_overtime_time",
+                    "property": "totalOvertimeTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "total_profit",
@@ -21552,8 +21704,9 @@
                 {
                     "name": "template_options",
                     "property": "templateOptions",
-                    "type": "string",
-                    "description": "A hash of configuration options specific to the document template used by this type."
+                    "type": "object",
+                    "description": "A hash of configuration options specific to the document template used by this type.",
+                    "spec_type": "string"
                 }
             ],
             "relationships": [
@@ -21990,6 +22143,13 @@
                     "description": "Financial values normalized for cross-currency comparison."
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "end_date_period",
                     "property": "endDatePeriod",
                     "type": "mixed",
@@ -22262,8 +22422,9 @@
                 {
                     "name": "rates",
                     "property": "rates",
-                    "type": "string",
-                    "description": "An array of currency conversion rates, each with a base currency, target currency, and the corresponding rate value."
+                    "type": "list",
+                    "description": "An array of currency conversion rates, each with a base currency, target currency, and the corresponding rate value.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "to_currency",
@@ -22287,12 +22448,9 @@
                 {
                     "name": "allocation_status",
                     "property": "allocationStatus",
-                    "type": "int",
+                    "type": "string",
                     "description": "Whether this expense has been allocated to a service, or is unallocated (when the expense-without-service feature is enabled).",
-                    "enum": [
-                        1,
-                        2
-                    ]
+                    "spec_type": "int"
                 },
                 {
                     "name": "amount",
@@ -22414,6 +22572,13 @@
                     "description": "Soft-deletion timestamp."
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "draft",
                     "property": "draft",
                     "type": "bool",
@@ -22503,6 +22668,27 @@
                     "property": "markup",
                     "type": "float",
                     "description": "The markup percentage applied on top of the expense cost when billing to the client. Takes precedence over `billable_amount` if both are sent in the same request."
+                },
+                {
+                    "name": "markup_amount",
+                    "property": "markupAmount",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "markup_amount_default",
+                    "property": "markupAmountDefault",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "markup_amount_normalized",
+                    "property": "markupAmountNormalized",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "name",
@@ -22821,6 +23007,12 @@
                     "target_type": "expenses"
                 },
                 {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
+                },
+                {
                     "name": "tax_rate",
                     "to_many": false,
                     "target_type": "tax_rates"
@@ -22945,8 +23137,9 @@
                 {
                     "name": "invoiced",
                     "property": "invoiced",
-                    "type": "int",
-                    "description": "Invoiced for this expense report group."
+                    "type": "bool",
+                    "description": "Invoiced for this expense report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "invoicing_status",
@@ -23338,6 +23531,13 @@
                     "description": "Whether this filter is the default view loaded when navigating to the associated resource list."
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "exchange_currency",
                     "property": "exchangeCurrency",
                     "type": "string",
@@ -23428,8 +23628,9 @@
                 {
                     "name": "params",
                     "property": "params",
-                    "type": "string",
-                    "description": "A hash of filter criteria (field/value pairs) that define what records this filter matches."
+                    "type": "object",
+                    "description": "A hash of filter criteria (field/value pairs) that define what records this filter matches.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "predefined_id",
@@ -23894,6 +24095,13 @@
                     "description": "Sum of expense cost in the normalized currency across all records in this financial item report group."
                 },
                 {
+                    "name": "total_future_scheduled_time",
+                    "property": "totalFutureScheduledTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "total_invoiced",
                     "property": "totalInvoiced",
                     "type": "mixed",
@@ -23928,6 +24136,13 @@
                     "property": "totalOverheadCostNormalized",
                     "type": "mixed",
                     "description": "Sum of overhead cost in the normalized currency across all records in this financial item report group."
+                },
+                {
+                    "name": "total_overtime_time",
+                    "property": "totalOvertimeTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "total_projected_revenue",
@@ -26111,8 +26326,9 @@
                 {
                     "name": "automatically_created",
                     "property": "automaticallyCreated",
-                    "type": "int",
-                    "description": "Whether this invoice was automatically created from a recurring contract budget, rather than manually by a user."
+                    "type": "bool",
+                    "description": "Whether this invoice was automatically created from a recurring contract budget, rather than manually by a user.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "average_due_in",
@@ -26172,6 +26388,13 @@
                     "property": "customFields",
                     "type": "string",
                     "description": "Custom field values for the invoice in this row, as a JSON hash keyed by custom field ID."
+                },
+                {
+                    "name": "delivery_method",
+                    "property": "deliveryMethod",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "delivery_on_period",
@@ -26799,6 +27022,13 @@
                     "description": "The amount with tax converted to the invoice currency."
                 },
                 {
+                    "name": "budget_ids",
+                    "property": "budgetIds",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "currency",
                     "property": "currency",
                     "type": "string",
@@ -26815,6 +27045,13 @@
                     "property": "currencyNormalized",
                     "type": "string",
                     "description": "The invoice's currency for this line item."
+                },
+                {
+                    "name": "description",
+                    "property": "description",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "discount",
@@ -26843,6 +27080,13 @@
                     "property": "quantity",
                     "type": "float",
                     "description": "The quantity of units for this line item; for percentage billing types, expressed as a percentage value."
+                },
+                {
+                    "name": "service_ids",
+                    "property": "serviceIds",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "tax_name",
@@ -27552,8 +27796,9 @@
                 {
                     "name": "billing_email",
                     "property": "billingEmail",
-                    "type": "object",
-                    "description": "Email address used for billing correspondence."
+                    "type": "string",
+                    "description": "Email address used for billing correspondence.",
+                    "spec_type": "object"
                 },
                 {
                     "name": "booked_demo",
@@ -27566,6 +27811,13 @@
                     "property": "conflictResolverActive",
                     "type": "bool",
                     "description": "Whether the scheduling conflict resolver is active, automatically detecting and flagging overbooking conflicts."
+                },
+                {
+                    "name": "create_time_entry_on_timer_start",
+                    "property": "createTimeEntryOnTimerStart",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "created_at",
@@ -27950,6 +28202,20 @@
                     "description": "Quick start configuration used during initial setup."
                 },
                 {
+                    "name": "release_channel",
+                    "property": "releaseChannel",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "remaining_hours_calculation_mode",
+                    "property": "remainingHoursCalculationMode",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "remove_branding",
                     "property": "removeBranding",
                     "type": "bool",
@@ -28318,6 +28584,13 @@
                     "description": "ID of the member's default filter for the expenses list view."
                 },
                 {
+                    "name": "favorited_models",
+                    "property": "favoritedModels",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "granular_notification_preferences",
                     "property": "granularNotificationPreferences",
                     "type": "object",
@@ -28334,6 +28607,13 @@
                     "property": "invoicesFilterId",
                     "type": "int",
                     "description": "ID of the member's default filter for the invoices list view."
+                },
+                {
+                    "name": "notetaker_settings",
+                    "property": "notetakerSettings",
+                    "type": "object",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "payments_filter_id",
@@ -28370,6 +28650,13 @@
                     "property": "quickStartConfig",
                     "type": "string",
                     "description": "Configuration for the quick-start onboarding experience for this member."
+                },
+                {
+                    "name": "recent_data",
+                    "property": "recentData",
+                    "type": "list",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "salary_reports_filter_id",
@@ -28594,8 +28881,9 @@
                 {
                     "name": "billing_email",
                     "property": "billingEmail",
-                    "type": "object",
-                    "description": "The email address used for billing communications and invoices."
+                    "type": "string",
+                    "description": "The email address used for billing communications and invoices.",
+                    "spec_type": "object"
                 },
                 {
                     "name": "billing_group_admin",
@@ -28773,8 +29061,9 @@
                 {
                     "name": "stripe_customer_id",
                     "property": "stripeCustomerId",
-                    "type": "int",
-                    "description": "The Stripe customer ID associated with this organization's billing account."
+                    "type": "string",
+                    "description": "The Stripe customer ID associated with this organization's billing account.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "subscription_ended_at",
@@ -29983,8 +30272,9 @@
                 {
                     "name": "custom_fields",
                     "property": "customFields",
-                    "type": "string",
-                    "description": "Custom fields for this payroll item report group."
+                    "type": "object",
+                    "description": "Custom fields for this payroll item report group.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "end_date",
@@ -30233,6 +30523,13 @@
                     "description": "The AI agent account linked to this person, if this person represents an AI agent."
                 },
                 {
+                    "name": "ai_assistant_instructions",
+                    "property": "aiAssistantInstructions",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "archived_at",
                     "property": "archivedAt",
                     "type": "date-time",
@@ -30247,8 +30544,9 @@
                 {
                     "name": "availabilities",
                     "property": "availabilities",
-                    "type": "list",
-                    "description": "The person's work availability windows."
+                    "type": "string",
+                    "description": "The person's work availability windows.",
+                    "spec_type": "list"
                 },
                 {
                     "name": "avatar_url",
@@ -30633,8 +30931,9 @@
                 {
                     "name": "autotracking",
                     "property": "autotracking",
-                    "type": "int",
-                    "description": "Whether automatic time tracking is enabled for this person."
+                    "type": "bool",
+                    "description": "Whether automatic time tracking is enabled for this person.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "billable_time",
@@ -30732,8 +31031,9 @@
                 {
                     "name": "custom_fields",
                     "property": "customFields",
-                    "type": "string",
-                    "description": "Custom field values attached to this person."
+                    "type": "object",
+                    "description": "Custom field values attached to this person.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "deactivated_at_period",
@@ -31705,6 +32005,55 @@
                     ]
                 },
                 {
+                    "name": "export_error",
+                    "property": "exportError",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_id",
+                    "property": "exportId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_status",
+                    "property": "exportStatus",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_url",
+                    "property": "exportUrl",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "exported",
+                    "property": "exported",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "exported_at",
+                    "property": "exportedAt",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "external_deal_id",
+                    "property": "externalDealId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "last_activity_at",
                     "property": "lastActivityAt",
                     "type": "date-time",
@@ -31789,8 +32138,9 @@
                 {
                     "name": "template",
                     "property": "template",
-                    "type": "string",
-                    "description": "Whether this project is a template."
+                    "type": "bool",
+                    "description": "Whether this project is a template.",
+                    "spec_type": "string"
                 }
             ],
             "relationships": [
@@ -31886,6 +32236,12 @@
                 }
             ],
             "relationships": [
+                {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
+                },
                 {
                     "name": "person",
                     "to_many": false,
@@ -33837,6 +34193,13 @@
             "description": "A role defines a set of permissions that control what members assigned to it can access and do within the organization.",
             "attributes": [
                 {
+                    "name": "access_description",
+                    "property": "accessDescription",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "active_agents_count",
                     "property": "activeAgentsCount",
                     "type": "int",
@@ -33869,6 +34232,13 @@
                         13,
                         14
                     ]
+                },
+                {
+                    "name": "best_when_description",
+                    "property": "bestWhenDescription",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "description",
@@ -33910,6 +34280,13 @@
                     "property": "permissions",
                     "type": "object",
                     "description": "The explicit permission settings configured for this role."
+                },
+                {
+                    "name": "principal_type",
+                    "property": "principalType",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "resolved_permissions",
@@ -34178,8 +34555,9 @@
                 {
                     "name": "people_custom_fields",
                     "property": "peopleCustomFields",
-                    "type": "string",
-                    "description": "People custom fields for this new salary report group."
+                    "type": "object",
+                    "description": "People custom fields for this new salary report group.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "person_id",
@@ -34387,6 +34765,13 @@
             "type": "sections",
             "description": "Represents a named grouping of services within a deal or budget, used to organize line items into logical sections.",
             "attributes": [
+                {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
                 {
                     "name": "editor_config",
                     "property": "editorConfig",
@@ -34680,6 +35065,13 @@
                     "description": "Whether expenses can be logged against this service."
                 },
                 {
+                    "name": "external_id",
+                    "property": "externalId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "future_booked_time",
                     "property": "futureBookedTime",
                     "type": "int",
@@ -34740,6 +35132,13 @@
                     "description": "Revenue projected from future bookings in the organization's normalized currency."
                 },
                 {
+                    "name": "future_tentative_booked_time",
+                    "property": "futureTentativeBookedTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "initial_service_id",
                     "property": "initialServiceId",
                     "type": "int",
@@ -34794,6 +35193,13 @@
                     "description": "ID of the original service if this was duplicated or rolled over."
                 },
                 {
+                    "name": "overtime_time",
+                    "property": "overtimeTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "position",
                     "property": "position",
                     "type": "int",
@@ -34820,8 +35226,9 @@
                 {
                     "name": "profit",
                     "property": "profit",
-                    "type": "int",
-                    "description": "Service profit: revenue minus costs."
+                    "type": "float",
+                    "description": "Service profit: revenue minus costs.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "profit_default",
@@ -34888,6 +35295,13 @@
                     "property": "rolledOverTime",
                     "type": "int",
                     "description": "Time rolled over from a previous retainer period."
+                },
+                {
+                    "name": "tentative_booked_time",
+                    "property": "tentativeBookedTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "time_tracking_enabled",
@@ -35159,14 +35573,16 @@
                 {
                     "name": "booking_tracking_enabled",
                     "property": "bookingTrackingEnabled",
-                    "type": "int",
-                    "description": "Booking tracking enabled for this service report group."
+                    "type": "bool",
+                    "description": "Booking tracking enabled for this service report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "budget_cap_enabled",
                     "property": "budgetCapEnabled",
-                    "type": "int",
-                    "description": "Budget cap enabled for this service report group."
+                    "type": "bool",
+                    "description": "Budget cap enabled for this service report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "budget_custom_fields",
@@ -35254,8 +35670,9 @@
                 {
                     "name": "expense_tracking_enabled",
                     "property": "expenseTrackingEnabled",
-                    "type": "int",
-                    "description": "Expense tracking enabled for this service report group."
+                    "type": "bool",
+                    "description": "Expense tracking enabled for this service report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "formula_fields",
@@ -35309,8 +35726,9 @@
                 {
                     "name": "recurring",
                     "property": "recurring",
-                    "type": "int",
-                    "description": "Recurring for this service report group."
+                    "type": "bool",
+                    "description": "Recurring for this service report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "revenue",
@@ -35353,8 +35771,9 @@
                 {
                     "name": "time_tracking_enabled",
                     "property": "timeTrackingEnabled",
-                    "type": "int",
-                    "description": "Time tracking enabled for this service report group."
+                    "type": "bool",
+                    "description": "Time tracking enabled for this service report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "total_billable_time",
@@ -35561,6 +35980,13 @@
                     "description": "Sum of future budget used in the normalized currency across all records in this service report group."
                 },
                 {
+                    "name": "total_future_tentative_booked_time",
+                    "property": "totalFutureTentativeBookedTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "total_left_to_schedule_time",
                     "property": "totalLeftToScheduleTime",
                     "type": "float",
@@ -35583,6 +36009,20 @@
                     "property": "totalMarkupAmountNormalized",
                     "type": "mixed",
                     "description": "Sum of markup amount in the normalized currency across all records in this service report group."
+                },
+                {
+                    "name": "total_net_unplanned_time",
+                    "property": "totalNetUnplannedTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "total_overtime_time",
+                    "property": "totalOvertimeTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "total_price",
@@ -35685,6 +36125,13 @@
                     "property": "totalRolledOverTime",
                     "type": "float",
                     "description": "Sum of rolled over time across all records in this service report group."
+                },
+                {
+                    "name": "total_tentative_booked_time",
+                    "property": "totalTentativeBookedTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "total_unapproved_time",
@@ -35856,6 +36303,13 @@
                     "property": "archivedAt",
                     "type": "date-time",
                     "description": "Timestamp when this service type was archived, or null if active."
+                },
+                {
+                    "name": "deleted_at",
+                    "property": "deletedAt",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "description",
@@ -36827,6 +37281,13 @@
                     "description": "Timestamp of the most recent activity on this task."
                 },
                 {
+                    "name": "level",
+                    "property": "level",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "linked_dependency_count",
                     "property": "linkedDependencyCount",
                     "type": "int",
@@ -37196,11 +37657,6 @@
             ],
             "relationships": [
                 {
-                    "name": "board",
-                    "to_many": false,
-                    "target_type": "boards"
-                },
-                {
                     "name": "folder",
                     "to_many": false,
                     "target_type": "folders"
@@ -37458,11 +37914,6 @@
                     "name": "assignee_report",
                     "to_many": false,
                     "target_type": null
-                },
-                {
-                    "name": "board",
-                    "to_many": false,
-                    "target_type": "boards"
                 },
                 {
                     "name": "company",
@@ -37824,6 +38275,13 @@
                     "description": "ID of the calendar event this entry was created from, if applicable."
                 },
                 {
+                    "name": "calendar_event_recurring_id",
+                    "property": "calendarEventRecurringId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "cost",
                     "property": "cost",
                     "type": "mixed",
@@ -37870,6 +38328,13 @@
                     "property": "date",
                     "type": "date",
                     "description": "Date for which the time was tracked."
+                },
+                {
+                    "name": "draft",
+                    "property": "draft",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "facility_overhead_cost",
@@ -37984,6 +38449,20 @@
                     "property": "overheadCostNormalized",
                     "type": "mixed",
                     "description": "Total overhead cost in the normalized reporting currency."
+                },
+                {
+                    "name": "overtime",
+                    "property": "overtime",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "overtime_cost_multiplier",
+                    "property": "overtimeCostMultiplier",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "recognized_time",
@@ -38221,6 +38700,20 @@
                     "description": "Average profit margin calculated from recognized revenue and costs."
                 },
                 {
+                    "name": "average_recognized_margin_default",
+                    "property": "averageRecognizedMarginDefault",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "average_recognized_margin_normalized",
+                    "property": "averageRecognizedMarginNormalized",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "billable_time",
                     "property": "billableTime",
                     "type": "int"
@@ -38322,8 +38815,9 @@
                 {
                     "name": "invoiced",
                     "property": "invoiced",
-                    "type": "int",
-                    "description": "Indicates whether this time entry has been invoiced to the client."
+                    "type": "bool",
+                    "description": "Indicates whether this time entry has been invoiced to the client.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "invoicing_status",
@@ -38374,14 +38868,30 @@
                 {
                     "name": "overhead",
                     "property": "overhead",
-                    "type": "int",
-                    "description": "Indicates whether this time entry is classified as overhead."
+                    "type": "bool",
+                    "description": "Indicates whether this time entry is classified as overhead.",
+                    "spec_type": "int"
+                },
+                {
+                    "name": "overtime",
+                    "property": "overtime",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "overtime_cost_multiplier",
+                    "property": "overtimeCostMultiplier",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "people_custom_fields",
                     "property": "peopleCustomFields",
-                    "type": "string",
-                    "description": "Custom field values associated with the person who tracked time."
+                    "type": "object",
+                    "description": "Custom field values associated with the person who tracked time.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "person_id",
@@ -38466,6 +38976,13 @@
                         5,
                         6
                     ]
+                },
+                {
+                    "name": "total_billable_approved_time",
+                    "property": "totalBillableApprovedTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "total_billable_revenue",
@@ -39105,6 +39622,13 @@
                     "type": "int"
                 },
                 {
+                    "name": "overtime_time",
+                    "property": "overtimeTime",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "paid_event_time",
                     "property": "paidEventTime",
                     "type": "float",
@@ -39113,8 +39637,9 @@
                 {
                     "name": "people_custom_fields",
                     "property": "peopleCustomFields",
-                    "type": "string",
-                    "description": "Custom fields on people used for grouping."
+                    "type": "object",
+                    "description": "Custom fields on people used for grouping.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "person_id",
@@ -39337,6 +39862,13 @@
                     "property": "workedTime",
                     "type": "float",
                     "description": "Hours tracked on client and internal projects."
+                },
+                {
+                    "name": "working_days",
+                    "property": "workingDays",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "workload",
@@ -40123,6 +40655,13 @@
                     "property": "preferences",
                     "type": "string",
                     "description": "User interface preferences and settings stored as key-value pairs."
+                },
+                {
+                    "name": "slack_product_updates",
+                    "property": "slackProductUpdates",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "sso_provision",

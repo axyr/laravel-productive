@@ -26,6 +26,9 @@ final readonly class ServiceType extends Model
     /** Timestamp when this service type was archived, or null if active. */
     public ?DateTimeImmutable $archivedAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $deletedAt;
+
     public ?string $description;
 
     /** The name of this service type. */
@@ -34,6 +37,7 @@ final readonly class ServiceType extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->archivedAt = $attributes->dateTime('archived_at');
+        $this->deletedAt = $attributes->mixed('deleted_at');
         $this->description = $attributes->string('description');
         $this->name = $attributes->string('name');
     }

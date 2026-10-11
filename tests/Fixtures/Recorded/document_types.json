@@ -1,0 +1,152 @@
+{
+    "data": [
+        {
+            "id": "1049",
+            "type": "document_types",
+            "attributes": {
+                "name": "Text 55",
+                "tax1_name": null,
+                "tax1_value": null,
+                "tax2_name": null,
+                "tax2_value": null,
+                "locale": "Text 56",
+                "document_template_id": 1013,
+                "exportable_type_id": 1037,
+                "note": null,
+                "footer": null,
+                "template_options": {
+                    "sections": [
+                        {
+                            "id": "header",
+                            "layout": "header-4"
+                        },
+                        {
+                            "id": "info",
+                            "layout": "info-standard"
+                        },
+                        {
+                            "id": "table",
+                            "layout": "table-1"
+                        },
+                        {
+                            "id": "note",
+                            "layout": "note-1"
+                        },
+                        {
+                            "id": "footer",
+                            "layout": "footer-1"
+                        }
+                    ]
+                },
+                "archived_at": null,
+                "header_template": null,
+                "body_template": null,
+                "footer_template": null,
+                "scss_template": null,
+                "exporter_options": [],
+                "email_template": null,
+                "email_subject": null,
+                "email_data": [],
+                "dual_currency": false,
+                "filename_schema": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_style": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1049",
+            "type": "document_types",
+            "attributes": {
+                "name": "Text 55",
+                "tax1_name": null,
+                "tax1_value": null,
+                "tax2_name": null,
+                "tax2_value": null,
+                "locale": "Text 56",
+                "document_template_id": 1013,
+                "exportable_type_id": 1037,
+                "note": null,
+                "footer": null,
+                "template_options": {
+                    "sections": [
+                        {
+                            "id": "header",
+                            "layout": "header-4"
+                        },
+                        {
+                            "id": "info",
+                            "layout": "info-standard"
+                        },
+                        {
+                            "id": "table",
+                            "layout": "table-1"
+                        },
+                        {
+                            "id": "note",
+                            "layout": "note-1"
+                        },
+                        {
+                            "id": "footer",
+                            "layout": "footer-1"
+                        }
+                    ]
+                },
+                "archived_at": null,
+                "header_template": null,
+                "body_template": null,
+                "footer_template": null,
+                "scss_template": null,
+                "exporter_options": [],
+                "email_template": null,
+                "email_subject": null,
+                "email_data": [],
+                "dual_currency": false,
+                "filename_schema": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1034"
+                    }
+                },
+                "document_style": {
+                    "data": {
+                        "type": "document_styles",
+                        "id": "1048"
+                    }
+                },
+                "attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

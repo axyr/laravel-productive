@@ -19,6 +19,9 @@ final readonly class GeneratedFiles
 {
     private const SCANNED = ['src', 'tests/Contract/Generated'];
 
+    /** Permissions are not observable in the tests. */
+    private const int DIRECTORY_MODE = 0o777; // @pest-mutate-ignore
+
     /** @var Closure(string, list<string>): void */
     private Closure $format;
 
@@ -73,17 +76,21 @@ final readonly class GeneratedFiles
 
     private function render(string $root): void
     {
+        // The target exists even when there is nothing to render, so check() can always clean it up.
+        is_dir($root) || mkdir($root, self::DIRECTORY_MODE, true);
+
         foreach ($this->files as $path => $contents) {
             $file = $root . '/' . $path;
 
             if (! is_dir(dirname($file))) {
-                mkdir(dirname($file), 0o777, true);
+                mkdir(dirname($file), self::DIRECTORY_MODE, true);
             }
 
             file_put_contents($file, $contents);
         }
 
-        ($this->format)($root, array_keys($this->files));
+        // Pint formats PHP only; other generated files (docs) are written as emitted.
+        ($this->format)($root, array_values(array_filter(array_keys($this->files), fn(string $path): bool => str_ends_with($path, '.php'))));
     }
 
     /**
@@ -101,7 +108,7 @@ final readonly class GeneratedFiles
             }
         }
 
-        $stale = array_values(array_filter($stale));
+        $stale = array_filter($stale);
         sort($stale);
 
         return $stale;
@@ -118,7 +125,9 @@ final readonly class GeneratedFiles
      */
     public static function isGenerated(string $file): bool
     {
-        $header = array_slice(explode("\n", (string) file_get_contents($file)), 0, 6);
+        // The cast only tells static analysis: the file was just listed.
+        $contents = (string) file_get_contents($file); // @pest-mutate-ignore
+        $header = array_slice(explode("\n", $contents), 0, 6);
 
         return in_array(PhpFile::MARKER, $header, true);
     }
@@ -133,35 +142,32 @@ final readonly class GeneratedFiles
     }
 
     /**
-     * @return list<string>
+     * @return array<string>
      */
     private static function phpFiles(string $directory): array
     {
         $files = [];
 
         foreach (self::entries($directory) as $file) {
-            $files[] = $file instanceof SplFileInfo && $file->getExtension() === 'php' ? $file->getPathname() : null;
+            $files[] = $file->getExtension() === 'php' ? $file->getPathname() : null;
         }
 
-        return array_values(array_filter($files));
+        return array_filter($files);
     }
 
     /**
-     * @return iterable<mixed>
+     * @param  RecursiveIteratorIterator::LEAVES_ONLY|RecursiveIteratorIterator::CHILD_FIRST  $mode
+     * @return iterable<SplFileInfo>  A directory iterator yields file info objects by default.
      */
-    private static function entries(string $directory): iterable
+    private static function entries(string $directory, int $mode = RecursiveIteratorIterator::LEAVES_ONLY): iterable
     {
-        return is_dir($directory) ? new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS)) : [];
+        return is_dir($directory) ? new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS), $mode) : [];
     }
 
     private static function remove(string $directory): void
     {
-        $entries = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST);
-
-        foreach ($entries as $entry) {
-            if ($entry instanceof SplFileInfo) {
-                $entry->isDir() ? rmdir($entry->getPathname()) : unlink($entry->getPathname());
-            }
+        foreach (self::entries($directory, RecursiveIteratorIterator::CHILD_FIRST) as $entry) {
+            $entry->isDir() ? rmdir($entry->getPathname()) : unlink($entry->getPathname());
         }
 
         rmdir($directory);

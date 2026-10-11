@@ -1,0 +1,651 @@
+{
+    "data": [
+        {
+            "id": "1002",
+            "type": "organization_memberships",
+            "attributes": {
+                "updated_at": "2026-10-09T17:41:34.331+02:00",
+                "position": null,
+                "tasks_layout_id": 1013,
+                "time_reminders": true,
+                "email_notifications": true,
+                "weekly_emails": true,
+                "granular_notification_preferences": {
+                    "deals": {
+                        "emails": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "sharing": {
+                            "app": true,
+                            "push": false,
+                            "email": false,
+                            "slack": false,
+                            "teams": false
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "notes": {
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "sharing": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "tasks": {
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "mentions": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "tasks_due": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "people": {
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "mentions": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "budgets": {
+                        "emails": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "sharing": {
+                            "app": true,
+                            "push": false,
+                            "email": false,
+                            "slack": false,
+                            "teams": false
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    }
+                },
+                "preferences": "Text 99",
+                "favorited_models": null,
+                "recent_data": [
+                    "Text 100"
+                ],
+                "notetaker_settings": {
+                    "notetaker_display_name": "Text 101",
+                    "notetaker_join_message": "Text 102",
+                    "notetaker_auto_join_rule": "off",
+                    "notetaker_auto_join_calendar_ids": []
+                },
+                "tasks_filter_id": null,
+                "deals_filter_id": null,
+                "deal_services_filter_id": null,
+                "projects_filter_id": null,
+                "people_filter_id": null,
+                "contacts_filter_id": null,
+                "companies_filter_id": null,
+                "company_time_filter_id": null,
+                "invoices_filter_id": null,
+                "budgets_filter_id": null,
+                "budget_services_filter_id": null,
+                "expenses_filter_id": null,
+                "bookings_filter_id": null,
+                "payments_filter_id": null,
+                "time_reports_filter_id": null,
+                "salary_reports_filter_id": null,
+                "time_entry_reports_filter_id": null,
+                "booking_approvals_filter_id": null,
+                "expense_approvals_filter_id": null,
+                "time_approvals_filter_id": null,
+                "docs_filter_id": null,
+                "internal_budget_services_filter_id": null,
+                "quick_start_config": "Text 103",
+                "employees_filter_id": null
+            },
+            "relationships": {
+                "tasks_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deals_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal_services_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "projects_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "people_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "contacts_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "companies_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company_time_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoices_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "budgets_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "budget_services_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expenses_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bookings_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "payments_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_reports_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "salary_reports_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry_reports_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking_approvals_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense_approvals_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_approvals_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "docs_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "internal_budget_services_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "employees_favorite_filter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "organization": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "user": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1002",
+            "type": "organization_memberships",
+            "attributes": {
+                "updated_at": "2026-10-09T17:41:34.331+02:00",
+                "position": null,
+                "tasks_layout_id": 1013,
+                "time_reminders": true,
+                "email_notifications": true,
+                "weekly_emails": true,
+                "granular_notification_preferences": {
+                    "deals": {
+                        "emails": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "sharing": {
+                            "app": true,
+                            "push": false,
+                            "email": false,
+                            "slack": false,
+                            "teams": false
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "notes": {
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "sharing": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "tasks": {
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "mentions": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "tasks_due": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "people": {
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "mentions": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    },
+                    "budgets": {
+                        "emails": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "created": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "sharing": {
+                            "app": true,
+                            "push": false,
+                            "email": false,
+                            "slack": false,
+                            "teams": false
+                        },
+                        "updated": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        },
+                        "comments": {
+                            "app": true,
+                            "push": true,
+                            "email": true,
+                            "slack": true,
+                            "teams": true
+                        }
+                    }
+                },
+                "preferences": "Text 99",
+                "favorited_models": null,
+                "recent_data": [
+                    "Text 100"
+                ],
+                "notetaker_settings": {
+                    "notetaker_display_name": "Text 101",
+                    "notetaker_join_message": "Text 102",
+                    "notetaker_auto_join_rule": "off",
+                    "notetaker_auto_join_calendar_ids": []
+                },
+                "tasks_filter_id": null,
+                "deals_filter_id": null,
+                "deal_services_filter_id": null,
+                "projects_filter_id": null,
+                "people_filter_id": null,
+                "contacts_filter_id": null,
+                "companies_filter_id": null,
+                "company_time_filter_id": null,
+                "invoices_filter_id": null,
+                "budgets_filter_id": null,
+                "budget_services_filter_id": null,
+                "expenses_filter_id": null,
+                "bookings_filter_id": null,
+                "payments_filter_id": null,
+                "time_reports_filter_id": null,
+                "salary_reports_filter_id": null,
+                "time_entry_reports_filter_id": null,
+                "booking_approvals_filter_id": null,
+                "expense_approvals_filter_id": null,
+                "time_approvals_filter_id": null,
+                "docs_filter_id": null,
+                "internal_budget_services_filter_id": null,
+                "quick_start_config": "Text 103",
+                "employees_filter_id": null
+            },
+            "relationships": {
+                "tasks_favorite_filter": {
+                    "data": null
+                },
+                "deals_favorite_filter": {
+                    "data": null
+                },
+                "deal_services_favorite_filter": {
+                    "data": null
+                },
+                "projects_favorite_filter": {
+                    "data": null
+                },
+                "people_favorite_filter": {
+                    "data": null
+                },
+                "contacts_favorite_filter": {
+                    "data": null
+                },
+                "companies_favorite_filter": {
+                    "data": null
+                },
+                "company_time_favorite_filter": {
+                    "data": null
+                },
+                "invoices_favorite_filter": {
+                    "data": null
+                },
+                "budgets_favorite_filter": {
+                    "data": null
+                },
+                "budget_services_favorite_filter": {
+                    "data": null
+                },
+                "expenses_favorite_filter": {
+                    "data": null
+                },
+                "bookings_favorite_filter": {
+                    "data": null
+                },
+                "payments_favorite_filter": {
+                    "data": null
+                },
+                "time_reports_favorite_filter": {
+                    "data": null
+                },
+                "salary_reports_favorite_filter": {
+                    "data": null
+                },
+                "time_entry_reports_favorite_filter": {
+                    "data": null
+                },
+                "booking_approvals_favorite_filter": {
+                    "data": null
+                },
+                "expense_approvals_favorite_filter": {
+                    "data": null
+                },
+                "time_approvals_favorite_filter": {
+                    "data": null
+                },
+                "docs_favorite_filter": {
+                    "data": null
+                },
+                "internal_budget_services_favorite_filter": {
+                    "data": null
+                },
+                "employees_favorite_filter": {
+                    "data": null
+                },
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1079"
+                    }
+                }
+            }
+        }
+    ]
+}

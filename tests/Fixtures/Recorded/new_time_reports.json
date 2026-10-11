@@ -1,0 +1,287 @@
+{
+    "data": [
+        {
+            "id": "Text 97",
+            "type": "new_time_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "person",
+                "count": 1,
+                "formula_fields": [],
+                "future": null,
+                "billing_type": null,
+                "stage_type": null,
+                "date_period": null,
+                "capacity": 480,
+                "user_capacity": 480,
+                "available_time": 480,
+                "scheduled_time": 0,
+                "draft_scheduled_time": 0,
+                "scheduled_internal_time": 0,
+                "draft_scheduled_internal_time": 0,
+                "scheduled_client_time": 0,
+                "draft_scheduled_client_time": 0,
+                "scheduled_billable_time": 0,
+                "draft_scheduled_billable_time": 0,
+                "scheduled_event_time": 0,
+                "scheduled_remote_work_time": 0,
+                "internal_time": 0,
+                "client_time": 0,
+                "billable_time": 0,
+                "unapproved_time": 0,
+                "worked_time": 0,
+                "paid_event_time": 0,
+                "unpaid_event_time": 0,
+                "event_time": 0,
+                "workload": 0,
+                "recognized_scheduled_time": 0,
+                "recognized_time": 0,
+                "holiday_time": 0,
+                "overtime_time": 0,
+                "working_days": 1,
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "day": "2026-10-09",
+                "average_cost_rate": 0,
+                "average_cost_rate_default": 0,
+                "average_cost_rate_normalized": 0,
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": 0,
+                "total_scheduled_revenue": 0,
+                "total_scheduled_revenue_default": 0,
+                "total_scheduled_revenue_normalized": 0,
+                "total_draft_scheduled_revenue": 0,
+                "total_draft_scheduled_revenue_default": 0,
+                "total_draft_scheduled_revenue_normalized": 0,
+                "total_scheduled_cost": 0,
+                "total_scheduled_cost_default": 0,
+                "total_scheduled_cost_normalized": 0,
+                "total_draft_scheduled_cost": 0,
+                "total_draft_scheduled_cost_default": 0,
+                "total_draft_scheduled_cost_normalized": 0,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "event": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 98",
+            "type": "new_time_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "person",
+                "count": 39,
+                "formula_fields": [],
+                "future": 0,
+                "billing_type": null,
+                "stage_type": 2,
+                "date_period": null,
+                "capacity": 11040,
+                "user_capacity": 11040,
+                "available_time": 11040,
+                "scheduled_time": 480,
+                "draft_scheduled_time": 0,
+                "scheduled_internal_time": 480,
+                "draft_scheduled_internal_time": 0,
+                "scheduled_client_time": 0,
+                "draft_scheduled_client_time": 0,
+                "scheduled_billable_time": 0,
+                "draft_scheduled_billable_time": 0,
+                "scheduled_event_time": 0,
+                "scheduled_remote_work_time": 0,
+                "internal_time": 0,
+                "client_time": 2400,
+                "billable_time": 2400,
+                "unapproved_time": 0,
+                "worked_time": 2400,
+                "paid_event_time": 0,
+                "unpaid_event_time": 0,
+                "event_time": 0,
+                "workload": 0,
+                "recognized_scheduled_time": 0,
+                "recognized_time": 2400,
+                "holiday_time": 0,
+                "overtime_time": 0,
+                "working_days": 23,
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "day": "2026-10-09",
+                "average_cost_rate": 4545,
+                "average_cost_rate_default": 4545,
+                "average_cost_rate_normalized": 4545,
+                "total_cost": 181818,
+                "total_cost_default": 181818,
+                "total_cost_normalized": 181818,
+                "total_scheduled_revenue": 0,
+                "total_scheduled_revenue_default": 0,
+                "total_scheduled_revenue_normalized": 0,
+                "total_draft_scheduled_revenue": 0,
+                "total_draft_scheduled_revenue_default": 0,
+                "total_draft_scheduled_revenue_normalized": 0,
+                "total_scheduled_cost": 36364,
+                "total_scheduled_cost_default": 36364,
+                "total_scheduled_cost_normalized": 36364,
+                "total_draft_scheduled_cost": 0,
+                "total_draft_scheduled_cost_default": 0,
+                "total_draft_scheduled_cost_normalized": 0,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "event": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 97",
+            "type": "new_time_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "person",
+                "count": 1,
+                "formula_fields": [],
+                "future": null,
+                "billing_type": null,
+                "stage_type": null,
+                "date_period": null,
+                "capacity": 480,
+                "user_capacity": 480,
+                "available_time": 480,
+                "scheduled_time": 0,
+                "draft_scheduled_time": 0,
+                "scheduled_internal_time": 0,
+                "draft_scheduled_internal_time": 0,
+                "scheduled_client_time": 0,
+                "draft_scheduled_client_time": 0,
+                "scheduled_billable_time": 0,
+                "draft_scheduled_billable_time": 0,
+                "scheduled_event_time": 0,
+                "scheduled_remote_work_time": 0,
+                "internal_time": 0,
+                "client_time": 0,
+                "billable_time": 0,
+                "unapproved_time": 0,
+                "worked_time": 0,
+                "paid_event_time": 0,
+                "unpaid_event_time": 0,
+                "event_time": 0,
+                "workload": 0,
+                "recognized_scheduled_time": 0,
+                "recognized_time": 0,
+                "holiday_time": 0,
+                "overtime_time": 0,
+                "working_days": 1,
+                "year": "2026",
+                "quarter": "Text 29",
+                "month": "Text 30",
+                "week": "Text 31",
+                "day": "2026-10-09",
+                "average_cost_rate": 0,
+                "average_cost_rate_default": 0,
+                "average_cost_rate_normalized": 0,
+                "total_cost": 0,
+                "total_cost_default": 0,
+                "total_cost_normalized": 0,
+                "total_scheduled_revenue": 0,
+                "total_scheduled_revenue_default": 0,
+                "total_scheduled_revenue_normalized": 0,
+                "total_draft_scheduled_revenue": 0,
+                "total_draft_scheduled_revenue_default": 0,
+                "total_draft_scheduled_revenue_normalized": 0,
+                "total_scheduled_cost": 0,
+                "total_scheduled_cost_default": 0,
+                "total_scheduled_cost_normalized": 0,
+                "total_draft_scheduled_cost": 0,
+                "total_draft_scheduled_cost_default": 0,
+                "total_draft_scheduled_cost_normalized": 0,
+                "people_custom_fields": {
+                    "1015": null,
+                    "1016": null,
+                    "1017": null,
+                    "1018": null,
+                    "1019": null
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1002"
+                    }
+                },
+                "event": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

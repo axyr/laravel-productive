@@ -1,0 +1,130 @@
+{
+    "data": [
+        {
+            "id": "1048",
+            "type": "document_styles",
+            "attributes": {
+                "name": "Text 54",
+                "styles": {
+                    "elements": [
+                        {
+                            "id": "block-page",
+                            "properties": {
+                                "padding_top": 40,
+                                "padding_left": 30,
+                                "padding_right": 30,
+                                "padding_bottom": 10,
+                                "background_color": "#ffffff"
+                            }
+                        },
+                        {
+                            "id": "block-header",
+                            "properties": {
+                                "text_align": "left",
+                                "padding_bottom": 14
+                            }
+                        },
+                        {
+                            "id": "block-info",
+                            "properties": {
+                                "text_align": "left",
+                                "padding_top": 16,
+                                "padding_bottom": 14
+                            }
+                        },
+                        {
+                            "id": "block-note",
+                            "properties": {
+                                "text_align": "left",
+                                "padding_top": 21,
+                                "padding_bottom": 14
+                            }
+                        },
+                        {
+                            "id": "block-footer",
+                            "properties": {
+                                "text_align": "center",
+                                "padding_top": 24
+                            }
+                        }
+                    ]
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1048",
+            "type": "document_styles",
+            "attributes": {
+                "name": "Text 54",
+                "styles": {
+                    "elements": [
+                        {
+                            "id": "block-page",
+                            "properties": {
+                                "padding_top": 40,
+                                "padding_left": 30,
+                                "padding_right": 30,
+                                "padding_bottom": 10,
+                                "background_color": "#ffffff"
+                            }
+                        },
+                        {
+                            "id": "block-header",
+                            "properties": {
+                                "text_align": "left",
+                                "padding_bottom": 14
+                            }
+                        },
+                        {
+                            "id": "block-info",
+                            "properties": {
+                                "text_align": "left",
+                                "padding_top": 16,
+                                "padding_bottom": 14
+                            }
+                        },
+                        {
+                            "id": "block-note",
+                            "properties": {
+                                "text_align": "left",
+                                "padding_top": 21,
+                                "padding_bottom": 14
+                            }
+                        },
+                        {
+                            "id": "block-footer",
+                            "properties": {
+                                "text_align": "center",
+                                "padding_top": 24
+                            }
+                        }
+                    ]
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

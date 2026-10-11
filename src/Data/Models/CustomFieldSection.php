@@ -22,6 +22,9 @@ final readonly class CustomFieldSection extends Model
 {
     public const string TYPE = 'custom_field_sections';
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     public ?string $itemType;
 
     /** The display name of this custom field section. */
@@ -32,6 +35,7 @@ final readonly class CustomFieldSection extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->description = $attributes->mixed('description');
         $this->itemType = $attributes->string('item_type');
         $this->name = $attributes->string('name');
         $this->position = $attributes->int('position');

@@ -183,6 +183,9 @@ final readonly class FinancialItemReport extends Model
     /** Sum of expense cost in the normalized currency across all records in this financial item report group. */
     public mixed $totalExpenseCostNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalFutureScheduledTime;
+
     /** Sum of invoiced across all records in this financial item report group. */
     public mixed $totalInvoiced;
 
@@ -200,6 +203,9 @@ final readonly class FinancialItemReport extends Model
 
     /** Sum of overhead cost in the normalized currency across all records in this financial item report group. */
     public mixed $totalOverheadCostNormalized;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $totalOvertimeTime;
 
     /** Sum of projected revenue across all records in this financial item report group. */
     public mixed $totalProjectedRevenue;
@@ -325,12 +331,14 @@ final readonly class FinancialItemReport extends Model
         $this->totalExpenseCost = $attributes->mixed('total_expense_cost');
         $this->totalExpenseCostDefault = $attributes->mixed('total_expense_cost_default');
         $this->totalExpenseCostNormalized = $attributes->mixed('total_expense_cost_normalized');
+        $this->totalFutureScheduledTime = $attributes->int('total_future_scheduled_time');
         $this->totalInvoiced = $attributes->mixed('total_invoiced');
         $this->totalInvoicedDefault = $attributes->mixed('total_invoiced_default');
         $this->totalInvoicedNormalized = $attributes->mixed('total_invoiced_normalized');
         $this->totalOverheadCost = $attributes->mixed('total_overhead_cost');
         $this->totalOverheadCostDefault = $attributes->mixed('total_overhead_cost_default');
         $this->totalOverheadCostNormalized = $attributes->mixed('total_overhead_cost_normalized');
+        $this->totalOvertimeTime = $attributes->int('total_overtime_time');
         $this->totalProjectedRevenue = $attributes->mixed('total_projected_revenue');
         $this->totalProjectedRevenueDefault = $attributes->mixed('total_projected_revenue_default');
         $this->totalProjectedRevenueNormalized = $attributes->mixed('total_projected_revenue_normalized');

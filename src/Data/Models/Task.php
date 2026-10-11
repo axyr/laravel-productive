@@ -77,6 +77,9 @@ final readonly class Task extends Model
     /** Timestamp of the most recent activity on this task. */
     public ?DateTimeImmutable $lastActivityAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $level;
+
     /** Number of tasks linked to this one (informational, no blocking). */
     public ?int $linkedDependencyCount;
 
@@ -186,6 +189,7 @@ final readonly class Task extends Model
         $this->futureBookedTime = $attributes->int('future_booked_time');
         $this->initialEstimate = $attributes->int('initial_estimate');
         $this->lastActivityAt = $attributes->dateTime('last_activity_at');
+        $this->level = $attributes->int('level');
         $this->linkedDependencyCount = $attributes->int('linked_dependency_count');
         $this->number = $attributes->string('number');
         $this->openSubtaskCount = $attributes->int('open_subtask_count');

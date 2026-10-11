@@ -35,6 +35,9 @@ final readonly class TimeEntry extends Model
     /** ID of the calendar event this entry was created from, if applicable. */
     public mixed $calendarEventId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $calendarEventRecurringId;
+
     /** Total cost of tracked time, including labor and overhead costs. */
     public mixed $cost;
 
@@ -58,6 +61,9 @@ final readonly class TimeEntry extends Model
 
     /** Date for which the time was tracked. */
     public ?DateTimeImmutable $date;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $draft;
 
     /** Facility overhead portion of the cost. */
     public mixed $facilityOverheadCost;
@@ -116,6 +122,12 @@ final readonly class TimeEntry extends Model
     /** Total overhead cost in the normalized reporting currency. */
     public mixed $overheadCostNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $overtime;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $overtimeCostMultiplier;
+
     /** Recognized time used in budget spending and accrual-based revenue calculations. */
     public ?int $recognizedTime;
 
@@ -164,6 +176,7 @@ final readonly class TimeEntry extends Model
         $this->approvedAt = $attributes->dateTime('approved_at');
         $this->billableTime = $attributes->int('billable_time');
         $this->calendarEventId = $attributes->mixed('calendar_event_id');
+        $this->calendarEventRecurringId = $attributes->mixed('calendar_event_recurring_id');
         $this->cost = $attributes->mixed('cost');
         $this->costDefault = $attributes->mixed('cost_default');
         $this->costNormalized = $attributes->mixed('cost_normalized');
@@ -172,6 +185,7 @@ final readonly class TimeEntry extends Model
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->date = $attributes->date('date');
+        $this->draft = $attributes->bool('draft');
         $this->facilityOverheadCost = $attributes->mixed('facility_overhead_cost');
         $this->facilityOverheadCostDefault = $attributes->mixed('facility_overhead_cost_default');
         $this->facilityOverheadCostNormalized = $attributes->mixed('facility_overhead_cost_normalized');
@@ -191,6 +205,8 @@ final readonly class TimeEntry extends Model
         $this->overheadCost = $attributes->mixed('overhead_cost');
         $this->overheadCostDefault = $attributes->mixed('overhead_cost_default');
         $this->overheadCostNormalized = $attributes->mixed('overhead_cost_normalized');
+        $this->overtime = $attributes->bool('overtime');
+        $this->overtimeCostMultiplier = $attributes->string('overtime_cost_multiplier');
         $this->recognizedTime = $attributes->int('recognized_time');
         $this->rejected = $attributes->bool('rejected');
         $this->rejectedAt = $attributes->dateTime('rejected_at');

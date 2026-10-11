@@ -27,7 +27,6 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Axyr\Productive\Resources\AutomaticInvoicingRuleResource automaticInvoicingRules()
  * @method static \Axyr\Productive\Resources\BankAccountResource bankAccounts()
  * @method static \Axyr\Productive\Resources\BillResource bills()
- * @method static \Axyr\Productive\Resources\BoardResource boards()
  * @method static \Axyr\Productive\Resources\BookingResource bookings()
  * @method static \Axyr\Productive\Resources\CommentResource comments()
  * @method static \Axyr\Productive\Resources\CompanyResource companies()

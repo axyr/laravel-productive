@@ -9,10 +9,17 @@ use Axyr\Productive\Generator\Ir\Relationship;
 
 final readonly class ModelBuilder
 {
+    /**
+     * @param  array<string>  $modelTypes  Types that have a model: the targets a recorded relationship may point at.
+     * @param  list<string>  $removedRelationships  "type.relationship" pairs the API no longer has.
+     */
     public function __construct(
         private Spec $spec,
         private SchemaReader $reader,
         private RelationshipTypes $relationshipTypes,
+        private RecordedTypes $recorded = new RecordedTypes(),
+        private array $modelTypes = [],
+        private array $removedRelationships = [],
     ) {}
 
     /**
@@ -24,7 +31,7 @@ final readonly class ModelBuilder
         $data = $this->data($responseSchema);
         $attributesSchema = $this->spec->resolve(Spec::map($data['properties'] ?? [])['attributes'] ?? []);
         $exampleAttributes = Spec::map($example['attributes'] ?? []);
-        $attributes = $this->reader->attributes(Spec::map($attributesSchema['properties'] ?? []), $exampleAttributes);
+        $attributes = $this->recorded->attributes($type, $this->reader->attributes(Spec::map($attributesSchema['properties'] ?? []), $exampleAttributes));
         ksort($attributes);
 
         return new Model(
@@ -62,6 +69,8 @@ final readonly class ModelBuilder
             $relationships[$name] = new Relationship($name, str_ends_with($reference, '_collection_relationship'), $this->relationshipTypes->resolve($type, $name));
         }
 
+        $relationships = $this->recorded->relationships($type, $relationships, $this->modelTypes);
+        $relationships = array_filter($relationships, fn(Relationship $relationship): bool => ! in_array($type . '.' . $relationship->name, $this->removedRelationships, true));
         ksort($relationships);
 
         return array_values($relationships);

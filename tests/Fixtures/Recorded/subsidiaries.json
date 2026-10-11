@@ -1,0 +1,121 @@
+{
+    "data": [
+        {
+            "id": "1034",
+            "type": "subsidiaries",
+            "attributes": {
+                "name": "Text 3",
+                "invoice_number_format": "Text 166",
+                "invoice_number_scope": null,
+                "archived_at": null,
+                "show_delivery_date": false,
+                "facility_costs_breakdown": [],
+                "export_integration_type_id": null,
+                "invoice_logo_url": null,
+                "facility_costs": 0,
+                "facility_costs_default": 0,
+                "facility_costs_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "bill_from": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_domain": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_bank_account": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "integration": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "einvoice_configuration": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "einvoice_identity": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1034",
+            "type": "subsidiaries",
+            "attributes": {
+                "name": "Text 3",
+                "invoice_number_format": "Text 166",
+                "invoice_number_scope": null,
+                "archived_at": null,
+                "show_delivery_date": false,
+                "facility_costs_breakdown": [],
+                "export_integration_type_id": null,
+                "invoice_logo_url": null,
+                "facility_costs": 0,
+                "facility_costs_default": 0,
+                "facility_costs_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "bill_from": {
+                    "data": {
+                        "type": "contact_entries",
+                        "id": "1031"
+                    }
+                },
+                "custom_domain": {
+                    "data": null
+                },
+                "default_tax_rate": {
+                    "data": null
+                },
+                "default_bank_account": {
+                    "data": null
+                },
+                "default_document_type": {
+                    "data": null
+                },
+                "integration": {
+                    "data": null
+                },
+                "einvoice_configuration": {
+                    "data": null
+                },
+                "einvoice_identity": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

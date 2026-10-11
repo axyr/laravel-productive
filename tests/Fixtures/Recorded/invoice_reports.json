@@ -1,0 +1,247 @@
+{
+    "data": [
+        {
+            "id": "Text 82",
+            "type": "invoice_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "invoice",
+                "count": 1,
+                "formula_fields": [],
+                "sent_status": 1,
+                "payment_status": 2,
+                "overdue_status": 2,
+                "invoice_status": 2,
+                "invoice_aging": 3,
+                "invoice_state": 2,
+                "average_due_in": -61,
+                "average_paid_in": null,
+                "currency_id": "USD",
+                "invoice_type": 1,
+                "tax_rates": null,
+                "invoicing_method": null,
+                "einvoice_status": null,
+                "fiscalization_status": null,
+                "delivery_method": 7,
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 83",
+                "week": "Text 84",
+                "custom_fields": [],
+                "automatically_created": false,
+                "invoiced_on_period": null,
+                "pay_on_period": null,
+                "sent_on_period": null,
+                "delivery_on_period": null,
+                "paid_on_period": null,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "total_amount": 3750000,
+                "total_amount_default": 3750000,
+                "total_amount_normalized": null,
+                "total_amount_tax": 0,
+                "total_amount_tax_default": 0,
+                "total_amount_tax_normalized": null,
+                "total_amount_with_tax": 3750000,
+                "total_amount_with_tax_default": 3750000,
+                "total_amount_with_tax_normalized": null,
+                "total_amount_paid": 0,
+                "total_amount_paid_default": 0,
+                "total_amount_paid_normalized": null,
+                "total_amount_written_off": 0,
+                "total_amount_written_off_default": 0,
+                "total_amount_written_off_normalized": null,
+                "total_amount_unpaid": 3750000,
+                "total_amount_unpaid_default": 3750000,
+                "total_amount_unpaid_normalized": null,
+                "total_amount_credited": 0,
+                "total_amount_credited_default": 0,
+                "total_amount_credited_normalized": null,
+                "total_amount_credited_with_tax": 0,
+                "total_amount_credited_with_tax_default": 0,
+                "total_amount_credited_with_tax_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 85",
+            "type": "invoice_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "invoice",
+                "count": 1,
+                "formula_fields": [],
+                "sent_status": 2,
+                "payment_status": 2,
+                "overdue_status": 2,
+                "invoice_status": 4,
+                "invoice_aging": 0,
+                "invoice_state": 1,
+                "average_due_in": -30,
+                "average_paid_in": null,
+                "currency_id": "USD",
+                "invoice_type": 1,
+                "tax_rates": null,
+                "invoicing_method": null,
+                "einvoice_status": null,
+                "fiscalization_status": null,
+                "delivery_method": null,
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 45",
+                "week": "Text 46",
+                "custom_fields": [],
+                "automatically_created": false,
+                "invoiced_on_period": null,
+                "pay_on_period": null,
+                "sent_on_period": null,
+                "delivery_on_period": null,
+                "paid_on_period": null,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "total_amount": 500000,
+                "total_amount_default": 500000,
+                "total_amount_normalized": null,
+                "total_amount_tax": 0,
+                "total_amount_tax_default": 0,
+                "total_amount_tax_normalized": null,
+                "total_amount_with_tax": 500000,
+                "total_amount_with_tax_default": 500000,
+                "total_amount_with_tax_normalized": null,
+                "total_amount_paid": 0,
+                "total_amount_paid_default": 0,
+                "total_amount_paid_normalized": null,
+                "total_amount_written_off": 0,
+                "total_amount_written_off_default": 0,
+                "total_amount_written_off_normalized": null,
+                "total_amount_unpaid": 500000,
+                "total_amount_unpaid_default": 500000,
+                "total_amount_unpaid_normalized": null,
+                "total_amount_credited": 0,
+                "total_amount_credited_default": 0,
+                "total_amount_credited_normalized": null,
+                "total_amount_credited_with_tax": 0,
+                "total_amount_credited_with_tax_default": 0,
+                "total_amount_credited_with_tax_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 82",
+            "type": "invoice_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "invoice",
+                "count": 1,
+                "formula_fields": [],
+                "sent_status": 1,
+                "payment_status": 2,
+                "overdue_status": 2,
+                "invoice_status": 2,
+                "invoice_aging": 3,
+                "invoice_state": 2,
+                "average_due_in": -61,
+                "average_paid_in": null,
+                "currency_id": "USD",
+                "invoice_type": 1,
+                "tax_rates": null,
+                "invoicing_method": null,
+                "einvoice_status": null,
+                "fiscalization_status": null,
+                "delivery_method": 7,
+                "year": "2026",
+                "quarter": "Text 44",
+                "month": "Text 83",
+                "week": "Text 84",
+                "custom_fields": [],
+                "automatically_created": false,
+                "invoiced_on_period": null,
+                "pay_on_period": null,
+                "sent_on_period": null,
+                "delivery_on_period": null,
+                "paid_on_period": null,
+                "created_at_period": null,
+                "last_activity_at_period": null,
+                "total_amount": 3750000,
+                "total_amount_default": 3750000,
+                "total_amount_normalized": null,
+                "total_amount_tax": 0,
+                "total_amount_tax_default": 0,
+                "total_amount_tax_normalized": null,
+                "total_amount_with_tax": 3750000,
+                "total_amount_with_tax_default": 3750000,
+                "total_amount_with_tax_normalized": null,
+                "total_amount_paid": 0,
+                "total_amount_paid_default": 0,
+                "total_amount_paid_normalized": null,
+                "total_amount_written_off": 0,
+                "total_amount_written_off_default": 0,
+                "total_amount_written_off_normalized": null,
+                "total_amount_unpaid": 3750000,
+                "total_amount_unpaid_default": 3750000,
+                "total_amount_unpaid_normalized": null,
+                "total_amount_credited": 0,
+                "total_amount_credited_default": 0,
+                "total_amount_credited_normalized": null,
+                "total_amount_credited_with_tax": 0,
+                "total_amount_credited_with_tax_default": 0,
+                "total_amount_credited_with_tax_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice": {
+                    "data": {
+                        "type": "invoices",
+                        "id": "1068"
+                    }
+                }
+            }
+        }
+    ]
+}

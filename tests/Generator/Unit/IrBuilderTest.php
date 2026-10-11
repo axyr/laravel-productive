@@ -101,8 +101,9 @@ it('builds one model per type from the show response', function () {
 });
 
 it('loads the curated maps from files', function () {
-    $directory = sys_get_temp_dir() . '/ir-config-' . uniqid();
-    mkdir($directory);
+    $base = sys_get_temp_dir() . '/ir-config-' . uniqid();
+    $directory = $base . '/config';
+    mkdir($directory, recursive: true);
     file_put_contents($directory . '/relationship-types.php', '<?php return ["owner" => "people", "polymorphic" => null];');
     file_put_contents($directory . '/descriptions.php', '<?php return ["a" => "A"];');
     file_put_contents($directory . '/method-names.php', '<?php return ["tasks.index" => "all"];');
@@ -115,13 +116,48 @@ it('loads the curated maps from files', function () {
 
     array_map(unlink(...), [...glob($directory . '/*'), $spec]);
     rmdir($directory);
+    rmdir($base);
+});
+
+it('applies recorded types and removed relationships from files', function () {
+    $base = sys_get_temp_dir() . '/ir-config-' . uniqid();
+    $directory = $base . '/config';
+    mkdir($directory, recursive: true);
+
+    foreach (['relationship-types', 'descriptions', 'method-names'] as $name) {
+        file_put_contents($directory . '/' . $name . '.php', '<?php return [];');
+    }
+
+    file_put_contents($directory . '/removed.php', '<?php return ["relationships" => ["tasks.board" => "Gone."]];');
+    file_put_contents($base . '/recorded-types.json', json_encode(['types' => ['tasks' => [
+        'attributes' => ['level' => ['int']],
+        'relationships' => ['board' => ['to_many' => false, 'types' => ['boards']], 'parent' => ['to_many' => false, 'types' => ['tasks']]],
+    ]]]));
+    $response = ['200' => ['content' => ['application/vnd.api+json' => ['schema' => [
+        'properties' => ['data' => ['properties' => [
+            'attributes' => ['properties' => ['title' => ['type' => 'string']]],
+            'relationships' => ['properties' => ['board' => []]],
+        ]]],
+    ]]]]];
+    $spec = tempnam(sys_get_temp_dir(), 'spec');
+    file_put_contents($spec, json_encode(['paths' => ['/api/v2/tasks/{id}' => ['get' => ['responses' => $response]]]]));
+
+    $model = IrBuilder::fromFiles($spec, $directory)->build()->model('Task')?->toArray();
+
+    expect(array_column($model['attributes'] ?? [], 'type', 'name'))->toBe(['level' => 'int', 'title' => 'string'])
+        ->and($model['relationships'] ?? [])->toBe([['name' => 'parent', 'to_many' => false, 'target_type' => 'tasks', 'undocumented' => true]]);
+
+    array_map(unlink(...), [...glob($directory . '/*'), $base . '/recorded-types.json', $spec]);
+    rmdir($directory);
+    rmdir($base);
 });
 
 it('stops on malformed curated maps', function (string $file, string $contents, string $message) {
-    $directory = sys_get_temp_dir() . '/ir-config-' . uniqid();
-    mkdir($directory);
+    $base = sys_get_temp_dir() . '/ir-config-' . uniqid();
+    $directory = $base . '/config';
+    mkdir($directory, recursive: true);
 
-    foreach (['relationship-types', 'descriptions', 'method-names'] as $name) {
+    foreach (['relationship-types', 'descriptions', 'method-names', 'removed'] as $name) {
         file_put_contents($directory . '/' . $name . '.php', $name === $file ? $contents : '<?php return [];');
     }
 
@@ -130,11 +166,13 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     } finally {
         array_map(unlink(...), glob($directory . '/*'));
         rmdir($directory);
+        rmdir($base);
     }
 })->with([
     ['relationship-types', '<?php return ["owner" => 5];', 'generator/config/relationship-types.php: the value for "owner" must be a string or null.'],
     ['descriptions', '<?php return ["a" => null];', 'generator/config/descriptions.php: the value for "a" must be a string.'],
     ['method-names', '<?php return ["tasks.index" => ["all"]];', 'generator/config/method-names.php: the value for "tasks.index" must be a string.'],
+    ['removed', '<?php return ["relationships" => ["tasks.board" => 1]];', 'generator/config/removed.php: the value for "tasks.board" must be a string.'],
 ]);
 
 it('does not trust an example type owned by a nested resource', function () {
