@@ -1,5 +1,5 @@
 {
-    "recorded_on": "2026-10-09",
+    "recorded_on": "2026-10-11",
     "statuses": {
         "activities.index": 200,
         "activities.index.include": 200,
@@ -14,7 +14,11 @@
         "artifacts.index": 200,
         "attachments.index": 200,
         "automatic_invoicing_rules.index": 200,
+        "automatic_invoicing_rules.index.include": 200,
+        "automatic_invoicing_rules.show": 200,
         "bank_accounts.index": 200,
+        "bank_accounts.index.include": 200,
+        "bank_accounts.show": 200,
         "boards.index": 404,
         "bookings.index": 200,
         "bookings.index.include": 200,
@@ -80,6 +84,8 @@
         "holiday_calendars.index.include": 200,
         "holiday_calendars.show": 200,
         "holidays.index": 200,
+        "holidays.index.include": 200,
+        "holidays.show": 200,
         "integration_exporter_configurations.index": 200,
         "integration_task_management_configurations.index": 200,
         "integrations.index": 200,
@@ -87,10 +93,19 @@
         "invoice_attributions.index.include": 200,
         "invoice_attributions.show": 200,
         "invoice_templates.index": 200,
+        "invoice_templates.index.include.bank_account": 400,
+        "invoice_templates.index.include.budget": 400,
+        "invoice_templates.index.include.creator": 400,
+        "invoice_templates.index.include.document_type": 200,
+        "invoice_templates.index.include.issuer": 400,
+        "invoice_templates.index.include.organization+subsidiary": 200,
+        "invoice_templates.show": 200,
         "invoices.index": 200,
         "invoices.index.include": 200,
         "invoices.show": 200,
         "job_roles.index": 200,
+        "job_roles.index.include": 200,
+        "job_roles.show": 200,
         "line_items.index": 200,
         "line_items.index.include": 200,
         "line_items.show": 200,
@@ -114,6 +129,8 @@
         "payment_reminder_sequences.index.include": 200,
         "payment_reminder_sequences.show": 200,
         "payments.index": 200,
+        "payments.index.include": 200,
+        "payments.show": 200,
         "people.index": 200,
         "people.index.include": 200,
         "people.show": 200,
@@ -130,6 +147,8 @@
         "projects.index.include": 200,
         "projects.show": 200,
         "proposals.index": 200,
+        "proposals.index.include": 200,
+        "proposals.show": 200,
         "pulses.index": 200,
         "purchase_orders.index": 200,
         "rate_cards.index": 200,
@@ -194,6 +213,12 @@
         "reports.line_item_reports.index.include.service+service_type+updater": 200,
         "reports.page_reports.index": 200,
         "reports.payment_reports.index": 200,
+        "reports.payment_reports.index.include.company+company_report": 200,
+        "reports.payment_reports.index.include.deal": 400,
+        "reports.payment_reports.index.include.invoice": 200,
+        "reports.payment_reports.index.include.invoice_report": 200,
+        "reports.payment_reports.index.include.organization": 400,
+        "reports.payment_reports.index.include.payment+report+subsidiary": 200,
         "reports.payroll_item_reports.index": 200,
         "reports.payroll_item_reports.index.include.booking+company": 200,
         "reports.payroll_item_reports.index.include.organization": 400,
@@ -212,7 +237,15 @@
         "reports.project_reports.index.include.organization": 400,
         "reports.project_reports.index.include.project+project_manager+project_manager_report+report": 200,
         "reports.proposal_reports.index": 200,
+        "reports.proposal_reports.index.include.company+company_report+creator+creator_report+deal+deal_report": 200,
+        "reports.proposal_reports.index.include.organization": 400,
+        "reports.proposal_reports.index.include.proposal+report": 200,
+        "reports.proposal_reports.index.include.responsible+responsible_report+subsidiary": 200,
         "reports.resource_request_reports.index": 200,
+        "reports.resource_request_reports.index.include.creator+creator_report+deal_or_budget_report": 200,
+        "reports.resource_request_reports.index.include.organization": 400,
+        "reports.resource_request_reports.index.include.report+resolver": 200,
+        "reports.resource_request_reports.index.include.resolver_report+resource_request+service+service_report+service_type+subsidiary": 200,
         "reports.salary_reports.index": 200,
         "reports.salary_reports.index.include.organization": 400,
         "reports.salary_reports.index.include.person": 200,
@@ -226,11 +259,12 @@
         "reports.service_reports.index.include.origin_deal+origin_deal_report": 200,
         "reports.service_reports.index.include.owner_report+pipeline+project+project_report+report+responsible+section+service+service_type+subsidiary": 200,
         "reports.survey_reports.index": 200,
+        "reports.survey_reports.index.include.creator": 200,
+        "reports.survey_reports.index.include.organization": 400,
+        "reports.survey_reports.index.include.project": 200,
+        "reports.survey_reports.index.include.report+survey+updater": 200,
         "reports.task_reports.index": 200,
-        "reports.task_reports.index.include.assignee+assignee_report": 200,
-        "reports.task_reports.index.include.board": 400,
-        "reports.task_reports.index.include.company+company_report": 200,
-        "reports.task_reports.index.include.creator+creator_report+folder+last_actor+last_actor_report": 200,
+        "reports.task_reports.index.include.assignee+assignee_report+company+company_report+creator+creator_report+folder+last_actor+last_actor_report": 200,
         "reports.task_reports.index.include.organization": 400,
         "reports.task_reports.index.include.parent_task": 200,
         "reports.task_reports.index.include.project+project_report+report": 200,
@@ -241,7 +275,7 @@
         "reports.time_entry_reports.index.include.invoice+last_actor": 200,
         "reports.time_entry_reports.index.include.last_actor_report": 200,
         "reports.time_entry_reports.index.include.organization": 400,
-        "reports.time_entry_reports.index.include.person+person_report+person_subsidiary+project+project_report+report+responsible+responsible_report+service+service_report+service_type+task+task_list+task_report+time_entry": 200,
+        "reports.time_entry_reports.index.include.person+person_report+person_subsidiary+project+project_report+report+responsible+responsible_report+service+service_report+service_type+task+task_list+task_report+time_entry+person_manager": 200,
         "reports.time_reports.index": 200,
         "reports.time_reports.index.include.budget+company+company_report+deal_or_budget_report": 200,
         "reports.time_reports.index.include.event+job_role": 200,
@@ -252,6 +286,8 @@
         "reports.timesheet_reports.index.include.organization": 400,
         "reports.timesheet_reports.index.include.person+report": 200,
         "resource_requests.index": 200,
+        "resource_requests.index.include": 200,
+        "resource_requests.show": 200,
         "revenue_distributions.index": 200,
         "revenue_distributions.index.include": 200,
         "revenue_distributions.show": 200,
@@ -265,6 +301,8 @@
         "sections.index.include": 200,
         "sections.show": 200,
         "service_assignments.index": 200,
+        "service_assignments.index.include": 200,
+        "service_assignments.show": 200,
         "service_type_assignments.index": 200,
         "service_type_assignments.index.include": 200,
         "service_type_assignments.show": 200,
@@ -282,6 +320,8 @@
         "survey_fields.index": 200,
         "survey_responses.index": 200,
         "surveys.index": 200,
+        "surveys.index.include": 200,
+        "surveys.show": 200,
         "tags.index": 200,
         "task_dependencies.index": 200,
         "task_lists.index": 200,
@@ -291,9 +331,13 @@
         "tasks.index.include": 200,
         "tasks.show": 200,
         "tax_rates.index": 200,
+        "tax_rates.index.include": 200,
+        "tax_rates.show": 200,
         "team_memberships.index": 200,
         "teams.index": 200,
         "templates.index": 200,
+        "templates.index.include": 200,
+        "templates.show": 200,
         "time_entries.index": 200,
         "time_entries.index.include": 200,
         "time_entries.show": 200,
@@ -301,9 +345,13 @@
         "time_entry_versions.index.include": 200,
         "time_entry_versions.show": 200,
         "time_tracking_policies.index": 200,
+        "time_tracking_policies.index.include": 200,
+        "time_tracking_policies.show": 200,
         "timers.index": 200,
         "timesheets.index": 200,
         "todos.index": 200,
+        "todos.index.include": 200,
+        "todos.show": 200,
         "undocumented.allocations": 200,
         "undocumented.automation_runs": 200,
         "undocumented.automation_versions": 404,
@@ -336,6 +384,12 @@
         "workflows.show": 200
     },
     "rejected_includes": {
+        "invoice_templates.index": [
+            "bank_account",
+            "budget",
+            "creator",
+            "issuer"
+        ],
         "reports.booking_reports.index": [
             "organization"
         ],
@@ -366,6 +420,10 @@
         "reports.line_item_reports.index": [
             "organization"
         ],
+        "reports.payment_reports.index": [
+            "deal",
+            "organization"
+        ],
         "reports.payroll_item_reports.index": [
             "organization"
         ],
@@ -375,6 +433,12 @@
         "reports.project_reports.index": [
             "organization"
         ],
+        "reports.proposal_reports.index": [
+            "organization"
+        ],
+        "reports.resource_request_reports.index": [
+            "organization"
+        ],
         "reports.salary_reports.index": [
             "organization"
         ],
@@ -382,8 +446,10 @@
             "contract",
             "organization"
         ],
+        "reports.survey_reports.index": [
+            "organization"
+        ],
         "reports.task_reports.index": [
-            "board",
             "organization"
         ],
         "reports.time_entry_reports.index": [
@@ -400,7 +466,6 @@
         "activities": {
             "attributes": {
                 "booking_id": [
-                    "int",
                     "null"
                 ],
                 "changeset": [
@@ -408,12 +473,14 @@
                     "list"
                 ],
                 "company_id": [
+                    "int",
                     "null"
                 ],
                 "created_at": [
                     "date-time"
                 ],
                 "deal_id": [
+                    "int",
                     "null"
                 ],
                 "deal_is_budget": [
@@ -432,6 +499,7 @@
                     "null"
                 ],
                 "invoice_id": [
+                    "int",
                     "null"
                 ],
                 "item_deleted_at": [
@@ -485,6 +553,7 @@
                     "string"
                 ],
                 "task_id": [
+                    "int",
                     "null"
                 ]
             },
@@ -549,6 +618,90 @@
                     "to_many": false,
                     "types": [
                         "organizations"
+                    ]
+                }
+            }
+        },
+        "automatic_invoicing_rules": {
+            "attributes": {
+                "creation_offset": [
+                    "int"
+                ],
+                "creation_offset_unit": [
+                    "string"
+                ],
+                "next_invoice_date": [
+                    "null"
+                ],
+                "processed_at": [
+                    "null"
+                ],
+                "reference_date": [
+                    "string"
+                ],
+                "skip_weekends": [
+                    "bool"
+                ]
+            },
+            "relationships": {
+                "budget": {
+                    "to_many": false,
+                    "types": [
+                        "deals"
+                    ]
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
+        "bank_accounts": {
+            "attributes": {
+                "archived_at": [
+                    "null"
+                ],
+                "bank_address": [
+                    "null"
+                ],
+                "bank_name": [
+                    "string"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "local_bank_code": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "number": [
+                    "string"
+                ],
+                "swift_code": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "subsidiary": {
+                    "to_many": false,
+                    "types": [
+                        "subsidiaries"
                     ]
                 }
             }
@@ -3446,8 +3599,8 @@
                     "null"
                 ],
                 "column_settings": [
-                    "null",
-                    "string"
+                    "json-text",
+                    "null"
                 ],
                 "columns": [
                     "null",
@@ -3481,8 +3634,8 @@
                     "string"
                 ],
                 "formulas": [
-                    "null",
-                    "string"
+                    "json-text",
+                    "null"
                 ],
                 "group_by": [
                     "null",
@@ -3683,13 +3836,16 @@
                     "int"
                 ],
                 "total_cost": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "total_cost_default": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "total_cost_normalized": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "total_credited": [
                     "int"
@@ -3764,13 +3920,16 @@
                     "int"
                 ],
                 "total_recognized_profit": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "total_recognized_profit_default": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "total_recognized_profit_normalized": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "total_recognized_revenue": [
                     "int"
@@ -3955,6 +4114,36 @@
                 ]
             },
             "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
+        "holidays": {
+            "attributes": {
+                "date": [
+                    "date"
+                ],
+                "name": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "holiday_calendar": {
+                    "to_many": false,
+                    "types": [
+                        "holiday_calendars"
+                    ]
+                },
                 "organization": {
                     "to_many": false,
                     "types": [
@@ -4254,6 +4443,93 @@
                 }
             }
         },
+        "invoice_templates": {
+            "attributes": {
+                "bank_account_details": [
+                    "null"
+                ],
+                "custom_fields": [
+                    "null"
+                ],
+                "invoice_creation_options": [
+                    "null"
+                ],
+                "note": [
+                    "null"
+                ],
+                "payment_terms_days": [
+                    "int"
+                ],
+                "payment_terms_type": [
+                    "string"
+                ],
+                "subject": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "bank_account": {
+                    "to_many": null,
+                    "types": []
+                },
+                "budget": {
+                    "to_many": null,
+                    "types": []
+                },
+                "creator": {
+                    "to_many": null,
+                    "types": []
+                },
+                "document_type": {
+                    "to_many": false,
+                    "types": [
+                        "document_types"
+                    ]
+                },
+                "issuer": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "subsidiary": {
+                    "to_many": false,
+                    "types": [
+                        "subsidiaries"
+                    ]
+                }
+            }
+        },
+        "invoiced_budgets": {
+            "attributes": {
+                "date_from": [
+                    "null"
+                ],
+                "date_to": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "budget": {
+                    "to_many": null,
+                    "types": []
+                },
+                "invoice": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
         "invoices": {
             "attributes": {
                 "amount": [
@@ -4522,8 +4798,10 @@
                     ]
                 },
                 "invoiced_budgets": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": true,
+                    "types": [
+                        "invoiced_budgets"
+                    ]
                 },
                 "issuer": {
                     "to_many": false,
@@ -4545,6 +4823,30 @@
                     "to_many": false,
                     "types": [
                         "subsidiaries"
+                    ]
+                }
+            }
+        },
+        "job_roles": {
+            "attributes": {
+                "archived_at": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "name": [
+                    "string"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
                     ]
                 }
             }
@@ -5268,13 +5570,13 @@
                     "null"
                 ],
                 "preferences": [
-                    "string"
+                    "json-text"
                 ],
                 "projects_filter_id": [
                     "null"
                 ],
                 "quick_start_config": [
-                    "string"
+                    "json-text"
                 ],
                 "recent_data": [
                     "list"
@@ -5974,6 +6276,118 @@
                 }
             }
         },
+        "payment_reports": {
+            "attributes": {
+                "count": [
+                    "int"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "null"
+                ],
+                "date_period": [
+                    "null"
+                ],
+                "formula_fields": [
+                    "empty"
+                ],
+                "group": [
+                    "string"
+                ],
+                "month": [
+                    "string"
+                ],
+                "quarter": [
+                    "string"
+                ],
+                "total_amount": [
+                    "int"
+                ],
+                "total_amount_default": [
+                    "int"
+                ],
+                "total_amount_normalized": [
+                    "null"
+                ],
+                "week": [
+                    "string"
+                ],
+                "year": [
+                    "integer-string"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "payment": {
+                    "to_many": false,
+                    "types": [
+                        "payments"
+                    ]
+                },
+                "report": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "payments": {
+            "attributes": {
+                "amount": [
+                    "int"
+                ],
+                "amount_default": [
+                    "int"
+                ],
+                "amount_normalized": [
+                    "int"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "string"
+                ],
+                "external_id": [
+                    "null"
+                ],
+                "note": [
+                    "string"
+                ],
+                "paid_on": [
+                    "date"
+                ],
+                "written_off_on": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "invoice": {
+                    "to_many": false,
+                    "types": [
+                        "invoices"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
         "payroll_item_reports": {
             "attributes": {
                 "count": [
@@ -6117,7 +6531,7 @@
                     "bool"
                 ],
                 "availabilities": [
-                    "string"
+                    "json-text"
                 ],
                 "avatar_url": [
                     "null",
@@ -6302,8 +6716,10 @@
                     ]
                 },
                 "person_session": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "person_sessions"
+                    ]
                 },
                 "service_types": {
                     "to_many": true,
@@ -6418,6 +6834,21 @@
                 "report": {
                     "to_many": null,
                     "types": []
+                }
+            }
+        },
+        "person_sessions": {
+            "attributes": {
+                "last_activity_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
                 }
             }
         },
@@ -6644,6 +7075,9 @@
                 "custom_fields": [
                     "null"
                 ],
+                "description": [
+                    "null"
+                ],
                 "duplication_status": [
                     "string"
                 ],
@@ -6675,7 +7109,8 @@
                     "string"
                 ],
                 "number": [
-                    "integer-string"
+                    "integer-string",
+                    "null"
                 ],
                 "page_custom_fields_ids": [
                     "null"
@@ -6684,13 +7119,15 @@
                     "null"
                 ],
                 "preferences": [
+                    "empty",
                     "object"
                 ],
                 "project_color_id": [
                     "null"
                 ],
                 "project_number": [
-                    "integer-string"
+                    "integer-string",
+                    "null"
                 ],
                 "project_type_id": [
                     "int"
@@ -6758,6 +7195,471 @@
                     "to_many": false,
                     "types": [
                         "workflows"
+                    ]
+                }
+            }
+        },
+        "proposal_reports": {
+            "attributes": {
+                "average_tax_rate_value": [
+                    "decimal-string"
+                ],
+                "count": [
+                    "int"
+                ],
+                "created_at_period": [
+                    "null"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "null"
+                ],
+                "date_signed_period": [
+                    "null"
+                ],
+                "formula_fields": [
+                    "empty"
+                ],
+                "group": [
+                    "string"
+                ],
+                "link_status": [
+                    "string"
+                ],
+                "sent_at_period": [
+                    "null"
+                ],
+                "signed": [
+                    "bool"
+                ],
+                "signed_by_email": [
+                    "null"
+                ],
+                "status": [
+                    "string"
+                ],
+                "status_changed_at_period": [
+                    "null"
+                ],
+                "total_budget_total": [
+                    "int"
+                ],
+                "total_budget_total_default": [
+                    "int"
+                ],
+                "total_budget_total_normalized": [
+                    "null"
+                ],
+                "total_tax_amount": [
+                    "int"
+                ],
+                "total_tax_amount_default": [
+                    "int"
+                ],
+                "total_tax_amount_normalized": [
+                    "null"
+                ],
+                "updated_at_period": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "proposal": {
+                    "to_many": false,
+                    "types": [
+                        "proposals"
+                    ]
+                },
+                "report": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "proposals": {
+            "attributes": {
+                "budget_total": [
+                    "int"
+                ],
+                "budget_total_default": [
+                    "int"
+                ],
+                "budget_total_normalized": [
+                    "int"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "string"
+                ],
+                "custom_fields": [
+                    "null"
+                ],
+                "date": [
+                    "date"
+                ],
+                "decline_reason": [
+                    "null"
+                ],
+                "disclaimer": [
+                    "null"
+                ],
+                "disclaimer_enabled": [
+                    "bool"
+                ],
+                "end_date": [
+                    "null"
+                ],
+                "exchange_date": [
+                    "date"
+                ],
+                "exchange_rate": [
+                    "decimal-string"
+                ],
+                "footer": [
+                    "null"
+                ],
+                "footer_interpolated": [
+                    "null"
+                ],
+                "identity_confirmation_enabled": [
+                    "bool"
+                ],
+                "identity_confirmed_at": [
+                    "null"
+                ],
+                "link_expires_at": [
+                    "null"
+                ],
+                "link_status": [
+                    "string"
+                ],
+                "name": [
+                    "string"
+                ],
+                "note": [
+                    "null"
+                ],
+                "note_interpolated": [
+                    "null"
+                ],
+                "number": [
+                    "integer-string"
+                ],
+                "password": [
+                    "null"
+                ],
+                "pdf_url": [
+                    "null"
+                ],
+                "purchase_order_number": [
+                    "null"
+                ],
+                "responded_via_public_link": [
+                    "null"
+                ],
+                "responder_email": [
+                    "null"
+                ],
+                "responder_name": [
+                    "null"
+                ],
+                "retainer_interval": [
+                    "null"
+                ],
+                "retainer_interval_count": [
+                    "int"
+                ],
+                "revenue_distribution_end_on": [
+                    "date"
+                ],
+                "revenue_distribution_start_on": [
+                    "date"
+                ],
+                "sent_at": [
+                    "null"
+                ],
+                "signed": [
+                    "bool"
+                ],
+                "signed_pdf_url": [
+                    "null"
+                ],
+                "source": [
+                    "string"
+                ],
+                "status": [
+                    "string"
+                ],
+                "status_changed_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "attachment": {
+                    "to_many": null,
+                    "types": []
+                },
+                "client": {
+                    "to_many": false,
+                    "types": [
+                        "companies"
+                    ]
+                },
+                "contact": {
+                    "to_many": null,
+                    "types": []
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "deal": {
+                    "to_many": false,
+                    "types": [
+                        "deals"
+                    ]
+                },
+                "deal_creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "document_type": {
+                    "to_many": false,
+                    "types": [
+                        "document_types"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "project": {
+                    "to_many": null,
+                    "types": []
+                },
+                "proposal_from": {
+                    "to_many": null,
+                    "types": []
+                },
+                "proposal_to": {
+                    "to_many": null,
+                    "types": []
+                },
+                "responsible": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "scenario": {
+                    "to_many": null,
+                    "types": []
+                },
+                "subsidiary": {
+                    "to_many": false,
+                    "types": [
+                        "subsidiaries"
+                    ]
+                },
+                "tax_rate": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "resource_request_reports": {
+            "attributes": {
+                "booking_method": [
+                    "int"
+                ],
+                "count": [
+                    "int"
+                ],
+                "created_at_period": [
+                    "null"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "string"
+                ],
+                "ended_on_period": [
+                    "null"
+                ],
+                "group": [
+                    "string"
+                ],
+                "started_on_period": [
+                    "null"
+                ],
+                "status": [
+                    "string"
+                ],
+                "total_max_cost_per_hour": [
+                    "int"
+                ],
+                "total_max_cost_per_hour_default": [
+                    "int"
+                ],
+                "total_max_cost_per_hour_normalized": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "report": {
+                    "to_many": null,
+                    "types": []
+                },
+                "resource_request": {
+                    "to_many": false,
+                    "types": [
+                        "resource_requests"
+                    ]
+                }
+            }
+        },
+        "resource_requests": {
+            "attributes": {
+                "booking_method_id": [
+                    "int"
+                ],
+                "canceled_at": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "string"
+                ],
+                "custom_fields": [
+                    "empty"
+                ],
+                "ended_on": [
+                    "date"
+                ],
+                "exchange_date": [
+                    "date"
+                ],
+                "exchange_rate": [
+                    "decimal-string"
+                ],
+                "exchange_rate_normalized": [
+                    "decimal-string"
+                ],
+                "fields": [
+                    "empty"
+                ],
+                "max_cost_per_hour": [
+                    "int"
+                ],
+                "max_cost_per_hour_default": [
+                    "int"
+                ],
+                "max_cost_per_hour_normalized": [
+                    "int"
+                ],
+                "note": [
+                    "null"
+                ],
+                "percentage": [
+                    "null"
+                ],
+                "rejected_reason": [
+                    "null"
+                ],
+                "resolved_at": [
+                    "null"
+                ],
+                "started_on": [
+                    "date"
+                ],
+                "status": [
+                    "string"
+                ],
+                "time": [
+                    "int"
+                ],
+                "time_to_close": [
+                    "null"
+                ],
+                "title": [
+                    "string"
+                ],
+                "total_time": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "custom_field_attachments": {
+                    "to_many": true,
+                    "types": []
+                },
+                "custom_field_people": {
+                    "to_many": true,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "resolver": {
+                    "to_many": null,
+                    "types": []
+                },
+                "service": {
+                    "to_many": false,
+                    "types": [
+                        "services"
                     ]
                 }
             }
@@ -6973,6 +7875,29 @@
                     "to_many": false,
                     "types": [
                         "organizations"
+                    ]
+                }
+            }
+        },
+        "service_assignments": {
+            "attributes": [],
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "person": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "service": {
+                    "to_many": false,
+                    "types": [
+                        "services"
                     ]
                 }
             }
@@ -7753,6 +8678,88 @@
                 }
             }
         },
+        "survey_reports": {
+            "attributes": {
+                "count": [
+                    "int"
+                ],
+                "created_at": [
+                    "date"
+                ],
+                "group": [
+                    "string"
+                ],
+                "title": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "report": {
+                    "to_many": null,
+                    "types": []
+                },
+                "survey": {
+                    "to_many": false,
+                    "types": [
+                        "surveys"
+                    ]
+                }
+            }
+        },
+        "surveys": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "description": [
+                    "null"
+                ],
+                "public_uuid": [
+                    "string"
+                ],
+                "submission_access": [
+                    "string"
+                ],
+                "title": [
+                    "string"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "project": {
+                    "to_many": false,
+                    "types": [
+                        "projects"
+                    ]
+                },
+                "updater": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                }
+            }
+        },
         "task_lists": {
             "attributes": {
                 "archived_at": [
@@ -7938,6 +8945,7 @@
                     "null"
                 ],
                 "open_todo_count": [
+                    "int",
                     "null"
                 ],
                 "placement": [
@@ -7992,6 +9000,7 @@
                     "empty"
                 ],
                 "todo_count": [
+                    "int",
                     "null"
                 ],
                 "type_id": [
@@ -8049,7 +9058,7 @@
                     "types": []
                 },
                 "placeholder_usages": {
-                    "to_many": null,
+                    "to_many": true,
                     "types": []
                 },
                 "project": {
@@ -8067,11 +9076,11 @@
                     "types": []
                 },
                 "subtasks": {
-                    "to_many": null,
+                    "to_many": true,
                     "types": []
                 },
                 "task_dependencies": {
-                    "to_many": null,
+                    "to_many": true,
                     "types": []
                 },
                 "task_list": {
@@ -8085,14 +9094,116 @@
                     "types": []
                 },
                 "todos": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": true,
+                    "types": [
+                        "todos"
+                    ]
                 },
                 "workflow_status": {
                     "to_many": false,
                     "types": [
                         "workflow_statuses"
                     ]
+                }
+            }
+        },
+        "tax_rates": {
+            "attributes": {
+                "archived_at": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "primary_component_name": [
+                    "string"
+                ],
+                "primary_component_value": [
+                    "decimal-string"
+                ],
+                "secondary_component_name": [
+                    "null"
+                ],
+                "secondary_component_value": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "subsidiary": {
+                    "to_many": false,
+                    "types": [
+                        "subsidiaries"
+                    ]
+                }
+            }
+        },
+        "templates": {
+            "attributes": {
+                "color_id": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "deleted_at": [
+                    "null"
+                ],
+                "description": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "target_id": [
+                    "int"
+                ],
+                "target_type": [
+                    "string"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "deal": {
+                    "to_many": null,
+                    "types": []
+                },
+                "filter": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "page": {
+                    "to_many": null,
+                    "types": []
+                },
+                "project": {
+                    "to_many": false,
+                    "types": [
+                        "projects"
+                    ]
+                },
+                "task": {
+                    "to_many": null,
+                    "types": []
                 }
             }
         },
@@ -8497,8 +9608,10 @@
                     ]
                 },
                 "person_manager": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
                 },
                 "report": {
                     "to_many": null,
@@ -8569,6 +9682,78 @@
                 }
             }
         },
+        "time_tracking_policies": {
+            "attributes": {
+                "archived_at": [
+                    "null"
+                ],
+                "assigned_people_count": [
+                    "int"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "description": [
+                    "null"
+                ],
+                "disabled_tracking_message": [
+                    "null"
+                ],
+                "full_day_absence_limit": [
+                    "null"
+                ],
+                "half_day_absence_limit": [
+                    "null"
+                ],
+                "holiday_limit": [
+                    "null"
+                ],
+                "limited_tracking_message": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "non_working_day_limit": [
+                    "null"
+                ],
+                "overtime_cost_multiplier": [
+                    "null"
+                ],
+                "overtime_enabled": [
+                    "bool"
+                ],
+                "restrict_time_entry_overlap": [
+                    "bool"
+                ],
+                "updated_at": [
+                    "date-time"
+                ],
+                "working_day_limit": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "last_actor": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
         "timesheet_reports": {
             "attributes": {
                 "count": [
@@ -8598,23 +9783,19 @@
                     "int"
                 ],
                 "saturday_available": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "saturday_capacity": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "saturday_time": [
                     "int"
                 ],
                 "sunday_available": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "sunday_capacity": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "sunday_time": [
                     "int"
@@ -8675,6 +9856,56 @@
                 }
             }
         },
+        "todos": {
+            "attributes": {
+                "closed": [
+                    "bool"
+                ],
+                "closed_at": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "description": [
+                    "string"
+                ],
+                "due_date": [
+                    "null"
+                ],
+                "due_time": [
+                    "null"
+                ],
+                "position": [
+                    "int"
+                ],
+                "todoable_type": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "assignee": {
+                    "to_many": null,
+                    "types": []
+                },
+                "deal": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "task": {
+                    "to_many": false,
+                    "types": [
+                        "tasks"
+                    ]
+                }
+            }
+        },
         "users": {
             "attributes": {
                 "account_access_expires_at": [
@@ -8717,7 +9948,7 @@
                     "null"
                 ],
                 "preferences": [
-                    "string"
+                    "json-text"
                 ],
                 "slack_product_updates": [
                     "bool"

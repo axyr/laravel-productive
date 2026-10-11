@@ -1,11 +1,11 @@
 {
     "data": [
         {
-            "id": "1034",
+            "id": "1028",
             "type": "subsidiaries",
             "attributes": {
-                "name": "Text 3",
-                "invoice_number_format": "Text 166",
+                "name": "Text 15",
+                "invoice_number_format": "Text 183",
                 "invoice_number_scope": null,
                 "archived_at": null,
                 "show_delivery_date": false,
@@ -20,7 +20,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "bill_from": {
@@ -66,11 +66,11 @@
             }
         },
         {
-            "id": "1034",
+            "id": "1028",
             "type": "subsidiaries",
             "attributes": {
-                "name": "Text 3",
-                "invoice_number_format": "Text 166",
+                "name": "Text 15",
+                "invoice_number_format": "Text 183",
                 "invoice_number_scope": null,
                 "archived_at": null,
                 "show_delivery_date": false,
@@ -85,13 +85,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "bill_from": {
                     "data": {
                         "type": "contact_entries",
-                        "id": "1031"
+                        "id": "1045"
                     }
                 },
                 "custom_domain": {

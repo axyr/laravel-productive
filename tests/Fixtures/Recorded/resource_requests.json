@@ -1,0 +1,128 @@
+{
+    "data": [
+        {
+            "id": "1113",
+            "type": "resource_requests",
+            "attributes": {
+                "title": "Text 161",
+                "started_on": "2026-10-11",
+                "ended_on": "2026-10-11",
+                "status": "pending",
+                "custom_fields": [],
+                "created_at": "2026-10-11T16:27:24.029+02:00",
+                "time": 480,
+                "total_time": null,
+                "percentage": null,
+                "rejected_reason": null,
+                "booking_method_id": 1024,
+                "time_to_close": null,
+                "exchange_rate": "1.0",
+                "exchange_rate_normalized": "1.0",
+                "exchange_date": "2026-10-11",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "max_cost_per_hour": 0,
+                "max_cost_per_hour_default": 0,
+                "max_cost_per_hour_normalized": 0,
+                "fields": [],
+                "note": null,
+                "resolved_at": null,
+                "canceled_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "service": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "resolver": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1113",
+            "type": "resource_requests",
+            "attributes": {
+                "title": "Text 161",
+                "started_on": "2026-10-11",
+                "ended_on": "2026-10-11",
+                "status": "pending",
+                "custom_fields": [],
+                "created_at": "2026-10-11T16:27:24.029+02:00",
+                "time": 480,
+                "total_time": null,
+                "percentage": null,
+                "rejected_reason": null,
+                "booking_method_id": 1024,
+                "time_to_close": null,
+                "exchange_rate": "1.0",
+                "exchange_rate_normalized": "1.0",
+                "exchange_date": "2026-10-11",
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "max_cost_per_hour": 0,
+                "max_cost_per_hour_default": 0,
+                "max_cost_per_hour_normalized": 0,
+                "fields": [],
+                "note": null,
+                "resolved_at": null,
+                "canceled_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "service": {
+                    "data": {
+                        "type": "services",
+                        "id": "1114"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
+                    }
+                },
+                "resolver": {
+                    "data": null
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

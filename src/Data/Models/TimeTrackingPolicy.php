@@ -36,6 +36,9 @@ final readonly class TimeTrackingPolicy extends Model
 
     public ?int $defaultTrackMethodId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     /** Message shown to people when time tracking is fully disabled for them. */
     public ?string $disabledTrackingMessage;
 
@@ -60,6 +63,12 @@ final readonly class TimeTrackingPolicy extends Model
     /** When true, a note is required on every time entry submitted. */
     public ?bool $noteMandatory;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $overtimeCostMultiplier;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $overtimeEnabled;
+
     public ?bool $requiresService;
 
     public ?bool $requiresTask;
@@ -83,6 +92,7 @@ final readonly class TimeTrackingPolicy extends Model
         $this->createdAt = $attributes->dateTime('created_at');
         $this->dailyLimit = $attributes->int('daily_limit');
         $this->defaultTrackMethodId = $attributes->int('default_track_method_id');
+        $this->description = $attributes->mixed('description');
         $this->disabledTrackingMessage = $attributes->string('disabled_tracking_message');
         $this->fullDayAbsenceLimit = $attributes->int('full_day_absence_limit');
         $this->halfDayAbsenceLimit = $attributes->int('half_day_absence_limit');
@@ -91,6 +101,8 @@ final readonly class TimeTrackingPolicy extends Model
         $this->name = $attributes->string('name');
         $this->nonWorkingDayLimit = $attributes->int('non_working_day_limit');
         $this->noteMandatory = $attributes->bool('note_mandatory');
+        $this->overtimeCostMultiplier = $attributes->mixed('overtime_cost_multiplier');
+        $this->overtimeEnabled = $attributes->bool('overtime_enabled');
         $this->requiresService = $attributes->bool('requires_service');
         $this->requiresTask = $attributes->bool('requires_task');
         $this->restrictTimeEntryOverlap = $attributes->bool('restrict_time_entry_overlap');

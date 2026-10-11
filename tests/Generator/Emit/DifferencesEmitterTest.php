@@ -44,7 +44,11 @@ it('lists every difference between the recording and the spec', function () {
             'undocumented.secrets' => 403,
         ],
         'rejected_includes' => ['reports.task_reports.index' => ['board', 'organization']],
-        'types' => ['tasks' => ['relationships' => ['subtasks' => ['to_many' => null], 'project' => ['to_many' => false, 'types' => ['projects']]]]],
+        'types' => [
+            'tasks' => ['relationships' => ['subtasks' => ['to_many' => null], 'owner' => ['to_many' => null], 'project' => ['to_many' => false, 'types' => ['projects']]]],
+            'people' => ['relationships' => ['manager' => ['to_many' => null], 'owner' => ['to_many' => null]]],
+            'hidden' => ['relationships' => ['y' => ['to_many' => null]]],
+        ],
     ]);
     $removed = ['resources' => ['boards' => 'Gone.'], 'relationships' => ['task_lists.board' => 'Folders now.']];
 
@@ -91,11 +95,12 @@ it('lists every difference between the recording and the spec', function () {
 
         ## Relationships seen without data
 
-        Recorded only as `{"meta": {"included": false}}`, so their cardinality is unknown and no accessor is generated yet. The next recording includes them.
+        Missing from the spec and recorded only as `{"meta": {"included": false}}`, so their cardinality is unknown and no accessor is generated yet. `composer record` includes them next time.
 
         | Type | Relationships |
         | --- | --- |
         | `tasks` | `subtasks` |
+        | `people` | `manager`, `owner` |
 
         ## Includes the API rejects
 

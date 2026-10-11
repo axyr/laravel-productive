@@ -60,7 +60,7 @@ final readonly class ProposalReport extends Model
     public mixed $sentAtPeriod;
 
     /** Whether the proposals in this report row have been signed by the client. */
-    public ?int $signed;
+    public ?bool $signed;
 
     /** Email address of the person who signed the proposal, populated only when the proposal is signed. */
     public ?string $signedByEmail;
@@ -109,7 +109,7 @@ final readonly class ProposalReport extends Model
         $this->group = $attributes->string('group');
         $this->linkStatus = $attributes->string('link_status');
         $this->sentAtPeriod = $attributes->mixed('sent_at_period');
-        $this->signed = $attributes->int('signed');
+        $this->signed = $attributes->bool('signed');
         $this->signedByEmail = $attributes->string('signed_by_email');
         $this->status = $attributes->string('status');
         $this->statusChangedAtPeriod = $attributes->mixed('status_changed_at_period');

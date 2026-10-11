@@ -91,7 +91,24 @@ As built, these differ from the original plan:
        - The generator reads only `generator/recorded-types.json` (value kinds, no values). Scrubbed fixtures exist only for `RecordedHydrationTest`.
        - Result: 30 type overrides, 73 undocumented attributes, 2 undocumented relationships. `boards` is removed, and `board` is gone from task lists and task reports. On the old models the hydration test fails for 38 of 72 types.
        - Checked before becoming a rule, and left alone: the missing X-RateLimit headers (only 200s were seen; the retry logic is unchanged), money staying int where the spec says integer (number fields keep the float reader), and the 403s on agents and skills (listed as not checked).
-       - Still to do before merging: seed the 58 empty resources, record again, then `record:types`, `record:fixtures` and `generate`.
+       - Merged as #13. Follow-up PR after the user seeds the 58 empty resources and records again: run `record:types`, `record:fixtures` and `generate`. The review is the diff of `docs/api-differences.md` plus the leak search.
+       - Follow-up (2026-10-11):
+         - The trial was seeded with `composer seed`: 14 records created through the SDK.
+         - Then two more recordings: 381 calls each.
+         - `Person.availabilities` is JSON text in all 92 recorded people. It is now the `json` type, read by `Attributes::json()`.
+         - Recorded relationships without data are included in the next run. Result: 10 undocumented relationships typed (`Task.subtasks`, `Task.todos`, `Invoice.invoiced_budgets`, …), and 9 still without data.
+         - Report calls are paced at one per 4 seconds, after two runs stopped on a 429. Fixed windows of 3 seconds still allow 11 calls in 30 seconds.
+       - Write side, found by seeding:
+         - Required fields the spec does not mark:
+           - bank accounts: `number`;
+           - templates: `model_attributes` with project type, manager and workflow;
+           - proposals: `document_type_id` and `status`;
+           - invoice templates: `budget_id` and `document_type_id`;
+           - resource requests: `title`, `currency`, `service_id`, `booking_method_id` and `time`.
+         - `budget_id` must point at a budget, not a deal.
+         - Not available in the trial: teams, rate cards, deal cost rates, purchase orders and timesheets (plan or feature limits). Comments, task dependencies and task updates are refused for the token (403).
+         - Placeholders reject the project ("project attribute is invalid"); the cause is unknown.
+         - These belong in input validation (step 4).
        - Rules: `null` and empty lists never override the spec; int vs float widens to float; an override needs a non-null value that the lenient reader cannot read.
        - `docs/api-differences.md` lists every override.
        - Tests hydrate every recorded resource and check each value, and every recorded relationship must have an accessor. This fixes the 23 conflicts and the 29 missing relationships.

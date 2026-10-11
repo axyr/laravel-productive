@@ -35,8 +35,12 @@ final readonly class Person extends Model
     /** Whether automatic time tracking is enabled for this person. */
     public ?bool $autotracking;
 
-    /** The person's work availability windows. */
-    public ?string $availabilities;
+    /**
+     * The person's work availability windows.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $availabilities;
 
     /** URL of the person's avatar thumbnail. */
     public ?string $avatarUrl;
@@ -178,7 +182,7 @@ final readonly class Person extends Model
         $this->aiAssistantInstructions = $attributes->mixed('ai_assistant_instructions');
         $this->archivedAt = $attributes->dateTime('archived_at');
         $this->autotracking = $attributes->bool('autotracking');
-        $this->availabilities = $attributes->string('availabilities');
+        $this->availabilities = $attributes->json('availabilities');
         $this->avatarUrl = $attributes->string('avatar_url');
         $this->champion = $attributes->bool('champion');
         $this->colorId = $attributes->int('color_id');
@@ -272,6 +276,11 @@ final readonly class Person extends Model
     public function organization(): ?Organization
     {
         return $this->belongsTo('organization', Organization::class);
+    }
+
+    public function personSession(): ?Model
+    {
+        return $this->belongsTo('person_session', Model::class);
     }
 
     /**

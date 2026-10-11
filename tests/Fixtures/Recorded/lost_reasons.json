@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1047",
+            "id": "1058",
             "type": "lost_reasons",
             "attributes": {
-                "name": "Text 95",
+                "name": "Text 109",
                 "archived_at": null,
                 "position": 3
             },
@@ -12,7 +12,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }

@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1118",
+            "id": "1140",
             "type": "widgets",
             "attributes": {
                 "column_position": 0,
@@ -9,14 +9,14 @@
                 "height": 11,
                 "row_position": 2,
                 "title": null,
-                "widget_type_id": 1119,
+                "widget_type_id": 1141,
                 "width": 13
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "dashboard": {
@@ -37,22 +37,22 @@
             }
         },
         {
-            "id": "1120",
+            "id": "1142",
             "type": "widgets",
             "attributes": {
                 "column_position": 0,
-                "content": "Text 190",
+                "content": "Text 214",
                 "height": 2,
                 "row_position": 0,
                 "title": null,
-                "widget_type_id": 1121,
+                "widget_type_id": 1143,
                 "width": 40
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "dashboard": {
@@ -73,7 +73,7 @@
             }
         },
         {
-            "id": "1118",
+            "id": "1140",
             "type": "widgets",
             "attributes": {
                 "column_position": 0,
@@ -81,26 +81,26 @@
                 "height": 11,
                 "row_position": 2,
                 "title": null,
-                "widget_type_id": 1119,
+                "widget_type_id": 1141,
                 "width": 13
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "dashboard": {
                     "data": {
                         "type": "dashboards",
-                        "id": "1039"
+                        "id": "1052"
                     }
                 },
                 "filter": {
                     "data": {
                         "type": "filters",
-                        "id": "Text 67"
+                        "id": "Text 79"
                     }
                 },
                 "attachments": {

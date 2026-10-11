@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 96",
+            "id": "Text 110",
             "type": "new_salary_reports",
             "attributes": {
                 "currency": "USD",
@@ -10,14 +10,14 @@
                 "group": "salary",
                 "count": 1,
                 "formula_fields": [],
-                "salary_type_id": 1013,
+                "salary_type_id": 1024,
                 "overhead": 1,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "time": 154080,
                 "capacity": 154080,
@@ -52,7 +52,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -66,7 +66,7 @@
             }
         },
         {
-            "id": "Text 96",
+            "id": "Text 110",
             "type": "new_salary_reports",
             "attributes": {
                 "currency": "USD",
@@ -75,14 +75,14 @@
                 "group": "salary",
                 "count": 1,
                 "formula_fields": [],
-                "salary_type_id": 1013,
+                "salary_type_id": 1024,
                 "overhead": 1,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "time": 154080,
                 "capacity": 154080,
@@ -117,7 +117,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -126,7 +126,7 @@
                 "salary": {
                     "data": {
                         "type": "salaries",
-                        "id": "1078"
+                        "id": "1092"
                     }
                 }
             }

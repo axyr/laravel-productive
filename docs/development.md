@@ -131,10 +131,11 @@ The spec contradicts its own examples in places. `composer record` records what 
   - the `public/*` uuid links.
 - **Guarded.** It runs only when `PRODUCTIVE_ORGANIZATION_ID` equals `RECORDING_ORGANIZATION_ID` (from `.env` or the environment), so it cannot record a client's organization by mistake. It stops on the first 429 and never records one.
 - **Gentle.**
-  - It sends one request per second, on top of Productive's own limits, so a full run takes about five minutes.
+  - It sends one request per second, and report requests one per four seconds, on top of Productive's own limits: reports allow 10 per 30 seconds, and the recorder never retries a 429. A full run takes about twelve minutes.
   - Redirects are refused, so the token never leaves the API host.
   - The reports that document `filter[after]`/`filter[before]` (`generator/config/recording-date-filters.php`) are limited to the last month.
-- **Local.** Responses are written to `recordings/<date-time>/`, which git ignores. String values under keys that look like secrets (`token`, `secret`, `password`, `api_key`, `signature`) are blanked before anything is written. Metadata such as `token_expires_at` or `api_key_id` is kept.
+- **Local.** Responses are written to `recordings/<date-time>/`, which git ignores. A finished run is marked with a `.complete` file; the commands below only read finished runs.
+- **Learning.** Relationships an earlier recording saw without data (in `generator/recorded-types.json`) are included too, so the next run learns their cardinality. String values under keys that look like secrets (`token`, `secret`, `password`, `api_key`, `signature`) are blanked before anything is written. Metadata such as `token_expires_at` or `api_key_id` is kept.
 
 ```dotenv
 PRODUCTIVE_API_TOKEN=...
@@ -160,6 +161,7 @@ Writes `generator/recorded-types.json`: for every type, the *kinds* of value eac
 - An attribute keeps its spec type unless a recorded value is one its lenient reader cannot read. For example, the spec says `int`, the API sends `true`, and the reader would return `null`.
 - `null` and empty values never override, so a resource whose list was empty keeps the spec's types.
 - `int` and `float` together widen to `float`. A `number` field keeps its float reader even when only whole numbers were seen.
+- A list or object the API sends as JSON *text* (a person's `availabilities`) becomes the `json` type: `Attributes::json()` returns it decoded. A field the spec calls a string keeps reading it as a string.
 - Attributes and relationships the spec does not document are added and flagged as undocumented. A relationship seen without data has no known cardinality, so it waits for a recording that includes it.
 - Resources and relationships the API no longer has are listed in `generator/config/removed.php`.
 
@@ -190,3 +192,19 @@ grep -rli -e "<your name>" -e "<your company>" -e "<your organization ID>" tests
 It must print nothing.
 
 `RecordedHydrationTest` hydrates every fixture and checks that each non-empty value lands in its typed property unchanged, and that every relationship with data has an accessor. On the models from before the recording it fails for 38 of the 72 types.
+
+### Seeding the recording organization
+
+An empty trial records mostly empty lists, which teach nothing. `composer seed` creates one record of each resource whose list is empty, through the SDK's own create methods:
+
+```bash
+composer seed
+composer seed -- --execute
+```
+
+- **Dry run first.** Without `--execute` it only reads, to find IDs and skip resources that already have records, and prints every create.
+- **Same guards as `composer record`:** only the `RECORDING_ORGANIZATION_ID` organization, one request per second, redirects refused, stops on a 429.
+- **Logged.** Every payload and response goes to `recordings/seed-<date-time>/`.
+- **Nothing that acts outside Productive:** no webhooks, invitations, sending, integrations or custom domains.
+
+It is also the first real check of the write side. It found creates whose required fields the spec does not mark (the payloads in `generator/bin/seed` carry them, with a comment each), and features a trial plan does not include.

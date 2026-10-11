@@ -1,0 +1,63 @@
+{
+    "data": [
+        {
+            "id": "1012",
+            "type": "payments",
+            "attributes": {
+                "paid_on": "2026-10-11",
+                "written_off_on": null,
+                "note": "Text 8",
+                "external_id": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 100,
+                "amount_default": 100,
+                "amount_normalized": 100
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1012",
+            "type": "payments",
+            "attributes": {
+                "paid_on": "2026-10-11",
+                "written_off_on": null,
+                "note": "Text 8",
+                "external_id": null,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "amount": 100,
+                "amount_default": 100,
+                "amount_normalized": 100
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "invoice": {
+                    "data": {
+                        "type": "invoices",
+                        "id": "1013"
+                    }
+                }
+            }
+        }
+    ]
+}

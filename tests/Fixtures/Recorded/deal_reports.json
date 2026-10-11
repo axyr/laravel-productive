@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 43",
+            "id": "Text 56",
             "type": "deal_reports",
             "attributes": {
                 "currency": "USD",
@@ -11,18 +11,18 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 44",
-                "month": "Text 45",
-                "week": "Text 46",
-                "stage_status_id": 1013,
-                "tracking_type_id": 1013,
+                "quarter": "Text 57",
+                "month": "Text 58",
+                "week": "Text 59",
+                "stage_status_id": 1024,
+                "tracking_type_id": 1024,
                 "deal_value_source": "from_services",
                 "revenue_distribution_base": "weighted",
                 "probability": "0.4",
                 "previous_probability": null,
                 "average_days_since_last_activity": 0,
-                "average_days_since_created": 0,
-                "average_days_in_current_stage": 0,
+                "average_days_since_created": 2,
+                "average_days_in_current_stage": 2,
                 "average_time_to_close": null,
                 "custom_fields": [],
                 "total_worked_time": 0,
@@ -83,7 +83,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -107,7 +107,7 @@
             }
         },
         {
-            "id": "Text 43",
+            "id": "Text 56",
             "type": "deal_reports",
             "attributes": {
                 "currency": "USD",
@@ -117,18 +117,18 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 44",
-                "month": "Text 45",
-                "week": "Text 46",
-                "stage_status_id": 1013,
-                "tracking_type_id": 1013,
+                "quarter": "Text 57",
+                "month": "Text 58",
+                "week": "Text 59",
+                "stage_status_id": 1024,
+                "tracking_type_id": 1024,
                 "deal_value_source": "from_services",
                 "revenue_distribution_base": "weighted",
                 "probability": "0.4",
                 "previous_probability": null,
                 "average_days_since_last_activity": 0,
-                "average_days_since_created": 0,
-                "average_days_in_current_stage": 0,
+                "average_days_since_created": 2,
+                "average_days_in_current_stage": 2,
                 "average_time_to_close": null,
                 "custom_fields": [],
                 "total_worked_time": 0,
@@ -189,7 +189,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -200,7 +200,7 @@
                 "deal": {
                     "data": {
                         "type": "deals",
-                        "id": "1040"
+                        "id": "1010"
                     }
                 },
                 "pipeline": {
@@ -216,7 +216,7 @@
             }
         },
         {
-            "id": "Text 43",
+            "id": "Text 56",
             "type": "deal_reports",
             "attributes": {
                 "currency": "USD",
@@ -226,18 +226,18 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 44",
-                "month": "Text 45",
-                "week": "Text 46",
-                "stage_status_id": 1013,
-                "tracking_type_id": 1013,
+                "quarter": "Text 57",
+                "month": "Text 58",
+                "week": "Text 59",
+                "stage_status_id": 1024,
+                "tracking_type_id": 1024,
                 "deal_value_source": "from_services",
                 "revenue_distribution_base": "weighted",
                 "probability": "0.4",
                 "previous_probability": null,
                 "average_days_since_last_activity": 0,
-                "average_days_since_created": 0,
-                "average_days_in_current_stage": 0,
+                "average_days_since_created": 2,
+                "average_days_in_current_stage": 2,
                 "average_time_to_close": null,
                 "custom_fields": [],
                 "total_worked_time": 0,
@@ -298,7 +298,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -314,7 +314,7 @@
                 "pipeline": {
                     "data": {
                         "type": "pipelines",
-                        "id": "1041"
+                        "id": "1053"
                     }
                 },
                 "previous_deal_status": {

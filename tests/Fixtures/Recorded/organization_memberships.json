@@ -1,12 +1,12 @@
 {
     "data": [
         {
-            "id": "1002",
+            "id": "1006",
             "type": "organization_memberships",
             "attributes": {
-                "updated_at": "2026-10-09T17:41:34.331+02:00",
+                "updated_at": "2026-10-10T23:55:31.733+02:00",
                 "position": null,
-                "tasks_layout_id": 1013,
+                "tasks_layout_id": 1024,
                 "time_reminders": true,
                 "email_notifications": true,
                 "weekly_emails": true,
@@ -176,14 +176,14 @@
                         }
                     }
                 },
-                "preferences": "Text 99",
+                "preferences": "Text 113",
                 "favorited_models": null,
                 "recent_data": [
-                    "Text 100"
+                    "Text 114"
                 ],
                 "notetaker_settings": {
-                    "notetaker_display_name": "Text 101",
-                    "notetaker_join_message": "Text 102",
+                    "notetaker_display_name": "Text 115",
+                    "notetaker_join_message": "Text 116",
                     "notetaker_auto_join_rule": "off",
                     "notetaker_auto_join_calendar_ids": []
                 },
@@ -209,7 +209,7 @@
                 "time_approvals_filter_id": null,
                 "docs_filter_id": null,
                 "internal_budget_services_filter_id": null,
-                "quick_start_config": "Text 103",
+                "quick_start_config": "Text 117",
                 "employees_filter_id": null
             },
             "relationships": {
@@ -346,12 +346,12 @@
             }
         },
         {
-            "id": "1002",
+            "id": "1006",
             "type": "organization_memberships",
             "attributes": {
-                "updated_at": "2026-10-09T17:41:34.331+02:00",
+                "updated_at": "2026-10-10T23:55:31.733+02:00",
                 "position": null,
-                "tasks_layout_id": 1013,
+                "tasks_layout_id": 1024,
                 "time_reminders": true,
                 "email_notifications": true,
                 "weekly_emails": true,
@@ -521,14 +521,14 @@
                         }
                     }
                 },
-                "preferences": "Text 99",
+                "preferences": "Text 113",
                 "favorited_models": null,
                 "recent_data": [
-                    "Text 100"
+                    "Text 114"
                 ],
                 "notetaker_settings": {
-                    "notetaker_display_name": "Text 101",
-                    "notetaker_join_message": "Text 102",
+                    "notetaker_display_name": "Text 115",
+                    "notetaker_join_message": "Text 116",
                     "notetaker_auto_join_rule": "off",
                     "notetaker_auto_join_calendar_ids": []
                 },
@@ -554,7 +554,7 @@
                 "time_approvals_filter_id": null,
                 "docs_filter_id": null,
                 "internal_budget_services_filter_id": null,
-                "quick_start_config": "Text 103",
+                "quick_start_config": "Text 117",
                 "employees_filter_id": null
             },
             "relationships": {
@@ -630,19 +630,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1002"
+                        "id": "1006"
                     }
                 },
                 "user": {
                     "data": {
                         "type": "users",
-                        "id": "1079"
+                        "id": "1093"
                     }
                 }
             }

@@ -27,6 +27,8 @@ final class Types
             AttributeType::Object => ['type' => '?array', 'reader' => 'object', 'doc' => 'array<array-key, mixed>|null'],
             // Reads stay lenient (Attributes::list() returns list<mixed>), so only inputs carry the item type.
             AttributeType::List => ['type' => '?array', 'reader' => 'list', 'doc' => 'list<mixed>|null'],
+            // A list or object the API sends as JSON text; only recorded responses produce this type.
+            AttributeType::Json => ['type' => '?array', 'reader' => 'json', 'doc' => 'array<array-key, mixed>|null'],
             AttributeType::Mixed => ['type' => 'mixed', 'reader' => 'mixed', 'doc' => null],
         };
     }
@@ -46,6 +48,7 @@ final class Types
             AttributeType::DateTime => ['type' => 'DateTimeInterface|string', 'doc' => null, 'format' => null],
             AttributeType::Object => ['type' => 'array', 'doc' => 'array<string, ' . self::item($attribute) . '>', 'format' => null],
             AttributeType::List => ['type' => 'array', 'doc' => 'list<' . self::item($attribute) . '>', 'format' => null],
+            AttributeType::Json => ['type' => 'array', 'doc' => 'array<array-key, mixed>', 'format' => null],
             AttributeType::Mixed => self::untypedInput($attribute->name),
         };
     }

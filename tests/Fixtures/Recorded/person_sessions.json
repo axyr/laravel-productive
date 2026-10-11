@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "id": "1108",
+            "type": "person_sessions",
+            "attributes": {
+                "last_activity_at": "2026-10-10T23:55:31.744+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                }
+            }
+        }
+    ]
+}

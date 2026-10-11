@@ -1,0 +1,30 @@
+{
+    "data": [
+        {
+            "id": "1082",
+            "type": "invoiced_budgets",
+            "attributes": {
+                "date_from": null,
+                "date_to": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "budget": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

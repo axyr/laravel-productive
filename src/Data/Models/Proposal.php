@@ -56,6 +56,9 @@ final readonly class Proposal extends Model
     /** Date when this proposal was issued. */
     public ?DateTimeImmutable $date;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $declineReason;
+
     public ?DateTimeImmutable $declinedAt;
 
     /** The optional disclaimer text appended to the proposal. */
@@ -83,6 +86,9 @@ final readonly class Proposal extends Model
 
     public ?DateTimeImmutable $identityConfirmedAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $linkExpiresAt;
+
     /** The public sharing link status of the proposal (e.g. active, disabled). */
     public ?string $linkStatus;
 
@@ -97,6 +103,9 @@ final readonly class Proposal extends Model
 
     public ?string $number;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $password;
+
     /** The URL of the generated PDF for this proposal. */
     public ?string $pdfUrl;
 
@@ -106,11 +115,26 @@ final readonly class Proposal extends Model
     /** The client's purchase order number associated with this proposal. */
     public ?string $purchaseOrderNumber;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $respondedViaPublicLink;
+
     /** The email address of the person who responded to (signed) the proposal. */
     public ?string $responderEmail;
 
     /** The name of the person who responded to (signed) the proposal. */
     public ?string $responderName;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $retainerInterval;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $retainerIntervalCount;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?DateTimeImmutable $revenueDistributionEndOn;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?DateTimeImmutable $revenueDistributionStartOn;
 
     /** Timestamp when the proposal was sent to the client. */
     public ?DateTimeImmutable $sentAt;
@@ -120,6 +144,9 @@ final readonly class Proposal extends Model
 
     /** URL of the audit trail PDF for this proposal, capturing signature and viewing history. */
     public ?string $signedPdfUrl;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $source;
 
     /** The current status of the proposal (e.g. draft, sent, approved, rejected). */
     public ?string $status;
@@ -141,6 +168,7 @@ final readonly class Proposal extends Model
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->customFields = $attributes->object('custom_fields');
         $this->date = $attributes->date('date');
+        $this->declineReason = $attributes->mixed('decline_reason');
         $this->declinedAt = $attributes->dateTime('declined_at');
         $this->disclaimer = $attributes->string('disclaimer');
         $this->disclaimerEnabled = $attributes->bool('disclaimer_enabled');
@@ -151,19 +179,27 @@ final readonly class Proposal extends Model
         $this->footerInterpolated = $attributes->mixed('footer_interpolated');
         $this->identityConfirmationEnabled = $attributes->bool('identity_confirmation_enabled');
         $this->identityConfirmedAt = $attributes->dateTime('identity_confirmed_at');
+        $this->linkExpiresAt = $attributes->mixed('link_expires_at');
         $this->linkStatus = $attributes->string('link_status');
         $this->name = $attributes->string('name');
         $this->note = $attributes->string('note');
         $this->noteInterpolated = $attributes->mixed('note_interpolated');
         $this->number = $attributes->string('number');
+        $this->password = $attributes->mixed('password');
         $this->pdfUrl = $attributes->string('pdf_url');
         $this->publicUuid = $attributes->string('public_uuid');
         $this->purchaseOrderNumber = $attributes->string('purchase_order_number');
+        $this->respondedViaPublicLink = $attributes->mixed('responded_via_public_link');
         $this->responderEmail = $attributes->string('responder_email');
         $this->responderName = $attributes->string('responder_name');
+        $this->retainerInterval = $attributes->mixed('retainer_interval');
+        $this->retainerIntervalCount = $attributes->int('retainer_interval_count');
+        $this->revenueDistributionEndOn = $attributes->date('revenue_distribution_end_on');
+        $this->revenueDistributionStartOn = $attributes->date('revenue_distribution_start_on');
         $this->sentAt = $attributes->dateTime('sent_at');
         $this->signed = $attributes->mixed('signed');
         $this->signedPdfUrl = $attributes->string('signed_pdf_url');
+        $this->source = $attributes->string('source');
         $this->status = $attributes->string('status');
         $this->statusChangedAt = $attributes->dateTime('status_changed_at');
         $this->total = $attributes->string('total');

@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1093",
+            "id": "1109",
             "type": "project_preferences",
             "attributes": {
                 "tasks_layout_id": null,
@@ -13,7 +13,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -29,7 +29,7 @@
             }
         },
         {
-            "id": "1093",
+            "id": "1109",
             "type": "project_preferences",
             "attributes": {
                 "tasks_layout_id": null,
@@ -41,19 +41,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1002"
+                        "id": "1006"
                     }
                 },
                 "project": {
                     "data": {
                         "type": "projects",
-                        "id": "1058"
+                        "id": "1069"
                     }
                 }
             }

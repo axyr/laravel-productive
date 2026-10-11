@@ -7,7 +7,7 @@
                 "event": "create",
                 "changeset": [
                     {
-                        "person_id": [
+                        "project": [
                             null,
                             {
                                 "value": "Text 1",
@@ -17,25 +17,33 @@
                         ]
                     },
                     {
-                        "access_type_id": [
+                        "name": [
                             null,
                             {
-                                "value": 1
+                                "value": "Text 2"
+                            }
+                        ]
+                    },
+                    {
+                        "folder": [
+                            null,
+                            {
+                                "value": "Text 3"
                             }
                         ]
                     }
                 ],
                 "item_id": 1003,
-                "item_type": "membership",
-                "item_name": null,
+                "item_type": "task_list",
+                "item_name": "Text 2",
                 "item_deleted_at": null,
-                "parent_id": 1004,
-                "parent_type": "dashboard",
-                "parent_name": "Text 2",
+                "parent_id": 1002,
+                "parent_type": "project",
+                "parent_name": "Text 1",
                 "parent_deleted_at": null,
-                "root_id": 1004,
-                "root_type": "dashboard",
-                "root_name": "Text 2",
+                "root_id": 1002,
+                "root_type": "project",
+                "root_name": "Text 1",
                 "root_deleted_at": null,
                 "deal_is_budget": false,
                 "task_id": null,
@@ -43,7 +51,7 @@
                 "booking_id": null,
                 "invoice_id": null,
                 "company_id": null,
-                "created_at": "2026-10-09T17:03:11.391+02:00",
+                "created_at": "2026-10-11T16:28:48.639+02:00",
                 "discussion_id": null,
                 "engagement_id": null,
                 "page_id": null,
@@ -56,7 +64,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "creator": {
@@ -92,22 +100,400 @@
             }
         },
         {
-            "id": "1006",
+            "id": "1005",
+            "type": "activities",
+            "attributes": {
+                "event": "create",
+                "changeset": [
+                    {
+                        "person_id": [
+                            null,
+                            {
+                                "value": "Text 4",
+                                "avatar_url": null,
+                                "id": 1006
+                            }
+                        ]
+                    },
+                    {
+                        "access_type_id": [
+                            null,
+                            {
+                                "value": 5
+                            }
+                        ]
+                    }
+                ],
+                "item_id": 1007,
+                "item_type": "membership",
+                "item_name": null,
+                "item_deleted_at": null,
+                "parent_id": 1002,
+                "parent_type": "project",
+                "parent_name": "Text 1",
+                "parent_deleted_at": null,
+                "root_id": 1002,
+                "root_type": "project",
+                "root_name": "Text 1",
+                "root_deleted_at": null,
+                "deal_is_budget": false,
+                "task_id": null,
+                "deal_id": null,
+                "booking_id": null,
+                "invoice_id": null,
+                "company_id": null,
+                "created_at": "2026-10-11T16:28:48.429+02:00",
+                "discussion_id": null,
+                "engagement_id": null,
+                "page_id": null,
+                "person_id": null,
+                "purchase_order_id": null,
+                "made_by_automation": false,
+                "external_author_name": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "comment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email_link": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "role": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1008",
+            "type": "activities",
+            "attributes": {
+                "event": "create",
+                "changeset": [
+                    {
+                        "deal_id": [
+                            null,
+                            {
+                                "value": "Text 5"
+                            }
+                        ]
+                    },
+                    {
+                        "name": [
+                            null,
+                            {
+                                "value": "Text 6"
+                            }
+                        ]
+                    },
+                    {
+                        "status": [
+                            null,
+                            {
+                                "value": "draft"
+                            }
+                        ]
+                    },
+                    {
+                        "document_type_id": [
+                            null,
+                            {
+                                "value": "Text 7"
+                            }
+                        ]
+                    }
+                ],
+                "item_id": 1009,
+                "item_type": "proposal",
+                "item_name": "Text 6",
+                "item_deleted_at": null,
+                "parent_id": 1010,
+                "parent_type": "deal",
+                "parent_name": "Text 5",
+                "parent_deleted_at": null,
+                "root_id": 1010,
+                "root_type": "deal",
+                "root_name": "Text 5",
+                "root_deleted_at": null,
+                "deal_is_budget": false,
+                "task_id": null,
+                "deal_id": 1010,
+                "booking_id": null,
+                "invoice_id": null,
+                "company_id": null,
+                "created_at": "2026-10-11T16:27:18.288+02:00",
+                "discussion_id": null,
+                "engagement_id": null,
+                "page_id": null,
+                "person_id": null,
+                "purchase_order_id": null,
+                "made_by_automation": false,
+                "external_author_name": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "comment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email_link": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "role": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1011",
+            "type": "activities",
+            "attributes": {
+                "event": "create",
+                "changeset": [
+                    {
+                        "amount": [
+                            {
+                                "value": "0.0",
+                                "currency": "USD"
+                            },
+                            {
+                                "value": "100.0",
+                                "currency": "USD"
+                            }
+                        ]
+                    },
+                    {
+                        "paid_on": [
+                            null,
+                            {
+                                "value": "2026-10-11"
+                            }
+                        ]
+                    },
+                    {
+                        "note": [
+                            null,
+                            {
+                                "value": "Text 8"
+                            }
+                        ]
+                    }
+                ],
+                "item_id": 1012,
+                "item_type": "payment",
+                "item_name": "Text 9",
+                "item_deleted_at": null,
+                "parent_id": 1013,
+                "parent_type": "invoice",
+                "parent_name": "Text 10",
+                "parent_deleted_at": null,
+                "root_id": 1014,
+                "root_type": "company",
+                "root_name": "Text 11",
+                "root_deleted_at": null,
+                "deal_is_budget": false,
+                "task_id": null,
+                "deal_id": null,
+                "booking_id": null,
+                "invoice_id": 1013,
+                "company_id": 1014,
+                "created_at": "2026-10-11T16:24:36.179+02:00",
+                "discussion_id": null,
+                "engagement_id": null,
+                "page_id": null,
+                "person_id": null,
+                "purchase_order_id": null,
+                "made_by_automation": false,
+                "external_author_name": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "comment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email_link": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "role": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1015",
+            "type": "activities",
+            "attributes": {
+                "event": "create",
+                "changeset": [
+                    {
+                        "description": [
+                            null,
+                            {
+                                "value": "Text 12"
+                            }
+                        ]
+                    }
+                ],
+                "item_id": 1016,
+                "item_type": "todo",
+                "item_name": "Text 12",
+                "item_deleted_at": null,
+                "parent_id": 1017,
+                "parent_type": "task",
+                "parent_name": "Text 13",
+                "parent_deleted_at": null,
+                "root_id": 1018,
+                "root_type": "project",
+                "root_name": "Text 14",
+                "root_deleted_at": null,
+                "deal_is_budget": false,
+                "task_id": 1017,
+                "deal_id": null,
+                "booking_id": null,
+                "invoice_id": null,
+                "company_id": null,
+                "created_at": "2026-10-11T16:24:03.356+02:00",
+                "discussion_id": null,
+                "engagement_id": null,
+                "page_id": null,
+                "person_id": null,
+                "purchase_order_id": null,
+                "made_by_automation": false,
+                "external_author_name": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "comment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email_link": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "role": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1019",
             "type": "activities",
             "attributes": {
                 "event": "update",
                 "changeset": [],
-                "item_id": 1005,
+                "item_id": 1004,
                 "item_type": "organization",
-                "item_name": "Text 3",
+                "item_name": "Text 15",
                 "item_deleted_at": null,
-                "parent_id": 1005,
+                "parent_id": 1004,
                 "parent_type": "organization",
-                "parent_name": "Text 3",
+                "parent_name": "Text 15",
                 "parent_deleted_at": null,
-                "root_id": 1005,
+                "root_id": 1004,
                 "root_type": "organization",
-                "root_name": "Text 3",
+                "root_name": "Text 15",
                 "root_deleted_at": null,
                 "deal_is_budget": false,
                 "task_id": null,
@@ -128,7 +514,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "creator": {
@@ -164,7 +550,7 @@
             }
         },
         {
-            "id": "1007",
+            "id": "1020",
             "type": "activities",
             "attributes": {
                 "event": "update",
@@ -182,17 +568,17 @@
                         ]
                     }
                 ],
-                "item_id": 1008,
+                "item_id": 1021,
                 "item_type": "entitlement",
-                "item_name": "Text 4",
+                "item_name": "Text 16",
                 "item_deleted_at": null,
-                "parent_id": 1009,
+                "parent_id": 1022,
                 "parent_type": "person",
-                "parent_name": "Text 5",
+                "parent_name": "Text 17",
                 "parent_deleted_at": null,
-                "root_id": 1008,
+                "root_id": 1021,
                 "root_type": "entitlement",
-                "root_name": "Text 4",
+                "root_name": "Text 16",
                 "root_deleted_at": null,
                 "deal_is_budget": false,
                 "task_id": null,
@@ -204,7 +590,7 @@
                 "discussion_id": null,
                 "engagement_id": null,
                 "page_id": null,
-                "person_id": 1009,
+                "person_id": 1022,
                 "purchase_order_id": null,
                 "made_by_automation": false,
                 "external_author_name": null
@@ -213,122 +599,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
-                    }
-                },
-                "creator": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "comment": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "email": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "email_link": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "attachment": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "role": {
-                    "meta": {
-                        "included": false
-                    }
-                }
-            }
-        },
-        {
-            "id": "1010",
-            "type": "activities",
-            "attributes": {
-                "event": "create",
-                "changeset": [
-                    {
-                        "person_id": [
-                            null,
-                            {
-                                "value": "Text 5",
-                                "avatar_url": "https://example.test/6",
-                                "id": 1009
-                            }
-                        ]
-                    },
-                    {
-                        "started_on": [
-                            null,
-                            {
-                                "value": "2026-11-18"
-                            }
-                        ]
-                    },
-                    {
-                        "ended_on": [
-                            null,
-                            {
-                                "value": "2026-11-28"
-                            }
-                        ]
-                    },
-                    {
-                        "hours": [
-                            null,
-                            {
-                                "value": 8
-                            }
-                        ]
-                    },
-                    {
-                        "percentage": [
-                            null,
-                            {
-                                "value": 100
-                            }
-                        ]
-                    }
-                ],
-                "item_id": 1011,
-                "item_type": "booking",
-                "item_name": "Text 7",
-                "item_deleted_at": null,
-                "parent_id": 1011,
-                "parent_type": "booking",
-                "parent_name": "Text 7",
-                "parent_deleted_at": null,
-                "root_id": 1011,
-                "root_type": "booking",
-                "root_name": "Text 7",
-                "root_deleted_at": null,
-                "deal_is_budget": false,
-                "task_id": null,
-                "deal_id": null,
-                "booking_id": 1011,
-                "invoice_id": null,
-                "company_id": null,
-                "created_at": "2026-10-09T13:02:42.178+02:00",
-                "discussion_id": null,
-                "engagement_id": null,
-                "page_id": null,
-                "person_id": null,
-                "purchase_order_id": null,
-                "made_by_automation": false,
-                "external_author_name": null
-            },
-            "relationships": {
-                "organization": {
-                    "data": {
-                        "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "creator": {
@@ -370,7 +641,7 @@
                 "event": "create",
                 "changeset": [
                     {
-                        "person_id": [
+                        "project": [
                             null,
                             {
                                 "value": "Text 1",
@@ -380,25 +651,33 @@
                         ]
                     },
                     {
-                        "access_type_id": [
+                        "name": [
                             null,
                             {
-                                "value": 1
+                                "value": "Text 2"
+                            }
+                        ]
+                    },
+                    {
+                        "folder": [
+                            null,
+                            {
+                                "value": "Text 3"
                             }
                         ]
                     }
                 ],
                 "item_id": 1003,
-                "item_type": "membership",
-                "item_name": null,
+                "item_type": "task_list",
+                "item_name": "Text 2",
                 "item_deleted_at": null,
-                "parent_id": 1004,
-                "parent_type": "dashboard",
-                "parent_name": "Text 2",
+                "parent_id": 1002,
+                "parent_type": "project",
+                "parent_name": "Text 1",
                 "parent_deleted_at": null,
-                "root_id": 1004,
-                "root_type": "dashboard",
-                "root_name": "Text 2",
+                "root_id": 1002,
+                "root_type": "project",
+                "root_name": "Text 1",
                 "root_deleted_at": null,
                 "deal_is_budget": false,
                 "task_id": null,
@@ -406,7 +685,7 @@
                 "booking_id": null,
                 "invoice_id": null,
                 "company_id": null,
-                "created_at": "2026-10-09T17:03:11.391+02:00",
+                "created_at": "2026-10-11T16:28:48.639+02:00",
                 "discussion_id": null,
                 "engagement_id": null,
                 "page_id": null,
@@ -419,13 +698,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1002"
+                        "id": "1006"
                     }
                 },
                 "comment": {
@@ -435,9 +714,7 @@
                     "data": null
                 },
                 "email_link": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": null
                 },
                 "attachment": {
                     "data": null

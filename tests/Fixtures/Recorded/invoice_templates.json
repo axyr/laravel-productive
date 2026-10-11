@@ -1,0 +1,159 @@
+{
+    "data": [
+        {
+            "id": "1080",
+            "type": "invoice_templates",
+            "attributes": {
+                "invoice_creation_options": null,
+                "payment_terms_type": "days_after_invoice_date",
+                "payment_terms_days": 10,
+                "custom_fields": null,
+                "note": null,
+                "subject": "Text 61",
+                "bank_account_details": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "budget": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "issuer": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bank_account": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1080",
+            "type": "invoice_templates",
+            "attributes": {
+                "invoice_creation_options": null,
+                "payment_terms_type": "days_after_invoice_date",
+                "payment_terms_days": 10,
+                "custom_fields": null,
+                "note": null,
+                "subject": "Text 61",
+                "bank_account_details": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "budget": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "data": {
+                        "type": "document_types",
+                        "id": "1081"
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "issuer": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bank_account": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1080",
+            "type": "invoice_templates",
+            "attributes": {
+                "invoice_creation_options": null,
+                "payment_terms_type": "days_after_invoice_date",
+                "payment_terms_days": 10,
+                "custom_fields": null,
+                "note": null,
+                "subject": "Text 61",
+                "bank_account_details": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "budget": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1028"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "issuer": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bank_account": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

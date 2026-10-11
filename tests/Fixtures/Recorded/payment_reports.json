@@ -1,0 +1,77 @@
+{
+    "data": [
+        {
+            "id": "Text 134",
+            "type": "payment_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payment",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 42",
+                "month": "Text 43",
+                "week": "Text 44",
+                "date_period": null,
+                "total_amount": 100,
+                "total_amount_default": 100,
+                "total_amount_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "payment": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 134",
+            "type": "payment_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "payment",
+                "count": 1,
+                "formula_fields": [],
+                "year": "2026",
+                "quarter": "Text 42",
+                "month": "Text 43",
+                "week": "Text 44",
+                "date_period": null,
+                "total_amount": 100,
+                "total_amount_default": 100,
+                "total_amount_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "payment": {
+                    "data": {
+                        "type": "payments",
+                        "id": "1012"
+                    }
+                }
+            }
+        }
+    ]
+}

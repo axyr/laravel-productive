@@ -1,0 +1,75 @@
+{
+    "data": [
+        {
+            "id": "1016",
+            "type": "todos",
+            "attributes": {
+                "description": "Text 12",
+                "closed_at": null,
+                "closed": false,
+                "due_date": null,
+                "created_at": "2026-10-11T16:24:03.356+02:00",
+                "todoable_type": "task",
+                "due_time": null,
+                "position": 1
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "assignee": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "task": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1016",
+            "type": "todos",
+            "attributes": {
+                "description": "Text 12",
+                "closed_at": null,
+                "closed": false,
+                "due_date": null,
+                "created_at": "2026-10-11T16:24:03.356+02:00",
+                "todoable_type": "task",
+                "due_time": null,
+                "position": 1
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "deal": {
+                    "data": null
+                },
+                "task": {
+                    "data": {
+                        "type": "tasks",
+                        "id": "1017"
+                    }
+                }
+            }
+        }
+    ]
+}

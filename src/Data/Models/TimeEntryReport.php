@@ -438,6 +438,11 @@ final readonly class TimeEntryReport extends Model
         return $this->belongsTo('person', Person::class);
     }
 
+    public function personManager(): ?Person
+    {
+        return $this->belongsTo('person_manager', Person::class);
+    }
+
     public function personReport(): ?PersonReport
     {
         return $this->belongsTo('person_report', PersonReport::class);

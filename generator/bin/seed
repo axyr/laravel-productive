@@ -1,0 +1,187 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Seeds the recording organization with one record of each resource whose list came back empty,
+ * so `composer record` has data to learn from. Dry run by default: it reads (to find IDs and skip
+ * resources that already have records) and prints every create. `--execute` performs them.
+ *
+ * Only the organization named in RECORDING_ORGANIZATION_ID, one request per second, stops on a 429.
+ * Nothing that acts outside Productive: no webhooks, invitations, sending, integrations or domains.
+ */
+
+use Axyr\Productive\Config\ProductiveConfig;
+use Axyr\Productive\Contracts\ConnectorInterface;
+use Axyr\Productive\Data\Model;
+use Axyr\Productive\Exceptions\ApiException;
+use Axyr\Productive\Exceptions\RateLimitException;
+use Axyr\Productive\Generator\Recording\Recorder;
+use Axyr\Productive\Generator\Recording\Redactor;
+use Axyr\Productive\Http\CacheThrottle;
+use Axyr\Productive\Http\Connector;
+use Axyr\Productive\Http\Request;
+use Axyr\Productive\Http\Response;
+use Axyr\Productive\Http\RetryPolicy;
+use Axyr\Productive\ProductiveClient;
+use Dotenv\Dotenv;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
+use Illuminate\Http\Client\Factory;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$root = dirname(__DIR__, 2);
+Dotenv::createImmutable($root)->safeLoad();
+
+$env = function (string $key): string {
+    $value = $_ENV[$key] ?? getenv($key);
+
+    return is_string($value) ? $value : '';
+};
+$organization = $env('PRODUCTIVE_ORGANIZATION_ID');
+
+if ($organization === '' || $organization !== $env('RECORDING_ORGANIZATION_ID')) {
+    fwrite(STDERR, "Refusing to seed: PRODUCTIVE_ORGANIZATION_ID must equal RECORDING_ORGANIZATION_ID in .env.\n");
+    exit(1);
+}
+
+$execute = in_array('--execute', $argv, true);
+$config = new ProductiveConfig(
+    token: $env('PRODUCTIVE_API_TOKEN'),
+    organizationId: $organization,
+    baseUrl: $env('PRODUCTIVE_BASE_URL') !== '' ? $env('PRODUCTIVE_BASE_URL') : ProductiveConfig::DEFAULT_BASE_URL,
+    maxAttempts: 1,
+);
+
+// Every request is paced like the recorder's, and redirects are refused.
+$paced = new class (new Connector($config, (new Factory())->globalOptions(['allow_redirects' => false]), new CacheThrottle(new Repository(new ArrayStore())), new RetryPolicy(1, 0))) implements ConnectorInterface {
+    public function __construct(private readonly ConnectorInterface $connector) {}
+
+    public function send(Request $request): Response
+    {
+        return $this->connector->send(new Request($request->method, $request->path, $request->query, $request->body, $request->contentType, $request->expect, $request->operation, $request->requiresOrganization, [...$request->rateLimits, Recorder::pace()]));
+    }
+};
+$client = new ProductiveClient($config, fn(): ConnectorInterface => $paced);
+
+$log = $root . '/recordings/seed-' . date('Y-m-d-His');
+$today = date('Y-m-d');
+$ids = [];
+
+/** The first IDs of an existing list; null when the list is empty or cannot be read. */
+$first = function (string $resource, int $count = 1) use ($client, &$ids): ?array {
+    if (! array_key_exists($resource, $ids)) {
+        try {
+            $ids[$resource] = array_map(fn(Model $model): string => $model->id, $client->{$resource}()->query()->perPage(5)->get()->all());
+        } catch (ApiException) {
+            $ids[$resource] = [];
+        }
+    }
+
+    return count($ids[$resource]) >= $count ? array_slice($ids[$resource], 0, $count) : null;
+};
+$id = fn(string $resource): ?string => $first($resource)[0] ?? null;
+
+/** The first record whose raw attribute has the given value, e.g. a deal that is a budget. */
+$where = function (string $resource, string $attribute, mixed $value) use ($client): ?string {
+    try {
+        foreach ($client->{$resource}()->query()->perPage(50)->get()->all() as $model) {
+            if ($model->attribute($attribute) === $value) {
+                return $model->id;
+            }
+        }
+    } catch (ApiException) {
+    }
+
+    return null;
+};
+
+/*
+ * Each step: the resource, and its attributes built from IDs that exist (null when a dependency is
+ * missing). Steps run in order, so later ones can use what earlier ones created.
+ */
+$steps = [
+    'teams' => fn() => ['name' => 'Seed team'],
+    'teamMemberships' => fn() => ($id('teams') && $id('people')) ? ['team_id' => $id('teams'), 'person_id' => $id('people')] : null,
+    'jobRoles' => fn() => ['name' => 'Seed job role'],
+    'taxRates' => fn() => $id('subsidiaries') ? ['name' => 'Seed VAT 21%', 'subsidiary_id' => $id('subsidiaries'), 'primary_component_name' => 'VAT', 'primary_component_value' => 0.21] : null,
+    // Productive requires a number, which the spec does not mark as required.
+    'bankAccounts' => fn() => $id('subsidiaries') ? ['name' => 'Seed account', 'bank_name' => 'Seed bank', 'number' => 'NL00SEED0000000000', 'currency' => 'USD', 'subsidiary_id' => $id('subsidiaries')] : null,
+    'holidays' => fn() => $id('holidayCalendars') ? ['name' => 'Seed holiday', 'date' => date('Y-12-26'), 'holiday_calendar_id' => $id('holidayCalendars')] : null,
+    'timeTrackingPolicies' => fn() => ['name' => 'Seed policy'],
+    'todos' => fn() => $id('tasks') ? ['description' => 'Seed todo', 'task_id' => $id('tasks')] : null,
+    'comments' => fn() => $id('tasks') ? ['body' => 'Seed comment', 'task_id' => $id('tasks')] : null,
+    'taskDependencies' => fn() => ($tasks = $first('tasks', 2)) ? ['task_id' => $tasks[0], 'dependent_task_id' => $tasks[1], 'type_id' => 1] : null,
+    'timesheets' => fn() => $id('people') ? ['person_id' => $id('people'), 'date' => $today] : null,
+    'serviceAssignments' => fn() => ($id('services') && $id('people')) ? ['service_id' => $id('services'), 'person_id' => $id('people')] : null,
+    'placeholders' => fn() => ($projects = $first('projects', 2)) ? ['name' => 'Seed placeholder', 'category' => 'project', 'color' => 'electric', 'icon' => 'icon-cowboy-hat-filled', 'type' => 'person', 'project_id' => $projects[1]] : null,
+    'surveys' => fn() => $id('projects') ? ['title' => 'Seed survey', 'project_id' => $id('projects')] : null,
+    // model_attributes (a project type, manager and workflow) is required, though the spec does not say so.
+    'templates' => fn() => $id('projects') ? ['name' => 'Seed template', 'target_type' => 'project', 'target_id' => $id('projects'), 'model_attributes' => ['name' => 'Seed template project', 'project_type_id' => 1, 'project_manager_id' => $id('people'), 'workflow_id' => $id('workflows')]] : null,
+    'rateCards' => fn() => $id('companies') ? ['name' => 'Seed rate card', 'company_id' => $id('companies')] : null,
+    'prices' => fn() => ($id('rateCards') && $id('companies')) ? ['name' => 'Seed price', 'company_id' => $id('companies'), 'rate_card_id' => $id('rateCards'), 'unit_id' => 1, 'currency' => 'USD', 'rate' => 100.0] : null,
+    'dealCostRates' => fn() => ($id('deals') && $id('people')) ? ['deal_id' => $id('deals'), 'person_id' => $id('people'), 'currency' => 'USD', 'rate_cents' => 5000.0] : null,
+    'purchaseOrders' => fn() => $id('deals') ? ['currency' => 'USD', 'issued_on' => $today, 'deal_id' => $id('deals'), 'subject' => 'Seed purchase order'] : null,
+    // A document type of kind 2 (proposal) and a status are required, though the spec documents no body.
+    'proposals' => fn() => ($id('deals') && ($type = $where('documentTypes', 'exportable_type_id', 2))) ? ['name' => 'Seed proposal', 'deal_id' => $id('deals'), 'document_type_id' => $type, 'status' => 'draft'] : null,
+    'payments' => fn() => $id('invoices') ? ['invoice_id' => $id('invoices'), 'amount' => 100, 'paid_on' => $today, 'note' => 'Seed payment'] : null,
+    // A budget and a document type of kind 1 (invoice) are required.
+    'invoiceTemplates' => fn() => ($budget = $where('deals', 'budget', true)) && ($type = $where('documentTypes', 'exportable_type_id', 1)) ? ['subsidiary_id' => $id('subsidiaries'), 'budget_id' => $budget, 'document_type_id' => $type, 'note' => 'Seed invoice template'] : null,
+    // budget_id must be a deal that is a budget.
+    'automaticInvoicingRules' => fn() => ($budget = $where('deals', 'budget', true)) ? ['budget_id' => $budget, 'creation_offset' => 0, 'creation_offset_unit' => 'day', 'reference_date' => 'end_date', 'skip_weekends' => false] : null,
+    // title, currency, service, booking method and time are required, though the spec documents no body.
+    'resourceRequests' => fn() => ($id('projects') && $id('services')) ? ['title' => 'Seed resource request', 'project_id' => $id('projects'), 'service_id' => $id('services'), 'currency' => 'USD', 'booking_method_id' => 1, 'time' => 480, 'started_on' => $today, 'ended_on' => $today] : null,
+    'discussions' => fn() => $id('pages') ? ['page_id' => $id('pages'), 'excerpt' => 'Seed discussion'] : null,
+];
+
+echo ($execute ? 'Seeding' : 'Dry run (add --execute to create)') . "\n\n";
+$created = 0;
+
+try {
+    foreach ($steps as $resource => $attributes) {
+        if ($first($resource) !== null) {
+            printf("%-24s already has records\n", $resource);
+
+            continue;
+        }
+
+        $payload = $attributes();
+
+        if ($payload === null) {
+            printf("%-24s skipped: a resource it needs has no records\n", $resource);
+
+            continue;
+        }
+
+        if (! $execute) {
+            printf("%-24s would create %s\n", $resource, json_encode($payload, JSON_UNESCAPED_SLASHES));
+
+            continue;
+        }
+
+        try {
+            $model = $client->{$resource}()->create($payload);
+            $ids[$resource] = [$model->id];
+            $created++;
+            $result = ['status' => 'created', 'id' => $model->id, 'attributes' => $model->toArray()];
+            printf("%-24s created %s\n", $resource, $model->id);
+        } catch (ApiException $exception) {
+            if ($exception instanceof RateLimitException) {
+                throw $exception;
+            }
+
+            $result = ['status' => $exception->response->status, 'error' => $exception->getMessage()];
+            printf("%-24s failed: %s\n", $resource, $exception->getMessage());
+        }
+
+        is_dir($log) || mkdir($log, 0o700, true);
+        file_put_contents($log . '/' . $resource . '.json', json_encode(['payload' => $payload, 'result' => Redactor::redact($result)], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
+    }
+} catch (RateLimitException $exception) {
+    fwrite(STDERR, "\nStopped on a 429: " . $exception->getMessage() . "\n");
+    exit(1);
+}
+
+echo $execute ? "\nCreated {$created}. Results in {$log}\n" : "\nNothing was created.\n";

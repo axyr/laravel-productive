@@ -1,0 +1,66 @@
+{
+    "data": [
+        {
+            "id": "1025",
+            "type": "automatic_invoicing_rules",
+            "attributes": {
+                "creation_offset": 0,
+                "creation_offset_unit": "day",
+                "reference_date": "end_date",
+                "skip_weekends": false,
+                "next_invoice_date": null,
+                "processed_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "budget": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1025",
+            "type": "automatic_invoicing_rules",
+            "attributes": {
+                "creation_offset": 0,
+                "creation_offset_unit": "day",
+                "reference_date": "end_date",
+                "skip_weekends": false,
+                "next_invoice_date": null,
+                "processed_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "budget": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1026"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
+                    }
+                }
+            }
+        }
+    ]
+}

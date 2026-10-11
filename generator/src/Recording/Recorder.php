@@ -34,12 +34,14 @@ final readonly class Recorder
     /**
      * @param  list<string>  $undocumented  Paths outside the spec, probed for their status only.
      * @param  array<string, string>  $filters  Extra query per index path, e.g. a date range for reports, which are expensive without one.
+     * @param  array<string, list<string>>  $untyped  Relationships an earlier recording saw without data, by type: included too, to learn their cardinality.
      */
     public function __construct(
         private Api $api,
         private ConnectorInterface $connector,
         private array $undocumented = [],
         private array $filters = [],
+        private array $untyped = [],
     ) {}
 
     /**
@@ -48,6 +50,16 @@ final readonly class Recorder
     public static function pace(): RateLimit
     {
         return new RateLimit('recorder', 1, 1);
+    }
+
+    /**
+     * Reports allow 10 requests per 30 seconds. Counting in fixed windows can still put 20 within
+     * a sliding 30 seconds, and the recorder never retries a 429, so reports go one per 4 seconds:
+     * any 30 seconds touch at most 9 of those windows (with 3-second windows, 11).
+     */
+    public static function reportPace(): RateLimit
+    {
+        return new RateLimit('recorder-reports', 1, 4);
     }
 
     /**
@@ -92,7 +104,7 @@ final readonly class Recorder
             return;
         }
 
-        $limits = $resource->reportRateLimit ? [RateLimit::reports()] : [];
+        $limits = $resource->reportRateLimit ? [RateLimit::reports(), self::reportPace()] : [];
         $recording = $this->get($index->path, $this->indexQuery($index, self::PAGE_SIZE), $index->key, $index->requiresOrganization, $limits);
 
         yield $index->key => $recording;
@@ -118,7 +130,8 @@ final readonly class Recorder
             yield $show->key => $this->get(str_replace('{id}', rawurlencode($id), $show->path), '', $show->key, $show->requiresOrganization, $limits);
         }
 
-        $relationships = array_map(fn(Relationship $relationship): string => $relationship->name, $this->api->model((string) $resource->model)->relationships ?? []);
+        $known = array_map(fn(Relationship $relationship): string => $relationship->name, $this->api->model((string) $resource->model)->relationships ?? []);
+        $relationships = array_unique([...$known, ...$this->untyped[$resource->type] ?? []]);
 
         yield from $this->recordIncludes($index, $relationships, $limits);
     }
@@ -127,7 +140,7 @@ final readonly class Recorder
      * Records the index with the given relationships included. A 400 means one of them cannot be
      * included: the list is split in halves until each failing relationship is recorded on its own.
      *
-     * @param  list<string>  $relationships
+     * @param  array<string>  $relationships
      * @param  list<RateLimit>  $limits
      * @return Generator<string, array<string, mixed>>
      */
@@ -155,7 +168,7 @@ final readonly class Recorder
     /**
      * "tasks.index.include" for the full list, "tasks.index.include.project+assignee" for part of it.
      *
-     * @param  list<string>  $relationships
+     * @param  array<string>  $relationships
      */
     private static function includeName(Operation $index, array $relationships, bool $complete): string
     {
