@@ -18,6 +18,23 @@ use Axyr\Productive\Generator\Ir\Operation;
 use Axyr\Productive\Generator\Ir\OperationKind;
 use Axyr\Productive\Generator\Ir\Resource;
 use Axyr\Productive\Generator\Ir\ResponseKind;
+use Illuminate\Filesystem\Filesystem;
+
+/*
+ * These tests write and delete files. A mutant that drops the root from a path would then write
+ * into, or delete from, the working copy; from a throwaway working directory it cannot.
+ */
+beforeEach(function (): void {
+    $directory = sys_get_temp_dir() . '/generator-cwd-' . uniqid();
+    mkdir($directory);
+    chdir($directory);
+});
+
+afterEach(function (): void {
+    $directory = (string) getcwd();
+    chdir(dirname(__DIR__, 3));
+    (new Filesystem())->deleteDirectory($directory);
+});
 
 it('exports PHP literals', function (mixed $value, string $literal) {
     expect(Literal::export($value))->toBe($literal);

@@ -174,6 +174,19 @@ Writes `tests/Fixtures/Recorded/<type>.json`: per type, the few resources that t
 - IDs are renumbered consistently everywhere (`id`, `*_id`, `*_ids`, `custom_fields` keys);
 - keys, JSON types, numbers, booleans, dates and short status codes are kept.
 
-Nothing is written when the output still contains the organization ID, the API token, the git user's name or email (word by word, any case), or any value the scrubber replaced.
+Nothing is written when the output still contains any of these:
+- the organization ID (as a whole number) or the API token;
+- the git user's name (word by word, any case) or email (the address and its domain);
+- the organization's name, email key and billing email, as recorded;
+- any term listed in `RECORDING_LEAK_TERMS` in `.env` (comma separated, for anything else you typed into the trial);
+- any value the scrubber replaced.
+
+Before the first push of new fixtures, also search them yourself:
+
+```bash
+grep -rli -e "<your name>" -e "<your company>" -e "<your organization ID>" tests/Fixtures/
+```
+
+It must print nothing.
 
 `RecordedHydrationTest` hydrates every fixture and checks that each non-empty value lands in its typed property unchanged, and that every relationship with data has an accessor. On the models from before the recording it fails for 38 of the 72 types.

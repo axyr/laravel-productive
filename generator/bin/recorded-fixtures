@@ -6,10 +6,12 @@ declare(strict_types=1);
 /*
  * Writes tests/Fixtures/Recorded/<type>.json from a `composer record` run (the latest by default):
  * per type the few resources that show every recorded kind of value, scrubbed. Nothing is written
- * when the organization ID, the token, the git user's name or email, or any replaced value remains.
+ * when the output still contains the organization ID, the token, the git user's name or email, the
+ * organization's name or addresses, a term from RECORDING_LEAK_TERMS, or any replaced value.
  */
 
 use Axyr\Productive\Generator\Recording\FixtureSelector;
+use Axyr\Productive\Generator\Recording\Json;
 use Axyr\Productive\Generator\Recording\LeakCheck;
 use Axyr\Productive\Generator\Recording\Scrubber;
 use Dotenv\Dotenv;
@@ -46,14 +48,29 @@ $env = function (string $key): string {
     return is_string($value) ? $value : '';
 };
 $git = fn(string $key): string => trim((string) shell_exec('git -C ' . escapeshellarg($root) . ' config ' . $key));
-$email = $git('user.email');
-$terms = array_filter([
+$terms = [
     'the organization ID' => $env('PRODUCTIVE_ORGANIZATION_ID'),
     'the API token' => $env('PRODUCTIVE_API_TOKEN'),
     'the git user name' => $git('user.name'),
-    'the git user email' => $email,
-    'the git email name' => explode('@', $email)[0],
-], fn(string $value): bool => $value !== '');
+    'the git user email' => $git('user.email'),
+];
+
+// The organization's own name and addresses, as recorded.
+foreach ($recordings as $recording) {
+    foreach (Json::resources($recording['body'] ?? null) as [$type, $resource]) {
+        foreach ($type === 'organizations' ? ['name', 'email_key', 'billing_email', 'subdomain'] : [] as $key) {
+            $value = Json::map($resource['attributes'] ?? null)[$key] ?? null;
+            $terms['the organization ' . str_replace('_', ' ', $key)] = is_string($value) ? $value : '';
+        }
+    }
+}
+
+// Anything else that must never be committed, comma separated: RECORDING_LEAK_TERMS in .env.
+foreach (array_filter(array_map(trim(...), explode(',', $env('RECORDING_LEAK_TERMS')))) as $index => $term) {
+    $terms['RECORDING_LEAK_TERMS #' . ($index + 1)] = $term;
+}
+
+$terms = array_filter($terms, fn(string $value): bool => $value !== '');
 
 $leaks = LeakCheck::leaks(implode("\n", $fixtures), $terms, $scrubber->replaced());
 

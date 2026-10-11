@@ -21,14 +21,18 @@ it('matches IDs as whole numbers and replaced values as whole words', function (
         ->and(LeakCheck::leaks('{"a": "Budget!"}', [], ['Budget', 'Budget!']))->toBe(['a replaced value']);
 });
 
-it('matches names and emails in any case and word by word', function () {
+it('matches names word by word and emails by address and domain, in any case', function () {
     $terms = ['the git user email' => 'info@axyrmedia.nl', 'the git user name' => 'Jan de Vries'];
 
     expect(LeakCheck::leaks('"INFO@AXYRMEDIA.NL"', $terms, []))->toBe(['the git user email'])
         ->and(LeakCheck::leaks('"vries"', $terms, []))->toBe(['the git user name'])
         ->and(LeakCheck::leaks('"axyrmedia"', $terms, []))->toBe(['the git user email'])
+        ->and(LeakCheck::leaks('"block-info"', $terms, []))->toBe([])
         ->and(LeakCheck::leaks('"de jan"', $terms, []))->toBe([])
-        ->and(LeakCheck::leaks('"info"', ['email' => 'info@x.nl'], []))->toBe(['email']);
+        ->and(LeakCheck::leaks('"anna"', ['name' => 'Anna Smit'], []))->toBe(['name'])
+        ->and(LeakCheck::leaks('"acmecorp"', ['email' => 'x@y@acmecorp.nl'], []))->toBe(['email'])
+        ->and(LeakCheck::leaks('"a.b"', ['email' => 'x@a.b'], []))->toBe([])
+        ->and(LeakCheck::leaks('"x@a.b"', ['email' => 'x@a.b'], []))->toBe(['email']);
 });
 
 it('checks replaced values from four characters and terms as a whole too', function () {

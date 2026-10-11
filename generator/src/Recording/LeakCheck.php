@@ -6,7 +6,8 @@ namespace Axyr\Productive\Generator\Recording;
 
 /**
  * Finds what must never reach a committed fixture: the organization ID, the token, the owner's
- * name and email (each word on its own, any case), and every value the scrubber replaced.
+ * name and email, the organization's name (each word on its own, any case), and every value the
+ * scrubber replaced.
  */
 final class LeakCheck
 {
@@ -49,17 +50,33 @@ final class LeakCheck
     }
 
     /**
+     * The whole value, and each word of four or more characters on its own. For an email only the
+     * words of the domain: a local part such as "info" also names harmless codes. An ID matches
+     * as a whole number.
+     *
      * @return array<string>
      */
     private static function patterns(string $value): array
     {
+        if ($value === '') {
+            return [];
+        }
+
+        // An ID as a whole number: 12345 must not match inside 1234567.
         if (ctype_digit($value)) {
             return ['/(?<!\d)' . $value . '(?!\d)/'];
         }
 
-        $words = array_filter(preg_split('/[^\p{L}\p{N}]+/u', $value) ?: [], fn(string $word): bool => mb_strlen($word) >= 4);
-        $quoted = array_map(fn(string $part): string => '/' . preg_quote($part, '/') . '/i', [$value, ...$words]);
+        return array_map(fn(string $part): string => '/' . preg_quote($part, '/') . '/i', [$value, ...self::words($value)]);
+    }
 
-        return $value === '' ? [] : $quoted;
+    /**
+     * @return array<string>  The words of four or more characters; of an email, those of its domain.
+     */
+    private static function words(string $value): array
+    {
+        $text = str_contains($value, '@') ? explode('@', $value, 2)[1] : $value;
+
+        return array_filter(preg_split('/[^\p{L}\p{N}]+/u', $text) ?: [], fn(string $word): bool => mb_strlen($word) >= 4);
     }
 }
