@@ -107,6 +107,7 @@ As built, these differ from the original plan:
        - `generator/bin/mutate` (`composer test:mutate`, and the nightly) mutates the 108 files without the generated marker: the package core and the generator, emitters included. A fault in generated code comes from an emitter.
        - The caveat from the audit: the contract tests check requests in full, but responses only by class. Generated models get value tests in step 3. Until then, generated code has neither value tests nor mutants.
        - `MUTATION_GATE` in ci.yml goes back to "blocking" once a manual run of the scoped workflow on main is green.
+       - The first scoped run timed out after 5 of 108 files. Every emitter mutant re-ran `DriftTest`, which regenerates and formats all 883 files (15 s). Without the `drift` group, `ContractTestEmitter` takes 10.5 min instead of 94, and scores 45%: 145 of its 264 mutants were only killed by "the output changed". The run now excludes `drift`. Emitter unit tests (step 6, starting with `ContractTestEmitter`) bring it to 100% before the gate goes back to blocking.
 - **P-08 acceptance, sharpened:** a generator restricted to the three golden tags must reproduce the golden files byte for byte. The golden models only have typed relationship accessors for models that already exist (Task, TimeEntry); others return `Model`. Once every model exists, all accessors are typed.
 - **The prototype emitter rules** (type mapping, naming, ordering, docblocks) are written down in `docs/development.md` → *Adding resources*. The generator must follow them.
 
