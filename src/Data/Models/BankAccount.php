@@ -41,6 +41,9 @@ final readonly class BankAccount extends Model
 
     public ?string $iban;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $localBankCode;
+
     /** The display name of the bank account. */
     public ?string $name;
 
@@ -59,6 +62,7 @@ final readonly class BankAccount extends Model
         $this->createdAt = $attributes->dateTime('created_at');
         $this->currency = $attributes->string('currency');
         $this->iban = $attributes->string('iban');
+        $this->localBankCode = $attributes->mixed('local_bank_code');
         $this->name = $attributes->string('name');
         $this->number = $attributes->string('number');
         $this->swiftCode = $attributes->string('swift_code');

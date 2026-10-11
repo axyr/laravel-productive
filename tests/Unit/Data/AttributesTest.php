@@ -116,3 +116,18 @@ it('reads backed enums', function () {
         ->and(attributes(null)->enum('value', AttributesTestPriority::class))->toBeNull()
         ->and(attributes(1.0)->enum('value', AttributesTestPriority::class))->toBeNull();
 });
+
+it('decodes lists and objects sent as JSON text', function (mixed $value, ?array $expected) {
+    expect(attributes($value)->json('value'))->toBe($expected);
+})->with([
+    'json list' => ['[["2026-10-09", null, [8, 8], 66220]]', [['2026-10-09', null, [8, 8], 66220]]],
+    'json object' => ['{"a": 1}', ['a' => 1]],
+    'empty json list' => ['[]', []],
+    'array' => [['a' => 1], ['a' => 1]],
+    'json scalar' => ['5', null],
+    'json string' => ['"text"', null],
+    'invalid json' => ['[1,', null],
+    'plain text' => ['text', null],
+    'number' => [5, null],
+    'null' => [null, null],
+]);

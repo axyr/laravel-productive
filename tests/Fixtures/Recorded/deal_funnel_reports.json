@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 42",
+            "id": "Text 55",
             "type": "deal_funnel_reports",
             "attributes": {
                 "currency": "USD",
@@ -22,7 +22,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {

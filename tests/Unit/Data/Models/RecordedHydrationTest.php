@@ -38,6 +38,8 @@ function typedValueMatches(ReflectionProperty $property, mixed $raw, mixed $type
         '?DateTimeImmutable' => $typed instanceof DateTimeImmutable && is_string($raw) && (strlen($raw) === 10
             ? $typed->format('Y-m-d') === $raw
             : $typed->getTimestamp() === (new DateTimeImmutable($raw))->getTimestamp()),
+        // A list or object sent as JSON text is read decoded.
+        '?array' => $typed === (is_string($raw) ? json_decode($raw, true) : $raw),
         default => $typed === $raw,
     };
 }

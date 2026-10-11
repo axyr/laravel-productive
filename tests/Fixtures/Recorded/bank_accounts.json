@@ -1,0 +1,59 @@
+{
+    "data": [
+        {
+            "id": "1027",
+            "type": "bank_accounts",
+            "attributes": {
+                "bank_name": "Text 20",
+                "bank_address": null,
+                "name": "Text 21",
+                "number": "Text 22",
+                "currency": "USD",
+                "swift_code": null,
+                "local_bank_code": null,
+                "archived_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1027",
+            "type": "bank_accounts",
+            "attributes": {
+                "bank_name": "Text 20",
+                "bank_address": null,
+                "name": "Text 21",
+                "number": "Text 22",
+                "currency": "USD",
+                "swift_code": null,
+                "local_bank_code": null,
+                "archived_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1028"
+                    }
+                }
+            }
+        }
+    ]
+}

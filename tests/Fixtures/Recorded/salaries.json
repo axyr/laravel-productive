@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1078",
+            "id": "1092",
             "type": "salaries",
             "attributes": {
                 "default_salary": true,
@@ -10,7 +10,7 @@
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": true,
-                "salary_type_id": 1013,
+                "salary_type_id": 1024,
                 "started_on": "2026-10-09",
                 "working_hours": [
                     8,
@@ -33,7 +33,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -49,7 +49,7 @@
             }
         },
         {
-            "id": "1099",
+            "id": "1117",
             "type": "salaries",
             "attributes": {
                 "default_salary": false,
@@ -58,7 +58,7 @@
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": false,
-                "salary_type_id": 1013,
+                "salary_type_id": 1024,
                 "started_on": "2026-04-09",
                 "working_hours": [
                     8,
@@ -81,19 +81,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1022"
                     }
                 },
                 "holiday_calendar": {
                     "data": {
                         "type": "holiday_calendars",
-                        "id": "1066"
+                        "id": "1077"
                     }
                 }
             }

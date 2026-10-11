@@ -15,5 +15,6 @@ enum AttributeType: string
     case Time = 'time';
     case Object = 'object';
     case List = 'list';
+    case Json = 'json';
     case Mixed = 'mixed';
 }

@@ -71,6 +71,7 @@ it('maps attribute types to model and input types', function (AttributeType $typ
     [AttributeType::DateTime, 'started_at', '?DateTimeImmutable', 'DateTimeInterface|string'],
     [AttributeType::Object, 'custom_fields', '?array', 'array'],
     [AttributeType::List, 'repeat_on_weekday', '?array', 'array'],
+    [AttributeType::Json, 'availabilities', '?array', 'array'],
     [AttributeType::Mixed, 'cost', 'mixed', 'mixed'],
     [AttributeType::Mixed, 'subscriber_ids', 'mixed', 'array'],
     [AttributeType::Mixed, 'tag_list', 'mixed', 'array'],
@@ -79,6 +80,8 @@ it('maps attribute types to model and input types', function (AttributeType $typ
 it('documents array-shaped types', function () {
     expect(Types::model(new Attribute('a', 'a', AttributeType::Object))['doc'])->toBe('array<array-key, mixed>|null')
         ->and(Types::model(new Attribute('a', 'a', AttributeType::List))['doc'])->toBe('list<mixed>|null')
+        ->and(Types::model(new Attribute('a', 'a', AttributeType::Json)))->toBe(['type' => '?array', 'reader' => 'json', 'doc' => 'array<array-key, mixed>|null'])
+        ->and(Types::input(new Attribute('a', 'a', AttributeType::Json)))->toBe(['type' => 'array', 'doc' => 'array<array-key, mixed>', 'format' => null])
         ->and(Types::input(new Attribute('a', 'a', AttributeType::Object))['doc'])->toBe('array<string, mixed>')
         ->and(Types::input(new Attribute('a', 'a', AttributeType::List))['doc'])->toBe('list<mixed>')
         ->and(Types::input(new Attribute('subscriber_ids', 's', AttributeType::Mixed))['doc'])->toBe('list<int|string>')
@@ -112,6 +115,7 @@ it('picks a sample value per type', function (AttributeType $type, mixed $value)
     [AttributeType::Time, '09:00'],
     [AttributeType::Object, ['1' => 'value']],
     [AttributeType::List, ['value']],
+    [AttributeType::Json, ['Example']],
     [AttributeType::String, 'Example'],
     [AttributeType::Mixed, 'Example'],
 ]);

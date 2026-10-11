@@ -1,11 +1,11 @@
 {
     "data": [
         {
-            "id": "1068",
+            "id": "1013",
             "type": "invoices",
             "attributes": {
-                "number": "Text 86",
-                "subject": "Text 87",
+                "number": "Text 10",
+                "subject": "Text 100",
                 "invoiced_on": "2026-07-09",
                 "sent_on": "2026-06-09",
                 "pay_on": "2026-08-09",
@@ -14,7 +14,7 @@
                 "finalized_on": "2026-06-09",
                 "finalized_at": null,
                 "discount": null,
-                "tax1_name": "Text 88",
+                "tax1_name": "Text 101",
                 "tax1_value": "10.0",
                 "tax2_name": null,
                 "tax2_value": null,
@@ -30,20 +30,20 @@
                 "company_reference_id": null,
                 "note_interpolated": "",
                 "footer_interpolated": null,
-                "email_key": "Text 89",
+                "email_key": "Text 102",
                 "purchase_order_number": null,
                 "created_at": "2026-10-09T13:02:40.142+02:00",
                 "exchange_rate": "1.0",
                 "exchange_date": "2026-07-09",
                 "custom_fields": null,
-                "updated_at": "2026-10-09T13:02:40.698+02:00",
+                "updated_at": "2026-10-11T16:24:47.043+02:00",
                 "sample_data": true,
                 "payment_terms_type": null,
                 "payment_terms_days": null,
-                "invoice_type_id": 1013,
+                "invoice_type_id": 1024,
                 "credited": false,
                 "line_item_tax": false,
-                "last_activity_at": "2026-10-09T13:02:40.144+02:00",
+                "last_activity_at": "2026-10-11T16:24:36.179+02:00",
                 "creation_options": [],
                 "payment_terms": 31,
                 "bank_account_details": null,
@@ -60,15 +60,15 @@
                 "amount_with_tax": 3750000,
                 "amount_with_tax_default": 3750000,
                 "amount_with_tax_normalized": 3750000,
-                "amount_paid": 0,
-                "amount_paid_default": 0,
-                "amount_paid_normalized": 0,
+                "amount_paid": 100,
+                "amount_paid_default": 100,
+                "amount_paid_normalized": 100,
                 "amount_written_off": 0,
                 "amount_written_off_default": 0,
                 "amount_written_off_normalized": 0,
-                "amount_unpaid": 3750000,
-                "amount_unpaid_default": 3750000,
-                "amount_unpaid_normalized": 3750000,
+                "amount_unpaid": 3749900,
+                "amount_unpaid_default": 3749900,
+                "amount_unpaid_normalized": 3749900,
                 "amount_credited": 0,
                 "amount_credited_default": 0,
                 "amount_credited_normalized": 0,
@@ -80,7 +80,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "bill_to": {
@@ -156,11 +156,11 @@
             }
         },
         {
-            "id": "1069",
+            "id": "1083",
             "type": "invoices",
             "attributes": {
-                "number": "Text 90",
-                "subject": "Text 91",
+                "number": "Text 103",
+                "subject": "Text 104",
                 "invoiced_on": "2026-08-09",
                 "sent_on": null,
                 "pay_on": "2026-09-09",
@@ -169,7 +169,7 @@
                 "finalized_on": null,
                 "finalized_at": null,
                 "discount": null,
-                "tax1_name": "Text 88",
+                "tax1_name": "Text 101",
                 "tax1_value": "10.0",
                 "tax2_name": null,
                 "tax2_value": null,
@@ -185,7 +185,7 @@
                 "company_reference_id": null,
                 "note_interpolated": "",
                 "footer_interpolated": null,
-                "email_key": "Text 92",
+                "email_key": "Text 105",
                 "purchase_order_number": null,
                 "created_at": "2026-10-09T13:02:40.196+02:00",
                 "exchange_rate": "1.0",
@@ -195,7 +195,7 @@
                 "sample_data": true,
                 "payment_terms_type": null,
                 "payment_terms_days": null,
-                "invoice_type_id": 1013,
+                "invoice_type_id": 1024,
                 "credited": false,
                 "line_item_tax": false,
                 "last_activity_at": "2026-10-09T13:02:40.197+02:00",
@@ -235,7 +235,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "bill_to": {
@@ -311,11 +311,11 @@
             }
         },
         {
-            "id": "1068",
+            "id": "1013",
             "type": "invoices",
             "attributes": {
-                "number": "Text 86",
-                "subject": "Text 87",
+                "number": "Text 10",
+                "subject": "Text 100",
                 "invoiced_on": "2026-07-09",
                 "sent_on": "2026-06-09",
                 "pay_on": "2026-08-09",
@@ -324,7 +324,7 @@
                 "finalized_on": "2026-06-09",
                 "finalized_at": null,
                 "discount": null,
-                "tax1_name": "Text 88",
+                "tax1_name": "Text 101",
                 "tax1_value": "10.0",
                 "tax2_name": null,
                 "tax2_value": null,
@@ -340,20 +340,20 @@
                 "company_reference_id": null,
                 "note_interpolated": "",
                 "footer_interpolated": null,
-                "email_key": "Text 89",
+                "email_key": "Text 102",
                 "purchase_order_number": null,
                 "created_at": "2026-10-09T13:02:40.142+02:00",
                 "exchange_rate": "1.0",
                 "exchange_date": "2026-07-09",
                 "custom_fields": null,
-                "updated_at": "2026-10-09T13:02:40.698+02:00",
+                "updated_at": "2026-10-11T16:24:47.043+02:00",
                 "sample_data": true,
                 "payment_terms_type": null,
                 "payment_terms_days": null,
-                "invoice_type_id": 1013,
+                "invoice_type_id": 1024,
                 "credited": false,
                 "line_item_tax": false,
-                "last_activity_at": "2026-10-09T13:02:40.144+02:00",
+                "last_activity_at": "2026-10-11T16:24:36.179+02:00",
                 "creation_options": [],
                 "payment_terms": 31,
                 "bank_account_details": null,
@@ -370,15 +370,15 @@
                 "amount_with_tax": 3750000,
                 "amount_with_tax_default": 3750000,
                 "amount_with_tax_normalized": 3750000,
-                "amount_paid": 0,
-                "amount_paid_default": 0,
-                "amount_paid_normalized": 0,
+                "amount_paid": 100,
+                "amount_paid_default": 100,
+                "amount_paid_normalized": 100,
                 "amount_written_off": 0,
                 "amount_written_off_default": 0,
                 "amount_written_off_normalized": 0,
-                "amount_unpaid": 3750000,
-                "amount_unpaid_default": 3750000,
-                "amount_unpaid_normalized": 3750000,
+                "amount_unpaid": 3749900,
+                "amount_unpaid_default": 3749900,
+                "amount_unpaid_normalized": 3749900,
                 "amount_credited": 0,
                 "amount_credited_default": 0,
                 "amount_credited_normalized": 0,
@@ -390,7 +390,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "bill_to": {
@@ -402,25 +402,25 @@
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1045"
+                        "id": "1014"
                     }
                 },
                 "document_type": {
                     "data": {
                         "type": "document_types",
-                        "id": "1070"
+                        "id": "1081"
                     }
                 },
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1024"
+                        "id": "1039"
                     }
                 },
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1034"
+                        "id": "1028"
                     }
                 },
                 "parent_invoice": {
@@ -429,7 +429,7 @@
                 "issuer": {
                     "data": {
                         "type": "people",
-                        "id": "1024"
+                        "id": "1039"
                     }
                 },
                 "bank_account": {
@@ -439,14 +439,17 @@
                     "data": [
                         {
                             "type": "invoice_attributions",
-                            "id": "1067"
+                            "id": "1079"
                         }
                     ]
                 },
                 "invoiced_budgets": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": [
+                        {
+                            "type": "invoiced_budgets",
+                            "id": "1082"
+                        }
+                    ]
                 },
                 "custom_field_people": {
                     "data": []

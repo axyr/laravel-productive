@@ -407,6 +407,14 @@ final readonly class Invoice extends Model
         return $this->hasMany('invoice_attributions', InvoiceAttribution::class);
     }
 
+    /**
+     * @return list<Model>
+     */
+    public function invoicedBudgets(): array
+    {
+        return $this->hasMany('invoiced_budgets', Model::class);
+    }
+
     public function issuer(): ?Model
     {
         return $this->belongsTo('issuer', Model::class);

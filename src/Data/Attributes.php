@@ -131,6 +131,25 @@ final readonly class Attributes
     }
 
     /**
+     * A list or object the API sends as JSON text, such as a person's availabilities, decoded.
+     * An array is returned as is; text that is not a JSON list or object reads as null.
+     *
+     * @return array<array-key, mixed>|null
+     */
+    public function json(string $key): ?array
+    {
+        $value = $this->mixed($key);
+
+        if (! is_string($value)) {
+            return is_array($value) ? $value : null;
+        }
+
+        $decoded = json_decode($value, true);
+
+        return is_array($decoded) ? $decoded : null;
+    }
+
+    /**
      * @template TEnum of BackedEnum
      *
      * @param  class-string<TEnum>  $enum

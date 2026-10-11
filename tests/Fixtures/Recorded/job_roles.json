@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "1084",
+            "type": "job_roles",
+            "attributes": {
+                "name": "Text 106",
+                "archived_at": null,
+                "created_at": "2026-10-11T16:23:50.023+02:00",
+                "updated_at": "2026-10-11T16:23:50.023+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                }
+            }
+        }
+    ]
+}

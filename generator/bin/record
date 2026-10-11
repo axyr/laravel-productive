@@ -6,6 +6,7 @@ declare(strict_types=1);
 use Axyr\Productive\Config\ProductiveConfig;
 use Axyr\Productive\Exceptions\RateLimitException;
 use Axyr\Productive\Generator\IrBuilder;
+use Axyr\Productive\Generator\RecordedTypes;
 use Axyr\Productive\Generator\Recording\Recorder;
 use Axyr\Productive\Http\CacheThrottle;
 use Axyr\Productive\Http\Connector;
@@ -49,7 +50,9 @@ $api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $root 
 $lastMonth = sprintf('filter[after]=%s&filter[before]=%s', date('Y-m-d', strtotime('-1 month')), date('Y-m-d'));
 $filters = array_fill_keys(require $root . '/generator/config/recording-date-filters.php', $lastMonth);
 
-$recorder = new Recorder($api, $connector, require $root . '/generator/config/undocumented.php', $filters);
+// Relationships the last recording saw without data are included too, to learn their cardinality.
+$untyped = RecordedTypes::fromFile($root . '/generator/recorded-types.json')->untypedRelationships();
+$recorder = new Recorder($api, $connector, require $root . '/generator/config/undocumented.php', $filters, $untyped);
 
 $directory = $root . '/recordings/' . date('Y-m-d-His');
 mkdir($directory, 0o700, true);
@@ -63,5 +66,8 @@ try {
     fwrite(STDERR, "\nStopped on a 429: " . $exception->getMessage() . "\n");
     exit(1);
 }
+
+// Only a finished run is marked complete; record:types and record:fixtures ignore any other.
+touch($directory . '/.complete');
 
 echo "\nRecorded to " . $directory . "\n";

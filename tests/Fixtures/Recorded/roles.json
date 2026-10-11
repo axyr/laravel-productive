@@ -1,14 +1,14 @@
 {
     "data": [
         {
-            "id": "1089",
+            "id": "1103",
             "type": "roles",
             "attributes": {
-                "base_role_id": 1084,
-                "description": "Text 145",
-                "access_description": "Text 146",
-                "best_when_description": "Text 147",
-                "name": "Text 148",
+                "base_role_id": 1098,
+                "description": "Text 162",
+                "access_description": "Text 163",
+                "best_when_description": "Text 164",
+                "name": "Text 165",
                 "people_count": 1,
                 "active_users_count": 1,
                 "inactive_users_count": 0,
@@ -16,7 +16,7 @@
                 "inactive_agents_count": 0,
                 "permissions": [],
                 "editable_by_user": false,
-                "user_type_id": 1013,
+                "user_type_id": 1024,
                 "principal_type": "user",
                 "resolved_permissions": {
                     "assistant_view": true,
@@ -30,20 +30,20 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }
         },
         {
-            "id": "1097",
+            "id": "1107",
             "type": "roles",
             "attributes": {
-                "base_role_id": 1013,
-                "description": "Text 149",
-                "access_description": "Text 150",
+                "base_role_id": 1024,
+                "description": "Text 166",
+                "access_description": "Text 167",
                 "best_when_description": null,
-                "name": "Text 151",
+                "name": "Text 168",
                 "people_count": 1,
                 "active_users_count": 1,
                 "inactive_users_count": 0,
@@ -51,7 +51,7 @@
                 "inactive_agents_count": 0,
                 "permissions": [],
                 "editable_by_user": false,
-                "user_type_id": 1013,
+                "user_type_id": 1024,
                 "principal_type": "user",
                 "resolved_permissions": {
                     "assistant_view": true,
@@ -65,20 +65,20 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }
         },
         {
-            "id": "1098",
+            "id": "1116",
             "type": "roles",
             "attributes": {
-                "base_role_id": 1038,
-                "description": "Text 152",
+                "base_role_id": 1051,
+                "description": "Text 169",
                 "access_description": null,
                 "best_when_description": null,
-                "name": "Text 153",
+                "name": "Text 170",
                 "people_count": 0,
                 "active_users_count": 0,
                 "inactive_users_count": 0,
@@ -86,7 +86,7 @@
                 "inactive_agents_count": 0,
                 "permissions": [],
                 "editable_by_user": false,
-                "user_type_id": 1021,
+                "user_type_id": 1036,
                 "principal_type": "user",
                 "resolved_permissions": {
                     "assistant_view": true,
@@ -100,7 +100,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }

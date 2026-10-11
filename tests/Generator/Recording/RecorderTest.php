@@ -71,7 +71,7 @@ it('records the index, the first record and the index with every relationship in
         recordingOperation('tasks.create', OperationKind::Create, 'tasks', 'POST'),
         recordingOperation('tasks.show', OperationKind::Show, 'tasks/{id}'),
     ], 'Task')], [recordingModel('Task', ['assignee', 'project'])]);
-    $connector = new RecordingTestConnector(fn(Request $request): Response => jsonResponse(200, ['data' => [['id' => 7, 'type' => 'tasks']]], ['X-RateLimit-Remaining' => ['99'], 'Content-Type' => ['application/vnd.api+json'], 'Set-Cookie' => ['x']]));
+    $connector = new RecordingTestConnector(fn(Request $request): Response => jsonResponse(200, ['data' => [['id' => 7, 'type' => 'tasks']]], ['X-RateLimit-Limit' => ['100'], 'X-RateLimit-Remaining' => ['99'], 'X-RateLimit-Reset' => ['9'], 'Content-Type' => ['application/vnd.api+json'], 'Set-Cookie' => ['x']]));
 
     $recordings = iterator_to_array((new Recorder($api, $connector))->record());
 
@@ -79,7 +79,7 @@ it('records the index, the first record and the index with every relationship in
         ->and($recordings['tasks.index'])->toBe([
             'request' => ['method' => 'GET', 'path' => 'tasks', 'query' => 'page[size]=20'],
             'status' => 200,
-            'headers' => ['Content-Type' => 'application/vnd.api+json', 'X-RateLimit-Remaining' => '99'],
+            'headers' => ['Content-Type' => 'application/vnd.api+json', 'X-RateLimit-Limit' => '100', 'X-RateLimit-Remaining' => '99', 'X-RateLimit-Reset' => '9'],
             'body' => ['data' => [['id' => 7, 'type' => 'tasks']]],
         ])
         ->and($recordings['tasks.show']['request'])->toBe(['method' => 'GET', 'path' => 'tasks/7', 'query' => ''])
@@ -137,7 +137,8 @@ it('keeps a body that is not JSON as a string', function () {
 
     $recordings = iterator_to_array((new Recorder($api, new RecordingTestConnector(fn(): Response => new Response(502, [], 'Bad gateway'))))->record());
 
-    expect($recordings['tasks.index']['body'])->toBe('Bad gateway');
+    expect($recordings['tasks.index']['body'])->toBe('Bad gateway')
+        ->and($recordings['tasks.index']['headers'])->toBe([]);
 });
 
 it('skips authentication, public links and resources without a GET index', function () {
@@ -160,7 +161,7 @@ it('records a resource without a show or a model as its index only', function ()
     $recordings = iterator_to_array((new Recorder($api, $connector))->record());
 
     expect(array_keys($recordings))->toBe(['reports.time_reports.index'])
-        ->and($connector->sent[0]->rateLimits)->toEqual([RateLimit::reports(), Recorder::pace()])
+        ->and($connector->sent[0]->rateLimits)->toEqual([RateLimit::reports(), Recorder::reportPace(), Recorder::pace()])
         ->and($connector->sent[0]->requiresOrganization)->toBeTrue();
 });
 
@@ -184,7 +185,8 @@ it('probes undocumented resources for their status only', function () {
     expect($recordings)->toBe([
         'undocumented.meetings' => ['request' => ['method' => 'GET', 'path' => 'meetings', 'query' => 'page[size]=1'], 'status' => 200],
         'undocumented.reports.new_time_reports' => ['request' => ['method' => 'GET', 'path' => 'reports/new_time_reports', 'query' => 'page[size]=1'], 'status' => 404],
-    ]);
+    ])
+        ->and($connector->sent[0]->requiresOrganization)->toBeTrue();
 });
 
 it('stops on the first 429 without recording it', function () {
@@ -217,8 +219,9 @@ it('redacts secrets in recorded bodies', function () {
     expect($recordings['webhooks.index']['body'])->toBe(['data' => [], 'meta' => ['secret' => '[redacted]']]);
 });
 
-it('paces every request to one per second', function () {
-    expect(Recorder::pace())->toEqual(new RateLimit('recorder', 1, 1));
+it('paces every request to one per second, and reports to one per four seconds', function () {
+    expect(Recorder::pace())->toEqual(new RateLimit('recorder', 1, 1))
+        ->and(Recorder::reportPace())->toEqual(new RateLimit('recorder-reports', 1, 4));
 });
 
 it('adds the configured filter to the index and include queries of a path', function () {
@@ -235,4 +238,13 @@ it('adds the configured filter to the index and include queries of a path', func
         'filter[after]=2026-09-09&filter[before]=2026-10-09&page[size]=5&include=person',
         'page[size]=20',
     ]);
+});
+
+it('also includes relationships an earlier recording saw without data', function () {
+    $api = new Api([recordingResource('tasks', [recordingOperation('tasks.index', OperationKind::Index, 'tasks')], 'Task')], [recordingModel('Task', ['project'])]);
+    $connector = new RecordingTestConnector(fn(): Response => jsonResponse(200, ['data' => [['id' => '1', 'type' => 'tasks']]]));
+
+    iterator_to_array((new Recorder($api, $connector, untyped: ['tasks' => ['subtasks', 'project', 'todos'], 'people' => ['manager']]))->record());
+
+    expect($connector->sent[1]->query)->toBe('page[size]=5&include=project,subtasks,todos');
 });

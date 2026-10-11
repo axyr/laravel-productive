@@ -1,20 +1,20 @@
 {
     "data": [
         {
-            "id": "1074",
+            "id": "1088",
             "type": "memberships",
             "attributes": {
-                "access_type_id": 1075,
+                "access_type_id": 1089,
                 "dynamic_group_id": null,
                 "options": [],
                 "target_type": "project",
-                "type_id": 1013
+                "type_id": 1024
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -80,20 +80,20 @@
             }
         },
         {
-            "id": "1076",
+            "id": "1090",
             "type": "memberships",
             "attributes": {
-                "access_type_id": 1075,
-                "dynamic_group_id": 1077,
+                "access_type_id": 1089,
+                "dynamic_group_id": 1091,
                 "options": [],
                 "target_type": "deal",
-                "type_id": 1021
+                "type_id": 1036
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -159,26 +159,26 @@
             }
         },
         {
-            "id": "1074",
+            "id": "1088",
             "type": "memberships",
             "attributes": {
-                "access_type_id": 1075,
+                "access_type_id": 1089,
                 "dynamic_group_id": null,
                 "options": [],
                 "target_type": "project",
-                "type_id": 1013
+                "type_id": 1024
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1024"
+                        "id": "1039"
                     }
                 },
                 "team": {
@@ -194,9 +194,7 @@
                     "data": null
                 },
                 "meeting": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": null
                 },
                 "page": {
                     "data": null
@@ -204,7 +202,7 @@
                 "project": {
                     "data": {
                         "type": "projects",
-                        "id": "1058"
+                        "id": "1069"
                     }
                 },
                 "survey": {
@@ -214,32 +212,28 @@
                     "data": null
                 },
                 "skill": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": null
                 },
                 "artifact": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": null
                 }
             }
         },
         {
-            "id": "1076",
+            "id": "1090",
             "type": "memberships",
             "attributes": {
-                "access_type_id": 1075,
-                "dynamic_group_id": 1077,
+                "access_type_id": 1089,
+                "dynamic_group_id": 1091,
                 "options": [],
                 "target_type": "deal",
-                "type_id": 1021
+                "type_id": 1036
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -254,16 +248,14 @@
                 "deal": {
                     "data": {
                         "type": "deals",
-                        "id": "1025"
+                        "id": "1026"
                     }
                 },
                 "filter": {
                     "data": null
                 },
                 "meeting": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": null
                 },
                 "page": {
                     "data": null
@@ -278,14 +270,10 @@
                     "data": null
                 },
                 "skill": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": null
                 },
                 "artifact": {
-                    "meta": {
-                        "included": false
-                    }
+                    "data": null
                 }
             }
         }

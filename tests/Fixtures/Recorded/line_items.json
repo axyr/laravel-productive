@@ -1,14 +1,14 @@
 {
     "data": [
         {
-            "id": "1071",
+            "id": "1085",
             "type": "line_items",
             "attributes": {
-                "unit_id": 1013,
+                "unit_id": 1024,
                 "position": 1,
                 "quantity": "35.0",
                 "discount": null,
-                "description": "Text 94",
+                "description": "Text 108",
                 "tax_name": null,
                 "tax_value": null,
                 "manual_entry": false,
@@ -34,7 +34,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "invoice": {
@@ -70,14 +70,14 @@
             }
         },
         {
-            "id": "1071",
+            "id": "1085",
             "type": "line_items",
             "attributes": {
-                "unit_id": 1013,
+                "unit_id": 1024,
                 "position": 1,
                 "quantity": "35.0",
                 "discount": null,
-                "description": "Text 94",
+                "description": "Text 108",
                 "tax_name": null,
                 "tax_value": null,
                 "manual_entry": false,
@@ -103,13 +103,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "invoice": {
                     "data": {
                         "type": "invoices",
-                        "id": "1072"
+                        "id": "1086"
                     }
                 },
                 "service": {
@@ -121,7 +121,7 @@
                 "service_type": {
                     "data": {
                         "type": "service_types",
-                        "id": "1073"
+                        "id": "1087"
                     }
                 },
                 "tax_rate": {

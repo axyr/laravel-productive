@@ -1,14 +1,14 @@
 {
     "data": [
         {
-            "id": "Text 97",
+            "id": "Text 111",
             "type": "new_time_reports",
             "attributes": {
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
                 "group": "person",
-                "count": 1,
+                "count": 3,
                 "formula_fields": [],
                 "future": null,
                 "billing_type": null,
@@ -42,9 +42,9 @@
                 "overtime_time": 0,
                 "working_days": 1,
                 "year": "2026",
-                "quarter": "Text 29",
-                "month": "Text 30",
-                "week": "Text 31",
+                "quarter": "Text 42",
+                "month": "Text 43",
+                "week": "Text 44",
                 "day": "2026-10-09",
                 "average_cost_rate": 0,
                 "average_cost_rate_default": 0,
@@ -65,18 +65,18 @@
                 "total_draft_scheduled_cost_default": 0,
                 "total_draft_scheduled_cost_normalized": 0,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 }
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -95,7 +95,7 @@
             }
         },
         {
-            "id": "Text 98",
+            "id": "Text 112",
             "type": "new_time_reports",
             "attributes": {
                 "currency": "USD",
@@ -108,9 +108,9 @@
                 "billing_type": null,
                 "stage_type": 2,
                 "date_period": null,
-                "capacity": 11040,
-                "user_capacity": 11040,
-                "available_time": 11040,
+                "capacity": 10080,
+                "user_capacity": 10080,
+                "available_time": 10080,
                 "scheduled_time": 480,
                 "draft_scheduled_time": 0,
                 "scheduled_internal_time": 480,
@@ -134,11 +134,11 @@
                 "recognized_time": 2400,
                 "holiday_time": 0,
                 "overtime_time": 0,
-                "working_days": 23,
+                "working_days": 21,
                 "year": "2026",
-                "quarter": "Text 29",
-                "month": "Text 30",
-                "week": "Text 31",
+                "quarter": "Text 42",
+                "month": "Text 43",
+                "week": "Text 44",
                 "day": "2026-10-09",
                 "average_cost_rate": 4545,
                 "average_cost_rate_default": 4545,
@@ -159,18 +159,18 @@
                 "total_draft_scheduled_cost_default": 0,
                 "total_draft_scheduled_cost_normalized": 0,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 }
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -189,14 +189,14 @@
             }
         },
         {
-            "id": "Text 97",
+            "id": "Text 111",
             "type": "new_time_reports",
             "attributes": {
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
                 "group": "person",
-                "count": 1,
+                "count": 3,
                 "formula_fields": [],
                 "future": null,
                 "billing_type": null,
@@ -230,9 +230,9 @@
                 "overtime_time": 0,
                 "working_days": 1,
                 "year": "2026",
-                "quarter": "Text 29",
-                "month": "Text 30",
-                "week": "Text 31",
+                "quarter": "Text 42",
+                "month": "Text 43",
+                "week": "Text 44",
                 "day": "2026-10-09",
                 "average_cost_rate": 0,
                 "average_cost_rate_default": 0,
@@ -253,18 +253,18 @@
                 "total_draft_scheduled_cost_default": 0,
                 "total_draft_scheduled_cost_normalized": 0,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 }
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -273,7 +273,7 @@
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1002"
+                        "id": "1006"
                     }
                 },
                 "event": {

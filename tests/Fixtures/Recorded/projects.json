@@ -1,23 +1,23 @@
 {
     "data": [
         {
-            "id": "1065",
+            "id": "1018",
             "type": "projects",
             "attributes": {
-                "name": "Text 141",
+                "name": "Text 14",
                 "number": "2",
                 "preferences": {
                     "navigation_order": [
-                        "Text 142",
-                        "Text 143",
-                        "Text 144",
+                        "Text 156",
+                        "Text 157",
+                        "Text 158",
                         "time"
                     ]
                 },
                 "project_number": "2",
-                "project_type_id": 1021,
+                "project_type_id": 1036,
                 "project_color_id": null,
-                "last_activity_at": "2026-10-09T13:02:38.000+02:00",
+                "last_activity_at": "2026-10-11T16:24:03.000+02:00",
                 "tag_colors": [],
                 "archived_at": null,
                 "created_at": "2026-10-09T13:02:35.487+02:00",
@@ -41,7 +41,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "company": {
@@ -87,23 +87,23 @@
             }
         },
         {
-            "id": "1065",
+            "id": "1018",
             "type": "projects",
             "attributes": {
-                "name": "Text 141",
+                "name": "Text 14",
                 "number": "2",
                 "preferences": {
                     "navigation_order": [
-                        "Text 142",
-                        "Text 143",
-                        "Text 144",
+                        "Text 156",
+                        "Text 157",
+                        "Text 158",
                         "time"
                     ]
                 },
                 "project_number": "2",
-                "project_type_id": 1021,
+                "project_type_id": 1036,
                 "project_color_id": null,
-                "last_activity_at": "2026-10-09T13:02:38.000+02:00",
+                "last_activity_at": "2026-10-11T16:24:03.000+02:00",
                 "tag_colors": [],
                 "archived_at": null,
                 "created_at": "2026-10-09T13:02:35.487+02:00",
@@ -127,37 +127,37 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1094"
+                        "id": "1110"
                     }
                 },
                 "project_manager": {
                     "data": {
                         "type": "people",
-                        "id": "1024"
+                        "id": "1039"
                     }
                 },
                 "last_actor": {
                     "data": {
                         "type": "people",
-                        "id": "1002"
+                        "id": "1006"
                     }
                 },
                 "workflow": {
                     "data": {
                         "type": "workflows",
-                        "id": "1095"
+                        "id": "1111"
                     }
                 },
                 "import": {
                     "data": {
                         "type": "imports",
-                        "id": "1030"
+                        "id": "1044"
                     }
                 },
                 "custom_field_people": {
@@ -168,6 +168,86 @@
                 },
                 "template_object": {
                     "data": null
+                }
+            }
+        },
+        {
+            "id": "1002",
+            "type": "projects",
+            "attributes": {
+                "name": "Text 1",
+                "number": null,
+                "preferences": [],
+                "project_number": null,
+                "project_type_id": 1024,
+                "project_color_id": null,
+                "last_activity_at": "2026-10-11T16:28:48.000+02:00",
+                "tag_colors": [],
+                "archived_at": null,
+                "created_at": "2026-10-11T16:28:48.426+02:00",
+                "template": true,
+                "duplication_status": "idle",
+                "custom_fields": null,
+                "description": null,
+                "task_custom_fields_ids": null,
+                "task_custom_fields_positions": null,
+                "page_custom_fields_ids": null,
+                "page_custom_fields_positions": null,
+                "sample_data": false,
+                "external_deal_id": null,
+                "exported": false,
+                "exported_at": null,
+                "export_id": null,
+                "export_url": null,
+                "export_status": "unexported",
+                "export_error": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project_manager": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "last_actor": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
                 }
             }
         }

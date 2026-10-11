@@ -34,6 +34,7 @@ it('keeps the spec type when its reader reads every recorded value', function (A
     'only null and empty' => [AttributeType::String, ['null', 'empty']],
     'unknown kinds' => [AttributeType::String, ['nonsense']],
     'object field with lists' => [AttributeType::Object, ['list']],
+    'string field with json text' => [AttributeType::String, ['json-text']],
 ]);
 
 it('overrides the spec type when a recorded value is unreadable', function (AttributeType $spec, array $kinds, AttributeType $recorded) {
@@ -49,6 +50,7 @@ it('overrides the spec type when a recorded value is unreadable', function (Attr
     'string sent for an object' => [AttributeType::Object, ['string'], AttributeType::String],
     'int sent for a bool' => [AttributeType::Bool, ['int'], AttributeType::Int],
     'list and map sent for a string' => [AttributeType::String, ['list', 'object'], AttributeType::Mixed],
+    'json text sent for a list' => [AttributeType::List, ['json-text'], AttributeType::Json],
 ]);
 
 it('adds undocumented attributes with their recorded type', function () {

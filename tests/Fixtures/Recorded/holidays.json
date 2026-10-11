@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "id": "1078",
+            "type": "holidays",
+            "attributes": {
+                "name": "Text 95",
+                "date": "2026-12-26"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "holiday_calendar": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1078",
+            "type": "holidays",
+            "attributes": {
+                "name": "Text 95",
+                "date": "2026-12-26"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "holiday_calendar": {
+                    "data": {
+                        "type": "holiday_calendars",
+                        "id": "1077"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
+                    }
+                }
+            }
+        }
+    ]
+}

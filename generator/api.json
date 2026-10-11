@@ -16193,6 +16193,13 @@
                     "type": "string"
                 },
                 {
+                    "name": "local_bank_code",
+                    "property": "localBankCode",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "name",
                     "property": "name",
                     "type": "string",
@@ -26201,6 +26208,12 @@
                     "target_type": "invoice_attributions"
                 },
                 {
+                    "name": "invoiced_budgets",
+                    "to_many": true,
+                    "target_type": null,
+                    "undocumented": true
+                },
+                {
                     "name": "issuer",
                     "to_many": false,
                     "target_type": null
@@ -30544,7 +30557,7 @@
                 {
                     "name": "availabilities",
                     "property": "availabilities",
-                    "type": "string",
+                    "type": "json",
                     "description": "The person's work availability windows.",
                     "spec_type": "list"
                 },
@@ -30856,6 +30869,12 @@
                     "name": "organization",
                     "to_many": false,
                     "target_type": "organizations"
+                },
+                {
+                    "name": "person_session",
+                    "to_many": false,
+                    "target_type": null,
+                    "undocumented": true
                 },
                 {
                     "name": "service_types",
@@ -32670,6 +32689,13 @@
                     "description": "Date when this proposal was issued."
                 },
                 {
+                    "name": "decline_reason",
+                    "property": "declineReason",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "declined_at",
                     "property": "declinedAt",
                     "type": "date-time"
@@ -32727,6 +32753,13 @@
                     "type": "date-time"
                 },
                 {
+                    "name": "link_expires_at",
+                    "property": "linkExpiresAt",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "link_status",
                     "property": "linkStatus",
                     "type": "string",
@@ -32760,6 +32793,13 @@
                     "type": "string"
                 },
                 {
+                    "name": "password",
+                    "property": "password",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "pdf_url",
                     "property": "pdfUrl",
                     "type": "string",
@@ -32778,6 +32818,13 @@
                     "description": "The client's purchase order number associated with this proposal."
                 },
                 {
+                    "name": "responded_via_public_link",
+                    "property": "respondedViaPublicLink",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "responder_email",
                     "property": "responderEmail",
                     "type": "string",
@@ -32788,6 +32835,34 @@
                     "property": "responderName",
                     "type": "string",
                     "description": "The name of the person who responded to (signed) the proposal."
+                },
+                {
+                    "name": "retainer_interval",
+                    "property": "retainerInterval",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "retainer_interval_count",
+                    "property": "retainerIntervalCount",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "revenue_distribution_end_on",
+                    "property": "revenueDistributionEndOn",
+                    "type": "date",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "revenue_distribution_start_on",
+                    "property": "revenueDistributionStartOn",
+                    "type": "date",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "sent_at",
@@ -32806,6 +32881,13 @@
                     "property": "signedPdfUrl",
                     "type": "string",
                     "description": "URL of the audit trail PDF for this proposal, capturing signature and viewing history."
+                },
+                {
+                    "name": "source",
+                    "property": "source",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "status",
@@ -32997,8 +33079,9 @@
                 {
                     "name": "signed",
                     "property": "signed",
-                    "type": "int",
-                    "description": "Whether the proposals in this report row have been signed by the client."
+                    "type": "bool",
+                    "description": "Whether the proposals in this report row have been signed by the client.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "signed_by_email",
@@ -36704,6 +36787,13 @@
                     "description": "Timestamp when this survey was created."
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "public_uuid",
                     "property": "publicUuid",
                     "type": "string",
@@ -37498,6 +37588,12 @@
                     "target_type": "tasks"
                 },
                 {
+                    "name": "placeholder_usages",
+                    "to_many": true,
+                    "target_type": null,
+                    "undocumented": true
+                },
+                {
                     "name": "project",
                     "to_many": false,
                     "target_type": "projects"
@@ -37513,6 +37609,18 @@
                     "target_type": "services"
                 },
                 {
+                    "name": "subtasks",
+                    "to_many": true,
+                    "target_type": null,
+                    "undocumented": true
+                },
+                {
+                    "name": "task_dependencies",
+                    "to_many": true,
+                    "target_type": null,
+                    "undocumented": true
+                },
+                {
                     "name": "task_list",
                     "to_many": false,
                     "target_type": "task_lists"
@@ -37521,6 +37629,12 @@
                     "name": "template_object",
                     "to_many": false,
                     "target_type": null
+                },
+                {
+                    "name": "todos",
+                    "to_many": true,
+                    "target_type": "todos",
+                    "undocumented": true
                 },
                 {
                     "name": "workflow_status",
@@ -38217,6 +38331,12 @@
                     "name": "filter",
                     "to_many": false,
                     "target_type": "filters"
+                },
+                {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
                 },
                 {
                     "name": "page",
@@ -39268,6 +39388,12 @@
                     "target_type": "people"
                 },
                 {
+                    "name": "person_manager",
+                    "to_many": false,
+                    "target_type": "people",
+                    "undocumented": true
+                },
+                {
                     "name": "person_report",
                     "to_many": false,
                     "target_type": "person_reports"
@@ -40011,6 +40137,13 @@
                     "type": "int"
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "disabled_tracking_message",
                     "property": "disabledTrackingMessage",
                     "type": "string",
@@ -40057,6 +40190,20 @@
                     "property": "noteMandatory",
                     "type": "bool",
                     "description": "When true, a note is required on every time entry submitted."
+                },
+                {
+                    "name": "overtime_cost_multiplier",
+                    "property": "overtimeCostMultiplier",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "overtime_enabled",
+                    "property": "overtimeEnabled",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "requires_service",

@@ -73,6 +73,7 @@ final class Samples
             AttributeType::Time => '09:00',
             AttributeType::Object => ['1' => self::scalar($attribute->items)],
             AttributeType::List => [self::scalar($attribute->items)],
+            AttributeType::Json => ['Example'],
             AttributeType::String, AttributeType::Mixed => 'Example',
         };
     }

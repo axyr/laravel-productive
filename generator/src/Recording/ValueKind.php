@@ -21,6 +21,7 @@ enum ValueKind: string
     case Date = 'date';
     case DateTime = 'date-time';
     case String = 'string';
+    case JsonText = 'json-text';
     case Empty = 'empty';
     case List = 'list';
     case Object = 'object';
@@ -47,6 +48,7 @@ enum ValueKind: string
             preg_match('/^-?\d+\.\d+$/', $value) === 1 => self::DecimalString,
             preg_match('/^\d{4}-\d{2}-\d{2}$/', $value) === 1 => self::Date,
             preg_match('/^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}/', $value) === 1 => self::DateTime,
+            is_array(json_decode($value, true)) => self::JsonText,
             default => self::String,
         };
     }
@@ -67,6 +69,7 @@ enum ValueKind: string
             self::Date => '2026-01-02',
             self::DateTime => '2026-01-02T03:04:05.000+01:00',
             self::String => 'text',
+            self::JsonText => '[["a"]]',
             self::Empty => [],
             self::List => ['a'],
             self::Object => ['a' => 1],
@@ -106,7 +109,8 @@ enum ValueKind: string
             $within(self::Int, self::Float) => AttributeType::Float,
             $within(self::Date) => AttributeType::Date,
             $within(self::Date, self::DateTime) => AttributeType::DateTime,
-            $within(self::String, self::IntegerString, self::DecimalString, self::Date, self::DateTime) => AttributeType::String,
+            $within(self::JsonText) => AttributeType::Json,
+            $within(self::String, self::IntegerString, self::DecimalString, self::Date, self::DateTime, self::JsonText) => AttributeType::String,
             $within(self::List) => AttributeType::List,
             $within(self::Object) => AttributeType::Object,
             default => AttributeType::Mixed,

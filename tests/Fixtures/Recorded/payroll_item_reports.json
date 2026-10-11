@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 120",
+            "id": "Text 135",
             "type": "payroll_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -10,10 +10,10 @@
                 "group": "payroll_item",
                 "count": 10,
                 "formula_fields": [],
-                "payroll_item_id": 1020,
+                "payroll_item_id": 1035,
                 "payroll_item_type": "booking",
-                "salary_type_id": 1013,
-                "role_id": 1084,
+                "salary_type_id": 1024,
+                "role_id": 1098,
                 "person_type": 1,
                 "person_status": 1,
                 "start_date": null,
@@ -24,11 +24,11 @@
                 "total_capacity": 0,
                 "total_availability": -2880,
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "total_cost": 0,
                 "total_cost_default": 0,
@@ -41,7 +41,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -80,7 +80,7 @@
             }
         },
         {
-            "id": "Text 121",
+            "id": "Text 136",
             "type": "payroll_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -89,10 +89,10 @@
                 "group": "payroll_item",
                 "count": 11,
                 "formula_fields": [],
-                "payroll_item_id": 1085,
+                "payroll_item_id": 1099,
                 "payroll_item_type": "booking",
                 "salary_type_id": null,
-                "role_id": 1021,
+                "role_id": 1036,
                 "person_type": 1,
                 "person_status": 1,
                 "start_date": null,
@@ -103,11 +103,11 @@
                 "total_capacity": 0,
                 "total_availability": -3360,
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "total_cost": 0,
                 "total_cost_default": 0,
@@ -120,7 +120,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -159,7 +159,7 @@
             }
         },
         {
-            "id": "Text 122",
+            "id": "Text 137",
             "type": "payroll_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -168,10 +168,10 @@
                 "group": "payroll_item",
                 "count": 449,
                 "formula_fields": [],
-                "payroll_item_id": 1078,
+                "payroll_item_id": 1092,
                 "payroll_item_type": "salary",
-                "salary_type_id": 1013,
-                "role_id": 1013,
+                "salary_type_id": 1024,
+                "role_id": 1024,
                 "person_type": 1,
                 "person_status": 1,
                 "start_date": "2026-10-09",
@@ -182,11 +182,11 @@
                 "total_capacity": 154080,
                 "total_availability": 154080,
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "total_cost": 0,
                 "total_cost_default": 0,
@@ -199,7 +199,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -238,7 +238,7 @@
             }
         },
         {
-            "id": "Text 120",
+            "id": "Text 135",
             "type": "payroll_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -247,10 +247,10 @@
                 "group": "payroll_item",
                 "count": 10,
                 "formula_fields": [],
-                "payroll_item_id": 1020,
+                "payroll_item_id": 1035,
                 "payroll_item_type": "booking",
-                "salary_type_id": 1013,
-                "role_id": 1084,
+                "salary_type_id": 1024,
+                "role_id": 1098,
                 "person_type": 1,
                 "person_status": 1,
                 "start_date": null,
@@ -261,11 +261,11 @@
                 "total_capacity": 0,
                 "total_availability": -2880,
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "total_cost": 0,
                 "total_cost_default": 0,
@@ -278,7 +278,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -304,13 +304,13 @@
                 "booking": {
                     "data": {
                         "type": "bookings",
-                        "id": "1020"
+                        "id": "1035"
                     }
                 },
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1026"
+                        "id": "1040"
                     }
                 },
                 "subsidiary": {
@@ -321,7 +321,7 @@
             }
         },
         {
-            "id": "Text 120",
+            "id": "Text 135",
             "type": "payroll_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -330,10 +330,10 @@
                 "group": "payroll_item",
                 "count": 10,
                 "formula_fields": [],
-                "payroll_item_id": 1020,
+                "payroll_item_id": 1035,
                 "payroll_item_type": "booking",
-                "salary_type_id": 1013,
-                "role_id": 1084,
+                "salary_type_id": 1024,
+                "role_id": 1098,
                 "person_type": 1,
                 "person_status": 1,
                 "start_date": null,
@@ -344,11 +344,11 @@
                 "total_capacity": 0,
                 "total_availability": -2880,
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "total_cost": 0,
                 "total_cost_default": 0,
@@ -361,7 +361,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -372,7 +372,7 @@
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1024"
+                        "id": "1039"
                     }
                 },
                 "salary": {
@@ -403,7 +403,7 @@
             }
         },
         {
-            "id": "Text 120",
+            "id": "Text 135",
             "type": "payroll_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -412,10 +412,10 @@
                 "group": "payroll_item",
                 "count": 10,
                 "formula_fields": [],
-                "payroll_item_id": 1020,
+                "payroll_item_id": 1035,
                 "payroll_item_type": "booking",
-                "salary_type_id": 1013,
-                "role_id": 1084,
+                "salary_type_id": 1024,
+                "role_id": 1098,
                 "person_type": 1,
                 "person_status": 1,
                 "start_date": null,
@@ -426,11 +426,11 @@
                 "total_capacity": 0,
                 "total_availability": -2880,
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "total_cost": 0,
                 "total_cost_default": 0,
@@ -443,7 +443,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -473,7 +473,7 @@
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1034"
+                        "id": "1028"
                     }
                 }
             }

@@ -74,6 +74,11 @@ final readonly class Template extends Model
         return $this->belongsTo('filter', Filter::class);
     }
 
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
+    }
+
     public function page(): ?Page
     {
         return $this->belongsTo('page', Page::class);

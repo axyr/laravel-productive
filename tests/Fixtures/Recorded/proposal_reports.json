@@ -1,0 +1,93 @@
+{
+    "data": [
+        {
+            "id": "Text 159",
+            "type": "proposal_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "proposal",
+                "count": 1,
+                "formula_fields": [],
+                "status": "draft",
+                "link_status": "inactive",
+                "signed": false,
+                "signed_by_email": null,
+                "average_tax_rate_value": "0.0",
+                "created_at_period": null,
+                "sent_at_period": null,
+                "updated_at_period": null,
+                "status_changed_at_period": null,
+                "date_signed_period": null,
+                "total_budget_total": 8780000,
+                "total_budget_total_default": 8780000,
+                "total_budget_total_normalized": null,
+                "total_tax_amount": 0,
+                "total_tax_amount_default": 0,
+                "total_tax_amount_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "proposal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 159",
+            "type": "proposal_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "proposal",
+                "count": 1,
+                "formula_fields": [],
+                "status": "draft",
+                "link_status": "inactive",
+                "signed": false,
+                "signed_by_email": null,
+                "average_tax_rate_value": "0.0",
+                "created_at_period": null,
+                "sent_at_period": null,
+                "updated_at_period": null,
+                "status_changed_at_period": null,
+                "date_signed_period": null,
+                "total_budget_total": 8780000,
+                "total_budget_total_default": 8780000,
+                "total_budget_total_normalized": null,
+                "total_tax_amount": 0,
+                "total_tax_amount_default": 0,
+                "total_tax_amount_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "proposal": {
+                    "data": {
+                        "type": "proposals",
+                        "id": "1009"
+                    }
+                }
+            }
+        }
+    ]
+}

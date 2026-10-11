@@ -20,7 +20,9 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 $root = dirname(__DIR__, 2);
 Dotenv::createImmutable($root)->safeLoad();
-$runs = glob($root . '/recordings/*', GLOB_ONLYDIR) ?: [];
+// Finished recording runs only: named by date and marked complete. Seed logs and runs that are
+// still going or stopped on a 429 are skipped.
+$runs = array_map(dirname(...), glob($root . '/recordings/[0-9]*/.complete') ?: []);
 rsort($runs);
 $directory = $argv[1] ?? ($runs[0] ?? null);
 

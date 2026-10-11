@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1026",
+            "id": "1040",
             "type": "companies",
             "attributes": {
-                "name": "Text 3",
+                "name": "Text 15",
                 "billing_name": null,
                 "vat": null,
                 "default_currency": "USD",
@@ -15,7 +15,7 @@
                 "original_avatar_url": null,
                 "invoice_email_recipients": [],
                 "custom_fields": null,
-                "company_code": "Text 17",
+                "company_code": "Text 30",
                 "domain": null,
                 "domains": [],
                 "projectless_budgets": false,
@@ -36,7 +36,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "import": {
@@ -83,21 +83,21 @@
             }
         },
         {
-            "id": "1027",
+            "id": "1041",
             "type": "companies",
             "attributes": {
-                "name": "Text 18",
-                "billing_name": "Text 18",
+                "name": "Text 31",
+                "billing_name": "Text 31",
                 "vat": "0000",
                 "default_currency": null,
                 "created_at": "2026-10-09T13:02:33.227+02:00",
                 "last_activity_at": "2026-10-09T13:02:40.781+02:00",
                 "archived_at": null,
-                "avatar_url": "https://example.test/19",
-                "original_avatar_url": "https://example.test/19",
+                "avatar_url": "https://example.test/32",
+                "original_avatar_url": "https://example.test/32",
                 "invoice_email_recipients": [],
                 "custom_fields": null,
-                "company_code": "Text 20",
+                "company_code": "Text 33",
                 "domain": null,
                 "domains": [],
                 "projectless_budgets": true,
@@ -110,25 +110,25 @@
                 "contact": {
                     "phones": [
                         {
-                            "name": "Text 21",
-                            "phone": "Text 22",
-                            "contact_datum_id": 1028
+                            "name": "Text 34",
+                            "phone": "Text 35",
+                            "contact_datum_id": 1042
                         }
                     ],
                     "websites": [
                         {
-                            "name": "Text 21",
-                            "website": "https://example.test/23",
-                            "contact_datum_id": 1029
+                            "name": "Text 34",
+                            "website": "https://example.test/36",
+                            "contact_datum_id": 1043
                         }
                     ],
                     "addresses": [
                         {
-                            "city": "Text 24",
-                            "name": "Text 25",
+                            "city": "Text 37",
+                            "name": "Text 38",
                             "state": "",
-                            "address": "Text 26",
-                            "country": "Text 27"
+                            "address": "Text 39",
+                            "country": "Text 40"
                         }
                     ]
                 },
@@ -142,7 +142,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "import": {
@@ -189,10 +189,10 @@
             }
         },
         {
-            "id": "1026",
+            "id": "1040",
             "type": "companies",
             "attributes": {
-                "name": "Text 3",
+                "name": "Text 15",
                 "billing_name": null,
                 "vat": null,
                 "default_currency": "USD",
@@ -203,7 +203,7 @@
                 "original_avatar_url": null,
                 "invoice_email_recipients": [],
                 "custom_fields": null,
-                "company_code": "Text 17",
+                "company_code": "Text 30",
                 "domain": null,
                 "domains": [],
                 "projectless_budgets": false,
@@ -224,7 +224,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "import": {
@@ -257,21 +257,21 @@
             }
         },
         {
-            "id": "1027",
+            "id": "1041",
             "type": "companies",
             "attributes": {
-                "name": "Text 18",
-                "billing_name": "Text 18",
+                "name": "Text 31",
+                "billing_name": "Text 31",
                 "vat": "0000",
                 "default_currency": null,
                 "created_at": "2026-10-09T13:02:33.227+02:00",
                 "last_activity_at": "2026-10-09T13:02:40.781+02:00",
                 "archived_at": null,
-                "avatar_url": "https://example.test/19",
-                "original_avatar_url": "https://example.test/19",
+                "avatar_url": "https://example.test/32",
+                "original_avatar_url": "https://example.test/32",
                 "invoice_email_recipients": [],
                 "custom_fields": null,
-                "company_code": "Text 20",
+                "company_code": "Text 33",
                 "domain": null,
                 "domains": [],
                 "projectless_budgets": true,
@@ -284,25 +284,25 @@
                 "contact": {
                     "phones": [
                         {
-                            "name": "Text 21",
-                            "phone": "Text 22",
-                            "contact_datum_id": 1028
+                            "name": "Text 34",
+                            "phone": "Text 35",
+                            "contact_datum_id": 1042
                         }
                     ],
                     "websites": [
                         {
-                            "name": "Text 21",
-                            "website": "https://example.test/23",
-                            "contact_datum_id": 1029
+                            "name": "Text 34",
+                            "website": "https://example.test/36",
+                            "contact_datum_id": 1043
                         }
                     ],
                     "addresses": [
                         {
-                            "city": "Text 24",
-                            "name": "Text 25",
+                            "city": "Text 37",
+                            "name": "Text 38",
                             "state": "",
-                            "address": "Text 26",
-                            "country": "Text 27"
+                            "address": "Text 39",
+                            "country": "Text 40"
                         }
                     ]
                 },
@@ -316,13 +316,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "import": {
                     "data": {
                         "type": "imports",
-                        "id": "1030"
+                        "id": "1044"
                     }
                 },
                 "default_subsidiary": {

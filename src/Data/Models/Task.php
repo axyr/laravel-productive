@@ -267,6 +267,14 @@ final readonly class Task extends Model
         return $this->belongsTo('parent_task', Task::class);
     }
 
+    /**
+     * @return list<Model>
+     */
+    public function placeholderUsages(): array
+    {
+        return $this->hasMany('placeholder_usages', Model::class);
+    }
+
     public function project(): ?Project
     {
         return $this->belongsTo('project', Project::class);
@@ -282,6 +290,22 @@ final readonly class Task extends Model
         return $this->belongsTo('service', Service::class);
     }
 
+    /**
+     * @return list<Model>
+     */
+    public function subtasks(): array
+    {
+        return $this->hasMany('subtasks', Model::class);
+    }
+
+    /**
+     * @return list<Model>
+     */
+    public function taskDependencies(): array
+    {
+        return $this->hasMany('task_dependencies', Model::class);
+    }
+
     public function taskList(): ?TaskList
     {
         return $this->belongsTo('task_list', TaskList::class);
@@ -290,6 +314,14 @@ final readonly class Task extends Model
     public function templateObject(): ?Model
     {
         return $this->belongsTo('template_object', Model::class);
+    }
+
+    /**
+     * @return list<Todo>
+     */
+    public function todos(): array
+    {
+        return $this->hasMany('todos', Todo::class);
     }
 
     public function workflowStatus(): ?WorkflowStatus

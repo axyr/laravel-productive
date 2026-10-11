@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 180",
+            "id": "Text 203",
             "type": "time_entry_reports",
             "attributes": {
                 "currency": "USD",
@@ -11,9 +11,9 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 44",
-                "month": "Text 61",
-                "week": "Text 62",
+                "quarter": "Text 57",
+                "month": "Text 73",
+                "week": "Text 74",
                 "day": "2026-09-13",
                 "status": 1,
                 "jira_issue_id": null,
@@ -22,25 +22,25 @@
                 "invoicing_status": 1,
                 "section_name": null,
                 "billing_type": 1,
-                "unit_id": 1013,
-                "project_type_id": 1021,
-                "track_method_id": 1013,
+                "unit_id": 1024,
+                "project_type_id": 1036,
+                "track_method_id": 1024,
                 "autotracked": 0,
                 "stage_type": 2,
                 "intercompany_hours": 2,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "invoiced": false,
                 "overhead": false,
@@ -81,7 +81,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -100,7 +100,7 @@
             }
         },
         {
-            "id": "Text 180",
+            "id": "Text 203",
             "type": "time_entry_reports",
             "attributes": {
                 "currency": "USD",
@@ -110,9 +110,9 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 44",
-                "month": "Text 61",
-                "week": "Text 62",
+                "quarter": "Text 57",
+                "month": "Text 73",
+                "week": "Text 74",
                 "day": "2026-09-13",
                 "status": 1,
                 "jira_issue_id": null,
@@ -121,25 +121,25 @@
                 "invoicing_status": 1,
                 "section_name": null,
                 "billing_type": 1,
-                "unit_id": 1013,
-                "project_type_id": 1021,
-                "track_method_id": 1013,
+                "unit_id": 1024,
+                "project_type_id": 1036,
+                "track_method_id": 1024,
                 "autotracked": 0,
                 "stage_type": 2,
                 "intercompany_hours": 2,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "invoiced": false,
                 "overhead": false,
@@ -180,7 +180,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -189,12 +189,13 @@
                 "time_entry": {
                     "data": {
                         "type": "time_entries",
-                        "id": "1113"
+                        "id": "1134"
                     }
                 },
                 "person_manager": {
-                    "meta": {
-                        "included": false
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
                     }
                 }
             }

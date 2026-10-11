@@ -1,0 +1,77 @@
+{
+    "data": [
+        {
+            "id": "Text 160",
+            "type": "resource_request_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "resource_request",
+                "count": 1,
+                "status": "pending",
+                "booking_method": 1,
+                "started_on_period": null,
+                "ended_on_period": null,
+                "created_at_period": null,
+                "total_max_cost_per_hour": 0,
+                "total_max_cost_per_hour_default": 0,
+                "total_max_cost_per_hour_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "resource_request": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 160",
+            "type": "resource_request_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "resource_request",
+                "count": 1,
+                "status": "pending",
+                "booking_method": 1,
+                "started_on_period": null,
+                "ended_on_period": null,
+                "created_at_period": null,
+                "total_max_cost_per_hour": 0,
+                "total_max_cost_per_hour_default": 0,
+                "total_max_cost_per_hour_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "report": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "resource_request": {
+                    "data": {
+                        "type": "resource_requests",
+                        "id": "1113"
+                    }
+                }
+            }
+        }
+    ]
+}

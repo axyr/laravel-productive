@@ -26,6 +26,9 @@ final readonly class Survey extends Model
     /** Timestamp when this survey was created. */
     public ?DateTimeImmutable $createdAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     /** Public UUID used to identify this survey in shareable links. */
     public ?string $publicUuid;
 
@@ -43,6 +46,7 @@ final readonly class Survey extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->createdAt = $attributes->dateTime('created_at');
+        $this->description = $attributes->mixed('description');
         $this->publicUuid = $attributes->string('public_uuid');
         $this->status = $attributes->string('status');
         $this->submissionAccess = $attributes->string('submission_access');

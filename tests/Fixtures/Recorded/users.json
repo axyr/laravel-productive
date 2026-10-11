@@ -1,30 +1,30 @@
 {
     "data": [
         {
-            "id": "1079",
+            "id": "1093",
             "type": "users",
             "attributes": {
                 "updated_at": "2026-10-09T13:04:18.118+02:00",
-                "email": "person-104@example.test",
-                "first_name": "Text 123",
-                "last_name": "Text 124",
+                "email": "person-118@example.test",
+                "first_name": "Text 138",
+                "last_name": "Text 139",
                 "time_zone": "UTC",
                 "avatar_url": null,
-                "default_organization_id": 1005,
-                "default_organization_slug": "Text 187",
-                "intercom_hash": "Text 188",
+                "default_organization_id": 1004,
+                "default_organization_slug": "Text 211",
+                "intercom_hash": "Text 212",
                 "flags": [],
                 "newsletter_consent": false,
                 "newsletter_consent_at": null,
                 "slack_product_updates": true,
                 "ical_token": null,
-                "preferences": "Text 189",
+                "preferences": "Text 213",
                 "sysadmin": false,
                 "sysadmin_permissions": [],
                 "two_factor_auth": false,
                 "sso_provision": false,
                 "account_access_expires_at": null,
-                "locale": "Text 56"
+                "locale": "Text 68"
             }
         }
     ]

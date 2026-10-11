@@ -1,0 +1,86 @@
+{
+    "data": [
+        {
+            "id": "1139",
+            "type": "time_tracking_policies",
+            "attributes": {
+                "name": "Text 208",
+                "description": null,
+                "disabled_tracking_message": null,
+                "limited_tracking_message": null,
+                "full_day_absence_limit": null,
+                "half_day_absence_limit": null,
+                "holiday_limit": null,
+                "non_working_day_limit": null,
+                "restrict_time_entry_overlap": false,
+                "working_day_limit": null,
+                "created_at": "2026-10-11T16:24:00.186+02:00",
+                "updated_at": "2026-10-11T16:24:00.186+02:00",
+                "archived_at": null,
+                "assigned_people_count": 0,
+                "overtime_enabled": false,
+                "overtime_cost_multiplier": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "last_actor": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1139",
+            "type": "time_tracking_policies",
+            "attributes": {
+                "name": "Text 208",
+                "description": null,
+                "disabled_tracking_message": null,
+                "limited_tracking_message": null,
+                "full_day_absence_limit": null,
+                "half_day_absence_limit": null,
+                "holiday_limit": null,
+                "non_working_day_limit": null,
+                "restrict_time_entry_overlap": false,
+                "working_day_limit": null,
+                "created_at": "2026-10-11T16:24:00.186+02:00",
+                "updated_at": "2026-10-11T16:24:00.186+02:00",
+                "archived_at": null,
+                "assigned_people_count": 0,
+                "overtime_enabled": false,
+                "overtime_cost_multiplier": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "last_actor": {
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
+                    }
+                }
+            }
+        }
+    ]
+}

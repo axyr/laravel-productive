@@ -1,17 +1,17 @@
 {
     "data": [
         {
-            "id": "Text 10",
+            "id": "Text 23",
             "type": "booking_reports",
             "attributes": {
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
                 "group": "booking",
-                "count": 1,
+                "count": 3,
                 "formula_fields": [],
                 "start_date": "2026-10-09",
-                "end_date": "2026-10-09",
+                "end_date": "2026-10-11",
                 "approved_at": "2026-10-09",
                 "created_at": "2026-10-09",
                 "rejected_at": null,
@@ -27,11 +27,11 @@
                 "autotracking": false,
                 "average_recognized_margin": null,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "custom_fields": [],
                 "total_recognized_time": 0,
@@ -41,9 +41,9 @@
                 "created_at_period": null,
                 "rejected_at_period": null,
                 "canceled_at_period": null,
-                "average_blended_rate": 10000,
-                "average_blended_rate_default": 10000,
-                "average_blended_rate_normalized": 10000,
+                "average_blended_rate": 30000,
+                "average_blended_rate_default": 30000,
+                "average_blended_rate_normalized": 30000,
                 "total_recognized_revenue": 0,
                 "total_recognized_revenue_default": 0,
                 "total_recognized_revenue_normalized": 0,
@@ -61,7 +61,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -75,17 +75,17 @@
             }
         },
         {
-            "id": "Text 10",
+            "id": "Text 23",
             "type": "booking_reports",
             "attributes": {
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
                 "group": "booking",
-                "count": 1,
+                "count": 3,
                 "formula_fields": [],
                 "start_date": "2026-10-09",
-                "end_date": "2026-10-09",
+                "end_date": "2026-10-11",
                 "approved_at": "2026-10-09",
                 "created_at": "2026-10-09",
                 "rejected_at": null,
@@ -101,11 +101,11 @@
                 "autotracking": false,
                 "average_recognized_margin": null,
                 "people_custom_fields": {
-                    "1015": null,
-                    "1016": null,
-                    "1017": null,
-                    "1018": null,
-                    "1019": null
+                    "1030": null,
+                    "1031": null,
+                    "1032": null,
+                    "1033": null,
+                    "1034": null
                 },
                 "custom_fields": [],
                 "total_recognized_time": 0,
@@ -115,9 +115,9 @@
                 "created_at_period": null,
                 "rejected_at_period": null,
                 "canceled_at_period": null,
-                "average_blended_rate": 10000,
-                "average_blended_rate_default": 10000,
-                "average_blended_rate_normalized": 10000,
+                "average_blended_rate": 30000,
+                "average_blended_rate_default": 30000,
+                "average_blended_rate_normalized": 30000,
                 "total_recognized_revenue": 0,
                 "total_recognized_revenue_default": 0,
                 "total_recognized_revenue_normalized": 0,
@@ -135,7 +135,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -146,7 +146,7 @@
                 "booking": {
                     "data": {
                         "type": "bookings",
-                        "id": "1020"
+                        "id": "1035"
                     }
                 }
             }
