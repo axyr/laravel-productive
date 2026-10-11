@@ -210,3 +210,9 @@ it('writes a factory without defaults when the spec has no example', function ()
         }
         PHP . "\n");
 });
+
+it('suppresses the long-parameter warnings from ten fields on', function (int $fields, bool $suppressed) {
+    $attributes = array_map(fn(int $index): Attribute => new Attribute('field_' . $index, 'field' . $index, AttributeType::String), range(1, $fields));
+
+    expect(str_contains(InputEmitter::emit(new Input('LongData', 'long', $attributes), 'Long.'), 'PHPMD.ExcessiveParameterList'))->toBe($suppressed);
+})->with([[9, false], [10, true]]);

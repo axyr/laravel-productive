@@ -153,3 +153,10 @@ it('leaves out the description, the date import and accessors when there are non
         }
         PHP . "\n");
 });
+
+it('imports DateTimeImmutable for date-time attributes too', function () {
+    $model = new Model('Event', 'events', '', [new Attribute('created_at', 'createdAt', AttributeType::DateTime)], []);
+
+    expect((new ModelEmitter([]))->emit($model, 'https://x'))->toContain("use DateTimeImmutable;\n")
+        ->and((new ModelEmitter([]))->emit($model, 'https://x'))->toContain('public ?DateTimeImmutable $createdAt;');
+});

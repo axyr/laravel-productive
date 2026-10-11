@@ -133,3 +133,16 @@ it('refuses an enabled resource without a model', function () {
 
     expect(fn() => (new CodeGenerator($api, ['tags']))->files())->toThrow(RuntimeException::class, 'tags has no model to generate.');
 });
+
+it('writes the models in class order, whatever the order of the resources', function () {
+    [$api] = generatorApi();
+
+    $files = (new CodeGenerator($api, ['tasks', 'projects']))->files();
+
+    expect(array_slice(array_keys($files), 0, 4))->toBe([
+        'src/Data/Models/Project.php',
+        'src/Testing/Factories/ProjectFactory.php',
+        'src/Data/Models/Task.php',
+        'src/Testing/Factories/TaskFactory.php',
+    ]);
+});
