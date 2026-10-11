@@ -36,7 +36,9 @@ echo 'Mutating ' . count($paths) . " hand-written files.\n";
 // Not --parallel: parallel mutation runs report escaped mutants as killed.
 $command = [
     PHP_BINARY, '-d', 'pcov.directory=.', '-d', 'pcov.exclude=~(vendor|tests)~',
-    'vendor/bin/pest', '--mutate', '--everything', '--covered-only', '--no-cache', '--min=100',
+    // The drift group only proves the committed output equals the generator's: it kills a mutant
+    // because the output changed, not because it is wrong, and it reformats all generated files.
+    'vendor/bin/pest', '--mutate', '--everything', '--covered-only', '--no-cache', '--min=100', '--exclude-group=drift',
     '--path=' . implode(',', $paths),
     ...array_slice($argv, 1),
 ];
