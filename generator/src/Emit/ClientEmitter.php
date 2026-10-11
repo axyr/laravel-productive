@@ -151,6 +151,7 @@ final class ClientEmitter
             '        private ConnectorInterface $connector,',
             '        private ModelRegistry $registry,',
             '    ) {}',
+            '',
             ...self::accessorMethods($methods, '$this->connector, $this->registry'),
             '}',
         ];
