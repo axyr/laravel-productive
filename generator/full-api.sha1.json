@@ -879,7 +879,7 @@
     "src/Data/Input/UpdateWorkflowData.php": "fd62e4fb11514aaf6ca6da14eb9453d2399cd3cf",
     "src/Data/ModelMap.php": "da7532cdb847540d39e73b4ea61cd99b89c3722b",
     "src/Concerns/ProvidesResources.php": "055f1d1abfca3eab4e604399fc7ab96f99133522",
-    "src/Resources/Reports/Reports.php": "8967e872adae378af81978cbf73521c63b062ef6",
-    "src/Resources/Public/PublicResources.php": "4712e33e0d83a9f0162fefa510676473b85e0b86",
+    "src/Resources/Reports/Reports.php": "9420161bf297d306d83ee8c41fe3b0bfab13cf7b",
+    "src/Resources/Public/PublicResources.php": "e8b4ce966c16f06abc9efca30bd3ff665430c85d",
     "src/ProductiveFacade.php": "c801ce6c62b416d316a83308a2130edce0177932"
 }

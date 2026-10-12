@@ -60,6 +60,6 @@ final class FactoryEmitter
      */
     public static function attributes(Model $model): array
     {
-        return array_diff_key($model->example, ['id' => true, 'type' => true]);
+        return array_diff_key($model->example, array_flip(['id', 'type']));
     }
 }

@@ -80,7 +80,7 @@ final readonly class CodeGenerator
 
         foreach ($resources as $resource) {
             $model = $this->modelOf($resource);
-            $models[$model->class] = [$model, $resource->path];
+            $models[$model->class] ??= [$model, $resource->path];
         }
 
         ksort($models);

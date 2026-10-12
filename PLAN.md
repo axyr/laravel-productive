@@ -117,7 +117,11 @@ As built, these differ from the original plan:
        - The seeded paging loop, public page and artifact defaults, and JSON-encoding recorded bodies.
        - Seed precedence, recording which organization a request went to, and the vacuous rate-limit test.
     6. Honest generator tests:
-       - A mutation run without the drift group, with survivors pinned by unit tests.
+       - A mutation run without the drift group, with survivors pinned by unit tests. **Emitters done (2026-10-11, #15):**
+         - Every emitter has tests stating its exact output for cases covering its branches, each checked by hand.
+         - Mutation testing of `generator/src/Emit` without the drift group went from 65% (747 untested, 81 min) to 100% (52 min).
+         - The tests found two flaws: a model shared by two resources linked to the last resource's reference, and the group classes lacked a blank line.
+         - Still to do: a full nightly run of all hand-written code without the drift group, then `MUTATION_GATE` back to blocking.
        - Tests for the test helpers, and honest names for the "golden" tests.
     7. Mutation scope, **decided 2026-10-09: hand-written code only.**
        - The baseline nightly before Phase 3 took 2 h 6 min for 4,034 mutants. With all generated code the run would need about 12 hours of runner time every night.

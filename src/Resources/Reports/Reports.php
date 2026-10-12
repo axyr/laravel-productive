@@ -18,6 +18,7 @@ final readonly class Reports
         private ConnectorInterface $connector,
         private ModelRegistry $registry,
     ) {}
+
     public function automationReports(): AutomationReportResource
     {
         return new AutomationReportResource($this->connector, $this->registry);

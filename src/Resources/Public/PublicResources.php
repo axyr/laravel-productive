@@ -18,6 +18,7 @@ final readonly class PublicResources
         private ConnectorInterface $connector,
         private ModelRegistry $registry,
     ) {}
+
     public function artifacts(): PublicArtifactResource
     {
         return new PublicArtifactResource($this->connector, $this->registry);
