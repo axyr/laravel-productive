@@ -11,7 +11,7 @@ use Axyr\Productive\Exceptions\InvalidResponseException;
  */
 final class FollowedLinks
 {
-    /** @var array<string, true> */
+    /** @var list<string> */
     private array $links = [];
 
     public function __construct(
@@ -20,10 +20,10 @@ final class FollowedLinks
 
     public function follow(string $link): void
     {
-        if (isset($this->links[$link])) {
+        if (in_array($link, $this->links, true)) {
             throw new InvalidResponseException(sprintf('Productive returned the next page link "%s" twice [%s]; stopping instead of looping.', $link, $this->operation));
         }
 
-        $this->links[$link] = true;
+        $this->links[] = $link;
     }
 }

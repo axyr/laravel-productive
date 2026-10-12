@@ -9,6 +9,10 @@ use Axyr\Productive\Generator\IrBuilder;
 use PhpParser\ParserFactory;
 use Tests\Support\SpecExamples;
 
+// Every test here generates the whole API (several seconds), so mutation runs leave the file out:
+// the emitters' own tests pin their output and kill their mutants in milliseconds.
+pest()->group('full-api');
+
 /**
  * Every file the generator writes when the whole API is enabled.
  *
