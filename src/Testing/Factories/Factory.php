@@ -119,7 +119,7 @@ abstract class Factory
      */
     public function resources(array $attributes = []): array
     {
-        return array_map(fn(): array => $this->resource($attributes), range(1, max(1, $this->count)));
+        return $this->count < 1 ? [] : array_map(fn(): array => $this->resource($attributes), range(1, $this->count));
     }
 
     /**

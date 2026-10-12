@@ -31,6 +31,7 @@ final class ContactEntryFactory extends Factory
     {
         return [
             'contactable_type' => 'company',
+            'type' => 'main',
             'name' => 'Headquarters',
             'email' => 'hello@acmecorp.com',
             'phone' => '+1-555-0123',

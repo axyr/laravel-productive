@@ -113,7 +113,7 @@ As built, these differ from the original plan:
        - `docs/api-differences.md` lists every override.
        - Tests hydrate every recorded resource and check each value, and every recorded relationship must have an accessor. This fixes the 23 conflicts and the 29 missing relationships.
     4. Strict request validation: a `data` wrapper and the right `type` are required, unknown keys fail, every input class is validated in full, and the response kind and organization header are recomputed from the raw spec.
-    5. Fake fixes:
+    5. Fake fixes. **Done (2026-10-12):** bodies recorded as JSON, `assertSentToOrganization()` via the new `ConfigurableConnector` contract, `respond()` overrides earlier seeds, path patterns match absolute next links, public defaults typed, factories keep a real `type` attribute and `count(0)` gives none, the fake's deliberate differences documented. The items as found by the audit:
        - The seeded paging loop, public page and artifact defaults, and JSON-encoding recorded bodies.
        - Seed precedence, recording which organization a request went to, and the vacuous rate-limit test.
     6. Honest generator tests:
