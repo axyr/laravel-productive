@@ -25,6 +25,7 @@ final class ProjectFiles
 
         return [
             ...(new CodeGenerator($api, $enabled, self::stringMap(require $config . '/type-aliases.php')))->files(),
+            ReferenceEmitter::PATH => ReferenceEmitter::emit($api, $enabled),
             DifferencesEmitter::PATH => DifferencesEmitter::emit(
                 $api,
                 $enabled,
