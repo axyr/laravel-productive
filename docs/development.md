@@ -44,6 +44,8 @@ Do not add `--parallel`: in parallel mode Pest's mutation plugin reports escaped
 
 Productive's OpenAPI 3.1 spec is vendored at `resources/openapi/productive.json`, downloaded from `https://developer.productive.io/openapi.json`. The per-group download (`/reference/download_spec?group=…`) contains the same component schemas, filtered to one group's paths. Update the vendored file only on purpose, in its own commit.
 
+Every Monday the **Spec drift** workflow (`.github/workflows/spec-drift.yml`) downloads the spec, regenerates everything and opens a pull request when the generated SDK changed, with the operations added and removed and the test result. Productive's export reorders parameters from one download to the next, so a changed file alone opens nothing. A pull request opened with the default token does not start CI: add a fine-grained token as the `SPEC_DRIFT_TOKEN` secret, or close and reopen the PR. Run it by hand from the Actions tab.
+
 Known spec quirks the SDK handles:
 
 - **Bulk operations replace their single-resource twins.** OpenAPI allows one operation per path and method, so `POST /time_entries` only appears as `time_entries-create-bulk`. The single variant uses the same path with `Content-Type: application/vnd.api+json`; the bulk variant uses `; ext=bulk`. The same applies to line items, expense line items, expenses and purchase orders.
