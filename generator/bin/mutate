@@ -7,7 +7,9 @@ declare(strict_types=1);
  * Mutation testing of the hand-written code: the package core and the generator. Generated
  * classes are left out: their faults come from the emitters, which are mutated here, and their
  * output is covered by the contract tests and the drift check (PLAN.md, Phase 4 step 7).
- * Extra arguments are passed to Pest, e.g. `composer test:mutate -- --id=abc123`.
+ * `--scope=core` mutates src/ only, `--scope=generator` generator/src/ only; the default is both.
+ * The nightly runs the two scopes as parallel jobs. Other arguments are passed to Pest, e.g.
+ * `composer test:mutate -- --id=abc123`.
  */
 
 use Axyr\Productive\Generator\Emit\GeneratedFiles;
@@ -17,9 +19,25 @@ require __DIR__ . '/../../vendor/autoload.php';
 $root = dirname(__DIR__, 2);
 chdir($root);
 
+$scopes = ['core' => ['src'], 'generator' => ['generator/src'], 'all' => ['src', 'generator/src']];
+$arguments = array_slice($argv, 1);
+$scope = 'all';
+
+foreach ($arguments as $index => $argument) {
+    if (str_starts_with($argument, '--scope=')) {
+        $scope = substr($argument, strlen('--scope='));
+        unset($arguments[$index]);
+    }
+}
+
+if (! isset($scopes[$scope])) {
+    fwrite(STDERR, 'Unknown scope "' . $scope . '": use core, generator or all.' . "\n");
+    exit(1);
+}
+
 $paths = [];
 
-foreach (['src', 'generator/src'] as $directory) {
+foreach ($scopes[$scope] as $directory) {
     $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS));
 
     foreach ($files as $file) {
@@ -31,7 +49,7 @@ foreach (['src', 'generator/src'] as $directory) {
 
 sort($paths);
 
-echo 'Mutating ' . count($paths) . " hand-written files.\n";
+echo 'Mutating ' . count($paths) . ' hand-written files (' . $scope . ").\n";
 
 // Not --parallel: parallel mutation runs report escaped mutants as killed.
 $command = [
@@ -40,7 +58,7 @@ $command = [
     // because the output changed, not because it is wrong, and it reformats all generated files.
     'vendor/bin/pest', '--mutate', '--everything', '--covered-only', '--no-cache', '--min=100', '--exclude-group=drift',
     '--path=' . implode(',', $paths),
-    ...array_slice($argv, 1),
+    ...$arguments,
 ];
 
 passthru(implode(' ', array_map(escapeshellarg(...), $command)), $code);
