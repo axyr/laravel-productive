@@ -370,7 +370,7 @@ Each task is one branch + PR, sized for one developer run (opus, 120 turns), wit
 - composer.json (`axyr/laravel-productive`, `Axyr\Productive\`, PHP ^8.3, Laravel ^12|^13), copying the langfuse dev toolchain plus `pestphp/pest-plugin-type-coverage`.
 - pint.json, phpstan.neon.dist (max), phpmd.xml, phpunit.xml.dist (with a `Contract` suite and a `Live` suite excluded by default), `.githooks/pre-commit`, `.gitattributes` (export-ignore `generator/`, `tests/`, `docs/`, `art/`), and a CI workflow with the matrix + coverage/type/mutation jobs.
 - `ProductiveConfig`, `config/productive.php` (`PRODUCTIVE_API_TOKEN`, `PRODUCTIVE_ORGANIZATION_ID`, `PRODUCTIVE_BASE_URL`, timeout, retry, throttle, feature flags), the ServiceProvider (publishable config, scoped bindings), the facade stub, and the Version class.
-- Vendor the spec to `resources/openapi/productive.json` and the guides to `docs/vendor/`.
+- Vendor the spec to `resources/openapi/productive.json`. The guides are linked, not copied: see `docs/README.md`.
 - Skeleton README + docs index, CHANGELOG.
 - Acceptance: green `composer quality` at 100% coverage on the tiny surface; arch tests in place.
 
@@ -447,7 +447,7 @@ P-18 ends with an **empty allowlist** in `SpecCoverageTest`: all 668 operations 
 - First research whether Productive signs webhook payloads; the Webhooks tag docs + a live test webhook will tell.
 - Then build `Route::productiveWebhooks()`, the controller, a verification middleware (secret/signature, or a shared-secret URL token if unsigned), and typed `ProductiveWebhookReceived` events with hydrated models. The queued handler is optional.
 
-**P-20 Laravel niceties**
+**P-20 Laravel niceties** — **done (2026-10-12):** `php artisan productive:ping`; caching and queued-job release documented in `docs/configuration.md` and `docs/errors.md`. A built-in `->remember()` was left out: caching hydrated models inside the SDK is fragile across upgrades, and `Cache::remember()` around a query does the same.
 - `productive:ping`
 - Reference-data caching helper (`->remember($ttl)` on list queries, per the rate-limit guide's advice)
 - Multi-organization usage via `withOrganization()`/`withToken()` (scoped, Octane-safe)
@@ -456,9 +456,9 @@ P-18 ends with an **empty allowlist** in `SpecCoverageTest`: all 668 operations 
 **P-21 Documentation pass**
 - README in the langfuse style: banner, badges, quick start, features.
 - `docs/`: configuration, querying & filtering, pagination, creating/updating (the `Missing` semantics), actions & bulk, reports, errors & retries, rate limiting, webhooks, testing, architecture (mermaid), troubleshooting, plus a domain page per Phase-3 task.
-- Generated `docs/reference/` listing each HTTP endpoint ↔ SDK method.
+- Generated `docs/reference.md` listing each HTTP endpoint ↔ SDK method ↔ operation key — **done (2026-10-12)**, drift-checked.
 
-**P-22 Spec drift automation & release**
+**P-22 Spec drift automation & release** — the weekly workflow is done (2026-10-12): it opens a PR only when the generated SDK changes, because Productive's export reorders parameters between downloads. Release still to do.
 - A weekly GitHub Action downloads `openapi.json`, runs the generator and opens a PR if anything changed. It can be fed straight back into Taskforce as a task.
 - Tag `v0.1.0`, publish to Packagist, CHANGELOG.
 

@@ -65,6 +65,12 @@ PRODUCTIVE_API_TOKEN=your-token
 PRODUCTIVE_ORGANIZATION_ID=12345
 ```
 
+Check the connection:
+
+```bash
+php artisan productive:ping
+```
+
 Optionally publish the config:
 
 ```bash
@@ -112,6 +118,7 @@ Full reference in [docs/](docs/README.md):
 - [Testing](docs/testing.md): `Productive::fake()`, fake responses, factories, assertions
 - [Architecture](docs/architecture.md): how the layers fit together
 - [Development](docs/development.md): quality gate, the vendored spec, recording real responses and how endpoints are added
+- [Endpoint reference](docs/reference.md): every endpoint with the SDK method that calls it and its operation key
 - [API differences](docs/api-differences.md): where the live API differs from Productive's spec, and what the SDK does about it
 
 ## Endpoint coverage

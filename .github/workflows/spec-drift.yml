@@ -1,0 +1,97 @@
+name: Spec drift
+
+# Weekly, and on demand: download Productive's OpenAPI spec, regenerate the SDK and open a pull
+# request when the generated SDK changed. A new resource fails ApiTest until it is enabled in
+# generator/config/resources.php, which makes the PR the to-do list for the update.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  spec-drift:
+    runs-on: ubuntu-latest
+    name: Check the spec for changes
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # A pull request opened with the default token does not start CI. Add a fine-grained
+          # token with contents and pull-requests write access as SPEC_DRIFT_TOKEN to change that.
+          token: ${{ secrets.SPEC_DRIFT_TOKEN || github.token }}
+
+      - name: Download the spec
+        run: curl --fail --silent --show-error --location https://developer.productive.io/openapi.json --output resources/openapi/productive.json
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: dom, curl, libxml, mbstring, zip
+          coverage: none
+
+      - name: Install dependencies
+        run: composer update --prefer-stable --prefer-dist --no-interaction
+
+      # Productive's export does not keep the order of parameters stable, so the downloaded file
+      # changes every week. Only a change in what the generator makes of it counts.
+      - name: Regenerate
+        id: changed
+        run: |
+          git show HEAD:generator/api.json > /tmp/api-before.json
+          composer generate
+          composer generate:ir
+          composer generate:manifest
+          if git diff --quiet -- . ':(exclude)resources/openapi/productive.json'; then
+            echo "The spec changed nothing the SDK is generated from."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Test
+        id: tests
+        if: steps.changed.outputs.changed == 'true'
+        continue-on-error: true
+        run: vendor/bin/pest --exclude-group=drift
+
+      - name: Open a pull request
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.SPEC_DRIFT_TOKEN || github.token }}
+          TESTS: ${{ steps.tests.outcome }}
+          HAS_TOKEN: ${{ secrets.SPEC_DRIFT_TOKEN != '' }}
+        run: |
+          branch="spec/update-$(date +%Y-%m-%d)"
+          php -r '
+            $before = json_decode(file_get_contents("/tmp/api-before.json"), true);
+            $after = json_decode(file_get_contents("generator/api.json"), true);
+            $keys = fn(array $api): array => array_merge(...array_map(fn(array $resource): array => array_column($resource["operations"], "key"), $api["resources"]));
+            $added = array_diff($keys($after), $keys($before));
+            $removed = array_diff($keys($before), $keys($after));
+            echo "Operations added: " . count($added) . ($added === [] ? "" : " (" . implode(", ", array_slice($added, 0, 20)) . ")") . "\n";
+            echo "Operations removed: " . count($removed) . ($removed === [] ? "" : " (" . implode(", ", array_slice($removed, 0, 20)) . ")") . "\n";
+          ' > /tmp/summary.txt
+          {
+            echo "Productive's OpenAPI spec changed. This PR updates the vendored spec and regenerates the SDK."
+            echo
+            cat /tmp/summary.txt
+            echo
+            echo "Tests after regenerating: **${TESTS}**. Read the diff of \`docs/api-differences.md\`, enable any new resource in \`generator/config/resources.php\`, and record the API again if types may have changed."
+            if [ "$HAS_TOKEN" != "true" ]; then
+              echo
+              echo "CI does not start for pull requests opened with the default token: close and reopen this PR, or add a \`SPEC_DRIFT_TOKEN\` secret."
+            fi
+          } > /tmp/body.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add -A
+          git commit -m "Update the vendored Productive spec"
+          git push --force origin "$branch"
+          gh pr create --base main --head "$branch" --title "Update the Productive spec ($(date +%Y-%m-%d))" --body-file /tmp/body.md || gh pr edit "$branch" --body-file /tmp/body.md
