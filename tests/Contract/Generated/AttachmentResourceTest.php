@@ -45,7 +45,7 @@ it('attachments.create: POST /attachments', function () {
 
     expect($result)->toBeInstanceOf(Attachment::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('attachments-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('attachments-create', json_decode($request->body(), true), 'attachments');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('attachments')
@@ -61,7 +61,7 @@ it('attachments.update: PATCH /attachments/{id}', function () {
 
     expect($result)->toBeInstanceOf(Attachment::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('attachments-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('attachments-update', json_decode($request->body(), true), 'attachments');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('attachments/1')

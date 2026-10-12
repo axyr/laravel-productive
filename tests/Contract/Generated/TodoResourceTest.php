@@ -45,7 +45,7 @@ it('todos.create: POST /todos', function () {
 
     expect($result)->toBeInstanceOf(Todo::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('todos-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('todos-create', json_decode($request->body(), true), 'todos');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('todos')
@@ -61,7 +61,7 @@ it('todos.update: PATCH /todos/{id}', function () {
 
     expect($result)->toBeInstanceOf(Todo::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('todos-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('todos-update', json_decode($request->body(), true), 'todos');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('todos/1')

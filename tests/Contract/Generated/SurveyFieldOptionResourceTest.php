@@ -45,7 +45,7 @@ it('survey_field_options.create: POST /survey_field_options', function () {
 
     expect($result)->toBeInstanceOf(SurveyFieldOption::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('survey_field_options-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('survey_field_options-create', json_decode($request->body(), true), 'survey_field_options');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('survey_field_options')
@@ -61,7 +61,7 @@ it('survey_field_options.update: PATCH /survey_field_options/{id}', function () 
 
     expect($result)->toBeInstanceOf(SurveyFieldOption::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('survey_field_options-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('survey_field_options-update', json_decode($request->body(), true), 'survey_field_options');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('survey_field_options/1')

@@ -62,7 +62,7 @@ it('creates a task (tasks-create)', function () {
 
     expect($task)->toBeInstanceOf(Task::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-create', sentJson($request));
+        RequestSchema::assertValid('tasks-create', sentJson($request), 'tasks');
 
         return $request->method() === 'POST'
             && $request->url() === apiUrl('tasks')
@@ -106,7 +106,7 @@ it('updates a task (tasks-update)', function () {
     Productive::tasks()->update(120501, new UpdateTaskData(title: 'Renamed', dueDate: null));
 
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('tasks-update', sentJson($request));
+        RequestSchema::assertValidAttributes('tasks-update', sentJson($request), 'tasks');
 
         return $request->method() === 'PATCH'
             && $request->url() === apiUrl('tasks/120501')
@@ -138,7 +138,7 @@ it('copies a task (tasks-copy-copy)', function () {
 
     expect($copy)->toBeInstanceOf(Task::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-copy-copy', sentJson($request));
+        RequestSchema::assertValid('tasks-copy-copy', sentJson($request), 'tasks');
 
         return $request->method() === 'POST' && $request->url() === apiUrl('tasks/copy');
     });
@@ -150,7 +150,7 @@ it('repositions a task (tasks-reposition-reposition)', function () {
     Productive::tasks()->reposition(120501, new RepositionTaskData(moveAfterId: 555));
 
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-reposition-reposition', sentJson($request));
+        RequestSchema::assertValid('tasks-reposition-reposition', sentJson($request), 'tasks');
 
         return $request->method() === 'PATCH'
             && $request->url() === apiUrl('tasks/120501/reposition')
@@ -165,7 +165,7 @@ it('moves dependent tasks (tasks-move-dependent-move-dependent)', function () {
 
     expect($task)->toBeInstanceOf(Task::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-move-dependent-move-dependent', sentJson($request));
+        RequestSchema::assertValid('tasks-move-dependent-move-dependent', sentJson($request), 'tasks');
 
         return $request->method() === 'PATCH' && $request->url() === apiUrl('tasks/120501/move_dependent');
     });

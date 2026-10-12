@@ -45,7 +45,7 @@ it('entitlements.create: POST /entitlements', function () {
 
     expect($result)->toBeInstanceOf(Entitlement::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('entitlements-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('entitlements-create', json_decode($request->body(), true), 'entitlements');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('entitlements')
@@ -61,7 +61,7 @@ it('entitlements.update: PATCH /entitlements/{id}', function () {
 
     expect($result)->toBeInstanceOf(Entitlement::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('entitlements-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('entitlements-update', json_decode($request->body(), true), 'entitlements');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('entitlements/1')

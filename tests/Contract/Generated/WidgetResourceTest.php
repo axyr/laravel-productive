@@ -45,7 +45,7 @@ it('widgets.create: POST /widgets', function () {
 
     expect($result)->toBeInstanceOf(Widget::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('widgets-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('widgets-create', json_decode($request->body(), true), 'widgets');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('widgets')
@@ -57,16 +57,16 @@ it('widgets.create: POST /widgets', function () {
 it('widgets.update: PATCH /widgets/{id}', function () {
     fakeHttp(['*' => Fixtures::response('widgets-update', 'resource', 'widgets', 200)]);
 
-    $result = Productive::widgets()->update('1', ['attachment_ids' => 'Example']);
+    $result = Productive::widgets()->update('1', ['attachment_ids' => [1]]);
 
     expect($result)->toBeInstanceOf(Widget::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('widgets-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('widgets-update', json_decode($request->body(), true), 'widgets');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('widgets/1')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'widgets', 'id' => '1', 'attributes' => ['attachment_ids' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'widgets', 'id' => '1', 'attributes' => ['attachment_ids' => [1]]]];
     });
 });
 

@@ -45,7 +45,7 @@ it('people.create: POST /people', function () {
 
     expect($result)->toBeInstanceOf(Person::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('people-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('people-create', json_decode($request->body(), true), 'people');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('people')
@@ -61,7 +61,7 @@ it('people.update: PATCH /people/{id}', function () {
 
     expect($result)->toBeInstanceOf(Person::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('people-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('people-update', json_decode($request->body(), true), 'people');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('people/1')

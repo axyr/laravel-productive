@@ -45,7 +45,7 @@ it('pipelines.create: POST /pipelines', function () {
 
     expect($result)->toBeInstanceOf(Pipeline::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pipelines-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('pipelines-create', json_decode($request->body(), true), 'pipelines');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('pipelines')
@@ -61,7 +61,7 @@ it('pipelines.update: PATCH /pipelines/{id}', function () {
 
     expect($result)->toBeInstanceOf(Pipeline::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('pipelines-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('pipelines-update', json_decode($request->body(), true), 'pipelines');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('pipelines/1')

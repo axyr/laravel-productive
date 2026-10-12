@@ -45,7 +45,7 @@ it('timers.create: POST /timers', function () {
 
     expect($result)->toBeInstanceOf(Timer::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('timers-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('timers-create', json_decode($request->body(), true), 'timers');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('timers')

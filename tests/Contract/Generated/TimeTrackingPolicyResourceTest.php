@@ -45,7 +45,7 @@ it('time_tracking_policies.create: POST /time_tracking_policies', function () {
 
     expect($result)->toBeInstanceOf(TimeTrackingPolicy::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('time_tracking_policies-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('time_tracking_policies-create', json_decode($request->body(), true), 'time_tracking_policies');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('time_tracking_policies')
@@ -61,7 +61,7 @@ it('time_tracking_policies.update: PATCH /time_tracking_policies/{id}', function
 
     expect($result)->toBeInstanceOf(TimeTrackingPolicy::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('time_tracking_policies-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('time_tracking_policies-update', json_decode($request->body(), true), 'time_tracking_policies');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('time_tracking_policies/1')

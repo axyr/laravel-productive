@@ -45,7 +45,7 @@ it('deal_statuses.create: POST /deal_statuses', function () {
 
     expect($result)->toBeInstanceOf(DealStatus::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('deal_statuses-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('deal_statuses-create', json_decode($request->body(), true), 'deal_statuses');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('deal_statuses')
@@ -61,7 +61,7 @@ it('deal_statuses.update: PATCH /deal_statuses/{id}', function () {
 
     expect($result)->toBeInstanceOf(DealStatus::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('deal_statuses-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('deal_statuses-update', json_decode($request->body(), true), 'deal_statuses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('deal_statuses/1')

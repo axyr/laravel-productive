@@ -15,11 +15,11 @@ use Axyr\Productive\Data\Undefined;
 final readonly class CreateBankAccountData extends InputData
 {
     public function __construct(
+        public string $number,
         public string|Undefined|null $bankAddress = Undefined::Value,
         public string|Undefined|null $bankName = Undefined::Value,
         public string|Undefined|null $currency = Undefined::Value,
         public string|Undefined|null $name = Undefined::Value,
-        public string|Undefined|null $number = Undefined::Value,
         public int|string|Undefined|null $subsidiaryId = Undefined::Value,
         public string|Undefined|null $swiftCode = Undefined::Value,
     ) {}
@@ -27,11 +27,11 @@ final readonly class CreateBankAccountData extends InputData
     public function toAttributes(): array
     {
         return self::filter([
+            'number' => $this->number,
             'bank_address' => $this->bankAddress,
             'bank_name' => $this->bankName,
             'currency' => $this->currency,
             'name' => $this->name,
-            'number' => $this->number,
             'subsidiary_id' => $this->subsidiaryId,
             'swift_code' => $this->swiftCode,
         ]);

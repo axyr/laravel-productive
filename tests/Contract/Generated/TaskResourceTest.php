@@ -45,7 +45,7 @@ it('tasks.create: POST /tasks', function () {
 
     expect($result)->toBeInstanceOf(Task::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('tasks-create', json_decode($request->body(), true), 'tasks');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('tasks')
@@ -61,7 +61,7 @@ it('tasks.update: PATCH /tasks/{id}', function () {
 
     expect($result)->toBeInstanceOf(Task::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('tasks-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('tasks-update', json_decode($request->body(), true), 'tasks');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('tasks/1')
@@ -90,7 +90,7 @@ it('tasks.copy: POST /tasks/copy', function () {
 
     expect($result)->toBeInstanceOf(Task::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-copy-copy', json_decode($request->body(), true));
+        RequestSchema::assertValid('tasks-copy-copy', json_decode($request->body(), true), 'tasks');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('tasks/copy')
@@ -106,7 +106,7 @@ it('tasks.move_dependent: PATCH /tasks/{id}/move_dependent', function () {
 
     expect($result)->toBeInstanceOf(Task::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-move-dependent-move-dependent', json_decode($request->body(), true));
+        RequestSchema::assertValid('tasks-move-dependent-move-dependent', json_decode($request->body(), true), 'tasks');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('tasks/1/move_dependent')
@@ -122,7 +122,7 @@ it('tasks.reposition: PATCH /tasks/{id}/reposition', function () {
 
     expect($result)->toBeNull();
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tasks-reposition-reposition', json_decode($request->body(), true));
+        RequestSchema::assertValid('tasks-reposition-reposition', json_decode($request->body(), true), 'tasks');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('tasks/1/reposition')

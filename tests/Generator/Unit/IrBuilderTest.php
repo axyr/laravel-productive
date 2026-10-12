@@ -157,7 +157,7 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     $directory = $base . '/config';
     mkdir($directory, recursive: true);
 
-    foreach (['relationship-types', 'descriptions', 'method-names', 'removed'] as $name) {
+    foreach (['relationship-types', 'descriptions', 'method-names', 'removed', 'required'] as $name) {
         file_put_contents($directory . '/' . $name . '.php', $name === $file ? $contents : '<?php return [];');
     }
 
@@ -173,6 +173,7 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     ['descriptions', '<?php return ["a" => null];', 'generator/config/descriptions.php: the value for "a" must be a string.'],
     ['method-names', '<?php return ["tasks.index" => ["all"]];', 'generator/config/method-names.php: the value for "tasks.index" must be a string.'],
     ['removed', '<?php return ["relationships" => ["tasks.board" => 1]];', 'generator/config/removed.php: the value for "tasks.board" must be a string.'],
+    ['required', '<?php return ["CreateTaskData" => [5]];', 'generator/config/required.php must only contain strings, int found.'],
 ]);
 
 it('does not trust an example type owned by a nested resource', function () {

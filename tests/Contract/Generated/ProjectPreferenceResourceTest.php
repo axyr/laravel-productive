@@ -45,7 +45,7 @@ it('project_preferences.create: POST /project_preferences', function () {
 
     expect($result)->toBeInstanceOf(ProjectPreference::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('project_preferences-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('project_preferences-create', json_decode($request->body(), true), 'project_preferences');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('project_preferences')
@@ -61,7 +61,7 @@ it('project_preferences.update: PATCH /project_preferences/{id}', function () {
 
     expect($result)->toBeInstanceOf(ProjectPreference::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('project_preferences-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('project_preferences-update', json_decode($request->body(), true), 'project_preferences');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('project_preferences/1')

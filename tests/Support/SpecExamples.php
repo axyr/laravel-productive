@@ -54,6 +54,23 @@ final class SpecExamples
     }
 
     /**
+     * The names the request schema allows: the attributes of a JSON:API body (of its items, for a
+     * bulk body), or the top-level properties of a plain JSON body.
+     *
+     * @return list<string>
+     */
+    public static function requestAttributeNames(string $operationId): array
+    {
+        $body = self::resolve(self::operation($operationId)['requestBody'] ?? []);
+        $schema = self::resolve(reset($body['content'])['schema'] ?? []);
+        $data = self::resolve($schema['properties']['data'] ?? []);
+        $resource = ($data['type'] ?? null) === 'array' ? self::resolve($data['items'] ?? []) : $data;
+        $properties = $data === [] ? $schema['properties'] ?? [] : self::resolve($resource['properties']['attributes'] ?? [])['properties'] ?? [];
+
+        return array_map(strval(...), array_keys($properties));
+    }
+
+    /**
      * @return array{string, string}  The path and HTTP method of an operation.
      */
     private static function location(string $operationId): array

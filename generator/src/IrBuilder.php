@@ -24,6 +24,7 @@ final readonly class IrBuilder
      * @param  array<string, string>  $descriptions
      * @param  array<string, string>  $methodNames
      * @param  array<string, string>  $removedRelationships  Reasons by "type.relationship", for relationships the API no longer has.
+     * @param  array<string, list<string>>  $required  Attributes the API requires on create beyond the spec's list, by input class.
      */
     public function __construct(
         private Spec $spec,
@@ -32,6 +33,7 @@ final readonly class IrBuilder
         private array $methodNames = [],
         private RecordedTypes $recorded = new RecordedTypes(),
         private array $removedRelationships = [],
+        private array $required = [],
     ) {}
 
     /**
@@ -41,6 +43,7 @@ final readonly class IrBuilder
     public static function fromFiles(string $specPath, string $configDirectory): self
     {
         $removed = is_file($configDirectory . '/removed.php') ? self::config($configDirectory, 'removed') : [];
+        $required = is_file($configDirectory . '/required.php') ? self::config($configDirectory, 'required') : [];
 
         return new self(
             Spec::fromFile($specPath),
@@ -49,6 +52,7 @@ final readonly class IrBuilder
             self::stringMap(self::config($configDirectory, 'method-names'), 'method-names'),
             RecordedTypes::fromFile(dirname($configDirectory) . '/recorded-types.json'),
             self::stringMap(Spec::map($removed['relationships'] ?? []), 'removed'),
+            array_map(fn(mixed $names): array => Spec::strings($names, 'generator/config/required.php'), $required),
         );
     }
 
@@ -124,7 +128,7 @@ final readonly class IrBuilder
     private function resource(string $path, array $entries, ModelSource $source, array $classByType): Resource
     {
         $name = Naming::modelName(basename($path));
-        $builder = new OperationBuilder($this->spec, new InputBuilder($this->spec, new SchemaReader($this->spec, $this->descriptions)), $this->methodNames);
+        $builder = new OperationBuilder($this->spec, new InputBuilder($this->spec, new SchemaReader($this->spec, $this->descriptions), $this->required), $this->methodNames);
         $operations = array_map(fn(array $entry): Operation => $builder->build($entry[0], $entry[1], $entry[2], $name), $entries);
         [$namespace, $class] = self::className($path, $name);
 

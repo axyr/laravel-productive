@@ -18,7 +18,7 @@ it('public.proposals.accept: PATCH /public/proposals/{uuid}/accept', function ()
 
     expect($result)->toBeInstanceOf(Proposal::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('public-proposals-accept', json_decode($request->body(), true));
+        RequestSchema::assertValid('public-proposals-accept', json_decode($request->body(), true), 'proposals');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('public/proposals/uuid-1/accept')
@@ -34,7 +34,7 @@ it('public.proposals.confirm_identity: PATCH /public/proposals/{uuid}/confirm_id
 
     expect($result)->toBeInstanceOf(Proposal::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('public-proposals-confirm_identity', json_decode($request->body(), true));
+        RequestSchema::assertValid('public-proposals-confirm_identity', json_decode($request->body(), true), 'proposals');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('public/proposals/uuid-1/confirm_identity')

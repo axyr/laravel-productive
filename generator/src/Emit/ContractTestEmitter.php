@@ -58,7 +58,7 @@ final class ContractTestEmitter
             '',
             '    ' . self::resultExpectation($operation, $model),
             '    Http::assertSent(function (HttpRequest $request): bool {',
-            ...self::schemaValidation($operation),
+            ...self::schemaValidation($resource, $operation),
             '        return $request->method() === ' . Literal::string($operation->httpMethod),
             '            && urldecode($request->url()) === apiUrl(' . Literal::string(self::url($operation)) . ')',
             '            && ' . self::bodyExpectation($resource, $operation) . ';',
@@ -98,7 +98,7 @@ final class ContractTestEmitter
     /**
      * @return list<string>
      */
-    private static function schemaValidation(Operation $operation): array
+    private static function schemaValidation(Resource $resource, Operation $operation): array
     {
         $operationId = self::schemaOperation($operation);
 
@@ -108,7 +108,10 @@ final class ContractTestEmitter
 
         $assertion = $operation->kind === OperationKind::Update ? 'assertValidAttributes' : 'assertValid';
 
-        return ['        RequestSchema::' . $assertion . '(' . Literal::string($operationId) . ', json_decode($request->body(), true));', ''];
+        // A plain JSON body has no resource object, so no type to check.
+        $type = $operation->body === BodyKind::Plain ? '' : ', ' . Literal::string($resource->type);
+
+        return ['        RequestSchema::' . $assertion . '(' . Literal::string($operationId) . ', json_decode($request->body(), true)' . $type . ');', ''];
     }
 
     /**

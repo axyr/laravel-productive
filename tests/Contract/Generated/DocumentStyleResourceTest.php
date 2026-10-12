@@ -41,32 +41,32 @@ it('document_styles.show: GET /document_styles/{id}', function () {
 it('document_styles.create: POST /document_styles', function () {
     fakeHttp(['*' => Fixtures::response('document_styles-create', 'resource', 'document_styles', 201)]);
 
-    $result = Productive::documentStyles()->create(['attachment_ids' => 'Example']);
+    $result = Productive::documentStyles()->create(['attachment_ids' => [1]]);
 
     expect($result)->toBeInstanceOf(DocumentStyle::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('document_styles-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('document_styles-create', json_decode($request->body(), true), 'document_styles');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('document_styles')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'document_styles', 'attributes' => ['attachment_ids' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'document_styles', 'attributes' => ['attachment_ids' => [1]]]];
     });
 });
 
 it('document_styles.update: PATCH /document_styles/{id}', function () {
     fakeHttp(['*' => Fixtures::response('document_styles-update', 'resource', 'document_styles', 200)]);
 
-    $result = Productive::documentStyles()->update('1', ['attachment_ids' => 'Example']);
+    $result = Productive::documentStyles()->update('1', ['attachment_ids' => [1]]);
 
     expect($result)->toBeInstanceOf(DocumentStyle::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('document_styles-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('document_styles-update', json_decode($request->body(), true), 'document_styles');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('document_styles/1')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'document_styles', 'id' => '1', 'attributes' => ['attachment_ids' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'document_styles', 'id' => '1', 'attributes' => ['attachment_ids' => [1]]]];
     });
 });
 

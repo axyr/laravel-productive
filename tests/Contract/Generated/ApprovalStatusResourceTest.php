@@ -45,7 +45,7 @@ it('approval_statuses.approve: PATCH /approval_statuses/{id}/approve', function 
 
     expect($result)->toBeInstanceOf(ApprovalStatus::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('approval_statuses-approve-approve', json_decode($request->body(), true));
+        RequestSchema::assertValid('approval_statuses-approve-approve', json_decode($request->body(), true), 'approval_statuses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('approval_statuses/1/approve')
@@ -61,7 +61,7 @@ it('approval_statuses.reject: PATCH /approval_statuses/{id}/reject', function ()
 
     expect($result)->toBeInstanceOf(ApprovalStatus::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('approval_statuses-reject-reject', json_decode($request->body(), true));
+        RequestSchema::assertValid('approval_statuses-reject-reject', json_decode($request->body(), true), 'approval_statuses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('approval_statuses/1/reject')

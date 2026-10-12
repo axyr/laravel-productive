@@ -45,7 +45,7 @@ it('sections.create: POST /sections', function () {
 
     expect($result)->toBeInstanceOf(Section::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('sections-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('sections-create', json_decode($request->body(), true), 'sections');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('sections')
@@ -61,7 +61,7 @@ it('sections.update: PATCH /sections/{id}', function () {
 
     expect($result)->toBeInstanceOf(Section::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('sections-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('sections-update', json_decode($request->body(), true), 'sections');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('sections/1')

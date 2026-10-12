@@ -45,7 +45,7 @@ it('invoice_attributions.create: POST /invoice_attributions', function () {
 
     expect($result)->toBeInstanceOf(InvoiceAttribution::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('invoice_attributions-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('invoice_attributions-create', json_decode($request->body(), true), 'invoice_attributions');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('invoice_attributions')
@@ -61,7 +61,7 @@ it('invoice_attributions.update: PATCH /invoice_attributions/{id}', function () 
 
     expect($result)->toBeInstanceOf(InvoiceAttribution::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('invoice_attributions-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('invoice_attributions-update', json_decode($request->body(), true), 'invoice_attributions');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('invoice_attributions/1')

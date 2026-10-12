@@ -113,6 +113,14 @@ As built, these differ from the original plan:
        - `docs/api-differences.md` lists every override.
        - Tests hydrate every recorded resource and check each value, and every recorded relationship must have an accessor. This fixes the 23 conflicts and the 29 missing relationships.
     4. Strict request validation: a `data` wrapper and the right `type` are required, unknown keys fail, every input class is validated in full, and the response kind and organization header are recomputed from the raw spec.
+       - **Done (2026-10-12):**
+         - `RequestSchema` requires a JSON:API body's `data` with the resource's own type, and rejects attributes the spec does not list. The generated contract tests pass the type. The helpers have negative tests.
+         - Every input class is built with every attribute and validated against its schema: 210 classes. Two generator gaps found:
+           - `Samples` gave `'Example'` to untyped `*_ids`/`tag_list` inputs, which take arrays.
+           - List items with allowed values were not recorded; the IR now has `itemEnum`.
+         - Response kind and organization header are recomputed from the raw spec in `SpecConsistencyTest`. The 9 deliberate deviations are listed with their reasons.
+         - `generator/config/required.php` adds the create fields the live API requires but the spec does not mark: bank account `number`, invoice template `budget_id`/`document_type_id`, template `model_attributes`. Proposals and resource requests take `array $data` (no input class), so their required fields stay documented in `generator/bin/seed`.
+         - Time attributes: the spec says `format: time` (RFC 3339) but describes "HH:MM"; the SDK sends HH:MM.
     5. Fake fixes. **Done (2026-10-12):** bodies recorded as JSON, `assertSentToOrganization()` via the new `ConfigurableConnector` contract, `respond()` overrides earlier seeds, path patterns match absolute next links, public defaults typed, factories keep a real `type` attribute and `count(0)` gives none, the fake's deliberate differences documented. The items as found by the audit:
        - The seeded paging loop, public page and artifact defaults, and JSON-encoding recorded bodies.
        - Seed precedence, recording which organization a request went to, and the vacuous rate-limit test.

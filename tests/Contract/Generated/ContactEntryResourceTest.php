@@ -45,7 +45,7 @@ it('contact_entries.create: POST /contact_entries', function () {
 
     expect($result)->toBeInstanceOf(ContactEntry::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('contact_entries-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('contact_entries-create', json_decode($request->body(), true), 'contact_entries');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('contact_entries')
@@ -61,7 +61,7 @@ it('contact_entries.update: PATCH /contact_entries/{id}', function () {
 
     expect($result)->toBeInstanceOf(ContactEntry::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('contact_entries-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('contact_entries-update', json_decode($request->body(), true), 'contact_entries');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('contact_entries/1')

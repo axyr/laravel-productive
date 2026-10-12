@@ -351,3 +351,11 @@ it('checks an empty set of files without warnings and cleans up its scratch dire
         @rmdir(dirname($scratch));
     }
 });
+
+it('samples the first allowed item value, and arrays for untyped ID and tag lists', function () {
+    expect(Samples::value(new Attribute('a', 'a', AttributeType::List, items: AttributeType::String, itemEnum: ['note', 'task'])))->toBe(['note'])
+        ->and(Samples::value(new Attribute('a', 'a', AttributeType::Object, items: AttributeType::Int, itemEnum: [3, 4])))->toBe(['1' => 3])
+        ->and(Samples::value(new Attribute('subscriber_ids', 's', AttributeType::Mixed)))->toBe([1])
+        ->and(Samples::value(new Attribute('tag_list', 't', AttributeType::Mixed)))->toBe(['Example'])
+        ->and(Samples::value(new Attribute('tag_lists', 't', AttributeType::Mixed)))->toBe('Example');
+});

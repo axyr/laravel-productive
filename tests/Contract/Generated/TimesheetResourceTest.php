@@ -45,7 +45,7 @@ it('timesheets.create: POST /timesheets', function () {
 
     expect($result)->toBeInstanceOf(Timesheet::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('timesheets-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('timesheets-create', json_decode($request->body(), true), 'timesheets');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('timesheets')

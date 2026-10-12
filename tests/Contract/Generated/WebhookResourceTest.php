@@ -45,7 +45,7 @@ it('webhooks.create: POST /webhooks', function () {
 
     expect($result)->toBeInstanceOf(Webhook::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('webhooks-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('webhooks-create', json_decode($request->body(), true), 'webhooks');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('webhooks')

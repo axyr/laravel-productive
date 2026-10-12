@@ -45,7 +45,7 @@ it('tax_rates.create: POST /tax_rates', function () {
 
     expect($result)->toBeInstanceOf(TaxRate::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('tax_rates-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('tax_rates-create', json_decode($request->body(), true), 'tax_rates');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('tax_rates')
@@ -61,7 +61,7 @@ it('tax_rates.update: PATCH /tax_rates/{id}', function () {
 
     expect($result)->toBeInstanceOf(TaxRate::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('tax_rates-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('tax_rates-update', json_decode($request->body(), true), 'tax_rates');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('tax_rates/1')

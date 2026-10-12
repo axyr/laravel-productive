@@ -41,32 +41,32 @@ it('comments.show: GET /comments/{id}', function () {
 it('comments.create: POST /comments', function () {
     fakeHttp(['*' => Fixtures::response('comments-create', 'resource', 'comments', 201)]);
 
-    $result = Productive::comments()->create(['attachment_ids' => 'Example']);
+    $result = Productive::comments()->create(['attachment_ids' => [1]]);
 
     expect($result)->toBeInstanceOf(Comment::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('comments-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('comments-create', json_decode($request->body(), true), 'comments');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('comments')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'comments', 'attributes' => ['attachment_ids' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'comments', 'attributes' => ['attachment_ids' => [1]]]];
     });
 });
 
 it('comments.update: PATCH /comments/{id}', function () {
     fakeHttp(['*' => Fixtures::response('comments-update', 'resource', 'comments', 200)]);
 
-    $result = Productive::comments()->update('1', ['attachment_ids' => 'Example']);
+    $result = Productive::comments()->update('1', ['attachment_ids' => [1]]);
 
     expect($result)->toBeInstanceOf(Comment::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('comments-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('comments-update', json_decode($request->body(), true), 'comments');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('comments/1')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'comments', 'id' => '1', 'attributes' => ['attachment_ids' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'comments', 'id' => '1', 'attributes' => ['attachment_ids' => [1]]]];
     });
 });
 

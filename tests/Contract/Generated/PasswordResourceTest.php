@@ -31,7 +31,7 @@ it('passwords.create: POST /passwords', function () {
 
     expect($result)->toBeInstanceOf(Password::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('passwords-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('passwords-create', json_decode($request->body(), true), 'passwords');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('passwords')
@@ -47,7 +47,7 @@ it('passwords.update: PATCH /passwords/{id}', function () {
 
     expect($result)->toBeInstanceOf(Password::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('passwords-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('passwords-update', json_decode($request->body(), true), 'passwords');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('passwords/1')

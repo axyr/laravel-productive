@@ -45,7 +45,7 @@ it('salaries.create: POST /salaries', function () {
 
     expect($result)->toBeInstanceOf(Salary::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('salaries-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('salaries-create', json_decode($request->body(), true), 'salaries');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('salaries')
@@ -61,7 +61,7 @@ it('salaries.update: PATCH /salaries/{id}', function () {
 
     expect($result)->toBeInstanceOf(Salary::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('salaries-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('salaries-update', json_decode($request->body(), true), 'salaries');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('salaries/1')

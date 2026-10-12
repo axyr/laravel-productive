@@ -45,7 +45,7 @@ it('skills.create: POST /skills', function () {
 
     expect($result)->toBeInstanceOf(Skill::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('skills-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('skills-create', json_decode($request->body(), true), 'skills');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('skills')
@@ -61,7 +61,7 @@ it('skills.update: PATCH /skills/{id}', function () {
 
     expect($result)->toBeInstanceOf(Skill::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('skills-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('skills-update', json_decode($request->body(), true), 'skills');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('skills/1')

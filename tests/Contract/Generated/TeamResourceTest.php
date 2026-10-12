@@ -45,7 +45,7 @@ it('teams.create: POST /teams', function () {
 
     expect($result)->toBeInstanceOf(Team::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('teams-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('teams-create', json_decode($request->body(), true), 'teams');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('teams')
@@ -61,7 +61,7 @@ it('teams.update: PATCH /teams/{id}', function () {
 
     expect($result)->toBeInstanceOf(Team::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('teams-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('teams-update', json_decode($request->body(), true), 'teams');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('teams/1')

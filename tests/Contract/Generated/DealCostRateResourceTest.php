@@ -45,7 +45,7 @@ it('deal_cost_rates.create: POST /deal_cost_rates', function () {
 
     expect($result)->toBeInstanceOf(DealCostRate::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('deal_cost_rates-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('deal_cost_rates-create', json_decode($request->body(), true), 'deal_cost_rates');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('deal_cost_rates')
@@ -61,7 +61,7 @@ it('deal_cost_rates.update: PATCH /deal_cost_rates/{id}', function () {
 
     expect($result)->toBeInstanceOf(DealCostRate::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('deal_cost_rates-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('deal_cost_rates-update', json_decode($request->body(), true), 'deal_cost_rates');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('deal_cost_rates/1')

@@ -45,7 +45,7 @@ it('integration_task_management_configurations.create: POST /integration_task_ma
 
     expect($result)->toBeInstanceOf(IntegrationTaskManagementConfiguration::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('integration_task_management_configurations-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('integration_task_management_configurations-create', json_decode($request->body(), true), 'integration_task_management_configurations');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('integration_task_management_configurations')
@@ -61,7 +61,7 @@ it('integration_task_management_configurations.update: PATCH /integration_task_m
 
     expect($result)->toBeInstanceOf(IntegrationTaskManagementConfiguration::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('integration_task_management_configurations-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('integration_task_management_configurations-update', json_decode($request->body(), true), 'integration_task_management_configurations');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('integration_task_management_configurations/1')

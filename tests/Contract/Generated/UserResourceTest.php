@@ -45,7 +45,7 @@ it('users.update: PATCH /users/{id}', function () {
 
     expect($result)->toBeInstanceOf(User::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('users-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('users-update', json_decode($request->body(), true), 'users');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('users/1')

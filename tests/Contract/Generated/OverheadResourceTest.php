@@ -45,7 +45,7 @@ it('overheads.update: PATCH /overheads/{id}', function () {
 
     expect($result)->toBeInstanceOf(Overhead::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('overheads-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('overheads-update', json_decode($request->body(), true), 'overheads');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('overheads/1')

@@ -45,7 +45,7 @@ it('prices.create: POST /prices', function () {
 
     expect($result)->toBeInstanceOf(Price::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('prices-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('prices-create', json_decode($request->body(), true), 'prices');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('prices')
@@ -61,7 +61,7 @@ it('prices.update: PATCH /prices/{id}', function () {
 
     expect($result)->toBeInstanceOf(Price::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('prices-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('prices-update', json_decode($request->body(), true), 'prices');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('prices/1')

@@ -45,7 +45,7 @@ it('report_categories.create: POST /report_categories', function () {
 
     expect($result)->toBeInstanceOf(ReportCategory::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('report_categories-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('report_categories-create', json_decode($request->body(), true), 'report_categories');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('report_categories')
@@ -61,7 +61,7 @@ it('report_categories.update: PATCH /report_categories/{id}', function () {
 
     expect($result)->toBeInstanceOf(ReportCategory::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('report_categories-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('report_categories-update', json_decode($request->body(), true), 'report_categories');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('report_categories/1')

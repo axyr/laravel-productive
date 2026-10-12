@@ -45,7 +45,7 @@ it('integration_exporter_configurations.create: POST /integration_exporter_confi
 
     expect($result)->toBeInstanceOf(IntegrationExporterConfiguration::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('integration_exporter_configurations-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('integration_exporter_configurations-create', json_decode($request->body(), true), 'integration_exporter_configurations');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('integration_exporter_configurations')
@@ -61,7 +61,7 @@ it('integration_exporter_configurations.update: PATCH /integration_exporter_conf
 
     expect($result)->toBeInstanceOf(IntegrationExporterConfiguration::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('integration_exporter_configurations-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('integration_exporter_configurations-update', json_decode($request->body(), true), 'integration_exporter_configurations');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('integration_exporter_configurations/1')

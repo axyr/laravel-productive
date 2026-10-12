@@ -11,6 +11,7 @@ final readonly class Attribute
      * @param  AttributeType|null  $items  The item type of a list, or the value type of an object map, when the spec says.
      * @param  AttributeType|null  $specType  The spec's type, when a recorded response overrode it.
      * @param  bool  $undocumented  Not in the spec: only seen in recorded responses.
+     * @param  list<int|string>  $itemEnum  Allowed values of a list's items or an object's values, when the spec lists them.
      */
     public function __construct(
         public string $name,
@@ -22,6 +23,7 @@ final readonly class Attribute
         public ?AttributeType $items = null,
         public ?AttributeType $specType = null,
         public bool $undocumented = false,
+        public array $itemEnum = [],
     ) {}
 
     /**
@@ -39,6 +41,7 @@ final readonly class Attribute
             'items' => $this->items?->value,
             'spec_type' => $this->specType?->value,
             'undocumented' => $this->undocumented,
+            'item_enum' => $this->itemEnum,
         ], fn(mixed $value): bool => $value !== '' && $value !== false && $value !== [] && $value !== null);
     }
 }

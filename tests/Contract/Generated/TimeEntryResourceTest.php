@@ -59,7 +59,7 @@ it('time_entries.update: PATCH /time_entries/{id}', function () {
 
     expect($result)->toBeInstanceOf(TimeEntry::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('time_entries-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('time_entries-update', json_decode($request->body(), true), 'time_entries');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('time_entries/1')

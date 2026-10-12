@@ -45,7 +45,7 @@ it('filters.create: POST /filters', function () {
 
     expect($result)->toBeInstanceOf(Filter::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('filters-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('filters-create', json_decode($request->body(), true), 'filters');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('filters')
@@ -61,7 +61,7 @@ it('filters.update: PATCH /filters/{id}', function () {
 
     expect($result)->toBeInstanceOf(Filter::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('filters-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('filters-update', json_decode($request->body(), true), 'filters');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('filters/1')

@@ -45,7 +45,7 @@ it('events.create: POST /events', function () {
 
     expect($result)->toBeInstanceOf(Event::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('events-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('events-create', json_decode($request->body(), true), 'events');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('events')
@@ -61,7 +61,7 @@ it('events.update: PATCH /events/{id}', function () {
 
     expect($result)->toBeInstanceOf(Event::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('events-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('events-update', json_decode($request->body(), true), 'events');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('events/1')
