@@ -1,8 +1,9 @@
 name: Mutation testing
 
-# Mutates the hand-written code: the package core and the generator (about 4,000 mutants, two
-# hours), so it runs nightly and on demand instead of on every pull request. Generated classes are
-# left out: their faults come from the emitters, which are mutated (PLAN.md, Phase 4 step 7).
+# Mutates the package core (src/, about an hour) nightly and on demand, at a 100% gate that blocks
+# pull requests through the CI check. The generator is not part of the nightly: its output is pinned
+# by the emitter tests, the drift check, and the input-schema, spec-consistency and hydration tests.
+# Mutate it by hand when changing it: `composer test:mutate -- --scope=generator` (PLAN.md, step 7).
 
 on:
   schedule:
@@ -12,21 +13,8 @@ on:
 jobs:
   mutation:
     runs-on: ubuntu-latest
-    name: Mutation testing (${{ matrix.scope }}, ${{ matrix.blocking && '100%' || 'report only' }})
+    name: Mutation testing (core, 100%)
     timeout-minutes: 240
-
-    # The package core must stay at 100%: a red core job fails the run, which blocks pull requests
-    # through the CI check. The generator job only reports: its output is pinned by the emitter
-    # tests, the drift check and the hydration and contract tests against recorded responses.
-    continue-on-error: ${{ ! matrix.blocking }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - scope: core
-            blocking: true
-          - scope: generator
-            blocking: false
 
     steps:
       - uses: actions/checkout@v4
@@ -43,4 +31,4 @@ jobs:
         run: composer update --prefer-stable --prefer-dist --no-interaction
 
       - name: Mutation testing
-        run: php generator/bin/mutate --scope=${{ matrix.scope }}
+        run: php generator/bin/mutate --scope=core

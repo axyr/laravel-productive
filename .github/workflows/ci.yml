@@ -18,13 +18,12 @@ jobs:
     # that repairs a red run can unblock itself: start "Mutation testing" manually on the PR
     # branch, and a successful run for the PR's head commit makes this check pass.
     #
-    # PAUSED (2026-10-09): with all generated code the full run no longer fits one job, so a
-    # red nightly only warns until Phase 4 settles the mutation scope (PLAN.md). Set
-    # MUTATION_GATE to "blocking" to restore the gate.
+    # MUTATION_GATE "paused" turns a red nightly into a warning, for when the gate itself needs
+    # repair; "blocking" is the normal state.
     steps:
       - name: Check the latest nightly run on main
         env:
-          MUTATION_GATE: paused
+          MUTATION_GATE: blocking
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
           BRANCH: ${{ github.head_ref || github.ref_name }}
