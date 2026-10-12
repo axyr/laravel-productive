@@ -34,6 +34,7 @@ final class PlaceholderFactory extends Factory
             'category' => 'project',
             'color' => 'electric',
             'icon' => 'icon-cowboy-hat-filled',
+            'type' => 'person',
             'created_at' => '2026-09-02T11:48:32.010+02:00',
             'updated_at' => '2026-09-02T11:48:42.251+02:00',
         ];

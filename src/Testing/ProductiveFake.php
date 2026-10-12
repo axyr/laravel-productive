@@ -75,6 +75,20 @@ final readonly class ProductiveFake
         );
     }
 
+    /**
+     * Assert a matching request was sent for the given organization, e.g. through withOrganization().
+     *
+     * @param  string|(Closure(Request): bool)  $operation
+     */
+    public function assertSentToOrganization(string $organizationId, string|Closure $operation = '*'): void
+    {
+        $filter = $this->filter($operation);
+        $organizations = $this->connector->organizations();
+        $matching = array_filter($this->connector->recorded(), fn(Request $request, int $index): bool => $organizations[$index] === $organizationId && $filter($request), ARRAY_FILTER_USE_BOTH);
+
+        Assert::assertNotEmpty($matching, sprintf('No %s was sent for organization %s.', is_string($operation) ? 'request for operation [' . $operation . ']' : 'matching request', $organizationId));
+    }
+
     public function assertSentCount(int $count): void
     {
         Assert::assertCount($count, $this->connector->recorded(), sprintf('Expected %d requests, %d were sent.', $count, count($this->connector->recorded())));

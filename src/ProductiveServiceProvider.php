@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Axyr\Productive;
 
 use Axyr\Productive\Config\ProductiveConfig;
+use Axyr\Productive\Contracts\ConfigurableConnector;
 use Axyr\Productive\Contracts\ConnectorInterface;
 use Axyr\Productive\Contracts\ThrottleInterface;
 use Axyr\Productive\Data\ModelRegistry;
@@ -47,7 +48,7 @@ class ProductiveServiceProvider extends ServiceProvider
         $this->app->scoped(ProductiveClient::class, fn(Application $app): ProductiveClient => new ProductiveClient(
             $app->make(ProductiveConfig::class),
             fn(ProductiveConfig $config): ConnectorInterface => $app->bound(ConnectorInterface::class)
-                ? $app->make(ConnectorInterface::class)
+                ? self::configured($app->make(ConnectorInterface::class), $config)
                 : new Connector(
                     $config,
                     $app->make(HttpFactory::class),
@@ -56,6 +57,14 @@ class ProductiveServiceProvider extends ServiceProvider
                 ),
             $app->make(ModelRegistry::class),
         ));
+    }
+
+    /**
+     * A bound connector, told about the client's configuration when it asks for it.
+     */
+    private static function configured(ConnectorInterface $connector, ProductiveConfig $config): ConnectorInterface
+    {
+        return $connector instanceof ConfigurableConnector ? $connector->forConfig($config) : $connector;
     }
 
     public function boot(): void

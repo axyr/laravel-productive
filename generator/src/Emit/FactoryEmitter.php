@@ -53,13 +53,16 @@ final class FactoryEmitter
     }
 
     /**
-     * The example's attributes without "id" and "type": JSON:API forbids attributes with those
-     * names, and a factory reads "id" as the resource ID. A few spec examples include them anyway.
+     * The example's attributes without "id", which a factory reads as the resource ID, and without a
+     * "type" that only repeats the resource type. A real "type" attribute (a contact entry's "main")
+     * stays: the model reads it as typeValue.
      *
      * @return array<string, mixed>
      */
     public static function attributes(Model $model): array
     {
-        return array_diff_key($model->example, array_flip(['id', 'type']));
+        $attributes = array_diff_key($model->example, ['id' => null]);
+
+        return ($attributes['type'] ?? null) === $model->type ? array_diff_key($attributes, ['type' => null]) : $attributes;
     }
 }

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Axyr\Productive\Testing;
 
-use Axyr\Productive\Contracts\ConnectorInterface;
+use Axyr\Productive\Config\ProductiveConfig;
+use Axyr\Productive\Contracts\ConfigurableConnector;
 use Axyr\Productive\Exceptions\ApiException;
 use Axyr\Productive\Exceptions\StrayRequestException;
 use Axyr\Productive\Http\Expect;
@@ -20,38 +21,50 @@ use Illuminate\Support\Str;
  * Unseeded requests get a plausible default (an empty collection, the submitted resource
  * echoed back with an ID, or 204) unless stray requests are prevented.
  */
-final class FakeConnector implements ConnectorInterface
+final class FakeConnector implements ConfigurableConnector
 {
-    /** @var list<Request> */
-    private array $recorded = [];
-
-    private bool $preventStrayRequests = false;
-
-    private int $nextId = 1;
+    private readonly FakeConnectorState $state;
 
     /**
      * @param  array<string, Response|ResponseSequence|Closure(Request): Response>  $responses
      */
     public function __construct(
-        private array $responses = [],
-    ) {}
+        array $responses = [],
+        ?FakeConnectorState $state = null,
+        private readonly string $organizationId = '',
+    ) {
+        $this->state = $state ?? new FakeConnectorState($responses);
+    }
 
     /**
+     * The same fake, recording requests as sent for the configuration's organization.
+     */
+    public function forConfig(ProductiveConfig $config): self
+    {
+        return new self(state: $this->state, organizationId: $config->organizationId);
+    }
+
+    /**
+     * Seed a response that takes precedence over every earlier seed. Among the seeds given to
+     * fake(), the first match wins.
+     *
      * @param  Response|ResponseSequence|Closure(Request): Response  $response
      */
     public function respond(string $pattern, Response|ResponseSequence|Closure $response): void
     {
-        $this->responses[$pattern] = $response;
+        unset($this->state->responses[$pattern]);
+        $this->state->responses = [$pattern => $response, ...$this->state->responses];
     }
 
     public function preventStrayRequests(bool $prevent = true): void
     {
-        $this->preventStrayRequests = $prevent;
+        $this->state->preventStrayRequests = $prevent;
     }
 
     public function send(Request $request): Response
     {
-        $this->recorded[] = $request;
+        $request = self::onTheWire($request);
+        $this->state->recorded[] = [$request, $this->organizationId];
         $response = $this->responseFor($request);
 
         if (! $response->successful()) {
@@ -66,12 +79,32 @@ final class FakeConnector implements ConnectorInterface
      */
     public function recorded(): array
     {
-        return $this->recorded;
+        return array_column($this->state->recorded, 0);
+    }
+
+    /**
+     * @return list<string>  The organization each recorded request was sent for, in the same order.
+     */
+    public function organizations(): array
+    {
+        return array_column($this->state->recorded, 1);
+    }
+
+    /**
+     * The request as the real connector sends it: the body goes through JSON, so a value that
+     * cannot be encoded fails here too, and dates or objects arrive as they would on the wire.
+     */
+    private static function onTheWire(Request $request): Request
+    {
+        /** @var array<string, mixed>|null $body */
+        $body = json_decode(json_encode($request->body, JSON_THROW_ON_ERROR | JSON_PRESERVE_ZERO_FRACTION | JSON_UNESCAPED_SLASHES), true, flags: JSON_THROW_ON_ERROR);
+
+        return new Request($request->method, $request->path, $request->query, $body, $request->contentType, $request->expect, $request->operation, $request->requiresOrganization, $request->rateLimits);
     }
 
     private function responseFor(Request $request): Response
     {
-        foreach ($this->responses as $pattern => $response) {
+        foreach ($this->state->responses as $pattern => $response) {
             if ($this->matches($pattern, $request)) {
                 return match (true) {
                     $response instanceof ResponseSequence => $response->next($request),
@@ -81,7 +114,7 @@ final class FakeConnector implements ConnectorInterface
             }
         }
 
-        if ($this->preventStrayRequests) {
+        if ($this->state->preventStrayRequests) {
             throw new StrayRequestException(sprintf('No fake response seeded for [%s] (operation "%s").', $request->describe(), $request->operation));
         }
 
@@ -96,7 +129,16 @@ final class FakeConnector implements ConnectorInterface
 
         [$method, $path] = explode(' ', $pattern, 2);
 
-        return strtoupper($method) === $request->method->value && Str::is($path, $request->path);
+        return strtoupper($method) === $request->method->value && Str::is($path, self::relativePath($request->path));
+    }
+
+    /**
+     * "tasks?page[after]=x" for a next-page link "https://api.productive.io/api/v2/tasks?page[after]=x",
+     * so "GET tasks" patterns match every page; relative paths are returned as is.
+     */
+    private static function relativePath(string $path): string
+    {
+        return preg_match('#^https?://[^/]+/api/v\d+/(.*)$#s', $path, $match) === 1 ? $match[1] : $path;
     }
 
     private function defaultResponse(Request $request): Response
@@ -111,11 +153,12 @@ final class FakeConnector implements ConnectorInterface
 
     /**
      * Echo the submitted resource back, as Productive does, with an ID taken from the path or generated.
+     * The type comes from the path, after "public/" for the public endpoints.
      */
     private function echo(Request $request): Response
     {
         $data = is_array($request->body['data'] ?? null) ? $request->body['data'] : [];
-        $segments = explode('/', $request->path);
+        $segments = self::segments($request->path);
 
         return FakeResponse::resource([
             'type' => $data['type'] ?? $segments[0],
@@ -125,12 +168,24 @@ final class FakeConnector implements ConnectorInterface
     }
 
     /**
+     * The path segments from the resource on: "public/pages/abc" gives ["pages", "abc"].
+     *
+     * @return list<string>
+     */
+    private static function segments(string $path): array
+    {
+        $segments = explode('/', explode('?', self::relativePath($path))[0]);
+
+        return $segments[0] === 'public' ? array_slice($segments, 1) : $segments;
+    }
+
+    /**
      * @param  list<string>  $segments
      */
     private function idFromPath(array $segments): string
     {
         $id = $segments[1] ?? null;
 
-        return $id !== null && ctype_digit($id) ? $id : (string) $this->nextId++;
+        return $id !== null && ctype_digit($id) ? $id : (string) $this->state->nextId++;
     }
 }

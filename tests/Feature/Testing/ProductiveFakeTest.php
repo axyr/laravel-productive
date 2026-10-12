@@ -89,12 +89,18 @@ it('throws the same typed exceptions as the real connector', function () {
     expect(fn() => Productive::tasks()->find(1))->toThrow(NotFoundException::class, 'The requested record was not found')
         ->and(fn() => Productive::tasks()->create([]))->toThrow(ValidationException::class, "title can't be blank");
 
+    $exception = null;
+
     try {
         Productive::tasks()->update(1, []);
-    } catch (RateLimitException $exception) {
-        expect($exception->retryAfter())->toBe(30)
-            ->and($exception->limit())->toBe(100);
+    } catch (RateLimitException $caught) {
+        $exception = $caught;
     }
+
+    // The fake never retries: a seeded 429 always reaches the caller.
+    expect($exception)->toBeInstanceOf(RateLimitException::class)
+        ->and($exception?->retryAfter())->toBe(30)
+        ->and($exception?->limit())->toBe(100);
 });
 
 it('echoes created and updated resources when nothing is seeded', function () {
@@ -162,6 +168,8 @@ it('fails assertions with clear messages', function (Closure $assertion, string 
     'updated id' => [fn($fake) => $fake->assertUpdated('tasks', 2), 'tasks 2 was not updated.'],
     'updated attributes' => [fn($fake) => $fake->assertUpdated('tasks', 1, fn(array $attributes) => false), 'tasks 1 was not updated with matching attributes.'],
     'deleted' => [fn($fake) => $fake->assertDeleted('tasks', 1), 'No matching request was sent.'],
+    'sent to organization' => [fn($fake) => $fake->assertSentToOrganization('4242', 'tasks.show'), 'No request for operation [tasks.show] was sent for organization 4242.'],
+    'sent to organization by callback' => [fn($fake) => $fake->assertSentToOrganization('9999', fn(): bool => true), 'No matching request was sent for organization 9999.'],
 ]);
 
 it('ignores writes without a resource document in write assertions', function () {
@@ -210,4 +218,95 @@ it('leaves the host application\'s scoped services alone', function () {
     Productive::fake();
 
     expect(app('host.service'))->toBe($before);
+});
+
+it('records which organization each request was sent for', function () {
+    $fake = Productive::fake();
+
+    Productive::withOrganization('2')->tasks()->delete(5);
+    Productive::tasks()->find(6);
+
+    $fake->assertSentToOrganization('2', 'tasks.destroy');
+    $fake->assertSentToOrganization('4242', 'tasks.show');
+    $fake->assertSentToOrganization('2');
+
+    expect(fn() => $fake->assertSentToOrganization('4242', 'tasks.destroy'))->toThrow(AssertionFailedError::class)
+        ->and(fn() => $fake->assertSentToOrganization('2', 'tasks.show'))->toThrow(AssertionFailedError::class)
+        ->and($fake->connector()->organizations())->toBe(['2', '4242']);
+});
+
+it('records the body as it would go over the wire', function () {
+    $fake = Productive::fake();
+
+    Productive::tasks()->create(['title' => 'Plan', 'due_date' => new DateTimeImmutable('2026-10-12 10:00:00+02:00'), 'estimate' => 1.0]);
+
+    expect($fake->recorded()[0]->body)->toBe(['data' => ['type' => 'tasks', 'attributes' => [
+        'title' => 'Plan',
+        'due_date' => ['date' => '2026-10-12 10:00:00.000000', 'timezone_type' => 1, 'timezone' => '+02:00'],
+        'estimate' => 1.0,
+    ]]])
+        ->and(fn() => Productive::tasks()->create(['title' => "bad \xB1"]))->toThrow(JsonException::class);
+});
+
+it('lets respond() override an earlier seed; among fake() seeds the first match wins', function () {
+    $fake = Productive::fake([
+        'tasks.show' => FakeResponse::resource(['type' => 'tasks', 'id' => '1', 'attributes' => ['title' => 'Specific']]),
+        'tasks.*' => FakeResponse::resource(['type' => 'tasks', 'id' => '1', 'attributes' => ['title' => 'Wildcard']]),
+    ]);
+
+    expect(Productive::tasks()->find(1)->title)->toBe('Specific');
+
+    $fake->respond('tasks.*', FakeResponse::resource(['type' => 'tasks', 'id' => '1', 'attributes' => ['title' => 'Override']]));
+
+    expect(Productive::tasks()->find(1)->title)->toBe('Override');
+
+    $fake->respond('projects.index', FakeResponse::collection());
+
+    expect(Productive::tasks()->find(1)->title)->toBe('Override');
+});
+
+it('matches path patterns against absolute next-page links', function () {
+    $fake = Productive::fake(['GET tasks*' => FakeResponse::sequence(
+        FakeResponse::collection([TaskFactory::new()->resource(['id' => '1'])], links: ['next' => apiUrl('tasks?page[after]=c1')]),
+        FakeResponse::collection([TaskFactory::new()->resource(['id' => '2'])]),
+    )])->preventStrayRequests();
+
+    expect(Productive::tasks()->query()->all()->pluck('id')->all())->toBe(['1', '2']);
+    $fake->assertSentCount(2);
+});
+
+it('stops when a seeded page keeps returning the same next link', function () {
+    Productive::fake(['tasks.index' => FakeResponse::collection([TaskFactory::new()->resource()], links: ['next' => apiUrl('tasks?page[after]=c1')])]);
+
+    expect(fn() => Productive::tasks()->query()->all())->toThrow(Axyr\Productive\Exceptions\InvalidResponseException::class, 'twice');
+});
+
+it('answers unseeded public and report requests with their own type', function () {
+    Productive::fake();
+
+    expect(Productive::public()->pages()->find('abc'))->toBeInstanceOf(Axyr\Productive\Data\Models\Page::class)
+        ->and(Productive::public()->artifacts()->find('abc'))->toBeInstanceOf(Axyr\Productive\Data\Models\Artifact::class);
+});
+
+it('fails assertDeleted for another record or another resource', function () {
+    $fake = Productive::fake();
+
+    Productive::tasks()->delete(2);
+    Productive::timeEntries()->delete(1);
+
+    $fake->assertDeleted('tasks', 2);
+
+    expect(fn() => $fake->assertDeleted('tasks', 1))->toThrow(AssertionFailedError::class)
+        ->and(fn() => $fake->assertDeleted('time_entries', 2))->toThrow(AssertionFailedError::class);
+});
+
+it('needs a booted application', function () {
+    $app = Productive::getFacadeApplication();
+    Productive::setFacadeApplication(null);
+
+    try {
+        expect(fn() => Productive::fake())->toThrow(LogicException::class, 'Productive::fake() needs a booted Laravel application.');
+    } finally {
+        Productive::setFacadeApplication($app);
+    }
 });

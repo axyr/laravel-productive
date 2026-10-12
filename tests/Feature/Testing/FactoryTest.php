@@ -28,8 +28,12 @@ it('uses the attributes of Productive\'s own examples as defaults', function (st
     $resource = $factory::new()->resource();
     $hydrated = $factory::new()->make();
 
-    expect($resource['attributes'])->toBe(array_diff_key($models[substr($model, 0, -strlen('Factory'))]['example'], ['id' => true, 'type' => true]))
-        ->and($resource['type'])->toBe($hydrated->type)
+    $spec = $models[substr($model, 0, -strlen('Factory'))];
+    // The example without its "id", and without a "type" that only repeats the resource type.
+    $expected = array_filter($spec['example'], fn(mixed $value, string $key): bool => $key !== 'id' && ! ($key === 'type' && $value === $spec['type']), ARRAY_FILTER_USE_BOTH);
+
+    expect($resource['attributes'])->toBe($expected)
+        ->and($resource['type'])->toBe($spec['type'])
         ->and($hydrated->attributes())->toBe($resource['attributes']);
 })->with(fn(): array => array_map(
     fn(string $file): string => 'Axyr\\Productive\\Testing\\Factories\\' . basename($file, '.php'),
@@ -72,7 +76,7 @@ it('builds resource objects for fake responses', function () {
     expect($resource['type'])->toBe('tasks')
         ->and($resource['id'])->toBe('1')
         ->and($resource['relationships'])->toBe(['project' => ['data' => ['type' => 'projects', 'id' => '6899']]])
-        ->and(TaskFactory::new()->count(0)->resources())->toHaveCount(1)
+        ->and(TaskFactory::new()->count(0)->resources())->toBe([])
         ->and(TaskFactory::new()->resource(['id' => ['not scalar']])['id'])->toBe('');
 });
 

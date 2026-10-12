@@ -168,3 +168,17 @@ it('counts requests in the configured cache store', function () {
     expect(Cache::store('throttle')->get($key))->toBe(1)
         ->and(Cache::store()->get($key))->toBeNull();
 });
+
+it('uses a bound connector as is when it does not ask for the configuration', function () {
+    $connector = new class () implements Axyr\Productive\Contracts\ConnectorInterface {
+        public function send(Axyr\Productive\Http\Request $request): Axyr\Productive\Http\Response
+        {
+            return new Axyr\Productive\Http\Response(204);
+        }
+    };
+    app()->instance(Axyr\Productive\Contracts\ConnectorInterface::class, $connector);
+    app()->forgetScopedInstances();
+
+    expect(app(ProductiveClient::class)->connector())->toBe($connector)
+        ->and(app(ProductiveClient::class)->withOrganization('2')->connector())->toBe($connector);
+});

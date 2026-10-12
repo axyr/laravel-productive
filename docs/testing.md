@@ -36,6 +36,8 @@ Productive::fake([
 $fake->respond('reports.time_reports.index', FakeResponse::collection([...]));
 ```
 
+Among the seeds given to `fake()`, the first one that matches wins, so put specific operations before wildcards. `respond()` takes precedence over every earlier seed, so a test can override a shared setup. `"METHOD path"` patterns also match the absolute next-page links that `lazy()` and `all()` follow: `'GET tasks*'` answers every page.
+
 Operation names follow the API, not the PHP method names: `{path}.{action}`, where the action is the one in Productive's spec. Bulk operations add `_bulk`:
 
 | Method | Operation |
@@ -64,9 +66,14 @@ The names are derived from the spec, so they stay stable when methods get friend
 
 Error responses throw the same typed exceptions as the real connector.
 
+The fake differs from the real connector on purpose in a few ways:
+- **It never retries.** A seeded 429 reaches your code as a `RateLimitException` straight away, where the real connector would wait and retry. Seed a 429 to test your own handling of a limit that outlasts the retries.
+- **It sends nothing,** so it checks neither credentials nor hosts.
+- **It records bodies as they go over the wire.** A body is JSON-encoded and decoded, as the real connector sends it, so a value that cannot be encoded fails in your test too, and a `DateTimeInterface` passed in a plain array is recorded the way PHP encodes it.
+
 ### Unseeded requests
 
-Without a seeded response the fake answers plausibly: an empty collection for lists, the submitted resource echoed back with an ID for creates, updates and actions, and 204 where no body is expected. To require every request to be seeded:
+Without a seeded response the fake answers plausibly: an empty collection for lists, the submitted resource echoed back with an ID for creates, updates and actions (typed after the resource in the path, also for `public/` paths), and 204 where no body is expected. To require every request to be seeded:
 
 ```php
 Productive::fake()->preventStrayRequests();
@@ -83,8 +90,11 @@ $fake->assertNothingSent();
 $fake->assertCreated('tasks', fn (array $attributes) => $attributes['title'] === 'Write docs');
 $fake->assertUpdated('tasks', 9);
 $fake->assertDeleted('tasks', 9);
+$fake->assertSentToOrganization('2', 'tasks.create');   // after Productive::withOrganization('2')
 $fake->recorded();     // list<Request> for anything else
 ```
+
+`assertCreated()` and `assertUpdated()` look at single-resource writes; check bulk writes with `assertSent()` and the request body.
 
 ## Factories
 
@@ -97,7 +107,10 @@ $resource = TaskFactory::new()
     ->state(['private' => true])
     ->relatedTo('assignee', 'people', '12')
     ->resource(['id' => '9']);                                     // JSON:API resource object for FakeResponse
+TaskFactory::new()->count(0)->resources();                         // []
 ```
+
+Generated IDs count up across a test run, so assert on the IDs you pass in rather than on generated ones.
 
 ---
 
