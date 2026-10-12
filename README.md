@@ -139,7 +139,7 @@ The SDK is built against Productive's OpenAPI spec, vendored at `resources/opena
 How the code is generated is described in [Development](docs/development.md).
 
 > [!IMPORTANT]
-> **Reads are checked against the live API; writes are not yet.** Every method is generated from Productive's OpenAPI spec. The models are also checked against real responses recorded from a trial organization (GET only): where the spec's types are wrong, the SDK follows the API, and [API differences](docs/api-differences.md) lists every case. Resources whose lists were empty in the recording, and every create, update and delete call, are still checked against the spec only. Please open an issue if a call behaves differently from what is documented here.
+> **Reads are checked against the live API; writes only partly.** Every method is generated from Productive's OpenAPI spec. The models are also checked against real responses recorded from a trial organization: where the spec's types are wrong, the SDK follows the API, and [API differences](docs/api-differences.md) lists every case. Of the writes, 14 creates were sent to the live API, and the fields it required are required in the inputs. Updates, deletes and actions are checked against the spec and the testing fake. Please open an issue if a call behaves differently from what is documented here.
 
 ## Quality
 
