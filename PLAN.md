@@ -370,7 +370,7 @@ Each task is one branch + PR, sized for one developer run (opus, 120 turns), wit
 - composer.json (`axyr/laravel-productive`, `Axyr\Productive\`, PHP ^8.3, Laravel ^12|^13), copying the langfuse dev toolchain plus `pestphp/pest-plugin-type-coverage`.
 - pint.json, phpstan.neon.dist (max), phpmd.xml, phpunit.xml.dist (with a `Contract` suite and a `Live` suite excluded by default), `.githooks/pre-commit`, `.gitattributes` (export-ignore `generator/`, `tests/`, `docs/`, `art/`), and a CI workflow with the matrix + coverage/type/mutation jobs.
 - `ProductiveConfig`, `config/productive.php` (`PRODUCTIVE_API_TOKEN`, `PRODUCTIVE_ORGANIZATION_ID`, `PRODUCTIVE_BASE_URL`, timeout, retry, throttle, feature flags), the ServiceProvider (publishable config, scoped bindings), the facade stub, and the Version class.
-- Vendor the spec to `resources/openapi/productive.json` and the guides to `docs/vendor/`.
+- Vendor the spec to `resources/openapi/productive.json`. The guides are linked, not copied: see `docs/README.md`.
 - Skeleton README + docs index, CHANGELOG.
 - Acceptance: green `composer quality` at 100% coverage on the tiny surface; arch tests in place.
 
