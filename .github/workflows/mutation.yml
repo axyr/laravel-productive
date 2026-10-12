@@ -12,8 +12,15 @@ on:
 jobs:
   mutation:
     runs-on: ubuntu-latest
-    name: Mutation testing (100%)
+    name: Mutation testing (100%, ${{ matrix.scope }})
     timeout-minutes: 240
+
+    # The package core and the generator run as parallel jobs, each well inside the time limit.
+    # The run fails when either does.
+    strategy:
+      fail-fast: false
+      matrix:
+        scope: [core, generator]
 
     steps:
       - uses: actions/checkout@v4
@@ -30,4 +37,4 @@ jobs:
         run: composer update --prefer-stable --prefer-dist --no-interaction
 
       - name: Mutation testing
-        run: php generator/bin/mutate
+        run: php generator/bin/mutate --scope=${{ matrix.scope }}

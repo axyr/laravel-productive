@@ -121,7 +121,8 @@ As built, these differ from the original plan:
          - Every emitter has tests stating its exact output for cases covering its branches, each checked by hand.
          - Mutation testing of `generator/src/Emit` without the drift group went from 65% (747 untested, 81 min) to 100% (52 min).
          - The tests found two flaws: a model shared by two resources linked to the last resource's reference, and the group classes lacked a blank line.
-         - Still to do: a full nightly run of all hand-written code without the drift group, then `MUTATION_GATE` back to blocking.
+         - A full local run of all 117 hand-written files took more than 6 hours: the generator's IR builder files are slow because their mutants re-run the full-API tests. So the nightly now runs two parallel jobs, core (67 files) and generator (50). The IR builder files get fast unit tests like the emitters did.
+         - Still to do: both nightly jobs green, then `MUTATION_GATE` back to blocking.
        - Tests for the test helpers, and honest names for the "golden" tests.
     7. Mutation scope, **decided 2026-10-09: hand-written code only.**
        - The baseline nightly before Phase 3 took 2 h 6 min for 4,034 mutants. With all generated code the run would need about 12 hours of runner time every night.
