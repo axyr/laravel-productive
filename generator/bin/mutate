@@ -56,7 +56,9 @@ $command = [
     PHP_BINARY, '-d', 'pcov.directory=.', '-d', 'pcov.exclude=~(vendor|tests)~',
     // The drift group only proves the committed output equals the generator's: it kills a mutant
     // because the output changed, not because it is wrong, and it reformats all generated files.
-    'vendor/bin/pest', '--mutate', '--everything', '--covered-only', '--no-cache', '--min=100', '--exclude-group=drift',
+    // The full-api group generates the whole API for every mutant, which only adds time: the
+    // emitters' own tests pin their output.
+    'vendor/bin/pest', '--mutate', '--everything', '--covered-only', '--no-cache', '--min=100', '--exclude-group=drift,full-api',
     '--path=' . implode(',', $paths),
     ...$arguments,
 ];

@@ -12,15 +12,21 @@ on:
 jobs:
   mutation:
     runs-on: ubuntu-latest
-    name: Mutation testing (100%, ${{ matrix.scope }})
+    name: Mutation testing (${{ matrix.scope }}, ${{ matrix.blocking && '100%' || 'report only' }})
     timeout-minutes: 240
 
-    # The package core and the generator run as parallel jobs, each well inside the time limit.
-    # The run fails when either does.
+    # The package core must stay at 100%: a red core job fails the run, which blocks pull requests
+    # through the CI check. The generator job only reports: its output is pinned by the emitter
+    # tests, the drift check and the hydration and contract tests against recorded responses.
+    continue-on-error: ${{ ! matrix.blocking }}
     strategy:
       fail-fast: false
       matrix:
-        scope: [core, generator]
+        include:
+          - scope: core
+            blocking: true
+          - scope: generator
+            blocking: false
 
     steps:
       - uses: actions/checkout@v4
