@@ -4,12 +4,35 @@ All notable changes to this package are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-12
+
+The first release: a typed, tested Laravel SDK for the whole Productive API.
+
 ### Added
 
-- Core: configuration, HTTP connector with typed exceptions, retry policy (429 for every method; 5xx and connection failures for reads only) and cache-backed client-side throttling.
-- JSON:API layer: documents, resource objects, relationships, an identity index for included resources and request document builders (including `ext=bulk`).
-- Query builder: filters with operators and nested `whereAny` / `whereAll` groups, sorting, includes, report grouping, page-number and cursor pagination.
-- `PendingQuery` with `get`, `lazy`, `all`, `first`, `count` and `paginate`, using cursor pagination with automatic fallback to page numbers.
-- Readonly models with typed properties and relationship accessors; input objects that distinguish omitted fields from explicit nulls.
-- Reference resources: tasks, time entries (including bulk operations) and the time report.
-- Testing: `Productive::fake()`, `FakeResponse`, request assertions and model factories.
+- **Every endpoint.** 668 operations of the OpenAPI spec on 139 resources, plus the 3 single creates the spec hides behind its bulk variants. Generated from the spec into typed resources, models, inputs, enums, factories and contract tests. See the [endpoint reference](docs/reference.md).
+- **Checked against the live API.** Models follow real responses where the spec's types are wrong: 31 corrected types, 73 undocumented attributes and 10 undocumented relationships. Lists sent as JSON text (a person's availabilities) are decoded. Create inputs require the fields the API demands but the spec does not mark. See [API differences](docs/api-differences.md).
+- **Core.**
+  - Configuration, and a connector with typed exceptions that never follows redirects.
+  - A retry policy: 429 for every method; server errors and dropped connections for reads only.
+  - Cache-backed client-side throttling, per token, with the reports limit.
+  - Multiple organizations and tokens per call, Octane-safe.
+- **JSON:API.** Documents, resource objects, relationships, an identity index for included resources, and request builders including `ext=bulk`.
+- **Querying.** Filters with operators and nested `whereAny`/`whereAll` groups, sorting, includes and report grouping. `get`, `lazy`, `all`, `first`, `count` and `paginate`, with cursor pagination and a fallback to page numbers. A repeated next link stops instead of looping.
+- **Models and inputs.** Readonly models with typed properties and relationship accessors that throw on a type mismatch. Inputs distinguish omitted fields from explicit nulls.
+- **Testing.**
+  - `Productive::fake()` records requests as they go over the wire and seeds responses by operation or path.
+  - Assertions, including `assertSentToOrganization()`.
+  - Factories built from Productive's examples.
+- **Laravel.** `php artisan productive:ping` and a publishable config.
+- **Maintenance.**
+  - `composer record` (GET only, guarded to one organization), `composer seed`, `record:types` and `record:fixtures` with a leak check.
+  - A weekly spec-drift workflow that opens a pull request when the generated SDK changes.
+
+### Known limitations
+
+- Reads are verified against recorded responses. Of the writes, only 14 creates have been sent to the live API; updates, deletes and actions are checked against the spec and the testing fake.
+- No webhook receiver yet.
+
+[Unreleased]: https://github.com/axyr/laravel-productive/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/axyr/laravel-productive/releases/tag/v0.1.0
