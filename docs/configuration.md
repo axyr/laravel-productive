@@ -23,6 +23,25 @@ php artisan vendor:publish --tag=productive-config
 
 Credentials are checked when a request is sent, not when the app boots, so the package never breaks `php artisan` or CI runs that do not talk to Productive. A missing value throws a `ConfigurationException` that names the environment variable to set.
 
+## Checking the connection
+
+```bash
+php artisan productive:ping
+php artisan productive:ping --organization=12345
+```
+
+It reads one organization with the configured token and prints its name, or the reason Productive refused, with exit code 1. That makes it usable in a deploy check.
+
+## Caching reference data
+
+Reference data that rarely changes (people, service types, workflows) is worth caching. Productive's rate-limit guide recommends it. Cache the collection in your application, keyed by organization:
+
+```php
+$people = Cache::remember('productive.' . Productive::config()->organizationId . '.people', now()->addHour(), fn () => Productive::people()->query()->all());
+```
+
+Models are plain readonly objects, so any cache store can hold them. Clear the key after a deploy that upgrades the SDK.
+
 ## Multiple organizations and tokens
 
 One client per call, without touching the global configuration:

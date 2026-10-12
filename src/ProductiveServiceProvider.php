@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Axyr\Productive;
 
 use Axyr\Productive\Config\ProductiveConfig;
+use Axyr\Productive\Console\PingCommand;
 use Axyr\Productive\Contracts\ConfigurableConnector;
 use Axyr\Productive\Contracts\ConnectorInterface;
 use Axyr\Productive\Contracts\ThrottleInterface;
@@ -73,6 +74,8 @@ class ProductiveServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/productive.php' => $this->app->configPath('productive.php'),
             ], 'productive-config');
+
+            $this->commands([PingCommand::class]);
         }
     }
 }

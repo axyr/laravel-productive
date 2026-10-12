@@ -447,7 +447,7 @@ P-18 ends with an **empty allowlist** in `SpecCoverageTest`: all 668 operations 
 - First research whether Productive signs webhook payloads; the Webhooks tag docs + a live test webhook will tell.
 - Then build `Route::productiveWebhooks()`, the controller, a verification middleware (secret/signature, or a shared-secret URL token if unsigned), and typed `ProductiveWebhookReceived` events with hydrated models. The queued handler is optional.
 
-**P-20 Laravel niceties**
+**P-20 Laravel niceties** — **done (2026-10-12):** `php artisan productive:ping`; caching and queued-job release documented in `docs/configuration.md` and `docs/errors.md`. A built-in `->remember()` was left out: caching hydrated models inside the SDK is fragile across upgrades, and `Cache::remember()` around a query does the same.
 - `productive:ping`
 - Reference-data caching helper (`->remember($ttl)` on list queries, per the rate-limit guide's advice)
 - Multi-organization usage via `withOrganization()`/`withToken()` (scoped, Octane-safe)
