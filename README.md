@@ -65,6 +65,12 @@ PRODUCTIVE_API_TOKEN=your-token
 PRODUCTIVE_ORGANIZATION_ID=12345
 ```
 
+Check the connection:
+
+```bash
+php artisan productive:ping
+```
+
 Optionally publish the config:
 
 ```bash
