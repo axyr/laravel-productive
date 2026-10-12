@@ -33,7 +33,7 @@ it('sessions.create: POST /sessions', function () {
 
     expect($result)->toBeInstanceOf(Session::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('sessions-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('sessions-create', json_decode($request->body(), true), 'sessions');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('sessions')

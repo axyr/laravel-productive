@@ -41,16 +41,16 @@ it('bank_accounts.show: GET /bank_accounts/{id}', function () {
 it('bank_accounts.create: POST /bank_accounts', function () {
     fakeHttp(['*' => Fixtures::response('bank_accounts-create', 'resource', 'bank_accounts', 201)]);
 
-    $result = Productive::bankAccounts()->create(['bank_address' => 'Example']);
+    $result = Productive::bankAccounts()->create(['number' => 'Example']);
 
     expect($result)->toBeInstanceOf(BankAccount::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('bank_accounts-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('bank_accounts-create', json_decode($request->body(), true), 'bank_accounts');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('bank_accounts')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'bank_accounts', 'attributes' => ['bank_address' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'bank_accounts', 'attributes' => ['number' => 'Example']]];
     });
 });
 
@@ -61,7 +61,7 @@ it('bank_accounts.update: PATCH /bank_accounts/{id}', function () {
 
     expect($result)->toBeInstanceOf(BankAccount::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('bank_accounts-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('bank_accounts-update', json_decode($request->body(), true), 'bank_accounts');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('bank_accounts/1')

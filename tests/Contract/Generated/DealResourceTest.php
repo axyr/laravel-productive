@@ -45,7 +45,7 @@ it('deals.create: POST /deals', function () {
 
     expect($result)->toBeInstanceOf(Deal::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('deals-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('deals-create', json_decode($request->body(), true), 'deals');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('deals')
@@ -61,7 +61,7 @@ it('deals.update: PATCH /deals/{id}', function () {
 
     expect($result)->toBeInstanceOf(Deal::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('deals-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('deals-update', json_decode($request->body(), true), 'deals');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('deals/1')
@@ -103,7 +103,7 @@ it('deals.copy: POST /deals/copy', function () {
 
     expect($result)->toBeInstanceOf(Deal::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('deals-copy-copy', json_decode($request->body(), true));
+        RequestSchema::assertValid('deals-copy-copy', json_decode($request->body(), true), 'deals');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('deals/copy')

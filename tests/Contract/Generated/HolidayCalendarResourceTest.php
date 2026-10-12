@@ -45,7 +45,7 @@ it('holiday_calendars.create: POST /holiday_calendars', function () {
 
     expect($result)->toBeInstanceOf(HolidayCalendar::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('holiday_calendars-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('holiday_calendars-create', json_decode($request->body(), true), 'holiday_calendars');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('holiday_calendars')
@@ -61,7 +61,7 @@ it('holiday_calendars.update: PATCH /holiday_calendars/{id}', function () {
 
     expect($result)->toBeInstanceOf(HolidayCalendar::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('holiday_calendars-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('holiday_calendars-update', json_decode($request->body(), true), 'holiday_calendars');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('holiday_calendars/1')

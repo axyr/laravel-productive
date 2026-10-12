@@ -45,7 +45,7 @@ it('service_types.create: POST /service_types', function () {
 
     expect($result)->toBeInstanceOf(ServiceType::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('service_types-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('service_types-create', json_decode($request->body(), true), 'service_types');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('service_types')
@@ -61,7 +61,7 @@ it('service_types.update: PATCH /service_types/{id}', function () {
 
     expect($result)->toBeInstanceOf(ServiceType::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('service_types-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('service_types-update', json_decode($request->body(), true), 'service_types');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('service_types/1')

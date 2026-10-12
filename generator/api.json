@@ -20222,7 +20222,11 @@
                     "property": "timeEntryRequirements",
                     "type": "list",
                     "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
-                    "items": "string"
+                    "items": "string",
+                    "item_enum": [
+                        "note",
+                        "task"
+                    ]
                 },
                 {
                     "name": "time_to_close",
@@ -36613,7 +36617,33 @@
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
                     "type": "list",
-                    "items": "string"
+                    "items": "string",
+                    "item_enum": [
+                        "task",
+                        "project",
+                        "doc",
+                        "meeting",
+                        "meetings",
+                        "company",
+                        "companies",
+                        "contact",
+                        "contacts",
+                        "email",
+                        "emails",
+                        "deal",
+                        "deals",
+                        "budget",
+                        "budgets",
+                        "expense",
+                        "expenses",
+                        "invoice",
+                        "invoices",
+                        "timetracking",
+                        "company_time",
+                        "approvals",
+                        "resourcing",
+                        "resource_requests"
+                    ]
                 },
                 {
                     "name": "updated_at",
@@ -42275,6 +42305,13 @@
             "bulk": false,
             "attributes": [
                 {
+                    "name": "number",
+                    "property": "number",
+                    "type": "string",
+                    "description": "The bank account number (IBAN or local account number).",
+                    "required": true
+                },
+                {
                     "name": "bank_address",
                     "property": "bankAddress",
                     "type": "string",
@@ -42297,12 +42334,6 @@
                     "property": "name",
                     "type": "string",
                     "description": "The display name of the bank account."
-                },
-                {
-                    "name": "number",
-                    "property": "number",
-                    "type": "string",
-                    "description": "The bank account number (IBAN or local account number)."
                 },
                 {
                     "name": "subsidiary_id",
@@ -43573,7 +43604,11 @@
                     "property": "timeEntryRequirements",
                     "type": "list",
                     "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
-                    "items": "string"
+                    "items": "string",
+                    "item_enum": [
+                        "note",
+                        "task"
+                    ]
                 },
                 {
                     "name": "tracking_type_id",
@@ -44845,6 +44880,20 @@
             "bulk": false,
             "attributes": [
                 {
+                    "name": "budget_id",
+                    "property": "budgetId",
+                    "type": "int",
+                    "description": "ID of the budget this invoice template is linked to.",
+                    "required": true
+                },
+                {
+                    "name": "document_type_id",
+                    "property": "documentTypeId",
+                    "type": "int",
+                    "description": "ID of the document type used for invoices generated from this template.",
+                    "required": true
+                },
+                {
                     "name": "bank_account_details",
                     "property": "bankAccountDetails",
                     "type": "object",
@@ -44857,22 +44906,10 @@
                     "description": "ID of the bank account used for invoices generated from this template."
                 },
                 {
-                    "name": "budget_id",
-                    "property": "budgetId",
-                    "type": "int",
-                    "description": "ID of the budget this invoice template is linked to."
-                },
-                {
                     "name": "custom_fields",
                     "property": "customFields",
                     "type": "object",
                     "description": "Custom field values for this invoice template."
-                },
-                {
-                    "name": "document_type_id",
-                    "property": "documentTypeId",
-                    "type": "int",
-                    "description": "ID of the document type used for invoices generated from this template."
                 },
                 {
                     "name": "invoice_creation_options",
@@ -46625,7 +46662,33 @@
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
                     "type": "list",
-                    "items": "string"
+                    "items": "string",
+                    "item_enum": [
+                        "task",
+                        "project",
+                        "doc",
+                        "meeting",
+                        "meetings",
+                        "company",
+                        "companies",
+                        "contact",
+                        "contacts",
+                        "email",
+                        "emails",
+                        "deal",
+                        "deals",
+                        "budget",
+                        "budgets",
+                        "expense",
+                        "expenses",
+                        "invoice",
+                        "invoices",
+                        "timetracking",
+                        "company_time",
+                        "approvals",
+                        "resourcing",
+                        "resource_requests"
+                    ]
                 }
             ]
         },
@@ -47219,6 +47282,13 @@
             "bulk": false,
             "attributes": [
                 {
+                    "name": "model_attributes",
+                    "property": "modelAttributes",
+                    "type": "object",
+                    "description": "Form-only polymorphic input bag. Required keys depend on `target_type` \u2014 see the create endpoint description for the per-target schema.",
+                    "required": true
+                },
+                {
                     "name": "copy_attributes",
                     "property": "copyAttributes",
                     "type": "object",
@@ -47229,12 +47299,6 @@
                     "property": "description",
                     "type": "string",
                     "description": "Free-text note attached to the template."
-                },
-                {
-                    "name": "model_attributes",
-                    "property": "modelAttributes",
-                    "type": "object",
-                    "description": "Form-only polymorphic input bag. Required keys depend on `target_type` \u2014 see the create endpoint description for the per-target schema."
                 },
                 {
                     "name": "name",
@@ -49842,7 +49906,11 @@
                     "property": "timeEntryRequirements",
                     "type": "list",
                     "description": "Fields that every time entry logged against this budget's services must include. When configured, the API rejects non-compliant time entries with a `422 Unprocessable Entity`.",
-                    "items": "string"
+                    "items": "string",
+                    "item_enum": [
+                        "note",
+                        "task"
+                    ]
                 },
                 {
                     "name": "tracking_type_id",
@@ -53500,7 +53568,33 @@
                     "name": "smart_action_locations",
                     "property": "smartActionLocations",
                     "type": "list",
-                    "items": "string"
+                    "items": "string",
+                    "item_enum": [
+                        "task",
+                        "project",
+                        "doc",
+                        "meeting",
+                        "meetings",
+                        "company",
+                        "companies",
+                        "contact",
+                        "contacts",
+                        "email",
+                        "emails",
+                        "deal",
+                        "deals",
+                        "budget",
+                        "budgets",
+                        "expense",
+                        "expenses",
+                        "invoice",
+                        "invoices",
+                        "timetracking",
+                        "company_time",
+                        "approvals",
+                        "resourcing",
+                        "resource_requests"
+                    ]
                 }
             ]
         },

@@ -15,13 +15,13 @@ use Axyr\Productive\Data\Undefined;
 final readonly class CreateTemplateData extends InputData
 {
     /**
+     * @param  array<string, mixed>  $modelAttributes  Form-only polymorphic input bag. Required keys depend on `target_type` — see the create endpoint description for the per-target schema.
      * @param  array<string, mixed>|Undefined|null  $copyAttributes  Form-only copy-behavior flags applied when `target_id` is supplied. See the create endpoint for per-target options.
-     * @param  array<string, mixed>|Undefined|null  $modelAttributes  Form-only polymorphic input bag. Required keys depend on `target_type` — see the create endpoint description for the per-target schema.
      */
     public function __construct(
+        public array $modelAttributes,
         public array|Undefined|null $copyAttributes = Undefined::Value,
         public string|Undefined|null $description = Undefined::Value,
-        public array|Undefined|null $modelAttributes = Undefined::Value,
         public string|Undefined|null $name = Undefined::Value,
         public int|string|Undefined|null $targetId = Undefined::Value,
         public string|Undefined|null $targetType = Undefined::Value,
@@ -30,9 +30,9 @@ final readonly class CreateTemplateData extends InputData
     public function toAttributes(): array
     {
         return self::filter([
+            'model_attributes' => $this->modelAttributes,
             'copy_attributes' => $this->copyAttributes,
             'description' => $this->description,
-            'model_attributes' => $this->modelAttributes,
             'name' => $this->name,
             'target_id' => $this->targetId,
             'target_type' => $this->targetType,

@@ -45,7 +45,7 @@ it('dashboards.create: POST /dashboards', function () {
 
     expect($result)->toBeInstanceOf(Dashboard::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('dashboards-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('dashboards-create', json_decode($request->body(), true), 'dashboards');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('dashboards')
@@ -61,7 +61,7 @@ it('dashboards.update: PATCH /dashboards/{id}', function () {
 
     expect($result)->toBeInstanceOf(Dashboard::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('dashboards-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('dashboards-update', json_decode($request->body(), true), 'dashboards');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('dashboards/1')

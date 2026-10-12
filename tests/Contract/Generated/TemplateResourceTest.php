@@ -41,16 +41,16 @@ it('templates.show: GET /templates/{id}', function () {
 it('templates.create: POST /templates', function () {
     fakeHttp(['*' => Fixtures::response('templates-create', 'resource', 'templates', 201)]);
 
-    $result = Productive::templates()->create(['copy_attributes' => [1 => 'value']]);
+    $result = Productive::templates()->create(['model_attributes' => [1 => 'value']]);
 
     expect($result)->toBeInstanceOf(Template::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('templates-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('templates-create', json_decode($request->body(), true), 'templates');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('templates')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'templates', 'attributes' => ['copy_attributes' => [1 => 'value']]]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'templates', 'attributes' => ['model_attributes' => [1 => 'value']]]];
     });
 });
 
@@ -61,7 +61,7 @@ it('templates.update: PATCH /templates/{id}', function () {
 
     expect($result)->toBeInstanceOf(Template::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('templates-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('templates-update', json_decode($request->body(), true), 'templates');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('templates/1')

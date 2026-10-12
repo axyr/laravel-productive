@@ -45,7 +45,7 @@ it('discussions.create: POST /discussions', function () {
 
     expect($result)->toBeInstanceOf(Discussion::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('discussions-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('discussions-create', json_decode($request->body(), true), 'discussions');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('discussions')
@@ -61,7 +61,7 @@ it('discussions.update: PATCH /discussions/{id}', function () {
 
     expect($result)->toBeInstanceOf(Discussion::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('discussions-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('discussions-update', json_decode($request->body(), true), 'discussions');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('discussions/1')

@@ -45,7 +45,7 @@ it('team_memberships.create: POST /team_memberships', function () {
 
     expect($result)->toBeInstanceOf(TeamMembership::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('team_memberships-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('team_memberships-create', json_decode($request->body(), true), 'team_memberships');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('team_memberships')

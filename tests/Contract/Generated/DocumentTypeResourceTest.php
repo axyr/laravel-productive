@@ -41,32 +41,32 @@ it('document_types.show: GET /document_types/{id}', function () {
 it('document_types.create: POST /document_types', function () {
     fakeHttp(['*' => Fixtures::response('document_types-create', 'resource', 'document_types', 201)]);
 
-    $result = Productive::documentTypes()->create(['attachment_ids' => 'Example']);
+    $result = Productive::documentTypes()->create(['attachment_ids' => [1]]);
 
     expect($result)->toBeInstanceOf(DocumentType::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('document_types-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('document_types-create', json_decode($request->body(), true), 'document_types');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('document_types')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'document_types', 'attributes' => ['attachment_ids' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'document_types', 'attributes' => ['attachment_ids' => [1]]]];
     });
 });
 
 it('document_types.update: PATCH /document_types/{id}', function () {
     fakeHttp(['*' => Fixtures::response('document_types-update', 'resource', 'document_types', 200)]);
 
-    $result = Productive::documentTypes()->update('1', ['attachment_ids' => 'Example']);
+    $result = Productive::documentTypes()->update('1', ['attachment_ids' => [1]]);
 
     expect($result)->toBeInstanceOf(DocumentType::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('document_types-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('document_types-update', json_decode($request->body(), true), 'document_types');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('document_types/1')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'document_types', 'id' => '1', 'attributes' => ['attachment_ids' => 'Example']]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'document_types', 'id' => '1', 'attributes' => ['attachment_ids' => [1]]]];
     });
 });
 

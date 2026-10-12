@@ -90,7 +90,7 @@ it('pages.apply_template_as_doc: POST /pages/apply_template_as_doc', function ()
 
     expect($result)->toBeInstanceOf(Page::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pages-template-apply-template-as-doc', json_decode($request->body(), true));
+        RequestSchema::assertValid('pages-template-apply-template-as-doc', json_decode($request->body(), true), 'pages');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('pages/apply_template_as_doc')
@@ -106,7 +106,7 @@ it('pages.apply_template_as_target: PATCH /pages/{id}/apply_template_as_target',
 
     expect($result)->toBeInstanceOf(Page::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pages-template-apply-template-as-target', json_decode($request->body(), true));
+        RequestSchema::assertValid('pages-template-apply-template-as-target', json_decode($request->body(), true), 'pages');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('pages/1/apply_template_as_target')
@@ -122,7 +122,7 @@ it('pages.apply_template_on_parent: PATCH /pages/{id}/apply_template_on_parent',
 
     expect($result)->toBeInstanceOf(Page::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pages-template-apply-template-on-parent', json_decode($request->body(), true));
+        RequestSchema::assertValid('pages-template-apply-template-on-parent', json_decode($request->body(), true), 'pages');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('pages/1/apply_template_on_parent')
@@ -151,7 +151,7 @@ it('pages.copy: POST /pages/copy', function () {
 
     expect($result)->toBeInstanceOf(Page::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pages-copy-copy', json_decode($request->body(), true));
+        RequestSchema::assertValid('pages-copy-copy', json_decode($request->body(), true), 'pages');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('pages/copy')
@@ -167,7 +167,7 @@ it('pages.create_with_markdown: POST /pages/create_with_markdown', function () {
 
     expect($result)->toBeInstanceOf(Page::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pages-proxy-create-with-markdown', json_decode($request->body(), true));
+        RequestSchema::assertValid('pages-proxy-create-with-markdown', json_decode($request->body(), true), 'pages');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('pages/create_with_markdown')
@@ -183,7 +183,7 @@ it('pages.move: PATCH /pages/{id}/move', function () {
 
     expect($result)->toBeInstanceOf(Page::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pages-move-move', json_decode($request->body(), true));
+        RequestSchema::assertValid('pages-move-move', json_decode($request->body(), true), 'pages');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('pages/1/move')

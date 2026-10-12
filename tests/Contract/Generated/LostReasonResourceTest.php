@@ -45,7 +45,7 @@ it('lost_reasons.create: POST /lost_reasons', function () {
 
     expect($result)->toBeInstanceOf(LostReason::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('lost_reasons-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('lost_reasons-create', json_decode($request->body(), true), 'lost_reasons');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('lost_reasons')
@@ -61,7 +61,7 @@ it('lost_reasons.update: PATCH /lost_reasons/{id}', function () {
 
     expect($result)->toBeInstanceOf(LostReason::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('lost_reasons-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('lost_reasons-update', json_decode($request->body(), true), 'lost_reasons');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('lost_reasons/1')

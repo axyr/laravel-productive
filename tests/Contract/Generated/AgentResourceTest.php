@@ -45,7 +45,7 @@ it('agents.create: POST /agents', function () {
 
     expect($result)->toBeInstanceOf(Agent::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('agents-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('agents-create', json_decode($request->body(), true), 'agents');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('agents')
@@ -61,7 +61,7 @@ it('agents.update: PATCH /agents/{id}', function () {
 
     expect($result)->toBeInstanceOf(Agent::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('agents-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('agents-update', json_decode($request->body(), true), 'agents');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('agents/1')

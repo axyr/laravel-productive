@@ -45,7 +45,7 @@ it('rate_cards.create: POST /rate_cards', function () {
 
     expect($result)->toBeInstanceOf(RateCard::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('rate_cards-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('rate_cards-create', json_decode($request->body(), true), 'rate_cards');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('rate_cards')
@@ -61,7 +61,7 @@ it('rate_cards.update: PATCH /rate_cards/{id}', function () {
 
     expect($result)->toBeInstanceOf(RateCard::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('rate_cards-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('rate_cards-update', json_decode($request->body(), true), 'rate_cards');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('rate_cards/1')

@@ -45,7 +45,7 @@ it('expenses.create: POST /expenses', function () {
 
     expect($result)->toBeInstanceOf(Expense::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('expenses-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('expenses-create', json_decode($request->body(), true), 'expenses');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('expenses')
@@ -61,7 +61,7 @@ it('expenses.update: PATCH /expenses/{id}', function () {
 
     expect($result)->toBeInstanceOf(Expense::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('expenses-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('expenses-update', json_decode($request->body(), true), 'expenses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('expenses/1')
@@ -90,7 +90,7 @@ it('expenses.approve: PATCH /expenses/{id}/approve', function () {
 
     expect($result)->toBeInstanceOf(Expense::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('expenses-approve-approve', json_decode($request->body(), true));
+        RequestSchema::assertValid('expenses-approve-approve', json_decode($request->body(), true), 'expenses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('expenses/1/approve')
@@ -106,7 +106,7 @@ it('expenses.copy: POST /expenses/copy', function () {
 
     expect($result)->toBeInstanceOf(Expense::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('expenses-copy-copy', json_decode($request->body(), true));
+        RequestSchema::assertValid('expenses-copy-copy', json_decode($request->body(), true), 'expenses');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('expenses/copy')
@@ -122,7 +122,7 @@ it('expenses.export: PATCH /expenses/{id}/export', function () {
 
     expect($result)->toBeInstanceOf(Expense::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('expenses-export-export', json_decode($request->body(), true));
+        RequestSchema::assertValid('expenses-export-export', json_decode($request->body(), true), 'expenses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('expenses/1/export')
@@ -151,7 +151,7 @@ it('expenses.reject: PATCH /expenses/{id}/reject', function () {
 
     expect($result)->toBeInstanceOf(Expense::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('expenses-reject-reject', json_decode($request->body(), true));
+        RequestSchema::assertValid('expenses-reject-reject', json_decode($request->body(), true), 'expenses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('expenses/1/reject')
@@ -180,7 +180,7 @@ it('expenses.unreject: PATCH /expenses/{id}/unreject', function () {
 
     expect($result)->toBeInstanceOf(Expense::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('expenses-unreject-unreject', json_decode($request->body(), true));
+        RequestSchema::assertValid('expenses-unreject-unreject', json_decode($request->body(), true), 'expenses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('expenses/1/unreject')

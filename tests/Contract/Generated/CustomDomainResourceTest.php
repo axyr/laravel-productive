@@ -45,7 +45,7 @@ it('custom_domains.create: POST /custom_domains', function () {
 
     expect($result)->toBeInstanceOf(CustomDomain::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('custom_domains-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('custom_domains-create', json_decode($request->body(), true), 'custom_domains');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('custom_domains')

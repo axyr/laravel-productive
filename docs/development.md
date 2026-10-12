@@ -36,7 +36,8 @@ Do not add `--parallel`: in parallel mode Pest's mutation plugin reports escaped
 |---|---|
 | `tests/Unit` | Every class in isolation, including spec-example hydration of the models. |
 | `tests/Feature` | Connector behaviour against Laravel's HTTP fake, pagination, the service provider and the testing fake. |
-| `tests/Contract` | One test per API operation through the full stack. URLs, headers and bodies are asserted exactly, responses come from the spec examples, and request bodies are validated against the spec's JSON Schemas. |
+| `tests/Contract` | One test per API operation through the full stack. URLs, headers and bodies are asserted exactly, responses come from the spec examples, and request bodies are validated against the spec's JSON Schemas. A JSON:API body must carry `data` of the resource's own type, with no attribute the spec does not list. `InputSchemaTest` builds every input class with every attribute and validates the result. |
+| `tests/Generator` | The generator: classification rules, every emitter's exact output, and `SpecConsistencyTest`, which recomputes each operation's response kind and organization header from the raw spec and lists the deliberate deviations. |
 | `tests/Arch` | The design rules in [Architecture](architecture.md). |
 
 ## The spec
@@ -207,4 +208,4 @@ composer seed -- --execute
 - **Logged.** Every payload and response goes to `recordings/seed-<date-time>/`.
 - **Nothing that acts outside Productive:** no webhooks, invitations, sending, integrations or custom domains.
 
-It is also the first real check of the write side. It found creates whose required fields the spec does not mark (the payloads in `generator/bin/seed` carry them, with a comment each), and features a trial plan does not include.
+It is also the first real check of the write side. It found creates whose required fields the spec does not mark: the payloads in `generator/bin/seed` carry them, with a comment each, and `generator/config/required.php` makes them required in the generated input classes. It also found features a trial plan does not include.

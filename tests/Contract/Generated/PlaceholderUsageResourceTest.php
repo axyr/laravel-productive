@@ -45,7 +45,7 @@ it('placeholder_usages.create: POST /placeholder_usages', function () {
 
     expect($result)->toBeInstanceOf(PlaceholderUsage::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('placeholder_usages-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('placeholder_usages-create', json_decode($request->body(), true), 'placeholder_usages');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('placeholder_usages')
@@ -61,7 +61,7 @@ it('placeholder_usages.update: PATCH /placeholder_usages/{id}', function () {
 
     expect($result)->toBeInstanceOf(PlaceholderUsage::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('placeholder_usages-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('placeholder_usages-update', json_decode($request->body(), true), 'placeholder_usages');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('placeholder_usages/1')

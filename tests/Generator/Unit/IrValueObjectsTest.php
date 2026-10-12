@@ -24,5 +24,7 @@ it('knows which operation kinds are bulk', function (OperationKind $kind, bool $
 it('exports attributes without empty members', function () {
     expect((new Attribute('title', 'title', AttributeType::String, 'Name.', true, ['a']))->toArray())
         ->toBe(['name' => 'title', 'property' => 'title', 'type' => 'string', 'description' => 'Name.', 'required' => true, 'enum' => ['a']])
-        ->and((new Attribute('a', 'a', AttributeType::Mixed))->toArray())->toBe(['name' => 'a', 'property' => 'a', 'type' => 'mixed']);
+        ->and((new Attribute('a', 'a', AttributeType::Mixed))->toArray())->toBe(['name' => 'a', 'property' => 'a', 'type' => 'mixed'])
+        ->and((new Attribute('t', 't', AttributeType::List, items: AttributeType::String, specType: AttributeType::String, undocumented: true, itemEnum: ['note', 'task']))->toArray())
+        ->toBe(['name' => 't', 'property' => 't', 'type' => 'list', 'items' => 'string', 'spec_type' => 'string', 'undocumented' => true, 'item_enum' => ['note', 'task']]);
 });

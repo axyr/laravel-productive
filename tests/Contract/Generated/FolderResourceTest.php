@@ -45,7 +45,7 @@ it('folders.create: POST /folders', function () {
 
     expect($result)->toBeInstanceOf(Folder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('folders-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('folders-create', json_decode($request->body(), true), 'folders');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('folders')
@@ -61,7 +61,7 @@ it('folders.update: PATCH /folders/{id}', function () {
 
     expect($result)->toBeInstanceOf(Folder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('folders-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('folders-update', json_decode($request->body(), true), 'folders');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('folders/1')
@@ -90,7 +90,7 @@ it('folders.copy: POST /folders/copy', function () {
 
     expect($result)->toBeInstanceOf(Folder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('folders-copy-copy', json_decode($request->body(), true));
+        RequestSchema::assertValid('folders-copy-copy', json_decode($request->body(), true), 'folders');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('folders/copy')
@@ -106,7 +106,7 @@ it('folders.move: PATCH /folders/{id}/move', function () {
 
     expect($result)->toBeInstanceOf(Folder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('folders-move-move', json_decode($request->body(), true));
+        RequestSchema::assertValid('folders-move-move', json_decode($request->body(), true), 'folders');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('folders/1/move')
@@ -122,7 +122,7 @@ it('folders.reposition: PATCH /folders/{id}/reposition', function () {
 
     expect($result)->toBeInstanceOf(Folder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('folders-reposition-reposition', json_decode($request->body(), true));
+        RequestSchema::assertValid('folders-reposition-reposition', json_decode($request->body(), true), 'folders');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('folders/1/reposition')

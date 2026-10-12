@@ -45,7 +45,7 @@ it('page_versions.create: POST /page_versions', function () {
 
     expect($result)->toBeInstanceOf(PageVersion::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('page_versions-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('page_versions-create', json_decode($request->body(), true), 'page_versions');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('page_versions')
@@ -61,7 +61,7 @@ it('page_versions.update: PATCH /page_versions/{id}', function () {
 
     expect($result)->toBeInstanceOf(PageVersion::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('page_versions-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('page_versions-update', json_decode($request->body(), true), 'page_versions');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('page_versions/1')

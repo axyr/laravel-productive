@@ -45,7 +45,7 @@ it('automatic_invoicing_rules.create: POST /automatic_invoicing_rules', function
 
     expect($result)->toBeInstanceOf(AutomaticInvoicingRule::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('automatic_invoicing_rules-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('automatic_invoicing_rules-create', json_decode($request->body(), true), 'automatic_invoicing_rules');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('automatic_invoicing_rules')
@@ -61,7 +61,7 @@ it('automatic_invoicing_rules.update: PATCH /automatic_invoicing_rules/{id}', fu
 
     expect($result)->toBeInstanceOf(AutomaticInvoicingRule::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('automatic_invoicing_rules-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('automatic_invoicing_rules-update', json_decode($request->body(), true), 'automatic_invoicing_rules');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('automatic_invoicing_rules/1')

@@ -71,10 +71,23 @@ final class Samples
             AttributeType::Date => '2026-01-15',
             AttributeType::DateTime => '2026-01-15T09:00:00+00:00',
             AttributeType::Time => '09:00',
-            AttributeType::Object => ['1' => self::scalar($attribute->items)],
-            AttributeType::List => [self::scalar($attribute->items)],
+            AttributeType::Object => ['1' => $attribute->itemEnum[0] ?? self::scalar($attribute->items)],
+            AttributeType::List => [$attribute->itemEnum[0] ?? self::scalar($attribute->items)],
             AttributeType::Json => ['Example'],
-            AttributeType::String, AttributeType::Mixed => 'Example',
+            AttributeType::String => 'Example',
+            AttributeType::Mixed => self::untyped($attribute->name),
+        };
+    }
+
+    /**
+     * Untyped attributes whose input type Types::input() derives from the name: ID lists and tag lists.
+     */
+    private static function untyped(string $name): mixed
+    {
+        return match (true) {
+            str_ends_with($name, '_ids') => [1],
+            $name === 'tag_list' => ['Example'],
+            default => 'Example',
         };
     }
 }

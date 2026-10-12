@@ -25,7 +25,7 @@ final readonly class SchemaReader
     /**
      * @param  array<string, mixed>  $properties
      * @param  array<string, mixed>  $example  Example values, used to type untyped properties and to add undocumented ones.
-     * @param  list<string>  $required
+     * @param  array<int, string>  $required
      * @param  bool  $model  Model properties may not shadow Model::$id and Model::$type; input properties may.
      * @return array<string, Attribute>  Keyed by name.
      */
@@ -44,6 +44,7 @@ final readonly class SchemaReader
                 required: in_array($name, $required, true),
                 enum: self::enum($schema),
                 items: $this->items($schema),
+                itemEnum: self::enum($this->itemSchema($schema)),
             );
         }
 
@@ -143,13 +144,24 @@ final readonly class SchemaReader
      */
     private function items(array $schema): ?AttributeType
     {
-        $items = match ($schema['type'] ?? null) {
-            'array' => self::schemaType($this->spec->resolve($schema['items'] ?? [])),
-            'object' => self::schemaType($this->spec->resolve($schema['additionalProperties'] ?? [])),
-            default => null,
-        };
+        $items = self::schemaType($this->itemSchema($schema));
 
         return in_array($items, [AttributeType::Int, AttributeType::Float, AttributeType::Bool, AttributeType::String], true) ? $items : null;
+    }
+
+    /**
+     * The schema of a list's items or an object's values; empty for anything else.
+     *
+     * @param  array<string, mixed>  $schema
+     * @return array<string, mixed>
+     */
+    private function itemSchema(array $schema): array
+    {
+        return match ($schema['type'] ?? null) {
+            'array' => $this->spec->resolve($schema['items'] ?? []),
+            'object' => $this->spec->resolve($schema['additionalProperties'] ?? []),
+            default => [],
+        };
     }
 
     /**

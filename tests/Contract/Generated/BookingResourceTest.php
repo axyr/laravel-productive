@@ -45,7 +45,7 @@ it('bookings.create: POST /bookings', function () {
 
     expect($result)->toBeInstanceOf(Booking::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('bookings-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('bookings-create', json_decode($request->body(), true), 'bookings');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('bookings')
@@ -61,7 +61,7 @@ it('bookings.update: PATCH /bookings/{id}', function () {
 
     expect($result)->toBeInstanceOf(Booking::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('bookings-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('bookings-update', json_decode($request->body(), true), 'bookings');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('bookings/1')

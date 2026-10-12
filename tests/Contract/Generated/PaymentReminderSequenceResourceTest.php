@@ -45,7 +45,7 @@ it('payment_reminder_sequences.create: POST /payment_reminder_sequences', functi
 
     expect($result)->toBeInstanceOf(PaymentReminderSequence::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('payment_reminder_sequences-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('payment_reminder_sequences-create', json_decode($request->body(), true), 'payment_reminder_sequences');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('payment_reminder_sequences')
@@ -61,7 +61,7 @@ it('payment_reminder_sequences.update: PATCH /payment_reminder_sequences/{id}', 
 
     expect($result)->toBeInstanceOf(PaymentReminderSequence::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('payment_reminder_sequences-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('payment_reminder_sequences-update', json_decode($request->body(), true), 'payment_reminder_sequences');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('payment_reminder_sequences/1')

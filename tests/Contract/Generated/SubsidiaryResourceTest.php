@@ -45,7 +45,7 @@ it('subsidiaries.create: POST /subsidiaries', function () {
 
     expect($result)->toBeInstanceOf(Subsidiary::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('subsidiaries-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('subsidiaries-create', json_decode($request->body(), true), 'subsidiaries');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('subsidiaries')
@@ -61,7 +61,7 @@ it('subsidiaries.update: PATCH /subsidiaries/{id}', function () {
 
     expect($result)->toBeInstanceOf(Subsidiary::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('subsidiaries-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('subsidiaries-update', json_decode($request->body(), true), 'subsidiaries');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('subsidiaries/1')

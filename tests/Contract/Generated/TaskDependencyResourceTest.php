@@ -45,7 +45,7 @@ it('task_dependencies.create: POST /task_dependencies', function () {
 
     expect($result)->toBeInstanceOf(TaskDependency::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('task_dependencies-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('task_dependencies-create', json_decode($request->body(), true), 'task_dependencies');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('task_dependencies')
@@ -61,7 +61,7 @@ it('task_dependencies.update: PATCH /task_dependencies/{id}', function () {
 
     expect($result)->toBeInstanceOf(TaskDependency::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('task_dependencies-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('task_dependencies-update', json_decode($request->body(), true), 'task_dependencies');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('task_dependencies/1')

@@ -45,7 +45,7 @@ it('approval_policies.create: POST /approval_policies', function () {
 
     expect($result)->toBeInstanceOf(ApprovalPolicy::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('approval_policies-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('approval_policies-create', json_decode($request->body(), true), 'approval_policies');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('approval_policies')
@@ -61,7 +61,7 @@ it('approval_policies.update: PATCH /approval_policies/{id}', function () {
 
     expect($result)->toBeInstanceOf(ApprovalPolicy::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('approval_policies-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('approval_policies-update', json_decode($request->body(), true), 'approval_policies');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('approval_policies/1')

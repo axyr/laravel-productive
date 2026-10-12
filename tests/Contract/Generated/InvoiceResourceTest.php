@@ -45,7 +45,7 @@ it('invoices.create: POST /invoices', function () {
 
     expect($result)->toBeInstanceOf(Invoice::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('invoices-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('invoices-create', json_decode($request->body(), true), 'invoices');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('invoices')
@@ -61,7 +61,7 @@ it('invoices.update: PATCH /invoices/{id}', function () {
 
     expect($result)->toBeInstanceOf(Invoice::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('invoices-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('invoices-update', json_decode($request->body(), true), 'invoices');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('invoices/1')
@@ -155,7 +155,7 @@ it('invoices.send_einvoice: PATCH /invoices/{id}/send_einvoice', function () {
 
     expect($result)->toBeInstanceOf(Invoice::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('invoices-send_einvoice', json_decode($request->body(), true));
+        RequestSchema::assertValid('invoices-send_einvoice', json_decode($request->body(), true), 'invoices');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('invoices/1/send_einvoice')

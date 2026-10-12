@@ -45,7 +45,7 @@ it('custom_field_options.create: POST /custom_field_options', function () {
 
     expect($result)->toBeInstanceOf(CustomFieldOption::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('custom_field_options-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('custom_field_options-create', json_decode($request->body(), true), 'custom_field_options');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('custom_field_options')
@@ -61,7 +61,7 @@ it('custom_field_options.update: PATCH /custom_field_options/{id}', function () 
 
     expect($result)->toBeInstanceOf(CustomFieldOption::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('custom_field_options-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('custom_field_options-update', json_decode($request->body(), true), 'custom_field_options');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('custom_field_options/1')

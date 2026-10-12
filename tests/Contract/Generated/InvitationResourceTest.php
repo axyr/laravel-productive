@@ -31,7 +31,7 @@ it('invitations.create: POST /invitations', function () {
 
     expect($result)->toBeInstanceOf(Invitation::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('invitations-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('invitations-create', json_decode($request->body(), true), 'invitations');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('invitations')
@@ -47,7 +47,7 @@ it('invitations.update: PATCH /invitations/{id}', function () {
 
     expect($result)->toBeInstanceOf(Invitation::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('invitations-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('invitations-update', json_decode($request->body(), true), 'invitations');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('invitations/1')

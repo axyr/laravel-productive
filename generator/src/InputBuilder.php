@@ -9,9 +9,13 @@ use Axyr\Productive\Generator\Ir\Input;
 
 final readonly class InputBuilder
 {
+    /**
+     * @param  array<string, list<string>>  $required  Attributes the API requires on create beyond the spec's list, by input class.
+     */
     public function __construct(
         private Spec $spec,
         private SchemaReader $reader,
+        private array $required = [],
     ) {}
 
     /**
@@ -31,7 +35,7 @@ final readonly class InputBuilder
             return null;
         }
 
-        $required = $allOptional ? [] : Spec::strings($attributes['required'] ?? [], 'Required attributes');
+        $required = $allOptional ? [] : array_unique([...Spec::strings($attributes['required'] ?? [], 'Required attributes'), ...$this->required[$class] ?? []]);
 
         return new Input($class, self::bodyName($body), self::order($this->reader->attributes($properties, required: $required, model: false), $required), $plain, $bulk);
     }
@@ -93,7 +97,7 @@ final readonly class InputBuilder
      * Required attributes first, in the order the spec lists them, then the rest by name.
      *
      * @param  array<string, Attribute>  $attributes
-     * @param  list<string>  $required
+     * @param  array<int, string>  $required
      * @return list<Attribute>
      */
     private static function order(array $attributes, array $required): array

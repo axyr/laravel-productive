@@ -45,7 +45,7 @@ it('payments.create: POST /payments', function () {
 
     expect($result)->toBeInstanceOf(Payment::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('payments-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('payments-create', json_decode($request->body(), true), 'payments');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('payments')
@@ -61,7 +61,7 @@ it('payments.update: PATCH /payments/{id}', function () {
 
     expect($result)->toBeInstanceOf(Payment::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('payments-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('payments-update', json_decode($request->body(), true), 'payments');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('payments/1')

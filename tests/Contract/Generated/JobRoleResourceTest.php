@@ -45,7 +45,7 @@ it('job_roles.create: POST /job_roles', function () {
 
     expect($result)->toBeInstanceOf(JobRole::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('job_roles-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('job_roles-create', json_decode($request->body(), true), 'job_roles');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('job_roles')
@@ -61,7 +61,7 @@ it('job_roles.update: PATCH /job_roles/{id}', function () {
 
     expect($result)->toBeInstanceOf(JobRole::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('job_roles-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('job_roles-update', json_decode($request->body(), true), 'job_roles');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('job_roles/1')

@@ -45,7 +45,7 @@ it('workflow_statuses.create: POST /workflow_statuses', function () {
 
     expect($result)->toBeInstanceOf(WorkflowStatus::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('workflow_statuses-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('workflow_statuses-create', json_decode($request->body(), true), 'workflow_statuses');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('workflow_statuses')
@@ -61,7 +61,7 @@ it('workflow_statuses.update: PATCH /workflow_statuses/{id}', function () {
 
     expect($result)->toBeInstanceOf(WorkflowStatus::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('workflow_statuses-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('workflow_statuses-update', json_decode($request->body(), true), 'workflow_statuses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('workflow_statuses/1')

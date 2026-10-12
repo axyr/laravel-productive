@@ -86,7 +86,7 @@ it('writes a complete test file with one test per operation', function () {
 
             expect($result)->toBeInstanceOf(Task::class);
             Http::assertSent(function (HttpRequest $request): bool {
-                RequestSchema::assertValid('tasks-create', json_decode($request->body(), true));
+                RequestSchema::assertValid('tasks-create', json_decode($request->body(), true), 'tasks');
 
                 return $request->method() === 'POST'
                     && urldecode($request->url()) === apiUrl('tasks')
@@ -102,7 +102,7 @@ it('writes a complete test file with one test per operation', function () {
 
             expect($result)->toBeInstanceOf(Task::class);
             Http::assertSent(function (HttpRequest $request): bool {
-                RequestSchema::assertValidAttributes('tasks-update', json_decode($request->body(), true));
+                RequestSchema::assertValidAttributes('tasks-update', json_decode($request->body(), true), 'tasks');
 
                 return $request->method() === 'PATCH'
                     && urldecode($request->url()) === apiUrl('tasks/1')
@@ -201,7 +201,7 @@ it('writes the request, body and result expectations for each kind of operation'
 
             expect($result)->toBeInstanceOf(Task::class);
             Http::assertSent(function (HttpRequest $request): bool {
-                RequestSchema::assertValid('deals-copy', json_decode($request->body(), true));
+                RequestSchema::assertValid('deals-copy', json_decode($request->body(), true), 'tasks');
 
                 return $request->method() === 'POST'
                     && urldecode($request->url()) === apiUrl('deals/copy')
@@ -294,7 +294,7 @@ it('identifies a member by a parameter other than id', function () {
 
             expect($result)->toBeInstanceOf(Proposal::class);
             Http::assertSent(function (HttpRequest $request): bool {
-                RequestSchema::assertValid('public-proposals-accept', json_decode($request->body(), true));
+                RequestSchema::assertValid('public-proposals-accept', json_decode($request->body(), true), 'proposals');
 
                 return $request->method() === 'PATCH'
                     && urldecode($request->url()) === apiUrl('public/proposals/uuid-1/accept')

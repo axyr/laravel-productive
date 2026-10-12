@@ -45,7 +45,7 @@ it('memberships.create: POST /memberships', function () {
 
     expect($result)->toBeInstanceOf(Membership::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('memberships-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('memberships-create', json_decode($request->body(), true), 'memberships');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('memberships')
@@ -61,7 +61,7 @@ it('memberships.update: PATCH /memberships/{id}', function () {
 
     expect($result)->toBeInstanceOf(Membership::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('memberships-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('memberships-update', json_decode($request->body(), true), 'memberships');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('memberships/1')

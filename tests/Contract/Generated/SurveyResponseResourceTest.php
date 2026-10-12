@@ -45,7 +45,7 @@ it('survey_responses.create: POST /survey_responses', function () {
 
     expect($result)->toBeInstanceOf(SurveyResponse::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('survey_responses-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('survey_responses-create', json_decode($request->body(), true), 'survey_responses');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('survey_responses')

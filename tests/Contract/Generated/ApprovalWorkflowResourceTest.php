@@ -31,7 +31,7 @@ it('approval_workflows.create: POST /approval_workflows', function () {
 
     expect($result)->toBeInstanceOf(ApprovalWorkflow::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('approval_workflows-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('approval_workflows-create', json_decode($request->body(), true), 'approval_workflows');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('approval_workflows')
@@ -47,7 +47,7 @@ it('approval_workflows.update: PATCH /approval_workflows/{id}', function () {
 
     expect($result)->toBeInstanceOf(ApprovalWorkflow::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('approval_workflows-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('approval_workflows-update', json_decode($request->body(), true), 'approval_workflows');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('approval_workflows/1')

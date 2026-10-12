@@ -45,7 +45,7 @@ it('purchase_orders.create: POST /purchase_orders', function () {
 
     expect($result)->toBeInstanceOf(PurchaseOrder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('purchase_orders-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('purchase_orders-create', json_decode($request->body(), true), 'purchase_orders');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('purchase_orders')
@@ -61,7 +61,7 @@ it('purchase_orders.update: PATCH /purchase_orders/{id}', function () {
 
     expect($result)->toBeInstanceOf(PurchaseOrder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('purchase_orders-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('purchase_orders-update', json_decode($request->body(), true), 'purchase_orders');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('purchase_orders/1')
@@ -90,7 +90,7 @@ it('purchase_orders.copy: POST /purchase_orders/copy', function () {
 
     expect($result)->toBeInstanceOf(PurchaseOrder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('purchase_orders-copy-copy', json_decode($request->body(), true));
+        RequestSchema::assertValid('purchase_orders-copy-copy', json_decode($request->body(), true), 'purchase_orders');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('purchase_orders/copy')
@@ -106,7 +106,7 @@ it('purchase_orders.export: PATCH /purchase_orders/{id}/export', function () {
 
     expect($result)->toBeInstanceOf(PurchaseOrder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('purchase_orders-export-export', json_decode($request->body(), true));
+        RequestSchema::assertValid('purchase_orders-export-export', json_decode($request->body(), true), 'purchase_orders');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('purchase_orders/1/export')
@@ -122,7 +122,7 @@ it('purchase_orders.export_update: PATCH /purchase_orders/{id}/export_update', f
 
     expect($result)->toBeInstanceOf(PurchaseOrder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('purchase_orders-export_update-export_update', json_decode($request->body(), true));
+        RequestSchema::assertValid('purchase_orders-export_update-export_update', json_decode($request->body(), true), 'purchase_orders');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('purchase_orders/1/export_update')
@@ -138,7 +138,7 @@ it('purchase_orders.send: PATCH /purchase_orders/{id}/send', function () {
 
     expect($result)->toBeInstanceOf(PurchaseOrder::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('purchase_orders-send-send_mail', json_decode($request->body(), true));
+        RequestSchema::assertValid('purchase_orders-send-send_mail', json_decode($request->body(), true), 'purchase_orders');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('purchase_orders/1/send')

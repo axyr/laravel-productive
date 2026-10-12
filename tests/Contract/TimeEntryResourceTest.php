@@ -47,7 +47,7 @@ it('creates a time entry', function () {
 
     Http::assertSent(function (HttpRequest $request): bool {
         // The spec only documents this endpoint in its bulk variant, but shares the single-resource schema.
-        RequestSchema::assertValid('time_entries-create-bulk', sentBody($request));
+        RequestSchema::assertValid('time_entries-create-bulk', sentBody($request), 'time_entries');
 
         return $request->method() === 'POST'
             && $request->url() === apiUrl('time_entries')
@@ -61,7 +61,7 @@ it('updates a time entry (time_entries-update)', function () {
     Productive::timeEntries()->update(84848214, new UpdateTimeEntryData(note: 'Updated', time: 240));
 
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('time_entries-update', sentBody($request));
+        RequestSchema::assertValidAttributes('time_entries-update', sentBody($request), 'time_entries');
 
         return $request->method() === 'PATCH'
             && sentBody($request) === ['data' => ['type' => 'time_entries', 'id' => '84848214', 'attributes' => ['note' => 'Updated', 'time' => 240]]];

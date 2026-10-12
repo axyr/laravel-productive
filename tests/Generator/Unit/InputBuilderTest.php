@@ -86,3 +86,24 @@ it('treats a JSON:API body without attributes as having no input', function () {
     expect(inputBuilder()->build(['requestBody' => body(['properties' => ['attributes' => ['properties' => []]]])], 'X'))->toBeNull()
         ->and(inputBuilder()->build(['requestBody' => ['content' => ['application/vnd.api+json' => ['schema' => ['properties' => []]]]]], 'X'))->toBeNull();
 });
+
+it('adds the attributes the API requires on create beyond the spec, first and once', function () {
+    $spec = new Spec([]);
+    $builder = new InputBuilder($spec, new SchemaReader($spec), ['CreateBankAccountData' => ['number', 'name']]);
+    $operation = ['requestBody' => body(['properties' => ['attributes' => ['properties' => ['name' => ['type' => 'string'], 'number' => ['type' => 'string'], 'iban' => ['type' => 'string']], 'required' => ['name']]]])];
+
+    $create = $builder->build($operation, 'CreateBankAccountData');
+    $update = $builder->build($operation, 'CreateBankAccountData', allOptional: true);
+    $other = $builder->build($operation, 'OtherData');
+
+    expect(names($create->attributes ?? []))->toBe(['name', 'number', 'iban'])
+        ->and(array_column(array_map(fn(Attribute $attribute): array => (array) $attribute, $create->attributes ?? []), 'required'))->toBe([true, true, false])
+        ->and(array_filter(array_map(fn(Attribute $attribute): bool => $attribute->required, $update->attributes ?? [])))->toBe([])
+        ->and(array_map(fn(Attribute $attribute): bool => $attribute->required, $other->attributes ?? []))->toBe([true, false, false]);
+});
+
+it('keeps type and id attributes under their own names in inputs', function () {
+    $input = inputBuilder()->build(['requestBody' => body(['properties' => ['attributes' => ['properties' => ['type' => ['type' => 'string'], 'id' => ['type' => 'integer']]]]])], 'X');
+
+    expect(array_map(fn(Attribute $attribute): string => $attribute->property, $input->attributes ?? []))->toBe(['id', 'type']);
+});

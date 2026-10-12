@@ -45,7 +45,7 @@ it('pulses.create: POST /pulses', function () {
 
     expect($result)->toBeInstanceOf(Pulse::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('pulses-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('pulses-create', json_decode($request->body(), true), 'pulses');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('pulses')
@@ -61,7 +61,7 @@ it('pulses.update: PATCH /pulses/{id}', function () {
 
     expect($result)->toBeInstanceOf(Pulse::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('pulses-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('pulses-update', json_decode($request->body(), true), 'pulses');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('pulses/1')

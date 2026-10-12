@@ -45,7 +45,7 @@ it('projects.create: POST /projects', function () {
 
     expect($result)->toBeInstanceOf(Project::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('projects-create', json_decode($request->body(), true));
+        RequestSchema::assertValid('projects-create', json_decode($request->body(), true), 'projects');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('projects')
@@ -61,7 +61,7 @@ it('projects.update: PATCH /projects/{id}', function () {
 
     expect($result)->toBeInstanceOf(Project::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValidAttributes('projects-update', json_decode($request->body(), true));
+        RequestSchema::assertValidAttributes('projects-update', json_decode($request->body(), true), 'projects');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('projects/1')
@@ -90,7 +90,7 @@ it('projects.apply_navigation_tabs: PATCH /projects/{id}/apply_navigation_tabs',
 
     expect($result)->toBeInstanceOf(Project::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('projects-apply_navigation_tabs-apply_navigation_tabs', json_decode($request->body(), true));
+        RequestSchema::assertValid('projects-apply_navigation_tabs-apply_navigation_tabs', json_decode($request->body(), true), 'projects');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('projects/1/apply_navigation_tabs')
@@ -119,7 +119,7 @@ it('projects.change_workflow: PATCH /projects/{id}/change_workflow', function ()
 
     expect($result)->toBeInstanceOf(Project::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('projects-change_workflow-change_workflow', json_decode($request->body(), true));
+        RequestSchema::assertValid('projects-change_workflow-change_workflow', json_decode($request->body(), true), 'projects');
 
         return $request->method() === 'PATCH'
             && urldecode($request->url()) === apiUrl('projects/1/change_workflow')
@@ -135,7 +135,7 @@ it('projects.copy: POST /projects/copy', function () {
 
     expect($result)->toBeInstanceOf(Project::class);
     Http::assertSent(function (HttpRequest $request): bool {
-        RequestSchema::assertValid('projects-copy-copy', json_decode($request->body(), true));
+        RequestSchema::assertValid('projects-copy-copy', json_decode($request->body(), true), 'projects');
 
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('projects/copy')
