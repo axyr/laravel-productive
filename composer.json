@@ -83,7 +83,8 @@
         "record:types": "php generator/bin/recorded-types",
         "record:fixtures": "php generator/bin/recorded-fixtures",
         "seed": "php generator/bin/seed",
-        "webhook:capture": "php generator/bin/webhook-capture"
+        "webhook:capture": "php generator/bin/webhook-capture",
+        "webhook:fixtures": "php generator/bin/webhook-fixtures"
     },
     "config": {
         "allow-plugins": {

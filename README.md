@@ -47,6 +47,7 @@ Productive::tasks()->update($task->id, new UpdateTaskData(dueDate: null)); // ex
   - Reads are retried after server errors.
   - Writes are never retried after a server error, because they may already have been applied.
 - **Multiple organizations.** `Productive::withOrganization($id)` and `withToken($token)` switch per call.
+- **Webhooks.** `Route::productiveWebhooks()` receives Productive's deliveries, verifies their signature, hydrates the item into its model and dispatches a Laravel event. `FakeWebhook` builds deliveries for your tests.
 - **Testing.** `Productive::fake()` records requests, returns seeded or sensible default responses, and provides assertions such as `assertCreated()`. Factories build realistic models from Productive's own examples.
 - **Production-ready.** Octane-safe scoped bindings, never sends credentials to another host, 100% line and type coverage, PHPStan at max level.
 
@@ -115,6 +116,7 @@ Full reference in [docs/](docs/README.md):
 - [Creating, updating and actions](docs/writing.md): input objects, `Undefined` versus `null`, actions, bulk operations
 - [Reports](docs/reports.md): grouping, report pagination and rate limits
 - [Errors, retries and rate limits](docs/errors.md): the exception hierarchy, retry policy and queue jobs
+- [Webhooks](docs/webhooks.md): receiving Productive's deliveries, verifying them, the events
 - [Testing](docs/testing.md): `Productive::fake()`, fake responses, factories, assertions
 - [Architecture](docs/architecture.md): how the layers fit together
 - [Development](docs/development.md): quality gate, the vendored spec, recording real responses and how endpoints are added

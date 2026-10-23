@@ -9,6 +9,7 @@ Laravel Productive: full reference. For installation and a quick start, see the 
 - [Creating, updating and actions](writing.md): input objects, `Undefined` versus `null`, actions, bulk operations
 - [Reports](reports.md): grouping, report pagination and rate limits
 - [Errors, retries and rate limits](errors.md): the exception hierarchy, retry policy and queue jobs
+- [Webhooks](webhooks.md): receiving Productive's deliveries, verifying them, the events
 - [Testing](testing.md): `Productive::fake()`, fake responses, factories, assertions
 - [Architecture](architecture.md): how the layers fit together
 - [Development](development.md): quality gate, the vendored spec, recording real responses and how endpoints are added

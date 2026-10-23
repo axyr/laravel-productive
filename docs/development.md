@@ -210,6 +210,8 @@ cloudflared tunnel --url http://127.0.0.1:8787   # or any tunnel to the port
 
 The captures are local and git-ignored, like recordings. The signature header is kept on purpose: without the token it reveals nothing, and fixtures need it to test verification.
 
+`composer webhook:fixtures` turns the captures (every `recordings/webhooks-*` directory, or the one given) into `tests/Fixtures/Webhooks/<event>.json`: the latest delivery of each event, scrubbed and leak-checked like a recorded fixture. `WebhookDeliveryTest` hydrates every fixture into the model of its type.
+
 ### Seeding the recording organization
 
 An empty trial records mostly empty lists, which teach nothing. `composer seed` creates one record of each resource whose list is empty, through the SDK's own create methods:

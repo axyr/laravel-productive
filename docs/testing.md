@@ -112,6 +112,31 @@ TaskFactory::new()->count(0)->resources();                         // []
 
 Generated IDs count up across a test run, so assert on the IDs you pass in rather than on generated ones.
 
+## Webhooks
+
+`FakeWebhook` builds what Productive would send, so a listener or the whole route can be tested:
+
+```php
+use Axyr\Productive\Testing\FakeWebhook;
+use Axyr\Productive\Testing\Factories\DealFactory;
+use Axyr\Productive\Webhooks\ProductiveWebhookReceived;
+use Axyr\Productive\Webhooks\WebhookEvent;
+
+$payload = FakeWebhook::payload(WebhookEvent::DealUpdated, DealFactory::new()->resource(['id' => '9', 'name' => 'Website']));
+
+// The event the route dispatches, for a listener test:
+(new SyncDeal)->handle(FakeWebhook::received($payload));
+
+// A signed request through the route, for an end-to-end test:
+config()->set('productive.webhooks.secrets', 'test-token');
+$request = FakeWebhook::request($payload, 'test-token');
+$this->call('POST', route('productive.webhooks'), server: ['HTTP_PRODUCTIVE_SIGNATURE' => $request['headers']['Productive-Signature'], 'CONTENT_TYPE' => 'application/json'], content: $request['body'])
+    ->assertOk();
+Event::assertDispatched(ProductiveWebhookReceived::class);
+```
+
+`payload()` takes a `WebhookEvent` or a delivery name (`'update_deal'`), a factory's `resource()` (or a model, attributes only), the included resource objects, and the event time. `request()` signs the encoded body with a token and a timestamp (now by default); `received()` hydrates the payload like the route does.
+
 ---
 
-Previous: [Errors, retries and rate limits](errors.md) · Next: [Architecture](architecture.md)
+Previous: [Webhooks](webhooks.md) · Next: [Architecture](architecture.md)

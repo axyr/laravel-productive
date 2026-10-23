@@ -1,0 +1,81 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Writes tests/Fixtures/Webhooks/<event>.json from the captures of `composer webhook:capture`
+ * (every recordings/webhooks-* directory, or the one given): the latest delivery of each event,
+ * scrubbed like a recorded fixture. Nothing is written when the output still contains a leak,
+ * under the same terms as `composer record:fixtures`.
+ */
+
+use Axyr\Productive\Generator\Recording\Json;
+use Axyr\Productive\Generator\Recording\LeakCheck;
+use Axyr\Productive\Generator\Recording\Scrubber;
+use Dotenv\Dotenv;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$root = dirname(__DIR__, 2);
+Dotenv::createImmutable($root)->safeLoad();
+$directories = isset($argv[1]) ? [$argv[1]] : (glob($root . '/recordings/webhooks-*', GLOB_ONLYDIR) ?: []);
+$captures = [];
+
+foreach ($directories as $directory) {
+    foreach (glob($directory . '/*.json') ?: [] as $file) {
+        $capture = Json::map(json_decode((string) file_get_contents($file), true));
+        $payload = Json::map($capture['json'] ?? null);
+
+        if (is_string($payload['event'] ?? null)) {
+            $captures[$payload['event']] = $payload;
+        }
+    }
+}
+
+if ($captures === []) {
+    fwrite(STDERR, "No webhook captures found: run `composer webhook:capture` first.\n");
+    exit(1);
+}
+
+ksort($captures);
+$scrubber = new Scrubber();
+$fixtures = [];
+
+foreach ($captures as $event => $payload) {
+    $fixtures[$event] = json_encode($scrubber->scrub($payload), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR) . "\n";
+}
+
+$env = function (string $key): string {
+    $value = $_ENV[$key] ?? getenv($key);
+
+    return is_string($value) ? $value : '';
+};
+$git = fn(string $key): string => trim((string) shell_exec('git -C ' . escapeshellarg($root) . ' config ' . $key));
+$terms = [
+    'the organization ID' => $env('PRODUCTIVE_ORGANIZATION_ID'),
+    'the API token' => $env('PRODUCTIVE_API_TOKEN'),
+    'the webhook secrets' => $env('PRODUCTIVE_WEBHOOK_SECRET'),
+    'the git user name' => $git('user.name'),
+    'the git user email' => $git('user.email'),
+];
+
+foreach (array_filter(array_map(trim(...), explode(',', $env('RECORDING_LEAK_TERMS')))) as $index => $term) {
+    $terms['RECORDING_LEAK_TERMS #' . ($index + 1)] = $term;
+}
+
+$leaks = LeakCheck::leaks(implode("\n", $fixtures), array_filter($terms, fn(string $value): bool => $value !== ''), $scrubber->replaced());
+
+if ($leaks !== []) {
+    fwrite(STDERR, 'Refusing to write fixtures: the scrubbed output still contains ' . implode(', ', array_unique($leaks)) . ".\n");
+    exit(1);
+}
+
+$target = $root . '/tests/Fixtures/Webhooks';
+is_dir($target) || mkdir($target, 0o755, true);
+
+foreach ($fixtures as $event => $json) {
+    file_put_contents($target . '/' . $event . '.json', $json);
+}
+
+echo 'Wrote ' . count($fixtures) . ' scrubbed webhook fixtures to tests/Fixtures/Webhooks (' . count($scrubber->replaced()) . " values replaced).\n";
