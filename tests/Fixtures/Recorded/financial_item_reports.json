@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 93",
+            "id": "Text 129",
             "type": "financial_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -10,12 +10,12 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1021,
+                "financial_item_id": 1050,
                 "financial_item_type": "booking_item",
                 "financial_item_date": "2026-10-09",
-                "financial_item_description": "Text 14",
-                "billing_type_id": 1041,
-                "project_type_id": 1016,
+                "financial_item_description": "Text 41",
+                "billing_type_id": 1075,
+                "project_type_id": 1038,
                 "average_recognized_margin": null,
                 "average_retainer_interval_count": 1,
                 "future": 0,
@@ -91,7 +91,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -170,7 +170,7 @@
             }
         },
         {
-            "id": "Text 94",
+            "id": "Text 130",
             "type": "financial_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -179,181 +179,12 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1071,
+                "financial_item_id": 1107,
                 "financial_item_type": "booking_item",
-                "financial_item_date": "2026-10-23",
-                "financial_item_description": "Text 14",
-                "billing_type_id": 1041,
-                "project_type_id": 1016,
-                "average_recognized_margin": null,
-                "average_retainer_interval_count": 1,
-                "future": 1,
-                "approval_status": 1,
-                "stage_type": 2,
-                "stage_status": 4,
-                "custom_fields": [],
-                "total_time": 480,
-                "total_billable_time": 0,
-                "total_billable_scheduled_time": 0,
-                "total_billable_worked_time": 0,
-                "total_scheduled_time": 480,
-                "total_future_scheduled_time": 480,
-                "total_recognized_time": 0,
-                "total_worked_time": 0,
-                "total_overtime_time": 0,
-                "total_estimated_time": 0,
-                "total_budgeted_time": 0,
-                "date_period": null,
-                "average_margin": null,
-                "average_margin_default": null,
-                "average_margin_normalized": null,
-                "total_recognized_revenue": 0,
-                "total_recognized_revenue_default": 0,
-                "total_recognized_revenue_normalized": 0,
-                "total_projected_revenue": 0,
-                "total_projected_revenue_default": 0,
-                "total_projected_revenue_normalized": 0,
-                "total_scheduled_revenue": 0,
-                "total_scheduled_revenue_default": 0,
-                "total_scheduled_revenue_normalized": 0,
-                "total_cost": 36363.63636,
-                "total_cost_default": 36363.63636,
-                "total_cost_normalized": 36363.63636,
-                "total_scheduled_cost": 36363.63636,
-                "total_scheduled_cost_default": 36363.63636,
-                "total_scheduled_cost_normalized": 36363.63636,
-                "total_recognized_profit": -36363.63636,
-                "total_recognized_profit_default": -36363.63636,
-                "total_recognized_profit_normalized": -36363.63636,
-                "average_blended_rate": 10000,
-                "average_blended_rate_default": 10000,
-                "average_blended_rate_normalized": 10000,
-                "total_budget_used": 80000,
-                "total_budget_used_default": 80000,
-                "total_budget_used_normalized": 80000,
-                "total_invoiced": 0,
-                "total_invoiced_default": 0,
-                "total_invoiced_normalized": 0,
-                "total_credited": 0,
-                "total_credited_default": 0,
-                "total_credited_normalized": 0,
-                "total_draft_invoiced": 0,
-                "total_draft_invoiced_default": 0,
-                "total_draft_invoiced_normalized": 0,
-                "total_expense_cost": 0,
-                "total_expense_cost_default": 0,
-                "total_expense_cost_normalized": 0,
-                "total_time_entry_cost": 0,
-                "total_time_entry_cost_default": 0,
-                "total_time_entry_cost_normalized": 0,
-                "total_overhead_cost": 0,
-                "total_overhead_cost_default": 0,
-                "total_overhead_cost_normalized": 0,
-                "total_budget_total": 0,
-                "total_budget_total_default": 0,
-                "total_budget_total_normalized": 0,
-                "total_estimated_cost": 0,
-                "total_estimated_cost_default": 0,
-                "total_estimated_cost_normalized": 0
-            },
-            "relationships": {
-                "organization": {
-                    "data": {
-                        "type": "organizations",
-                        "id": "1002"
-                    }
-                },
-                "report": {
-                    "data": null
-                },
-                "person": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "service": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "budget": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "origin_deal": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "company": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "subsidiary": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "project": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "responsible": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "section": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "time_entry": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "booking_item": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "expense": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "invoice_attribution": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "revenue_item": {
-                    "meta": {
-                        "included": false
-                    }
-                }
-            }
-        },
-        {
-            "id": "Text 95",
-            "type": "financial_item_reports",
-            "attributes": {
-                "currency": "USD",
-                "currency_default": "USD",
-                "currency_normalized": "USD",
-                "group": "financial_item",
-                "count": 1,
-                "formula_fields": [],
-                "financial_item_id": 1072,
-                "financial_item_type": "booking_item",
-                "financial_item_date": "2026-10-23",
+                "financial_item_date": "2026-10-26",
                 "financial_item_description": "",
-                "billing_type_id": 1028,
-                "project_type_id": 1028,
+                "billing_type_id": 1036,
+                "project_type_id": 1036,
                 "average_recognized_margin": "54.5455",
                 "average_retainer_interval_count": 1,
                 "future": 1,
@@ -429,7 +260,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -508,7 +339,7 @@
             }
         },
         {
-            "id": "Text 93",
+            "id": "Text 129",
             "type": "financial_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -517,12 +348,12 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1021,
+                "financial_item_id": 1050,
                 "financial_item_type": "booking_item",
                 "financial_item_date": "2026-10-09",
-                "financial_item_description": "Text 14",
-                "billing_type_id": 1041,
-                "project_type_id": 1016,
+                "financial_item_description": "Text 41",
+                "billing_type_id": 1075,
+                "project_type_id": 1038,
                 "average_recognized_margin": null,
                 "average_retainer_interval_count": 1,
                 "future": 0,
@@ -598,7 +429,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -619,7 +450,7 @@
                 "budget": {
                     "data": {
                         "type": "deals",
-                        "id": "1018"
+                        "id": "1047"
                     }
                 },
                 "origin_deal": {
@@ -630,7 +461,7 @@
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1007"
+                        "id": "1002"
                     }
                 },
                 "subsidiary": {
@@ -661,7 +492,7 @@
                 "booking_item": {
                     "data": {
                         "type": "booking_items",
-                        "id": "1021"
+                        "id": "1050"
                     }
                 },
                 "expense": {
@@ -682,7 +513,7 @@
             }
         },
         {
-            "id": "Text 93",
+            "id": "Text 129",
             "type": "financial_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -691,12 +522,12 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1021,
+                "financial_item_id": 1050,
                 "financial_item_type": "booking_item",
                 "financial_item_date": "2026-10-09",
-                "financial_item_description": "Text 14",
-                "billing_type_id": 1041,
-                "project_type_id": 1016,
+                "financial_item_description": "Text 41",
+                "billing_type_id": 1075,
+                "project_type_id": 1038,
                 "average_recognized_margin": null,
                 "average_retainer_interval_count": 1,
                 "future": 0,
@@ -772,7 +603,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -781,13 +612,13 @@
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1031"
+                        "id": "1007"
                     }
                 },
                 "service": {
                     "data": {
                         "type": "services",
-                        "id": "1030"
+                        "id": "1058"
                     }
                 },
                 "budget": {
@@ -808,19 +639,19 @@
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1020"
+                        "id": "1049"
                     }
                 },
                 "project": {
                     "data": {
                         "type": "projects",
-                        "id": "1066"
+                        "id": "1102"
                     }
                 },
                 "responsible": {
                     "data": {
                         "type": "people",
-                        "id": "1031"
+                        "id": "1007"
                     }
                 },
                 "section": {

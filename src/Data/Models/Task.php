@@ -291,19 +291,19 @@ final readonly class Task extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<Task>
      */
     public function subtasks(): array
     {
-        return $this->hasMany('subtasks', Model::class);
+        return $this->hasMany('subtasks', Task::class);
     }
 
     /**
-     * @return list<Model>
+     * @return list<TaskDependency>
      */
     public function taskDependencies(): array
     {
-        return $this->hasMany('task_dependencies', Model::class);
+        return $this->hasMany('task_dependencies', TaskDependency::class);
     }
 
     public function taskList(): ?TaskList

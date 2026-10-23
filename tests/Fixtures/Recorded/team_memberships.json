@@ -1,0 +1,50 @@
+{
+    "data": [
+        {
+            "id": "1010",
+            "type": "team_memberships",
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "team": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1010",
+            "type": "team_memberships",
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1007"
+                    }
+                },
+                "team": {
+                    "data": {
+                        "type": "teams",
+                        "id": "1011"
+                    }
+                }
+            }
+        }
+    ]
+}

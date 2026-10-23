@@ -1,106 +1,77 @@
 {
     "data": [
         {
-            "id": "1104",
+            "id": "1034",
             "type": "roles",
             "attributes": {
-                "base_role_id": 1098,
-                "description": "Text 181",
-                "access_description": "Text 182",
-                "best_when_description": "Text 183",
-                "name": "Text 184",
-                "people_count": 1,
-                "active_users_count": 1,
-                "inactive_users_count": 0,
-                "active_agents_count": 0,
-                "inactive_agents_count": 0,
-                "permissions": [],
-                "editable_by_user": false,
-                "user_type_id": 1016,
-                "principal_type": "user",
-                "resolved_permissions": {
-                    "agents_manage": true,
-                    "agents_view": true,
-                    "assistant_view": true,
-                    "allocations_view": true,
-                    "automations_manage": true
-                }
-            },
-            "relationships": {
-                "organization": {
-                    "data": {
-                        "type": "organizations",
-                        "id": "1002"
-                    }
-                }
-            }
-        },
-        {
-            "id": "1108",
-            "type": "roles",
-            "attributes": {
-                "base_role_id": 1016,
-                "description": "Text 185",
-                "access_description": "Text 186",
-                "best_when_description": null,
-                "name": "Text 187",
-                "people_count": 1,
-                "active_users_count": 1,
-                "inactive_users_count": 0,
-                "active_agents_count": 0,
-                "inactive_agents_count": 0,
-                "permissions": [],
-                "editable_by_user": false,
-                "user_type_id": 1016,
-                "principal_type": "user",
-                "resolved_permissions": {
-                    "agents_manage": true,
-                    "agents_view": true,
-                    "assistant_view": true,
-                    "allocations_view": true,
-                    "automations_manage": true
-                }
-            },
-            "relationships": {
-                "organization": {
-                    "data": {
-                        "type": "organizations",
-                        "id": "1002"
-                    }
-                }
-            }
-        },
-        {
-            "id": "1121",
-            "type": "roles",
-            "attributes": {
-                "base_role_id": 1042,
-                "description": "Text 188",
+                "base_role_id": 1136,
+                "description": null,
                 "access_description": null,
                 "best_when_description": null,
-                "name": "Text 189",
-                "people_count": 0,
+                "name": "Text 232",
+                "people_count": 1,
                 "active_users_count": 0,
                 "inactive_users_count": 0,
-                "active_agents_count": 0,
+                "active_agents_count": 1,
                 "inactive_agents_count": 0,
-                "permissions": [],
-                "editable_by_user": false,
-                "user_type_id": 1028,
-                "principal_type": "user",
+                "permissions": {
+                    "docs_view": true,
+                    "roles_view": true,
+                    "tasks_view": true,
+                    "teams_view": true,
+                    "deals_close": true
+                },
+                "editable_by_user": true,
+                "user_type_id": 1038,
+                "principal_type": "agent",
                 "resolved_permissions": {
                     "agents_manage": false,
-                    "agents_view": true,
-                    "assistant_view": true,
-                    "allocations_view": false,
-                    "automations_manage": false
+                    "agents_view": false,
+                    "assistant_view": false,
+                    "allocations_view": true,
+                    "automations_manage": true
                 }
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
+                    }
+                }
+            }
+        },
+        {
+            "id": "1141",
+            "type": "roles",
+            "attributes": {
+                "base_role_id": 1134,
+                "description": "Text 233",
+                "access_description": "Text 234",
+                "best_when_description": "Text 235",
+                "name": "Text 236",
+                "people_count": 1,
+                "active_users_count": 1,
+                "inactive_users_count": 0,
+                "active_agents_count": 0,
+                "inactive_agents_count": 0,
+                "permissions": [],
+                "editable_by_user": false,
+                "user_type_id": 1038,
+                "principal_type": "user",
+                "resolved_permissions": {
+                    "agents_manage": true,
+                    "agents_view": true,
+                    "assistant_view": true,
+                    "allocations_view": true,
+                    "automations_manage": true
+                }
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
                     }
                 }
             }

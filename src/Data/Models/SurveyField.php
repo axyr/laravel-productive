@@ -38,6 +38,9 @@ final readonly class SurveyField extends Model
     /** ID of the data type that determines what kind of value this field stores (text, number, date, etc.). */
     public ?int $dataTypeId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     public ?string $fieldType;
 
     /** ID of the formatting type that controls how this field's value is displayed. */
@@ -76,6 +79,7 @@ final readonly class SurveyField extends Model
         $this->createdAt = $attributes->dateTime('created_at');
         $this->customizableType = $attributes->string('customizable_type');
         $this->dataTypeId = $attributes->int('data_type_id');
+        $this->description = $attributes->mixed('description');
         $this->fieldType = $attributes->string('field_type');
         $this->formattingTypeId = $attributes->int('formatting_type_id');
         $this->global = $attributes->bool('global');

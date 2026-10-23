@@ -1,0 +1,106 @@
+{
+    "data": [
+        {
+            "id": "1041",
+            "type": "approval_statuses",
+            "attributes": {
+                "approved_at": "2026-10-23T21:27:04.284+02:00",
+                "rejected_at": null,
+                "note": null,
+                "dynamic_approver_type_id": null,
+                "fallback_approver_type_id": null,
+                "target_type": "time_entry",
+                "approver_group_key": "Text 26"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "approver": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "actual_approver": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1041",
+            "type": "approval_statuses",
+            "attributes": {
+                "approved_at": "2026-10-23T21:27:04.284+02:00",
+                "rejected_at": null,
+                "note": null,
+                "dynamic_approver_type_id": null,
+                "fallback_approver_type_id": null,
+                "target_type": "time_entry",
+                "approver_group_key": "Text 26"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "approver": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "actual_approver": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "approval_workflow": {
+                    "data": {
+                        "type": "approval_workflows",
+                        "id": "1042"
+                    }
+                },
+                "booking": {
+                    "data": null
+                },
+                "expense": {
+                    "data": null
+                },
+                "time_entry": {
+                    "data": {
+                        "type": "time_entries",
+                        "id": "1043"
+                    }
+                }
+            }
+        }
+    ]
+}

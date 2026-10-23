@@ -1,0 +1,106 @@
+{
+    "data": [
+        {
+            "id": "1175",
+            "type": "survey_fields",
+            "attributes": {
+                "created_at": "2026-10-23T21:20:29.358+02:00",
+                "updated_at": "2026-10-23T21:21:41.439+02:00",
+                "name": "Text 252",
+                "data_type_id": 1075,
+                "required": false,
+                "description": null,
+                "archived_at": null,
+                "aggregation_type_id": null,
+                "formatting_type_id": null,
+                "global": true,
+                "show_in_add_edit_views": true,
+                "sensitive": false,
+                "position": 1,
+                "quick_add_enabled": false,
+                "customizable_type": "survey_responses"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "survey": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "origin_field": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "options": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1175",
+            "type": "survey_fields",
+            "attributes": {
+                "created_at": "2026-10-23T21:20:29.358+02:00",
+                "updated_at": "2026-10-23T21:21:41.439+02:00",
+                "name": "Text 252",
+                "data_type_id": 1075,
+                "required": false,
+                "description": null,
+                "archived_at": null,
+                "aggregation_type_id": null,
+                "formatting_type_id": null,
+                "global": true,
+                "show_in_add_edit_views": true,
+                "sensitive": false,
+                "position": 1,
+                "quick_add_enabled": false,
+                "customizable_type": "survey_responses"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "survey": {
+                    "data": {
+                        "type": "surveys",
+                        "id": "1176"
+                    }
+                },
+                "origin_field": {
+                    "data": null
+                },
+                "options": {
+                    "data": [
+                        {
+                            "type": "survey_field_options",
+                            "id": "1073"
+                        },
+                        {
+                            "type": "survey_field_options",
+                            "id": "1177"
+                        }
+                    ]
+                },
+                "custom_field_people": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "data": [
+        {
+            "id": "1148",
+            "type": "placeholders",
+            "attributes": {
+                "name": "Text 211",
+                "category": "project",
+                "color": "electric",
+                "icon": "icon-cowboy-hat-filled",
+                "type": "person",
+                "created_at": "2026-10-23T23:37:25.428+02:00",
+                "updated_at": "2026-10-23T23:37:25.428+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1148",
+            "type": "placeholders",
+            "attributes": {
+                "name": "Text 211",
+                "category": "project",
+                "color": "electric",
+                "icon": "icon-cowboy-hat-filled",
+                "type": "person",
+                "created_at": "2026-10-23T23:37:25.428+02:00",
+                "updated_at": "2026-10-23T23:37:25.428+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1013"
+                    }
+                }
+            }
+        }
+    ]
+}

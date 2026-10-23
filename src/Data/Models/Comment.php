@@ -34,6 +34,9 @@ final readonly class Comment extends Model
     /** Timestamp when this comment was created. */
     public ?DateTimeImmutable $createdAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $creationMethod;
+
     /** Timestamp when this comment was soft-deleted. Null if not deleted. */
     public ?DateTimeImmutable $deletedAt;
 
@@ -70,6 +73,7 @@ final readonly class Comment extends Model
         $this->commentableId = $attributes->int('commentable_id');
         $this->commentableType = $attributes->string('commentable_type');
         $this->createdAt = $attributes->dateTime('created_at');
+        $this->creationMethod = $attributes->string('creation_method');
         $this->deletedAt = $attributes->dateTime('deleted_at');
         $this->draft = $attributes->bool('draft');
         $this->editedAt = $attributes->dateTime('edited_at');

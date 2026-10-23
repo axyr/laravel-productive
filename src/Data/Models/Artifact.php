@@ -23,6 +23,9 @@ final readonly class Artifact extends Model
 
     public ?DateTimeImmutable $createdAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $currentVersionNumber;
+
     public ?string $description;
 
     public ?string $name;
@@ -31,15 +34,20 @@ final readonly class Artifact extends Model
 
     public ?string $publicUuid;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $restoredFromVersionId;
+
     public ?DateTimeImmutable $updatedAt;
 
     protected function hydrate(Attributes $attributes): void
     {
         $this->createdAt = $attributes->dateTime('created_at');
+        $this->currentVersionNumber = $attributes->int('current_version_number');
         $this->description = $attributes->string('description');
         $this->name = $attributes->string('name');
         $this->publicAccess = $attributes->bool('public_access');
         $this->publicUuid = $attributes->string('public_uuid');
+        $this->restoredFromVersionId = $attributes->mixed('restored_from_version_id');
         $this->updatedAt = $attributes->dateTime('updated_at');
     }
 
@@ -51,5 +59,10 @@ final readonly class Artifact extends Model
     public function creator(): ?Person
     {
         return $this->belongsTo('creator', Person::class);
+    }
+
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
     }
 }

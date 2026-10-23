@@ -1,12 +1,12 @@
 {
     "data": [
         {
-            "id": "1002",
+            "id": "1005",
             "type": "organizations",
             "attributes": {
-                "name": "Text 1",
+                "name": "Text 2",
                 "time_reminders": true,
-                "time_reminder_id": 1028,
+                "time_reminder_id": 1036,
                 "time_reminder_at": 10,
                 "time_reminder_condition": 100,
                 "working_hours": [
@@ -17,15 +17,17 @@
                     8
                 ],
                 "man_day_minutes": 480,
-                "organization_type_id": 1016,
-                "invitation_token": "Text 132",
+                "organization_type_id": 1038,
+                "invitation_token": "Text 167",
                 "due_days": 10,
                 "payment_terms_type": "days_after_invoice_date",
-                "email_key": "Text 133",
+                "email_key": "Text 168",
                 "addons": [
-                    "invoicing",
                     "task_time_tracking",
-                    "time_tracking_estimate"
+                    "invoicing",
+                    "time_tracking_estimate",
+                    "time_entries_approval",
+                    "expenses_approvals"
                 ],
                 "flags": {
                     "userRole": true,
@@ -38,34 +40,34 @@
                 "avatar_url": null,
                 "original_avatar_url": null,
                 "onboarding_progress": null,
-                "week_start_day_id": 1041,
+                "week_start_day_id": 1075,
                 "weight": 0.3333333333333333,
-                "metrics": "Text 134",
-                "erector_id": 1093,
+                "metrics": "Text 169",
+                "erector_id": 1128,
                 "customer_success_specialist_id": null,
                 "sample_data_imported_at": "2026-10-09T13:02:47.981+02:00",
                 "sample_data_reverted_at": null,
                 "verified_at": "2026-10-09T13:42:19.000+02:00",
-                "verification_status_id": 1028,
-                "time_format_id": 1016,
-                "number_format_id": 1016,
-                "date_format_id": 1016,
-                "time_display_id": 1016,
-                "rounding_method_id": 1016,
+                "verification_status_id": 1036,
+                "time_format_id": 1038,
+                "number_format_id": 1038,
+                "date_format_id": 1038,
+                "time_display_id": 1038,
+                "rounding_method_id": 1038,
                 "rounding_interval_id": null,
                 "single_sign_on": false,
                 "force_two_factor_auth": false,
                 "force_single_sign_on": false,
-                "billing_email": "person-124@example.test",
-                "exchange_rate_provider_id": 1016,
+                "billing_email": "person-159@example.test",
+                "exchange_rate_provider_id": 1038,
                 "overhead_recalculation_day": 3,
                 "overhead_amortization_period": 3,
                 "expense_markup": 0,
                 "limited_service_types": false,
-                "decimal_places_id": 1042,
-                "analytics_uid": "Text 135",
-                "currency_format_id": 1016,
-                "email_type_id": 1016,
+                "decimal_places_id": 1076,
+                "analytics_uid": "Text 170",
+                "currency_format_id": 1038,
+                "email_type_id": 1038,
                 "remove_branding": false,
                 "email_domain_name": null,
                 "email_local_name": null,
@@ -73,14 +75,26 @@
                 "domain_verified": false,
                 "allow_user_email": false,
                 "numbering_format_settings": [],
-                "revenue_recognition_type_id": 1028,
-                "open_budget_recognition_date_id": 1028,
-                "delivered_budget_recognition_date_id": 1016,
+                "revenue_recognition_type_id": 1036,
+                "open_budget_recognition_date_id": 1036,
+                "delivered_budget_recognition_date_id": 1038,
                 "time_locking": false,
                 "time_locking_period_id": null,
                 "time_locking_interval": null,
-                "time_locking_reminders": null,
-                "facility_costs_breakdown": [],
+                "time_locking_reminders": false,
+                "facility_costs_breakdown": {
+                    "sections": [
+                        {
+                            "name": "Text 171",
+                            "rows": [
+                                {
+                                    "cost": 1000,
+                                    "name": "Text 172"
+                                }
+                            ]
+                        }
+                    ]
+                },
                 "conflict_resolver_active": false,
                 "ai_allowed_models": [],
                 "ai_enabled": true,
@@ -89,10 +103,10 @@
                 "subsidiary_count": 1,
                 "quick_start_config": null,
                 "scim_bearer_token": null,
-                "locale": "Text 70",
-                "overhead_type_id": 1016,
-                "overhead": false,
-                "autotracking_schedule_id": 1016,
+                "locale": "Text 106",
+                "overhead_type_id": 1038,
+                "overhead": true,
+                "autotracking_schedule_id": 1038,
                 "remaining_hours_calculation_mode": "net_unplanned",
                 "release_channel": "stable",
                 "self_attribution": "friend",
@@ -115,24 +129,24 @@
                     "deal_members_access": "read"
                 },
                 "financial_month_locking_date": 5,
-                "timesheet_submission": false,
+                "timesheet_submission": true,
                 "timesheet_submission_reminders": false,
                 "timesheet_submission_settings": {
                     "reminder_at": "7",
-                    "reminder_id": "1042"
+                    "reminder_id": "1076"
                 },
                 "overhead_subsidiary_switched_at": null,
                 "time_tracking_policies_enabled": false,
-                "invoice_rounding_method_id": 1016,
-                "invoice_timesheet_export_configuration": null,
+                "invoice_rounding_method_id": 1038,
+                "invoice_timesheet_export_configuration": [],
                 "request_for_resource_enabled": false,
                 "create_time_entry_on_timer_start": false,
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
-                "facility_costs": 0,
-                "facility_costs_default": 0,
-                "facility_costs_normalized": 0
+                "facility_costs": 1000,
+                "facility_costs_default": 1000,
+                "facility_costs_normalized": 1000
             },
             "relationships": {
                 "owner": {
@@ -153,12 +167,12 @@
             }
         },
         {
-            "id": "1002",
+            "id": "1005",
             "type": "organizations",
             "attributes": {
-                "name": "Text 1",
+                "name": "Text 2",
                 "time_reminders": true,
-                "time_reminder_id": 1028,
+                "time_reminder_id": 1036,
                 "time_reminder_at": 10,
                 "time_reminder_condition": 100,
                 "working_hours": [
@@ -169,15 +183,17 @@
                     8
                 ],
                 "man_day_minutes": 480,
-                "organization_type_id": 1016,
-                "invitation_token": "Text 132",
+                "organization_type_id": 1038,
+                "invitation_token": "Text 167",
                 "due_days": 10,
                 "payment_terms_type": "days_after_invoice_date",
-                "email_key": "Text 133",
+                "email_key": "Text 168",
                 "addons": [
-                    "invoicing",
                     "task_time_tracking",
-                    "time_tracking_estimate"
+                    "invoicing",
+                    "time_tracking_estimate",
+                    "time_entries_approval",
+                    "expenses_approvals"
                 ],
                 "flags": {
                     "userRole": true,
@@ -190,34 +206,34 @@
                 "avatar_url": null,
                 "original_avatar_url": null,
                 "onboarding_progress": null,
-                "week_start_day_id": 1041,
+                "week_start_day_id": 1075,
                 "weight": 0.3333333333333333,
-                "metrics": "Text 134",
-                "erector_id": 1093,
+                "metrics": "Text 169",
+                "erector_id": 1128,
                 "customer_success_specialist_id": null,
                 "sample_data_imported_at": "2026-10-09T13:02:47.981+02:00",
                 "sample_data_reverted_at": null,
                 "verified_at": "2026-10-09T13:42:19.000+02:00",
-                "verification_status_id": 1028,
-                "time_format_id": 1016,
-                "number_format_id": 1016,
-                "date_format_id": 1016,
-                "time_display_id": 1016,
-                "rounding_method_id": 1016,
+                "verification_status_id": 1036,
+                "time_format_id": 1038,
+                "number_format_id": 1038,
+                "date_format_id": 1038,
+                "time_display_id": 1038,
+                "rounding_method_id": 1038,
                 "rounding_interval_id": null,
                 "single_sign_on": false,
                 "force_two_factor_auth": false,
                 "force_single_sign_on": false,
-                "billing_email": "person-124@example.test",
-                "exchange_rate_provider_id": 1016,
+                "billing_email": "person-159@example.test",
+                "exchange_rate_provider_id": 1038,
                 "overhead_recalculation_day": 3,
                 "overhead_amortization_period": 3,
                 "expense_markup": 0,
                 "limited_service_types": false,
-                "decimal_places_id": 1042,
-                "analytics_uid": "Text 135",
-                "currency_format_id": 1016,
-                "email_type_id": 1016,
+                "decimal_places_id": 1076,
+                "analytics_uid": "Text 170",
+                "currency_format_id": 1038,
+                "email_type_id": 1038,
                 "remove_branding": false,
                 "email_domain_name": null,
                 "email_local_name": null,
@@ -225,14 +241,26 @@
                 "domain_verified": false,
                 "allow_user_email": false,
                 "numbering_format_settings": [],
-                "revenue_recognition_type_id": 1028,
-                "open_budget_recognition_date_id": 1028,
-                "delivered_budget_recognition_date_id": 1016,
+                "revenue_recognition_type_id": 1036,
+                "open_budget_recognition_date_id": 1036,
+                "delivered_budget_recognition_date_id": 1038,
                 "time_locking": false,
                 "time_locking_period_id": null,
                 "time_locking_interval": null,
-                "time_locking_reminders": null,
-                "facility_costs_breakdown": [],
+                "time_locking_reminders": false,
+                "facility_costs_breakdown": {
+                    "sections": [
+                        {
+                            "name": "Text 171",
+                            "rows": [
+                                {
+                                    "cost": 1000,
+                                    "name": "Text 172"
+                                }
+                            ]
+                        }
+                    ]
+                },
                 "conflict_resolver_active": false,
                 "ai_allowed_models": [],
                 "ai_enabled": true,
@@ -241,10 +269,10 @@
                 "subsidiary_count": 1,
                 "quick_start_config": null,
                 "scim_bearer_token": null,
-                "locale": "Text 70",
-                "overhead_type_id": 1016,
-                "overhead": false,
-                "autotracking_schedule_id": 1016,
+                "locale": "Text 106",
+                "overhead_type_id": 1038,
+                "overhead": true,
+                "autotracking_schedule_id": 1038,
                 "remaining_hours_calculation_mode": "net_unplanned",
                 "release_channel": "stable",
                 "self_attribution": "friend",
@@ -267,42 +295,42 @@
                     "deal_members_access": "read"
                 },
                 "financial_month_locking_date": 5,
-                "timesheet_submission": false,
+                "timesheet_submission": true,
                 "timesheet_submission_reminders": false,
                 "timesheet_submission_settings": {
                     "reminder_at": "7",
-                    "reminder_id": "1042"
+                    "reminder_id": "1076"
                 },
                 "overhead_subsidiary_switched_at": null,
                 "time_tracking_policies_enabled": false,
-                "invoice_rounding_method_id": 1016,
-                "invoice_timesheet_export_configuration": null,
+                "invoice_rounding_method_id": 1038,
+                "invoice_timesheet_export_configuration": [],
                 "request_for_resource_enabled": false,
                 "create_time_entry_on_timer_start": false,
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
-                "facility_costs": 0,
-                "facility_costs_default": 0,
-                "facility_costs_normalized": 0
+                "facility_costs": 1000,
+                "facility_costs_default": 1000,
+                "facility_costs_normalized": 1000
             },
             "relationships": {
                 "owner": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1023"
                     }
                 },
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1007"
+                        "id": "1002"
                     }
                 },
                 "organization_subscription": {
                     "data": {
                         "type": "organization_subscriptions",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 }
             }

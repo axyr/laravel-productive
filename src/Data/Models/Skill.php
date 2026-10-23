@@ -59,4 +59,9 @@ final readonly class Skill extends Model
     {
         return $this->hasMany('memberships', Membership::class);
     }
+
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
+    }
 }

@@ -1,0 +1,160 @@
+{
+    "data": [
+        {
+            "id": "1044",
+            "type": "attachments",
+            "attributes": {
+                "name": "Text 29",
+                "content_type": "Text 30",
+                "size": 4914,
+                "url": "https://example.test/31",
+                "thumb": null,
+                "temp_url": "https://example.test/31",
+                "resized": false,
+                "created_at": "2026-10-23T21:32:47.126+02:00",
+                "deleted_at": null,
+                "attachment_type": null,
+                "message_id": null,
+                "external_id": null,
+                "attachable_type": "artifact"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "purchase_order": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "bill": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "email": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "page": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "comment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "task": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_style": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1045",
+            "type": "attachments",
+            "attributes": {
+                "name": "Text 32",
+                "content_type": "Text 33",
+                "size": 21,
+                "url": "https://example.test/34",
+                "thumb": null,
+                "temp_url": "https://example.test/35",
+                "resized": false,
+                "created_at": "2026-10-23T21:11:06.400+02:00",
+                "deleted_at": null,
+                "attachment_type": null,
+                "message_id": null,
+                "external_id": null,
+                "attachable_type": "task"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "invoice": {
+                    "data": null
+                },
+                "purchase_order": {
+                    "data": null
+                },
+                "bill": {
+                    "data": null
+                },
+                "email": {
+                    "data": null
+                },
+                "page": {
+                    "data": null
+                },
+                "expense": {
+                    "data": null
+                },
+                "comment": {
+                    "data": null
+                },
+                "task": {
+                    "data": {
+                        "type": "tasks",
+                        "id": "1017"
+                    }
+                },
+                "document_style": {
+                    "data": null
+                },
+                "document_type": {
+                    "data": null
+                },
+                "deal": {
+                    "data": null
+                }
+            }
+        }
+    ]
+}

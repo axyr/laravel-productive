@@ -1,0 +1,152 @@
+{
+    "data": [
+        {
+            "id": "1092",
+            "type": "pages",
+            "attributes": {
+                "cover_image_meta": null,
+                "cover_image_url": null,
+                "created_at": "2026-10-23T21:12:55.142+02:00",
+                "custom_fields": null,
+                "edited_at": "2026-10-23T21:14:27.480+02:00",
+                "icon_id": null,
+                "position": null,
+                "preferences": "Text 179",
+                "title": "Text 174",
+                "updated_at": "2026-10-23T21:15:14.952+02:00",
+                "version_number": 4,
+                "last_activity_at": "2026-10-23T21:15:02.016+02:00",
+                "public_access": true,
+                "public_uuid": "Text 180",
+                "body": "Text 175",
+                "parent_page_id": null,
+                "root_page_id": null,
+                "public": true
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "updater": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "parent_page": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "root_page": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1092",
+            "type": "pages",
+            "attributes": {
+                "cover_image_meta": null,
+                "cover_image_url": null,
+                "created_at": "2026-10-23T21:12:55.142+02:00",
+                "custom_fields": null,
+                "edited_at": "2026-10-23T21:14:27.480+02:00",
+                "icon_id": null,
+                "position": null,
+                "preferences": "Text 179",
+                "title": "Text 174",
+                "updated_at": "2026-10-23T21:15:14.952+02:00",
+                "version_number": 4,
+                "last_activity_at": "2026-10-23T21:15:02.016+02:00",
+                "public_access": true,
+                "public_uuid": "Text 180",
+                "body": "Text 175",
+                "parent_page_id": null,
+                "root_page_id": null,
+                "public": true
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "updater": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1018"
+                    }
+                },
+                "parent_page": {
+                    "data": null
+                },
+                "root_page": {
+                    "data": null
+                },
+                "attachments": {
+                    "data": []
+                },
+                "template_object": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": "1092",
+            "type": "pages",
+            "attributes": {
+                "body": "Text 175",
+                "cover_image_meta": null,
+                "cover_image_url": null,
+                "icon_id": null,
+                "position": null,
+                "preferences": "Text 179",
+                "public_uuid": "Text 180",
+                "title": "Text 174"
+            },
+            "relationships": {
+                "child_pages": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

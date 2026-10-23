@@ -1,0 +1,51 @@
+{
+    "data": [
+        {
+            "id": "1198",
+            "type": "timers",
+            "attributes": {
+                "person_id": 1023,
+                "started_at": "2026-10-23T21:11:39.000+02:00",
+                "stopped_at": null,
+                "total_time": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1198",
+            "type": "timers",
+            "attributes": {
+                "person_id": 1023,
+                "started_at": "2026-10-23T21:11:39.000+02:00",
+                "stopped_at": null,
+                "total_time": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "time_entry": {
+                    "data": {
+                        "type": "time_entries",
+                        "id": "1191"
+                    }
+                }
+            }
+        }
+    ]
+}

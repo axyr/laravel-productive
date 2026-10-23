@@ -1,14 +1,14 @@
 {
     "data": [
         {
-            "id": "Text 77",
+            "id": "Text 113",
             "type": "filters",
             "attributes": {
-                "name": "Text 78",
-                "filterable_id": 1066,
+                "name": "Text 114",
+                "filterable_id": 1102,
                 "filterable_type": "project",
                 "filterable_collection": "tasks",
-                "original_id": 1067,
+                "original_id": 1103,
                 "public": true,
                 "default": false,
                 "columns": null,
@@ -35,7 +35,7 @@
                 "formulas": null,
                 "predefined_id": null,
                 "hidden": false,
-                "type_id": 1016,
+                "type_id": 1038,
                 "exchange_currency": null,
                 "exchange_date": [],
                 "shared": false,
@@ -46,7 +46,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -72,14 +72,14 @@
             }
         },
         {
-            "id": "Text 79",
+            "id": "Text 115",
             "type": "filters",
             "attributes": {
-                "name": "Text 80",
-                "filterable_id": 1066,
+                "name": "Text 116",
+                "filterable_id": 1102,
                 "filterable_type": "project",
                 "filterable_collection": "budgets",
-                "original_id": 1068,
+                "original_id": 1104,
                 "public": true,
                 "default": false,
                 "columns": null,
@@ -99,7 +99,7 @@
                 "formulas": null,
                 "predefined_id": null,
                 "hidden": false,
-                "type_id": 1016,
+                "type_id": 1038,
                 "exchange_currency": null,
                 "exchange_date": [],
                 "shared": false,
@@ -110,7 +110,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -136,17 +136,17 @@
             }
         },
         {
-            "id": "Text 81",
+            "id": "Text 117",
             "type": "filters",
             "attributes": {
-                "name": "Text 82",
+                "name": "Text 118",
                 "filterable_id": null,
                 "filterable_type": null,
                 "filterable_collection": "tasks",
-                "original_id": 1069,
+                "original_id": 1105,
                 "public": false,
                 "default": false,
-                "columns": "Text 83",
+                "columns": "Text 119",
                 "params": {
                     "0": {
                         "0": {
@@ -177,21 +177,21 @@
                     "$op": "and"
                 },
                 "sort_by": "",
-                "group_by": "Text 84",
+                "group_by": "Text 120",
                 "layout_id": null,
                 "transpose_by": "",
                 "report": false,
-                "description": "Text 85",
-                "chart_type_id": 1016,
-                "report_layout_id": 1028,
-                "column_settings": "Text 86",
+                "description": "Text 121",
+                "chart_type_id": 1038,
+                "report_layout_id": 1036,
+                "column_settings": "Text 122",
                 "settings": null,
                 "created_at": "2026-10-09T17:03:08.656+02:00",
                 "updated_at": "2026-10-09T17:03:08.656+02:00",
                 "formulas": null,
                 "predefined_id": null,
                 "hidden": false,
-                "type_id": 1041,
+                "type_id": 1075,
                 "exchange_currency": null,
                 "exchange_date": [],
                 "shared": false,
@@ -202,7 +202,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -228,17 +228,17 @@
             }
         },
         {
-            "id": "Text 87",
+            "id": "Text 123",
             "type": "filters",
             "attributes": {
-                "name": "Text 88",
+                "name": "Text 124",
                 "filterable_id": null,
                 "filterable_type": null,
                 "filterable_collection": "new_time_reports",
-                "original_id": 1070,
+                "original_id": 1106,
                 "public": false,
                 "default": false,
-                "columns": "Text 89",
+                "columns": "Text 125",
                 "params": {
                     "0": {
                         "0": {
@@ -262,21 +262,21 @@
                     "$op": "and"
                 },
                 "sort_by": "group",
-                "group_by": "Text 90",
+                "group_by": "Text 126",
                 "layout_id": null,
                 "transpose_by": "available-time",
                 "report": false,
                 "description": "",
                 "chart_type_id": null,
-                "report_layout_id": 1028,
-                "column_settings": "Text 91",
+                "report_layout_id": 1036,
+                "column_settings": "Text 127",
                 "settings": null,
                 "created_at": "2026-10-09T17:03:11.841+02:00",
                 "updated_at": "2026-10-09T17:03:11.841+02:00",
-                "formulas": "Text 92",
+                "formulas": "Text 128",
                 "predefined_id": null,
                 "hidden": false,
-                "type_id": 1041,
+                "type_id": 1075,
                 "exchange_currency": null,
                 "exchange_date": [],
                 "shared": false,
@@ -287,7 +287,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -313,14 +313,14 @@
             }
         },
         {
-            "id": "Text 77",
+            "id": "Text 113",
             "type": "filters",
             "attributes": {
-                "name": "Text 78",
-                "filterable_id": 1066,
+                "name": "Text 114",
+                "filterable_id": 1102,
                 "filterable_type": "project",
                 "filterable_collection": "tasks",
-                "original_id": 1067,
+                "original_id": 1103,
                 "public": true,
                 "default": false,
                 "columns": null,
@@ -347,7 +347,7 @@
                 "formulas": null,
                 "predefined_id": null,
                 "hidden": false,
-                "type_id": 1016,
+                "type_id": 1038,
                 "exchange_currency": null,
                 "exchange_date": [],
                 "shared": false,
@@ -358,13 +358,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1023"
                     }
                 },
                 "report_category": {

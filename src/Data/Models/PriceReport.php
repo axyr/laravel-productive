@@ -74,7 +74,7 @@ final readonly class PriceReport extends Model
     public mixed $averageRateNormalized;
 
     /** Booking tracking enabled for this price report group. */
-    public ?int $bookingTrackingEnabled;
+    public ?bool $bookingTrackingEnabled;
 
     public ?int $companyId;
 
@@ -93,7 +93,7 @@ final readonly class PriceReport extends Model
     public ?int $estimatedHours;
 
     /** Expense tracking enabled for this price report group. */
-    public ?int $expenseTrackingEnabled;
+    public ?bool $expenseTrackingEnabled;
 
     /** Formula fields for this price report group. */
     public mixed $formulaFields;
@@ -109,7 +109,7 @@ final readonly class PriceReport extends Model
     public ?int $serviceTypeId;
 
     /** Time tracking enabled for this price report group. */
-    public ?int $timeTrackingEnabled;
+    public ?bool $timeTrackingEnabled;
 
     public ?string $total;
 
@@ -132,20 +132,20 @@ final readonly class PriceReport extends Model
         $this->averageRate = $attributes->mixed('average_rate');
         $this->averageRateDefault = $attributes->mixed('average_rate_default');
         $this->averageRateNormalized = $attributes->mixed('average_rate_normalized');
-        $this->bookingTrackingEnabled = $attributes->int('booking_tracking_enabled');
+        $this->bookingTrackingEnabled = $attributes->bool('booking_tracking_enabled');
         $this->companyId = $attributes->int('company_id');
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->estimatedHours = $attributes->int('estimated_hours');
-        $this->expenseTrackingEnabled = $attributes->int('expense_tracking_enabled');
+        $this->expenseTrackingEnabled = $attributes->bool('expense_tracking_enabled');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->rate = $attributes->string('rate');
         $this->rateCardStatus = $attributes->int('rate_card_status');
         $this->serviceTypeId = $attributes->int('service_type_id');
-        $this->timeTrackingEnabled = $attributes->int('time_tracking_enabled');
+        $this->timeTrackingEnabled = $attributes->bool('time_tracking_enabled');
         $this->total = $attributes->string('total');
     }
 

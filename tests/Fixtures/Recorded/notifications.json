@@ -1,0 +1,97 @@
+{
+    "data": [
+        {
+            "id": "1126",
+            "type": "notifications",
+            "attributes": {
+                "target_id": 1017,
+                "target_type": "task",
+                "target_title": "Text 14",
+                "parent_id": 1018,
+                "parent_type": "project",
+                "parent_title": "Text 148",
+                "title": "Text 149",
+                "read": true,
+                "dismissed": false,
+                "new_activities_count": 0,
+                "excerpt": "Text 150",
+                "last_action_at": "2026-10-23T23:28:40.973+02:00",
+                "first_unread_activity_id": null,
+                "changeset": [],
+                "important": true,
+                "mention": true,
+                "target_label": "task",
+                "made_by_automation": false,
+                "root_id": null,
+                "root_type": null,
+                "agent_session_status": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "actor": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "owner": {
+                    "data": {
+                        "type": "organization_memberships",
+                        "id": "1023"
+                    }
+                }
+            }
+        },
+        {
+            "id": "1126",
+            "type": "notifications",
+            "attributes": {
+                "target_id": 1017,
+                "target_type": "task",
+                "target_title": "Text 14",
+                "parent_id": 1018,
+                "parent_type": "project",
+                "parent_title": "Text 148",
+                "title": "Text 149",
+                "read": true,
+                "dismissed": false,
+                "new_activities_count": 0,
+                "excerpt": "Text 150",
+                "last_action_at": "2026-10-23T23:28:40.973+02:00",
+                "first_unread_activity_id": null,
+                "changeset": [],
+                "important": true,
+                "mention": true,
+                "target_label": "task",
+                "made_by_automation": false,
+                "root_id": null,
+                "root_type": null,
+                "agent_session_status": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "actor": {
+                    "data": {
+                        "type": "people",
+                        "id": "1020"
+                    }
+                },
+                "owner": {
+                    "data": {
+                        "type": "organization_memberships",
+                        "id": "1023"
+                    }
+                }
+            }
+        }
+    ]
+}

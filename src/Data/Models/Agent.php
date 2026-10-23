@@ -70,6 +70,11 @@ final readonly class Agent extends Model
         return $this->belongsTo('manager', Person::class);
     }
 
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
+    }
+
     public function person(): ?Person
     {
         return $this->belongsTo('person', Person::class);

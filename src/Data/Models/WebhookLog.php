@@ -28,8 +28,12 @@ final readonly class WebhookLog extends Model
 
     public ?string $eventType;
 
-    /** The JSON payload that was sent to the target URL. */
-    public ?string $payload;
+    /**
+     * The JSON payload that was sent to the target URL.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $payload;
 
     public ?string $responseBody;
 
@@ -57,7 +61,7 @@ final readonly class WebhookLog extends Model
     {
         $this->createdAt = $attributes->dateTime('created_at');
         $this->eventType = $attributes->string('event_type');
-        $this->payload = $attributes->string('payload');
+        $this->payload = $attributes->object('payload');
         $this->responseBody = $attributes->string('response_body');
         $this->responseCode = $attributes->int('response_code');
         $this->retryAttempt = $attributes->int('retry_attempt');

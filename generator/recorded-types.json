@@ -5,14 +5,27 @@
         "activities.index.include": 200,
         "activities.show": 200,
         "agent_configs.index": 200,
+        "agent_configs.index.include": 200,
+        "agent_configs.show": 200,
         "agents.index": 200,
+        "agents.index.include": 200,
+        "agents.show": 200,
         "approval_policies.index": 200,
         "approval_policies.index.include": 200,
         "approval_policies.show": 200,
         "approval_policy_assignments.index": 200,
+        "approval_policy_assignments.index.include": 200,
+        "approval_policy_assignments.show": 200,
         "approval_statuses.index": 200,
+        "approval_statuses.index.include": 200,
+        "approval_statuses.show": 200,
+        "approval_workflows.show": 200,
         "artifacts.index": 200,
+        "artifacts.index.include": 200,
+        "artifacts.show": 200,
         "attachments.index": 200,
+        "attachments.index.include": 200,
+        "attachments.show": 200,
         "automatic_invoicing_rules.index": 200,
         "automatic_invoicing_rules.index.include": 200,
         "automatic_invoicing_rules.show": 200,
@@ -24,6 +37,8 @@
         "bookings.index.include": 200,
         "bookings.show": 200,
         "comments.index": 200,
+        "comments.index.include": 200,
+        "comments.show": 200,
         "companies.index": 200,
         "companies.index.include": 200,
         "companies.show": 200,
@@ -31,6 +46,8 @@
         "contact_entries.index.include": 200,
         "contact_entries.show": 200,
         "contracts.index": 200,
+        "contracts.index.include": 200,
+        "contracts.show": 200,
         "custom_domains.index": 200,
         "custom_field_options.index": 200,
         "custom_field_options.index.include": 200,
@@ -45,6 +62,8 @@
         "dashboards.index.include": 200,
         "dashboards.show": 200,
         "deal_cost_rates.index": 200,
+        "deal_cost_rates.index.include": 200,
+        "deal_cost_rates.show": 200,
         "deal_statuses.index": 200,
         "deal_statuses.index.include": 200,
         "deal_statuses.show": 200,
@@ -53,6 +72,8 @@
         "deals.show": 200,
         "deleted_items.index": 200,
         "discussions.index": 200,
+        "discussions.index.include": 200,
+        "discussions.show": 200,
         "document_styles.index": 200,
         "document_styles.index.include": 200,
         "document_styles.show": 200,
@@ -117,6 +138,10 @@
         "memberships.index.include": 200,
         "memberships.show": 200,
         "notifications.index": 200,
+        "notifications.index.include.actor": 200,
+        "notifications.index.include.organization": 200,
+        "notifications.index.include.owner": 400,
+        "notifications.show": 200,
         "organization_memberships.index": 200,
         "organization_memberships.index.include": 200,
         "organization_memberships.show": 200,
@@ -126,7 +151,11 @@
         "organizations.show": 200,
         "overheads.index": 200,
         "page_versions.index": 200,
+        "page_versions.index.include": 200,
+        "page_versions.show": 200,
         "pages.index": 200,
+        "pages.index.include": 200,
+        "pages.show": 200,
         "payment_reminder_sequences.index": 200,
         "payment_reminder_sequences.index.include": 200,
         "payment_reminder_sequences.show": 200,
@@ -140,8 +169,14 @@
         "pipelines.index.include": 200,
         "pipelines.show": 200,
         "placeholder_usages.index": 200,
+        "placeholder_usages.index.include": 200,
+        "placeholder_usages.show": 200,
         "placeholders.index": 200,
+        "placeholders.index.include": 200,
+        "placeholders.show": 200,
         "prices.index": 200,
+        "prices.index.include": 200,
+        "prices.show": 200,
         "project_preferences.index": 200,
         "project_preferences.index.include": 200,
         "project_preferences.show": 200,
@@ -153,10 +188,17 @@
         "proposals.show": 200,
         "proposals.signed_pdf": 404,
         "proposals.sync_status": 200,
+        "public.pages.show": 200,
         "pulses.index": 200,
         "purchase_orders.index": 200,
+        "purchase_orders.index.include": 200,
+        "purchase_orders.show": 200,
         "rate_cards.index": 200,
+        "rate_cards.index.include": 200,
+        "rate_cards.show": 200,
         "report_categories.index": 200,
+        "report_categories.index.include": 200,
+        "report_categories.show": 200,
         "reports.automation_reports.index": 200,
         "reports.booking_reports.index": 200,
         "reports.booking_reports.index.include.booking+budget+company+company_report": 200,
@@ -216,6 +258,10 @@
         "reports.line_item_reports.index.include.report": 200,
         "reports.line_item_reports.index.include.service+service_type+updater": 200,
         "reports.page_reports.index": 200,
+        "reports.page_reports.index.include.creator": 200,
+        "reports.page_reports.index.include.organization": 400,
+        "reports.page_reports.index.include.page": 200,
+        "reports.page_reports.index.include.project+report+updater": 200,
         "reports.payment_reports.index": 200,
         "reports.payment_reports.index.include.company+company_report": 200,
         "reports.payment_reports.index.include.deal": 400,
@@ -235,6 +281,10 @@
         "reports.person_reports.index.include.organization": 400,
         "reports.person_reports.index.include.person+report+subsidiary": 200,
         "reports.price_reports.index": 200,
+        "reports.price_reports.index.include.company": 200,
+        "reports.price_reports.index.include.company_report": 200,
+        "reports.price_reports.index.include.organization": 400,
+        "reports.price_reports.index.include.price+rate_card+report+service_type": 200,
         "reports.project_reports.index": 200,
         "reports.project_reports.index.include.company": 200,
         "reports.project_reports.index.include.company_report": 200,
@@ -317,17 +367,27 @@
         "services.index.include": 200,
         "services.show": 200,
         "skills.index": 200,
+        "skills.index.include": 200,
+        "skills.show": 200,
         "subsidiaries.index": 200,
         "subsidiaries.index.include": 200,
         "subsidiaries.show": 200,
         "survey_field_options.index": 200,
+        "survey_field_options.index.include": 200,
+        "survey_field_options.show": 200,
         "survey_fields.index": 200,
+        "survey_fields.index.include": 200,
+        "survey_fields.show": 200,
         "survey_responses.index": 200,
+        "survey_responses.index.include": 200,
+        "survey_responses.show": 200,
         "surveys.index": 200,
         "surveys.index.include": 200,
         "surveys.show": 200,
         "tags.index": 200,
         "task_dependencies.index": 200,
+        "task_dependencies.index.include": 200,
+        "task_dependencies.show": 200,
         "task_lists.index": 200,
         "task_lists.index.include": 200,
         "task_lists.show": 200,
@@ -338,7 +398,11 @@
         "tax_rates.index.include": 200,
         "tax_rates.show": 200,
         "team_memberships.index": 200,
+        "team_memberships.index.include": 200,
+        "team_memberships.show": 200,
         "teams.index": 200,
+        "teams.index.include": 200,
+        "teams.show": 200,
         "templates.index": 200,
         "templates.index.include": 200,
         "templates.show": 200,
@@ -352,7 +416,11 @@
         "time_tracking_policies.index.include": 200,
         "time_tracking_policies.show": 200,
         "timers.index": 200,
+        "timers.index.include": 200,
+        "timers.show": 200,
         "timesheets.index": 200,
+        "timesheets.index.include": 200,
+        "timesheets.show": 200,
         "todos.index": 200,
         "todos.index.include": 200,
         "todos.show": 200,
@@ -376,6 +444,7 @@
         "users.index": 200,
         "users.show": 200,
         "webhook_logs.index": 200,
+        "webhook_logs.index.include": 200,
         "webhooks.index": 200,
         "webhooks.index.include": 200,
         "webhooks.show": 200,
@@ -395,6 +464,9 @@
             "budget",
             "creator",
             "issuer"
+        ],
+        "notifications.index": [
+            "owner"
         ],
         "reports.booking_reports.index": [
             "organization"
@@ -426,6 +498,9 @@
         "reports.line_item_reports.index": [
             "organization"
         ],
+        "reports.page_reports.index": [
+            "organization"
+        ],
         "reports.payment_reports.index": [
             "deal",
             "organization"
@@ -434,6 +509,9 @@
             "organization"
         ],
         "reports.person_reports.index": [
+            "organization"
+        ],
+        "reports.price_reports.index": [
             "organization"
         ],
         "reports.project_reports.index": [
@@ -472,6 +550,7 @@
         "activities": {
             "attributes": {
                 "booking_id": [
+                    "int",
                     "null"
                 ],
                 "changeset": [
@@ -479,7 +558,6 @@
                     "list"
                 ],
                 "company_id": [
-                    "int",
                     "null"
                 ],
                 "created_at": [
@@ -496,6 +574,7 @@
                     "null"
                 ],
                 "engagement_id": [
+                    "int",
                     "null"
                 ],
                 "event": [
@@ -533,6 +612,7 @@
                     "int"
                 ],
                 "parent_name": [
+                    "null",
                     "string"
                 ],
                 "parent_type": [
@@ -543,6 +623,7 @@
                     "null"
                 ],
                 "purchase_order_id": [
+                    "int",
                     "null"
                 ],
                 "root_deleted_at": [
@@ -552,12 +633,14 @@
                     "int"
                 ],
                 "root_name": [
+                    "null",
                     "string"
                 ],
                 "root_type": [
                     "string"
                 ],
                 "task_id": [
+                    "int",
                     "null"
                 ]
             },
@@ -596,6 +679,106 @@
                 }
             }
         },
+        "agent_configs": {
+            "attributes": {
+                "ai_model": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "instructions": [
+                    "string"
+                ],
+                "reasoning_effort": [
+                    "null"
+                ],
+                "slack_triggers": [
+                    "empty"
+                ],
+                "slack_user_group_id": [
+                    "null"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "agent": {
+                    "to_many": false,
+                    "types": [
+                        "agents"
+                    ]
+                },
+                "attachments": {
+                    "to_many": true,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
+        "agents": {
+            "attributes": {
+                "avatar_url": [
+                    "string"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "deactivated_at": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "status": [
+                    "string"
+                ],
+                "title": [
+                    "null"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "agent_config": {
+                    "to_many": false,
+                    "types": [
+                        "agent_configs"
+                    ]
+                },
+                "custom_role": {
+                    "to_many": false,
+                    "types": [
+                        "roles"
+                    ]
+                },
+                "manager": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "person": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                }
+            }
+        },
         "approval_policies": {
             "attributes": {
                 "archived_at": [
@@ -608,9 +791,11 @@
                     "bool"
                 ],
                 "description": [
+                    "null",
                     "string"
                 ],
                 "name": [
+                    "null",
                     "string"
                 ],
                 "type_id": [
@@ -622,6 +807,301 @@
                     "to_many": false,
                     "types": [
                         "organizations"
+                    ]
+                }
+            }
+        },
+        "approval_policy_assignments": {
+            "attributes": {
+                "target_type": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "approval_policy": {
+                    "to_many": false,
+                    "types": [
+                        "approval_policies"
+                    ]
+                },
+                "deal": {
+                    "to_many": false,
+                    "types": [
+                        "deals"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "person": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "approval_statuses": {
+            "attributes": {
+                "approved_at": [
+                    "date-time"
+                ],
+                "approver_group_key": [
+                    "string"
+                ],
+                "dynamic_approver_type_id": [
+                    "null"
+                ],
+                "fallback_approver_type_id": [
+                    "null"
+                ],
+                "note": [
+                    "null"
+                ],
+                "rejected_at": [
+                    "null"
+                ],
+                "target_type": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "actual_approver": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "approval_workflow": {
+                    "to_many": false,
+                    "types": [
+                        "approval_workflows"
+                    ]
+                },
+                "approver": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "booking": {
+                    "to_many": null,
+                    "types": []
+                },
+                "expense": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "time_entry": {
+                    "to_many": false,
+                    "types": [
+                        "time_entries"
+                    ]
+                }
+            }
+        },
+        "approval_workflows": {
+            "attributes": {
+                "approval_requirement_id": [
+                    "int"
+                ],
+                "dynamic_approver_ids": [
+                    "empty"
+                ],
+                "dynamic_subscriber_ids": [
+                    "empty"
+                ],
+                "target_type_id": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "approval_policy": {
+                    "to_many": null,
+                    "types": []
+                },
+                "approvers": {
+                    "to_many": null,
+                    "types": []
+                },
+                "event": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "subscribers": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "artifacts": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "current_version_number": [
+                    "int"
+                ],
+                "description": [
+                    "string"
+                ],
+                "name": [
+                    "string"
+                ],
+                "public_access": [
+                    "bool"
+                ],
+                "public_uuid": [
+                    "null"
+                ],
+                "restored_from_version_id": [
+                    "null"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "attachment": {
+                    "to_many": false,
+                    "types": [
+                        "attachments"
+                    ]
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "memberships": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "thumbnail_attachment": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "attachments": {
+            "attributes": {
+                "attachable_type": [
+                    "string"
+                ],
+                "attachment_type": [
+                    "null"
+                ],
+                "content_type": [
+                    "string"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "deleted_at": [
+                    "null"
+                ],
+                "external_id": [
+                    "null"
+                ],
+                "message_id": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "resized": [
+                    "bool"
+                ],
+                "size": [
+                    "int"
+                ],
+                "temp_url": [
+                    "string"
+                ],
+                "thumb": [
+                    "null"
+                ],
+                "url": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "bill": {
+                    "to_many": null,
+                    "types": []
+                },
+                "comment": {
+                    "to_many": null,
+                    "types": []
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "deal": {
+                    "to_many": null,
+                    "types": []
+                },
+                "document_style": {
+                    "to_many": null,
+                    "types": []
+                },
+                "document_type": {
+                    "to_many": null,
+                    "types": []
+                },
+                "email": {
+                    "to_many": null,
+                    "types": []
+                },
+                "expense": {
+                    "to_many": null,
+                    "types": []
+                },
+                "invoice": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "page": {
+                    "to_many": null,
+                    "types": []
+                },
+                "purchase_order": {
+                    "to_many": null,
+                    "types": []
+                },
+                "task": {
+                    "to_many": false,
+                    "types": [
+                        "tasks"
                     ]
                 }
             }
@@ -944,7 +1424,8 @@
                     "null"
                 ],
                 "percentage": [
-                    "int"
+                    "int",
+                    "null"
                 ],
                 "rejected": [
                     "bool"
@@ -1454,6 +1935,105 @@
                 }
             }
         },
+        "comments": {
+            "attributes": {
+                "body": [
+                    "string"
+                ],
+                "commentable_type": [
+                    "string"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "creation_method": [
+                    "string"
+                ],
+                "deleted_at": [
+                    "null"
+                ],
+                "draft": [
+                    "bool"
+                ],
+                "edited_at": [
+                    "null"
+                ],
+                "hidden": [
+                    "bool"
+                ],
+                "pinned_at": [
+                    "null"
+                ],
+                "reactions": [
+                    "empty"
+                ],
+                "updated_at": [
+                    "date-time"
+                ],
+                "version_number": [
+                    "int",
+                    "null"
+                ]
+            },
+            "relationships": {
+                "attachments": {
+                    "to_many": true,
+                    "types": []
+                },
+                "company": {
+                    "to_many": null,
+                    "types": []
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "deal": {
+                    "to_many": null,
+                    "types": []
+                },
+                "discussion": {
+                    "to_many": false,
+                    "types": [
+                        "discussions"
+                    ]
+                },
+                "invoice": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "person": {
+                    "to_many": null,
+                    "types": []
+                },
+                "pinned_by": {
+                    "to_many": null,
+                    "types": []
+                },
+                "project": {
+                    "to_many": null,
+                    "types": []
+                },
+                "purchase_order": {
+                    "to_many": null,
+                    "types": []
+                },
+                "task": {
+                    "to_many": false,
+                    "types": [
+                        "tasks"
+                    ]
+                }
+            }
+        },
         "companies": {
             "attributes": {
                 "archived_at": [
@@ -1780,12 +2360,52 @@
                 }
             }
         },
+        "contracts": {
+            "attributes": {
+                "copy_expenses": [
+                    "bool"
+                ],
+                "copy_purchase_order_number": [
+                    "bool"
+                ],
+                "ends_on": [
+                    "null"
+                ],
+                "interval_id": [
+                    "int"
+                ],
+                "next_occurrence_on": [
+                    "date"
+                ],
+                "starts_on": [
+                    "date"
+                ],
+                "use_rollover_hours": [
+                    "bool"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "template": {
+                    "to_many": false,
+                    "types": [
+                        "deals"
+                    ]
+                }
+            }
+        },
         "custom_field_options": {
             "attributes": {
                 "archived_at": [
                     "null"
                 ],
                 "color_id": [
+                    "integer-string",
                     "null"
                 ],
                 "name": [
@@ -1952,6 +2572,36 @@
                 "project": {
                     "to_many": null,
                     "types": []
+                }
+            }
+        },
+        "deal_cost_rates": {
+            "attributes": {
+                "currency": [
+                    "string"
+                ],
+                "rate_cents": [
+                    "decimal-string"
+                ]
+            },
+            "relationships": {
+                "deal": {
+                    "to_many": false,
+                    "types": [
+                        "deals"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "person": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
                 }
             }
         },
@@ -2470,6 +3120,7 @@
                     "string"
                 ],
                 "end_date": [
+                    "date",
                     "null"
                 ],
                 "estimated_time": [
@@ -2707,7 +3358,8 @@
                     "int"
                 ],
                 "suffix": [
-                    "null"
+                    "null",
+                    "string"
                 ],
                 "tag_list": [
                     "empty"
@@ -2740,8 +3392,10 @@
             },
             "relationships": {
                 "approval_policy_assignment": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "approval_policy_assignments"
+                    ]
                 },
                 "automatic_invoicing_rule": {
                     "to_many": null,
@@ -2790,8 +3444,10 @@
                     "types": []
                 },
                 "expense_approval_workflow": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "approval_workflows"
+                    ]
                 },
                 "import": {
                     "to_many": false,
@@ -2862,8 +3518,37 @@
                     "types": []
                 },
                 "time_approval_workflow": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "approval_workflows"
+                    ]
+                }
+            }
+        },
+        "discussions": {
+            "attributes": {
+                "excerpt": [
+                    "string"
+                ],
+                "resolved_at": [
+                    "null"
+                ],
+                "subscriber_ids": [
+                    "list"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "page": {
+                    "to_many": false,
+                    "types": [
+                        "pages"
+                    ]
                 }
             }
         },
@@ -5423,8 +6108,7 @@
                     "empty"
                 ],
                 "future": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "group": [
                     "string"
@@ -5475,8 +6159,7 @@
                     "int"
                 ],
                 "stage_type": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "total_cost": [
                     "int"
@@ -5577,6 +6260,93 @@
                 "report": {
                     "to_many": null,
                     "types": []
+                }
+            }
+        },
+        "notifications": {
+            "attributes": {
+                "agent_session_status": [
+                    "null"
+                ],
+                "changeset": [
+                    "empty"
+                ],
+                "dismissed": [
+                    "bool"
+                ],
+                "excerpt": [
+                    "string"
+                ],
+                "first_unread_activity_id": [
+                    "null"
+                ],
+                "important": [
+                    "bool"
+                ],
+                "last_action_at": [
+                    "date-time"
+                ],
+                "made_by_automation": [
+                    "bool"
+                ],
+                "mention": [
+                    "bool"
+                ],
+                "new_activities_count": [
+                    "int"
+                ],
+                "parent_id": [
+                    "int"
+                ],
+                "parent_title": [
+                    "string"
+                ],
+                "parent_type": [
+                    "string"
+                ],
+                "read": [
+                    "bool"
+                ],
+                "root_id": [
+                    "null"
+                ],
+                "root_type": [
+                    "null"
+                ],
+                "target_id": [
+                    "int"
+                ],
+                "target_label": [
+                    "string"
+                ],
+                "target_title": [
+                    "string"
+                ],
+                "target_type": [
+                    "string"
+                ],
+                "title": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "actor": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "owner": {
+                    "to_many": false,
+                    "types": [
+                        "organization_memberships"
+                    ]
                 }
             }
         },
@@ -6028,7 +6798,7 @@
                     "int"
                 ],
                 "facility_costs_breakdown": [
-                    "empty"
+                    "object"
                 ],
                 "facility_costs_default": [
                     "int"
@@ -6058,7 +6828,7 @@
                     "int"
                 ],
                 "invoice_timesheet_export_configuration": [
-                    "null"
+                    "empty"
                 ],
                 "limited_service_types": [
                     "bool"
@@ -6175,7 +6945,7 @@
                     "null"
                 ],
                 "time_locking_reminders": [
-                    "null"
+                    "bool"
                 ],
                 "time_reminder_at": [
                     "int"
@@ -6234,6 +7004,198 @@
                     ]
                 },
                 "owner": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                }
+            }
+        },
+        "page_reports": {
+            "attributes": {
+                "count": [
+                    "int"
+                ],
+                "created_at": [
+                    "date"
+                ],
+                "custom_fields": [
+                    "empty"
+                ],
+                "edited_at": [
+                    "date"
+                ],
+                "group": [
+                    "string"
+                ],
+                "last_activity_at": [
+                    "null"
+                ],
+                "title": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "page": {
+                    "to_many": false,
+                    "types": [
+                        "pages"
+                    ]
+                },
+                "report": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "page_versions": {
+            "attributes": {
+                "body_snapshot": [
+                    "json-text"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "name": [
+                    "null"
+                ],
+                "prosemirror_steps": [
+                    "list"
+                ],
+                "restored_from_version_id": [
+                    "null"
+                ],
+                "title_snapshot": [
+                    "string"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "page": {
+                    "to_many": false,
+                    "types": [
+                        "pages"
+                    ]
+                },
+                "person": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                }
+            }
+        },
+        "pages": {
+            "attributes": {
+                "body": [
+                    "json-text"
+                ],
+                "cover_image_meta": [
+                    "null"
+                ],
+                "cover_image_url": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "custom_fields": [
+                    "null"
+                ],
+                "edited_at": [
+                    "date-time"
+                ],
+                "icon_id": [
+                    "null"
+                ],
+                "last_activity_at": [
+                    "date-time"
+                ],
+                "parent_page_id": [
+                    "null"
+                ],
+                "position": [
+                    "null"
+                ],
+                "preferences": [
+                    "json-text"
+                ],
+                "public": [
+                    "bool"
+                ],
+                "public_access": [
+                    "bool"
+                ],
+                "public_uuid": [
+                    "string"
+                ],
+                "root_page_id": [
+                    "null"
+                ],
+                "title": [
+                    "string"
+                ],
+                "updated_at": [
+                    "date-time"
+                ],
+                "version_number": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "attachments": {
+                    "to_many": true,
+                    "types": []
+                },
+                "child_pages": {
+                    "to_many": true,
+                    "types": []
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "parent_page": {
+                    "to_many": null,
+                    "types": []
+                },
+                "project": {
+                    "to_many": false,
+                    "types": [
+                        "projects"
+                    ]
+                },
+                "root_page": {
+                    "to_many": null,
+                    "types": []
+                },
+                "template_object": {
+                    "to_many": null,
+                    "types": []
+                },
+                "updater": {
                     "to_many": false,
                     "types": [
                         "people"
@@ -6515,7 +7477,8 @@
                     "int"
                 ],
                 "role_id": [
-                    "int"
+                    "int",
+                    "null"
                 ],
                 "salary_type_id": [
                     "int",
@@ -6629,6 +7592,7 @@
                     "bool"
                 ],
                 "color_id": [
+                    "integer-string",
                     "null"
                 ],
                 "contact": [
@@ -6645,6 +7609,7 @@
                     "null"
                 ],
                 "email": [
+                    "null",
                     "string"
                 ],
                 "external_id": [
@@ -6657,7 +7622,8 @@
                     "string"
                 ],
                 "hrm_type_id": [
-                    "int"
+                    "int",
+                    "null"
                 ],
                 "invited_at": [
                     "date-time",
@@ -6674,6 +7640,7 @@
                     "date-time"
                 ],
                 "last_name": [
+                    "null",
                     "string"
                 ],
                 "last_seen_at": [
@@ -6824,7 +7791,9 @@
                 },
                 "teams": {
                     "to_many": true,
-                    "types": []
+                    "types": [
+                        "teams"
+                    ]
                 }
             }
         },
@@ -6976,6 +7945,325 @@
                 "updater": {
                     "to_many": null,
                     "types": []
+                }
+            }
+        },
+        "placeholder_usages": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "field": [
+                    "string"
+                ],
+                "id": [
+                    "int"
+                ],
+                "interval_direction": [
+                    "null"
+                ],
+                "interval_unit": [
+                    "null"
+                ],
+                "interval_value": [
+                    "null"
+                ],
+                "placeholder_id": [
+                    "int"
+                ],
+                "skip_weekends": [
+                    "bool"
+                ],
+                "target_id": [
+                    "int"
+                ],
+                "target_type": [
+                    "string"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "placeholder": {
+                    "to_many": false,
+                    "types": [
+                        "placeholders"
+                    ]
+                },
+                "task": {
+                    "to_many": false,
+                    "types": [
+                        "tasks"
+                    ]
+                }
+            }
+        },
+        "placeholders": {
+            "attributes": {
+                "category": [
+                    "string"
+                ],
+                "color": [
+                    "string"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "icon": [
+                    "string"
+                ],
+                "name": [
+                    "string"
+                ],
+                "type": [
+                    "string"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "project": {
+                    "to_many": false,
+                    "types": [
+                        "projects"
+                    ]
+                }
+            }
+        },
+        "price_reports": {
+            "attributes": {
+                "average_discount": [
+                    "null"
+                ],
+                "average_discount_amount": [
+                    "int"
+                ],
+                "average_discount_amount_default": [
+                    "int"
+                ],
+                "average_discount_amount_normalized": [
+                    "null"
+                ],
+                "average_discounted_rate": [
+                    "int"
+                ],
+                "average_discounted_rate_default": [
+                    "int"
+                ],
+                "average_discounted_rate_normalized": [
+                    "null"
+                ],
+                "average_estimated_cost": [
+                    "int"
+                ],
+                "average_estimated_cost_default": [
+                    "int"
+                ],
+                "average_estimated_cost_normalized": [
+                    "null"
+                ],
+                "average_markup": [
+                    "null"
+                ],
+                "average_markup_amount": [
+                    "int"
+                ],
+                "average_markup_amount_default": [
+                    "int"
+                ],
+                "average_markup_amount_normalized": [
+                    "null"
+                ],
+                "average_rate": [
+                    "int"
+                ],
+                "average_rate_default": [
+                    "int"
+                ],
+                "average_rate_normalized": [
+                    "null"
+                ],
+                "booking_tracking_enabled": [
+                    "bool"
+                ],
+                "count": [
+                    "int"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "null"
+                ],
+                "expense_tracking_enabled": [
+                    "bool"
+                ],
+                "formula_fields": [
+                    "empty"
+                ],
+                "group": [
+                    "string"
+                ],
+                "rate_card_status": [
+                    "int"
+                ],
+                "time_tracking_enabled": [
+                    "bool"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "price": {
+                    "to_many": false,
+                    "types": [
+                        "prices"
+                    ]
+                },
+                "report": {
+                    "to_many": null,
+                    "types": []
+                }
+            }
+        },
+        "prices": {
+            "attributes": {
+                "billing_type_id": [
+                    "null"
+                ],
+                "booking_tracking_enabled": [
+                    "bool"
+                ],
+                "budget_cap_enabled": [
+                    "bool"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "string"
+                ],
+                "custom_fields": [
+                    "null"
+                ],
+                "description": [
+                    "null"
+                ],
+                "discount": [
+                    "null"
+                ],
+                "discount_amount": [
+                    "int"
+                ],
+                "discount_amount_default": [
+                    "int"
+                ],
+                "discount_amount_normalized": [
+                    "int"
+                ],
+                "discount_type": [
+                    "string"
+                ],
+                "editor_config": [
+                    "empty"
+                ],
+                "estimated_cost": [
+                    "int"
+                ],
+                "estimated_cost_default": [
+                    "int"
+                ],
+                "estimated_cost_normalized": [
+                    "int"
+                ],
+                "estimated_hours": [
+                    "null"
+                ],
+                "expense_tracking_enabled": [
+                    "bool"
+                ],
+                "markup": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "quantity": [
+                    "decimal-string"
+                ],
+                "rate": [
+                    "int"
+                ],
+                "rate_default": [
+                    "int"
+                ],
+                "rate_normalized": [
+                    "int"
+                ],
+                "time_tracking_enabled": [
+                    "bool"
+                ],
+                "unit_id": [
+                    "int"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "company": {
+                    "to_many": false,
+                    "types": [
+                        "companies"
+                    ]
+                },
+                "custom_field_attachments": {
+                    "to_many": true,
+                    "types": []
+                },
+                "custom_field_people": {
+                    "to_many": true,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "rate_card": {
+                    "to_many": false,
+                    "types": [
+                        "rate_cards"
+                    ]
+                },
+                "service_type": {
+                    "to_many": null,
+                    "types": []
+                },
+                "updater": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
                 }
             }
         },
@@ -7270,8 +8558,10 @@
                     ]
                 },
                 "memberships": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": true,
+                    "types": [
+                        "memberships"
+                    ]
                 },
                 "organization": {
                     "to_many": false,
@@ -7286,7 +8576,7 @@
                     ]
                 },
                 "project_milestones": {
-                    "to_many": null,
+                    "to_many": true,
                     "types": []
                 },
                 "template_object": {
@@ -7597,6 +8887,214 @@
                 }
             }
         },
+        "purchase_orders": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "string"
+                ],
+                "delivery_on": [
+                    "null"
+                ],
+                "email_key": [
+                    "string"
+                ],
+                "exchange_date": [
+                    "date"
+                ],
+                "exchange_rate": [
+                    "decimal-string"
+                ],
+                "export_id": [
+                    "null"
+                ],
+                "export_integration_type_id": [
+                    "null"
+                ],
+                "export_url": [
+                    "null"
+                ],
+                "exported": [
+                    "bool"
+                ],
+                "exported_at": [
+                    "null"
+                ],
+                "footer": [
+                    "null"
+                ],
+                "footer_interpolated": [
+                    "null"
+                ],
+                "issued_on": [
+                    "date"
+                ],
+                "note": [
+                    "null"
+                ],
+                "note_interpolated": [
+                    "null"
+                ],
+                "number": [
+                    "integer-string"
+                ],
+                "payment_status_id": [
+                    "int"
+                ],
+                "received_on": [
+                    "null"
+                ],
+                "sent_on": [
+                    "null"
+                ],
+                "status_id": [
+                    "int"
+                ],
+                "subject": [
+                    "string"
+                ],
+                "total_cost": [
+                    "int"
+                ],
+                "total_cost_default": [
+                    "int"
+                ],
+                "total_cost_normalized": [
+                    "int"
+                ],
+                "total_cost_with_tax": [
+                    "int"
+                ],
+                "total_cost_with_tax_default": [
+                    "int"
+                ],
+                "total_cost_with_tax_normalized": [
+                    "int"
+                ],
+                "total_received": [
+                    "int"
+                ],
+                "total_received_default": [
+                    "int"
+                ],
+                "total_received_normalized": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "attachment": {
+                    "to_many": null,
+                    "types": []
+                },
+                "bill_from": {
+                    "to_many": null,
+                    "types": []
+                },
+                "bill_to": {
+                    "to_many": null,
+                    "types": []
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "deal": {
+                    "to_many": false,
+                    "types": [
+                        "deals"
+                    ]
+                },
+                "document_type": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "vendor": {
+                    "to_many": false,
+                    "types": [
+                        "companies"
+                    ]
+                }
+            }
+        },
+        "rate_cards": {
+            "attributes": {
+                "archived_at": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "name": [
+                    "string"
+                ],
+                "prices_count": [
+                    "int"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "company": {
+                    "to_many": false,
+                    "types": [
+                        "companies"
+                    ]
+                },
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
+        "report_categories": {
+            "attributes": {
+                "color_id": [
+                    "integer-string"
+                ],
+                "deleted_at": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ],
+                "position": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
         "resource_request_reports": {
             "attributes": {
                 "booking_method": [
@@ -7834,6 +9332,7 @@
                     "string"
                 ],
                 "description": [
+                    "null",
                     "string"
                 ],
                 "editable_by_user": [
@@ -7852,7 +9351,8 @@
                     "int"
                 ],
                 "permissions": [
-                    "empty"
+                    "empty",
+                    "object"
                 ],
                 "principal_type": [
                     "string"
@@ -8730,6 +10230,51 @@
                 }
             }
         },
+        "skills": {
+            "attributes": {
+                "auto_load": [
+                    "bool"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "description": [
+                    "string"
+                ],
+                "instructions": [
+                    "string"
+                ],
+                "name": [
+                    "string"
+                ],
+                "smart_action_locations": [
+                    "empty"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "memberships": {
+                    "to_many": true,
+                    "types": [
+                        "memberships"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
         "subsidiaries": {
             "attributes": {
                 "archived_at": [
@@ -8809,6 +10354,113 @@
                 }
             }
         },
+        "survey_field_options": {
+            "attributes": {
+                "archived_at": [
+                    "null"
+                ],
+                "color_id": [
+                    "integer-string"
+                ],
+                "name": [
+                    "string"
+                ],
+                "position": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "survey_field": {
+                    "to_many": false,
+                    "types": [
+                        "survey_fields"
+                    ]
+                }
+            }
+        },
+        "survey_fields": {
+            "attributes": {
+                "aggregation_type_id": [
+                    "null"
+                ],
+                "archived_at": [
+                    "null"
+                ],
+                "created_at": [
+                    "date-time"
+                ],
+                "customizable_type": [
+                    "string"
+                ],
+                "data_type_id": [
+                    "int"
+                ],
+                "description": [
+                    "null"
+                ],
+                "formatting_type_id": [
+                    "null"
+                ],
+                "global": [
+                    "bool"
+                ],
+                "name": [
+                    "string"
+                ],
+                "position": [
+                    "int"
+                ],
+                "quick_add_enabled": [
+                    "bool"
+                ],
+                "required": [
+                    "bool"
+                ],
+                "sensitive": [
+                    "bool"
+                ],
+                "show_in_add_edit_views": [
+                    "bool"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "custom_field_people": {
+                    "to_many": true,
+                    "types": []
+                },
+                "options": {
+                    "to_many": true,
+                    "types": [
+                        "survey_field_options"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "origin_field": {
+                    "to_many": null,
+                    "types": []
+                },
+                "survey": {
+                    "to_many": false,
+                    "types": [
+                        "surveys"
+                    ]
+                }
+            }
+        },
         "survey_reports": {
             "attributes": {
                 "count": [
@@ -8834,6 +10486,43 @@
                 "report": {
                     "to_many": null,
                     "types": []
+                },
+                "survey": {
+                    "to_many": false,
+                    "types": [
+                        "surveys"
+                    ]
+                }
+            }
+        },
+        "survey_responses": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "survey_fields": [
+                    "object"
+                ],
+                "updated_at": [
+                    "date-time"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "custom_field_attachments": {
+                    "to_many": true,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
                 },
                 "survey": {
                     "to_many": false,
@@ -8887,6 +10576,39 @@
                     "to_many": false,
                     "types": [
                         "people"
+                    ]
+                }
+            }
+        },
+        "task_dependencies": {
+            "attributes": {
+                "type_id": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "dependent_task": {
+                    "to_many": false,
+                    "types": [
+                        "tasks"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "reverse_dependency": {
+                    "to_many": false,
+                    "types": [
+                        "task_dependencies"
+                    ]
+                },
+                "task": {
+                    "to_many": false,
+                    "types": [
+                        "tasks"
                     ]
                 }
             }
@@ -9021,6 +10743,7 @@
         "tasks": {
             "attributes": {
                 "billable_time": [
+                    "int",
                     "null"
                 ],
                 "blocking_dependency_count": [
@@ -9073,6 +10796,7 @@
                     "integer-string"
                 ],
                 "open_subtask_count": [
+                    "int",
                     "null"
                 ],
                 "open_todo_count": [
@@ -9110,9 +10834,11 @@
                     "null"
                 ],
                 "subtask_count": [
+                    "int",
                     "null"
                 ],
                 "subtask_placement": [
+                    "int",
                     "null"
                 ],
                 "tag_list": [
@@ -9144,6 +10870,7 @@
                     "int"
                 ],
                 "worked_time": [
+                    "int",
                     "null"
                 ]
             },
@@ -9156,7 +10883,9 @@
                 },
                 "attachments": {
                     "to_many": true,
-                    "types": []
+                    "types": [
+                        "attachments"
+                    ]
                 },
                 "creator": {
                     "to_many": false,
@@ -9212,11 +10941,15 @@
                 },
                 "subtasks": {
                     "to_many": true,
-                    "types": []
+                    "types": [
+                        "tasks"
+                    ]
                 },
                 "task_dependencies": {
                     "to_many": true,
-                    "types": []
+                    "types": [
+                        "task_dependencies"
+                    ]
                 },
                 "task_list": {
                     "to_many": false,
@@ -9274,6 +11007,56 @@
                     "to_many": false,
                     "types": [
                         "subsidiaries"
+                    ]
+                }
+            }
+        },
+        "team_memberships": {
+            "attributes": [],
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "person": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "team": {
+                    "to_many": false,
+                    "types": [
+                        "teams"
+                    ]
+                }
+            }
+        },
+        "teams": {
+            "attributes": {
+                "color_id": [
+                    "null"
+                ],
+                "icon_id": [
+                    "null"
+                ],
+                "name": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "members": {
+                    "to_many": true,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
                     ]
                 }
             }
@@ -9414,6 +11197,7 @@
                     "date-time"
                 ],
                 "note": [
+                    "null",
                     "string"
                 ],
                 "overhead": [
@@ -9447,6 +11231,7 @@
                     "null"
                 ],
                 "started_at": [
+                    "date-time",
                     "null"
                 ],
                 "submitted": [
@@ -9456,6 +11241,7 @@
                     "int"
                 ],
                 "timer_started_at": [
+                    "date-time",
                     "null"
                 ],
                 "timer_stopped_at": [
@@ -9480,11 +11266,15 @@
             "relationships": {
                 "approval_statuses": {
                     "to_many": true,
-                    "types": []
+                    "types": [
+                        "approval_statuses"
+                    ]
                 },
                 "approver": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
                 },
                 "creator": {
                     "to_many": false,
@@ -9537,12 +11327,16 @@
                     ]
                 },
                 "task": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "tasks"
+                    ]
                 },
                 "timesheet": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "timesheets"
+                    ]
                 },
                 "updater": {
                     "to_many": false,
@@ -9570,13 +11364,16 @@
                     "int"
                 ],
                 "average_recognized_margin": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_recognized_margin_default": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_recognized_margin_normalized": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "billing_type": [
                     "int"
@@ -9606,6 +11403,7 @@
                     "date"
                 ],
                 "ended_at": [
+                    "date",
                     "null"
                 ],
                 "ended_at_period": [
@@ -9666,6 +11464,7 @@
                     "int"
                 ],
                 "started_at": [
+                    "date",
                     "null"
                 ],
                 "started_at_period": [
@@ -9925,6 +11724,36 @@
                 }
             }
         },
+        "timers": {
+            "attributes": {
+                "person_id": [
+                    "int"
+                ],
+                "started_at": [
+                    "date-time"
+                ],
+                "stopped_at": [
+                    "null"
+                ],
+                "total_time": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "time_entry": {
+                    "to_many": false,
+                    "types": [
+                        "time_entries"
+                    ]
+                }
+            }
+        },
         "timesheet_reports": {
             "attributes": {
                 "count": [
@@ -9998,6 +11827,9 @@
                 ],
                 "week": [
                     "string"
+                ],
+                "week_submission_status": [
+                    "string"
                 ]
             },
             "relationships": {
@@ -10016,6 +11848,36 @@
                 "report": {
                     "to_many": null,
                     "types": []
+                }
+            }
+        },
+        "timesheets": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "date": [
+                    "date"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "person": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
                 }
             }
         },
@@ -10136,6 +11998,42 @@
                 ]
             },
             "relationships": []
+        },
+        "webhook_logs": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "payload": [
+                    "object"
+                ],
+                "retry_attempt": [
+                    "int"
+                ],
+                "retry_job_id": [
+                    "string"
+                ],
+                "status_code": [
+                    "int"
+                ],
+                "target_url": [
+                    "string"
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "webhook": {
+                    "to_many": false,
+                    "types": [
+                        "webhooks"
+                    ]
+                }
+            }
         },
         "webhooks": {
             "attributes": {

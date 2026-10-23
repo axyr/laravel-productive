@@ -1,0 +1,70 @@
+{
+    "data": [
+        {
+            "id": "1173",
+            "type": "skills",
+            "attributes": {
+                "name": "Text 248",
+                "description": "Text 249",
+                "instructions": "Text 250",
+                "auto_load": true,
+                "smart_action_locations": [],
+                "created_at": "2026-10-23T21:31:38.250+02:00",
+                "updated_at": "2026-10-23T21:31:38.256+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "memberships": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1173",
+            "type": "skills",
+            "attributes": {
+                "name": "Text 248",
+                "description": "Text 249",
+                "instructions": "Text 250",
+                "auto_load": true,
+                "smart_action_locations": [],
+                "created_at": "2026-10-23T21:31:38.250+02:00",
+                "updated_at": "2026-10-23T21:31:38.256+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "memberships": {
+                    "data": [
+                        {
+                            "type": "memberships",
+                            "id": "1174"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
