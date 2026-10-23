@@ -34,8 +34,6 @@ final readonly class DealFunnelReport extends Model
     /** Currency code for totals expressed in the organization's normalized (common) currency. */
     public ?string $currencyNormalized;
 
-    public ?int $dealCount;
-
     /** Formula fields — key-value hash of custom formula results for this report row. */
     public mixed $formulaFields;
 
@@ -44,10 +42,6 @@ final readonly class DealFunnelReport extends Model
 
     /** Number of deals in this funnel stage that were marked as lost. */
     public ?int $lostCount;
-
-    public ?int $pipelineId;
-
-    public ?string $stage;
 
     /** Sum of total budget value for all deals in this funnel stage, in the budget currency. */
     public mixed $totalBudgetTotal;
@@ -67,27 +61,21 @@ final readonly class DealFunnelReport extends Model
     /** Sum of projected revenue for all deals in this funnel stage, in the normalized common currency. */
     public mixed $totalProjectedRevenueNormalized;
 
-    public ?string $totalValue;
-
     protected function hydrate(Attributes $attributes): void
     {
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
-        $this->dealCount = $attributes->int('deal_count');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->lostCount = $attributes->int('lost_count');
-        $this->pipelineId = $attributes->int('pipeline_id');
-        $this->stage = $attributes->string('stage');
         $this->totalBudgetTotal = $attributes->mixed('total_budget_total');
         $this->totalBudgetTotalDefault = $attributes->mixed('total_budget_total_default');
         $this->totalBudgetTotalNormalized = $attributes->mixed('total_budget_total_normalized');
         $this->totalProjectedRevenue = $attributes->mixed('total_projected_revenue');
         $this->totalProjectedRevenueDefault = $attributes->mixed('total_projected_revenue_default');
         $this->totalProjectedRevenueNormalized = $attributes->mixed('total_projected_revenue_normalized');
-        $this->totalValue = $attributes->string('total_value');
     }
 
     public function dealStatus(): ?DealStatus

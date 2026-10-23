@@ -26,8 +26,6 @@ final readonly class TimeEntryReport extends Model
     /** Bucketed `approved_at` value for this group when the report is grouped by `approved_at` with a date period (day, week, month, quarter, or year) — e.g. `2026/Q1`. `null` when the report is not grouped by `approved_at` or the entries are unapproved. */
     public mixed $approvedAtPeriod;
 
-    public ?int $approvedTime;
-
     /** Indicates whether this time entry was recorded automatically via autotracking. */
     public ?int $autotracked;
 
@@ -49,12 +47,8 @@ final readonly class TimeEntryReport extends Model
     /** Not in the spec: seen in recorded API responses. */
     public ?string $averageRecognizedMarginNormalized;
 
-    public ?int $billableTime;
-
     /** The billing type of the service (hourly, fixed price, etc.). */
     public ?int $billingType;
-
-    public ?string $cost;
 
     /** The number of time entries in this grouped result. */
     public ?int $count;
@@ -73,8 +67,6 @@ final readonly class TimeEntryReport extends Model
 
     /** Custom field values associated with this time entry. */
     public mixed $customFields;
-
-    public ?string $date;
 
     /** The time period (day, week, month) for the date grouping. */
     public mixed $datePeriod;
@@ -118,8 +110,6 @@ final readonly class TimeEntryReport extends Model
     /** The month in which the time entry was tracked. */
     public ?string $month;
 
-    public ?int $nonbillableTime;
-
     /** Indicates whether this time entry is classified as overhead. */
     public ?bool $overhead;
 
@@ -136,26 +126,14 @@ final readonly class TimeEntryReport extends Model
      */
     public ?array $peopleCustomFields;
 
-    public ?int $personId;
-
-    public ?string $profit;
-
-    public ?float $profitMargin;
-
-    public ?int $projectId;
-
     /** The ID of the project type (internal or client). */
     public ?int $projectTypeId;
 
     /** The quarter in which the time entry was tracked. */
     public ?string $quarter;
 
-    public ?string $revenue;
-
     /** The name of the budget section the service belongs to. */
     public ?string $sectionName;
-
-    public ?int $serviceId;
 
     /** Stage type for this time entry report group. */
     public ?int $stageType;
@@ -256,15 +234,11 @@ final readonly class TimeEntryReport extends Model
     /** Track method id for this time entry report group. */
     public ?int $trackMethodId;
 
-    public ?int $unapprovedTime;
-
     /** Unit id for this time entry report group. */
     public ?int $unitId;
 
     /** Week grouping for this time entry report row. */
     public ?string $week;
-
-    public ?int $workedTime;
 
     /** Year grouping for this time entry report row. */
     public ?string $year;
@@ -272,7 +246,6 @@ final readonly class TimeEntryReport extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->approvedAtPeriod = $attributes->mixed('approved_at_period');
-        $this->approvedTime = $attributes->int('approved_time');
         $this->autotracked = $attributes->int('autotracked');
         $this->averageBlendedRate = $attributes->mixed('average_blended_rate');
         $this->averageBlendedRateDefault = $attributes->mixed('average_blended_rate_default');
@@ -280,16 +253,13 @@ final readonly class TimeEntryReport extends Model
         $this->averageRecognizedMargin = $attributes->float('average_recognized_margin');
         $this->averageRecognizedMarginDefault = $attributes->string('average_recognized_margin_default');
         $this->averageRecognizedMarginNormalized = $attributes->string('average_recognized_margin_normalized');
-        $this->billableTime = $attributes->int('billable_time');
         $this->billingType = $attributes->int('billing_type');
-        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->customFields = $attributes->mixed('custom_fields');
-        $this->date = $attributes->string('date');
         $this->datePeriod = $attributes->mixed('date_period');
         $this->day = $attributes->string('day');
         $this->endedAt = $attributes->date('ended_at');
@@ -304,20 +274,13 @@ final readonly class TimeEntryReport extends Model
         $this->jiraIssueSummary = $attributes->string('jira_issue_summary');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
-        $this->nonbillableTime = $attributes->int('nonbillable_time');
         $this->overhead = $attributes->bool('overhead');
         $this->overtime = $attributes->bool('overtime');
         $this->overtimeCostMultiplier = $attributes->string('overtime_cost_multiplier');
         $this->peopleCustomFields = $attributes->object('people_custom_fields');
-        $this->personId = $attributes->int('person_id');
-        $this->profit = $attributes->string('profit');
-        $this->profitMargin = $attributes->float('profit_margin');
-        $this->projectId = $attributes->int('project_id');
         $this->projectTypeId = $attributes->int('project_type_id');
         $this->quarter = $attributes->string('quarter');
-        $this->revenue = $attributes->string('revenue');
         $this->sectionName = $attributes->string('section_name');
-        $this->serviceId = $attributes->int('service_id');
         $this->stageType = $attributes->int('stage_type');
         $this->startedAt = $attributes->date('started_at');
         $this->startedAtPeriod = $attributes->mixed('started_at_period');
@@ -351,10 +314,8 @@ final readonly class TimeEntryReport extends Model
         $this->totalWorkCostDefault = $attributes->mixed('total_work_cost_default');
         $this->totalWorkCostNormalized = $attributes->mixed('total_work_cost_normalized');
         $this->trackMethodId = $attributes->int('track_method_id');
-        $this->unapprovedTime = $attributes->int('unapproved_time');
         $this->unitId = $attributes->int('unit_id');
         $this->week = $attributes->string('week');
-        $this->workedTime = $attributes->int('worked_time');
         $this->year = $attributes->string('year');
     }
 

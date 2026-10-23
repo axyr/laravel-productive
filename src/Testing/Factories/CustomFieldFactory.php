@@ -31,10 +31,8 @@ final class CustomFieldFactory extends Factory
     {
         return [
             'name' => 'Priority',
-            'field_type' => 'dropdown',
             'position' => 1,
             'required' => false,
-            'filterable' => true,
             'archived_at' => null,
         ];
     }

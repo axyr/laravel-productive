@@ -22,8 +22,6 @@ final readonly class TaskReport extends Model
 {
     public const string TYPE = 'task_reports';
 
-    public ?int $billableTime;
-
     /** Time period grouping for closed at (e.g. week, month, quarter). */
     public mixed $closedAtPeriod;
 
@@ -54,22 +52,14 @@ final readonly class TaskReport extends Model
     /** The grouping dimension for this task report row. */
     public ?string $group;
 
-    public ?int $initialEstimate;
-
     /** Time period grouping for last activity date (e.g. week, month, quarter). */
     public mixed $lastActivityAtPeriod;
 
     /** Month grouping for this task report row. */
     public ?string $month;
 
-    public ?int $nonbillableTime;
-
-    public ?int $projectId;
-
     /** Quarter grouping for this task report row. */
     public ?string $quarter;
-
-    public ?int $remainingTime;
 
     /** Repeating for this task report group. */
     public ?int $repeating;
@@ -79,8 +69,6 @@ final readonly class TaskReport extends Model
 
     /** Status for this task report group. */
     public ?int $status;
-
-    public ?int $taskId;
 
     /** Sum of billable time across all records in this task report group. */
     public ?float $totalBillableTime;
@@ -109,8 +97,6 @@ final readonly class TaskReport extends Model
     /** Sum of remaining time across all records in this task report group. */
     public ?float $totalRemainingTime;
 
-    public ?int $totalTime;
-
     /** Sum of worked time across all records in this task report group. */
     public ?float $totalWorkedTime;
 
@@ -125,7 +111,6 @@ final readonly class TaskReport extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
-        $this->billableTime = $attributes->int('billable_time');
         $this->closedAtPeriod = $attributes->mixed('closed_at_period');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
@@ -136,17 +121,12 @@ final readonly class TaskReport extends Model
         $this->dueDatePeriod = $attributes->mixed('due_date_period');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
-        $this->initialEstimate = $attributes->int('initial_estimate');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
-        $this->nonbillableTime = $attributes->int('nonbillable_time');
-        $this->projectId = $attributes->int('project_id');
         $this->quarter = $attributes->string('quarter');
-        $this->remainingTime = $attributes->int('remaining_time');
         $this->repeating = $attributes->int('repeating');
         $this->startDatePeriod = $attributes->mixed('start_date_period');
         $this->status = $attributes->int('status');
-        $this->taskId = $attributes->int('task_id');
         $this->totalBillableTime = $attributes->float('total_billable_time');
         $this->totalBookedTime = $attributes->float('total_booked_time');
         $this->totalEstimateAtCompletion = $attributes->float('total_estimate_at_completion');
@@ -156,7 +136,6 @@ final readonly class TaskReport extends Model
         $this->totalLeftToScheduleTime = $attributes->float('total_left_to_schedule_time');
         $this->totalNetUnplannedTime = $attributes->float('total_net_unplanned_time');
         $this->totalRemainingTime = $attributes->float('total_remaining_time');
-        $this->totalTime = $attributes->int('total_time');
         $this->totalWorkedTime = $attributes->float('total_worked_time');
         $this->week = $attributes->string('week');
         $this->workflowStatusCategoryId = $attributes->int('workflow_status_category_id');

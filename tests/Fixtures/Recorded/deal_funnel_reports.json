@@ -1,28 +1,28 @@
 {
     "data": [
         {
-            "id": "Text 55",
+            "id": "Text 49",
             "type": "deal_funnel_reports",
             "attributes": {
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": null,
                 "group": "deal_funnel",
-                "count": 6,
+                "count": 7,
                 "formula_fields": [],
                 "lost_count": 0,
-                "total_projected_revenue": 7944000,
-                "total_projected_revenue_default": 7944000,
+                "total_projected_revenue": 11872000,
+                "total_projected_revenue_default": 11872000,
                 "total_projected_revenue_normalized": null,
-                "total_budget_total": 17130000,
-                "total_budget_total_default": 17130000,
+                "total_budget_total": 17140000,
+                "total_budget_total_default": 17140000,
                 "total_budget_total_normalized": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {

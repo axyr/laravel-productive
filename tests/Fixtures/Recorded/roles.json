@@ -1,14 +1,14 @@
 {
     "data": [
         {
-            "id": "1103",
+            "id": "1104",
             "type": "roles",
             "attributes": {
                 "base_role_id": 1098,
-                "description": "Text 162",
-                "access_description": "Text 163",
-                "best_when_description": "Text 164",
-                "name": "Text 165",
+                "description": "Text 181",
+                "access_description": "Text 182",
+                "best_when_description": "Text 183",
+                "name": "Text 184",
                 "people_count": 1,
                 "active_users_count": 1,
                 "inactive_users_count": 0,
@@ -16,34 +16,34 @@
                 "inactive_agents_count": 0,
                 "permissions": [],
                 "editable_by_user": false,
-                "user_type_id": 1024,
+                "user_type_id": 1016,
                 "principal_type": "user",
                 "resolved_permissions": {
+                    "agents_manage": true,
+                    "agents_view": true,
                     "assistant_view": true,
                     "allocations_view": true,
-                    "automations_manage": true,
-                    "bank_accounts_manage": false,
-                    "billables_view": true
+                    "automations_manage": true
                 }
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 }
             }
         },
         {
-            "id": "1107",
+            "id": "1108",
             "type": "roles",
             "attributes": {
-                "base_role_id": 1024,
-                "description": "Text 166",
-                "access_description": "Text 167",
+                "base_role_id": 1016,
+                "description": "Text 185",
+                "access_description": "Text 186",
                 "best_when_description": null,
-                "name": "Text 168",
+                "name": "Text 187",
                 "people_count": 1,
                 "active_users_count": 1,
                 "inactive_users_count": 0,
@@ -51,34 +51,34 @@
                 "inactive_agents_count": 0,
                 "permissions": [],
                 "editable_by_user": false,
-                "user_type_id": 1024,
+                "user_type_id": 1016,
                 "principal_type": "user",
                 "resolved_permissions": {
+                    "agents_manage": true,
+                    "agents_view": true,
                     "assistant_view": true,
                     "allocations_view": true,
-                    "automations_manage": true,
-                    "bank_accounts_manage": true,
-                    "billables_view": true
+                    "automations_manage": true
                 }
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 }
             }
         },
         {
-            "id": "1116",
+            "id": "1121",
             "type": "roles",
             "attributes": {
-                "base_role_id": 1051,
-                "description": "Text 169",
+                "base_role_id": 1042,
+                "description": "Text 188",
                 "access_description": null,
                 "best_when_description": null,
-                "name": "Text 170",
+                "name": "Text 189",
                 "people_count": 0,
                 "active_users_count": 0,
                 "inactive_users_count": 0,
@@ -86,21 +86,21 @@
                 "inactive_agents_count": 0,
                 "permissions": [],
                 "editable_by_user": false,
-                "user_type_id": 1036,
+                "user_type_id": 1028,
                 "principal_type": "user",
                 "resolved_permissions": {
+                    "agents_manage": false,
+                    "agents_view": true,
                     "assistant_view": true,
                     "allocations_view": false,
-                    "automations_manage": false,
-                    "bank_accounts_manage": false,
-                    "billables_view": true
+                    "automations_manage": false
                 }
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 }
             }

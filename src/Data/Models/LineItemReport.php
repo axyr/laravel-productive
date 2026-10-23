@@ -43,12 +43,8 @@ final readonly class LineItemReport extends Model
     /** The grouping dimension for this line item report row. */
     public ?string $group;
 
-    public ?int $invoiceId;
-
     /** Quantity for this line item report group. */
     public ?float $quantity;
-
-    public ?int $serviceId;
 
     /** Tax rate for this line item report group. */
     public ?string $taxRate;
@@ -80,8 +76,6 @@ final readonly class LineItemReport extends Model
     /** Sum of amount with tax in the normalized currency across all records in this line item report group. */
     public mixed $totalAmountWithTaxNormalized;
 
-    public ?string $totalPrice;
-
     /** Unit id for this line item report group. */
     public ?int $unitId;
 
@@ -103,9 +97,7 @@ final readonly class LineItemReport extends Model
         $this->discount = $attributes->float('discount');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
-        $this->invoiceId = $attributes->int('invoice_id');
         $this->quantity = $attributes->float('quantity');
-        $this->serviceId = $attributes->int('service_id');
         $this->taxRate = $attributes->string('tax_rate');
         $this->totalAmount = $attributes->mixed('total_amount');
         $this->totalAmountDefault = $attributes->mixed('total_amount_default');
@@ -116,7 +108,6 @@ final readonly class LineItemReport extends Model
         $this->totalAmountWithTax = $attributes->mixed('total_amount_with_tax');
         $this->totalAmountWithTaxDefault = $attributes->mixed('total_amount_with_tax_default');
         $this->totalAmountWithTaxNormalized = $attributes->mixed('total_amount_with_tax_normalized');
-        $this->totalPrice = $attributes->string('total_price');
         $this->unitId = $attributes->int('unit_id');
         $this->unitPrice = $attributes->string('unit_price');
         $this->unitPriceDefault = $attributes->mixed('unit_price_default');

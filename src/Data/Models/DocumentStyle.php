@@ -8,7 +8,6 @@ namespace Axyr\Productive\Data\Models;
 
 use Axyr\Productive\Data\Attributes;
 use Axyr\Productive\Data\Model;
-use DateTimeImmutable;
 
 /**
  * A visual styling preset for documents such as proposals and contracts, containing CSS styles and branding assets.
@@ -23,8 +22,6 @@ final readonly class DocumentStyle extends Model
 {
     public const string TYPE = 'document_styles';
 
-    public ?DateTimeImmutable $createdAt;
-
     /** The display name of this document style. */
     public ?string $name;
 
@@ -37,7 +34,6 @@ final readonly class DocumentStyle extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
-        $this->createdAt = $attributes->dateTime('created_at');
         $this->name = $attributes->string('name');
         $this->styles = $attributes->object('styles');
     }

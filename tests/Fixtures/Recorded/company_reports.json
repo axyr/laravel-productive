@@ -1,16 +1,16 @@
 {
     "data": [
         {
-            "id": "Text 41",
+            "id": "Text 37",
             "type": "company_reports",
             "attributes": {
                 "group": "company",
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 42",
-                "month": "Text 43",
-                "week": "Text 44",
+                "quarter": "Text 21",
+                "month": "Text 22",
+                "week": "Text 38",
                 "status": 1,
                 "payment_terms": 10,
                 "payment_terms_type": "days_after_invoice_date",
@@ -30,7 +30,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -44,16 +44,16 @@
             }
         },
         {
-            "id": "Text 41",
+            "id": "Text 37",
             "type": "company_reports",
             "attributes": {
                 "group": "company",
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 42",
-                "month": "Text 43",
-                "week": "Text 44",
+                "quarter": "Text 21",
+                "month": "Text 22",
+                "week": "Text 38",
                 "status": 1,
                 "payment_terms": 10,
                 "payment_terms_type": "days_after_invoice_date",
@@ -73,7 +73,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -84,7 +84,7 @@
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1040"
+                        "id": "1007"
                     }
                 }
             }

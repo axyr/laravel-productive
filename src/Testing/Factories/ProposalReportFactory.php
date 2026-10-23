@@ -30,10 +30,7 @@ final class ProposalReportFactory extends Factory
     protected function definition(): array
     {
         return [
-            'total' => '45000.00',
             'status' => 'sent',
-            'deal_id' => 89,
-            'company_id' => 65111,
             'currency' => 'USD',
         ];
     }

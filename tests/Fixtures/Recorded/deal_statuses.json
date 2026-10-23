@@ -1,17 +1,17 @@
 {
     "data": [
         {
-            "id": "1054",
+            "id": "1047",
             "type": "deal_statuses",
             "attributes": {
-                "name": "Text 60",
+                "name": "Text 57",
                 "position": 1,
-                "color_id": "1055",
+                "color_id": "1048",
                 "archived_at": null,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
                 "booking_tracking_enabled": true,
-                "status_id": 1024,
+                "status_id": 1016,
                 "probability_enabled": false,
                 "probability": null,
                 "lost_reason_enabled": false,
@@ -21,7 +21,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "pipeline": {
@@ -32,17 +32,17 @@
             }
         },
         {
-            "id": "1054",
+            "id": "1047",
             "type": "deal_statuses",
             "attributes": {
-                "name": "Text 60",
+                "name": "Text 57",
                 "position": 1,
-                "color_id": "1055",
+                "color_id": "1048",
                 "archived_at": null,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
                 "booking_tracking_enabled": true,
-                "status_id": 1024,
+                "status_id": 1016,
                 "probability_enabled": false,
                 "probability": null,
                 "lost_reason_enabled": false,
@@ -52,13 +52,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "pipeline": {
                     "data": {
                         "type": "pipelines",
-                        "id": "1053"
+                        "id": "1045"
                     }
                 }
             }

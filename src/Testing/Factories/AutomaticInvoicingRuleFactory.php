@@ -30,10 +30,6 @@ final class AutomaticInvoicingRuleFactory extends Factory
     protected function definition(): array
     {
         return [
-            'name' => 'Monthly retainer invoicing',
-            'frequency' => 'monthly',
-            'active' => true,
-            'created_at' => '2026-01-01T00:00:00.000+00:00',
         ];
     }
 }

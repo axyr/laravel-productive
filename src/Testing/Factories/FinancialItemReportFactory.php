@@ -30,11 +30,6 @@ final class FinancialItemReportFactory extends Factory
     protected function definition(): array
     {
         return [
-            'revenue' => '50000.00',
-            'cost' => '30000.00',
-            'profit' => '20000.00',
-            'profit_margin' => 0.4,
-            'project_id' => 6899,
             'currency' => 'USD',
         ];
     }

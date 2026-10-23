@@ -31,7 +31,6 @@ final class DocumentStyleFactory extends Factory
     {
         return [
             'name' => 'Modern Blue',
-            'created_at' => '2026-01-01T00:00:00.000+00:00',
         ];
     }
 }

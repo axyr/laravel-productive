@@ -46,10 +46,11 @@ final readonly class FinancialItemReport extends Model
     /** Average recognized margin for this financial item report group. */
     public ?float $averageRecognizedMargin;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $averageRetainerIntervalCount;
+
     /** Billing type id for this financial item report group. */
     public ?int $billingTypeId;
-
-    public ?string $cost;
 
     /** Number of financial items in this report group. */
     public ?int $count;
@@ -90,16 +91,8 @@ final readonly class FinancialItemReport extends Model
     /** The grouping dimension for this financial item report row. */
     public ?string $group;
 
-    public ?string $profit;
-
-    public ?float $profitMargin;
-
-    public ?int $projectId;
-
     /** Project type id for this financial item report group. */
     public ?int $projectTypeId;
-
-    public ?string $revenue;
 
     /** Stage status for this financial item report group. */
     public ?int $stageStatus;
@@ -283,8 +276,8 @@ final readonly class FinancialItemReport extends Model
         $this->averageMarginDefault = $attributes->float('average_margin_default');
         $this->averageMarginNormalized = $attributes->float('average_margin_normalized');
         $this->averageRecognizedMargin = $attributes->float('average_recognized_margin');
+        $this->averageRetainerIntervalCount = $attributes->int('average_retainer_interval_count');
         $this->billingTypeId = $attributes->int('billing_type_id');
-        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
@@ -298,11 +291,7 @@ final readonly class FinancialItemReport extends Model
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->future = $attributes->int('future');
         $this->group = $attributes->string('group');
-        $this->profit = $attributes->string('profit');
-        $this->profitMargin = $attributes->float('profit_margin');
-        $this->projectId = $attributes->int('project_id');
         $this->projectTypeId = $attributes->int('project_type_id');
-        $this->revenue = $attributes->string('revenue');
         $this->stageStatus = $attributes->int('stage_status');
         $this->stageType = $attributes->int('stage_type');
         $this->totalBillableScheduledTime = $attributes->float('total_billable_scheduled_time');

@@ -30,13 +30,6 @@ final class DealReportFactory extends Factory
     protected function definition(): array
     {
         return [
-            'total_value' => '100000.00',
-            'revenue' => '75000.00',
-            'cost' => '45000.00',
-            'profit' => '30000.00',
-            'profit_margin' => 0.4,
-            'billable_time' => 48000,
-            'deal_id' => 89,
             'currency' => 'USD',
         ];
     }

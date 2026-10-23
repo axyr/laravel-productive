@@ -31,8 +31,6 @@ final readonly class InvoiceReport extends Model
     /** Average number of days elapsed between the due date and the actual payment date across invoices in this report group. */
     public ?int $averagePaidIn;
 
-    public ?int $companyId;
-
     /** Number of invoices in this report group. */
     public ?int $count;
 
@@ -75,8 +73,6 @@ final readonly class InvoiceReport extends Model
     /** Aging status of this invoice — categorizes overdue invoices into time brackets: current, 1-15 days overdue, 16-45 days overdue, or 45+ days overdue. */
     public ?int $invoiceAging;
 
-    public ?int $invoiceId;
-
     /** Invoice state for this invoice report group. */
     public ?int $invoiceState;
 
@@ -98,12 +94,8 @@ final readonly class InvoiceReport extends Model
     /** Month dimension for time-based report grouping (deprecated — use invoiced_on_period instead). */
     public ?string $month;
 
-    public ?string $outstanding;
-
     /** Overdue status for this invoice report group. */
     public ?int $overdueStatus;
-
-    public ?string $paid;
 
     /** Time period grouping for paid on (e.g. week, month, quarter). */
     public mixed $paidOnPeriod;
@@ -123,16 +115,8 @@ final readonly class InvoiceReport extends Model
     /** Whether this invoice has been sent to the client (sent or unsent). */
     public ?int $sentStatus;
 
-    public ?string $status;
-
-    public ?string $subtotal;
-
-    public ?string $tax;
-
     /** Tax rates applied to line items on this invoice. */
     public ?string $taxRates;
-
-    public ?string $total;
 
     /** Sum of all invoice amounts (excluding tax) across invoices in this report group, in each invoice's own currency. */
     public mixed $totalAmount;
@@ -217,7 +201,6 @@ final readonly class InvoiceReport extends Model
         $this->automaticallyCreated = $attributes->bool('automatically_created');
         $this->averageDueIn = $attributes->int('average_due_in');
         $this->averagePaidIn = $attributes->int('average_paid_in');
-        $this->companyId = $attributes->int('company_id');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
         $this->currency = $attributes->string('currency');
@@ -232,7 +215,6 @@ final readonly class InvoiceReport extends Model
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->invoiceAging = $attributes->int('invoice_aging');
-        $this->invoiceId = $attributes->int('invoice_id');
         $this->invoiceState = $attributes->int('invoice_state');
         $this->invoiceStatus = $attributes->int('invoice_status');
         $this->invoiceType = $attributes->int('invoice_type');
@@ -240,20 +222,14 @@ final readonly class InvoiceReport extends Model
         $this->invoicingMethod = $attributes->int('invoicing_method');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
-        $this->outstanding = $attributes->string('outstanding');
         $this->overdueStatus = $attributes->int('overdue_status');
-        $this->paid = $attributes->string('paid');
         $this->paidOnPeriod = $attributes->mixed('paid_on_period');
         $this->payOnPeriod = $attributes->mixed('pay_on_period');
         $this->paymentStatus = $attributes->int('payment_status');
         $this->quarter = $attributes->string('quarter');
         $this->sentOnPeriod = $attributes->mixed('sent_on_period');
         $this->sentStatus = $attributes->int('sent_status');
-        $this->status = $attributes->string('status');
-        $this->subtotal = $attributes->string('subtotal');
-        $this->tax = $attributes->string('tax');
         $this->taxRates = $attributes->string('tax_rates');
-        $this->total = $attributes->string('total');
         $this->totalAmount = $attributes->mixed('total_amount');
         $this->totalAmountCredited = $attributes->mixed('total_amount_credited');
         $this->totalAmountCreditedDefault = $attributes->mixed('total_amount_credited_default');

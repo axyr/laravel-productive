@@ -32,13 +32,10 @@ final class OrganizationSubscriptionFactory extends Factory
         return [
             'seats' => 25,
             'seats_used' => 18,
-            'seats_max' => 30,
             'trial_ends_on' => null,
             'contract_date' => '2026-01-01',
-            'contract_end_date' => '2026-12-31',
             'contract_seats' => 25,
             'current_plan' => 'business',
-            'currency' => 'USD',
         ];
     }
 }

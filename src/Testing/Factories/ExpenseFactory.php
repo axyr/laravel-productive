@@ -34,11 +34,8 @@ final class ExpenseFactory extends Factory
             'amount' => '199.00',
             'currency' => 'USD',
             'date' => '2026-03-01',
-            'billable' => true,
-            'status' => 'pending',
             'created_at' => '2026-03-01T10:00:00.000+00:00',
             'updated_at' => '2026-03-01T10:00:00.000+00:00',
-            'note' => null,
         ];
     }
 }

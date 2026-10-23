@@ -30,10 +30,6 @@ final class PaymentReportFactory extends Factory
     protected function definition(): array
     {
         return [
-            'amount' => '5000.00',
-            'paid_on' => '2026-03-10',
-            'invoice_id' => 234,
-            'company_id' => 65111,
             'currency' => 'USD',
         ];
     }

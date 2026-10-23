@@ -31,7 +31,6 @@ final class SurveyFactory extends Factory
     {
         return [
             'title' => 'Client Satisfaction Q1 2026',
-            'status' => 'published',
             'created_at' => '2026-01-15T10:00:00.000+00:00',
         ];
     }

@@ -32,8 +32,6 @@ final readonly class Dashboard extends Model
     /** The display name of the dashboard. */
     public ?string $name;
 
-    public ?bool $shared;
-
     /** Timestamp when this dashboard was last updated. */
     public ?DateTimeImmutable $updatedAt;
 
@@ -42,7 +40,6 @@ final readonly class Dashboard extends Model
         $this->createdAt = $attributes->dateTime('created_at');
         $this->isPrivate = $attributes->bool('is_private');
         $this->name = $attributes->string('name');
-        $this->shared = $attributes->bool('shared');
         $this->updatedAt = $attributes->dateTime('updated_at');
     }
 

@@ -30,8 +30,12 @@ final readonly class ModelBuilder
     {
         $data = $this->data($responseSchema);
         $attributesSchema = $this->spec->resolve(Spec::map($data['properties'] ?? [])['attributes'] ?? []);
+        $properties = Spec::map($attributesSchema['properties'] ?? []);
         $exampleAttributes = Spec::map($example['attributes'] ?? []);
-        $attributes = $this->recorded->attributes($type, $this->reader->attributes(Spec::map($attributesSchema['properties'] ?? []), $exampleAttributes));
+        $read = $this->reader->attributes($properties, $exampleAttributes);
+        // Attributes only the example has are the example's word alone: a recording that never saw them wins.
+        $phantom = $this->recorded->unseen($type, array_values(array_diff(array_keys($read), array_keys($properties))));
+        $attributes = $this->recorded->attributes($type, array_diff_key($read, array_flip($phantom)));
         ksort($attributes);
 
         return new Model(
@@ -40,7 +44,8 @@ final readonly class ModelBuilder
             description: $this->description($attributesSchema),
             attributes: array_values($attributes),
             relationships: $this->relationships($type, $data),
-            example: $exampleAttributes,
+            example: array_diff_key($exampleAttributes, array_flip($phantom)),
+            phantom: $phantom,
         );
     }
 

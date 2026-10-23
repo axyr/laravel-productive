@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 172",
+            "id": "Text 191",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -19,8 +19,10 @@
                 "average_forecasted_time_usage": "0.0",
                 "average_discount": null,
                 "average_markup": null,
+                "average_retainer_interval_count": 1,
                 "section_name": null,
                 "stage_type": 2,
+                "limitation_type": "no_limitation",
                 "recurring": false,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
@@ -31,6 +33,7 @@
                 "custom_fields": [],
                 "total_booked_time": 0,
                 "total_worked_time": 300,
+                "total_unapproved_time": 0,
                 "total_overtime_time": 0,
                 "total_future_booked_time": 0,
                 "total_tentative_booked_time": 0,
@@ -39,6 +42,7 @@
                 "total_net_unplanned_time": 900,
                 "total_estimated_time": 1200,
                 "total_budgeted_time": 1200,
+                "total_rolled_over_time": 0,
                 "total_estimated_remaining_time": 900,
                 "total_billable_time": 0,
                 "total_forecasted_billable_time": 0,
@@ -109,7 +113,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -138,7 +142,7 @@
             }
         },
         {
-            "id": "Text 173",
+            "id": "Text 192",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -153,11 +157,13 @@
                 "billing_type": 2,
                 "unit": 1,
                 "billable": 1,
-                "average_forecasted_time_usage": "710.0",
+                "average_forecasted_time_usage": "550.0",
                 "average_discount": null,
                 "average_markup": null,
+                "average_retainer_interval_count": 1,
                 "section_name": null,
                 "stage_type": 2,
+                "limitation_type": "no_limitation",
                 "recurring": false,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
@@ -168,21 +174,23 @@
                 "custom_fields": [],
                 "total_booked_time": 4320,
                 "total_worked_time": 4200,
+                "total_unapproved_time": 0,
                 "total_overtime_time": 0,
-                "total_future_booked_time": 4320,
+                "total_future_booked_time": 2400,
                 "total_tentative_booked_time": 0,
                 "total_future_tentative_booked_time": 0,
                 "total_left_to_schedule_time": -3120,
-                "total_net_unplanned_time": -7320,
+                "total_net_unplanned_time": -5400,
                 "total_estimated_time": 1200,
                 "total_budgeted_time": 1200,
+                "total_rolled_over_time": 0,
                 "total_estimated_remaining_time": -3000,
                 "total_billable_time": 4200,
-                "total_forecasted_billable_time": 8520,
-                "total_remaining_scheduled_time": -7320,
+                "total_forecasted_billable_time": 6600,
+                "total_remaining_scheduled_time": -5400,
                 "date_period": null,
-                "average_forecasted_budget_usage": "710.0",
-                "average_forecasted_budget_usage_default": "710.0",
+                "average_forecasted_budget_usage": "550.0",
+                "average_forecasted_budget_usage_default": "550.0",
                 "average_forecasted_budget_usage_normalized": null,
                 "average_budget_usage": "350.0",
                 "average_budget_usage_default": "350.0",
@@ -214,11 +222,11 @@
                 "total_budget_remaining": -500000,
                 "total_budget_remaining_default": -500000,
                 "total_budget_remaining_normalized": null,
-                "total_future_budget_used": 720000,
-                "total_future_budget_used_default": 720000,
+                "total_future_budget_used": 400000,
+                "total_future_budget_used_default": 400000,
                 "total_future_budget_used_normalized": null,
-                "total_forecasted_budget_used": 1420000,
-                "total_forecasted_budget_used_default": 1420000,
+                "total_forecasted_budget_used": 1100000,
+                "total_forecasted_budget_used_default": 1100000,
                 "total_forecasted_budget_used_normalized": null,
                 "total_discount_amount": 0,
                 "total_discount_amount_default": 0,
@@ -246,7 +254,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -275,7 +283,7 @@
             }
         },
         {
-            "id": "Text 174",
+            "id": "Text 193",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -293,8 +301,10 @@
                 "average_forecasted_time_usage": "0.0",
                 "average_discount": null,
                 "average_markup": null,
+                "average_retainer_interval_count": 1,
                 "section_name": null,
                 "stage_type": 2,
+                "limitation_type": "no_limitation",
                 "recurring": false,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
@@ -305,6 +315,7 @@
                 "custom_fields": [],
                 "total_booked_time": 0,
                 "total_worked_time": 0,
+                "total_unapproved_time": 0,
                 "total_overtime_time": 0,
                 "total_future_booked_time": 0,
                 "total_tentative_booked_time": 0,
@@ -313,6 +324,7 @@
                 "total_net_unplanned_time": 60,
                 "total_estimated_time": 60,
                 "total_budgeted_time": 60,
+                "total_rolled_over_time": 0,
                 "total_estimated_remaining_time": 60,
                 "total_billable_time": 0,
                 "total_forecasted_billable_time": 0,
@@ -383,7 +395,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -412,7 +424,7 @@
             }
         },
         {
-            "id": "Text 175",
+            "id": "Text 194",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -422,7 +434,7 @@
                 "count": 1,
                 "formula_fields": [],
                 "budget_status": 1,
-                "stage_status_id": 1024,
+                "stage_status_id": 1028,
                 "project_type": 2,
                 "billing_type": 1,
                 "unit": 1,
@@ -430,18 +442,21 @@
                 "average_forecasted_time_usage": "0.0",
                 "average_discount": null,
                 "average_markup": null,
-                "section_name": "Text 171",
+                "average_retainer_interval_count": 1,
+                "section_name": "Text 190",
                 "stage_type": 1,
+                "limitation_type": "no_limitation",
                 "recurring": false,
-                "time_tracking_enabled": true,
-                "expense_tracking_enabled": true,
-                "booking_tracking_enabled": true,
+                "time_tracking_enabled": false,
+                "expense_tracking_enabled": false,
+                "booking_tracking_enabled": false,
                 "budget_cap_enabled": false,
                 "budget_custom_fields": [],
                 "deal_custom_fields": [],
                 "custom_fields": [],
                 "total_booked_time": 0,
                 "total_worked_time": 0,
+                "total_unapproved_time": 0,
                 "total_overtime_time": 0,
                 "total_future_booked_time": 0,
                 "total_tentative_booked_time": 0,
@@ -450,6 +465,7 @@
                 "total_net_unplanned_time": 6000,
                 "total_estimated_time": 6000,
                 "total_budgeted_time": 6000,
+                "total_rolled_over_time": 0,
                 "total_estimated_remaining_time": 6000,
                 "total_billable_time": 0,
                 "total_forecasted_billable_time": 0,
@@ -470,8 +486,8 @@
                 "total_recognized_revenue": 0,
                 "total_recognized_revenue_default": 0,
                 "total_recognized_revenue_normalized": null,
-                "total_projected_revenue": 600000,
-                "total_projected_revenue_default": 600000,
+                "total_projected_revenue": 1200000,
+                "total_projected_revenue_default": 1200000,
                 "total_projected_revenue_normalized": null,
                 "total_price": 12000,
                 "total_price_default": 12000,
@@ -520,7 +536,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -549,7 +565,7 @@
             }
         },
         {
-            "id": "Text 176",
+            "id": "Text 195",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -559,7 +575,7 @@
                 "count": 1,
                 "formula_fields": [],
                 "budget_status": 1,
-                "stage_status_id": 1024,
+                "stage_status_id": 1028,
                 "project_type": 2,
                 "billing_type": 3,
                 "unit": 1,
@@ -567,18 +583,21 @@
                 "average_forecasted_time_usage": null,
                 "average_discount": null,
                 "average_markup": null,
-                "section_name": "Text 177",
+                "average_retainer_interval_count": 1,
+                "section_name": "Text 196",
                 "stage_type": 1,
+                "limitation_type": "no_limitation",
                 "recurring": false,
-                "time_tracking_enabled": true,
-                "expense_tracking_enabled": true,
-                "booking_tracking_enabled": true,
+                "time_tracking_enabled": false,
+                "expense_tracking_enabled": false,
+                "booking_tracking_enabled": false,
                 "budget_cap_enabled": false,
                 "budget_custom_fields": [],
                 "deal_custom_fields": [],
                 "custom_fields": [],
                 "total_booked_time": 0,
                 "total_worked_time": 0,
+                "total_unapproved_time": 0,
                 "total_overtime_time": 0,
                 "total_future_booked_time": 0,
                 "total_tentative_booked_time": 0,
@@ -587,6 +606,7 @@
                 "total_net_unplanned_time": 2400,
                 "total_estimated_time": 2400,
                 "total_budgeted_time": 0,
+                "total_rolled_over_time": 0,
                 "total_estimated_remaining_time": 2400,
                 "total_billable_time": 0,
                 "total_forecasted_billable_time": 0,
@@ -657,7 +677,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -686,7 +706,7 @@
             }
         },
         {
-            "id": "Text 172",
+            "id": "Text 191",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -704,8 +724,10 @@
                 "average_forecasted_time_usage": "0.0",
                 "average_discount": null,
                 "average_markup": null,
+                "average_retainer_interval_count": 1,
                 "section_name": null,
                 "stage_type": 2,
+                "limitation_type": "no_limitation",
                 "recurring": false,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
@@ -716,6 +738,7 @@
                 "custom_fields": [],
                 "total_booked_time": 0,
                 "total_worked_time": 300,
+                "total_unapproved_time": 0,
                 "total_overtime_time": 0,
                 "total_future_booked_time": 0,
                 "total_tentative_booked_time": 0,
@@ -724,6 +747,7 @@
                 "total_net_unplanned_time": 900,
                 "total_estimated_time": 1200,
                 "total_budgeted_time": 1200,
+                "total_rolled_over_time": 0,
                 "total_estimated_remaining_time": 900,
                 "total_billable_time": 0,
                 "total_forecasted_billable_time": 0,
@@ -794,7 +818,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -803,7 +827,7 @@
                 "service": {
                     "data": {
                         "type": "services",
-                        "id": "1114"
+                        "id": "1119"
                     }
                 },
                 "origin_deal": {

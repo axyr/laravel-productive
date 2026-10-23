@@ -31,9 +31,6 @@ final class ResourceRequestFactory extends Factory
     {
         return [
             'status' => 'pending',
-            'requested_hours' => 160,
-            'start_date' => '2026-04-01',
-            'end_date' => '2026-04-30',
             'note' => 'Need a senior React developer for the dashboard feature',
             'created_at' => '2026-03-15T10:00:00.000+00:00',
         ];

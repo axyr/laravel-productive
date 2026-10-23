@@ -32,9 +32,6 @@ final class LineItemReportFactory extends Factory
         return [
             'quantity' => 10,
             'unit_price' => '150.00',
-            'total_price' => '1500.00',
-            'service_id' => 1856422,
-            'invoice_id' => 234,
             'currency' => 'USD',
         ];
     }

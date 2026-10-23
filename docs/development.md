@@ -166,6 +166,7 @@ Writes `generator/recorded-types.json`: for every type, the *kinds* of value eac
 - `int` and `float` together widen to `float`. A `number` field keeps its float reader even when only whole numbers were seen.
 - A list or object the API sends as JSON *text* (a person's `availabilities`) becomes the `json` type: `Attributes::json()` returns it decoded. A field the spec calls a string keeps reading it as a string.
 - Attributes and relationships the spec does not document are added and flagged as undocumented. A relationship seen without data has no known cardinality, so it waits for a recording that includes it.
+- An attribute that only the spec's example has (its schema does not list it) and that no recorded response of the type carried is left out, with its factory default. The examples invent attributes: `revenue` and `cost` on reports, `url` and `events` on webhooks. A type whose list was empty keeps them, because an empty list proves nothing.
 - Resources and relationships the API no longer has are listed in `generator/config/removed.php`.
 
 Every difference is listed in the generated [API differences](api-differences.md) page, and the generated [API coverage](coverage.md) page gives every operation a status: recorded, exercised, empty list, rejected, plan-gated, skipped, not recorded or not exercised. A success in the recording always shows as recorded; `generator/config/coverage.php` gives the reasons for the operations the test organization's plan does not include and the ones left out on purpose. The page is done when no row is open.

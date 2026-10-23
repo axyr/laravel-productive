@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 96",
+            "id": "Text 98",
             "type": "invoice_reports",
             "attributes": {
                 "currency": "USD",
@@ -16,7 +16,7 @@
                 "invoice_status": 2,
                 "invoice_aging": 3,
                 "invoice_state": 2,
-                "average_due_in": -63,
+                "average_due_in": -75,
                 "average_paid_in": null,
                 "currency_id": "USD",
                 "invoice_type": 1,
@@ -26,9 +26,9 @@
                 "fiscalization_status": null,
                 "delivery_method": 7,
                 "year": "2026",
-                "quarter": "Text 57",
-                "month": "Text 97",
-                "week": "Text 98",
+                "quarter": "Text 51",
+                "month": "Text 55",
+                "week": "Text 56",
                 "custom_fields": [],
                 "automatically_created": false,
                 "invoiced_on_period": null,
@@ -67,7 +67,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -96,7 +96,7 @@
                 "invoice_status": 4,
                 "invoice_aging": 0,
                 "invoice_state": 1,
-                "average_due_in": -32,
+                "average_due_in": -44,
                 "average_paid_in": null,
                 "currency_id": "USD",
                 "invoice_type": 1,
@@ -106,9 +106,9 @@
                 "fiscalization_status": null,
                 "delivery_method": null,
                 "year": "2026",
-                "quarter": "Text 57",
-                "month": "Text 58",
-                "week": "Text 59",
+                "quarter": "Text 51",
+                "month": "Text 52",
+                "week": "Text 53",
                 "custom_fields": [],
                 "automatically_created": false,
                 "invoiced_on_period": null,
@@ -147,7 +147,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -161,7 +161,7 @@
             }
         },
         {
-            "id": "Text 96",
+            "id": "Text 98",
             "type": "invoice_reports",
             "attributes": {
                 "currency": "USD",
@@ -176,7 +176,7 @@
                 "invoice_status": 2,
                 "invoice_aging": 3,
                 "invoice_state": 2,
-                "average_due_in": -63,
+                "average_due_in": -75,
                 "average_paid_in": null,
                 "currency_id": "USD",
                 "invoice_type": 1,
@@ -186,9 +186,9 @@
                 "fiscalization_status": null,
                 "delivery_method": 7,
                 "year": "2026",
-                "quarter": "Text 57",
-                "month": "Text 97",
-                "week": "Text 98",
+                "quarter": "Text 51",
+                "month": "Text 55",
+                "week": "Text 56",
                 "custom_fields": [],
                 "automatically_created": false,
                 "invoiced_on_period": null,
@@ -227,7 +227,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -238,7 +238,7 @@
                 "invoice": {
                     "data": {
                         "type": "invoices",
-                        "id": "1013"
+                        "id": "1078"
                     }
                 }
             }

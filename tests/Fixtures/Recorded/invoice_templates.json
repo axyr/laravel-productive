@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1080",
+            "id": "1079",
             "type": "invoice_templates",
             "attributes": {
                 "invoice_creation_options": null,
@@ -9,14 +9,14 @@
                 "payment_terms_days": 10,
                 "custom_fields": null,
                 "note": null,
-                "subject": "Text 61",
+                "subject": "Text 58",
                 "bank_account_details": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "budget": {
@@ -52,7 +52,7 @@
             }
         },
         {
-            "id": "1080",
+            "id": "1079",
             "type": "invoice_templates",
             "attributes": {
                 "invoice_creation_options": null,
@@ -60,14 +60,14 @@
                 "payment_terms_days": 10,
                 "custom_fields": null,
                 "note": null,
-                "subject": "Text 61",
+                "subject": "Text 58",
                 "bank_account_details": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "budget": {
@@ -78,7 +78,7 @@
                 "document_type": {
                     "data": {
                         "type": "document_types",
-                        "id": "1081"
+                        "id": "1080"
                     }
                 },
                 "subsidiary": {
@@ -104,7 +104,7 @@
             }
         },
         {
-            "id": "1080",
+            "id": "1079",
             "type": "invoice_templates",
             "attributes": {
                 "invoice_creation_options": null,
@@ -112,14 +112,14 @@
                 "payment_terms_days": 10,
                 "custom_fields": null,
                 "note": null,
-                "subject": "Text 61",
+                "subject": "Text 58",
                 "bank_account_details": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "budget": {
@@ -135,7 +135,7 @@
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1028"
+                        "id": "1020"
                     }
                 },
                 "creator": {

@@ -34,10 +34,7 @@ final class ProposalFactory extends Factory
             'status' => 'sent',
             'created_at' => '2026-02-15T10:00:00.000+00:00',
             'sent_at' => '2026-02-16T09:00:00.000+00:00',
-            'accepted_at' => null,
-            'declined_at' => null,
             'currency' => 'USD',
-            'total' => '45000.00',
         ];
     }
 }

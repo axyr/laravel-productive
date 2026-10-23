@@ -23,10 +23,6 @@ final readonly class Webhook extends Model
 {
     public const string TYPE = 'webhooks';
 
-    public ?bool $active;
-
-    public ?DateTimeImmutable $createdAt;
-
     /**
      * Custom HTTP headers to include in each webhook delivery request.
      *
@@ -40,16 +36,11 @@ final readonly class Webhook extends Model
     /** The event type that triggers this webhook. */
     public ?int $eventId;
 
-    /** @var list<mixed>|null */
-    public ?array $events;
-
     /** The display name of this webhook. */
     public ?string $name;
 
     /** The number of retry attempts made after a failed delivery. */
     public ?int $retryAttempts;
-
-    public mixed $secret;
 
     /** Secret token used to sign webhook payloads for verification by the recipient. */
     public ?string $signatureToken;
@@ -66,25 +57,18 @@ final readonly class Webhook extends Model
     /** The integration type of this webhook: 1=Webhook, 2=Zapier. */
     public ?int $typeId;
 
-    public ?string $url;
-
     protected function hydrate(Attributes $attributes): void
     {
-        $this->active = $attributes->bool('active');
-        $this->createdAt = $attributes->dateTime('created_at');
         $this->customHeaders = $attributes->object('custom_headers');
         $this->deactivatedAt = $attributes->dateTime('deactivated_at');
         $this->eventId = $attributes->int('event_id');
-        $this->events = $attributes->list('events');
         $this->name = $attributes->string('name');
         $this->retryAttempts = $attributes->int('retry_attempts');
-        $this->secret = $attributes->mixed('secret');
         $this->signatureToken = $attributes->string('signature_token');
         $this->stateId = $attributes->int('state_id');
         $this->targetUrl = $attributes->string('target_url');
         $this->test = $attributes->bool('test');
         $this->typeId = $attributes->int('type_id');
-        $this->url = $attributes->string('url');
     }
 
     public function creator(): ?Person

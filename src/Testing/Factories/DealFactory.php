@@ -32,18 +32,13 @@ final class DealFactory extends Factory
         return [
             'name' => 'Website Redesign Project',
             'number' => 'DEAL-089',
-            'status_id' => 1,
             'date' => '2026-01-15',
             'end_date' => '2026-06-30',
             'closed_at' => null,
-            'lost_at' => null,
             'created_at' => '2026-01-15T10:00:00.000+00:00',
-            'updated_at' => '2026-03-01T09:00:00.000+00:00',
             'last_activity_at' => '2026-03-01T09:00:00.000+00:00',
             'tag_list' => [],
             'custom_fields' => null,
-            'description' => 'Redesigning the company website with new branding',
-            'is_budget' => false,
             'currency' => 'USD',
         ];
     }

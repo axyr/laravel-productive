@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 69",
+            "id": "Text 71",
             "type": "entitlement_reports",
             "attributes": {
                 "group": "entitlement",
@@ -10,11 +10,11 @@
                 "description": null,
                 "absence_type": "time_off",
                 "people_custom_fields": {
-                    "1030": null,
-                    "1031": null,
-                    "1032": null,
-                    "1033": null,
-                    "1034": null
+                    "1022": null,
+                    "1023": null,
+                    "1024": null,
+                    "1025": null,
+                    "1026": null
                 },
                 "total_allocated": "22.0",
                 "total_used": "0.0",
@@ -31,7 +31,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "id": "Text 69",
+            "id": "Text 71",
             "type": "entitlement_reports",
             "attributes": {
                 "group": "entitlement",
@@ -54,11 +54,11 @@
                 "description": null,
                 "absence_type": "time_off",
                 "people_custom_fields": {
-                    "1030": null,
-                    "1031": null,
-                    "1032": null,
-                    "1033": null,
-                    "1034": null
+                    "1022": null,
+                    "1023": null,
+                    "1024": null,
+                    "1025": null,
+                    "1026": null
                 },
                 "total_allocated": "22.0",
                 "total_used": "0.0",
@@ -75,7 +75,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -86,7 +86,7 @@
                 "entitlement": {
                     "data": {
                         "type": "entitlements",
-                        "id": "1061"
+                        "id": "1058"
                     }
                 }
             }

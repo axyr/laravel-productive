@@ -41,10 +41,6 @@ final readonly class CustomField extends Model
     /** Not in the spec: seen in recorded API responses. */
     public mixed $description;
 
-    public ?string $fieldType;
-
-    public ?bool $filterable;
-
     /** ID of the formatting type that controls how this custom field's value is displayed. */
     public ?int $formattingTypeId;
 
@@ -89,8 +85,6 @@ final readonly class CustomField extends Model
         $this->customizableType = $attributes->string('customizable_type');
         $this->dataTypeId = $attributes->int('data_type_id');
         $this->description = $attributes->mixed('description');
-        $this->fieldType = $attributes->string('field_type');
-        $this->filterable = $attributes->bool('filterable');
         $this->formattingTypeId = $attributes->int('formatting_type_id');
         $this->global = $attributes->bool('global');
         $this->maximumValue = $attributes->mixed('maximum_value');

@@ -25,10 +25,6 @@ final readonly class PersonReport extends Model
     /** Whether automatic time tracking is enabled for this person. */
     public ?bool $autotracking;
 
-    public ?int $billableTime;
-
-    public ?int $capacity;
-
     /** The person's contact street address. */
     public mixed $contactAddress;
 
@@ -52,8 +48,6 @@ final readonly class PersonReport extends Model
 
     /** The person's contact zip/postal code. */
     public mixed $contactZipcode;
-
-    public ?string $cost;
 
     /** The count of person records in this report row. */
     public ?int $count;
@@ -95,17 +89,11 @@ final readonly class PersonReport extends Model
     /** The calendar month of the reporting period. */
     public ?string $month;
 
-    public ?int $nonbillableTime;
-
     /** The person's offboarding status. */
     public ?string $offboardingStatus;
 
-    public ?int $personId;
-
     /** The calendar quarter of the reporting period. */
     public ?string $quarter;
-
-    public ?string $revenue;
 
     /** ID of the role assigned to this person. */
     public ?int $roleId;
@@ -115,12 +103,8 @@ final readonly class PersonReport extends Model
     /** The person's active/inactive status. */
     public ?int $status;
 
-    public ?int $totalTime;
-
     /** The resource type identifier for this report row. */
     public mixed $typeValue;
-
-    public ?float $utilization;
 
     /** The calendar week of the reporting period. */
     public ?string $week;
@@ -131,8 +115,6 @@ final readonly class PersonReport extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->autotracking = $attributes->bool('autotracking');
-        $this->billableTime = $attributes->int('billable_time');
-        $this->capacity = $attributes->int('capacity');
         $this->contactAddress = $attributes->mixed('contact_address');
         $this->contactCity = $attributes->mixed('contact_city');
         $this->contactCountry = $attributes->mixed('contact_country');
@@ -141,7 +123,6 @@ final readonly class PersonReport extends Model
         $this->contactState = $attributes->mixed('contact_state');
         $this->contactWebsite = $attributes->mixed('contact_website');
         $this->contactZipcode = $attributes->mixed('contact_zipcode');
-        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
         $this->currency = $attributes->string('currency');
@@ -154,17 +135,12 @@ final readonly class PersonReport extends Model
         $this->joinedAtPeriod = $attributes->mixed('joined_at_period');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
-        $this->nonbillableTime = $attributes->int('nonbillable_time');
         $this->offboardingStatus = $attributes->string('offboarding_status');
-        $this->personId = $attributes->int('person_id');
         $this->quarter = $attributes->string('quarter');
-        $this->revenue = $attributes->string('revenue');
         $this->roleId = $attributes->int('role_id');
         $this->sharedSeat = $attributes->bool('shared_seat');
         $this->status = $attributes->int('status');
-        $this->totalTime = $attributes->int('total_time');
         $this->typeValue = $attributes->mixed('type');
-        $this->utilization = $attributes->float('utilization');
         $this->week = $attributes->string('week');
         $this->year = $attributes->string('year');
     }

@@ -73,8 +73,6 @@ final readonly class ServiceReport extends Model
     /** Billable for this service report group. */
     public ?int $billable;
 
-    public ?int $billableTime;
-
     /** Billing type for this service report group. */
     public ?int $billingType;
 
@@ -89,12 +87,6 @@ final readonly class ServiceReport extends Model
 
     /** Budget status for this service report group. */
     public ?int $budgetStatus;
-
-    public ?string $budgetTotal;
-
-    public ?string $budgetUsed;
-
-    public ?string $cost;
 
     /** Number of services in this report group. */
     public ?int $count;
@@ -117,10 +109,6 @@ final readonly class ServiceReport extends Model
     /** Deal custom fields for this service report group. */
     public ?string $dealCustomFields;
 
-    public ?int $dealId;
-
-    public ?int $estimatedTime;
-
     /** Expense tracking enabled for this service report group. */
     public ?bool $expenseTrackingEnabled;
 
@@ -133,24 +121,14 @@ final readonly class ServiceReport extends Model
     /** Limitation type for this service report group. */
     public ?string $limitationType;
 
-    public ?int $nonbillableTime;
-
-    public ?string $profit;
-
-    public ?float $profitMargin;
-
     /** Project type for this service report group. */
     public ?int $projectType;
 
     /** Recurring for this service report group. */
     public ?bool $recurring;
 
-    public ?string $revenue;
-
     /** Section name for this service report group. */
     public ?string $sectionName;
-
-    public ?int $serviceId;
 
     /** Stage status id for this service report group. */
     public ?int $stageStatusId;
@@ -356,8 +334,6 @@ final readonly class ServiceReport extends Model
     /** Unit for this service report group. */
     public ?int $unit;
 
-    public ?int $workedTime;
-
     protected function hydrate(Attributes $attributes): void
     {
         $this->averageActualRate = $attributes->mixed('average_actual_rate');
@@ -377,15 +353,11 @@ final readonly class ServiceReport extends Model
         $this->averageProfitMarginNormalized = $attributes->mixed('average_profit_margin_normalized');
         $this->averageRetainerIntervalCount = $attributes->int('average_retainer_interval_count');
         $this->billable = $attributes->int('billable');
-        $this->billableTime = $attributes->int('billable_time');
         $this->billingType = $attributes->int('billing_type');
         $this->bookingTrackingEnabled = $attributes->bool('booking_tracking_enabled');
         $this->budgetCapEnabled = $attributes->bool('budget_cap_enabled');
         $this->budgetCustomFields = $attributes->string('budget_custom_fields');
         $this->budgetStatus = $attributes->int('budget_status');
-        $this->budgetTotal = $attributes->string('budget_total');
-        $this->budgetUsed = $attributes->string('budget_used');
-        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
@@ -393,20 +365,13 @@ final readonly class ServiceReport extends Model
         $this->customFields = $attributes->string('custom_fields');
         $this->datePeriod = $attributes->mixed('date_period');
         $this->dealCustomFields = $attributes->string('deal_custom_fields');
-        $this->dealId = $attributes->int('deal_id');
-        $this->estimatedTime = $attributes->int('estimated_time');
         $this->expenseTrackingEnabled = $attributes->bool('expense_tracking_enabled');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->limitationType = $attributes->string('limitation_type');
-        $this->nonbillableTime = $attributes->int('nonbillable_time');
-        $this->profit = $attributes->string('profit');
-        $this->profitMargin = $attributes->float('profit_margin');
         $this->projectType = $attributes->int('project_type');
         $this->recurring = $attributes->bool('recurring');
-        $this->revenue = $attributes->string('revenue');
         $this->sectionName = $attributes->string('section_name');
-        $this->serviceId = $attributes->int('service_id');
         $this->stageStatusId = $attributes->int('stage_status_id');
         $this->stageType = $attributes->int('stage_type');
         $this->timeTrackingEnabled = $attributes->bool('time_tracking_enabled');
@@ -475,7 +440,6 @@ final readonly class ServiceReport extends Model
         $this->totalWorkedCostNormalized = $attributes->mixed('total_worked_cost_normalized');
         $this->totalWorkedTime = $attributes->float('total_worked_time');
         $this->unit = $attributes->int('unit');
-        $this->workedTime = $attributes->int('worked_time');
     }
 
     public function budget(): ?Deal

@@ -30,14 +30,10 @@ final class LineItemFactory extends Factory
     protected function definition(): array
     {
         return [
-            'name' => 'Frontend Development',
             'quantity' => 10,
-            'unit' => 'hours',
             'unit_price' => '150.00',
-            'total_price' => '1500.00',
             'currency' => 'USD',
             'position' => 1,
-            'tax_rate' => '0.1',
         ];
     }
 }

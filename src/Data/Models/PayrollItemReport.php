@@ -48,22 +48,14 @@ final readonly class PayrollItemReport extends Model
     /** Formula fields for this payroll item report group. */
     public mixed $formulaFields;
 
-    public ?string $gross;
-
     /** The grouping dimension for this payroll item report row. */
     public ?string $group;
-
-    public ?string $month;
-
-    public ?string $net;
 
     /** Payroll item id for this payroll item report group. */
     public ?int $payrollItemId;
 
     /** Payroll item type for this payroll item report group. */
     public ?string $payrollItemType;
-
-    public ?int $personId;
 
     /** Person status for this payroll item report group. */
     public ?int $personStatus;
@@ -122,13 +114,9 @@ final readonly class PayrollItemReport extends Model
         $this->customFields = $attributes->object('custom_fields');
         $this->endDate = $attributes->date('end_date');
         $this->formulaFields = $attributes->mixed('formula_fields');
-        $this->gross = $attributes->string('gross');
         $this->group = $attributes->string('group');
-        $this->month = $attributes->string('month');
-        $this->net = $attributes->string('net');
         $this->payrollItemId = $attributes->int('payroll_item_id');
         $this->payrollItemType = $attributes->string('payroll_item_type');
-        $this->personId = $attributes->int('person_id');
         $this->personStatus = $attributes->int('person_status');
         $this->personType = $attributes->int('person_type');
         $this->roleId = $attributes->int('role_id');

@@ -31,7 +31,6 @@ final class DocumentTypeFactory extends Factory
     {
         return [
             'name' => 'Standard Invoice',
-            'default' => true,
         ];
     }
 }

@@ -25,8 +25,6 @@ final readonly class EntitlementReport extends Model
     /** The type of absence (e.g. time off, remote work) for this entitlement report row. */
     public ?string $absenceType;
 
-    public ?int $allocated;
-
     /** Number of entitlement records included in this aggregated report row. */
     public ?int $count;
 
@@ -45,8 +43,6 @@ final readonly class EntitlementReport extends Model
     /** The end date period descriptor used for grouping in time-based reports. */
     public mixed $endDatePeriod;
 
-    public ?int $eventId;
-
     /** Custom formula field values computed for this report row. */
     public mixed $formulaFields;
 
@@ -55,10 +51,6 @@ final readonly class EntitlementReport extends Model
 
     /** Custom field values from the associated person record included for reporting context. */
     public mixed $peopleCustomFields;
-
-    public ?int $personId;
-
-    public ?int $remaining;
 
     /** The start date period descriptor used for grouping in time-based reports. */
     public mixed $startDatePeriod;
@@ -87,24 +79,18 @@ final readonly class EntitlementReport extends Model
     /** Total used minutes (raw minutes value). */
     public ?int $totalUsedMinutes;
 
-    public ?int $used;
-
     protected function hydrate(Attributes $attributes): void
     {
         $this->absenceType = $attributes->string('absence_type');
-        $this->allocated = $attributes->int('allocated');
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->description = $attributes->mixed('description');
         $this->endDatePeriod = $attributes->mixed('end_date_period');
-        $this->eventId = $attributes->int('event_id');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->peopleCustomFields = $attributes->mixed('people_custom_fields');
-        $this->personId = $attributes->int('person_id');
-        $this->remaining = $attributes->int('remaining');
         $this->startDatePeriod = $attributes->mixed('start_date_period');
         $this->totalAllocated = $attributes->float('total_allocated');
         $this->totalAllocatedMinutes = $attributes->int('total_allocated_minutes');
@@ -114,7 +100,6 @@ final readonly class EntitlementReport extends Model
         $this->totalPendingMinutes = $attributes->mixed('total_pending_minutes');
         $this->totalUsed = $attributes->float('total_used');
         $this->totalUsedMinutes = $attributes->int('total_used_minutes');
-        $this->used = $attributes->int('used');
     }
 
     public function entitlement(): ?Entitlement

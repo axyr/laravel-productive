@@ -43,6 +43,9 @@ final readonly class ContactEntry extends Model
     /** The email address of this contact entry. */
     public ?string $email;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $externalId;
+
     /** The display name on this contact entry. */
     public ?string $name;
 
@@ -73,6 +76,7 @@ final readonly class ContactEntry extends Model
         $this->contactableType = $attributes->string('contactable_type');
         $this->country = $attributes->string('country');
         $this->email = $attributes->string('email');
+        $this->externalId = $attributes->mixed('external_id');
         $this->name = $attributes->string('name');
         $this->phone = $attributes->string('phone');
         $this->state = $attributes->string('state');

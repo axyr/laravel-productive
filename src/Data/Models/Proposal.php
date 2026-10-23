@@ -23,8 +23,6 @@ final readonly class Proposal extends Model
 {
     public const string TYPE = 'proposals';
 
-    public ?DateTimeImmutable $acceptedAt;
-
     /** The total budget amount of this proposal in the proposal's currency. */
     public mixed $budgetTotal;
 
@@ -58,8 +56,6 @@ final readonly class Proposal extends Model
 
     /** Not in the spec: seen in recorded API responses. */
     public mixed $declineReason;
-
-    public ?DateTimeImmutable $declinedAt;
 
     /** The optional disclaimer text appended to the proposal. */
     public ?string $disclaimer;
@@ -154,11 +150,8 @@ final readonly class Proposal extends Model
     /** Timestamp when the proposal status last changed. */
     public ?DateTimeImmutable $statusChangedAt;
 
-    public ?string $total;
-
     protected function hydrate(Attributes $attributes): void
     {
-        $this->acceptedAt = $attributes->dateTime('accepted_at');
         $this->budgetTotal = $attributes->mixed('budget_total');
         $this->budgetTotalDefault = $attributes->mixed('budget_total_default');
         $this->budgetTotalNormalized = $attributes->mixed('budget_total_normalized');
@@ -169,7 +162,6 @@ final readonly class Proposal extends Model
         $this->customFields = $attributes->object('custom_fields');
         $this->date = $attributes->date('date');
         $this->declineReason = $attributes->mixed('decline_reason');
-        $this->declinedAt = $attributes->dateTime('declined_at');
         $this->disclaimer = $attributes->string('disclaimer');
         $this->disclaimerEnabled = $attributes->bool('disclaimer_enabled');
         $this->endDate = $attributes->date('end_date');
@@ -202,7 +194,6 @@ final readonly class Proposal extends Model
         $this->source = $attributes->string('source');
         $this->status = $attributes->string('status');
         $this->statusChangedAt = $attributes->dateTime('status_changed_at');
-        $this->total = $attributes->string('total');
     }
 
     public function client(): ?Model

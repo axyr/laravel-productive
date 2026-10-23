@@ -26,8 +26,6 @@ final readonly class PaymentReminderSequence extends Model
     /** Timestamp when this payment reminder sequence was created. */
     public ?DateTimeImmutable $createdAt;
 
-    public ?bool $default;
-
     /** When true, this sequence is used as the default reminder sequence for new invoices. */
     public ?bool $defaultSequence;
 
@@ -40,7 +38,6 @@ final readonly class PaymentReminderSequence extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->createdAt = $attributes->dateTime('created_at');
-        $this->default = $attributes->bool('default');
         $this->defaultSequence = $attributes->bool('default_sequence');
         $this->name = $attributes->string('name');
         $this->updatedAt = $attributes->dateTime('updated_at');

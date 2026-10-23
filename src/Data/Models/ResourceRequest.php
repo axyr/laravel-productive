@@ -48,8 +48,6 @@ final readonly class ResourceRequest extends Model
      */
     public ?array $customFields;
 
-    public ?string $endDate;
-
     /** The end date of the requested resource allocation period. */
     public ?DateTimeImmutable $endedOn;
 
@@ -87,12 +85,8 @@ final readonly class ResourceRequest extends Model
     /** The reason provided when the resource request was rejected. */
     public ?string $rejectedReason;
 
-    public ?int $requestedHours;
-
     /** Timestamp when this resource request was resolved, or null if still open. */
     public ?DateTimeImmutable $resolvedAt;
-
-    public ?string $startDate;
 
     /** The start date of the requested resource allocation period. */
     public ?DateTimeImmutable $startedOn;
@@ -121,7 +115,6 @@ final readonly class ResourceRequest extends Model
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->customFields = $attributes->object('custom_fields');
-        $this->endDate = $attributes->string('end_date');
         $this->endedOn = $attributes->date('ended_on');
         $this->exchangeDate = $attributes->date('exchange_date');
         $this->exchangeRate = $attributes->float('exchange_rate');
@@ -133,9 +126,7 @@ final readonly class ResourceRequest extends Model
         $this->note = $attributes->string('note');
         $this->percentage = $attributes->int('percentage');
         $this->rejectedReason = $attributes->string('rejected_reason');
-        $this->requestedHours = $attributes->int('requested_hours');
         $this->resolvedAt = $attributes->dateTime('resolved_at');
-        $this->startDate = $attributes->string('start_date');
         $this->startedOn = $attributes->date('started_on');
         $this->status = $attributes->string('status');
         $this->time = $attributes->int('time');

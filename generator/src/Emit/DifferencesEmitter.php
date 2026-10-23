@@ -36,6 +36,7 @@ final class DifferencesEmitter
             ...self::section('Types that differ from the spec', 'The generated property follows the recorded type. Null and empty values never override the spec.', ['Model', 'Attribute', 'Spec', 'Recorded'], self::overrideRows($models)),
             ...self::section('Undocumented attributes', 'Seen in recorded responses but missing from the spec. They are generated with their recorded type.', ['Model', 'Attribute', 'Type'], self::undocumentedAttributeRows($models)),
             ...self::section('Undocumented relationships', 'Seen with data in recorded responses but missing from the spec.', ['Model', 'Relationship', 'Kind', 'Target'], self::undocumentedRelationshipRows($models)),
+            ...self::section('Example-only attributes the API never sent', 'The spec\'s example has them, its schema does not, and no recorded response of the type carried them, so no property is generated.', ['Model', 'Attribute'], self::phantomRows($models)),
             ...self::section('Relationships seen without data', 'Missing from the spec and recorded only as `{"meta": {"included": false}}`, so their cardinality is unknown and no accessor is generated yet. `composer record` includes them next time.', ['Type', 'Relationships'], self::untypedRows($recorded, $api)),
             ...self::section('Includes the API rejects', 'The spec documents these relationships, but the API answers 400 "Unsupported include".', ['Operation', 'Relationships'], self::rejectedRows($recorded)),
             ...self::section('Not checked', 'The recording token was not allowed to read these, so their spec types are kept.', ['Call', 'Status'], self::statusRows($recorded, fn(string $name, int $status): bool => in_array($status, [401, 403], true) && ! str_starts_with($name, 'undocumented.'))),
@@ -141,6 +142,23 @@ final class DifferencesEmitter
         foreach ($models as $model) {
             foreach (array_filter($model->relationships, fn(Relationship $relationship): bool => $relationship->undocumented) as $relationship) {
                 $rows[] = ['`' . $model->class . '`', '`' . $relationship->name . '`', ...self::relationshipKind($relationship)];
+            }
+        }
+
+        return $rows;
+    }
+
+    /**
+     * @param  array<Model>  $models
+     * @return list<list<string>>
+     */
+    private static function phantomRows(array $models): array
+    {
+        $rows = [];
+
+        foreach ($models as $model) {
+            foreach ($model->phantom as $name) {
+                $rows[] = ['`' . $model->class . '`', '`' . $name . '`'];
             }
         }
 

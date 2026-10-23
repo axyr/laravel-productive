@@ -1,12 +1,12 @@
 {
     "data": [
         {
-            "id": "1006",
+            "id": "1009",
             "type": "organization_memberships",
             "attributes": {
-                "updated_at": "2026-10-10T23:55:31.733+02:00",
+                "updated_at": "2026-10-23T13:45:00.578+02:00",
                 "position": null,
-                "tasks_layout_id": 1024,
+                "tasks_layout_id": 1016,
                 "time_reminders": true,
                 "email_notifications": true,
                 "weekly_emails": true,
@@ -176,14 +176,18 @@
                         }
                     }
                 },
-                "preferences": "Text 113",
+                "preferences": "Text 115",
                 "favorited_models": null,
                 "recent_data": [
-                    "Text 114"
+                    "Text 116",
+                    "Text 117",
+                    "Text 118",
+                    "Text 119",
+                    "Text 120"
                 ],
                 "notetaker_settings": {
-                    "notetaker_display_name": "Text 115",
-                    "notetaker_join_message": "Text 116",
+                    "notetaker_display_name": "Text 121",
+                    "notetaker_join_message": "Text 122",
                     "notetaker_auto_join_rule": "off",
                     "notetaker_auto_join_calendar_ids": []
                 },
@@ -209,7 +213,7 @@
                 "time_approvals_filter_id": null,
                 "docs_filter_id": null,
                 "internal_budget_services_filter_id": null,
-                "quick_start_config": "Text 117",
+                "quick_start_config": "Text 123",
                 "employees_filter_id": null
             },
             "relationships": {
@@ -346,12 +350,12 @@
             }
         },
         {
-            "id": "1006",
+            "id": "1009",
             "type": "organization_memberships",
             "attributes": {
-                "updated_at": "2026-10-10T23:55:31.733+02:00",
+                "updated_at": "2026-10-23T13:45:00.578+02:00",
                 "position": null,
-                "tasks_layout_id": 1024,
+                "tasks_layout_id": 1016,
                 "time_reminders": true,
                 "email_notifications": true,
                 "weekly_emails": true,
@@ -521,14 +525,18 @@
                         }
                     }
                 },
-                "preferences": "Text 113",
+                "preferences": "Text 115",
                 "favorited_models": null,
                 "recent_data": [
-                    "Text 114"
+                    "Text 116",
+                    "Text 117",
+                    "Text 118",
+                    "Text 119",
+                    "Text 120"
                 ],
                 "notetaker_settings": {
-                    "notetaker_display_name": "Text 115",
-                    "notetaker_join_message": "Text 116",
+                    "notetaker_display_name": "Text 121",
+                    "notetaker_join_message": "Text 122",
                     "notetaker_auto_join_rule": "off",
                     "notetaker_auto_join_calendar_ids": []
                 },
@@ -554,7 +562,7 @@
                 "time_approvals_filter_id": null,
                 "docs_filter_id": null,
                 "internal_budget_services_filter_id": null,
-                "quick_start_config": "Text 117",
+                "quick_start_config": "Text 123",
                 "employees_filter_id": null
             },
             "relationships": {
@@ -630,19 +638,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1006"
+                        "id": "1009"
                     }
                 },
                 "user": {
                     "data": {
                         "type": "users",
-                        "id": "1093"
+                        "id": "1092"
                     }
                 }
             }

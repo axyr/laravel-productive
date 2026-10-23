@@ -49,8 +49,6 @@ final readonly class SalaryReport extends Model
     /** The grouping dimension for this new salary report row. */
     public ?string $group;
 
-    public ?string $month;
-
     /** Overhead for this new salary report group. */
     public ?int $overhead;
 
@@ -60,8 +58,6 @@ final readonly class SalaryReport extends Model
      * @var array<array-key, mixed>|null
      */
     public ?array $peopleCustomFields;
-
-    public ?int $personId;
 
     /** Salary type id for this new salary report group. */
     public ?int $salaryTypeId;
@@ -129,8 +125,6 @@ final readonly class SalaryReport extends Model
     /** Sum of period cost in the normalized currency across all records in this new salary report group. */
     public mixed $totalPeriodCostNormalized;
 
-    public ?string $totalSalary;
-
     /** Sum of weekly cost across all records in this new salary report group. */
     public mixed $totalWeeklyCost;
 
@@ -154,10 +148,8 @@ final readonly class SalaryReport extends Model
         $this->endDatePeriod = $attributes->mixed('end_date_period');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
-        $this->month = $attributes->string('month');
         $this->overhead = $attributes->int('overhead');
         $this->peopleCustomFields = $attributes->object('people_custom_fields');
-        $this->personId = $attributes->int('person_id');
         $this->salaryTypeId = $attributes->int('salary_type_id');
         $this->startDatePeriod = $attributes->mixed('start_date_period');
         $this->time = $attributes->float('time');
@@ -180,7 +172,6 @@ final readonly class SalaryReport extends Model
         $this->totalPeriodCost = $attributes->mixed('total_period_cost');
         $this->totalPeriodCostDefault = $attributes->mixed('total_period_cost_default');
         $this->totalPeriodCostNormalized = $attributes->mixed('total_period_cost_normalized');
-        $this->totalSalary = $attributes->string('total_salary');
         $this->totalWeeklyCost = $attributes->mixed('total_weekly_cost');
         $this->totalWeeklyCostDefault = $attributes->mixed('total_weekly_cost_default');
         $this->totalWeeklyCostNormalized = $attributes->mixed('total_weekly_cost_normalized');

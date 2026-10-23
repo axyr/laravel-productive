@@ -51,9 +51,6 @@ final readonly class Filter extends Model
      */
     public ?array $exchangeDate;
 
-    /** @var array<array-key, mixed>|null */
-    public ?array $filterData;
-
     /** The collection of resources (e.g. tasks, bookings) that this filter applies to. */
     public ?string $filterableCollection;
 
@@ -71,8 +68,6 @@ final readonly class Filter extends Model
 
     /** Whether this filter is hidden from the navigation sidebar. */
     public ?bool $hidden;
-
-    public ?string $itemType;
 
     /** Timestamp when the last pulse notification was sent for this filter. */
     public ?DateTimeImmutable $lastPulseSentAt;
@@ -139,14 +134,12 @@ final readonly class Filter extends Model
         $this->description = $attributes->string('description');
         $this->exchangeCurrency = $attributes->string('exchange_currency');
         $this->exchangeDate = $attributes->object('exchange_date');
-        $this->filterData = $attributes->object('filter_data');
         $this->filterableCollection = $attributes->string('filterable_collection');
         $this->filterableId = $attributes->int('filterable_id');
         $this->filterableType = $attributes->string('filterable_type');
         $this->formulas = $attributes->string('formulas');
         $this->groupBy = $attributes->string('group_by');
         $this->hidden = $attributes->bool('hidden');
-        $this->itemType = $attributes->string('item_type');
         $this->lastPulseSentAt = $attributes->dateTime('last_pulse_sent_at');
         $this->lastViewedAt = $attributes->dateTime('last_viewed_at');
         $this->layoutId = $attributes->int('layout_id');

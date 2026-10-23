@@ -50,8 +50,6 @@ final readonly class Expense extends Model
     /** Date when the expense was approved. */
     public ?DateTimeImmutable $approvedAt;
 
-    public ?bool $billable;
-
     /** Amount to be billed to the client in the expense currency. Ignored if markup is sent in the same request — `markup` takes precedence and `billable_amount` is recalculated from it. */
     public ?int $billableAmount;
 
@@ -104,11 +102,17 @@ final readonly class Expense extends Model
     /** Exchange rate from expense currency to budget currency. */
     public ?float $exchangeRateNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportError;
+
     /** ID in the external accounting system. */
     public ?string $exportId;
 
     /** Type of accounting integration used for export. */
     public ?int $exportIntegrationTypeId;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $exportStatus;
 
     /** URL to view this expense in the external accounting system. */
     public ?string $exportUrl;
@@ -142,8 +146,6 @@ final readonly class Expense extends Model
 
     /** What the expense was for (travel, software, external costs, etc.). */
     public ?string $name;
-
-    public mixed $note;
 
     /** Date when the expense was actually paid. */
     public ?DateTimeImmutable $paidOn;
@@ -193,8 +195,6 @@ final readonly class Expense extends Model
     /** Reason why the expense was rejected. */
     public ?string $rejectedReason;
 
-    public ?string $status;
-
     /** Whether the amount includes tax or is tax-exclusive. */
     public ?bool $taxInclusion;
 
@@ -229,7 +229,6 @@ final readonly class Expense extends Model
         $this->amountWithTaxNormalized = $attributes->mixed('amount_with_tax_normalized');
         $this->approved = $attributes->mixed('approved');
         $this->approvedAt = $attributes->dateTime('approved_at');
-        $this->billable = $attributes->bool('billable');
         $this->billableAmount = $attributes->int('billable_amount');
         $this->billableAmountDefault = $attributes->mixed('billable_amount_default');
         $this->billableAmountNormalized = $attributes->mixed('billable_amount_normalized');
@@ -246,8 +245,10 @@ final readonly class Expense extends Model
         $this->exchangeDate = $attributes->date('exchange_date');
         $this->exchangeRate = $attributes->float('exchange_rate');
         $this->exchangeRateNormalized = $attributes->float('exchange_rate_normalized');
+        $this->exportError = $attributes->mixed('export_error');
         $this->exportId = $attributes->string('export_id');
         $this->exportIntegrationTypeId = $attributes->int('export_integration_type_id');
+        $this->exportStatus = $attributes->int('export_status');
         $this->exportUrl = $attributes->string('export_url');
         $this->exported = $attributes->mixed('exported');
         $this->exportedAt = $attributes->dateTime('exported_at');
@@ -259,7 +260,6 @@ final readonly class Expense extends Model
         $this->markupAmountDefault = $attributes->int('markup_amount_default');
         $this->markupAmountNormalized = $attributes->int('markup_amount_normalized');
         $this->name = $attributes->string('name');
-        $this->note = $attributes->mixed('note');
         $this->paidOn = $attributes->date('paid_on');
         $this->payOn = $attributes->date('pay_on');
         $this->position = $attributes->int('position');
@@ -276,7 +276,6 @@ final readonly class Expense extends Model
         $this->rejected = $attributes->mixed('rejected');
         $this->rejectedAt = $attributes->dateTime('rejected_at');
         $this->rejectedReason = $attributes->string('rejected_reason');
-        $this->status = $attributes->string('status');
         $this->taxInclusion = $attributes->bool('tax_inclusion');
         $this->totalAmount = $attributes->mixed('total_amount');
         $this->totalAmountDefault = $attributes->mixed('total_amount_default');

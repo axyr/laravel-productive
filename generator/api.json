@@ -15195,7 +15195,8 @@
                 "created_at": "2026-03-01T10:00:00.000+00:00",
                 "person_id": 12,
                 "made_by_automation": false
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Agent",
@@ -15271,7 +15272,8 @@
                     "target_type": "people"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "AgentConfig",
@@ -15309,7 +15311,8 @@
                     "target_type": "attachments"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "AgentRole",
@@ -15431,7 +15434,8 @@
                     "manage_budgets": true,
                     "view_financials": false
                 }
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ApprovalPolicy",
@@ -15443,11 +15447,6 @@
                     "property": "archivedAt",
                     "type": "date-time",
                     "description": "Timestamp when the approval policy was archived, or null if active."
-                },
-                {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "custom",
@@ -15475,11 +15474,6 @@
                     "description": "The display name of the approval policy."
                 },
                 {
-                    "name": "policy_type",
-                    "property": "policyType",
-                    "type": "string"
-                },
-                {
                     "name": "type_id",
                     "property": "typeId",
                     "type": "int",
@@ -15499,10 +15493,12 @@
                 }
             ],
             "example": {
-                "name": "Time Entry Approval",
-                "policy_type": "time_entry",
-                "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+                "name": "Time Entry Approval"
+            },
+            "phantom": [
+                "policy_type",
+                "created_at"
+            ]
         },
         {
             "class": "ApprovalPolicyAssignment",
@@ -15545,7 +15541,8 @@
             ],
             "example": {
                 "created_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ApprovalStatus",
@@ -15642,7 +15639,8 @@
                     "target_type": "time_entries"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "ApprovalWorkflow",
@@ -15716,7 +15714,8 @@
                 "target_type_id": 1,
                 "dynamic_approver_ids": [],
                 "dynamic_subscriber_ids": []
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Artifact",
@@ -15766,7 +15765,8 @@
                     "target_type": "people"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "Attachment",
@@ -15940,23 +15940,14 @@
                 "content_type": "image/png",
                 "created_at": "2026-03-10T10:00:00.000+00:00",
                 "url": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "AutomaticInvoicingRule",
             "type": "automatic_invoicing_rules",
             "description": "An automatic invoicing rule defines when invoice drafts are automatically created for a budget.",
             "attributes": [
-                {
-                    "name": "active",
-                    "property": "active",
-                    "type": "bool"
-                },
-                {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
-                },
                 {
                     "name": "creation_offset",
                     "property": "creationOffset",
@@ -15973,16 +15964,6 @@
                         "week",
                         "month"
                     ]
-                },
-                {
-                    "name": "frequency",
-                    "property": "frequency",
-                    "type": "string"
-                },
-                {
-                    "name": "name",
-                    "property": "name",
-                    "type": "string"
                 },
                 {
                     "name": "next_invoice_date",
@@ -16029,12 +16010,13 @@
                     "target_type": "organizations"
                 }
             ],
-            "example": {
-                "name": "Monthly retainer invoicing",
-                "frequency": "monthly",
-                "active": true,
-                "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            "example": [],
+            "phantom": [
+                "name",
+                "frequency",
+                "active",
+                "created_at"
+            ]
         },
         {
             "class": "AutomationReport",
@@ -16146,7 +16128,8 @@
                     "target_type": null
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "BankAccount",
@@ -16172,25 +16155,10 @@
                     "description": "The name of the bank associated with this account."
                 },
                 {
-                    "name": "bic",
-                    "property": "bic",
-                    "type": "string"
-                },
-                {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
-                },
-                {
                     "name": "currency",
                     "property": "currency",
                     "type": "string",
                     "description": "The ISO 4217 currency code for this bank account (e.g. USD, EUR)."
-                },
-                {
-                    "name": "iban",
-                    "property": "iban",
-                    "type": "string"
                 },
                 {
                     "name": "local_bank_code",
@@ -16232,12 +16200,14 @@
             ],
             "example": {
                 "name": "Main Business Account",
-                "iban": "DE89370400440532013000",
-                "bic": "COBADEFFXXX",
                 "bank_name": "Commerzbank",
-                "currency": "EUR",
-                "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+                "currency": "EUR"
+            },
+            "phantom": [
+                "iban",
+                "bic",
+                "created_at"
+            ]
         },
         {
             "class": "Bill",
@@ -16378,7 +16348,8 @@
                 "date": "2026-03-01",
                 "status": "pending",
                 "created_at": "2026-03-01T09:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Board",
@@ -16434,7 +16405,8 @@
                 "placement": 1000000,
                 "archived_at": null,
                 "hidden": false
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Booking",
@@ -16712,7 +16684,8 @@
                 "draft": false,
                 "custom_fields": null,
                 "last_activity_at": "2026-03-01T09:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "BookingReport",
@@ -16785,11 +16758,6 @@
                     "description": "Average recognized margin for this booking report group."
                 },
                 {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
                     "name": "billing_type",
                     "property": "billingType",
                     "type": "int",
@@ -16813,11 +16781,6 @@
                     "property": "canceledAtPeriod",
                     "type": "mixed",
                     "description": "Time period grouping for canceled at (e.g. week, month, quarter)."
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -16881,11 +16844,6 @@
                     "description": "End date for this booking report group."
                 },
                 {
-                    "name": "ended_on",
-                    "property": "endedOn",
-                    "type": "string"
-                },
-                {
                     "name": "formula_fields",
                     "property": "formulaFields",
                     "type": "mixed",
@@ -16904,26 +16862,11 @@
                     "description": "Mandays for this booking report group."
                 },
                 {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
                     "name": "people_custom_fields",
                     "property": "peopleCustomFields",
                     "type": "object",
                     "description": "People custom fields for this booking report group.",
                     "spec_type": "string"
-                },
-                {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
                 },
                 {
                     "name": "project_type",
@@ -16948,16 +16891,6 @@
                     "description": "Time period grouping for rejected at (e.g. week, month, quarter)."
                 },
                 {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
-                },
-                {
-                    "name": "service_id",
-                    "property": "serviceId",
-                    "type": "int"
-                },
-                {
                     "name": "stage_type",
                     "property": "stageType",
                     "type": "int",
@@ -16972,11 +16905,6 @@
                     "property": "startDate",
                     "type": "date",
                     "description": "Start date for this booking report group."
-                },
-                {
-                    "name": "started_on",
-                    "property": "startedOn",
-                    "type": "string"
                 },
                 {
                     "name": "time",
@@ -17061,16 +16989,6 @@
                     "property": "totalRecognizedTime",
                     "type": "float",
                     "description": "Sum of recognized time across all records in this booking report group."
-                },
-                {
-                    "name": "total_time",
-                    "property": "totalTime",
-                    "type": "int"
-                },
-                {
-                    "name": "total_working_days",
-                    "property": "totalWorkingDays",
-                    "type": "int"
                 }
             ],
             "relationships": [
@@ -17166,19 +17084,21 @@
                 }
             ],
             "example": {
-                "total_time": 2400,
-                "billable_time": 2400,
-                "nonbillable_time": 0,
-                "total_working_days": 5,
-                "person_id": 12,
-                "project_id": 6899,
-                "service_id": 1856422,
-                "started_on": "2026-03-17",
-                "ended_on": "2026-03-21",
-                "revenue": "1500.00",
-                "cost": "800.00",
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "total_time",
+                "billable_time",
+                "nonbillable_time",
+                "total_working_days",
+                "person_id",
+                "project_id",
+                "service_id",
+                "started_on",
+                "ended_on",
+                "revenue",
+                "cost"
+            ]
         },
         {
             "class": "BudgetReport",
@@ -17325,30 +17245,10 @@
                     "description": "Average profit margin percentage normalized across currencies."
                 },
                 {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "budget_total",
-                    "property": "budgetTotal",
-                    "type": "string"
-                },
-                {
-                    "name": "budget_used",
-                    "property": "budgetUsed",
-                    "type": "string"
-                },
-                {
                     "name": "closed_at_period",
                     "property": "closedAtPeriod",
                     "type": "mixed",
                     "description": "Time period grouping for the closed_at date (e.g. week, month, quarter)."
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -17393,11 +17293,6 @@
                     "description": "Time period grouping for the budget start date (e.g. week, month, quarter)."
                 },
                 {
-                    "name": "deal_id",
-                    "property": "dealId",
-                    "type": "int"
-                },
-                {
                     "name": "deal_type",
                     "property": "dealType",
                     "type": "int",
@@ -17414,11 +17309,6 @@
                     "property": "endDatePeriod",
                     "type": "mixed",
                     "description": "Time period grouping for the budget end date (e.g. week, month, quarter)."
-                },
-                {
-                    "name": "expense_amount",
-                    "property": "expenseAmount",
-                    "type": "string"
                 },
                 {
                     "name": "formula_fields",
@@ -17449,26 +17339,6 @@
                     "property": "nextOccurrenceOnPeriod",
                     "type": "mixed",
                     "description": "Time period grouping for the next occurrence date (e.g. week, month, quarter)."
-                },
-                {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "profit",
-                    "property": "profit",
-                    "type": "string"
-                },
-                {
-                    "name": "profit_margin",
-                    "property": "profitMargin",
-                    "type": "float"
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
                 },
                 {
                     "name": "project_type",
@@ -17524,11 +17394,6 @@
                     "property": "recurringStartsOnPeriod",
                     "type": "mixed",
                     "description": "Time period grouping for the recurring start date (e.g. week, month, quarter)."
-                },
-                {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
                 },
                 {
                     "name": "revenue_distribution_type",
@@ -18096,19 +17961,21 @@
                 }
             ],
             "example": {
-                "budget_total": "100000.00",
-                "budget_used": "62000.00",
-                "revenue": "75000.00",
-                "cost": "45000.00",
-                "profit": "30000.00",
-                "profit_margin": 0.4,
-                "billable_time": 48000,
-                "nonbillable_time": 6000,
-                "expense_amount": "3500.00",
-                "project_id": 6899,
-                "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "budget_total",
+                "budget_used",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "nonbillable_time",
+                "expense_amount",
+                "project_id",
+                "deal_id"
+            ]
         },
         {
             "class": "Comment",
@@ -18260,7 +18127,8 @@
                 "updated_at": "2026-03-10T11:30:00.000+00:00",
                 "commentable_type": "task",
                 "commentable_id": 120501
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Company",
@@ -18529,23 +18397,14 @@
                 "external_id": null,
                 "external_sync": false,
                 "parent_company_id": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "CompanyReport",
             "type": "company_reports",
             "description": "An aggregated company report row grouping client companies by configurable dimensions with revenue, invoicing, and relationship metrics.",
             "attributes": [
-                {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "company_id",
-                    "property": "companyId",
-                    "type": "int"
-                },
                 {
                     "name": "contact_address",
                     "property": "contactAddress",
@@ -18643,11 +18502,6 @@
                     "description": "The grouping dimension for this company report row."
                 },
                 {
-                    "name": "invoiced",
-                    "property": "invoiced",
-                    "type": "string"
-                },
-                {
                     "name": "last_activity_at_period",
                     "property": "lastActivityAtPeriod",
                     "type": "mixed",
@@ -18658,11 +18512,6 @@
                     "property": "month",
                     "type": "string",
                     "description": "Month number of the time dimension bucket for this report row."
-                },
-                {
-                    "name": "outstanding",
-                    "property": "outstanding",
-                    "type": "string"
                 },
                 {
                     "name": "payment_terms",
@@ -18677,20 +18526,10 @@
                     "spec_type": "int"
                 },
                 {
-                    "name": "payments",
-                    "property": "payments",
-                    "type": "string"
-                },
-                {
                     "name": "quarter",
                     "property": "quarter",
                     "type": "string",
                     "description": "Quarter number (1\u20134) of the time dimension bucket for this report row."
-                },
-                {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
                 },
                 {
                     "name": "status",
@@ -18748,14 +18587,16 @@
                 }
             ],
             "example": {
-                "revenue": "250000.00",
-                "invoiced": "175000.00",
-                "payments": "140000.00",
-                "outstanding": "35000.00",
-                "billable_time": 120000,
-                "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "revenue",
+                "invoiced",
+                "payments",
+                "outstanding",
+                "billable_time",
+                "company_id"
+            ]
         },
         {
             "class": "ContactEntry",
@@ -18803,6 +18644,13 @@
                     "property": "email",
                     "type": "string",
                     "description": "The email address of this contact entry."
+                },
+                {
+                    "name": "external_id",
+                    "property": "externalId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "name",
@@ -18898,7 +18746,8 @@
                 "country": "US",
                 "billing_address": "123 Innovation Drive, San Francisco, CA 94105",
                 "billing_email": "billing@acmecorp.com"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Contract",
@@ -18991,7 +18840,8 @@
                 "start_date": "2026-01-01",
                 "end_date": "2026-12-31",
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "CustomDomain",
@@ -19073,7 +18923,8 @@
                 "domain": "app.myagency.com",
                 "verified": true,
                 "verified_at": "2026-01-15T00:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "CustomField",
@@ -19130,16 +18981,6 @@
                     "type": "mixed",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
-                },
-                {
-                    "name": "field_type",
-                    "property": "fieldType",
-                    "type": "string"
-                },
-                {
-                    "name": "filterable",
-                    "property": "filterable",
-                    "type": "bool"
                 },
                 {
                     "name": "formatting_type_id",
@@ -19255,12 +19096,14 @@
             ],
             "example": {
                 "name": "Priority",
-                "field_type": "dropdown",
                 "position": 1,
                 "required": false,
-                "filterable": true,
                 "archived_at": null
-            }
+            },
+            "phantom": [
+                "field_type",
+                "filterable"
+            ]
         },
         {
             "class": "CustomFieldOption",
@@ -19309,7 +19152,8 @@
                 "color_id": "1",
                 "position": 1,
                 "archived_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "CustomFieldSection",
@@ -19322,11 +19166,6 @@
                     "type": "mixed",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
-                },
-                {
-                    "name": "item_type",
-                    "property": "itemType",
-                    "type": "string"
                 },
                 {
                     "name": "name",
@@ -19350,9 +19189,11 @@
             ],
             "example": {
                 "name": "Project Fields",
-                "position": 1,
-                "item_type": "project"
-            }
+                "position": 1
+            },
+            "phantom": [
+                "item_type"
+            ]
         },
         {
             "class": "Dashboard",
@@ -19376,11 +19217,6 @@
                     "property": "name",
                     "type": "string",
                     "description": "The display name of the dashboard."
-                },
-                {
-                    "name": "shared",
-                    "property": "shared",
-                    "type": "bool"
                 },
                 {
                     "name": "updated_at",
@@ -19408,10 +19244,12 @@
             ],
             "example": {
                 "name": "Project Overview",
-                "shared": false,
                 "created_at": "2026-01-20T09:00:00.000+00:00",
                 "updated_at": "2026-03-01T10:00:00.000+00:00"
-            }
+            },
+            "phantom": [
+                "shared"
+            ]
         },
         {
             "class": "Deal",
@@ -19679,11 +19517,6 @@
                     "description": "Date when the deal was marked as delivered."
                 },
                 {
-                    "name": "description",
-                    "property": "description",
-                    "type": "string"
-                },
-                {
                     "name": "discount",
                     "property": "discount",
                     "type": "float",
@@ -19768,6 +19601,48 @@
                     "description": "Total expense costs on this deal (normalized currency)."
                 },
                 {
+                    "name": "export_error",
+                    "property": "exportError",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_id",
+                    "property": "exportId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_status",
+                    "property": "exportStatus",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_url",
+                    "property": "exportUrl",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "exported",
+                    "property": "exported",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "exported_at",
+                    "property": "exportedAt",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "external_id",
                     "property": "externalId",
                     "type": "string",
@@ -19810,20 +19685,10 @@
                     "description": "Total amount already invoiced (normalized currency)."
                 },
                 {
-                    "name": "is_budget",
-                    "property": "isBudget",
-                    "type": "bool"
-                },
-                {
                     "name": "last_activity_at",
                     "property": "lastActivityAt",
                     "type": "date-time",
                     "description": "Timestamp of the most recent change on this deal."
-                },
-                {
-                    "name": "lost_at",
-                    "property": "lostAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "lost_comment",
@@ -20195,11 +20060,6 @@
                     "description": "Revenue from services only, excluding adjustments (normalized currency)."
                 },
                 {
-                    "name": "status_id",
-                    "property": "statusId",
-                    "type": "int"
-                },
-                {
                     "name": "suffix",
                     "property": "suffix",
                     "type": "string",
@@ -20256,11 +20116,6 @@
                         2,
                         3
                     ]
-                },
-                {
-                    "name": "updated_at",
-                    "property": "updatedAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "validate_expense_when_closing",
@@ -20420,20 +20275,22 @@
             "example": {
                 "name": "Website Redesign Project",
                 "number": "DEAL-089",
-                "status_id": 1,
                 "date": "2026-01-15",
                 "end_date": "2026-06-30",
                 "closed_at": null,
-                "lost_at": null,
                 "created_at": "2026-01-15T10:00:00.000+00:00",
-                "updated_at": "2026-03-01T09:00:00.000+00:00",
                 "last_activity_at": "2026-03-01T09:00:00.000+00:00",
                 "tag_list": [],
                 "custom_fields": null,
-                "description": "Redesigning the company website with new branding",
-                "is_budget": false,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "status_id",
+                "lost_at",
+                "updated_at",
+                "description",
+                "is_budget"
+            ]
         },
         {
             "class": "DealCostRate",
@@ -20484,7 +20341,8 @@
                 "rate": "120.00",
                 "currency": "USD",
                 "valid_from": "2026-01-01"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "DealFunnelReport",
@@ -20516,11 +20374,6 @@
                     "description": "Currency code for totals expressed in the organization's normalized (common) currency."
                 },
                 {
-                    "name": "deal_count",
-                    "property": "dealCount",
-                    "type": "int"
-                },
-                {
                     "name": "formula_fields",
                     "property": "formulaFields",
                     "type": "mixed",
@@ -20537,16 +20390,6 @@
                     "property": "lostCount",
                     "type": "int",
                     "description": "Number of deals in this funnel stage that were marked as lost."
-                },
-                {
-                    "name": "pipeline_id",
-                    "property": "pipelineId",
-                    "type": "int"
-                },
-                {
-                    "name": "stage",
-                    "property": "stage",
-                    "type": "string"
                 },
                 {
                     "name": "total_budget_total",
@@ -20583,11 +20426,6 @@
                     "property": "totalProjectedRevenueNormalized",
                     "type": "mixed",
                     "description": "Sum of projected revenue for all deals in this funnel stage, in the normalized common currency."
-                },
-                {
-                    "name": "total_value",
-                    "property": "totalValue",
-                    "type": "string"
                 }
             ],
             "relationships": [
@@ -20613,12 +20451,14 @@
                 }
             ],
             "example": {
-                "stage": "proposal",
-                "deal_count": 5,
-                "total_value": "125000.00",
-                "pipeline_id": 1,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "stage",
+                "deal_count",
+                "total_value",
+                "pipeline_id"
+            ]
         },
         {
             "class": "DealReport",
@@ -20688,19 +20528,9 @@
                 {
                     "name": "average_time_to_close",
                     "property": "averageTimeToClose",
-                    "type": "mixed",
+                    "type": "string",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
-                },
-                {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -20743,11 +20573,6 @@
                     "property": "datePeriod",
                     "type": "mixed",
                     "description": "Time period grouping label for the report date dimension."
-                },
-                {
-                    "name": "deal_id",
-                    "property": "dealId",
-                    "type": "int"
                 },
                 {
                     "name": "deal_value_source",
@@ -20793,16 +20618,6 @@
                     "description": "Likelihood of winning this deal as a percentage (100 for won, 0 for lost by default)."
                 },
                 {
-                    "name": "profit",
-                    "property": "profit",
-                    "type": "string"
-                },
-                {
-                    "name": "profit_margin",
-                    "property": "profitMargin",
-                    "type": "float"
-                },
-                {
                     "name": "quarter",
                     "property": "quarter",
                     "type": "string",
@@ -20811,8 +20626,9 @@
                 {
                     "name": "retainer",
                     "property": "retainer",
-                    "type": "int",
-                    "description": "When true, deals in this group are retainer deals."
+                    "type": "bool",
+                    "description": "When true, deals in this group are retainer deals.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "retainer_interval",
@@ -20827,11 +20643,6 @@
                         "half_year",
                         "year"
                     ]
-                },
-                {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
                 },
                 {
                     "name": "revenue_distribution_base",
@@ -21096,11 +20907,6 @@
                     "description": "Sum of services revenue in the normalized currency across all deals in this report group."
                 },
                 {
-                    "name": "total_value",
-                    "property": "totalValue",
-                    "type": "string"
-                },
-                {
                     "name": "total_work_cost",
                     "property": "totalWorkCost",
                     "type": "mixed",
@@ -21251,15 +21057,17 @@
                 }
             ],
             "example": {
-                "total_value": "100000.00",
-                "revenue": "75000.00",
-                "cost": "45000.00",
-                "profit": "30000.00",
-                "profit_margin": 0.4,
-                "billable_time": 48000,
-                "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "total_value",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "deal_id"
+            ]
         },
         {
             "class": "DealStatus",
@@ -21301,11 +21109,6 @@
                     "property": "name",
                     "type": "string",
                     "description": "The display name of the pipeline stage."
-                },
-                {
-                    "name": "outcome",
-                    "property": "outcome",
-                    "type": "string"
                 },
                 {
                     "name": "position",
@@ -21365,9 +21168,11 @@
             "example": {
                 "name": "Proposal Sent",
                 "position": 3,
-                "outcome": "open",
                 "color_id": "7"
-            }
+            },
+            "phantom": [
+                "outcome"
+            ]
         },
         {
             "class": "DeletedItem",
@@ -21456,7 +21261,8 @@
                 "item_name": "#89: Old prototype",
                 "deleted_at": "2026-03-10T10:00:00.000+00:00",
                 "restorable": true
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Discussion",
@@ -21525,18 +21331,14 @@
                 "created_at": "2026-02-01T10:00:00.000+00:00",
                 "updated_at": "2026-03-01T09:00:00.000+00:00",
                 "last_activity_at": "2026-03-01T09:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "DocumentStyle",
             "type": "document_styles",
             "description": "A visual styling preset for documents such as proposals and contracts, containing CSS styles and branding assets.",
             "attributes": [
-                {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
-                },
                 {
                     "name": "name",
                     "property": "name",
@@ -21563,9 +21365,11 @@
                 }
             ],
             "example": {
-                "name": "Modern Blue",
-                "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+                "name": "Modern Blue"
+            },
+            "phantom": [
+                "created_at"
+            ]
         },
         {
             "class": "DocumentType",
@@ -21583,11 +21387,6 @@
                     "property": "bodyTemplate",
                     "type": "string",
                     "description": "The Liquid template used to render the body content of documents of this type."
-                },
-                {
-                    "name": "default",
-                    "property": "default",
-                    "type": "bool"
                 },
                 {
                     "name": "document_template_id",
@@ -21743,9 +21542,11 @@
                 }
             ],
             "example": {
-                "name": "Standard Invoice",
-                "default": true
-            }
+                "name": "Standard Invoice"
+            },
+            "phantom": [
+                "default"
+            ]
         },
         {
             "class": "EinvoiceIdentity",
@@ -21820,7 +21621,8 @@
                 "is_government_entity": false,
                 "created_at": "2025-04-10T08:15:00.000Z",
                 "updated_at": "2025-04-10T08:15:00.000Z"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Email",
@@ -22034,7 +21836,8 @@
                 "failed_at": null,
                 "unread": true,
                 "dismissed_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Entitlement",
@@ -22107,7 +21910,8 @@
                 "used": 480,
                 "pending": 960,
                 "note": "Annual vacation entitlement 2026"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "EntitlementReport",
@@ -22123,11 +21927,6 @@
                         "time_off",
                         "remote_work"
                     ]
-                },
-                {
-                    "name": "allocated",
-                    "property": "allocated",
-                    "type": "int"
                 },
                 {
                     "name": "count",
@@ -22167,11 +21966,6 @@
                     "description": "The end date period descriptor used for grouping in time-based reports."
                 },
                 {
-                    "name": "event_id",
-                    "property": "eventId",
-                    "type": "int"
-                },
-                {
                     "name": "formula_fields",
                     "property": "formulaFields",
                     "type": "mixed",
@@ -22188,16 +21982,6 @@
                     "property": "peopleCustomFields",
                     "type": "mixed",
                     "description": "Custom field values from the associated person record included for reporting context."
-                },
-                {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
-                },
-                {
-                    "name": "remaining",
-                    "property": "remaining",
-                    "type": "int"
                 },
                 {
                     "name": "start_date_period",
@@ -22252,11 +22036,6 @@
                     "property": "totalUsedMinutes",
                     "type": "int",
                     "description": "Total used minutes (raw minutes value)."
-                },
-                {
-                    "name": "used",
-                    "property": "used",
-                    "type": "int"
                 }
             ],
             "relationships": [
@@ -22296,13 +22075,14 @@
                     "target_type": "subsidiaries"
                 }
             ],
-            "example": {
-                "allocated": 1200,
-                "used": 480,
-                "remaining": 720,
-                "person_id": 12,
-                "event_id": 10
-            }
+            "example": [],
+            "phantom": [
+                "allocated",
+                "used",
+                "remaining",
+                "person_id",
+                "event_id"
+            ]
         },
         {
             "class": "Event",
@@ -22401,7 +22181,8 @@
                 "half_day_bookings": true,
                 "description": "Annual paid leave",
                 "absence_type": "vacation"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ExchangeRate",
@@ -22415,20 +22196,10 @@
                     "description": "The date for which these exchange rates are valid."
                 },
                 {
-                    "name": "from_currency",
-                    "property": "fromCurrency",
-                    "type": "string"
-                },
-                {
                     "name": "out_of_date",
                     "property": "outOfDate",
                     "type": "bool",
                     "description": "Whether these exchange rates are flagged as out of date and may not reflect current market rates."
-                },
-                {
-                    "name": "rate",
-                    "property": "rate",
-                    "type": "string"
                 },
                 {
                     "name": "rates",
@@ -22436,20 +22207,17 @@
                     "type": "list",
                     "description": "An array of currency conversion rates, each with a base currency, target currency, and the corresponding rate value.",
                     "spec_type": "string"
-                },
-                {
-                    "name": "to_currency",
-                    "property": "toCurrency",
-                    "type": "string"
                 }
             ],
             "relationships": [],
             "example": {
-                "from_currency": "EUR",
-                "to_currency": "USD",
-                "rate": "1.0834",
                 "date": "2026-03-15"
-            }
+            },
+            "phantom": [
+                "from_currency",
+                "to_currency",
+                "rate"
+            ]
         },
         {
             "class": "Expense",
@@ -22510,11 +22278,6 @@
                     "property": "approvedAt",
                     "type": "date-time",
                     "description": "Date when the expense was approved."
-                },
-                {
-                    "name": "billable",
-                    "property": "billable",
-                    "type": "bool"
                 },
                 {
                     "name": "billable_amount",
@@ -22614,6 +22377,13 @@
                     "description": "Exchange rate from expense currency to budget currency."
                 },
                 {
+                    "name": "export_error",
+                    "property": "exportError",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "export_id",
                     "property": "exportId",
                     "type": "string",
@@ -22637,6 +22407,13 @@
                         10,
                         11
                     ]
+                },
+                {
+                    "name": "export_status",
+                    "property": "exportStatus",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "export_url",
@@ -22706,11 +22483,6 @@
                     "property": "name",
                     "type": "string",
                     "description": "What the expense was for (travel, software, external costs, etc.)."
-                },
-                {
-                    "name": "note",
-                    "property": "note",
-                    "type": "mixed"
                 },
                 {
                     "name": "paid_on",
@@ -22807,11 +22579,6 @@
                     "property": "rejectedReason",
                     "type": "string",
                     "description": "Reason why the expense was rejected."
-                },
-                {
-                    "name": "status",
-                    "property": "status",
-                    "type": "string"
                 },
                 {
                     "name": "tax_inclusion",
@@ -22958,33 +22725,20 @@
                 "amount": "199.00",
                 "currency": "USD",
                 "date": "2026-03-01",
-                "billable": true,
-                "status": "pending",
                 "created_at": "2026-03-01T10:00:00.000+00:00",
-                "updated_at": "2026-03-01T10:00:00.000+00:00",
-                "note": null
-            }
+                "updated_at": "2026-03-01T10:00:00.000+00:00"
+            },
+            "phantom": [
+                "billable",
+                "status",
+                "note"
+            ]
         },
         {
             "class": "ExpenseLineItem",
             "type": "expense_line_items",
             "description": "",
             "attributes": [
-                {
-                    "name": "currency",
-                    "property": "currency",
-                    "type": "string"
-                },
-                {
-                    "name": "currency_default",
-                    "property": "currencyDefault",
-                    "type": "string"
-                },
-                {
-                    "name": "currency_normalized",
-                    "property": "currencyNormalized",
-                    "type": "string"
-                },
                 {
                     "name": "name",
                     "property": "name",
@@ -23034,11 +22788,13 @@
                 "quantity": 2,
                 "unit_price": 15000,
                 "unit_price_default": 16500,
-                "unit_price_normalized": 16500,
-                "currency": "EUR",
-                "currency_default": "USD",
-                "currency_normalized": "USD"
-            }
+                "unit_price_normalized": 16500
+            },
+            "phantom": [
+                "currency",
+                "currency_default",
+                "currency_normalized"
+            ]
         },
         {
             "class": "ExpenseReport",
@@ -23056,11 +22812,6 @@
                         3,
                         4
                     ]
-                },
-                {
-                    "name": "approved_amount",
-                    "property": "approvedAmount",
-                    "type": "string"
                 },
                 {
                     "name": "approved_at_period",
@@ -23085,11 +22836,6 @@
                     "property": "averageProfitMarginNormalized",
                     "type": "float",
                     "description": "Average profit margin in the normalized currency for this expense report group."
-                },
-                {
-                    "name": "billable_amount",
-                    "property": "billableAmount",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -23180,16 +22926,6 @@
                     "property": "payOnPeriod",
                     "type": "mixed",
                     "description": "Time period grouping for pay on (e.g. week, month, quarter)."
-                },
-                {
-                    "name": "pending_amount",
-                    "property": "pendingAmount",
-                    "type": "string"
-                },
-                {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
                 },
                 {
                     "name": "project_id",
@@ -23498,13 +23234,15 @@
             ],
             "example": {
                 "total_amount": "5000.00",
-                "approved_amount": "4500.00",
-                "pending_amount": "500.00",
-                "billable_amount": "3500.00",
-                "person_id": 12,
                 "project_id": 6899,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "approved_amount",
+                "pending_amount",
+                "billable_amount",
+                "person_id"
+            ]
         },
         {
             "class": "Filter",
@@ -23561,11 +23299,6 @@
                     "description": "A JSON object defining the date or date range used for currency exchange rate lookups in this filter."
                 },
                 {
-                    "name": "filter_data",
-                    "property": "filterData",
-                    "type": "object"
-                },
-                {
                     "name": "filterable_collection",
                     "property": "filterableCollection",
                     "type": "string",
@@ -23600,11 +23333,6 @@
                     "property": "hidden",
                     "type": "bool",
                     "description": "Whether this filter is hidden from the navigation sidebar."
-                },
-                {
-                    "name": "item_type",
-                    "property": "itemType",
-                    "type": "string"
                 },
                 {
                     "name": "last_pulse_sent_at",
@@ -23744,17 +23472,12 @@
             ],
             "example": {
                 "name": "My Open Tasks",
-                "item_type": "task",
-                "filter_data": {
-                    "assignee_id": [
-                        12
-                    ],
-                    "closed": {
-                        "eq": false
-                    }
-                },
                 "created_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": [
+                "item_type",
+                "filter_data"
+            ]
         },
         {
             "class": "FinancialItemReport",
@@ -23810,15 +23533,17 @@
                     "description": "Average recognized margin for this financial item report group."
                 },
                 {
+                    "name": "average_retainer_interval_count",
+                    "property": "averageRetainerIntervalCount",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "billing_type_id",
                     "property": "billingTypeId",
                     "type": "int",
                     "description": "Billing type id for this financial item report group."
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -23899,21 +23624,6 @@
                     "description": "The grouping dimension for this financial item report row."
                 },
                 {
-                    "name": "profit",
-                    "property": "profit",
-                    "type": "string"
-                },
-                {
-                    "name": "profit_margin",
-                    "property": "profitMargin",
-                    "type": "float"
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
-                },
-                {
                     "name": "project_type_id",
                     "property": "projectTypeId",
                     "type": "int",
@@ -23922,11 +23632,6 @@
                         1,
                         2
                     ]
-                },
-                {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
                 },
                 {
                     "name": "stage_status",
@@ -24416,13 +24121,15 @@
                 }
             ],
             "example": {
-                "revenue": "50000.00",
-                "cost": "30000.00",
-                "profit": "20000.00",
-                "profit_margin": 0.4,
-                "project_id": 6899,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "project_id"
+            ]
         },
         {
             "class": "Folder",
@@ -24478,7 +24185,8 @@
                 "placement": 1000000,
                 "archived_at": null,
                 "hidden": false
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Holiday",
@@ -24518,7 +24226,8 @@
             "example": {
                 "name": "New Year's Day",
                 "date": "2026-01-01"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "HolidayCalendar",
@@ -24562,7 +24271,8 @@
                 "country": "US",
                 "state": "US-CA",
                 "autogenerate_holidays": true
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Integration",
@@ -25432,7 +25142,8 @@
                 "payments_import": true,
                 "last_synced_at": "2026-03-15T08:00:00.000+00:00",
                 "options": []
-            }
+            },
+            "phantom": []
         },
         {
             "class": "IntegrationExporterConfiguration",
@@ -25554,7 +25265,8 @@
                 "import_number": false,
                 "last_synced_at": "2026-03-15T08:00:00.000+00:00",
                 "options": []
-            }
+            },
+            "phantom": []
         },
         {
             "class": "IntegrationTaskManagementConfiguration",
@@ -25625,7 +25337,8 @@
                     "target_type": "projects"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "Invitation",
@@ -25663,7 +25376,8 @@
                 "first_name": "Jordan",
                 "last_name": "Lee",
                 "time_zone": "Europe/London"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Invoice",
@@ -25869,11 +25583,6 @@
                     "description": "Custom field values on this invoice."
                 },
                 {
-                    "name": "date",
-                    "property": "date",
-                    "type": "string"
-                },
-                {
                     "name": "deleted_at",
                     "property": "deletedAt",
                     "type": "date-time",
@@ -25892,11 +25601,6 @@
                     "description": "Discount percentage applied to the invoice total."
                 },
                 {
-                    "name": "due_date",
-                    "property": "dueDate",
-                    "type": "string"
-                },
-                {
                     "name": "email_key",
                     "property": "emailKey",
                     "type": "string",
@@ -25913,6 +25617,13 @@
                     "property": "exchangeRate",
                     "type": "float",
                     "description": "Exchange rate from the invoice currency to the organization default currency."
+                },
+                {
+                    "name": "export_error",
+                    "property": "exportError",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "export_id",
@@ -25944,6 +25655,13 @@
                     "property": "exportInvoiceUrl",
                     "type": "string",
                     "description": "URL to view this invoice in the external accounting system."
+                },
+                {
+                    "name": "export_status",
+                    "property": "exportStatus",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "exported",
@@ -26028,11 +25746,6 @@
                     "description": "Invoice note with template variables resolved."
                 },
                 {
-                    "name": "notes",
-                    "property": "notes",
-                    "type": "string"
-                },
-                {
                     "name": "number",
                     "property": "number",
                     "type": "string",
@@ -26098,31 +25811,16 @@
                     "description": "Date when the invoice was sent to the client."
                 },
                 {
-                    "name": "status",
-                    "property": "status",
-                    "type": "string"
-                },
-                {
                     "name": "subject",
                     "property": "subject",
                     "type": "string",
                     "description": "Short description of what is being invoiced."
                 },
                 {
-                    "name": "subtotal",
-                    "property": "subtotal",
-                    "type": "string"
-                },
-                {
                     "name": "tag_list",
                     "property": "tagList",
                     "type": "string",
                     "description": "Tags applied to this invoice."
-                },
-                {
-                    "name": "tax",
-                    "property": "tax",
-                    "type": "string"
                 },
                 {
                     "name": "tax1_name",
@@ -26147,11 +25845,6 @@
                     "property": "tax2Value",
                     "type": "float",
                     "description": "Secondary tax rate percentage."
-                },
-                {
-                    "name": "total",
-                    "property": "total",
-                    "type": "string"
                 },
                 {
                     "name": "updated_at",
@@ -26240,18 +25933,20 @@
             ],
             "example": {
                 "number": "INV-2026-001",
-                "status": "draft",
-                "due_date": "2026-04-15",
-                "date": "2026-03-15",
                 "created_at": "2026-03-15T09:00:00.000+00:00",
                 "updated_at": "2026-03-15T09:00:00.000+00:00",
-                "total": "12500.00",
-                "subtotal": "11363.64",
-                "tax": "1136.36",
                 "currency": "USD",
-                "notes": "Payment due within 30 days",
                 "last_activity_at": "2026-03-15T09:00:00.000+00:00"
-            }
+            },
+            "phantom": [
+                "status",
+                "due_date",
+                "date",
+                "total",
+                "subtotal",
+                "tax",
+                "notes"
+            ]
         },
         {
             "class": "InvoiceAttribution",
@@ -26275,11 +25970,6 @@
                     "property": "amountNormalized",
                     "type": "mixed",
                     "description": "The attributed amount converted to the normalized (reporting) currency."
-                },
-                {
-                    "name": "attributed_at",
-                    "property": "attributedAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -26331,9 +26021,11 @@
             ],
             "example": {
                 "amount": "500.00",
-                "currency": "USD",
-                "attributed_at": "2026-03-10T12:00:00.000+00:00"
-            }
+                "currency": "USD"
+            },
+            "phantom": [
+                "attributed_at"
+            ]
         },
         {
             "class": "InvoiceReport",
@@ -26358,11 +26050,6 @@
                     "property": "averagePaidIn",
                     "type": "int",
                     "description": "Average number of days elapsed between the due date and the actual payment date across invoices in this report group."
-                },
-                {
-                    "name": "company_id",
-                    "property": "companyId",
-                    "type": "int"
                 },
                 {
                     "name": "count",
@@ -26457,11 +26144,6 @@
                     ]
                 },
                 {
-                    "name": "invoice_id",
-                    "property": "invoiceId",
-                    "type": "int"
-                },
-                {
                     "name": "invoice_state",
                     "property": "invoiceState",
                     "type": "int",
@@ -26524,11 +26206,6 @@
                     "description": "Month dimension for time-based report grouping (deprecated \u2014 use invoiced_on_period instead)."
                 },
                 {
-                    "name": "outstanding",
-                    "property": "outstanding",
-                    "type": "string"
-                },
-                {
                     "name": "overdue_status",
                     "property": "overdueStatus",
                     "type": "int",
@@ -26537,11 +26214,6 @@
                         1,
                         2
                     ]
-                },
-                {
-                    "name": "paid",
-                    "property": "paid",
-                    "type": "string"
                 },
                 {
                     "name": "paid_on_period",
@@ -26589,30 +26261,10 @@
                     ]
                 },
                 {
-                    "name": "status",
-                    "property": "status",
-                    "type": "string"
-                },
-                {
-                    "name": "subtotal",
-                    "property": "subtotal",
-                    "type": "string"
-                },
-                {
-                    "name": "tax",
-                    "property": "tax",
-                    "type": "string"
-                },
-                {
                     "name": "tax_rates",
                     "property": "taxRates",
                     "type": "string",
                     "description": "Tax rates applied to line items on this invoice."
-                },
-                {
-                    "name": "total",
-                    "property": "total",
-                    "type": "string"
                 },
                 {
                     "name": "total_amount",
@@ -26824,16 +26476,18 @@
                 }
             ],
             "example": {
-                "total": "12500.00",
-                "subtotal": "11363.64",
-                "tax": "1136.36",
-                "paid": "0.00",
-                "outstanding": "12500.00",
-                "status": "draft",
-                "invoice_id": 234,
-                "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "total",
+                "subtotal",
+                "tax",
+                "paid",
+                "outstanding",
+                "status",
+                "invoice_id",
+                "company_id"
+            ]
         },
         {
             "class": "InvoiceTemplate",
@@ -26847,31 +26501,16 @@
                     "description": "Custom bank account details (as a JSON object) to display on generated invoices, overriding the default bank account details."
                 },
                 {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
-                },
-                {
                     "name": "custom_fields",
                     "property": "customFields",
                     "type": "object",
                     "description": "Custom field values for this invoice template."
                 },
                 {
-                    "name": "default",
-                    "property": "default",
-                    "type": "bool"
-                },
-                {
                     "name": "invoice_creation_options",
                     "property": "invoiceCreationOptions",
                     "type": "object",
                     "description": "A JSON object containing rules used to determine which services or time entries to include when auto-generating invoice line items."
-                },
-                {
-                    "name": "name",
-                    "property": "name",
-                    "type": "string"
                 },
                 {
                     "name": "note",
@@ -26938,11 +26577,12 @@
                     "target_type": "subsidiaries"
                 }
             ],
-            "example": {
-                "name": "Standard Invoice",
-                "default": true,
-                "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            "example": [],
+            "phantom": [
+                "name",
+                "default",
+                "created_at"
+            ]
         },
         {
             "class": "JobRole",
@@ -26977,7 +26617,8 @@
                     "target_type": "organizations"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "LineItem",
@@ -27082,11 +26723,6 @@
                     "type": "bool"
                 },
                 {
-                    "name": "name",
-                    "property": "name",
-                    "type": "string"
-                },
-                {
                     "name": "position",
                     "property": "position",
                     "type": "int",
@@ -27112,25 +26748,10 @@
                     "description": "The display name of the tax applied to this line item (e.g. VAT)."
                 },
                 {
-                    "name": "tax_rate",
-                    "property": "taxRate",
-                    "type": "string"
-                },
-                {
                     "name": "tax_value",
                     "property": "taxValue",
                     "type": "float",
                     "description": "The computed tax amount for this line item (amount \u00d7 tax_value)."
-                },
-                {
-                    "name": "total_price",
-                    "property": "totalPrice",
-                    "type": "string"
-                },
-                {
-                    "name": "unit",
-                    "property": "unit",
-                    "type": "string"
                 },
                 {
                     "name": "unit_id",
@@ -27200,15 +26821,17 @@
                 }
             ],
             "example": {
-                "name": "Frontend Development",
                 "quantity": 10,
-                "unit": "hours",
                 "unit_price": "150.00",
-                "total_price": "1500.00",
                 "currency": "USD",
-                "position": 1,
-                "tax_rate": "0.1"
-            }
+                "position": 1
+            },
+            "phantom": [
+                "name",
+                "unit",
+                "total_price",
+                "tax_rate"
+            ]
         },
         {
             "class": "LineItemReport",
@@ -27258,20 +26881,10 @@
                     "description": "The grouping dimension for this line item report row."
                 },
                 {
-                    "name": "invoice_id",
-                    "property": "invoiceId",
-                    "type": "int"
-                },
-                {
                     "name": "quantity",
                     "property": "quantity",
                     "type": "float",
                     "description": "Quantity for this line item report group."
-                },
-                {
-                    "name": "service_id",
-                    "property": "serviceId",
-                    "type": "int"
                 },
                 {
                     "name": "tax_rate",
@@ -27332,11 +26945,6 @@
                     "property": "totalAmountWithTaxNormalized",
                     "type": "mixed",
                     "description": "Sum of amount with tax in the normalized currency across all records in this line item report group."
-                },
-                {
-                    "name": "total_price",
-                    "property": "totalPrice",
-                    "type": "string"
                 },
                 {
                     "name": "unit_id",
@@ -27428,11 +27036,13 @@
             "example": {
                 "quantity": 10,
                 "unit_price": "150.00",
-                "total_price": "1500.00",
-                "service_id": 1856422,
-                "invoice_id": 234,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "total_price",
+                "service_id",
+                "invoice_id"
+            ]
         },
         {
             "class": "LostReason",
@@ -27468,7 +27078,8 @@
                 "name": "Budget constraints",
                 "position": 1,
                 "archived_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Membership",
@@ -27585,7 +27196,8 @@
                 "options": [],
                 "target_type": "project",
                 "type_id": 1
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Notification",
@@ -27750,7 +27362,8 @@
                 "made_by_automation": false,
                 "root_id": 6899,
                 "root_type": "project"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Organization",
@@ -27835,11 +27448,6 @@
                     "type": "bool",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
-                },
-                {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -28104,6 +27712,13 @@
                     "description": "Number of minutes in a man-day, used to convert between hours and days in reports and scheduling."
                 },
                 {
+                    "name": "meeting_settings",
+                    "property": "meetingSettings",
+                    "type": "object",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "metrics",
                     "property": "metrics",
                     "type": "mixed",
@@ -28314,11 +27929,6 @@
                     "description": "Whether SAML-based single sign-on is enabled."
                 },
                 {
-                    "name": "subdomain",
-                    "property": "subdomain",
-                    "type": "string"
-                },
-                {
                     "name": "subsidiary_count",
                     "property": "subsidiaryCount",
                     "type": "mixed",
@@ -28441,11 +28051,6 @@
                     "description": "Configuration settings for the timesheet submission workflow."
                 },
                 {
-                    "name": "timezone",
-                    "property": "timezone",
-                    "type": "string"
-                },
-                {
                     "name": "verification_status_id",
                     "property": "verificationStatusId",
                     "type": "int",
@@ -28505,11 +28110,13 @@
             ],
             "example": {
                 "name": "My Agency",
-                "subdomain": "myagency",
-                "created_at": "2020-01-01T00:00:00.000+00:00",
-                "currency": "USD",
-                "timezone": "UTC"
-            }
+                "currency": "USD"
+            },
+            "phantom": [
+                "subdomain",
+                "created_at",
+                "timezone"
+            ]
         },
         {
             "class": "OrganizationMembership",
@@ -28876,7 +28483,8 @@
                 "weekly_emails": true,
                 "preferences": [],
                 "quick_start_config": []
-            }
+            },
+            "phantom": []
         },
         {
             "class": "OrganizationSubscription",
@@ -28961,11 +28569,6 @@
                     "description": "The date the contract with this organization started."
                 },
                 {
-                    "name": "contract_end_date",
-                    "property": "contractEndDate",
-                    "type": "string"
-                },
-                {
                     "name": "contract_min_seats",
                     "property": "contractMinSeats",
                     "type": "int",
@@ -28976,11 +28579,6 @@
                     "property": "contractSeats",
                     "type": "int",
                     "description": "The number of seats specified in the organization's current contract."
-                },
-                {
-                    "name": "currency",
-                    "property": "currency",
-                    "type": "string"
                 },
                 {
                     "name": "current_plan",
@@ -29059,11 +28657,6 @@
                     "description": "The total number of seats purchased for this subscription."
                 },
                 {
-                    "name": "seats_max",
-                    "property": "seatsMax",
-                    "type": "int"
-                },
-                {
                     "name": "seats_pending",
                     "property": "seatsPending",
                     "type": "mixed",
@@ -29134,6 +28727,13 @@
                     "description": "The trial plan ends at."
                 },
                 {
+                    "name": "trial_plan_ends_on",
+                    "property": "trialPlanEndsOn",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "trial_plan_type",
                     "property": "trialPlanType",
                     "type": "mixed",
@@ -29166,14 +28766,16 @@
             "example": {
                 "seats": 25,
                 "seats_used": 18,
-                "seats_max": 30,
                 "trial_ends_on": null,
                 "contract_date": "2026-01-01",
-                "contract_end_date": "2026-12-31",
                 "contract_seats": 25,
-                "current_plan": "business",
-                "currency": "USD"
-            }
+                "current_plan": "business"
+            },
+            "phantom": [
+                "seats_max",
+                "contract_end_date",
+                "currency"
+            ]
         },
         {
             "class": "Overhead",
@@ -29538,7 +29140,8 @@
             "example": {
                 "name": "Team Building & Offsites",
                 "archived_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Page",
@@ -29714,7 +29317,8 @@
                 "last_activity_at": "2026-03-10T15:00:00.000+00:00",
                 "position": 1,
                 "archived_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "PageReport",
@@ -29834,7 +29438,8 @@
                 "page_id": 78,
                 "project_id": 6899,
                 "created_at": "2026-01-20T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "PageVersion",
@@ -29909,7 +29514,8 @@
             "example": {
                 "version_number": 3,
                 "created_at": "2026-03-10T15:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Password",
@@ -29937,7 +29543,8 @@
             "relationships": [],
             "example": {
                 "updated_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Payment",
@@ -29961,11 +29568,6 @@
                     "property": "amountNormalized",
                     "type": "mixed",
                     "description": "The payment amount converted to the normalized (reporting) currency."
-                },
-                {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "currency",
@@ -30026,9 +29628,11 @@
                 "amount": "5000.00",
                 "currency": "USD",
                 "paid_on": "2026-03-10",
-                "note": null,
-                "created_at": "2026-03-10T12:00:00.000+00:00"
-            }
+                "note": null
+            },
+            "phantom": [
+                "created_at"
+            ]
         },
         {
             "class": "PaymentReminderSequence",
@@ -30040,11 +29644,6 @@
                     "property": "createdAt",
                     "type": "date-time",
                     "description": "Timestamp when this payment reminder sequence was created."
-                },
-                {
-                    "name": "default",
-                    "property": "default",
-                    "type": "bool"
                 },
                 {
                     "name": "default_sequence",
@@ -30088,25 +29687,17 @@
                 }
             ],
             "example": {
-                "name": "Standard Reminder",
-                "default": true
-            }
+                "name": "Standard Reminder"
+            },
+            "phantom": [
+                "default"
+            ]
         },
         {
             "class": "PaymentReport",
             "type": "payment_reports",
             "description": "An aggregated payment report row grouping invoices and payments by configurable dimensions with payment amount metrics.",
             "attributes": [
-                {
-                    "name": "amount",
-                    "property": "amount",
-                    "type": "string"
-                },
-                {
-                    "name": "company_id",
-                    "property": "companyId",
-                    "type": "int"
-                },
                 {
                     "name": "count",
                     "property": "count",
@@ -30150,20 +29741,10 @@
                     "description": "The grouping dimension for this payment report row."
                 },
                 {
-                    "name": "invoice_id",
-                    "property": "invoiceId",
-                    "type": "int"
-                },
-                {
                     "name": "month",
                     "property": "month",
                     "type": "string",
                     "description": "Month grouping for this payment report row."
-                },
-                {
-                    "name": "paid_on",
-                    "property": "paidOn",
-                    "type": "string"
                 },
                 {
                     "name": "quarter",
@@ -30250,12 +29831,14 @@
                 }
             ],
             "example": {
-                "amount": "5000.00",
-                "paid_on": "2026-03-10",
-                "invoice_id": 234,
-                "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "amount",
+                "paid_on",
+                "invoice_id",
+                "company_id"
+            ]
         },
         {
             "class": "PayrollItemReport",
@@ -30306,25 +29889,10 @@
                     "description": "Formula fields for this payroll item report group."
                 },
                 {
-                    "name": "gross",
-                    "property": "gross",
-                    "type": "string"
-                },
-                {
                     "name": "group",
                     "property": "group",
                     "type": "string",
                     "description": "The grouping dimension for this payroll item report row."
-                },
-                {
-                    "name": "month",
-                    "property": "month",
-                    "type": "string"
-                },
-                {
-                    "name": "net",
-                    "property": "net",
-                    "type": "string"
                 },
                 {
                     "name": "payroll_item_id",
@@ -30337,11 +29905,6 @@
                     "property": "payrollItemType",
                     "type": "string",
                     "description": "Payroll item type for this payroll item report group."
-                },
-                {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
                 },
                 {
                     "name": "person_status",
@@ -30521,12 +30084,14 @@
                 }
             ],
             "example": {
-                "gross": "7083.33",
-                "net": "5312.50",
-                "person_id": 12,
-                "month": "2026-03",
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "gross",
+                "net",
+                "person_id",
+                "month"
+            ]
         },
         {
             "class": "Person",
@@ -30944,7 +30509,8 @@
                 "offboarding_status": null,
                 "offboarding_id": null,
                 "time_tracking_policy_id": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "PersonReport",
@@ -30957,16 +30523,6 @@
                     "type": "bool",
                     "description": "Whether automatic time tracking is enabled for this person.",
                     "spec_type": "int"
-                },
-                {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "capacity",
-                    "property": "capacity",
-                    "type": "int"
                 },
                 {
                     "name": "contact_address",
@@ -31015,11 +30571,6 @@
                     "property": "contactZipcode",
                     "type": "mixed",
                     "description": "The person's contact zip/postal code."
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -31095,11 +30646,6 @@
                     "description": "The calendar month of the reporting period."
                 },
                 {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
                     "name": "offboarding_status",
                     "property": "offboardingStatus",
                     "type": "string",
@@ -31112,20 +30658,10 @@
                     ]
                 },
                 {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
-                },
-                {
                     "name": "quarter",
                     "property": "quarter",
                     "type": "string",
                     "description": "The calendar quarter of the reporting period."
-                },
-                {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
                 },
                 {
                     "name": "role_id",
@@ -31149,20 +30685,10 @@
                     ]
                 },
                 {
-                    "name": "total_time",
-                    "property": "totalTime",
-                    "type": "int"
-                },
-                {
                     "name": "type",
                     "property": "typeValue",
                     "type": "mixed",
                     "description": "The resource type identifier for this report row."
-                },
-                {
-                    "name": "utilization",
-                    "property": "utilization",
-                    "type": "float"
                 },
                 {
                     "name": "week",
@@ -31235,16 +30761,18 @@
                 }
             ],
             "example": {
-                "billable_time": 14400,
-                "nonbillable_time": 1800,
-                "total_time": 16200,
-                "utilization": 0.85,
-                "capacity": 9600,
-                "revenue": "3600.00",
-                "cost": "1620.00",
-                "person_id": 12,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "billable_time",
+                "nonbillable_time",
+                "total_time",
+                "utilization",
+                "capacity",
+                "revenue",
+                "cost",
+                "person_id"
+            ]
         },
         {
             "class": "Pipeline",
@@ -31252,20 +30780,10 @@
             "description": "A sales or production pipeline defining the stages that deals progress through.",
             "attributes": [
                 {
-                    "name": "archived_at",
-                    "property": "archivedAt",
-                    "type": "date-time"
-                },
-                {
                     "name": "created_at",
                     "property": "createdAt",
                     "type": "date-time",
                     "description": "Timestamp when the pipeline was created."
-                },
-                {
-                    "name": "default",
-                    "property": "default",
-                    "type": "bool"
                 },
                 {
                     "name": "icon_id",
@@ -31320,10 +30838,12 @@
                 }
             ],
             "example": {
-                "name": "Sales Pipeline",
-                "default": true,
-                "archived_at": null
-            }
+                "name": "Sales Pipeline"
+            },
+            "phantom": [
+                "default",
+                "archived_at"
+            ]
         },
         {
             "class": "Placeholder",
@@ -31400,7 +30920,8 @@
                 "type": "person",
                 "created_at": "2026-09-02T11:48:32.010+02:00",
                 "updated_at": "2026-09-02T11:48:42.251+02:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "PlaceholderUsage",
@@ -31526,7 +31047,8 @@
                 "interval_enabled": false,
                 "created_at": "2026-09-02T11:48:44.135+02:00",
                 "updated_at": "2026-09-02T11:48:44.135+02:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Price",
@@ -31743,7 +31265,8 @@
                 "rate": "150.00",
                 "estimated_cost": "24000.00",
                 "updated_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "PriceReport",
@@ -31986,7 +31509,8 @@
                 "service_type_id": 5,
                 "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Project",
@@ -32226,7 +31750,8 @@
                 "description": null,
                 "custom_fields": null,
                 "tag_colors": []
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ProjectPreference",
@@ -32281,7 +31806,8 @@
                 "created_at": "2026-01-20T10:00:00.000+00:00",
                 "preferences": "{\"project_last_tab\":\"tasks\",\"default_tab_id\":\"1867-project-tasks\"}",
                 "watched": false
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ProjectReport",
@@ -32305,31 +31831,6 @@
                     "property": "averageProfitMarginNormalized",
                     "type": "mixed",
                     "description": "Average profit margin in the normalized currency for this project report group."
-                },
-                {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "budget_total",
-                    "property": "budgetTotal",
-                    "type": "string"
-                },
-                {
-                    "name": "budget_used",
-                    "property": "budgetUsed",
-                    "type": "string"
-                },
-                {
-                    "name": "company_id",
-                    "property": "companyId",
-                    "type": "int"
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -32392,26 +31893,6 @@
                     "description": "Month grouping for this project report row."
                 },
                 {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "profit",
-                    "property": "profit",
-                    "type": "string"
-                },
-                {
-                    "name": "profit_margin",
-                    "property": "profitMargin",
-                    "type": "float"
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
-                },
-                {
                     "name": "project_status",
                     "property": "projectStatus",
                     "type": "int",
@@ -32432,11 +31913,6 @@
                     "property": "quarter",
                     "type": "string",
                     "description": "Quarter grouping for this project report row."
-                },
-                {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
                 },
                 {
                     "name": "total_cost",
@@ -32553,11 +32029,6 @@
                     "description": "Sum of revenue in the normalized currency across all records in this project report group."
                 },
                 {
-                    "name": "total_time",
-                    "property": "totalTime",
-                    "type": "int"
-                },
-                {
                     "name": "total_worked_time",
                     "property": "totalWorkedTime",
                     "type": "float",
@@ -32614,30 +32085,27 @@
                 }
             ],
             "example": {
-                "budget_total": "100000.00",
-                "budget_used": "62000.00",
-                "revenue": "75000.00",
-                "cost": "45000.00",
-                "profit": "30000.00",
-                "profit_margin": 0.4,
-                "billable_time": 48000,
-                "nonbillable_time": 6000,
-                "total_time": 54000,
-                "project_id": 6899,
-                "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "budget_total",
+                "budget_used",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "nonbillable_time",
+                "total_time",
+                "project_id",
+                "company_id"
+            ]
         },
         {
             "class": "Proposal",
             "type": "proposals",
             "description": "A document sent to a client summarizing proposed work, budget, and terms for a deal.",
             "attributes": [
-                {
-                    "name": "accepted_at",
-                    "property": "acceptedAt",
-                    "type": "date-time"
-                },
                 {
                     "name": "budget_total",
                     "property": "budgetTotal",
@@ -32698,11 +32166,6 @@
                     "type": "mixed",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
-                },
-                {
-                    "name": "declined_at",
-                    "property": "declinedAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "disclaimer",
@@ -32910,11 +32373,6 @@
                     "property": "statusChangedAt",
                     "type": "date-time",
                     "description": "Timestamp when the proposal status last changed."
-                },
-                {
-                    "name": "total",
-                    "property": "total",
-                    "type": "string"
                 }
             ],
             "relationships": [
@@ -32989,11 +32447,13 @@
                 "status": "sent",
                 "created_at": "2026-02-15T10:00:00.000+00:00",
                 "sent_at": "2026-02-16T09:00:00.000+00:00",
-                "accepted_at": null,
-                "declined_at": null,
-                "currency": "USD",
-                "total": "45000.00"
-            }
+                "currency": "USD"
+            },
+            "phantom": [
+                "accepted_at",
+                "declined_at",
+                "total"
+            ]
         },
         {
             "class": "ProposalReport",
@@ -33005,11 +32465,6 @@
                     "property": "averageTaxRateValue",
                     "type": "float",
                     "description": "Average tax rate percentage applied across proposals in this report row, computed from the tax rate component values."
-                },
-                {
-                    "name": "company_id",
-                    "property": "companyId",
-                    "type": "int"
                 },
                 {
                     "name": "count",
@@ -33046,11 +32501,6 @@
                     "property": "dateSignedPeriod",
                     "type": "mixed",
                     "description": "The period label for the date signed when the report is grouped by a signing date interval."
-                },
-                {
-                    "name": "deal_id",
-                    "property": "dealId",
-                    "type": "int"
                 },
                 {
                     "name": "formula_fields",
@@ -33110,11 +32560,6 @@
                     "property": "statusChangedAtPeriod",
                     "type": "mixed",
                     "description": "The period label for the status change date when the report is grouped by a status change date interval."
-                },
-                {
-                    "name": "total",
-                    "property": "total",
-                    "type": "string"
                 },
                 {
                     "name": "total_budget_total",
@@ -33222,12 +32667,14 @@
                 }
             ],
             "example": {
-                "total": "45000.00",
                 "status": "sent",
-                "deal_id": 89,
-                "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "total",
+                "deal_id",
+                "company_id"
+            ]
         },
         {
             "class": "Pulse",
@@ -33391,7 +32838,8 @@
                 "score": 8,
                 "comment": "Great sprint \u2014 shipped the auth feature on time",
                 "created_at": "2026-03-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "PurchaseOrder",
@@ -33683,7 +33131,8 @@
                 "currency": "USD",
                 "date": "2026-02-01",
                 "created_at": "2026-02-01T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "RateCard",
@@ -33748,7 +33197,8 @@
                 "currency": "USD",
                 "created_at": "2026-01-01T00:00:00.000+00:00",
                 "updated_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ReportCategory",
@@ -33795,7 +33245,8 @@
             "example": {
                 "name": "Financial",
                 "description": "Revenue, cost, and profitability reports"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ResourceRequest",
@@ -33848,11 +33299,6 @@
                     "property": "customFields",
                     "type": "object",
                     "description": "A JSON object containing custom field values for this resource request."
-                },
-                {
-                    "name": "end_date",
-                    "property": "endDate",
-                    "type": "string"
                 },
                 {
                     "name": "ended_on",
@@ -33921,20 +33367,10 @@
                     "description": "The reason provided when the resource request was rejected."
                 },
                 {
-                    "name": "requested_hours",
-                    "property": "requestedHours",
-                    "type": "int"
-                },
-                {
                     "name": "resolved_at",
                     "property": "resolvedAt",
                     "type": "date-time",
                     "description": "Timestamp when this resource request was resolved, or null if still open."
-                },
-                {
-                    "name": "start_date",
-                    "property": "startDate",
-                    "type": "string"
                 },
                 {
                     "name": "started_on",
@@ -34013,12 +33449,14 @@
             ],
             "example": {
                 "status": "pending",
-                "requested_hours": 160,
-                "start_date": "2026-04-01",
-                "end_date": "2026-04-30",
                 "note": "Need a senior React developer for the dashboard feature",
                 "created_at": "2026-03-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": [
+                "requested_hours",
+                "start_date",
+                "end_date"
+            ]
         },
         {
             "class": "ResourceRequestReport",
@@ -34177,7 +33615,8 @@
                     "target_type": "subsidiaries"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "RevenueDistribution",
@@ -34227,25 +33666,10 @@
                     "description": "The currency code of the deal this revenue distribution belongs to."
                 },
                 {
-                    "name": "deal_id",
-                    "property": "dealId",
-                    "type": "int"
-                },
-                {
                     "name": "end_on",
                     "property": "endOn",
                     "type": "date",
                     "description": "Date when this revenue distribution period ends."
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
-                },
-                {
-                    "name": "recognized_at",
-                    "property": "recognizedAt",
-                    "type": "date-time"
                 },
                 {
                     "name": "start_on",
@@ -34268,11 +33692,13 @@
             ],
             "example": {
                 "amount": "10000.00",
-                "recognized_at": "2026-03-31",
-                "project_id": 6899,
-                "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "recognized_at",
+                "project_id",
+                "deal_id"
+            ]
         },
         {
             "class": "Role",
@@ -34415,7 +33841,8 @@
                     "manage_budgets": true,
                     "view_financials": false
                 }
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Salary",
@@ -34567,7 +33994,8 @@
                 "currency": "USD",
                 "cost": "85000.00",
                 "hourly_rate": "51.44"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "SalaryReport",
@@ -34629,11 +34057,6 @@
                     "description": "The grouping dimension for this new salary report row."
                 },
                 {
-                    "name": "month",
-                    "property": "month",
-                    "type": "string"
-                },
-                {
                     "name": "overhead",
                     "property": "overhead",
                     "type": "int",
@@ -34645,11 +34068,6 @@
                     "type": "object",
                     "description": "People custom fields for this new salary report group.",
                     "spec_type": "string"
-                },
-                {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
                 },
                 {
                     "name": "salary_type_id",
@@ -34784,11 +34202,6 @@
                     "description": "Sum of period cost in the normalized currency across all records in this new salary report group."
                 },
                 {
-                    "name": "total_salary",
-                    "property": "totalSalary",
-                    "type": "string"
-                },
-                {
                     "name": "total_weekly_cost",
                     "property": "totalWeeklyCost",
                     "type": "mixed",
@@ -34841,11 +34254,13 @@
                 }
             ],
             "example": {
-                "total_salary": "7083.33",
-                "person_id": 12,
-                "month": "2026-03",
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "total_salary",
+                "person_id",
+                "month"
+            ]
         },
         {
             "class": "Section",
@@ -34901,7 +34316,8 @@
                 "position": 1,
                 "preferences": [],
                 "editor_config": []
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Service",
@@ -35499,19 +34915,14 @@
                 "estimated_time": 8000,
                 "budgeted_time": 8000,
                 "currency": "USD"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ServiceAssignment",
             "type": "service_assignments",
             "description": "",
-            "attributes": [
-                {
-                    "name": "billable",
-                    "property": "billable",
-                    "type": "bool"
-                }
-            ],
+            "attributes": [],
             "relationships": [
                 {
                     "name": "organization",
@@ -35529,9 +34940,10 @@
                     "target_type": "services"
                 }
             ],
-            "example": {
-                "billable": true
-            }
+            "example": [],
+            "phantom": [
+                "billable"
+            ]
         },
         {
             "class": "ServiceReport",
@@ -35641,11 +35053,6 @@
                     "description": "Billable for this service report group."
                 },
                 {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
                     "name": "billing_type",
                     "property": "billingType",
                     "type": "int",
@@ -35686,21 +35093,6 @@
                         1,
                         2
                     ]
-                },
-                {
-                    "name": "budget_total",
-                    "property": "budgetTotal",
-                    "type": "string"
-                },
-                {
-                    "name": "budget_used",
-                    "property": "budgetUsed",
-                    "type": "string"
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -35745,16 +35137,6 @@
                     "description": "Deal custom fields for this service report group."
                 },
                 {
-                    "name": "deal_id",
-                    "property": "dealId",
-                    "type": "int"
-                },
-                {
-                    "name": "estimated_time",
-                    "property": "estimatedTime",
-                    "type": "int"
-                },
-                {
                     "name": "expense_tracking_enabled",
                     "property": "expenseTrackingEnabled",
                     "type": "bool",
@@ -35786,21 +35168,6 @@
                     ]
                 },
                 {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "profit",
-                    "property": "profit",
-                    "type": "string"
-                },
-                {
-                    "name": "profit_margin",
-                    "property": "profitMargin",
-                    "type": "float"
-                },
-                {
                     "name": "project_type",
                     "property": "projectType",
                     "type": "int",
@@ -35818,20 +35185,10 @@
                     "spec_type": "int"
                 },
                 {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
-                },
-                {
                     "name": "section_name",
                     "property": "sectionName",
                     "type": "string",
                     "description": "Section name for this service report group."
-                },
-                {
-                    "name": "service_id",
-                    "property": "serviceId",
-                    "type": "int"
                 },
                 {
                     "name": "stage_status_id",
@@ -36260,11 +35617,6 @@
                         2,
                         3
                     ]
-                },
-                {
-                    "name": "worked_time",
-                    "property": "workedTime",
-                    "type": "int"
                 }
             ],
             "relationships": [
@@ -36365,20 +35717,22 @@
                 }
             ],
             "example": {
-                "budget_total": "50000.00",
-                "budget_used": "32000.00",
-                "revenue": "38000.00",
-                "cost": "24000.00",
-                "profit": "14000.00",
-                "profit_margin": 0.37,
-                "billable_time": 24000,
-                "nonbillable_time": 3000,
-                "worked_time": 27000,
-                "estimated_time": 32000,
-                "service_id": 1856422,
-                "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "budget_total",
+                "budget_used",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "nonbillable_time",
+                "worked_time",
+                "estimated_time",
+                "service_id",
+                "deal_id"
+            ]
         },
         {
             "class": "ServiceType",
@@ -36426,7 +35780,8 @@
                 "name": "Development",
                 "description": "Software development and engineering work",
                 "archived_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "ServiceTypeAssignment",
@@ -36450,7 +35805,8 @@
                     "target_type": "service_types"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "Session",
@@ -36581,7 +35937,8 @@
             "example": {
                 "token": null,
                 "created_at": "2026-03-15T09:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Skill",
@@ -36663,7 +36020,8 @@
                     "target_type": "memberships"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "Subsidiary",
@@ -36803,7 +36161,8 @@
                 "show_delivery_date": false,
                 "invoice_number_format": "INV-{YYYY}-{NNN}",
                 "invoice_number_scope": "subsidiary"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Survey",
@@ -36828,11 +36187,6 @@
                     "property": "publicUuid",
                     "type": "string",
                     "description": "Public UUID used to identify this survey in shareable links."
-                },
-                {
-                    "name": "status",
-                    "property": "status",
-                    "type": "string"
                 },
                 {
                     "name": "submission_access",
@@ -36883,9 +36237,11 @@
             ],
             "example": {
                 "title": "Client Satisfaction Q1 2026",
-                "status": "published",
                 "created_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": [
+                "status"
+            ]
         },
         {
             "class": "SurveyField",
@@ -37028,7 +36384,8 @@
                 "field_type": "rating",
                 "required": true,
                 "position": 1
-            }
+            },
+            "phantom": []
         },
         {
             "class": "SurveyFieldOption",
@@ -37086,18 +36443,14 @@
                 "label": "Very Satisfied",
                 "value": "5",
                 "position": 1
-            }
+            },
+            "phantom": []
         },
         {
             "class": "SurveyReport",
             "type": "survey_reports",
             "description": "An aggregated survey report row grouping survey submissions by configurable dimensions.",
             "attributes": [
-                {
-                    "name": "avg_score",
-                    "property": "avgScore",
-                    "type": "float"
-                },
                 {
                     "name": "count",
                     "property": "count",
@@ -37141,21 +36494,6 @@
                     "description": "The grouping dimension for this survey report row."
                 },
                 {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
-                },
-                {
-                    "name": "response_count",
-                    "property": "responseCount",
-                    "type": "int"
-                },
-                {
-                    "name": "survey_id",
-                    "property": "surveyId",
-                    "type": "int"
-                },
-                {
                     "name": "title",
                     "property": "title",
                     "type": "string",
@@ -37194,12 +36532,13 @@
                     "target_type": "people"
                 }
             ],
-            "example": {
-                "response_count": 42,
-                "avg_score": 4.2,
-                "survey_id": 7,
-                "project_id": 6899
-            }
+            "example": [],
+            "phantom": [
+                "response_count",
+                "avg_score",
+                "survey_id",
+                "project_id"
+            ]
         },
         {
             "class": "SurveyResponse",
@@ -37262,7 +36601,8 @@
                 "answers": {
                     "45": 5
                 }
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Tag",
@@ -37286,7 +36626,8 @@
             "example": {
                 "name": "backend",
                 "color_id": "3"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Task",
@@ -37707,7 +37048,8 @@
                 "billable_time": 120,
                 "worked_time": 240,
                 "deleted_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TaskDependency",
@@ -37761,7 +37103,8 @@
             "example": {
                 "dependency_type": "blocking",
                 "created_at": "2026-03-01T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TaskList",
@@ -37822,18 +37165,14 @@
                 "placement": 1000000,
                 "archived_at": null,
                 "email_key": "a1b2c3d4e5f6789012345678901234ab"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TaskReport",
             "type": "task_reports",
             "description": "An aggregated task report row grouping tasks by configurable dimensions with work metrics, time tracking totals, and status breakdowns.",
             "attributes": [
-                {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
                 {
                     "name": "closed_at_period",
                     "property": "closedAtPeriod",
@@ -37895,11 +37234,6 @@
                     "description": "The grouping dimension for this task report row."
                 },
                 {
-                    "name": "initial_estimate",
-                    "property": "initialEstimate",
-                    "type": "int"
-                },
-                {
                     "name": "last_activity_at_period",
                     "property": "lastActivityAtPeriod",
                     "type": "mixed",
@@ -37912,25 +37246,10 @@
                     "description": "Month grouping for this task report row."
                 },
                 {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
-                },
-                {
                     "name": "quarter",
                     "property": "quarter",
                     "type": "string",
                     "description": "Quarter grouping for this task report row."
-                },
-                {
-                    "name": "remaining_time",
-                    "property": "remainingTime",
-                    "type": "int"
                 },
                 {
                     "name": "repeating",
@@ -37953,11 +37272,6 @@
                         1,
                         2
                     ]
-                },
-                {
-                    "name": "task_id",
-                    "property": "taskId",
-                    "type": "int"
                 },
                 {
                     "name": "total_billable_time",
@@ -38012,11 +37326,6 @@
                     "property": "totalRemainingTime",
                     "type": "float",
                     "description": "Sum of remaining time across all records in this task report group."
-                },
-                {
-                    "name": "total_time",
-                    "property": "totalTime",
-                    "type": "int"
                 },
                 {
                     "name": "total_worked_time",
@@ -38145,15 +37454,16 @@
                     "target_type": "workflow_statuses"
                 }
             ],
-            "example": {
-                "billable_time": 480,
-                "nonbillable_time": 60,
-                "total_time": 540,
-                "initial_estimate": 480,
-                "remaining_time": 0,
-                "task_id": 120501,
-                "project_id": 6899
-            }
+            "example": [],
+            "phantom": [
+                "billable_time",
+                "nonbillable_time",
+                "total_time",
+                "initial_estimate",
+                "remaining_time",
+                "task_id",
+                "project_id"
+            ]
         },
         {
             "class": "TaxRate",
@@ -38216,7 +37526,8 @@
                 "secondary_component_name": null,
                 "secondary_component_value": null,
                 "archived_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Team",
@@ -38258,7 +37569,8 @@
                 "name": "Engineering",
                 "color_id": "5",
                 "icon_id": "2"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TeamMembership",
@@ -38282,7 +37594,8 @@
                     "target_type": "teams"
                 }
             ],
-            "example": []
+            "example": [],
+            "phantom": []
         },
         {
             "class": "Template",
@@ -38393,7 +37706,8 @@
                 "created_at": "2023-01-24T14:08:06.857+01:00",
                 "updated_at": "2026-04-29T12:27:06.627+02:00",
                 "deleted_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TimeEntry",
@@ -38801,7 +38115,8 @@
                 "last_activity_at": "2026-03-15T09:30:00.000+00:00",
                 "submitted": false,
                 "currency": "USD"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TimeEntryReport",
@@ -38813,11 +38128,6 @@
                     "property": "approvedAtPeriod",
                     "type": "mixed",
                     "description": "Bucketed `approved_at` value for this group when the report is grouped by `approved_at` with a date period (day, week, month, quarter, or year) \u2014 e.g. `2026/Q1`. `null` when the report is not grouped by `approved_at` or the entries are unapproved."
-                },
-                {
-                    "name": "approved_time",
-                    "property": "approvedTime",
-                    "type": "int"
                 },
                 {
                     "name": "autotracked",
@@ -38864,20 +38174,10 @@
                     "undocumented": true
                 },
                 {
-                    "name": "billable_time",
-                    "property": "billableTime",
-                    "type": "int"
-                },
-                {
                     "name": "billing_type",
                     "property": "billingType",
                     "type": "int",
                     "description": "The billing type of the service (hourly, fixed price, etc.)."
-                },
-                {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
                 },
                 {
                     "name": "count",
@@ -38914,11 +38214,6 @@
                     "property": "customFields",
                     "type": "mixed",
                     "description": "Custom field values associated with this time entry."
-                },
-                {
-                    "name": "date",
-                    "property": "date",
-                    "type": "string"
                 },
                 {
                     "name": "date_period",
@@ -39011,11 +38306,6 @@
                     "description": "The month in which the time entry was tracked."
                 },
                 {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
                     "name": "overhead",
                     "property": "overhead",
                     "type": "bool",
@@ -39044,26 +38334,6 @@
                     "spec_type": "string"
                 },
                 {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
-                },
-                {
-                    "name": "profit",
-                    "property": "profit",
-                    "type": "string"
-                },
-                {
-                    "name": "profit_margin",
-                    "property": "profitMargin",
-                    "type": "float"
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
-                },
-                {
                     "name": "project_type_id",
                     "property": "projectTypeId",
                     "type": "int",
@@ -39076,20 +38346,10 @@
                     "description": "The quarter in which the time entry was tracked."
                 },
                 {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
-                },
-                {
                     "name": "section_name",
                     "property": "sectionName",
                     "type": "string",
                     "description": "The name of the budget section the service belongs to."
-                },
-                {
-                    "name": "service_id",
-                    "property": "serviceId",
-                    "type": "int"
                 },
                 {
                     "name": "stage_type",
@@ -39303,11 +38563,6 @@
                     "description": "Track method id for this time entry report group."
                 },
                 {
-                    "name": "unapproved_time",
-                    "property": "unapprovedTime",
-                    "type": "int"
-                },
-                {
                     "name": "unit_id",
                     "property": "unitId",
                     "type": "int",
@@ -39323,11 +38578,6 @@
                     "property": "week",
                     "type": "string",
                     "description": "Week grouping for this time entry report row."
-                },
-                {
-                    "name": "worked_time",
-                    "property": "workedTime",
-                    "type": "int"
                 },
                 {
                     "name": "year",
@@ -39495,22 +38745,24 @@
                 }
             ],
             "example": {
-                "billable_time": 14400,
-                "nonbillable_time": 1800,
                 "total_time": 16200,
-                "worked_time": 16200,
-                "approved_time": 12000,
-                "unapproved_time": 4200,
-                "revenue": "3600.00",
-                "cost": "1620.00",
-                "profit": "1980.00",
-                "profit_margin": 0.55,
-                "person_id": 12,
-                "project_id": 6899,
-                "service_id": 1856422,
-                "date": "2026-03-15",
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "billable_time",
+                "nonbillable_time",
+                "worked_time",
+                "approved_time",
+                "unapproved_time",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "person_id",
+                "project_id",
+                "service_id",
+                "date"
+            ]
         },
         {
             "class": "TimeEntryVersion",
@@ -39599,7 +38851,8 @@
                     ]
                 },
                 "created_at": "2026-03-15T17:30:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TimeReport",
@@ -39661,11 +38914,6 @@
                     "description": "Hours tracked on client projects."
                 },
                 {
-                    "name": "cost",
-                    "property": "cost",
-                    "type": "string"
-                },
-                {
                     "name": "count",
                     "property": "count",
                     "type": "int",
@@ -39688,11 +38936,6 @@
                     "property": "currencyNormalized",
                     "type": "string",
                     "description": "Monetary values normalized to a common currency for cross-currency comparison."
-                },
-                {
-                    "name": "date",
-                    "property": "date",
-                    "type": "string"
                 },
                 {
                     "name": "date_period",
@@ -39773,11 +39016,6 @@
                     "description": "Month number this row represents, when grouped by month."
                 },
                 {
-                    "name": "nonbillable_time",
-                    "property": "nonbillableTime",
-                    "type": "int"
-                },
-                {
                     "name": "overtime_time",
                     "property": "overtimeTime",
                     "type": "int",
@@ -39798,16 +39036,6 @@
                     "spec_type": "string"
                 },
                 {
-                    "name": "person_id",
-                    "property": "personId",
-                    "type": "int"
-                },
-                {
-                    "name": "project_id",
-                    "property": "projectId",
-                    "type": "int"
-                },
-                {
                     "name": "quarter",
                     "property": "quarter",
                     "type": "string",
@@ -39824,11 +39052,6 @@
                     "property": "recognizedTime",
                     "type": "float",
                     "description": "Recognized time for this new time report group."
-                },
-                {
-                    "name": "revenue",
-                    "property": "revenue",
-                    "type": "string"
                 },
                 {
                     "name": "scheduled_billable_time",
@@ -39965,11 +39188,6 @@
                     "property": "totalScheduledRevenueNormalized",
                     "type": "mixed",
                     "description": "Total scheduled revenue normalized to a common currency for cross-currency comparison."
-                },
-                {
-                    "name": "total_time",
-                    "property": "totalTime",
-                    "type": "int"
                 },
                 {
                     "name": "total_work_cost",
@@ -40123,15 +39341,17 @@
             ],
             "example": {
                 "billable_time": 14400,
-                "nonbillable_time": 1800,
-                "total_time": 16200,
-                "revenue": "3600.00",
-                "cost": "1620.00",
-                "person_id": 12,
-                "project_id": 6899,
-                "date": "2026-03-15",
                 "currency": "USD"
-            }
+            },
+            "phantom": [
+                "nonbillable_time",
+                "total_time",
+                "revenue",
+                "cost",
+                "person_id",
+                "project_id",
+                "date"
+            ]
         },
         {
             "class": "TimeTrackingPolicy",
@@ -40155,16 +39375,6 @@
                     "property": "createdAt",
                     "type": "date-time",
                     "description": "Timestamp when the time tracking policy was created."
-                },
-                {
-                    "name": "daily_limit",
-                    "property": "dailyLimit",
-                    "type": "int"
-                },
-                {
-                    "name": "default_track_method_id",
-                    "property": "defaultTrackMethodId",
-                    "type": "int"
                 },
                 {
                     "name": "description",
@@ -40236,25 +39446,10 @@
                     "undocumented": true
                 },
                 {
-                    "name": "requires_service",
-                    "property": "requiresService",
-                    "type": "bool"
-                },
-                {
-                    "name": "requires_task",
-                    "property": "requiresTask",
-                    "type": "bool"
-                },
-                {
                     "name": "restrict_time_entry_overlap",
                     "property": "restrictTimeEntryOverlap",
                     "type": "bool",
                     "description": "When true, overlapping time entry ranges are not allowed."
-                },
-                {
-                    "name": "track_method_ids",
-                    "property": "trackMethodIds",
-                    "type": "list"
                 },
                 {
                     "name": "updated_at",
@@ -40287,16 +39482,15 @@
                 }
             ],
             "example": {
-                "name": "Standard Policy",
-                "track_method_ids": [
-                    1,
-                    2
-                ],
-                "default_track_method_id": 1,
-                "daily_limit": 720,
-                "requires_task": false,
-                "requires_service": true
-            }
+                "name": "Standard Policy"
+            },
+            "phantom": [
+                "track_method_ids",
+                "default_track_method_id",
+                "daily_limit",
+                "requires_task",
+                "requires_service"
+            ]
         },
         {
             "class": "Timer",
@@ -40345,7 +39539,8 @@
                 "started_at": "2026-03-15T09:00:00.000+00:00",
                 "stopped_at": null,
                 "total_time": 3600
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Timesheet",
@@ -40413,18 +39608,14 @@
                 "total_time": 2400,
                 "submitted_at": "2026-03-17T09:00:00.000+00:00",
                 "approved_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "TimesheetReport",
             "type": "timesheet_reports",
             "description": "An aggregated timesheet report row grouping timesheet records by configurable dimensions with time metrics.",
             "attributes": [
-                {
-                    "name": "approved_at",
-                    "property": "approvedAt",
-                    "type": "date-time"
-                },
                 {
                     "name": "count",
                     "property": "count",
@@ -40516,16 +39707,6 @@
                     "description": "Saturday time for this timesheet report group."
                 },
                 {
-                    "name": "status",
-                    "property": "status",
-                    "type": "string"
-                },
-                {
-                    "name": "submitted_at",
-                    "property": "submittedAt",
-                    "type": "date-time"
-                },
-                {
                     "name": "sunday_available",
                     "property": "sundayAvailable",
                     "type": "int",
@@ -40560,11 +39741,6 @@
                     "property": "thursdayTime",
                     "type": "int",
                     "description": "Thursday time for this timesheet report group."
-                },
-                {
-                    "name": "total_time",
-                    "property": "totalTime",
-                    "type": "int"
                 },
                 {
                     "name": "tuesday_available",
@@ -40609,11 +39785,6 @@
                     "description": "Week grouping for this timesheet report row."
                 },
                 {
-                    "name": "week_starting",
-                    "property": "weekStarting",
-                    "type": "string"
-                },
-                {
                     "name": "week_submission_status",
                     "property": "weekSubmissionStatus",
                     "type": "string",
@@ -40642,13 +39813,14 @@
                     "target_type": null
                 }
             ],
-            "example": {
-                "status": "submitted",
-                "week_starting": "2026-03-10",
-                "total_time": 2400,
-                "submitted_at": "2026-03-17T09:00:00.000+00:00",
-                "approved_at": null
-            }
+            "example": [],
+            "phantom": [
+                "status",
+                "week_starting",
+                "total_time",
+                "submitted_at",
+                "approved_at"
+            ]
         },
         {
             "class": "Todo",
@@ -40735,7 +39907,8 @@
                 "created_at": "2026-03-01T10:00:00.000+00:00",
                 "todoable_type": "task",
                 "position": 1
-            }
+            },
+            "phantom": []
         },
         {
             "class": "User",
@@ -40891,23 +40064,14 @@
                 "newsletter_consent": true,
                 "preferences": [],
                 "updated_at": "2026-03-15T10:00:00.000+00:00"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Webhook",
             "type": "webhooks",
             "description": "A webhook is an HTTP callback configured to fire when specific events occur in Productive, delivering real-time event notifications to an external target URL.",
             "attributes": [
-                {
-                    "name": "active",
-                    "property": "active",
-                    "type": "bool"
-                },
-                {
-                    "name": "created_at",
-                    "property": "createdAt",
-                    "type": "date-time"
-                },
                 {
                     "name": "custom_headers",
                     "property": "customHeaders",
@@ -40964,11 +40128,6 @@
                     ]
                 },
                 {
-                    "name": "events",
-                    "property": "events",
-                    "type": "list"
-                },
-                {
                     "name": "name",
                     "property": "name",
                     "type": "string",
@@ -40979,11 +40138,6 @@
                     "property": "retryAttempts",
                     "type": "int",
                     "description": "The number of retry attempts made after a failed delivery."
-                },
-                {
-                    "name": "secret",
-                    "property": "secret",
-                    "type": "mixed"
                 },
                 {
                     "name": "signature_token",
@@ -41023,11 +40177,6 @@
                         1,
                         2
                     ]
-                },
-                {
-                    "name": "url",
-                    "property": "url",
-                    "type": "string"
                 }
             ],
             "relationships": [
@@ -41042,17 +40191,14 @@
                     "target_type": "organizations"
                 }
             ],
-            "example": {
-                "url": "https://hooks.example.com/productive",
-                "events": [
-                    "task.created",
-                    "time_entry.created",
-                    "invoice.paid"
-                ],
-                "active": true,
-                "secret": null,
-                "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            "example": [],
+            "phantom": [
+                "url",
+                "events",
+                "active",
+                "secret",
+                "created_at"
+            ]
         },
         {
             "class": "WebhookLog",
@@ -41145,7 +40291,8 @@
                 "sent_at": "2026-03-15T10:00:05.000+00:00",
                 "success": true,
                 "url": "https://hooks.example.com/productive"
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Widget",
@@ -41243,7 +40390,8 @@
                 "width": 6,
                 "height": 4,
                 "content": []
-            }
+            },
+            "phantom": []
         },
         {
             "class": "Workflow",
@@ -41278,7 +40426,8 @@
             "example": {
                 "name": "Default Workflow",
                 "archived_at": null
-            }
+            },
+            "phantom": []
         },
         {
             "class": "WorkflowStatus",
@@ -41332,7 +40481,8 @@
                 "color_id": "5",
                 "position": 2,
                 "category_id": 2
-            }
+            },
+            "phantom": []
         }
     ],
     "inputs": [

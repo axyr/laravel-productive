@@ -22,10 +22,6 @@ final readonly class PaymentReport extends Model
 {
     public const string TYPE = 'payment_reports';
 
-    public ?string $amount;
-
-    public ?int $companyId;
-
     /** Number of payments in this report group. */
     public ?int $count;
 
@@ -47,12 +43,8 @@ final readonly class PaymentReport extends Model
     /** The grouping dimension for this payment report row. */
     public ?string $group;
 
-    public ?int $invoiceId;
-
     /** Month grouping for this payment report row. */
     public ?string $month;
-
-    public ?string $paidOn;
 
     /** Quarter grouping for this payment report row. */
     public ?string $quarter;
@@ -74,8 +66,6 @@ final readonly class PaymentReport extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
-        $this->amount = $attributes->string('amount');
-        $this->companyId = $attributes->int('company_id');
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
@@ -83,9 +73,7 @@ final readonly class PaymentReport extends Model
         $this->datePeriod = $attributes->mixed('date_period');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
-        $this->invoiceId = $attributes->int('invoice_id');
         $this->month = $attributes->string('month');
-        $this->paidOn = $attributes->string('paid_on');
         $this->quarter = $attributes->string('quarter');
         $this->totalAmount = $attributes->mixed('total_amount');
         $this->totalAmountDefault = $attributes->mixed('total_amount_default');

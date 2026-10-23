@@ -30,20 +30,7 @@ final class TimeEntryReportFactory extends Factory
     protected function definition(): array
     {
         return [
-            'billable_time' => 14400,
-            'nonbillable_time' => 1800,
             'total_time' => 16200,
-            'worked_time' => 16200,
-            'approved_time' => 12000,
-            'unapproved_time' => 4200,
-            'revenue' => '3600.00',
-            'cost' => '1620.00',
-            'profit' => '1980.00',
-            'profit_margin' => 0.55,
-            'person_id' => 12,
-            'project_id' => 6899,
-            'service_id' => 1856422,
-            'date' => '2026-03-15',
             'currency' => 'USD',
         ];
     }

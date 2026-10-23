@@ -25,8 +25,6 @@ final readonly class ProposalReport extends Model
     /** Average tax rate percentage applied across proposals in this report row, computed from the tax rate component values. */
     public ?float $averageTaxRateValue;
 
-    public ?int $companyId;
-
     /** Number of proposals aggregated into this report row. */
     public ?int $count;
 
@@ -44,8 +42,6 @@ final readonly class ProposalReport extends Model
 
     /** The period label for the date signed when the report is grouped by a signing date interval. */
     public mixed $dateSignedPeriod;
-
-    public ?int $dealId;
 
     /** Values of any custom formula fields defined for this report. */
     public mixed $formulaFields;
@@ -71,8 +67,6 @@ final readonly class ProposalReport extends Model
     /** The period label for the status change date when the report is grouped by a status change date interval. */
     public mixed $statusChangedAtPeriod;
 
-    public ?string $total;
-
     /** Sum of all proposal budget totals in this report row, in the proposal's original currency. */
     public mixed $totalBudgetTotal;
 
@@ -97,14 +91,12 @@ final readonly class ProposalReport extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->averageTaxRateValue = $attributes->float('average_tax_rate_value');
-        $this->companyId = $attributes->int('company_id');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->dateSignedPeriod = $attributes->mixed('date_signed_period');
-        $this->dealId = $attributes->int('deal_id');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->linkStatus = $attributes->string('link_status');
@@ -113,7 +105,6 @@ final readonly class ProposalReport extends Model
         $this->signedByEmail = $attributes->string('signed_by_email');
         $this->status = $attributes->string('status');
         $this->statusChangedAtPeriod = $attributes->mixed('status_changed_at_period');
-        $this->total = $attributes->string('total');
         $this->totalBudgetTotal = $attributes->mixed('total_budget_total');
         $this->totalBudgetTotalDefault = $attributes->mixed('total_budget_total_default');
         $this->totalBudgetTotalNormalized = $attributes->mixed('total_budget_total_normalized');

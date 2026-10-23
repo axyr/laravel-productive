@@ -30,17 +30,6 @@ final class BookingReportFactory extends Factory
     protected function definition(): array
     {
         return [
-            'total_time' => 2400,
-            'billable_time' => 2400,
-            'nonbillable_time' => 0,
-            'total_working_days' => 5,
-            'person_id' => 12,
-            'project_id' => 6899,
-            'service_id' => 1856422,
-            'started_on' => '2026-03-17',
-            'ended_on' => '2026-03-21',
-            'revenue' => '1500.00',
-            'cost' => '800.00',
             'currency' => 'USD',
         ];
     }

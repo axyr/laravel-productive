@@ -16,10 +16,5 @@ return [
         'integrations.check' => 'Runs the integration check.',
         'integrations.sync' => 'Starts a sync.',
     ],
-    'plan_gated' => [
-        'agents' => '"Agents and Connectors" are not in the Ultimate plan: the API answers 403.',
-        'agent_configs' => '"Agents and Connectors" are not in the Ultimate plan: the API answers 403.',
-        'agent_roles' => '"Agents and Connectors" are not in the Ultimate plan: the API answers 403.',
-        'skills' => '"Agents and Connectors" are not in the Ultimate plan: the API answers 403.',
-    ],
+    'plan_gated' => [],
 ];
