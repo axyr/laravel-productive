@@ -4,6 +4,12 @@ All notable changes to this package are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- **An API coverage page.** `docs/coverage.md` gives every operation a live status: recorded, exercised, empty list, rejected, plan-gated, skipped, not recorded or not exercised. `generator/config/coverage.php` holds the reasons for what the test organization's plan lacks and what is left out on purpose.
+- **Example-only attributes never seen are listed.** Productive's spec examples name 223 attributes on 52 models that its schemas do not and that no recorded response carried (`revenue`, `cost` and `profit` on the reports, `url`, `events` and `active` on webhooks). Their properties stay, always null so far, and [API differences](docs/api-differences.md) lists them until Productive confirms whether they exist.
+- **The recorder reaches further.** It calls the GET actions that only read (an invoice's preview, a proposal's sync status and signed PDF), fetches resources without an index by an ID another response carried (bills, the organization's subscription), and a publicly shared page by the uuid in `RECORDING_PUBLIC_PAGE_UUID`. A binary body is noted instead of kept.
+
 ## [0.1.0] - 2026-10-12
 
 The first release: a typed, tested Laravel SDK for the whole Productive API.

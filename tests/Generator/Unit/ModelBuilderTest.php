@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Axyr\Productive\Generator\Ir\Attribute;
 use Axyr\Productive\Generator\Ir\Relationship;
 use Axyr\Productive\Generator\ModelBuilder;
+use Axyr\Productive\Generator\RecordedTypes;
 use Axyr\Productive\Generator\RelationshipTypes;
 use Axyr\Productive\Generator\SchemaReader;
 use Axyr\Productive\Generator\Spec;
@@ -43,7 +44,26 @@ it('builds a model from a single resource response', function () {
             ['name' => 'subscribers', 'to_many' => true, 'target_type' => null],
         ],
         'example' => ['closed' => false, 'description' => 'x'],
+        'unseen' => [],
     ]);
+});
+
+it('keeps example-only attributes but names the ones a recording of the type never saw', function () {
+    $spec = new Spec(['components' => ['schemas' => []]]);
+    $recorded = new RecordedTypes(['types' => ['webhooks' => ['attributes' => ['name' => ['string'], 'target_url' => ['string']], 'relationships' => []]]]);
+    $builder = new ModelBuilder($spec, new SchemaReader($spec), new RelationshipTypes([], [], []), $recorded);
+    $response = ['properties' => ['data' => ['properties' => ['attributes' => ['properties' => ['name' => ['type' => 'string'], 'test' => ['type' => 'boolean']]]]]]];
+    $example = ['attributes' => ['name' => 'Hook', 'url' => 'https://x', 'events' => ['task.created'], 'test' => true]];
+
+    $webhook = $builder->build('Webhook', 'webhooks', $response, $example);
+    $other = $builder->build('Other', 'others', $response, $example);
+
+    expect(array_map(fn(Attribute $attribute): string => $attribute->name, $webhook->attributes))->toBe(['events', 'name', 'target_url', 'test', 'url'])
+        ->and($webhook->unseen)->toBe(['url', 'events'])
+        ->and($webhook->example)->toBe($example['attributes'])
+        ->and(array_map(fn(Attribute $attribute): string => $attribute->name, $other->attributes))->toBe(['events', 'name', 'test', 'url'])
+        ->and($other->unseen)->toBe([])
+        ->and($other->example)->toBe($example['attributes']);
 });
 
 it('reads the item schema of a collection response', function () {

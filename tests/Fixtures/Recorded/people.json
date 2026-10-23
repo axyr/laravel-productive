@@ -1,19 +1,19 @@
 {
     "data": [
         {
-            "id": "1006",
+            "id": "1009",
             "type": "people",
             "attributes": {
                 "agent": false,
                 "avatar_url": null,
                 "contact": [],
                 "deactivated_at": null,
-                "email": "person-118@example.test",
-                "first_name": "Text 138",
-                "last_name": "Text 139",
+                "email": "person-124@example.test",
+                "first_name": "Text 145",
+                "last_name": "Text 146",
                 "nickname": null,
                 "original_avatar_url": null,
-                "role_id": 1024,
+                "role_id": 1016,
                 "status_emoji": null,
                 "status_expires_at": null,
                 "status_text": null,
@@ -22,10 +22,10 @@
                 "archived_at": null,
                 "autotracking": false,
                 "joined_at": "2026-10-09T13:04:07.000+02:00",
-                "last_seen_at": "2026-10-10T23:55:31.744+02:00",
+                "last_seen_at": "2026-10-23T13:58:31.470+02:00",
                 "invited_at": null,
                 "is_user": true,
-                "user_id": 1093,
+                "user_id": 1092,
                 "tag_list": [],
                 "virtual": false,
                 "ai_assistant_instructions": null,
@@ -42,10 +42,10 @@
                 "time_unlocked_interval": null,
                 "last_activity_at": "2026-10-09T13:02:26.776+02:00",
                 "two_factor_auth": false,
-                "availabilities": "Text 140",
+                "availabilities": "Text 147",
                 "external_id": null,
                 "external_sync": false,
-                "hrm_type_id": 1024,
+                "hrm_type_id": 1016,
                 "champion": false,
                 "timesheet_submission_disabled": false,
                 "offboarding_status": "not_initiated",
@@ -56,7 +56,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "company": {
@@ -122,16 +122,16 @@
             }
         },
         {
-            "id": "1039",
+            "id": "1031",
             "type": "people",
             "attributes": {
                 "agent": false,
-                "avatar_url": "https://example.test/141",
+                "avatar_url": "https://example.test/148",
                 "contact": [],
                 "deactivated_at": null,
-                "email": "person-142@example.test",
-                "first_name": "Text 143",
-                "last_name": "Text 144",
+                "email": "person-149@example.test",
+                "first_name": "Text 150",
+                "last_name": "Text 151",
                 "nickname": null,
                 "original_avatar_url": null,
                 "role_id": 1098,
@@ -139,7 +139,7 @@
                 "status_expires_at": null,
                 "status_text": null,
                 "time_off_status_sync": true,
-                "title": "Text 145",
+                "title": "Text 152",
                 "archived_at": null,
                 "autotracking": false,
                 "joined_at": null,
@@ -162,10 +162,10 @@
                 "time_unlocked_interval": null,
                 "last_activity_at": "2026-10-09T13:02:41.994+02:00",
                 "two_factor_auth": false,
-                "availabilities": "Text 146",
+                "availabilities": "Text 153",
                 "external_id": null,
                 "external_sync": false,
-                "hrm_type_id": 1024,
+                "hrm_type_id": 1016,
                 "champion": false,
                 "timesheet_submission_disabled": false,
                 "offboarding_status": "not_initiated",
@@ -176,7 +176,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "company": {
@@ -250,25 +250,25 @@
                 "contact": {
                     "phones": [
                         {
-                            "name": "Text 34",
-                            "phone": "Text 35",
+                            "name": "Text 30",
+                            "phone": "Text 31",
                             "contact_datum_id": 1102
                         }
                     ],
                     "addresses": [
                         {
-                            "city": "Text 37",
-                            "name": "Text 34",
+                            "city": "Text 33",
+                            "name": "Text 30",
                             "state": "",
-                            "address": "Text 39",
-                            "country": "Text 40"
+                            "address": "Text 35",
+                            "country": "Text 36"
                         }
                     ]
                 },
                 "deactivated_at": null,
-                "email": "person-147@example.test",
-                "first_name": "Text 148",
-                "last_name": "Text 149",
+                "email": "person-154@example.test",
+                "first_name": "Text 155",
+                "last_name": "Text 156",
                 "nickname": null,
                 "original_avatar_url": null,
                 "role_id": null,
@@ -276,7 +276,7 @@
                 "status_expires_at": null,
                 "status_text": null,
                 "time_off_status_sync": true,
-                "title": "Text 145",
+                "title": "Text 152",
                 "archived_at": null,
                 "autotracking": false,
                 "joined_at": null,
@@ -299,10 +299,10 @@
                 "time_unlocked_interval": null,
                 "last_activity_at": "2026-10-09T13:02:35.042+02:00",
                 "two_factor_auth": null,
-                "availabilities": "Text 150",
+                "availabilities": "Text 157",
                 "external_id": null,
                 "external_sync": false,
-                "hrm_type_id": 1036,
+                "hrm_type_id": 1028,
                 "champion": false,
                 "timesheet_submission_disabled": false,
                 "offboarding_status": "not_initiated",
@@ -313,7 +313,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "company": {
@@ -379,16 +379,136 @@
             }
         },
         {
-            "id": "1039",
+            "id": "1004",
             "type": "people",
             "attributes": {
                 "agent": false,
-                "avatar_url": "https://example.test/141",
+                "avatar_url": null,
                 "contact": [],
                 "deactivated_at": null,
-                "email": "person-142@example.test",
-                "first_name": "Text 143",
-                "last_name": "Text 144",
+                "email": "person-158@example.test",
+                "first_name": "Text 145",
+                "last_name": "Text 159",
+                "nickname": null,
+                "original_avatar_url": null,
+                "role_id": 1041,
+                "status_emoji": null,
+                "status_expires_at": null,
+                "status_text": null,
+                "time_off_status_sync": true,
+                "title": "Text 160",
+                "archived_at": null,
+                "autotracking": false,
+                "joined_at": null,
+                "last_seen_at": null,
+                "invited_at": "2026-10-23T13:44:39.000+02:00",
+                "is_user": true,
+                "user_id": 1103,
+                "tag_list": [],
+                "virtual": false,
+                "custom_fields": null,
+                "created_at": "2026-10-23T13:44:13.887+02:00",
+                "placeholder": false,
+                "color_id": null,
+                "sample_data": false,
+                "time_unlocked": false,
+                "time_unlocked_on": null,
+                "time_unlocked_start_date": null,
+                "time_unlocked_end_date": null,
+                "time_unlocked_period_id": null,
+                "time_unlocked_interval": null,
+                "last_activity_at": "2026-10-23T13:44:39.755+02:00",
+                "two_factor_auth": false,
+                "availabilities": "Text 157",
+                "external_id": null,
+                "external_sync": false,
+                "hrm_type_id": 1016,
+                "champion": false,
+                "timesheet_submission_disabled": false,
+                "offboarding_status": "not_initiated",
+                "offboarding_id": null,
+                "time_tracking_policy_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1002"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_role": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "manager": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "job_role": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_policy_assignment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person_session": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "teams": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service_types": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1031",
+            "type": "people",
+            "attributes": {
+                "agent": false,
+                "avatar_url": "https://example.test/148",
+                "contact": [],
+                "deactivated_at": null,
+                "email": "person-149@example.test",
+                "first_name": "Text 150",
+                "last_name": "Text 151",
                 "nickname": null,
                 "original_avatar_url": null,
                 "role_id": 1098,
@@ -396,7 +516,7 @@
                 "status_expires_at": null,
                 "status_text": null,
                 "time_off_status_sync": true,
-                "title": "Text 145",
+                "title": "Text 152",
                 "archived_at": null,
                 "autotracking": false,
                 "joined_at": null,
@@ -419,10 +539,10 @@
                 "time_unlocked_interval": null,
                 "last_activity_at": "2026-10-09T13:02:41.994+02:00",
                 "two_factor_auth": false,
-                "availabilities": "Text 146",
+                "availabilities": "Text 153",
                 "external_id": null,
                 "external_sync": false,
-                "hrm_type_id": 1024,
+                "hrm_type_id": 1016,
                 "champion": false,
                 "timesheet_submission_disabled": false,
                 "offboarding_status": "not_initiated",
@@ -433,37 +553,37 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1040"
+                        "id": "1007"
                     }
                 },
                 "custom_role": {
                     "data": {
                         "type": "roles",
-                        "id": "1103"
+                        "id": "1104"
                     }
                 },
                 "import": {
                     "data": {
                         "type": "imports",
-                        "id": "1044"
+                        "id": "1035"
                     }
                 },
                 "manager": {
                     "data": {
                         "type": "people",
-                        "id": "1006"
+                        "id": "1009"
                     }
                 },
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1028"
+                        "id": "1020"
                     }
                 },
                 "job_role": {
@@ -482,15 +602,7 @@
                     "data": [
                         {
                             "type": "service_types",
-                            "id": "1067"
-                        },
-                        {
-                            "type": "service_types",
-                            "id": "1104"
-                        },
-                        {
-                            "type": "service_types",
-                            "id": "1087"
+                            "id": "1064"
                         },
                         {
                             "type": "service_types",
@@ -498,7 +610,15 @@
                         },
                         {
                             "type": "service_types",
+                            "id": "1086"
+                        },
+                        {
+                            "type": "service_types",
                             "id": "1106"
+                        },
+                        {
+                            "type": "service_types",
+                            "id": "1107"
                         }
                     ]
                 },
@@ -511,19 +631,19 @@
             }
         },
         {
-            "id": "1006",
+            "id": "1009",
             "type": "people",
             "attributes": {
                 "agent": false,
                 "avatar_url": null,
                 "contact": [],
                 "deactivated_at": null,
-                "email": "person-118@example.test",
-                "first_name": "Text 138",
-                "last_name": "Text 139",
+                "email": "person-124@example.test",
+                "first_name": "Text 145",
+                "last_name": "Text 146",
                 "nickname": null,
                 "original_avatar_url": null,
-                "role_id": 1024,
+                "role_id": 1016,
                 "status_emoji": null,
                 "status_expires_at": null,
                 "status_text": null,
@@ -532,10 +652,10 @@
                 "archived_at": null,
                 "autotracking": false,
                 "joined_at": "2026-10-09T13:04:07.000+02:00",
-                "last_seen_at": "2026-10-10T23:55:31.744+02:00",
+                "last_seen_at": "2026-10-23T13:58:31.470+02:00",
                 "invited_at": null,
                 "is_user": true,
-                "user_id": 1093,
+                "user_id": 1092,
                 "tag_list": [],
                 "virtual": false,
                 "ai_assistant_instructions": null,
@@ -552,10 +672,10 @@
                 "time_unlocked_interval": null,
                 "last_activity_at": "2026-10-09T13:02:26.776+02:00",
                 "two_factor_auth": false,
-                "availabilities": "Text 140",
+                "availabilities": "Text 147",
                 "external_id": null,
                 "external_sync": false,
-                "hrm_type_id": 1024,
+                "hrm_type_id": 1016,
                 "champion": false,
                 "timesheet_submission_disabled": false,
                 "offboarding_status": "not_initiated",
@@ -566,19 +686,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1040"
+                        "id": "1007"
                     }
                 },
                 "custom_role": {
                     "data": {
                         "type": "roles",
-                        "id": "1107"
+                        "id": "1108"
                     }
                 },
                 "import": {
@@ -590,7 +710,7 @@
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1028"
+                        "id": "1020"
                     }
                 },
                 "job_role": {
@@ -602,7 +722,7 @@
                 "person_session": {
                     "data": {
                         "type": "person_sessions",
-                        "id": "1108"
+                        "id": "1109"
                     }
                 },
                 "teams": {

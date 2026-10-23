@@ -104,11 +104,17 @@ final readonly class Expense extends Model
     /** Exchange rate from expense currency to budget currency. */
     public ?float $exchangeRateNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportError;
+
     /** ID in the external accounting system. */
     public ?string $exportId;
 
     /** Type of accounting integration used for export. */
     public ?int $exportIntegrationTypeId;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $exportStatus;
 
     /** URL to view this expense in the external accounting system. */
     public ?string $exportUrl;
@@ -246,8 +252,10 @@ final readonly class Expense extends Model
         $this->exchangeDate = $attributes->date('exchange_date');
         $this->exchangeRate = $attributes->float('exchange_rate');
         $this->exchangeRateNormalized = $attributes->float('exchange_rate_normalized');
+        $this->exportError = $attributes->mixed('export_error');
         $this->exportId = $attributes->string('export_id');
         $this->exportIntegrationTypeId = $attributes->int('export_integration_type_id');
+        $this->exportStatus = $attributes->int('export_status');
         $this->exportUrl = $attributes->string('export_url');
         $this->exported = $attributes->mixed('exported');
         $this->exportedAt = $attributes->dateTime('exported_at');

@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 91",
+            "id": "Text 93",
             "type": "financial_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -10,13 +10,14 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1029,
+                "financial_item_id": 1021,
                 "financial_item_type": "booking_item",
                 "financial_item_date": "2026-10-09",
-                "financial_item_description": "Text 24",
-                "billing_type_id": 1050,
-                "project_type_id": 1024,
+                "financial_item_description": "Text 14",
+                "billing_type_id": 1041,
+                "project_type_id": 1016,
                 "average_recognized_margin": null,
+                "average_retainer_interval_count": 1,
                 "future": 0,
                 "approval_status": 1,
                 "stage_type": 2,
@@ -90,7 +91,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -169,7 +170,7 @@
             }
         },
         {
-            "id": "Text 92",
+            "id": "Text 94",
             "type": "financial_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -178,13 +179,14 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1074,
+                "financial_item_id": 1071,
                 "financial_item_type": "booking_item",
-                "financial_item_date": "2026-10-12",
-                "financial_item_description": "Text 24",
-                "billing_type_id": 1050,
-                "project_type_id": 1024,
+                "financial_item_date": "2026-10-23",
+                "financial_item_description": "Text 14",
+                "billing_type_id": 1041,
+                "project_type_id": 1016,
                 "average_recognized_margin": null,
+                "average_retainer_interval_count": 1,
                 "future": 1,
                 "approval_status": 1,
                 "stage_type": 2,
@@ -258,7 +260,176 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "budget": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "origin_deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "responsible": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "section": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_entry": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "booking_item": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_attribution": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "revenue_item": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 95",
+            "type": "financial_item_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "group": "financial_item",
+                "count": 1,
+                "formula_fields": [],
+                "financial_item_id": 1072,
+                "financial_item_type": "booking_item",
+                "financial_item_date": "2026-10-23",
+                "financial_item_description": "",
+                "billing_type_id": 1028,
+                "project_type_id": 1028,
+                "average_recognized_margin": "54.5455",
+                "average_retainer_interval_count": 1,
+                "future": 1,
+                "approval_status": 1,
+                "stage_type": 2,
+                "stage_status": 4,
+                "custom_fields": [],
+                "total_time": 480,
+                "total_billable_time": 480,
+                "total_billable_scheduled_time": 480,
+                "total_billable_worked_time": 0,
+                "total_scheduled_time": 480,
+                "total_future_scheduled_time": 480,
+                "total_recognized_time": 480,
+                "total_worked_time": 0,
+                "total_overtime_time": 0,
+                "total_estimated_time": 0,
+                "total_budgeted_time": 0,
+                "date_period": null,
+                "average_margin": "54.5455",
+                "average_margin_default": "54.5455",
+                "average_margin_normalized": "54.5455",
+                "total_recognized_revenue": 80000,
+                "total_recognized_revenue_default": 80000,
+                "total_recognized_revenue_normalized": 80000,
+                "total_projected_revenue": 0,
+                "total_projected_revenue_default": 0,
+                "total_projected_revenue_normalized": 0,
+                "total_scheduled_revenue": 80000,
+                "total_scheduled_revenue_default": 80000,
+                "total_scheduled_revenue_normalized": 80000,
+                "total_cost": 36363.63636,
+                "total_cost_default": 36363.63636,
+                "total_cost_normalized": 36363.63636,
+                "total_scheduled_cost": 36363.63636,
+                "total_scheduled_cost_default": 36363.63636,
+                "total_scheduled_cost_normalized": 36363.63636,
+                "total_recognized_profit": 43636.36364,
+                "total_recognized_profit_default": 43636.36364,
+                "total_recognized_profit_normalized": 43636.36364,
+                "average_blended_rate": 10000,
+                "average_blended_rate_default": 10000,
+                "average_blended_rate_normalized": 10000,
+                "total_budget_used": 80000,
+                "total_budget_used_default": 80000,
+                "total_budget_used_normalized": 80000,
+                "total_invoiced": 0,
+                "total_invoiced_default": 0,
+                "total_invoiced_normalized": 0,
+                "total_credited": 0,
+                "total_credited_default": 0,
+                "total_credited_normalized": 0,
+                "total_draft_invoiced": 0,
+                "total_draft_invoiced_default": 0,
+                "total_draft_invoiced_normalized": 0,
+                "total_expense_cost": 0,
+                "total_expense_cost_default": 0,
+                "total_expense_cost_normalized": 0,
+                "total_time_entry_cost": 0,
+                "total_time_entry_cost_default": 0,
+                "total_time_entry_cost_normalized": 0,
+                "total_overhead_cost": 0,
+                "total_overhead_cost_default": 0,
+                "total_overhead_cost_normalized": 0,
+                "total_budget_total": 0,
+                "total_budget_total_default": 0,
+                "total_budget_total_normalized": 0,
+                "total_estimated_cost": 0,
+                "total_estimated_cost_default": 0,
+                "total_estimated_cost_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -346,181 +517,14 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1075,
-                "financial_item_type": "booking_item",
-                "financial_item_date": "2026-10-19",
-                "financial_item_description": "",
-                "billing_type_id": 1036,
-                "project_type_id": 1036,
-                "average_recognized_margin": "54.5455",
-                "future": 1,
-                "approval_status": 1,
-                "stage_type": 2,
-                "stage_status": 4,
-                "custom_fields": [],
-                "total_time": 480,
-                "total_billable_time": 480,
-                "total_billable_scheduled_time": 480,
-                "total_billable_worked_time": 0,
-                "total_scheduled_time": 480,
-                "total_future_scheduled_time": 480,
-                "total_recognized_time": 480,
-                "total_worked_time": 0,
-                "total_overtime_time": 0,
-                "total_estimated_time": 0,
-                "total_budgeted_time": 0,
-                "date_period": null,
-                "average_margin": "54.5455",
-                "average_margin_default": "54.5455",
-                "average_margin_normalized": "54.5455",
-                "total_recognized_revenue": 80000,
-                "total_recognized_revenue_default": 80000,
-                "total_recognized_revenue_normalized": 80000,
-                "total_projected_revenue": 0,
-                "total_projected_revenue_default": 0,
-                "total_projected_revenue_normalized": 0,
-                "total_scheduled_revenue": 80000,
-                "total_scheduled_revenue_default": 80000,
-                "total_scheduled_revenue_normalized": 80000,
-                "total_cost": 36363.63636,
-                "total_cost_default": 36363.63636,
-                "total_cost_normalized": 36363.63636,
-                "total_scheduled_cost": 36363.63636,
-                "total_scheduled_cost_default": 36363.63636,
-                "total_scheduled_cost_normalized": 36363.63636,
-                "total_recognized_profit": 43636.36364,
-                "total_recognized_profit_default": 43636.36364,
-                "total_recognized_profit_normalized": 43636.36364,
-                "average_blended_rate": 10000,
-                "average_blended_rate_default": 10000,
-                "average_blended_rate_normalized": 10000,
-                "total_budget_used": 80000,
-                "total_budget_used_default": 80000,
-                "total_budget_used_normalized": 80000,
-                "total_invoiced": 0,
-                "total_invoiced_default": 0,
-                "total_invoiced_normalized": 0,
-                "total_credited": 0,
-                "total_credited_default": 0,
-                "total_credited_normalized": 0,
-                "total_draft_invoiced": 0,
-                "total_draft_invoiced_default": 0,
-                "total_draft_invoiced_normalized": 0,
-                "total_expense_cost": 0,
-                "total_expense_cost_default": 0,
-                "total_expense_cost_normalized": 0,
-                "total_time_entry_cost": 0,
-                "total_time_entry_cost_default": 0,
-                "total_time_entry_cost_normalized": 0,
-                "total_overhead_cost": 0,
-                "total_overhead_cost_default": 0,
-                "total_overhead_cost_normalized": 0,
-                "total_budget_total": 0,
-                "total_budget_total_default": 0,
-                "total_budget_total_normalized": 0,
-                "total_estimated_cost": 0,
-                "total_estimated_cost_default": 0,
-                "total_estimated_cost_normalized": 0
-            },
-            "relationships": {
-                "organization": {
-                    "data": {
-                        "type": "organizations",
-                        "id": "1004"
-                    }
-                },
-                "report": {
-                    "data": null
-                },
-                "person": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "service": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "budget": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "origin_deal": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "company": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "subsidiary": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "project": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "responsible": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "section": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "time_entry": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "booking_item": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "expense": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "invoice_attribution": {
-                    "meta": {
-                        "included": false
-                    }
-                },
-                "revenue_item": {
-                    "meta": {
-                        "included": false
-                    }
-                }
-            }
-        },
-        {
-            "id": "Text 91",
-            "type": "financial_item_reports",
-            "attributes": {
-                "currency": "USD",
-                "currency_default": "USD",
-                "currency_normalized": "USD",
-                "group": "financial_item",
-                "count": 1,
-                "formula_fields": [],
-                "financial_item_id": 1029,
+                "financial_item_id": 1021,
                 "financial_item_type": "booking_item",
                 "financial_item_date": "2026-10-09",
-                "financial_item_description": "Text 24",
-                "billing_type_id": 1050,
-                "project_type_id": 1024,
+                "financial_item_description": "Text 14",
+                "billing_type_id": 1041,
+                "project_type_id": 1016,
                 "average_recognized_margin": null,
+                "average_retainer_interval_count": 1,
                 "future": 0,
                 "approval_status": 1,
                 "stage_type": 2,
@@ -594,7 +598,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -615,7 +619,7 @@
                 "budget": {
                     "data": {
                         "type": "deals",
-                        "id": "1026"
+                        "id": "1018"
                     }
                 },
                 "origin_deal": {
@@ -626,7 +630,7 @@
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1040"
+                        "id": "1007"
                     }
                 },
                 "subsidiary": {
@@ -657,7 +661,7 @@
                 "booking_item": {
                     "data": {
                         "type": "booking_items",
-                        "id": "1029"
+                        "id": "1021"
                     }
                 },
                 "expense": {
@@ -678,7 +682,7 @@
             }
         },
         {
-            "id": "Text 91",
+            "id": "Text 93",
             "type": "financial_item_reports",
             "attributes": {
                 "currency": "USD",
@@ -687,13 +691,14 @@
                 "group": "financial_item",
                 "count": 1,
                 "formula_fields": [],
-                "financial_item_id": 1029,
+                "financial_item_id": 1021,
                 "financial_item_type": "booking_item",
                 "financial_item_date": "2026-10-09",
-                "financial_item_description": "Text 24",
-                "billing_type_id": 1050,
-                "project_type_id": 1024,
+                "financial_item_description": "Text 14",
+                "billing_type_id": 1041,
+                "project_type_id": 1016,
                 "average_recognized_margin": null,
+                "average_retainer_interval_count": 1,
                 "future": 0,
                 "approval_status": 1,
                 "stage_type": 2,
@@ -767,7 +772,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -776,13 +781,13 @@
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1039"
+                        "id": "1031"
                     }
                 },
                 "service": {
                     "data": {
                         "type": "services",
-                        "id": "1038"
+                        "id": "1030"
                     }
                 },
                 "budget": {
@@ -803,19 +808,19 @@
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1028"
+                        "id": "1020"
                     }
                 },
                 "project": {
                     "data": {
                         "type": "projects",
-                        "id": "1069"
+                        "id": "1066"
                     }
                 },
                 "responsible": {
                     "data": {
                         "type": "people",
-                        "id": "1039"
+                        "id": "1031"
                     }
                 },
                 "section": {

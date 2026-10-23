@@ -63,6 +63,12 @@ it('adds undocumented attributes with their recorded type', function () {
     ]);
 });
 
+it('names the attributes a recorded type never carried, and none for a type that was not recorded', function () {
+    expect(recorded(['title' => ['string']])->unseen('tasks', ['title', 'url', 'events']))->toBe(['url', 'events'])
+        ->and(recorded(['title' => ['string']])->unseen('people', ['url']))->toBe([])
+        ->and((new RecordedTypes())->unseen('tasks', ['url']))->toBe([]);
+});
+
 it('leaves types that were not recorded alone', function () {
     $attribute = specAttribute('title', AttributeType::String);
 

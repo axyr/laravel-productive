@@ -38,15 +38,18 @@ final class LeakCheck
     }
 
     /**
-     * Whole values only: "Budget" inside a key such as "enableBudgetViewSharing" is no leak.
+     * Whole values only, and values only: "Budget" inside a key such as "enableBudgetViewSharing"
+     * is no leak, nor is the key "manager" when a free-text value happened to read "manager".
      *
      * @param  list<string>  $replaced
      */
     private static function containsReplaced(string $output, array $replaced): bool
     {
         $long = array_filter($replaced, fn(string $original): bool => strlen($original) >= 4);
+        // What replaces a key is not observable, as long as it holds no replaced value.
+        $values = preg_replace('/^\s*"[^"\n]*":/m', '', $output) ?? $output; // @pest-mutate-ignore
 
-        return self::contains($output, array_map(fn(string $original): string => '/(?<![\p{L}\p{N}])' . preg_quote($original, '/') . '(?![\p{L}\p{N}])/u', $long));
+        return self::contains($values, array_map(fn(string $original): string => '/(?<![\p{L}\p{N}])' . preg_quote($original, '/') . '(?![\p{L}\p{N}])/u', $long));
     }
 
     /**

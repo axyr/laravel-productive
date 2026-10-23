@@ -30,8 +30,10 @@ final readonly class ModelBuilder
     {
         $data = $this->data($responseSchema);
         $attributesSchema = $this->spec->resolve(Spec::map($data['properties'] ?? [])['attributes'] ?? []);
+        $properties = Spec::map($attributesSchema['properties'] ?? []);
         $exampleAttributes = Spec::map($example['attributes'] ?? []);
-        $attributes = $this->recorded->attributes($type, $this->reader->attributes(Spec::map($attributesSchema['properties'] ?? []), $exampleAttributes));
+        $read = $this->reader->attributes($properties, $exampleAttributes);
+        $attributes = $this->recorded->attributes($type, $read);
         ksort($attributes);
 
         return new Model(
@@ -41,6 +43,8 @@ final readonly class ModelBuilder
             attributes: array_values($attributes),
             relationships: $this->relationships($type, $data),
             example: $exampleAttributes,
+            // Attributes only the example has, which no recording saw: kept, and listed as doubtful.
+            unseen: $this->recorded->unseen($type, array_diff(array_keys($read), array_keys($properties))),
         );
     }
 

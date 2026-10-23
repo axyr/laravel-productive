@@ -46,6 +46,9 @@ final readonly class FinancialItemReport extends Model
     /** Average recognized margin for this financial item report group. */
     public ?float $averageRecognizedMargin;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $averageRetainerIntervalCount;
+
     /** Billing type id for this financial item report group. */
     public ?int $billingTypeId;
 
@@ -283,6 +286,7 @@ final readonly class FinancialItemReport extends Model
         $this->averageMarginDefault = $attributes->float('average_margin_default');
         $this->averageMarginNormalized = $attributes->float('average_margin_normalized');
         $this->averageRecognizedMargin = $attributes->float('average_recognized_margin');
+        $this->averageRetainerIntervalCount = $attributes->int('average_retainer_interval_count');
         $this->billingTypeId = $attributes->int('billing_type_id');
         $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');

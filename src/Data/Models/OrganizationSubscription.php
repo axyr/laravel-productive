@@ -144,6 +144,9 @@ final readonly class OrganizationSubscription extends Model
     /** The trial plan ends at. */
     public ?DateTimeImmutable $trialPlanEndsAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $trialPlanEndsOn;
+
     /** The type of plan being trialed, if a trial plan upgrade is active. */
     public mixed $trialPlanType;
 
@@ -195,6 +198,7 @@ final readonly class OrganizationSubscription extends Model
         $this->trialEndsOn = $attributes->mixed('trial_ends_on');
         $this->trialPlanActive = $attributes->mixed('trial_plan_active');
         $this->trialPlanEndsAt = $attributes->dateTime('trial_plan_ends_at');
+        $this->trialPlanEndsOn = $attributes->mixed('trial_plan_ends_on');
         $this->trialPlanType = $attributes->mixed('trial_plan_type');
         $this->trialProductIds = $attributes->object('trial_product_ids');
     }

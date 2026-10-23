@@ -53,7 +53,7 @@ final readonly class DealReport extends Model
     public ?int $averageRetainerIntervalCount;
 
     /** Not in the spec: seen in recorded API responses. */
-    public mixed $averageTimeToClose;
+    public ?string $averageTimeToClose;
 
     public ?int $billableTime;
 
@@ -111,7 +111,7 @@ final readonly class DealReport extends Model
     public ?string $quarter;
 
     /** When true, deals in this group are retainer deals. */
-    public ?int $retainer;
+    public ?bool $retainer;
 
     /** The billing interval for retainer deals in this group. */
     public ?string $retainerInterval;
@@ -279,7 +279,7 @@ final readonly class DealReport extends Model
         $this->averageRateDefault = $attributes->mixed('average_rate_default');
         $this->averageRateNormalized = $attributes->mixed('average_rate_normalized');
         $this->averageRetainerIntervalCount = $attributes->int('average_retainer_interval_count');
-        $this->averageTimeToClose = $attributes->mixed('average_time_to_close');
+        $this->averageTimeToClose = $attributes->string('average_time_to_close');
         $this->billableTime = $attributes->int('billable_time');
         $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
@@ -300,7 +300,7 @@ final readonly class DealReport extends Model
         $this->profit = $attributes->string('profit');
         $this->profitMargin = $attributes->float('profit_margin');
         $this->quarter = $attributes->string('quarter');
-        $this->retainer = $attributes->int('retainer');
+        $this->retainer = $attributes->bool('retainer');
         $this->retainerInterval = $attributes->string('retainer_interval');
         $this->revenue = $attributes->string('revenue');
         $this->revenueDistributionBase = $attributes->string('revenue_distribution_base');

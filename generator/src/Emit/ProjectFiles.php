@@ -22,6 +22,8 @@ final class ProjectFiles
         $api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $config)->build();
         $enabled = array_values(self::stringMap(require $config . '/resources.php'));
         $removed = self::config(require $config . '/removed.php');
+        $coverage = self::config(require $config . '/coverage.php');
+        $recorded = RecordedTypes::fromFile($root . '/generator/recorded-types.json');
 
         return [
             ...(new CodeGenerator($api, $enabled, self::stringMap(require $config . '/type-aliases.php')))->files(),
@@ -29,8 +31,14 @@ final class ProjectFiles
             DifferencesEmitter::PATH => DifferencesEmitter::emit(
                 $api,
                 $enabled,
-                RecordedTypes::fromFile($root . '/generator/recorded-types.json'),
+                $recorded,
                 ['resources' => self::stringMap($removed['resources'] ?? []), 'relationships' => self::stringMap($removed['relationships'] ?? [])],
+            ),
+            CoverageEmitter::PATH => CoverageEmitter::emit(
+                $api,
+                $enabled,
+                $recorded,
+                ['skipped' => self::stringMap($coverage['skipped'] ?? []), 'plan_gated' => self::stringMap($coverage['plan_gated'] ?? [])],
             ),
         ];
     }

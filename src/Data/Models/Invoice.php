@@ -156,6 +156,9 @@ final readonly class Invoice extends Model
     /** Exchange rate from the invoice currency to the organization default currency. */
     public ?float $exchangeRate;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportError;
+
     /** ID of this invoice in the external accounting system. */
     public ?string $exportId;
 
@@ -164,6 +167,9 @@ final readonly class Invoice extends Model
 
     /** URL to view this invoice in the external accounting system. */
     public ?string $exportInvoiceUrl;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?int $exportStatus;
 
     /** Whether this invoice has been exported to external accounting software. */
     public ?bool $exported;
@@ -308,9 +314,11 @@ final readonly class Invoice extends Model
         $this->emailKey = $attributes->string('email_key');
         $this->exchangeDate = $attributes->date('exchange_date');
         $this->exchangeRate = $attributes->float('exchange_rate');
+        $this->exportError = $attributes->mixed('export_error');
         $this->exportId = $attributes->string('export_id');
         $this->exportIntegrationTypeId = $attributes->int('export_integration_type_id');
         $this->exportInvoiceUrl = $attributes->string('export_invoice_url');
+        $this->exportStatus = $attributes->int('export_status');
         $this->exported = $attributes->bool('exported');
         $this->exportedAt = $attributes->dateTime('exported_at');
         $this->finalizedAt = $attributes->dateTime('finalized_at');

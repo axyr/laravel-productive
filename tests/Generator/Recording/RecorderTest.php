@@ -248,3 +248,64 @@ it('also includes relationships an earlier recording saw without data', function
 
     expect($connector->sent[1]->query)->toBe('page[size]=5&include=project,subtasks,todos');
 });
+
+it('calls the GET actions that only read on the first record, and no other', function () {
+    $api = new Api([recordingResource('invoices', [
+        recordingOperation('invoices.index', OperationKind::Index, 'invoices'),
+        recordingOperation('invoices.show', OperationKind::Show, 'invoices/{id}'),
+        recordingOperation('invoices.preview', OperationKind::Action, 'invoices/{id}/preview'),
+        recordingOperation('invoices.send', OperationKind::Action, 'invoices/{id}/send', 'PATCH'),
+        recordingOperation('invoices.sync', OperationKind::Action, 'invoices/{id}/sync'),
+    ], 'Invoice')], [recordingModel('Invoice', [])]);
+    $connector = new RecordingTestConnector(fn(): Response => jsonResponse(200, ['data' => [['id' => '3', 'type' => 'invoices']]]));
+
+    $recordings = iterator_to_array((new Recorder($api, $connector, actions: ['invoices.preview', 'invoices.send']))->record());
+
+    expect(array_keys($recordings))->toBe(['invoices.index', 'invoices.show', 'invoices.preview'])
+        ->and($recordings['invoices.preview']['request'])->toBe(['method' => 'GET', 'path' => 'invoices/3/preview', 'query' => ''])
+        ->and(array_map(fn(Request $request): string => $request->method->value, $connector->sent))->toBe(['GET', 'GET', 'GET']);
+});
+
+it('fetches a resource without an index by an ID another response carried, after everything else', function () {
+    $api = new Api([
+        recordingResource('bills', [recordingOperation('bills.show', OperationKind::Show, 'bills/{id}')], 'Bill'),
+        recordingResource('organizations', [recordingOperation('organizations.index', OperationKind::Index, 'organizations'), recordingOperation('organizations.show', OperationKind::Show, 'organizations/{id}')], 'Organization'),
+        recordingResource('passwords', [recordingOperation('passwords.show', OperationKind::Show, 'passwords/{id}')]),
+        recordingResource('subscriptions', [recordingOperation('subscriptions.show', OperationKind::Show, 'subscriptions/{id}')], 'Subscription'),
+    ], [recordingModel('Organization', ['subscription'])]);
+    $connector = new RecordingTestConnector(fn(Request $request): Response => match (true) {
+        str_contains($request->query, 'include') => jsonResponse(200, ['data' => [['id' => '1', 'type' => 'organizations']], 'included' => [['id' => '77', 'type' => 'subscriptions'], ['id' => '78', 'type' => 'subscriptions'], ['id' => '5', 'type' => 'passwords']]]),
+        $request->path === 'organizations/1' => jsonResponse(404, ['data' => ['id' => '9', 'type' => 'bills']]),
+        default => jsonResponse(200, ['data' => [['id' => '1', 'type' => 'organizations']]]),
+    });
+
+    $recordings = iterator_to_array((new Recorder($api, $connector))->record());
+
+    expect(array_keys($recordings))->toBe(['organizations.index', 'organizations.show', 'organizations.index.include', 'subscriptions.show'])
+        ->and($recordings['subscriptions.show']['request'])->toBe(['method' => 'GET', 'path' => 'subscriptions/77', 'query' => ''])
+        ->and(end($connector->sent)->rateLimits)->toEqual([Recorder::pace()]);
+});
+
+it('fetches a public link by its configured uuid only', function () {
+    $api = new Api([
+        recordingResource('pages', [recordingOperation('pages.index', OperationKind::Index, 'pages')], 'Page'),
+        recordingResource('public/artifacts', [recordingOperation('public.artifacts.show', OperationKind::Show, 'public/artifacts/{uuid}', organization: false)], 'Artifact'),
+        recordingResource('public/pages', [recordingOperation('public.pages.show', OperationKind::Show, 'public/pages/{uuid}', organization: false)], 'Page'),
+    ], []);
+    $connector = new RecordingTestConnector(fn(): Response => jsonResponse(200, ['data' => [['id' => '4', 'type' => 'pages'], ['id' => '6', 'type' => 'artifacts']]]));
+
+    $recordings = iterator_to_array((new Recorder($api, $connector, publicIds: ['public/pages' => 'ab-cd']))->record());
+
+    expect(array_keys($recordings))->toBe(['pages.index', 'public.pages.show'])
+        ->and($recordings['public.pages.show']['request']['path'])->toBe('public/pages/ab-cd')
+        ->and(end($connector->sent)->requiresOrganization)->toBeFalse();
+});
+
+it('notes a binary body instead of keeping it', function () {
+    $api = new Api([recordingResource('proposals', [recordingOperation('proposals.index', OperationKind::Index, 'proposals')])], []);
+    $connector = new RecordingTestConnector(fn(): Response => new Response(200, ['Content-Type' => ['application/pdf']], "%PDF-1.4\x00\xff\xfe"));
+
+    $recordings = iterator_to_array((new Recorder($api, $connector))->record());
+
+    expect($recordings['proposals.index']['body'])->toBe('[11 bytes of binary]');
+});

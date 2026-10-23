@@ -14,6 +14,7 @@ Laravel Productive: full reference. For installation and a quick start, see the 
 - [Development](development.md): quality gate, the vendored spec, recording real responses and how endpoints are added
 - [Endpoint reference](reference.md): every endpoint with the SDK method that calls it (generated)
 - [API differences](api-differences.md): where the live API differs from Productive's spec (generated)
+- [API coverage](coverage.md): how far every endpoint has been checked against the live API (generated)
 
 ## Productive's own guides
 

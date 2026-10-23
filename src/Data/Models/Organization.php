@@ -196,6 +196,13 @@ final readonly class Organization extends Model
     /** Number of minutes in a man-day, used to convert between hours and days in reports and scheduling. */
     public ?int $manDayMinutes;
 
+    /**
+     * Not in the spec: seen in recorded API responses.
+     *
+     * @var array<array-key, mixed>|null
+     */
+    public ?array $meetingSettings;
+
     /** Base64-encoded JSON containing UTM attribution metrics for the organization's acquisition source. */
     public mixed $metrics;
 
@@ -414,6 +421,7 @@ final readonly class Organization extends Model
         $this->limitedServiceTypes = $attributes->mixed('limited_service_types');
         $this->locale = $attributes->string('locale');
         $this->manDayMinutes = $attributes->int('man_day_minutes');
+        $this->meetingSettings = $attributes->object('meeting_settings');
         $this->metrics = $attributes->mixed('metrics');
         $this->name = $attributes->string('name');
         $this->numberFormatId = $attributes->int('number_format_id');

@@ -201,6 +201,24 @@ final readonly class Deal extends Model
     /** Total expense costs on this deal (normalized currency). */
     public mixed $expenseNormalized;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportError;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportId;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $exportStatus;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportUrl;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $exported;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $exportedAt;
+
     /** ID in an external integrated system. */
     public ?string $externalId;
 
@@ -492,6 +510,12 @@ final readonly class Deal extends Model
         $this->expenseApproval = $attributes->bool('expense_approval');
         $this->expenseDefault = $attributes->mixed('expense_default');
         $this->expenseNormalized = $attributes->mixed('expense_normalized');
+        $this->exportError = $attributes->mixed('export_error');
+        $this->exportId = $attributes->mixed('export_id');
+        $this->exportStatus = $attributes->string('export_status');
+        $this->exportUrl = $attributes->mixed('export_url');
+        $this->exported = $attributes->bool('exported');
+        $this->exportedAt = $attributes->mixed('exported_at');
         $this->externalId = $attributes->string('external_id');
         $this->externalSync = $attributes->bool('external_sync');
         $this->footer = $attributes->mixed('footer');

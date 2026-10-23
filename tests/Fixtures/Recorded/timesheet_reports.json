@@ -1,27 +1,27 @@
 {
     "data": [
         {
-            "id": "Text 209",
+            "id": "Text 227",
             "type": "timesheet_reports",
             "attributes": {
                 "group": "person",
-                "count": 3,
-                "week": "Text 44",
+                "count": 15,
+                "week": "Text 38",
                 "monday_time": 0,
-                "monday_capacity": null,
-                "monday_available": null,
+                "monday_capacity": 960,
+                "monday_available": 960,
                 "tuesday_time": 0,
-                "tuesday_capacity": null,
-                "tuesday_available": null,
+                "tuesday_capacity": 960,
+                "tuesday_available": 960,
                 "wednesday_time": 0,
-                "wednesday_capacity": null,
-                "wednesday_available": null,
+                "wednesday_capacity": 960,
+                "wednesday_available": 960,
                 "thursday_time": 0,
-                "thursday_capacity": null,
-                "thursday_available": null,
+                "thursday_capacity": 960,
+                "thursday_available": 960,
                 "friday_time": 0,
-                "friday_capacity": 480,
-                "friday_available": 480,
+                "friday_capacity": 1440,
+                "friday_available": 1440,
                 "saturday_time": 0,
                 "saturday_capacity": 0,
                 "saturday_available": 0,
@@ -33,7 +33,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -47,73 +47,27 @@
             }
         },
         {
-            "id": "Text 210",
+            "id": "Text 227",
             "type": "timesheet_reports",
             "attributes": {
                 "group": "person",
-                "count": 38,
-                "week": "Text 74",
-                "monday_time": 600,
-                "monday_capacity": 1920,
-                "monday_available": 1920,
-                "tuesday_time": 0,
-                "tuesday_capacity": 1920,
-                "tuesday_available": 1920,
-                "wednesday_time": 600,
-                "wednesday_capacity": 1920,
-                "wednesday_available": 1920,
-                "thursday_time": 600,
-                "thursday_capacity": 1920,
-                "thursday_available": 1920,
-                "friday_time": 300,
-                "friday_capacity": 2400,
-                "friday_available": 2400,
-                "saturday_time": 0,
-                "saturday_capacity": 0,
-                "saturday_available": 0,
-                "sunday_time": 300,
-                "sunday_capacity": 0,
-                "sunday_available": 0
-            },
-            "relationships": {
-                "organization": {
-                    "data": {
-                        "type": "organizations",
-                        "id": "1004"
-                    }
-                },
-                "report": {
-                    "data": null
-                },
-                "person": {
-                    "meta": {
-                        "included": false
-                    }
-                }
-            }
-        },
-        {
-            "id": "Text 209",
-            "type": "timesheet_reports",
-            "attributes": {
-                "group": "person",
-                "count": 3,
-                "week": "Text 44",
+                "count": 15,
+                "week": "Text 38",
                 "monday_time": 0,
-                "monday_capacity": null,
-                "monday_available": null,
+                "monday_capacity": 960,
+                "monday_available": 960,
                 "tuesday_time": 0,
-                "tuesday_capacity": null,
-                "tuesday_available": null,
+                "tuesday_capacity": 960,
+                "tuesday_available": 960,
                 "wednesday_time": 0,
-                "wednesday_capacity": null,
-                "wednesday_available": null,
+                "wednesday_capacity": 960,
+                "wednesday_available": 960,
                 "thursday_time": 0,
-                "thursday_capacity": null,
-                "thursday_available": null,
+                "thursday_capacity": 960,
+                "thursday_available": 960,
                 "friday_time": 0,
-                "friday_capacity": 480,
-                "friday_available": 480,
+                "friday_capacity": 1440,
+                "friday_available": 1440,
                 "saturday_time": 0,
                 "saturday_capacity": 0,
                 "saturday_available": 0,
@@ -125,7 +79,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -134,7 +88,7 @@
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1006"
+                        "id": "1009"
                     }
                 }
             }

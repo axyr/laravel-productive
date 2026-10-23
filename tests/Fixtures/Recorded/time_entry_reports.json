@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 203",
+            "id": "Text 221",
             "type": "time_entry_reports",
             "attributes": {
                 "currency": "USD",
@@ -11,36 +11,36 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 57",
-                "month": "Text 73",
-                "week": "Text 74",
-                "day": "2026-09-13",
+                "quarter": "Text 51",
+                "month": "Text 75",
+                "week": "Text 114",
+                "day": "2026-09-24",
                 "status": 1,
                 "jira_issue_id": null,
                 "jira_issue_status": null,
                 "jira_issue_summary": null,
                 "invoicing_status": 1,
                 "section_name": null,
-                "billing_type": 1,
-                "unit_id": 1024,
-                "project_type_id": 1036,
-                "track_method_id": 1024,
+                "billing_type": 2,
+                "unit_id": 1016,
+                "project_type_id": 1028,
+                "track_method_id": 1016,
                 "autotracked": 0,
                 "stage_type": 2,
                 "intercompany_hours": 2,
                 "people_custom_fields": {
-                    "1030": null,
-                    "1031": null,
-                    "1032": null,
-                    "1033": null,
-                    "1034": null
+                    "1022": null,
+                    "1023": null,
+                    "1024": null,
+                    "1025": null,
+                    "1026": null
                 },
                 "custom_fields": {
-                    "1030": null,
-                    "1031": null,
-                    "1032": null,
-                    "1033": null,
-                    "1034": null
+                    "1022": null,
+                    "1023": null,
+                    "1024": null,
+                    "1025": null,
+                    "1026": null
                 },
                 "invoiced": false,
                 "overhead": false,
@@ -58,30 +58,42 @@
                 "ended_at_period": null,
                 "started_at": null,
                 "ended_at": null,
-                "average_recognized_margin": "54.5455",
-                "average_recognized_margin_default": "54.5455",
-                "average_recognized_margin_normalized": "54.5455",
+                "average_recognized_margin": "69.697",
+                "average_recognized_margin_default": "69.697",
+                "average_recognized_margin_normalized": "69.697",
                 "total_cost": 22727,
                 "total_cost_default": 22727,
                 "total_cost_normalized": 22727,
-                "average_blended_rate": 10000,
-                "average_blended_rate_default": 10000,
-                "average_blended_rate_normalized": 10000,
-                "total_recognized_revenue": 50000,
-                "total_recognized_revenue_default": 50000,
-                "total_recognized_revenue_normalized": 50000,
-                "total_recognized_profit": 27273,
-                "total_recognized_profit_default": 27273,
-                "total_recognized_profit_normalized": 27273,
-                "total_billable_revenue": 50000,
-                "total_billable_revenue_default": 50000,
-                "total_billable_revenue_normalized": 50000
+                "total_work_cost": 22727,
+                "total_work_cost_default": 22727,
+                "total_work_cost_normalized": 22727,
+                "total_overhead_cost": 0,
+                "total_overhead_cost_default": 0,
+                "total_overhead_cost_normalized": 0,
+                "total_internal_overhead_cost": 0,
+                "total_internal_overhead_cost_default": 0,
+                "total_internal_overhead_cost_normalized": 0,
+                "total_facility_overhead_cost": 0,
+                "total_facility_overhead_cost_default": 0,
+                "total_facility_overhead_cost_normalized": 0,
+                "average_blended_rate": 15000,
+                "average_blended_rate_default": 15000,
+                "average_blended_rate_normalized": 15000,
+                "total_recognized_revenue": 75000,
+                "total_recognized_revenue_default": 75000,
+                "total_recognized_revenue_normalized": 75000,
+                "total_recognized_profit": 52273,
+                "total_recognized_profit_default": 52273,
+                "total_recognized_profit_normalized": 52273,
+                "total_billable_revenue": 75000,
+                "total_billable_revenue_default": 75000,
+                "total_billable_revenue_normalized": 75000
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -100,7 +112,7 @@
             }
         },
         {
-            "id": "Text 203",
+            "id": "Text 221",
             "type": "time_entry_reports",
             "attributes": {
                 "currency": "USD",
@@ -110,36 +122,36 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 57",
-                "month": "Text 73",
-                "week": "Text 74",
-                "day": "2026-09-13",
+                "quarter": "Text 51",
+                "month": "Text 75",
+                "week": "Text 114",
+                "day": "2026-09-24",
                 "status": 1,
                 "jira_issue_id": null,
                 "jira_issue_status": null,
                 "jira_issue_summary": null,
                 "invoicing_status": 1,
                 "section_name": null,
-                "billing_type": 1,
-                "unit_id": 1024,
-                "project_type_id": 1036,
-                "track_method_id": 1024,
+                "billing_type": 2,
+                "unit_id": 1016,
+                "project_type_id": 1028,
+                "track_method_id": 1016,
                 "autotracked": 0,
                 "stage_type": 2,
                 "intercompany_hours": 2,
                 "people_custom_fields": {
-                    "1030": null,
-                    "1031": null,
-                    "1032": null,
-                    "1033": null,
-                    "1034": null
+                    "1022": null,
+                    "1023": null,
+                    "1024": null,
+                    "1025": null,
+                    "1026": null
                 },
                 "custom_fields": {
-                    "1030": null,
-                    "1031": null,
-                    "1032": null,
-                    "1033": null,
-                    "1034": null
+                    "1022": null,
+                    "1023": null,
+                    "1024": null,
+                    "1025": null,
+                    "1026": null
                 },
                 "invoiced": false,
                 "overhead": false,
@@ -157,30 +169,42 @@
                 "ended_at_period": null,
                 "started_at": null,
                 "ended_at": null,
-                "average_recognized_margin": "54.5455",
-                "average_recognized_margin_default": "54.5455",
-                "average_recognized_margin_normalized": "54.5455",
+                "average_recognized_margin": "69.697",
+                "average_recognized_margin_default": "69.697",
+                "average_recognized_margin_normalized": "69.697",
                 "total_cost": 22727,
                 "total_cost_default": 22727,
                 "total_cost_normalized": 22727,
-                "average_blended_rate": 10000,
-                "average_blended_rate_default": 10000,
-                "average_blended_rate_normalized": 10000,
-                "total_recognized_revenue": 50000,
-                "total_recognized_revenue_default": 50000,
-                "total_recognized_revenue_normalized": 50000,
-                "total_recognized_profit": 27273,
-                "total_recognized_profit_default": 27273,
-                "total_recognized_profit_normalized": 27273,
-                "total_billable_revenue": 50000,
-                "total_billable_revenue_default": 50000,
-                "total_billable_revenue_normalized": 50000
+                "total_work_cost": 22727,
+                "total_work_cost_default": 22727,
+                "total_work_cost_normalized": 22727,
+                "total_overhead_cost": 0,
+                "total_overhead_cost_default": 0,
+                "total_overhead_cost_normalized": 0,
+                "total_internal_overhead_cost": 0,
+                "total_internal_overhead_cost_default": 0,
+                "total_internal_overhead_cost_normalized": 0,
+                "total_facility_overhead_cost": 0,
+                "total_facility_overhead_cost_default": 0,
+                "total_facility_overhead_cost_normalized": 0,
+                "average_blended_rate": 15000,
+                "average_blended_rate_default": 15000,
+                "average_blended_rate_normalized": 15000,
+                "total_recognized_revenue": 75000,
+                "total_recognized_revenue_default": 75000,
+                "total_recognized_revenue_normalized": 75000,
+                "total_recognized_profit": 52273,
+                "total_recognized_profit_default": 52273,
+                "total_recognized_profit_normalized": 52273,
+                "total_billable_revenue": 75000,
+                "total_billable_revenue_default": 75000,
+                "total_billable_revenue_normalized": 75000
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "report": {
@@ -189,13 +213,13 @@
                 "time_entry": {
                     "data": {
                         "type": "time_entries",
-                        "id": "1134"
+                        "id": "1142"
                     }
                 },
                 "person_manager": {
                     "data": {
                         "type": "people",
-                        "id": "1006"
+                        "id": "1009"
                     }
                 }
             }

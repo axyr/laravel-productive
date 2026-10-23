@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1092",
+            "id": "1091",
             "type": "salaries",
             "attributes": {
                 "default_salary": true,
@@ -10,7 +10,7 @@
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": true,
-                "salary_type_id": 1024,
+                "salary_type_id": 1016,
                 "started_on": "2026-10-09",
                 "working_hours": [
                     8,
@@ -19,6 +19,7 @@
                     8,
                     8
                 ],
+                "alternating_hours": false,
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
@@ -33,7 +34,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "person": {
@@ -49,7 +50,7 @@
             }
         },
         {
-            "id": "1117",
+            "id": "1122",
             "type": "salaries",
             "attributes": {
                 "default_salary": false,
@@ -58,7 +59,7 @@
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": false,
-                "salary_type_id": 1024,
+                "salary_type_id": 1016,
                 "started_on": "2026-04-09",
                 "working_hours": [
                     8,
@@ -67,6 +68,7 @@
                     8,
                     8
                 ],
+                "alternating_hours": false,
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
@@ -81,19 +83,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1022"
+                        "id": "1123"
                     }
                 },
                 "holiday_calendar": {
                     "data": {
                         "type": "holiday_calendars",
-                        "id": "1077"
+                        "id": "1075"
                     }
                 }
             }

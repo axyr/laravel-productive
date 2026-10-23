@@ -477,6 +477,105 @@ P-18 ends with an **empty allowlist** in `SpecCoverageTest`: all 668 operations 
 
 ---
 
+### Phase 5 — Live completeness: every endpoint recorded or exercised, webhooks, and a report for Productive
+
+**Starting point (2026-10-23).** The test organization now has webhooks, which Productive only offers on the Ultimate plan, so the plan-gated features that stopped `composer seed` on 2026-10-11 (teams, rate cards, overheads, recurring budgets, approvals) should be available too.
+
+| Spec operations | Count | Live status |
+|---|---|---|
+| GET (index, show, actions) | 247 | 188 recorded with a 200 response; 59 never answered 200: shows of empty lists, three GET actions, `agents`/`agent_configs`/`skills` (403), `boards` (404), and `sessions`/`public/*` which the recorder skips on purpose |
+| POST, PATCH, PUT, DELETE | 421 | Never exercised live, except the creates in `composer seed` |
+| Resources whose list was empty | 52 | Listed under "Not recorded yet" in `docs/api-differences.md`; their models still use the spec's types |
+
+Why `composer seed` could not fill the empty lists, from `recordings/seed-2026-10-11-*`:
+
+| Cause | Resources |
+|---|---|
+| Feature switched off in settings | `timesheets` ("Timesheet submission feature disabled"), `purchase_orders` ("purchase order setting is turned off"), `deal_cost_rates` ("feature unavailable") |
+| Trial plan limit | `teams` ("Plan limit for teams exceeded"), `rate_cards` ("Rate card count reached") |
+| 403 for the owner's token | `comments`, `task_dependencies` (to check in the UI: a permission, a feature gate, or a bug to report) |
+| Payload the spec does not explain | `placeholders` ("project attribute is invalid") |
+| Only the UI (or a person) can make them | `tags`, `timers`, `attachments`, `pages`, `page_versions`, `discussions`, `notifications`, `invitations`, `deleted_items`, `survey_fields`, `survey_field_options`, `survey_responses`, `contracts`, `overheads`, `approval_workflows`, `approval_policy_assignments`, `approval_statuses`, `webhook_logs` |
+| Plan-gated or out of scope | `agents`, `agent_configs`, `agent_roles`, `skills` ("Agents and Connectors" are not in Ultimate), `custom_domains`, `einvoice_identities`, `integrations` and their configurations, `emails`, `sessions`, `passwords` |
+
+Every step below says who does it (**You** in Productive, **SDK** here), ends with a check, and is one pull request at most. Every SDK step that touches the live API finishes with the same chain: `composer record` (about 12 minutes) → `composer record:types` → `composer record:fixtures` → `composer generate` → `composer quality` → review `docs/api-differences.md` → PR. Order: 1 → 2 → 3 → 4 → 5 → 6 → 7. Step 4 comes before step 5 so the write runs also deliver real webhooks to the capture server.
+
+**Step 1 — Baseline and a scoreboard (SDK, half a day, no UI work)** — **done (2026-10-23)**, branch `feature/coverage-ledger`. The third recording found: `agents`, `agent_configs` and `skills` answer 200 now (empty lists, so they are step 2 items, not plan-gated); `invoices/{id}/preview` answers 422 asking for `budget_ids` and more on a GET (report item); `proposals/{id}/signed_pdf` answers 404 for an unsigned proposal; `webhook_logs` is empty because only failed deliveries are logged. The spec's examples name 223 attributes on 52 models that the schemas do not and no response ever carried (`revenue`, `cost`, `project_id` on reports; `url`, `events` on webhooks); they are kept, always null, and listed as never seen (the user chose 2026-10-23 not to drop them on a recording's absence alone; report item, ask Productive). The ledger: 194 recorded, 35 empty lists, 4 not recorded (show-only resources whose ID no response carried yet: `agent_roles`, `approval_workflows`, `bills`, `invitations`), 400 writes not exercised.
+1. Add a coverage ledger, `docs/coverage.md`, generated like `api-differences.md` from `generator/recorded-types.json` and the spec: one row per operation with its live status (recorded 200, empty list, rejected, plan-gated, skipped on purpose, exercised by a write run, never exercised). Plan-gated and skipped rows carry their reason from a small config file. This is the definition of done for the phase: no row may say "never exercised" without a reason.
+2. Teach the recorder the safe GET actions it skips today: `invoices/{id}/preview`, `proposals/{id}/sync_status`, `proposals/{id}/signed_pdf` (an allowlist; `integrations/{id}/check` and `sync` stay out because they act), and shows reachable only through a relationship (`organization_subscriptions/{id}` from the organization). Also one public page by uuid when `RECORDING_PUBLIC_PAGE_UUID` is set (step 2.12 creates it).
+3. Run the chain. Expect the webhooks list to be recorded for the first time and the `Webhook` model to lose its phantom attributes: the spec's example uses `url`, `events`, `active` and `secret`, its schema uses `target_url`, `event_id`, `type_id` and `signature_token`, so the generated model has both (first entry for the report, step 6).
+Check: `docs/coverage.md` exists, every row has a status, the third recording is committed as types and fixtures.
+
+**Step 2 — Your checklist in Productive (You, about 90 minutes in one sitting)**
+Each item names what it unlocks. Settings first, then one project. When an item says "upgrade" or does not exist, note it: it becomes a plan-gated row in the ledger instead of a to-do.
+
+Settings:
+1. Settings → Time tracking → Timesheets: switch on timesheet submission → `timesheets`.
+2. Settings → Approvals: switch on time and expense approvals, add one approval policy with a workflow and assign it to yourself → `approval_workflows`, `approval_policy_assignments`; `approval_statuses` appears after step 18.
+3. Settings → Purchase orders: switch the setting on → `purchase_orders`, `bills`.
+4. Settings → Budgets (financials): switch on cost rates per budget/deal → `deal_cost_rates`.
+5. Settings → Teams: if the page exists, do nothing; `composer seed` creates "Seed team" in step 3. If it still says "upgrade", note it → `teams`, `team_memberships`.
+6. Settings → Rate cards: if the page lets you add one, do nothing; seed creates it. Otherwise note the limit → `rate_cards`, `prices`.
+7. Settings → Overheads: add one overhead with any amount → `overheads`.
+8. Settings → Webhooks: leave as they are for now; step 4 gives you the target URL.
+9. Settings → People: invite a second person on a plus-alias of your own address (`info+sdk@…`), accept the invite in a private window, keep the person active → `invitations`, and a second person for memberships, notifications and task assignment. This sends one email, to you.
+10. Settings → Tags (or the tag picker on any task): create a tag `sdk` → `tags`.
+
+One project (use an existing seeded project):
+11. Docs: create a page "SDK page", save it twice with a change (`pages`, `page_versions`), select some text and leave a comment on it (`discussions`).
+12. Share that page publicly and paste the public link's uuid into `.env` as `RECORDING_PUBLIC_PAGE_UUID` → `public/pages`.
+13. Open a task: write a comment that mentions the second person and one that mentions you (`comments`, `notifications`), upload a small file (`attachments`), start a timer and leave it running (`timers`), add a dependency on another task (`task_dependencies`; if the UI allows what the API refused with 403, that goes in the report), add a subtask.
+14. Resourcing: add a placeholder and book it on the project (`placeholders`, `placeholder_usages`). Note what the form required; the API said "project attribute is invalid".
+15. Budgets: add a recurring budget to a deal → `contracts`.
+16. Forms/surveys: open "Seed survey", add one field with two options, submit one response → `survey_fields`, `survey_field_options`, `survey_responses`.
+17. Delete "Seed holiday" (Settings → Holidays) → `deleted_items`.
+18. Time: log an entry, submit the timesheet, approve the entry as the approver → `approval_statuses`, `timesheets`.
+19. Reports: save any report in a new category → `report_categories`.
+20. AI: the API lists `agents`, `agent_configs` and `skills` for this organization (empty). Create one agent and one skill if the UI offers them; note it if it says "upgrade". Try once, then note the result: anything named Artifacts, Pulses or Meeting notes.
+
+Leave alone on purpose: sessions, passwords, custom domains, e-invoice identities, integrations, emails, the subscription.
+Check: send me the list of items that worked and the ones that said "upgrade" or were missing.
+
+**Step 3 — Seed and record again (SDK, one hour)**
+1. `composer seed` dry run, then `--execute`: teams, rate cards, deal cost rates, purchase orders, placeholders (with what step 2.14 taught) and timesheets should pass now; comments and task dependencies are retried to see whether the 403 was the plan.
+2. Run the chain.
+Check: the "Not recorded yet" table in `api-differences.md` only lists plan-gated and skipped resources; the 50-odd missing shows are recorded; `RecordedHydrationTest` passes on every new fixture.
+
+**Step 4 — Webhooks: capture real deliveries, then ship a receiver (SDK one day, You 30 minutes)**
+What Productive documents (help article "Using webhooks in Productive", reference page `resources/webhooks`): Settings → Webhooks → Add Webhook, one event per webhook ("Fire After Event"), 35 events with labels on the reference page (1 New task … 35 Update contact), a `Productive-Signature` header `t=<seconds>,s=<hex>` where `s` is HMAC-SHA256 of `<t>.<raw body>` with the signature token shown in the webhook logs, custom headers set from the test menu, a "send test" button, retries on any non-2xx (the article says 12 attempts over 48 hours and every 12 hours, which contradict each other; report), deactivation after 12 failures, logs for failures and tests only, 1,000 events per 5 minutes. The payload format is not documented anywhere, which is why we capture it.
+1. (SDK) `composer webhook:capture`: PHP's built-in server on a local port that writes every request (headers and raw body, redacted like the recorder) to `recordings/webhooks-<date-time>/`. You expose it with a tunnel (`ngrok http 8787`, or Expose) so no third-party request bin ever sees organization data.
+2. (You) Settings → Webhooks: create one webhook per event family (task, time entry, deal, budget, project, company, person, contact, invoice, payment, expense, booking) with the tunnel URL as Target URL, press "send test" on each, add one custom header on one of them, copy the signature token from the logs into `.env` as `PRODUCTIVE_WEBHOOK_SECRET`. Then create, change and delete one task by hand. Point one extra webhook at a URL that answers 500 so `webhook_logs` gets an entry; delete it afterwards. Step 5 produces the other real events.
+3. (SDK) From the captures: scrubbed fixtures under `tests/Fixtures/Webhooks`; enums `WebhookEvent` (35 labels), `WebhookType`, `WebhookState`; a `VerifyProductiveSignature` middleware (timing-safe compare, timestamp tolerance, raw body); a `Route::productiveWebhooks()` macro with a controller that dispatches a `ProductiveWebhookReceived` Laravel event carrying the event, the hydrated model through `ModelMap` and the raw payload; `Productive::fakeWebhook()` for user tests; `docs/webhooks.md`. Record `webhooks.show` and `webhook_logs.index` through the chain.
+Check: a test delivery and a real task event pass the middleware in a Laravel app; the fixture-based tests cover every captured event; the retry schedule seen in the logs is noted for the report.
+
+**Step 5 — Exercise the write side (SDK three to four days in five PRs, You ten minutes per PR)**
+1. `composer record:writes`, grown from `generator/bin/seed`: per-resource recipes in `generator/config/recipes.php` (a create payload, one harmless update, each action with its arguments, and cleanup), dry run by default, `--resource=tasks` to run one at a time, `--execute`, the same guards as the recorder (organization check, one request per second, no redirects, stop on 429). Every record it creates is named "SDK check …"; it deletes what it created in reverse order, also after a failure (`--keep` to inspect). It records request and response per operation like the recorder, redacted, and `record:types` learns from writes too: attributes the API requires (422 "can't be blank" lands in `required.php` automatically), attributes it refuses, whether a delete answers 204 or a body, what actions return. The ledger marks each operation as exercised.
+2. Never in a recipe: anything that leaves Productive or changes the account: sending invoices, proposals or emails, invitations (step 2.9 was the one), integrations, custom domains, e-invoicing, subscription, users, organization updates, sessions, passwords. Deletes only of records the run created.
+3. Five tiers, one PR each. Per tier: dry run → you read the payload list (two minutes) → execute (five to ten minutes live) → `record:types`, `generate`, fix generator rules → PR.
+   - T1 settings, harmless: tags, job roles, holiday calendars and holidays, tax rates, lost reasons, deal statuses, pipelines, workflows and statuses, custom fields, options and sections, document styles and types, filters, dashboards and widgets, teams and memberships, time tracking policies, service types, roles, report categories, templates.
+   - T2 CRM: companies, contact entries, people as contacts (no invite), deals and budgets, deal cost rates, rate cards and prices, proposals and their actions, subsidiaries.
+   - T3 work: projects (copy, archive), folders, task lists, tasks (reposition, copy, move dependent, bulk), todos, comments, task dependencies, sections, services, service assignments, bookings (bulk), resource requests, timers (start, stop), time entries (bulk, approve, unapprove), timesheets, entitlements, events, salaries.
+   - T4 finance: expenses (bulk), expense line items, invoices with line items (bulk; finalize only a test invoice, never send), payments, invoice attributions, invoice templates, automatic invoicing rules, payment reminder sequences, purchase orders, bank accounts, overheads, revenue distributions, bills.
+   - T5 docs and the rest: pages and the four body actions, discussions, surveys, fields, options and responses, attachments (the upload flow), webhooks (create, test, delete), notifications (mark read), memberships, organization memberships, placeholders, approval policies.
+4. `composer record:writes --probe-rate-limit`: eleven report requests in a burst, records the headers of the 429 only, so the `X-RateLimit-Reset` format is finally known and `RetryPolicy` can be checked against it.
+Check per tier: every operation in the tier is marked exercised or carries a reason; the generated inputs require what the API requires; the contract tests still pass; the write-response fixtures hydrate.
+
+**Step 6 — The report for Productive (SDK, half a day)**
+1. `docs/spec-report.md`, generated by a new emitter from the same sources as `api-differences.md` plus `required.php`, `removed.php`, the recipes' notes, and `generator/config/spec-findings.php` for what no recording can express. Every entry: endpoint, what the spec says, what the API does, how to reproduce (date, request). Sections:
+   - types that differ, undocumented attributes and relationships, rejected includes, removed resources (`boards`), undocumented resources the Ruby client has;
+   - attributes required by the API but not marked (`bank_accounts.number`, `invoice_templates.budget_id`/`document_type_id`, `templates.model_attributes`, `proposals.document_type_id`/`status`, `resource_requests` title/currency/service/booking_method_id/time, and what step 5 adds);
+   - operations documented without a body: `proposals`, `resource_requests`, `integrations`, `revenue_distributions`;
+   - examples that contradict their schemas: the webhook example (`url`/`events`/`active`/`secret`), examples copied from another resource (`agent_roles`, `integration_exporter_configurations`, `timesheet_reports`), filter examples such as `{"eq": "value"}` on attributes;
+   - structural: bulk operations hide their single twins, create and update share one `required` list, filter-only fields inside resource schemas, integer enums without labels in the JSON, relationship targets missing, parameter order changing between downloads;
+   - behaviour: feature gates answering 422 in one place and 403 or 409 in another, `comments` and `task_dependencies` POST 403 for an owner token (if step 3 confirms it), the retry schedule contradiction, and whatever step 5 finds.
+2. Send Productive the rendered page (the GitHub URL, or a PDF export) and keep regenerating it, so later recordings can be sent as an update.
+Check: every entry has a reproduction; nothing in it names the organization, people or tokens.
+
+**Step 7 — Close out (SDK, half a day)**
+1. `docs/coverage.md` has no "never exercised" row without a reason; `docs/development.md` documents `record:writes`, `webhook:capture` and the ledger; `docs/testing.md` documents `fakeWebhook()`.
+2. CHANGELOG under Unreleased, release 0.2.0.
+3. A monthly reminder to re-record (it needs the token, so it stays manual); the weekly spec drift workflow stays.
+
 ## 5. Risks
 
 - **Spec noise** (filter fields inside resource schemas, unlabeled int enums). Mitigated by deriving attributes from response and request schemas only, and the live smoke suite catches hydration mismatches.

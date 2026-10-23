@@ -15195,7 +15195,8 @@
                 "created_at": "2026-03-01T10:00:00.000+00:00",
                 "person_id": 12,
                 "made_by_automation": false
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Agent",
@@ -15271,7 +15272,8 @@
                     "target_type": "people"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "AgentConfig",
@@ -15309,7 +15311,8 @@
                     "target_type": "attachments"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "AgentRole",
@@ -15431,7 +15434,8 @@
                     "manage_budgets": true,
                     "view_financials": false
                 }
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ApprovalPolicy",
@@ -15502,7 +15506,11 @@
                 "name": "Time Entry Approval",
                 "policy_type": "time_entry",
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "policy_type",
+                "created_at"
+            ]
         },
         {
             "class": "ApprovalPolicyAssignment",
@@ -15545,7 +15553,8 @@
             ],
             "example": {
                 "created_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ApprovalStatus",
@@ -15642,7 +15651,8 @@
                     "target_type": "time_entries"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "ApprovalWorkflow",
@@ -15716,7 +15726,8 @@
                 "target_type_id": 1,
                 "dynamic_approver_ids": [],
                 "dynamic_subscriber_ids": []
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Artifact",
@@ -15766,7 +15777,8 @@
                     "target_type": "people"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "Attachment",
@@ -15940,7 +15952,8 @@
                 "content_type": "image/png",
                 "created_at": "2026-03-10T10:00:00.000+00:00",
                 "url": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "AutomaticInvoicingRule",
@@ -16034,7 +16047,13 @@
                 "frequency": "monthly",
                 "active": true,
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "name",
+                "frequency",
+                "active",
+                "created_at"
+            ]
         },
         {
             "class": "AutomationReport",
@@ -16146,7 +16165,8 @@
                     "target_type": null
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "BankAccount",
@@ -16237,7 +16257,12 @@
                 "bank_name": "Commerzbank",
                 "currency": "EUR",
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "iban",
+                "bic",
+                "created_at"
+            ]
         },
         {
             "class": "Bill",
@@ -16378,7 +16403,8 @@
                 "date": "2026-03-01",
                 "status": "pending",
                 "created_at": "2026-03-01T09:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Board",
@@ -16434,7 +16460,8 @@
                 "placement": 1000000,
                 "archived_at": null,
                 "hidden": false
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Booking",
@@ -16712,7 +16739,8 @@
                 "draft": false,
                 "custom_fields": null,
                 "last_activity_at": "2026-03-01T09:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "BookingReport",
@@ -17178,7 +17206,20 @@
                 "revenue": "1500.00",
                 "cost": "800.00",
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "total_time",
+                "billable_time",
+                "nonbillable_time",
+                "total_working_days",
+                "person_id",
+                "project_id",
+                "service_id",
+                "started_on",
+                "ended_on",
+                "revenue",
+                "cost"
+            ]
         },
         {
             "class": "BudgetReport",
@@ -18108,7 +18149,20 @@
                 "project_id": 6899,
                 "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "budget_total",
+                "budget_used",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "nonbillable_time",
+                "expense_amount",
+                "project_id",
+                "deal_id"
+            ]
         },
         {
             "class": "Comment",
@@ -18260,7 +18314,8 @@
                 "updated_at": "2026-03-10T11:30:00.000+00:00",
                 "commentable_type": "task",
                 "commentable_id": 120501
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Company",
@@ -18529,7 +18584,8 @@
                 "external_id": null,
                 "external_sync": false,
                 "parent_company_id": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "CompanyReport",
@@ -18755,7 +18811,15 @@
                 "billable_time": 120000,
                 "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "revenue",
+                "invoiced",
+                "payments",
+                "outstanding",
+                "billable_time",
+                "company_id"
+            ]
         },
         {
             "class": "ContactEntry",
@@ -18803,6 +18867,13 @@
                     "property": "email",
                     "type": "string",
                     "description": "The email address of this contact entry."
+                },
+                {
+                    "name": "external_id",
+                    "property": "externalId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "name",
@@ -18898,7 +18969,8 @@
                 "country": "US",
                 "billing_address": "123 Innovation Drive, San Francisco, CA 94105",
                 "billing_email": "billing@acmecorp.com"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Contract",
@@ -18991,7 +19063,8 @@
                 "start_date": "2026-01-01",
                 "end_date": "2026-12-31",
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "CustomDomain",
@@ -19073,7 +19146,8 @@
                 "domain": "app.myagency.com",
                 "verified": true,
                 "verified_at": "2026-01-15T00:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "CustomField",
@@ -19260,7 +19334,11 @@
                 "required": false,
                 "filterable": true,
                 "archived_at": null
-            }
+            },
+            "unseen": [
+                "field_type",
+                "filterable"
+            ]
         },
         {
             "class": "CustomFieldOption",
@@ -19309,7 +19387,8 @@
                 "color_id": "1",
                 "position": 1,
                 "archived_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "CustomFieldSection",
@@ -19352,7 +19431,10 @@
                 "name": "Project Fields",
                 "position": 1,
                 "item_type": "project"
-            }
+            },
+            "unseen": [
+                "item_type"
+            ]
         },
         {
             "class": "Dashboard",
@@ -19411,7 +19493,10 @@
                 "shared": false,
                 "created_at": "2026-01-20T09:00:00.000+00:00",
                 "updated_at": "2026-03-01T10:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "shared"
+            ]
         },
         {
             "class": "Deal",
@@ -19766,6 +19851,48 @@
                     "property": "expenseNormalized",
                     "type": "mixed",
                     "description": "Total expense costs on this deal (normalized currency)."
+                },
+                {
+                    "name": "export_error",
+                    "property": "exportError",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_id",
+                    "property": "exportId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_status",
+                    "property": "exportStatus",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "export_url",
+                    "property": "exportUrl",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "exported",
+                    "property": "exported",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "exported_at",
+                    "property": "exportedAt",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "external_id",
@@ -20433,7 +20560,14 @@
                 "description": "Redesigning the company website with new branding",
                 "is_budget": false,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "status_id",
+                "lost_at",
+                "updated_at",
+                "description",
+                "is_budget"
+            ]
         },
         {
             "class": "DealCostRate",
@@ -20484,7 +20618,8 @@
                 "rate": "120.00",
                 "currency": "USD",
                 "valid_from": "2026-01-01"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "DealFunnelReport",
@@ -20618,7 +20753,13 @@
                 "total_value": "125000.00",
                 "pipeline_id": 1,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "stage",
+                "deal_count",
+                "total_value",
+                "pipeline_id"
+            ]
         },
         {
             "class": "DealReport",
@@ -20688,7 +20829,7 @@
                 {
                     "name": "average_time_to_close",
                     "property": "averageTimeToClose",
-                    "type": "mixed",
+                    "type": "string",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
                 },
@@ -20811,8 +20952,9 @@
                 {
                     "name": "retainer",
                     "property": "retainer",
-                    "type": "int",
-                    "description": "When true, deals in this group are retainer deals."
+                    "type": "bool",
+                    "description": "When true, deals in this group are retainer deals.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "retainer_interval",
@@ -21259,7 +21401,16 @@
                 "billable_time": 48000,
                 "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "total_value",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "deal_id"
+            ]
         },
         {
             "class": "DealStatus",
@@ -21367,7 +21518,10 @@
                 "position": 3,
                 "outcome": "open",
                 "color_id": "7"
-            }
+            },
+            "unseen": [
+                "outcome"
+            ]
         },
         {
             "class": "DeletedItem",
@@ -21456,7 +21610,8 @@
                 "item_name": "#89: Old prototype",
                 "deleted_at": "2026-03-10T10:00:00.000+00:00",
                 "restorable": true
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Discussion",
@@ -21525,7 +21680,8 @@
                 "created_at": "2026-02-01T10:00:00.000+00:00",
                 "updated_at": "2026-03-01T09:00:00.000+00:00",
                 "last_activity_at": "2026-03-01T09:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "DocumentStyle",
@@ -21565,7 +21721,10 @@
             "example": {
                 "name": "Modern Blue",
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "created_at"
+            ]
         },
         {
             "class": "DocumentType",
@@ -21745,7 +21904,10 @@
             "example": {
                 "name": "Standard Invoice",
                 "default": true
-            }
+            },
+            "unseen": [
+                "default"
+            ]
         },
         {
             "class": "EinvoiceIdentity",
@@ -21820,7 +21982,8 @@
                 "is_government_entity": false,
                 "created_at": "2025-04-10T08:15:00.000Z",
                 "updated_at": "2025-04-10T08:15:00.000Z"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Email",
@@ -22034,7 +22197,8 @@
                 "failed_at": null,
                 "unread": true,
                 "dismissed_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Entitlement",
@@ -22107,7 +22271,8 @@
                 "used": 480,
                 "pending": 960,
                 "note": "Annual vacation entitlement 2026"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "EntitlementReport",
@@ -22302,7 +22467,14 @@
                 "remaining": 720,
                 "person_id": 12,
                 "event_id": 10
-            }
+            },
+            "unseen": [
+                "allocated",
+                "used",
+                "remaining",
+                "person_id",
+                "event_id"
+            ]
         },
         {
             "class": "Event",
@@ -22401,7 +22573,8 @@
                 "half_day_bookings": true,
                 "description": "Annual paid leave",
                 "absence_type": "vacation"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ExchangeRate",
@@ -22449,7 +22622,12 @@
                 "to_currency": "USD",
                 "rate": "1.0834",
                 "date": "2026-03-15"
-            }
+            },
+            "unseen": [
+                "from_currency",
+                "to_currency",
+                "rate"
+            ]
         },
         {
             "class": "Expense",
@@ -22614,6 +22792,13 @@
                     "description": "Exchange rate from expense currency to budget currency."
                 },
                 {
+                    "name": "export_error",
+                    "property": "exportError",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "export_id",
                     "property": "exportId",
                     "type": "string",
@@ -22637,6 +22822,13 @@
                         10,
                         11
                     ]
+                },
+                {
+                    "name": "export_status",
+                    "property": "exportStatus",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "export_url",
@@ -22963,7 +23155,12 @@
                 "created_at": "2026-03-01T10:00:00.000+00:00",
                 "updated_at": "2026-03-01T10:00:00.000+00:00",
                 "note": null
-            }
+            },
+            "unseen": [
+                "billable",
+                "status",
+                "note"
+            ]
         },
         {
             "class": "ExpenseLineItem",
@@ -23038,7 +23235,12 @@
                 "currency": "EUR",
                 "currency_default": "USD",
                 "currency_normalized": "USD"
-            }
+            },
+            "unseen": [
+                "currency",
+                "currency_default",
+                "currency_normalized"
+            ]
         },
         {
             "class": "ExpenseReport",
@@ -23504,7 +23706,13 @@
                 "person_id": 12,
                 "project_id": 6899,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "approved_amount",
+                "pending_amount",
+                "billable_amount",
+                "person_id"
+            ]
         },
         {
             "class": "Filter",
@@ -23754,7 +23962,11 @@
                     }
                 },
                 "created_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "item_type",
+                "filter_data"
+            ]
         },
         {
             "class": "FinancialItemReport",
@@ -23808,6 +24020,13 @@
                     "property": "averageRecognizedMargin",
                     "type": "float",
                     "description": "Average recognized margin for this financial item report group."
+                },
+                {
+                    "name": "average_retainer_interval_count",
+                    "property": "averageRetainerIntervalCount",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "billing_type_id",
@@ -24422,7 +24641,14 @@
                 "profit_margin": 0.4,
                 "project_id": 6899,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "project_id"
+            ]
         },
         {
             "class": "Folder",
@@ -24478,7 +24704,8 @@
                 "placement": 1000000,
                 "archived_at": null,
                 "hidden": false
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Holiday",
@@ -24518,7 +24745,8 @@
             "example": {
                 "name": "New Year's Day",
                 "date": "2026-01-01"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "HolidayCalendar",
@@ -24562,7 +24790,8 @@
                 "country": "US",
                 "state": "US-CA",
                 "autogenerate_holidays": true
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Integration",
@@ -25432,7 +25661,8 @@
                 "payments_import": true,
                 "last_synced_at": "2026-03-15T08:00:00.000+00:00",
                 "options": []
-            }
+            },
+            "unseen": []
         },
         {
             "class": "IntegrationExporterConfiguration",
@@ -25554,7 +25784,8 @@
                 "import_number": false,
                 "last_synced_at": "2026-03-15T08:00:00.000+00:00",
                 "options": []
-            }
+            },
+            "unseen": []
         },
         {
             "class": "IntegrationTaskManagementConfiguration",
@@ -25625,7 +25856,8 @@
                     "target_type": "projects"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "Invitation",
@@ -25663,7 +25895,8 @@
                 "first_name": "Jordan",
                 "last_name": "Lee",
                 "time_zone": "Europe/London"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Invoice",
@@ -25915,6 +26148,13 @@
                     "description": "Exchange rate from the invoice currency to the organization default currency."
                 },
                 {
+                    "name": "export_error",
+                    "property": "exportError",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "export_id",
                     "property": "exportId",
                     "type": "string",
@@ -25944,6 +26184,13 @@
                     "property": "exportInvoiceUrl",
                     "type": "string",
                     "description": "URL to view this invoice in the external accounting system."
+                },
+                {
+                    "name": "export_status",
+                    "property": "exportStatus",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "exported",
@@ -26251,7 +26498,16 @@
                 "currency": "USD",
                 "notes": "Payment due within 30 days",
                 "last_activity_at": "2026-03-15T09:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "status",
+                "due_date",
+                "date",
+                "total",
+                "subtotal",
+                "tax",
+                "notes"
+            ]
         },
         {
             "class": "InvoiceAttribution",
@@ -26333,7 +26589,10 @@
                 "amount": "500.00",
                 "currency": "USD",
                 "attributed_at": "2026-03-10T12:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "attributed_at"
+            ]
         },
         {
             "class": "InvoiceReport",
@@ -26833,7 +27092,17 @@
                 "invoice_id": 234,
                 "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "total",
+                "subtotal",
+                "tax",
+                "paid",
+                "outstanding",
+                "status",
+                "invoice_id",
+                "company_id"
+            ]
         },
         {
             "class": "InvoiceTemplate",
@@ -26942,7 +27211,12 @@
                 "name": "Standard Invoice",
                 "default": true,
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "name",
+                "default",
+                "created_at"
+            ]
         },
         {
             "class": "JobRole",
@@ -26977,7 +27251,8 @@
                     "target_type": "organizations"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "LineItem",
@@ -27208,7 +27483,13 @@
                 "currency": "USD",
                 "position": 1,
                 "tax_rate": "0.1"
-            }
+            },
+            "unseen": [
+                "name",
+                "unit",
+                "total_price",
+                "tax_rate"
+            ]
         },
         {
             "class": "LineItemReport",
@@ -27432,7 +27713,12 @@
                 "service_id": 1856422,
                 "invoice_id": 234,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "total_price",
+                "service_id",
+                "invoice_id"
+            ]
         },
         {
             "class": "LostReason",
@@ -27468,7 +27754,8 @@
                 "name": "Budget constraints",
                 "position": 1,
                 "archived_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Membership",
@@ -27585,7 +27872,8 @@
                 "options": [],
                 "target_type": "project",
                 "type_id": 1
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Notification",
@@ -27750,7 +28038,8 @@
                 "made_by_automation": false,
                 "root_id": 6899,
                 "root_type": "project"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Organization",
@@ -28102,6 +28391,13 @@
                     "property": "manDayMinutes",
                     "type": "int",
                     "description": "Number of minutes in a man-day, used to convert between hours and days in reports and scheduling."
+                },
+                {
+                    "name": "meeting_settings",
+                    "property": "meetingSettings",
+                    "type": "object",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "metrics",
@@ -28509,7 +28805,12 @@
                 "created_at": "2020-01-01T00:00:00.000+00:00",
                 "currency": "USD",
                 "timezone": "UTC"
-            }
+            },
+            "unseen": [
+                "subdomain",
+                "created_at",
+                "timezone"
+            ]
         },
         {
             "class": "OrganizationMembership",
@@ -28876,7 +29177,8 @@
                 "weekly_emails": true,
                 "preferences": [],
                 "quick_start_config": []
-            }
+            },
+            "unseen": []
         },
         {
             "class": "OrganizationSubscription",
@@ -29134,6 +29436,13 @@
                     "description": "The trial plan ends at."
                 },
                 {
+                    "name": "trial_plan_ends_on",
+                    "property": "trialPlanEndsOn",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "trial_plan_type",
                     "property": "trialPlanType",
                     "type": "mixed",
@@ -29173,7 +29482,12 @@
                 "contract_seats": 25,
                 "current_plan": "business",
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "seats_max",
+                "contract_end_date",
+                "currency"
+            ]
         },
         {
             "class": "Overhead",
@@ -29538,7 +29852,8 @@
             "example": {
                 "name": "Team Building & Offsites",
                 "archived_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Page",
@@ -29714,7 +30029,8 @@
                 "last_activity_at": "2026-03-10T15:00:00.000+00:00",
                 "position": 1,
                 "archived_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "PageReport",
@@ -29834,7 +30150,8 @@
                 "page_id": 78,
                 "project_id": 6899,
                 "created_at": "2026-01-20T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "PageVersion",
@@ -29909,7 +30226,8 @@
             "example": {
                 "version_number": 3,
                 "created_at": "2026-03-10T15:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Password",
@@ -29937,7 +30255,8 @@
             "relationships": [],
             "example": {
                 "updated_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Payment",
@@ -30028,7 +30347,10 @@
                 "paid_on": "2026-03-10",
                 "note": null,
                 "created_at": "2026-03-10T12:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "created_at"
+            ]
         },
         {
             "class": "PaymentReminderSequence",
@@ -30090,7 +30412,10 @@
             "example": {
                 "name": "Standard Reminder",
                 "default": true
-            }
+            },
+            "unseen": [
+                "default"
+            ]
         },
         {
             "class": "PaymentReport",
@@ -30255,7 +30580,13 @@
                 "invoice_id": 234,
                 "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "amount",
+                "paid_on",
+                "invoice_id",
+                "company_id"
+            ]
         },
         {
             "class": "PayrollItemReport",
@@ -30526,7 +30857,13 @@
                 "person_id": 12,
                 "month": "2026-03",
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "gross",
+                "net",
+                "person_id",
+                "month"
+            ]
         },
         {
             "class": "Person",
@@ -30944,7 +31281,8 @@
                 "offboarding_status": null,
                 "offboarding_id": null,
                 "time_tracking_policy_id": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "PersonReport",
@@ -31244,7 +31582,17 @@
                 "cost": "1620.00",
                 "person_id": 12,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "billable_time",
+                "nonbillable_time",
+                "total_time",
+                "utilization",
+                "capacity",
+                "revenue",
+                "cost",
+                "person_id"
+            ]
         },
         {
             "class": "Pipeline",
@@ -31323,7 +31671,11 @@
                 "name": "Sales Pipeline",
                 "default": true,
                 "archived_at": null
-            }
+            },
+            "unseen": [
+                "default",
+                "archived_at"
+            ]
         },
         {
             "class": "Placeholder",
@@ -31400,7 +31752,8 @@
                 "type": "person",
                 "created_at": "2026-09-02T11:48:32.010+02:00",
                 "updated_at": "2026-09-02T11:48:42.251+02:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "PlaceholderUsage",
@@ -31526,7 +31879,8 @@
                 "interval_enabled": false,
                 "created_at": "2026-09-02T11:48:44.135+02:00",
                 "updated_at": "2026-09-02T11:48:44.135+02:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Price",
@@ -31743,7 +32097,8 @@
                 "rate": "150.00",
                 "estimated_cost": "24000.00",
                 "updated_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "PriceReport",
@@ -31986,7 +32341,8 @@
                 "service_type_id": 5,
                 "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Project",
@@ -32226,7 +32582,8 @@
                 "description": null,
                 "custom_fields": null,
                 "tag_colors": []
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ProjectPreference",
@@ -32281,7 +32638,8 @@
                 "created_at": "2026-01-20T10:00:00.000+00:00",
                 "preferences": "{\"project_last_tab\":\"tasks\",\"default_tab_id\":\"1867-project-tasks\"}",
                 "watched": false
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ProjectReport",
@@ -32626,7 +32984,20 @@
                 "project_id": 6899,
                 "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "budget_total",
+                "budget_used",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "nonbillable_time",
+                "total_time",
+                "project_id",
+                "company_id"
+            ]
         },
         {
             "class": "Proposal",
@@ -32993,7 +33364,12 @@
                 "declined_at": null,
                 "currency": "USD",
                 "total": "45000.00"
-            }
+            },
+            "unseen": [
+                "accepted_at",
+                "declined_at",
+                "total"
+            ]
         },
         {
             "class": "ProposalReport",
@@ -33227,7 +33603,12 @@
                 "deal_id": 89,
                 "company_id": 65111,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "total",
+                "deal_id",
+                "company_id"
+            ]
         },
         {
             "class": "Pulse",
@@ -33391,7 +33772,8 @@
                 "score": 8,
                 "comment": "Great sprint \u2014 shipped the auth feature on time",
                 "created_at": "2026-03-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "PurchaseOrder",
@@ -33683,7 +34065,8 @@
                 "currency": "USD",
                 "date": "2026-02-01",
                 "created_at": "2026-02-01T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "RateCard",
@@ -33748,7 +34131,8 @@
                 "currency": "USD",
                 "created_at": "2026-01-01T00:00:00.000+00:00",
                 "updated_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ReportCategory",
@@ -33795,7 +34179,8 @@
             "example": {
                 "name": "Financial",
                 "description": "Revenue, cost, and profitability reports"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ResourceRequest",
@@ -34018,7 +34403,12 @@
                 "end_date": "2026-04-30",
                 "note": "Need a senior React developer for the dashboard feature",
                 "created_at": "2026-03-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "requested_hours",
+                "start_date",
+                "end_date"
+            ]
         },
         {
             "class": "ResourceRequestReport",
@@ -34177,7 +34567,8 @@
                     "target_type": "subsidiaries"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "RevenueDistribution",
@@ -34272,7 +34663,12 @@
                 "project_id": 6899,
                 "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "recognized_at",
+                "project_id",
+                "deal_id"
+            ]
         },
         {
             "class": "Role",
@@ -34415,7 +34811,8 @@
                     "manage_budgets": true,
                     "view_financials": false
                 }
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Salary",
@@ -34567,7 +34964,8 @@
                 "currency": "USD",
                 "cost": "85000.00",
                 "hourly_rate": "51.44"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "SalaryReport",
@@ -34845,7 +35243,12 @@
                 "person_id": 12,
                 "month": "2026-03",
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "total_salary",
+                "person_id",
+                "month"
+            ]
         },
         {
             "class": "Section",
@@ -34901,7 +35304,8 @@
                 "position": 1,
                 "preferences": [],
                 "editor_config": []
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Service",
@@ -35499,7 +35903,8 @@
                 "estimated_time": 8000,
                 "budgeted_time": 8000,
                 "currency": "USD"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ServiceAssignment",
@@ -35531,7 +35936,10 @@
             ],
             "example": {
                 "billable": true
-            }
+            },
+            "unseen": [
+                "billable"
+            ]
         },
         {
             "class": "ServiceReport",
@@ -36378,7 +36786,21 @@
                 "service_id": 1856422,
                 "deal_id": 89,
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "budget_total",
+                "budget_used",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "billable_time",
+                "nonbillable_time",
+                "worked_time",
+                "estimated_time",
+                "service_id",
+                "deal_id"
+            ]
         },
         {
             "class": "ServiceType",
@@ -36426,7 +36848,8 @@
                 "name": "Development",
                 "description": "Software development and engineering work",
                 "archived_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "ServiceTypeAssignment",
@@ -36450,7 +36873,8 @@
                     "target_type": "service_types"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "Session",
@@ -36581,7 +37005,8 @@
             "example": {
                 "token": null,
                 "created_at": "2026-03-15T09:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Skill",
@@ -36663,7 +37088,8 @@
                     "target_type": "memberships"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "Subsidiary",
@@ -36803,7 +37229,8 @@
                 "show_delivery_date": false,
                 "invoice_number_format": "INV-{YYYY}-{NNN}",
                 "invoice_number_scope": "subsidiary"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Survey",
@@ -36885,7 +37312,10 @@
                 "title": "Client Satisfaction Q1 2026",
                 "status": "published",
                 "created_at": "2026-01-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "status"
+            ]
         },
         {
             "class": "SurveyField",
@@ -37028,7 +37458,8 @@
                 "field_type": "rating",
                 "required": true,
                 "position": 1
-            }
+            },
+            "unseen": []
         },
         {
             "class": "SurveyFieldOption",
@@ -37086,7 +37517,8 @@
                 "label": "Very Satisfied",
                 "value": "5",
                 "position": 1
-            }
+            },
+            "unseen": []
         },
         {
             "class": "SurveyReport",
@@ -37199,7 +37631,13 @@
                 "avg_score": 4.2,
                 "survey_id": 7,
                 "project_id": 6899
-            }
+            },
+            "unseen": [
+                "response_count",
+                "avg_score",
+                "survey_id",
+                "project_id"
+            ]
         },
         {
             "class": "SurveyResponse",
@@ -37262,7 +37700,8 @@
                 "answers": {
                     "45": 5
                 }
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Tag",
@@ -37286,7 +37725,8 @@
             "example": {
                 "name": "backend",
                 "color_id": "3"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Task",
@@ -37707,7 +38147,8 @@
                 "billable_time": 120,
                 "worked_time": 240,
                 "deleted_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TaskDependency",
@@ -37761,7 +38202,8 @@
             "example": {
                 "dependency_type": "blocking",
                 "created_at": "2026-03-01T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TaskList",
@@ -37822,7 +38264,8 @@
                 "placement": 1000000,
                 "archived_at": null,
                 "email_key": "a1b2c3d4e5f6789012345678901234ab"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TaskReport",
@@ -38153,7 +38596,16 @@
                 "remaining_time": 0,
                 "task_id": 120501,
                 "project_id": 6899
-            }
+            },
+            "unseen": [
+                "billable_time",
+                "nonbillable_time",
+                "total_time",
+                "initial_estimate",
+                "remaining_time",
+                "task_id",
+                "project_id"
+            ]
         },
         {
             "class": "TaxRate",
@@ -38216,7 +38668,8 @@
                 "secondary_component_name": null,
                 "secondary_component_value": null,
                 "archived_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Team",
@@ -38258,7 +38711,8 @@
                 "name": "Engineering",
                 "color_id": "5",
                 "icon_id": "2"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TeamMembership",
@@ -38282,7 +38736,8 @@
                     "target_type": "teams"
                 }
             ],
-            "example": []
+            "example": [],
+            "unseen": []
         },
         {
             "class": "Template",
@@ -38393,7 +38848,8 @@
                 "created_at": "2023-01-24T14:08:06.857+01:00",
                 "updated_at": "2026-04-29T12:27:06.627+02:00",
                 "deleted_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TimeEntry",
@@ -38801,7 +39257,8 @@
                 "last_activity_at": "2026-03-15T09:30:00.000+00:00",
                 "submitted": false,
                 "currency": "USD"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TimeEntryReport",
@@ -39510,7 +39967,22 @@
                 "service_id": 1856422,
                 "date": "2026-03-15",
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "billable_time",
+                "nonbillable_time",
+                "worked_time",
+                "approved_time",
+                "unapproved_time",
+                "revenue",
+                "cost",
+                "profit",
+                "profit_margin",
+                "person_id",
+                "project_id",
+                "service_id",
+                "date"
+            ]
         },
         {
             "class": "TimeEntryVersion",
@@ -39599,7 +40071,8 @@
                     ]
                 },
                 "created_at": "2026-03-15T17:30:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TimeReport",
@@ -40131,7 +40604,16 @@
                 "project_id": 6899,
                 "date": "2026-03-15",
                 "currency": "USD"
-            }
+            },
+            "unseen": [
+                "nonbillable_time",
+                "total_time",
+                "revenue",
+                "cost",
+                "person_id",
+                "project_id",
+                "date"
+            ]
         },
         {
             "class": "TimeTrackingPolicy",
@@ -40296,7 +40778,14 @@
                 "daily_limit": 720,
                 "requires_task": false,
                 "requires_service": true
-            }
+            },
+            "unseen": [
+                "track_method_ids",
+                "default_track_method_id",
+                "daily_limit",
+                "requires_task",
+                "requires_service"
+            ]
         },
         {
             "class": "Timer",
@@ -40345,7 +40834,8 @@
                 "started_at": "2026-03-15T09:00:00.000+00:00",
                 "stopped_at": null,
                 "total_time": 3600
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Timesheet",
@@ -40413,7 +40903,8 @@
                 "total_time": 2400,
                 "submitted_at": "2026-03-17T09:00:00.000+00:00",
                 "approved_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "TimesheetReport",
@@ -40648,7 +41139,14 @@
                 "total_time": 2400,
                 "submitted_at": "2026-03-17T09:00:00.000+00:00",
                 "approved_at": null
-            }
+            },
+            "unseen": [
+                "status",
+                "week_starting",
+                "total_time",
+                "submitted_at",
+                "approved_at"
+            ]
         },
         {
             "class": "Todo",
@@ -40735,7 +41233,8 @@
                 "created_at": "2026-03-01T10:00:00.000+00:00",
                 "todoable_type": "task",
                 "position": 1
-            }
+            },
+            "unseen": []
         },
         {
             "class": "User",
@@ -40891,7 +41390,8 @@
                 "newsletter_consent": true,
                 "preferences": [],
                 "updated_at": "2026-03-15T10:00:00.000+00:00"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Webhook",
@@ -41052,7 +41552,14 @@
                 "active": true,
                 "secret": null,
                 "created_at": "2026-01-01T00:00:00.000+00:00"
-            }
+            },
+            "unseen": [
+                "url",
+                "events",
+                "active",
+                "secret",
+                "created_at"
+            ]
         },
         {
             "class": "WebhookLog",
@@ -41145,7 +41652,8 @@
                 "sent_at": "2026-03-15T10:00:05.000+00:00",
                 "success": true,
                 "url": "https://hooks.example.com/productive"
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Widget",
@@ -41243,7 +41751,8 @@
                 "width": 6,
                 "height": 4,
                 "content": []
-            }
+            },
+            "unseen": []
         },
         {
             "class": "Workflow",
@@ -41278,7 +41787,8 @@
             "example": {
                 "name": "Default Workflow",
                 "archived_at": null
-            }
+            },
+            "unseen": []
         },
         {
             "class": "WorkflowStatus",
@@ -41332,7 +41842,8 @@
                 "color_id": "5",
                 "position": 2,
                 "category_id": 2
-            }
+            },
+            "unseen": []
         }
     ],
     "inputs": [

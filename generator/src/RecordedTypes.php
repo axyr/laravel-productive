@@ -17,7 +17,8 @@ use Axyr\Productive\Generator\Recording\ValueKind;
  * - an attribute keeps its spec type unless a recorded value is one its lenient reader cannot read;
  * - null and empty values never override, so a resource without data keeps the spec's types;
  * - int and float together widen to float, never the other way round;
- * - attributes and relationships the spec does not document are added, flagged as undocumented.
+ * - attributes and relationships the spec does not document are added, flagged as undocumented;
+ * - an attribute only the spec's example has, which no recorded response carried, is kept but listed.
  */
 final readonly class RecordedTypes
 {
@@ -148,6 +149,22 @@ final readonly class RecordedTypes
     public function hasType(string $type): bool
     {
         return isset($this->attributes[$type]);
+    }
+
+    /**
+     * The given attributes that no recorded response of the type carried; none when the type was
+     * not recorded, because an empty list proves nothing.
+     *
+     * @param  array<string>  $names
+     * @return list<string>
+     */
+    public function unseen(string $type, array $names): array
+    {
+        if (! $this->hasType($type)) {
+            return [];
+        }
+
+        return array_values(array_filter($names, fn(string $name): bool => ! isset($this->attributes[$type][$name])));
     }
 
     public function recordedOn(): string

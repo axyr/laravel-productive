@@ -1,11 +1,11 @@
 {
-    "recorded_on": "2026-10-11",
+    "recorded_on": "2026-10-23",
     "statuses": {
         "activities.index": 200,
         "activities.index.include": 200,
         "activities.show": 200,
-        "agent_configs.index": 403,
-        "agents.index": 403,
+        "agent_configs.index": 200,
+        "agents.index": 200,
         "approval_policies.index": 200,
         "approval_policies.index.include": 200,
         "approval_policies.show": 200,
@@ -102,6 +102,7 @@
         "invoice_templates.show": 200,
         "invoices.index": 200,
         "invoices.index.include": 200,
+        "invoices.preview": 422,
         "invoices.show": 200,
         "job_roles.index": 200,
         "job_roles.index.include": 200,
@@ -119,6 +120,7 @@
         "organization_memberships.index": 200,
         "organization_memberships.index.include": 200,
         "organization_memberships.show": 200,
+        "organization_subscriptions.show": 200,
         "organizations.index": 200,
         "organizations.index.include": 200,
         "organizations.show": 200,
@@ -149,6 +151,8 @@
         "proposals.index": 200,
         "proposals.index.include": 200,
         "proposals.show": 200,
+        "proposals.signed_pdf": 404,
+        "proposals.sync_status": 200,
         "pulses.index": 200,
         "purchase_orders.index": 200,
         "rate_cards.index": 200,
@@ -275,7 +279,7 @@
         "reports.time_entry_reports.index.include.invoice+last_actor": 200,
         "reports.time_entry_reports.index.include.last_actor_report": 200,
         "reports.time_entry_reports.index.include.organization": 400,
-        "reports.time_entry_reports.index.include.person+person_report+person_subsidiary+project+project_report+report+responsible+responsible_report+service+service_report+service_type+task+task_list+task_report+time_entry+person_manager": 200,
+        "reports.time_entry_reports.index.include.person+person_manager+person_report+person_subsidiary+project+project_report+report+responsible+responsible_report+service+service_report+service_type+task+task_list+task_report+time_entry": 200,
         "reports.time_reports.index": 200,
         "reports.time_reports.index.include.budget+company+company_report+deal_or_budget_report": 200,
         "reports.time_reports.index.include.event+job_role": 200,
@@ -312,7 +316,7 @@
         "services.index": 200,
         "services.index.include": 200,
         "services.show": 200,
-        "skills.index": 403,
+        "skills.index": 200,
         "subsidiaries.index": 200,
         "subsidiaries.index.include": 200,
         "subsidiaries.show": 200,
@@ -373,6 +377,8 @@
         "users.show": 200,
         "webhook_logs.index": 200,
         "webhooks.index": 200,
+        "webhooks.index.include": 200,
+        "webhooks.show": 200,
         "widgets.index": 200,
         "widgets.index.include": 200,
         "widgets.show": 200,
@@ -499,7 +505,6 @@
                     "null"
                 ],
                 "invoice_id": [
-                    "int",
                     "null"
                 ],
                 "item_deleted_at": [
@@ -553,7 +558,6 @@
                     "string"
                 ],
                 "task_id": [
-                    "int",
                     "null"
                 ]
             },
@@ -758,6 +762,7 @@
                     "int"
                 ],
                 "average_recognized_margin": [
+                    "decimal-string",
                     "null"
                 ],
                 "billing_type": [
@@ -1051,10 +1056,12 @@
                     "null"
                 ],
                 "average_budget_usage": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_budget_usage_default": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_budget_usage_normalized": [
                     "null"
@@ -1063,25 +1070,30 @@
                     "decimal-string"
                 ],
                 "average_forecasted_budget_overrun": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_forecasted_budget_overrun_default": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_forecasted_budget_overrun_normalized": [
                     "null"
                 ],
                 "average_forecasted_budget_usage": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_forecasted_budget_usage_default": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_forecasted_budget_usage_normalized": [
                     "null"
                 ],
                 "average_forecasted_time_usage": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "average_invoiced_percentage": [
                     "decimal-string",
@@ -1475,13 +1487,13 @@
                 "default_document_type_id": [
                     "null"
                 ],
+                "default_payment_reminder_sequence_id": [
+                    "null"
+                ],
                 "default_subsidiary_id": [
                     "null"
                 ],
                 "default_tax_rate_id": [
-                    "null"
-                ],
-                "domain": [
                     "null"
                 ],
                 "domains": [
@@ -1544,6 +1556,10 @@
                     "types": []
                 },
                 "default_document_type": {
+                    "to_many": null,
+                    "types": []
+                },
+                "default_payment_reminder_sequence": {
                     "to_many": null,
                     "types": []
                 },
@@ -1691,6 +1707,9 @@
                     "string"
                 ],
                 "email": [
+                    "null"
+                ],
+                "external_id": [
                     "null"
                 ],
                 "name": [
@@ -2020,7 +2039,11 @@
                 "average_rate_normalized": [
                     "null"
                 ],
+                "average_retainer_interval_count": [
+                    "int"
+                ],
                 "average_time_to_close": [
+                    "decimal-string",
                     "null"
                 ],
                 "count": [
@@ -2060,6 +2083,7 @@
                     "string"
                 ],
                 "previous_probability": [
+                    "decimal-string",
                     "null"
                 ],
                 "probability": [
@@ -2067,6 +2091,12 @@
                 ],
                 "quarter": [
                     "string"
+                ],
+                "retainer": [
+                    "bool"
+                ],
+                "retainer_interval": [
+                    "null"
                 ],
                 "revenue_distribution_base": [
                     "string"
@@ -2236,8 +2266,10 @@
                     ]
                 },
                 "previous_deal_status": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "deal_statuses"
+                    ]
                 },
                 "report": {
                     "to_many": null,
@@ -2431,7 +2463,8 @@
                 ],
                 "editor_config": [
                     "empty",
-                    "null"
+                    "null",
+                    "object"
                 ],
                 "email_key": [
                     "string"
@@ -2459,6 +2492,24 @@
                 ],
                 "expense_normalized": [
                     "int"
+                ],
+                "export_error": [
+                    "null"
+                ],
+                "export_id": [
+                    "null"
+                ],
+                "export_status": [
+                    "string"
+                ],
+                "export_url": [
+                    "null"
+                ],
+                "exported": [
+                    "bool"
+                ],
+                "exported_at": [
+                    "null"
                 ],
                 "external_id": [
                     "null"
@@ -2516,6 +2567,7 @@
                     "null"
                 ],
                 "origin_deal_id": [
+                    "int",
                     "null"
                 ],
                 "overtime_enabled": [
@@ -2534,9 +2586,11 @@
                     "int"
                 ],
                 "position": [
-                    "int"
+                    "int",
+                    "null"
                 ],
                 "previous_probability": [
+                    "int",
                     "null"
                 ],
                 "probability": [
@@ -2630,6 +2684,7 @@
                     "null"
                 ],
                 "sales_closed_on": [
+                    "date",
                     "null"
                 ],
                 "sales_status_updated_at": [
@@ -3389,11 +3444,17 @@
                 "exchange_rate_normalized": [
                     "decimal-string"
                 ],
+                "export_error": [
+                    "null"
+                ],
                 "export_id": [
                     "null"
                 ],
                 "export_integration_type_id": [
                     "null"
+                ],
+                "export_status": [
+                    "int"
                 ],
                 "export_url": [
                     "null"
@@ -3753,6 +3814,9 @@
                 "average_recognized_margin": [
                     "decimal-string",
                     "null"
+                ],
+                "average_retainer_interval_count": [
+                    "int"
                 ],
                 "billing_type_id": [
                     "int"
@@ -4649,6 +4713,9 @@
                 "exchange_rate": [
                     "decimal-string"
                 ],
+                "export_error": [
+                    "null"
+                ],
                 "export_id": [
                     "null"
                 ],
@@ -4657,6 +4724,9 @@
                 ],
                 "export_invoice_url": [
                     "null"
+                ],
+                "export_status": [
+                    "int"
                 ],
                 "exported": [
                     "bool"
@@ -5453,6 +5523,15 @@
                 "total_scheduled_revenue_normalized": [
                     "int"
                 ],
+                "total_work_cost": [
+                    "int"
+                ],
+                "total_work_cost_default": [
+                    "int"
+                ],
+                "total_work_cost_normalized": [
+                    "int"
+                ],
                 "unapproved_time": [
                     "int"
                 ],
@@ -5728,7 +5807,7 @@
                     "decimal-string"
                 ],
                 "billing_address": [
-                    "null"
+                    "object"
                 ],
                 "billing_email": [
                     "string"
@@ -5814,10 +5893,16 @@
                 "trial_ends_at": [
                     "date-time"
                 ],
+                "trial_ends_on": [
+                    "date"
+                ],
                 "trial_plan_active": [
                     "bool"
                 ],
                 "trial_plan_ends_at": [
+                    "null"
+                ],
+                "trial_plan_ends_on": [
                     "null"
                 ],
                 "trial_product_ids": [
@@ -5983,6 +6068,9 @@
                 ],
                 "man_day_minutes": [
                     "int"
+                ],
+                "meeting_settings": [
+                    "object"
                 ],
                 "metrics": [
                     "string"
@@ -6572,6 +6660,7 @@
                     "int"
                 ],
                 "invited_at": [
+                    "date-time",
                     "null"
                 ],
                 "is_user": [
@@ -6896,12 +6985,14 @@
                     "date-time"
                 ],
                 "preferences": [
+                    "json-text",
                     "null"
                 ],
                 "tasks_layout_id": [
                     "null"
                 ],
                 "watched": [
+                    "bool",
                     "null"
                 ]
             },
@@ -7116,6 +7207,7 @@
                     "null"
                 ],
                 "page_custom_fields_positions": [
+                    "empty",
                     "null"
                 ],
                 "preferences": [
@@ -7123,6 +7215,7 @@
                     "object"
                 ],
                 "project_color_id": [
+                    "int",
                     "null"
                 ],
                 "project_number": [
@@ -7142,6 +7235,7 @@
                     "null"
                 ],
                 "task_custom_fields_positions": [
+                    "empty",
                     "null"
                 ],
                 "template": [
@@ -7175,6 +7269,10 @@
                         "people"
                     ]
                 },
+                "memberships": {
+                    "to_many": null,
+                    "types": []
+                },
                 "organization": {
                     "to_many": false,
                     "types": [
@@ -7186,6 +7284,10 @@
                     "types": [
                         "people"
                     ]
+                },
+                "project_milestones": {
+                    "to_many": null,
+                    "types": []
                 },
                 "template_object": {
                     "to_many": null,
@@ -7369,6 +7471,9 @@
                 ],
                 "pdf_url": [
                     "null"
+                ],
+                "public_uuid": [
+                    "string"
                 ],
                 "purchase_order_number": [
                     "null"
@@ -7770,6 +7875,9 @@
         },
         "salaries": {
             "attributes": {
+                "alternating_hours": [
+                    "bool"
+                ],
                 "cost": [
                     "int"
                 ],
@@ -7956,6 +8064,9 @@
                 "average_profit_margin_normalized": [
                     "null"
                 ],
+                "average_retainer_interval_count": [
+                    "int"
+                ],
                 "billable": [
                     "int"
                 ],
@@ -8002,6 +8113,9 @@
                     "empty"
                 ],
                 "group": [
+                    "string"
+                ],
+                "limitation_type": [
                     "string"
                 ],
                 "project_type": [
@@ -8195,7 +8309,13 @@
                 "total_revenue_normalized": [
                     "null"
                 ],
+                "total_rolled_over_time": [
+                    "int"
+                ],
                 "total_tentative_booked_time": [
+                    "int"
+                ],
+                "total_unapproved_time": [
                     "int"
                 ],
                 "total_worked_cost": [
@@ -8379,6 +8499,7 @@
                     "string"
                 ],
                 "editor_config": [
+                    "empty",
                     "null"
                 ],
                 "estimated_cost": [
@@ -8459,6 +8580,9 @@
                 "initial_service_id": [
                     "int"
                 ],
+                "limitation_type": [
+                    "string"
+                ],
                 "markup": [
                     "null"
                 ],
@@ -8475,6 +8599,7 @@
                     "string"
                 ],
                 "origin_service_id": [
+                    "int",
                     "null"
                 ],
                 "overtime_time": [
@@ -8529,11 +8654,17 @@
                 "revenue_normalized": [
                     "int"
                 ],
+                "rolled_over_time": [
+                    "int"
+                ],
                 "tentative_booked_time": [
                     "int"
                 ],
                 "time_tracking_enabled": [
                     "bool"
+                ],
+                "unapproved_time": [
+                    "int"
                 ],
                 "unit_id": [
                     "int"
@@ -9075,6 +9206,10 @@
                     "to_many": null,
                     "types": []
                 },
+                "service": {
+                    "to_many": null,
+                    "types": []
+                },
                 "subtasks": {
                     "to_many": true,
                     "types": []
@@ -9563,6 +9698,33 @@
                 "total_cost_normalized": [
                     "int"
                 ],
+                "total_facility_overhead_cost": [
+                    "int"
+                ],
+                "total_facility_overhead_cost_default": [
+                    "int"
+                ],
+                "total_facility_overhead_cost_normalized": [
+                    "int"
+                ],
+                "total_internal_overhead_cost": [
+                    "int"
+                ],
+                "total_internal_overhead_cost_default": [
+                    "int"
+                ],
+                "total_internal_overhead_cost_normalized": [
+                    "int"
+                ],
+                "total_overhead_cost": [
+                    "int"
+                ],
+                "total_overhead_cost_default": [
+                    "int"
+                ],
+                "total_overhead_cost_normalized": [
+                    "int"
+                ],
                 "total_recognized_profit": [
                     "int"
                 ],
@@ -9585,6 +9747,15 @@
                     "int"
                 ],
                 "total_time": [
+                    "int"
+                ],
+                "total_work_cost": [
+                    "int"
+                ],
+                "total_work_cost_default": [
+                    "int"
+                ],
+                "total_work_cost_normalized": [
                     "int"
                 ],
                 "track_method_id": [
@@ -9772,12 +9943,10 @@
                     "string"
                 ],
                 "monday_available": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "monday_capacity": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "monday_time": [
                     "int"
@@ -9801,34 +9970,28 @@
                     "int"
                 ],
                 "thursday_available": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "thursday_capacity": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "thursday_time": [
                     "int"
                 ],
                 "tuesday_available": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "tuesday_capacity": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "tuesday_time": [
                     "int"
                 ],
                 "wednesday_available": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "wednesday_capacity": [
-                    "int",
-                    "null"
+                    "int"
                 ],
                 "wednesday_time": [
                     "int"
@@ -9973,6 +10136,55 @@
                 ]
             },
             "relationships": []
+        },
+        "webhooks": {
+            "attributes": {
+                "custom_headers": [
+                    "empty"
+                ],
+                "deactivated_at": [
+                    "null"
+                ],
+                "event_id": [
+                    "int"
+                ],
+                "name": [
+                    "string"
+                ],
+                "retry_attempts": [
+                    "int",
+                    "null"
+                ],
+                "signature_token": [
+                    "string"
+                ],
+                "state_id": [
+                    "int"
+                ],
+                "target_url": [
+                    "string"
+                ],
+                "test": [
+                    "bool"
+                ],
+                "type_id": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "creator": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
         },
         "widgets": {
             "attributes": {

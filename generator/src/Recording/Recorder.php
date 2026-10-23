@@ -19,30 +19,40 @@ use Generator;
 
 /**
  * Records real API responses with GET requests only: one page of every index, the first record of
- * every show, the index again with its relationships included, and a status probe of each
- * undocumented resource. A 429 stops the run, so a rate-limited response is never recorded.
+ * every show, the index again with its relationships included, the GET actions that only read,
+ * the show of resources without an index (by an ID seen in another response, or a configured
+ * uuid for public links), and a status probe of each undocumented resource. A 429 stops the run,
+ * so a rate-limited response is never recorded.
  */
-final readonly class Recorder
+final class Recorder
 {
     public const string PAGE_SIZE = '20';
 
     public const string INCLUDE_PAGE_SIZE = '5';
 
-    /** Resources that are never recorded: authentication, and uuid links the recorder cannot know. */
+    /** Resources that are never recorded: authentication. */
     private const array SKIPPED = ['sessions', 'passwords'];
+
+    private readonly SeenIds $ids;
 
     /**
      * @param  list<string>  $undocumented  Paths outside the spec, probed for their status only.
      * @param  array<string, string>  $filters  Extra query per index path, e.g. a date range for reports, which are expensive without one.
      * @param  array<string, list<string>>  $untyped  Relationships an earlier recording saw without data, by type: included too, to learn their cardinality.
+     * @param  list<string>  $actions  Keys of GET actions that only read, called on the first record.
+     * @param  array<string, string>  $publicIds  The uuid to fetch a `public/*` resource with, by path.
      */
     public function __construct(
-        private Api $api,
-        private ConnectorInterface $connector,
-        private array $undocumented = [],
-        private array $filters = [],
-        private array $untyped = [],
-    ) {}
+        private readonly Api $api,
+        private readonly ConnectorInterface $connector,
+        private readonly array $undocumented = [],
+        private readonly array $filters = [],
+        private readonly array $untyped = [],
+        private readonly array $actions = [],
+        private readonly array $publicIds = [],
+    ) {
+        $this->ids = new SeenIds();
+    }
 
     /**
      * Applied to every request on top of Productive's own limits, so a run is paced instead of bursting.
@@ -67,10 +77,13 @@ final readonly class Recorder
      */
     public function record(): Generator
     {
+        foreach (array_filter($this->api->resources, self::isRecorded(...)) as $resource) {
+            yield from $this->recordResource($resource);
+        }
+
+        // Last, so every ID another response carried is known.
         foreach ($this->api->resources as $resource) {
-            if (self::isRecorded($resource)) {
-                yield from $this->recordResource($resource);
-            }
+            yield from $this->recordShowOnly($resource);
         }
 
         foreach ($this->undocumented as $path) {
@@ -78,9 +91,39 @@ final readonly class Recorder
         }
     }
 
+    /**
+     * The show of a resource without an index, when an ID is known: the first seen of its type,
+     * or the configured uuid of a public link.
+     *
+     * @return Generator<string, array<string, mixed>>
+     */
+    private function recordShowOnly(Resource $resource): Generator
+    {
+        $show = self::operation($resource, OperationKind::Show);
+
+        if ($show === null || self::operation($resource, OperationKind::Index) !== null) {
+            return;
+        }
+
+        $id = $this->showOnlyId($resource);
+
+        if ($id !== null) {
+            yield $show->key => $this->getRecord($show, $id, []);
+        }
+    }
+
     private static function isRecorded(Resource $resource): bool
     {
         return ! in_array($resource->path, self::SKIPPED, true) && ! str_starts_with($resource->path, 'public/');
+    }
+
+    private function showOnlyId(Resource $resource): ?string
+    {
+        if (in_array($resource->path, self::SKIPPED, true)) {
+            return null;
+        }
+
+        return str_starts_with($resource->path, 'public/') ? $this->publicIds[$resource->path] ?? null : $this->ids->first($resource->type);
     }
 
     /**
@@ -127,13 +170,41 @@ final readonly class Recorder
         $show = self::operation($resource, OperationKind::Show);
 
         if ($show !== null) {
-            yield $show->key => $this->get(str_replace('{id}', rawurlencode($id), $show->path), '', $show->key, $show->requiresOrganization, $limits);
+            yield $show->key => $this->getRecord($show, $id, $limits);
         }
+
+        yield from $this->recordActions($resource, $id, $limits);
 
         $known = array_map(fn(Relationship $relationship): string => $relationship->name, $this->api->model((string) $resource->model)->relationships ?? []);
         $relationships = array_unique([...$known, ...$this->untyped[$resource->type] ?? []]);
 
         yield from $this->recordIncludes($index, $relationships, $limits);
+    }
+
+    /**
+     * Records the GET actions that only read, on the given record.
+     *
+     * @param  list<RateLimit>  $limits
+     * @return Generator<string, array<string, mixed>>
+     */
+    private function recordActions(Resource $resource, string $id, array $limits): Generator
+    {
+        foreach ($resource->operations as $operation) {
+            if ($operation->httpMethod === 'GET' && in_array($operation->key, $this->actions, true)) {
+                yield $operation->key => $this->getRecord($operation, $id, $limits);
+            }
+        }
+    }
+
+    /**
+     * @param  list<RateLimit>  $limits
+     * @return array{request: array{method: string, path: string, query: string}, status: int, headers: array<string, string>, body: mixed}
+     */
+    private function getRecord(Operation $operation, string $id, array $limits): array
+    {
+        $path = str_replace(['{id}', '{uuid}'], rawurlencode($id), $operation->path);
+
+        return $this->get($path, '', $operation->key, $operation->requiresOrganization, $limits);
     }
 
     /**
@@ -198,6 +269,9 @@ final readonly class Recorder
             $response = $exception->response;
         }
 
+        $body = Json::decode($response->body);
+        $this->ids->remember($response->successful() ? $body : null);
+
         return [
             'request' => ['method' => 'GET', 'path' => $path, 'query' => $query],
             'status' => $response->status,
@@ -207,9 +281,10 @@ final readonly class Recorder
                 'X-RateLimit-Remaining' => $response->header('X-RateLimit-Remaining'),
                 'X-RateLimit-Reset' => $response->header('X-RateLimit-Reset'),
             ], fn(?string $value): bool => $value !== null),
-            'body' => Redactor::redact(json_decode($response->body, true) ?? $response->body),
+            'body' => Redactor::redact($body),
         ];
     }
+
 
     private static function operation(Resource $resource, OperationKind $kind): ?Operation
     {

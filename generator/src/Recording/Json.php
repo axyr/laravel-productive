@@ -35,6 +35,21 @@ final class Json
     }
 
     /**
+     * A response body as a recording holds it: the decoded JSON, else the text, else a note for a
+     * binary body (a PDF), which JSON cannot carry.
+     */
+    public static function decode(string $body): mixed
+    {
+        $decoded = json_decode($body, true);
+
+        if ($decoded !== null) {
+            return $decoded;
+        }
+
+        return mb_check_encoding($body, 'UTF-8') ? $body : sprintf('[%d bytes of binary]', strlen($body));
+    }
+
+    /**
      * The resource objects of a document, primary and included, each with its type.
      *
      * @return list<array{string, array<string, mixed>}>

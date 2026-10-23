@@ -127,11 +127,11 @@ Previous: [Architecture](architecture.md)
 
 The spec contradicts its own examples in places. `composer record` records what the real API returns, so the SDK can be checked against it.
 
-- **Read-only.** It sends GET requests only: one page of every index (`page[size]=20`), the first record of each, and the index again with every relationship included (`page[size]=5`, saved as `<operation>.include`). If an include fails with 400, the list is split in halves until each relationship that cannot be included is recorded on its own (`<operation>.include.<relationship>`). Resources the official Ruby client knows but the spec does not (`generator/config/undocumented.php`) get one GET each, recorded with their status only.
+- **Read-only.** It sends GET requests only: one page of every index (`page[size]=20`), the first record of each, the GET actions that only read (`generator/config/recording-actions.php`: an invoice's preview, a proposal's sync status and signed PDF) on that record, and the index again with every relationship included (`page[size]=5`, saved as `<operation>.include`). If an include fails with 400, the list is split in halves until each relationship that cannot be included is recorded on its own (`<operation>.include.<relationship>`). Resources without an index (a bill, the organization's subscription) are fetched last, by the first ID of their type that any recorded body carried. A publicly shared page is fetched when `RECORDING_PUBLIC_PAGE_UUID` in `.env` holds its uuid. Resources the official Ruby client knows but the spec does not (`generator/config/undocumented.php`) get one GET each, recorded with their status only.
 - **Skipped:**
-  - writes, and GET actions such as `integrations/{id}/sync`;
+  - writes, and GET actions that act, such as `integrations/{id}/sync`;
   - `sessions` and `passwords`;
-  - the `public/*` uuid links.
+  - `public/artifacts`, whose uuid nothing exposes.
 - **Guarded.** It runs only when `PRODUCTIVE_ORGANIZATION_ID` equals `RECORDING_ORGANIZATION_ID` (from `.env` or the environment), so it cannot record a client's organization by mistake. It stops on the first 429 and never records one.
 - **Gentle.**
   - It sends one request per second, and report requests one per four seconds, on top of Productive's own limits: reports allow 10 per 30 seconds, and the recorder never retries a 429. A full run takes about twelve minutes.
@@ -166,9 +166,10 @@ Writes `generator/recorded-types.json`: for every type, the *kinds* of value eac
 - `int` and `float` together widen to `float`. A `number` field keeps its float reader even when only whole numbers were seen.
 - A list or object the API sends as JSON *text* (a person's `availabilities`) becomes the `json` type: `Attributes::json()` returns it decoded. A field the spec calls a string keeps reading it as a string.
 - Attributes and relationships the spec does not document are added and flagged as undocumented. A relationship seen without data has no known cardinality, so it waits for a recording that includes it.
+- An attribute that only the spec's example has (its schema does not list it) and that no recorded response of the type carried is kept, always null so far, and listed on the differences page as never seen. The examples look invented in places (`revenue` and `cost` on reports, `url` and `events` on webhooks), but an absence in a recording is not proof, so nothing is dropped until Productive confirms.
 - Resources and relationships the API no longer has are listed in `generator/config/removed.php`.
 
-Every difference is listed in the generated [API differences](api-differences.md) page.
+Every difference is listed in the generated [API differences](api-differences.md) page, and the generated [API coverage](coverage.md) page gives every operation a status: recorded, exercised, empty list, rejected, plan-gated, skipped, not recorded or not exercised. A success in the recording always shows as recorded; `generator/config/coverage.php` gives the reasons for the operations the test organization's plan does not include and the ones left out on purpose. The page is done when no row is open.
 
 ```bash
 composer record:fixtures

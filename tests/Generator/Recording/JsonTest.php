@@ -21,3 +21,9 @@ it('reads maps and lists defensively', function () {
         ->and(Json::list(['a' => 1]))->toBe([])
         ->and(Json::list(null))->toBe([]);
 });
+
+it('decodes a body to JSON, text, or a note for binary', function () {
+    expect(Json::decode('{"data": []}'))->toBe(['data' => []])
+        ->and(Json::decode('Bad gateway'))->toBe('Bad gateway')
+        ->and(Json::decode("%PDF\xff"))->toBe('[5 bytes of binary]');
+});

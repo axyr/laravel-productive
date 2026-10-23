@@ -1,17 +1,17 @@
 {
     "data": [
         {
-            "id": "1060",
+            "id": "1057",
             "type": "document_types",
             "attributes": {
-                "name": "Text 67",
+                "name": "Text 69",
                 "tax1_name": null,
                 "tax1_value": null,
                 "tax2_name": null,
                 "tax2_value": null,
-                "locale": "Text 68",
-                "document_template_id": 1024,
-                "exportable_type_id": 1050,
+                "locale": "Text 70",
+                "document_template_id": 1016,
+                "exportable_type_id": 1041,
                 "note": null,
                 "footer": null,
                 "template_options": {
@@ -54,7 +54,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "subsidiary": {
@@ -75,17 +75,17 @@
             }
         },
         {
-            "id": "1060",
+            "id": "1057",
             "type": "document_types",
             "attributes": {
-                "name": "Text 67",
+                "name": "Text 69",
                 "tax1_name": null,
                 "tax1_value": null,
                 "tax2_name": null,
                 "tax2_value": null,
-                "locale": "Text 68",
-                "document_template_id": 1024,
-                "exportable_type_id": 1050,
+                "locale": "Text 70",
+                "document_template_id": 1016,
+                "exportable_type_id": 1041,
                 "note": null,
                 "footer": null,
                 "template_options": {
@@ -128,19 +128,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1028"
+                        "id": "1020"
                     }
                 },
                 "document_style": {
                     "data": {
                         "type": "document_styles",
-                        "id": "1059"
+                        "id": "1056"
                     }
                 },
                 "attachments": {

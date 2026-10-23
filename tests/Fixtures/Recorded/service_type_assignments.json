@@ -1,13 +1,13 @@
 {
     "data": [
         {
-            "id": "1121",
+            "id": "1126",
             "type": "service_type_assignments",
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "person": {
@@ -23,25 +23,25 @@
             }
         },
         {
-            "id": "1121",
+            "id": "1126",
             "type": "service_type_assignments",
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1022"
+                        "id": "1123"
                     }
                 },
                 "service_type": {
                     "data": {
                         "type": "service_types",
-                        "id": "1067"
+                        "id": "1064"
                     }
                 }
             }

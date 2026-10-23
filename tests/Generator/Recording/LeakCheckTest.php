@@ -40,3 +40,12 @@ it('checks replaced values from four characters and terms as a whole too', funct
         ->and(LeakCheck::leaks('"abc" "abcd"', [], ['abcd']))->toBe(['a replaced value'])
         ->and(LeakCheck::leaks('"tok-abc"', ['the API token' => 'tok-abc'], []))->toBe(['the API token']);
 });
+
+it('ignores a replaced value that is also a key of the pretty-printed output', function () {
+    $key = "{\n    \"manager\": {\n        \"data\": null\n    }\n}";
+    $value = "{\n    \"title\": \"manager\"\n}";
+
+    expect(LeakCheck::leaks($key, [], ['manager']))->toBe([])
+        ->and(LeakCheck::leaks($value, [], ['manager']))->toBe(['a replaced value'])
+        ->and(LeakCheck::leaks('{"manager": "x"}', [], ['manager']))->toBe(['a replaced value']);
+});

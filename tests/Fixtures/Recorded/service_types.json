@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1067",
+            "id": "1064",
             "type": "service_types",
             "attributes": {
-                "name": "Text 171",
+                "name": "Text 190",
                 "archived_at": null,
                 "deleted_at": null,
                 "description": null
@@ -13,7 +13,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 }
             }

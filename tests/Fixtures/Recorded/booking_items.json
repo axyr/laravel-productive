@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1029",
+            "id": "1021",
             "type": "booking_items",
             "attributes": {
                 "date": "2026-10-09",
@@ -12,7 +12,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1004"
+                        "id": "1002"
                     }
                 },
                 "booking": {
