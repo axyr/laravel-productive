@@ -155,7 +155,7 @@ final readonly class RecordedTypes
      * The given attributes that no recorded response of the type carried; none when the type was
      * not recorded, because an empty list proves nothing.
      *
-     * @param  list<string>  $names
+     * @param  array<string>  $names
      * @return list<string>
      */
     public function unseen(string $type, array $names): array
