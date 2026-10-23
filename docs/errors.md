@@ -80,4 +80,4 @@ public function handle(): void
 
 ---
 
-Previous: [Reports](reports.md) · Next: [Testing](testing.md)
+Previous: [Reports](reports.md) · Next: [Webhooks](webhooks.md)

@@ -1,0 +1,87 @@
+{
+    "event": "create_company",
+    "item_type": "company",
+    "item_id": 1001,
+    "created": "2026-10-23T13:40:22.622+02:00",
+    "object": {
+        "data": {
+            "id": "1001",
+            "type": "companies",
+            "attributes": {
+                "name": "Text 1",
+                "billing_name": null,
+                "vat": null,
+                "default_currency": null,
+                "created_at": "2026-10-23T13:40:22.488+02:00",
+                "last_activity_at": "2026-10-23T13:40:22.488+02:00",
+                "archived_at": null,
+                "avatar_url": null,
+                "original_avatar_url": null,
+                "invoice_email_recipients": [],
+                "custom_fields": null,
+                "company_code": "Text 2",
+                "domains": [],
+                "projectless_budgets": false,
+                "default_subsidiary_id": null,
+                "default_tax_rate_id": null,
+                "default_document_type_id": null,
+                "default_payment_reminder_sequence_id": null,
+                "due_days": null,
+                "payment_terms_type": null,
+                "tag_list": [],
+                "contact": [],
+                "sample_data": false,
+                "settings": [],
+                "external_id": null,
+                "external_sync": false,
+                "parent_company_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1002"
+                    }
+                },
+                "import": {
+                    "data": null
+                },
+                "default_subsidiary": {
+                    "data": null
+                },
+                "default_tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_document_type": {
+                    "data": null
+                },
+                "default_payment_reminder_sequence": {
+                    "data": null
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "integration_exporter_configuration": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "einvoice_identity": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "parent_company": {
+                    "data": null
+                }
+            }
+        }
+    }
+}

@@ -20,6 +20,8 @@ php artisan vendor:publish --tag=productive-config
 | `throttle.enabled` | `PRODUCTIVE_THROTTLE` | `true` | Client-side rate limiting. |
 | `throttle.cache_store` | `PRODUCTIVE_THROTTLE_CACHE_STORE` | default store | Use a shared store (redis, database) when several workers share a token. |
 | `feature_flags` | `PRODUCTIVE_FEATURE_FLAGS` | — | Comma separated, sent as `X-Feature-Flags`. |
+| `webhooks.secrets` | `PRODUCTIVE_WEBHOOK_SECRETS` | — | The signature tokens of the webhooks that deliver to `Route::productiveWebhooks()`, comma separated. See [Webhooks](webhooks.md). |
+| `webhooks.tolerance` | `PRODUCTIVE_WEBHOOK_TOLERANCE` | `300` | How many seconds a delivery's timestamp may differ from now. |
 
 Credentials are checked when a request is sent, not when the app boots, so the package never breaks `php artisan` or CI runs that do not talk to Productive. A missing value throws a `ConfigurationException` that names the environment variable to set.
 

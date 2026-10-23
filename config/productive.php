@@ -83,4 +83,22 @@ return [
 
     'feature_flags' => env('PRODUCTIVE_FEATURE_FLAGS', ''),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Webhooks
+    |--------------------------------------------------------------------------
+    |
+    | Route::productiveWebhooks() registers the route Productive delivers to.
+    | Every delivery is verified against the signature tokens listed here,
+    | comma separated: each webhook has its own, shown in Productive's webhook
+    | logs. The timestamp in a signature may differ from now by the tolerance
+    | in seconds.
+    |
+    */
+
+    'webhooks' => [
+        'secrets' => env('PRODUCTIVE_WEBHOOK_SECRETS', ''),
+        'tolerance' => env('PRODUCTIVE_WEBHOOK_TOLERANCE', 300),
+    ],
+
 ];

@@ -14,10 +14,14 @@ use Axyr\Productive\Http\CacheThrottle;
 use Axyr\Productive\Http\Connector;
 use Axyr\Productive\Http\NullThrottle;
 use Axyr\Productive\Http\RetryPolicy;
+use Axyr\Productive\Webhooks\VerifyProductiveSignature;
+use Axyr\Productive\Webhooks\WebhookController;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Client\Factory as HttpFactory;
+use Illuminate\Routing\Route as RegisteredRoute;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class ProductiveServiceProvider extends ServiceProvider
@@ -70,6 +74,11 @@ class ProductiveServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->app->make(Router::class)->macro('productiveWebhooks', function (string $uri = 'productive/webhooks'): RegisteredRoute {
+            /** @var Router $this */
+            return $this->post($uri, WebhookController::class)->middleware(VerifyProductiveSignature::class)->name('productive.webhooks');
+        });
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/productive.php' => $this->app->configPath('productive.php'),
