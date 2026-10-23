@@ -25,7 +25,7 @@ final class CoverageEmitter
      */
     public static function emit(Api $api, array $enabled, RecordedTypes $recorded, array $reasons): string
     {
-        $resources = array_values(array_filter(array_map($api->resource(...), $enabled)));
+        $resources = array_filter(array_map($api->resource(...), $enabled));
         $rows = [];
 
         foreach ($resources as $resource) {

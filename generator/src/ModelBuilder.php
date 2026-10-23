@@ -44,7 +44,7 @@ final readonly class ModelBuilder
             relationships: $this->relationships($type, $data),
             example: $exampleAttributes,
             // Attributes only the example has, which no recording saw: kept, and listed as doubtful.
-            unseen: $this->recorded->unseen($type, array_values(array_diff(array_keys($read), array_keys($properties)))),
+            unseen: $this->recorded->unseen($type, array_diff(array_keys($read), array_keys($properties))),
         );
     }
 
