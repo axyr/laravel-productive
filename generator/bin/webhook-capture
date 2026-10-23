@@ -1,0 +1,94 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Receives webhook deliveries from Productive and writes each one to recordings/webhooks-<date-time>/.
+ * Run it, expose the port with a tunnel (`cloudflared tunnel --url http://127.0.0.1:8787`), and use
+ * the tunnel's URL as the webhook's target URL in Productive. Every delivery is answered with 200,
+ * or 500 with `--fail`, to make Productive log and retry it. With PRODUCTIVE_WEBHOOK_SECRET in .env
+ * (the webhook's signature token, shown in Productive's webhook logs) each delivery is also verified.
+ *
+ *   composer webhook:capture -- --port=8787 [--fail]
+ *
+ * The same file is the router of PHP's built-in server, which this script starts.
+ */
+
+use Axyr\Productive\Generator\Recording\WebhookCapture;
+use Dotenv\Dotenv;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+if (PHP_SAPI === 'cli-server') {
+    $directory = (string) getenv('WEBHOOK_CAPTURE_DIR');
+    $status = (int) getenv('WEBHOOK_CAPTURE_STATUS');
+    $secret = (string) getenv('PRODUCTIVE_WEBHOOK_SECRET');
+    $headers = [];
+
+    foreach ($_SERVER as $key => $value) {
+        if (str_starts_with($key, 'HTTP_') && is_string($value)) {
+            $headers[ucwords(strtolower(str_replace('_', '-', substr($key, 5))), '-')] = $value;
+        }
+    }
+
+    foreach (['CONTENT_TYPE' => 'Content-Type', 'CONTENT_LENGTH' => 'Content-Length'] as $key => $name) {
+        if (is_string($_SERVER[$key] ?? null)) {
+            $headers[$name] = $_SERVER[$key];
+        }
+    }
+
+    $recording = (new WebhookCapture($secret === '' ? null : $secret))->record(
+        new DateTimeImmutable(),
+        (string) ($_SERVER['REQUEST_METHOD'] ?? 'GET'),
+        (string) ($_SERVER['REQUEST_URI'] ?? '/'),
+        $headers,
+        (string) file_get_contents('php://input'),
+        $status,
+    );
+    $number = count(glob($directory . '/*.json') ?: []) + 1;
+    $file = sprintf('%s/%s-%03d.json', $directory, date('His'), $number);
+    file_put_contents($file, json_encode($recording, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR) . "\n");
+
+    $valid = $recording['signature']['valid'] ?? null;
+    $event = is_array($recording['json']) ? json_encode(array_intersect_key($recording['json'], array_flip(['event', 'event_id', 'type', 'action']))) : '';
+    file_put_contents('php://stderr', sprintf("%s %s %s signature: %s -> %s\n", date('H:i:s'), $recording['request']['method'], $event, match ($valid) {
+        null => 'not checked', false => 'INVALID', default => 'valid (' . $valid . ')'
+    }, basename($file)));
+
+    http_response_code($status);
+    header('Content-Type: application/json');
+    echo '{"ok":' . ($status < 300 ? 'true' : 'false') . '}';
+
+    return;
+}
+
+$root = dirname(__DIR__, 2);
+Dotenv::createImmutable($root)->safeLoad();
+
+$port = '8787';
+$status = '200';
+
+foreach (array_slice($argv, 1) as $argument) {
+    if (str_starts_with($argument, '--port=')) {
+        $port = substr($argument, strlen('--port='));
+    } elseif ($argument === '--fail') {
+        $status = '500';
+    }
+}
+
+$directory = $root . '/recordings/webhooks-' . date('Y-m-d-His');
+mkdir($directory, 0o700, true);
+
+$secret = $_ENV['PRODUCTIVE_WEBHOOK_SECRET'] ?? getenv('PRODUCTIVE_WEBHOOK_SECRET');
+putenv('WEBHOOK_CAPTURE_DIR=' . $directory);
+putenv('WEBHOOK_CAPTURE_STATUS=' . $status);
+putenv('PRODUCTIVE_WEBHOOK_SECRET=' . (is_string($secret) ? $secret : ''));
+
+echo "Capturing webhook deliveries on http://127.0.0.1:{$port}/ into {$directory}\n";
+echo 'Every delivery is answered with ' . $status . (is_string($secret) && $secret !== '' ? ' and its signature is checked' : '; set PRODUCTIVE_WEBHOOK_SECRET in .env to check signatures') . ".\n";
+echo "Expose the port, e.g. `cloudflared tunnel --url http://127.0.0.1:{$port}`, and use that URL as the webhook's target URL. Ctrl-C stops.\n\n";
+
+passthru(sprintf('%s -S 127.0.0.1:%s %s', escapeshellarg(PHP_BINARY), escapeshellarg($port), escapeshellarg(__FILE__)), $code);
+
+exit($code);

@@ -197,6 +197,19 @@ It must print nothing.
 
 `RecordedHydrationTest` hydrates every fixture and checks that each non-empty value lands in its typed property unchanged, and that every relationship with data has an accessor. On the models from before the recording it fails for 38 of the 72 types.
 
+### Capturing webhook deliveries
+
+Productive documents how a webhook is signed but not what it sends, so the payload is captured from real deliveries. `composer webhook:capture` runs PHP's built-in server on port 8787 (`--port=` changes it) and writes every request to `recordings/webhooks-<date-time>/`: the headers (a receiver's own credentials blanked), the raw body exactly as sent, the decoded body redacted like a recording, and the parsed `Productive-Signature` header. With `PRODUCTIVE_WEBHOOK_SECRET` in `.env` (the webhook's signature token, shown in Productive's webhook logs) each delivery is verified against the documented scheme, HMAC-SHA256 over `<timestamp>.<raw body>`, and the recording says whether the hex or the base64 form matched. Every delivery is answered with 200; `--fail` answers 500, which makes Productive log and retry it, the only way to get a `webhook_logs` record.
+
+Productive has to reach the server, so expose the port with a tunnel and use its URL as the webhook's target URL in Settings → Webhooks. A request bin would do the same, but then a third party sees the organization's data.
+
+```bash
+composer webhook:capture
+cloudflared tunnel --url http://127.0.0.1:8787   # or any tunnel to the port
+```
+
+The captures are local and git-ignored, like recordings. The signature header is kept on purpose: without the token it reveals nothing, and fixtures need it to test verification.
+
 ### Seeding the recording organization
 
 An empty trial records mostly empty lists, which teach nothing. `composer seed` creates one record of each resource whose list is empty, through the SDK's own create methods:
