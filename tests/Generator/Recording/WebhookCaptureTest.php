@@ -44,6 +44,8 @@ it('does not check a signature without the token, and records none without the h
     $capture = new WebhookCapture();
 
     expect($capture->record(new DateTimeImmutable(), 'POST', '/', ['Productive-Signature' => 't=5,s=abc'], 'x', 200)['signature'])->toBe(['timestamp' => '5', 'signature' => 'abc', 'valid' => null])
+        ->and($capture->record(new DateTimeImmutable(), 'POST', '/', ['Productive-Signature' => 't=5, s=abc'], 'x', 200)['signature'])->toBe(['timestamp' => '5', 'signature' => 'abc', 'valid' => null])
+        ->and($capture->record(new DateTimeImmutable(), 'POST', '/', ['Productive-Signature' => 't=5,s'], 'x', 200)['signature'])->toBe(['timestamp' => '5', 'signature' => '', 'valid' => null])
         ->and($capture->record(new DateTimeImmutable(), 'POST', '/', ['Productive-Signature' => 't=5'], 'x', 200)['signature'])->toBeNull()
         ->and($capture->record(new DateTimeImmutable(), 'GET', '/', [], 'not json', 200))->toMatchArray(['signature' => null, 'json' => null, 'body' => 'not json']);
 });

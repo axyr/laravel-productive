@@ -13,7 +13,7 @@ final readonly class WebhookSignature
     public const string HEADER = 'Productive-Signature';
 
     /**
-     * @param  list<string>  $secrets  The signature tokens of the webhooks that may deliver here; any one of them verifies.
+     * @param  array<string>  $secrets  The signature tokens of the webhooks that may deliver here; any one of them verifies.
      * @param  int  $tolerance  How many seconds the timestamp may differ from now, against replays.
      */
     public function __construct(

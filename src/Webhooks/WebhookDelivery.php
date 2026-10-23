@@ -45,7 +45,8 @@ final readonly class WebhookDelivery
         $delivery = [];
 
         foreach ($payload as $key => $value) {
-            $delivery[(string) $key] = $value;
+            // PHP stores a numeric key as int either way: the cast only tells static analysis.
+            $delivery[(string) $key] = $value; // @pest-mutate-ignore
         }
 
         return new self($name, $itemType, $itemId, self::createdAt($payload['created'] ?? null), self::model($payload['object'] ?? null, $registry), $delivery);

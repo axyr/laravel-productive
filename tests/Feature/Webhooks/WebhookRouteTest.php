@@ -54,20 +54,25 @@ it('rejects a wrong, stale or missing signature with 401 and no event', function
     Event::assertNotDispatched(ProductiveWebhookReceived::class);
 });
 
-it('honours the configured tolerance', function () {
+it('honours the configured tolerance, 300 seconds unless it is a number', function () {
     config()->set('productive.webhooks.tolerance', '10');
     $payload = FakeWebhook::payload('create_task', ['id' => '1', 'type' => 'tasks']);
 
     deliver($payload, timestamp: time() - 11)->assertUnauthorized();
     deliver($payload, timestamp: time() - 9)->assertOk();
+
+    config()->set('productive.webhooks.tolerance', 'soon');
+
+    deliver($payload, timestamp: time() - 301)->assertUnauthorized();
+    deliver($payload, timestamp: time() - 300)->assertOk();
 });
 
-it('fails loudly without a configured signature token', function () {
-    config()->set('productive.webhooks.secrets', ' , ');
+it('fails loudly without a configured signature token', function (mixed $secrets) {
+    config()->set('productive.webhooks.secrets', $secrets);
     $this->withoutExceptionHandling();
 
     expect(fn() => deliver(FakeWebhook::payload('create_task', ['id' => '1', 'type' => 'tasks'])))->toThrow(WebhookException::class, 'PRODUCTIVE_WEBHOOK_SECRETS');
-});
+})->with(['blank' => [' , '], 'unset' => [null], 'not a string' => [['tok']]]);
 
 it('answers 400 to a signed body that is not a delivery', function () {
     Event::fake([ProductiveWebhookReceived::class]);

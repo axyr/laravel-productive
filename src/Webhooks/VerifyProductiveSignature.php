@@ -33,7 +33,7 @@ final readonly class VerifyProductiveSignature
     private function signature(): WebhookSignature
     {
         $secrets = $this->config->get('productive.webhooks.secrets');
-        $secrets = array_values(array_filter(array_map(trim(...), explode(',', is_string($secrets) ? $secrets : ''))));
+        $secrets = array_filter(array_map(trim(...), explode(',', is_string($secrets) ? $secrets : '')));
 
         if ($secrets === []) {
             throw new WebhookException('No webhook signature token is configured: set PRODUCTIVE_WEBHOOK_SECRETS to the token(s) shown in Productive\'s webhook logs.');

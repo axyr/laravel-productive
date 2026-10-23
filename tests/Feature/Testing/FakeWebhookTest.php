@@ -23,18 +23,20 @@ it('builds a payload like a delivery from a resource or a model', function () {
         ->and($fromModel['item_id'])->toBe((int) $fromModel['object']['data']['id'])
         ->and(FakeWebhook::payload('weird', ['type' => 'tasks', 'id' => 'abc'])['item_id'])->toBe('abc')
         ->and(FakeWebhook::payload('weird', ['type' => 'tasks', 'id' => 'abc'])['item_type'])->toBe('weird')
+        ->and(FakeWebhook::payload('create_time_entry', ['type' => 'time_entries', 'id' => '1'])['item_type'])->toBe('time_entry')
         ->and(FakeWebhook::payload('create_task', ['type' => 'tasks'])['item_id'])->toBeNull()
         ->and(FakeWebhook::payload('create_task', ['type' => 'tasks'])['created'])->not->toBe('');
 });
 
 it('signs a payload as Productive would, and builds the event the route dispatches', function () {
-    $payload = FakeWebhook::payload(WebhookEvent::TaskCreated, TaskFactory::new()->resource(['id' => '9']));
+    $payload = FakeWebhook::payload(WebhookEvent::TaskCreated, TaskFactory::new()->resource(['id' => '9', 'title' => 'Café https://x/y']));
 
     $request = FakeWebhook::request($payload, 'tok', 1700000000);
     $received = FakeWebhook::received($payload);
 
     expect($request['headers'])->toBe(['Productive-Signature' => WebhookSignature::sign($request['body'], 'tok', 1700000000), 'Content-Type' => 'application/json'])
         ->and(json_decode($request['body'], true))->toBe($payload)
+        ->and($request['body'])->toContain('"title":"Café https://x/y"')
         ->and((new WebhookSignature(['tok']))->verify($request['headers']['Productive-Signature'], $request['body'], 1700000000))->toBeTrue()
         ->and($received->delivery->model)->toBeInstanceOf(Task::class)
         ->and($received->delivery->itemId)->toBe('9');
