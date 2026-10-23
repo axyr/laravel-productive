@@ -32,6 +32,7 @@ final class InvoiceAttributionFactory extends Factory
         return [
             'amount' => '500.00',
             'currency' => 'USD',
+            'attributed_at' => '2026-03-10T12:00:00.000+00:00',
         ];
     }
 }

@@ -25,6 +25,8 @@ final readonly class ExpenseReport extends Model
     /** Approval status for this expense report group. */
     public ?int $approvalStatus;
 
+    public ?string $approvedAmount;
+
     /** The date period (year, quarter, month) of when the expense was approved. */
     public mixed $approvedAtPeriod;
 
@@ -36,6 +38,8 @@ final readonly class ExpenseReport extends Model
 
     /** Average profit margin in the normalized currency for this expense report group. */
     public ?float $averageProfitMarginNormalized;
+
+    public ?string $billableAmount;
 
     /** Number of expenses in this report group. */
     public ?int $count;
@@ -78,6 +82,10 @@ final readonly class ExpenseReport extends Model
 
     /** Time period grouping for pay on (e.g. week, month, quarter). */
     public mixed $payOnPeriod;
+
+    public ?string $pendingAmount;
+
+    public ?int $personId;
 
     /** Project id for this expense report group. */
     public ?int $projectId;
@@ -171,10 +179,12 @@ final readonly class ExpenseReport extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->approvalStatus = $attributes->int('approval_status');
+        $this->approvedAmount = $attributes->string('approved_amount');
         $this->approvedAtPeriod = $attributes->mixed('approved_at_period');
         $this->averageProfitMargin = $attributes->float('average_profit_margin');
         $this->averageProfitMarginDefault = $attributes->float('average_profit_margin_default');
         $this->averageProfitMarginNormalized = $attributes->float('average_profit_margin_normalized');
+        $this->billableAmount = $attributes->string('billable_amount');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
         $this->currency = $attributes->string('currency');
@@ -189,6 +199,8 @@ final readonly class ExpenseReport extends Model
         $this->month = $attributes->string('month');
         $this->paidOnPeriod = $attributes->mixed('paid_on_period');
         $this->payOnPeriod = $attributes->mixed('pay_on_period');
+        $this->pendingAmount = $attributes->string('pending_amount');
+        $this->personId = $attributes->int('person_id');
         $this->projectId = $attributes->int('project_id');
         $this->quantity = $attributes->int('quantity');
         $this->quarter = $attributes->string('quarter');

@@ -30,6 +30,10 @@ final class SurveyReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'response_count' => 42,
+            'avg_score' => 4.2,
+            'survey_id' => 7,
+            'project_id' => 6899,
         ];
     }
 }

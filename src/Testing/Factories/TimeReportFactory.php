@@ -31,6 +31,13 @@ final class TimeReportFactory extends Factory
     {
         return [
             'billable_time' => 14400,
+            'nonbillable_time' => 1800,
+            'total_time' => 16200,
+            'revenue' => '3600.00',
+            'cost' => '1620.00',
+            'person_id' => 12,
+            'project_id' => 6899,
+            'date' => '2026-03-15',
             'currency' => 'USD',
         ];
     }

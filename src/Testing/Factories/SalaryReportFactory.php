@@ -30,6 +30,9 @@ final class SalaryReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'total_salary' => '7083.33',
+            'person_id' => 12,
+            'month' => '2026-03',
             'currency' => 'USD',
         ];
     }

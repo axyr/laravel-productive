@@ -32,6 +32,10 @@ final readonly class TimeTrackingPolicy extends Model
     /** Timestamp when the time tracking policy was created. */
     public ?DateTimeImmutable $createdAt;
 
+    public ?int $dailyLimit;
+
+    public ?int $defaultTrackMethodId;
+
     /** Not in the spec: seen in recorded API responses. */
     public mixed $description;
 
@@ -65,8 +69,15 @@ final readonly class TimeTrackingPolicy extends Model
     /** Not in the spec: seen in recorded API responses. */
     public ?bool $overtimeEnabled;
 
+    public ?bool $requiresService;
+
+    public ?bool $requiresTask;
+
     /** When true, overlapping time entry ranges are not allowed. */
     public ?bool $restrictTimeEntryOverlap;
+
+    /** @var list<mixed>|null */
+    public ?array $trackMethodIds;
 
     /** Timestamp when this time tracking policy was last updated. */
     public ?DateTimeImmutable $updatedAt;
@@ -79,6 +90,8 @@ final readonly class TimeTrackingPolicy extends Model
         $this->archivedAt = $attributes->dateTime('archived_at');
         $this->assignedPeopleCount = $attributes->mixed('assigned_people_count');
         $this->createdAt = $attributes->dateTime('created_at');
+        $this->dailyLimit = $attributes->int('daily_limit');
+        $this->defaultTrackMethodId = $attributes->int('default_track_method_id');
         $this->description = $attributes->mixed('description');
         $this->disabledTrackingMessage = $attributes->string('disabled_tracking_message');
         $this->fullDayAbsenceLimit = $attributes->int('full_day_absence_limit');
@@ -90,7 +103,10 @@ final readonly class TimeTrackingPolicy extends Model
         $this->noteMandatory = $attributes->bool('note_mandatory');
         $this->overtimeCostMultiplier = $attributes->mixed('overtime_cost_multiplier');
         $this->overtimeEnabled = $attributes->bool('overtime_enabled');
+        $this->requiresService = $attributes->bool('requires_service');
+        $this->requiresTask = $attributes->bool('requires_task');
         $this->restrictTimeEntryOverlap = $attributes->bool('restrict_time_entry_overlap');
+        $this->trackMethodIds = $attributes->list('track_method_ids');
         $this->updatedAt = $attributes->dateTime('updated_at');
         $this->workingDayLimit = $attributes->int('working_day_limit');
     }

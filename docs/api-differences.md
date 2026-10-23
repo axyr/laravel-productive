@@ -178,9 +178,9 @@ Seen with data in recorded responses but missing from the spec.
 | `Template` | `organization` | to-one | `organizations` |
 | `TimeEntryReport` | `person_manager` | to-one | `people` |
 
-## Example-only attributes the API never sent
+## Example-only attributes never seen
 
-The spec's example has them, its schema does not, and no recorded response of the type carried them, so no property is generated.
+The spec's example has them, its schema does not, and no recorded response of the type carried them. Their properties are kept, and have always been null, until Productive confirms whether they exist.
 
 | Model | Attribute |
 | --- | --- |

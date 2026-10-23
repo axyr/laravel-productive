@@ -26,8 +26,12 @@ final readonly class ExchangeRate extends Model
     /** The date for which these exchange rates are valid. */
     public ?DateTimeImmutable $date;
 
+    public ?string $fromCurrency;
+
     /** Whether these exchange rates are flagged as out of date and may not reflect current market rates. */
     public ?bool $outOfDate;
+
+    public ?string $rate;
 
     /**
      * An array of currency conversion rates, each with a base currency, target currency, and the corresponding rate value.
@@ -36,10 +40,15 @@ final readonly class ExchangeRate extends Model
      */
     public ?array $rates;
 
+    public ?string $toCurrency;
+
     protected function hydrate(Attributes $attributes): void
     {
         $this->date = $attributes->date('date');
+        $this->fromCurrency = $attributes->string('from_currency');
         $this->outOfDate = $attributes->bool('out_of_date');
+        $this->rate = $attributes->string('rate');
         $this->rates = $attributes->list('rates');
+        $this->toCurrency = $attributes->string('to_currency');
     }
 }

@@ -30,6 +30,14 @@ final class InvoiceReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'total' => '12500.00',
+            'subtotal' => '11363.64',
+            'tax' => '1136.36',
+            'paid' => '0.00',
+            'outstanding' => '12500.00',
+            'status' => 'draft',
+            'invoice_id' => 234,
+            'company_id' => 65111,
             'currency' => 'USD',
         ];
     }

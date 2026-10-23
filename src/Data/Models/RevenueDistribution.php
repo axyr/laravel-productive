@@ -44,8 +44,14 @@ final readonly class RevenueDistribution extends Model
     /** The currency code of the deal this revenue distribution belongs to. */
     public ?string $currencyNormalized;
 
+    public ?int $dealId;
+
     /** Date when this revenue distribution period ends. */
     public ?DateTimeImmutable $endOn;
+
+    public ?int $projectId;
+
+    public ?DateTimeImmutable $recognizedAt;
 
     /** Date when this revenue distribution period starts. */
     public ?DateTimeImmutable $startOn;
@@ -59,7 +65,10 @@ final readonly class RevenueDistribution extends Model
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
+        $this->dealId = $attributes->int('deal_id');
         $this->endOn = $attributes->date('end_on');
+        $this->projectId = $attributes->int('project_id');
+        $this->recognizedAt = $attributes->dateTime('recognized_at');
         $this->startOn = $attributes->date('start_on');
     }
 

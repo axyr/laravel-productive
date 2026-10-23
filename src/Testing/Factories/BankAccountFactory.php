@@ -31,8 +31,11 @@ final class BankAccountFactory extends Factory
     {
         return [
             'name' => 'Main Business Account',
+            'iban' => 'DE89370400440532013000',
+            'bic' => 'COBADEFFXXX',
             'bank_name' => 'Commerzbank',
             'currency' => 'EUR',
+            'created_at' => '2026-01-01T00:00:00.000+00:00',
         ];
     }
 }

@@ -91,8 +91,16 @@ final readonly class BudgetReport extends Model
     /** Average profit margin percentage normalized across currencies. */
     public mixed $averageProfitMarginNormalized;
 
+    public ?int $billableTime;
+
+    public ?string $budgetTotal;
+
+    public ?string $budgetUsed;
+
     /** Time period grouping for the closed_at date (e.g. week, month, quarter). */
     public mixed $closedAtPeriod;
+
+    public ?string $cost;
 
     /** Number of budgets aggregated in this report row (when grouped). */
     public ?int $count;
@@ -115,6 +123,8 @@ final readonly class BudgetReport extends Model
     /** Time period grouping for the budget start date (e.g. week, month, quarter). */
     public mixed $datePeriod;
 
+    public ?int $dealId;
+
     /** Budget type label — either Client or Internal. */
     public ?int $dealType;
 
@@ -123,6 +133,8 @@ final readonly class BudgetReport extends Model
 
     /** Time period grouping for the budget end date (e.g. week, month, quarter). */
     public mixed $endDatePeriod;
+
+    public ?string $expenseAmount;
 
     /** Computed values for custom formula fields defined on the report. */
     public mixed $formulaFields;
@@ -138,6 +150,14 @@ final readonly class BudgetReport extends Model
 
     /** Time period grouping for the next occurrence date (e.g. week, month, quarter). */
     public mixed $nextOccurrenceOnPeriod;
+
+    public ?int $nonbillableTime;
+
+    public ?string $profit;
+
+    public ?float $profitMargin;
+
+    public ?int $projectId;
 
     /** Project type label (e.g. Internal or Client). */
     public ?int $projectType;
@@ -159,6 +179,8 @@ final readonly class BudgetReport extends Model
 
     /** Time period grouping for the recurring start date (e.g. week, month, quarter). */
     public mixed $recurringStartsOnPeriod;
+
+    public ?string $revenue;
 
     /** Revenue recognition method used for this budget (e.g. time-based, milestone-based). */
     public ?string $revenueDistributionType;
@@ -416,7 +438,11 @@ final readonly class BudgetReport extends Model
         $this->averageProfitMargin = $attributes->float('average_profit_margin');
         $this->averageProfitMarginDefault = $attributes->float('average_profit_margin_default');
         $this->averageProfitMarginNormalized = $attributes->mixed('average_profit_margin_normalized');
+        $this->billableTime = $attributes->int('billable_time');
+        $this->budgetTotal = $attributes->string('budget_total');
+        $this->budgetUsed = $attributes->string('budget_used');
         $this->closedAtPeriod = $attributes->mixed('closed_at_period');
+        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
         $this->currency = $attributes->string('currency');
@@ -424,14 +450,20 @@ final readonly class BudgetReport extends Model
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->customFields = $attributes->string('custom_fields');
         $this->datePeriod = $attributes->mixed('date_period');
+        $this->dealId = $attributes->int('deal_id');
         $this->dealType = $attributes->int('deal_type');
         $this->deliveredOnPeriod = $attributes->mixed('delivered_on_period');
         $this->endDatePeriod = $attributes->mixed('end_date_period');
+        $this->expenseAmount = $attributes->string('expense_amount');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
         $this->nextOccurrenceOnPeriod = $attributes->mixed('next_occurrence_on_period');
+        $this->nonbillableTime = $attributes->int('nonbillable_time');
+        $this->profit = $attributes->string('profit');
+        $this->profitMargin = $attributes->float('profit_margin');
+        $this->projectId = $attributes->int('project_id');
         $this->projectType = $attributes->int('project_type');
         $this->purchaseOrderNumber = $attributes->string('purchase_order_number');
         $this->quarter = $attributes->string('quarter');
@@ -439,6 +471,7 @@ final readonly class BudgetReport extends Model
         $this->recurringEndsOnPeriod = $attributes->mixed('recurring_ends_on_period');
         $this->recurringIntervalId = $attributes->int('recurring_interval_id');
         $this->recurringStartsOnPeriod = $attributes->mixed('recurring_starts_on_period');
+        $this->revenue = $attributes->string('revenue');
         $this->revenueDistributionType = $attributes->string('revenue_distribution_type');
         $this->status = $attributes->int('status');
         $this->totalBillableTime = $attributes->float('total_billable_time');

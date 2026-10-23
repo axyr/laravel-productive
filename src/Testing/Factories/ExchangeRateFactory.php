@@ -30,6 +30,9 @@ final class ExchangeRateFactory extends Factory
     protected function definition(): array
     {
         return [
+            'from_currency' => 'EUR',
+            'to_currency' => 'USD',
+            'rate' => '1.0834',
             'date' => '2026-03-15',
         ];
     }

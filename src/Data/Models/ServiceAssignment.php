@@ -20,7 +20,12 @@ final readonly class ServiceAssignment extends Model
 {
     public const string TYPE = 'service_assignments';
 
-    protected function hydrate(Attributes $attributes): void {}
+    public ?bool $billable;
+
+    protected function hydrate(Attributes $attributes): void
+    {
+        $this->billable = $attributes->bool('billable');
+    }
 
     public function organization(): ?Organization
     {

@@ -30,6 +30,11 @@ final class TimesheetReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'status' => 'submitted',
+            'week_starting' => '2026-03-10',
+            'total_time' => 2400,
+            'submitted_at' => '2026-03-17T09:00:00.000+00:00',
+            'approved_at' => null,
         ];
     }
 }

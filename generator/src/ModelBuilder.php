@@ -33,9 +33,7 @@ final readonly class ModelBuilder
         $properties = Spec::map($attributesSchema['properties'] ?? []);
         $exampleAttributes = Spec::map($example['attributes'] ?? []);
         $read = $this->reader->attributes($properties, $exampleAttributes);
-        // Attributes only the example has are the example's word alone: a recording that never saw them wins.
-        $phantom = $this->recorded->unseen($type, array_values(array_diff(array_keys($read), array_keys($properties))));
-        $attributes = $this->recorded->attributes($type, array_diff_key($read, array_flip($phantom)));
+        $attributes = $this->recorded->attributes($type, $read);
         ksort($attributes);
 
         return new Model(
@@ -44,8 +42,9 @@ final readonly class ModelBuilder
             description: $this->description($attributesSchema),
             attributes: array_values($attributes),
             relationships: $this->relationships($type, $data),
-            example: array_diff_key($exampleAttributes, array_flip($phantom)),
-            phantom: $phantom,
+            example: $exampleAttributes,
+            // Attributes only the example has, which no recording saw: kept, and listed as doubtful.
+            unseen: $this->recorded->unseen($type, array_values(array_diff(array_keys($read), array_keys($properties)))),
         );
     }
 

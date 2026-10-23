@@ -31,6 +31,8 @@ final class PipelineFactory extends Factory
     {
         return [
             'name' => 'Sales Pipeline',
+            'default' => true,
+            'archived_at' => null,
         ];
     }
 }

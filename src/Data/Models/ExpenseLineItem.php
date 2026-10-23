@@ -20,6 +20,12 @@ final readonly class ExpenseLineItem extends Model
 {
     public const string TYPE = 'expense_line_items';
 
+    public ?string $currency;
+
+    public ?string $currencyDefault;
+
+    public ?string $currencyNormalized;
+
     public ?string $name;
 
     public ?float $quantity;
@@ -32,6 +38,9 @@ final readonly class ExpenseLineItem extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->currency = $attributes->string('currency');
+        $this->currencyDefault = $attributes->string('currency_default');
+        $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->name = $attributes->string('name');
         $this->quantity = $attributes->float('quantity');
         $this->unitPrice = $attributes->int('unit_price');

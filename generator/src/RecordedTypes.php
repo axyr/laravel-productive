@@ -18,7 +18,7 @@ use Axyr\Productive\Generator\Recording\ValueKind;
  * - null and empty values never override, so a resource without data keeps the spec's types;
  * - int and float together widen to float, never the other way round;
  * - attributes and relationships the spec does not document are added, flagged as undocumented;
- * - an attribute only the spec's example has, which no recorded response carried, is left out.
+ * - an attribute only the spec's example has, which no recorded response carried, is kept but listed.
  */
 final readonly class RecordedTypes
 {

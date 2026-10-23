@@ -23,11 +23,19 @@ final readonly class AutomaticInvoicingRule extends Model
 {
     public const string TYPE = 'automatic_invoicing_rules';
 
+    public ?bool $active;
+
+    public ?DateTimeImmutable $createdAt;
+
     /** Number of time units to offset invoice creation from the reference date. */
     public ?int $creationOffset;
 
     /** The time unit for the creation offset (e.g. days, weeks, months). */
     public ?string $creationOffsetUnit;
+
+    public ?string $frequency;
+
+    public ?string $name;
 
     /** The next scheduled date on which an invoice draft will be automatically created. */
     public ?DateTimeImmutable $nextInvoiceDate;
@@ -42,8 +50,12 @@ final readonly class AutomaticInvoicingRule extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->active = $attributes->bool('active');
+        $this->createdAt = $attributes->dateTime('created_at');
         $this->creationOffset = $attributes->int('creation_offset');
         $this->creationOffsetUnit = $attributes->string('creation_offset_unit');
+        $this->frequency = $attributes->string('frequency');
+        $this->name = $attributes->string('name');
         $this->nextInvoiceDate = $attributes->date('next_invoice_date');
         $this->processedAt = $attributes->dateTime('processed_at');
         $this->referenceDate = $attributes->string('reference_date');

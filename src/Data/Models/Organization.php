@@ -63,6 +63,8 @@ final readonly class Organization extends Model
     /** Not in the spec: seen in recorded API responses. */
     public ?bool $createTimeEntryOnTimerStart;
 
+    public ?DateTimeImmutable $createdAt;
+
     /** Default currency code for the organization (e.g. USD, EUR). */
     public ?string $currency;
 
@@ -289,6 +291,8 @@ final readonly class Organization extends Model
     /** Whether SAML-based single sign-on is enabled. */
     public ?bool $singleSignOn;
 
+    public ?string $subdomain;
+
     /** Number of active subsidiaries within the organization. */
     public mixed $subsidiaryCount;
 
@@ -344,6 +348,8 @@ final readonly class Organization extends Model
      */
     public ?array $timesheetSubmissionSettings;
 
+    public ?string $timezone;
+
     /** Verification status of the organization account. */
     public ?int $verificationStatusId;
 
@@ -377,6 +383,7 @@ final readonly class Organization extends Model
         $this->bookedDemo = $attributes->bool('booked_demo');
         $this->conflictResolverActive = $attributes->bool('conflict_resolver_active');
         $this->createTimeEntryOnTimerStart = $attributes->bool('create_time_entry_on_timer_start');
+        $this->createdAt = $attributes->dateTime('created_at');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyFormatId = $attributes->int('currency_format_id');
@@ -443,6 +450,7 @@ final readonly class Organization extends Model
         $this->selfAttribution = $attributes->string('self_attribution');
         $this->selfAttributionComment = $attributes->string('self_attribution_comment');
         $this->singleSignOn = $attributes->bool('single_sign_on');
+        $this->subdomain = $attributes->string('subdomain');
         $this->subsidiaryCount = $attributes->mixed('subsidiary_count');
         $this->timeDisplayId = $attributes->int('time_display_id');
         $this->timeFormatId = $attributes->int('time_format_id');
@@ -460,6 +468,7 @@ final readonly class Organization extends Model
         $this->timesheetSubmission = $attributes->bool('timesheet_submission');
         $this->timesheetSubmissionReminders = $attributes->bool('timesheet_submission_reminders');
         $this->timesheetSubmissionSettings = $attributes->object('timesheet_submission_settings');
+        $this->timezone = $attributes->string('timezone');
         $this->verificationStatusId = $attributes->int('verification_status_id');
         $this->verifiedAt = $attributes->dateTime('verified_at');
         $this->weekStartDayId = $attributes->int('week_start_day_id');

@@ -31,9 +31,16 @@ final class InvoiceFactory extends Factory
     {
         return [
             'number' => 'INV-2026-001',
+            'status' => 'draft',
+            'due_date' => '2026-04-15',
+            'date' => '2026-03-15',
             'created_at' => '2026-03-15T09:00:00.000+00:00',
             'updated_at' => '2026-03-15T09:00:00.000+00:00',
+            'total' => '12500.00',
+            'subtotal' => '11363.64',
+            'tax' => '1136.36',
             'currency' => 'USD',
+            'notes' => 'Payment due within 30 days',
             'last_activity_at' => '2026-03-15T09:00:00.000+00:00',
         ];
     }

@@ -30,6 +30,17 @@ final class BudgetReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'budget_total' => '100000.00',
+            'budget_used' => '62000.00',
+            'revenue' => '75000.00',
+            'cost' => '45000.00',
+            'profit' => '30000.00',
+            'profit_margin' => 0.4,
+            'billable_time' => 48000,
+            'nonbillable_time' => 6000,
+            'expense_amount' => '3500.00',
+            'project_id' => 6899,
+            'deal_id' => 89,
             'currency' => 'USD',
         ];
     }

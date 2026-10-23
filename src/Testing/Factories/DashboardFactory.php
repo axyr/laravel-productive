@@ -31,6 +31,7 @@ final class DashboardFactory extends Factory
     {
         return [
             'name' => 'Project Overview',
+            'shared' => false,
             'created_at' => '2026-01-20T09:00:00.000+00:00',
             'updated_at' => '2026-03-01T10:00:00.000+00:00',
         ];

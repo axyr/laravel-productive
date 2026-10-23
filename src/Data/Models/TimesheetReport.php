@@ -8,6 +8,7 @@ namespace Axyr\Productive\Data\Models;
 
 use Axyr\Productive\Data\Attributes;
 use Axyr\Productive\Data\Model;
+use DateTimeImmutable;
 
 /**
  * An aggregated timesheet report row grouping timesheet records by configurable dimensions with time metrics.
@@ -21,6 +22,8 @@ use Axyr\Productive\Data\Model;
 final readonly class TimesheetReport extends Model
 {
     public const string TYPE = 'timesheet_reports';
+
+    public ?DateTimeImmutable $approvedAt;
 
     /** Number of timesheets in this report group. */
     public ?int $count;
@@ -67,6 +70,10 @@ final readonly class TimesheetReport extends Model
     /** Saturday time for this timesheet report group. */
     public ?int $saturdayTime;
 
+    public ?string $status;
+
+    public ?DateTimeImmutable $submittedAt;
+
     /** Sunday available for this timesheet report group. */
     public ?int $sundayAvailable;
 
@@ -84,6 +91,8 @@ final readonly class TimesheetReport extends Model
 
     /** Thursday time for this timesheet report group. */
     public ?int $thursdayTime;
+
+    public ?int $totalTime;
 
     /** Tuesday available for this timesheet report group. */
     public ?int $tuesdayAvailable;
@@ -106,11 +115,14 @@ final readonly class TimesheetReport extends Model
     /** Week grouping for this timesheet report row. */
     public ?string $week;
 
+    public ?string $weekStarting;
+
     /** Week submission status for this timesheet report group. */
     public ?string $weekSubmissionStatus;
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->approvedAt = $attributes->dateTime('approved_at');
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
@@ -126,12 +138,15 @@ final readonly class TimesheetReport extends Model
         $this->saturdayAvailable = $attributes->int('saturday_available');
         $this->saturdayCapacity = $attributes->int('saturday_capacity');
         $this->saturdayTime = $attributes->int('saturday_time');
+        $this->status = $attributes->string('status');
+        $this->submittedAt = $attributes->dateTime('submitted_at');
         $this->sundayAvailable = $attributes->int('sunday_available');
         $this->sundayCapacity = $attributes->int('sunday_capacity');
         $this->sundayTime = $attributes->int('sunday_time');
         $this->thursdayAvailable = $attributes->int('thursday_available');
         $this->thursdayCapacity = $attributes->int('thursday_capacity');
         $this->thursdayTime = $attributes->int('thursday_time');
+        $this->totalTime = $attributes->int('total_time');
         $this->tuesdayAvailable = $attributes->int('tuesday_available');
         $this->tuesdayCapacity = $attributes->int('tuesday_capacity');
         $this->tuesdayTime = $attributes->int('tuesday_time');
@@ -139,6 +154,7 @@ final readonly class TimesheetReport extends Model
         $this->wednesdayCapacity = $attributes->int('wednesday_capacity');
         $this->wednesdayTime = $attributes->int('wednesday_time');
         $this->week = $attributes->string('week');
+        $this->weekStarting = $attributes->string('week_starting');
         $this->weekSubmissionStatus = $attributes->string('week_submission_status');
     }
 

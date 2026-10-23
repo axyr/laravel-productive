@@ -34,6 +34,7 @@ final class PaymentFactory extends Factory
             'currency' => 'USD',
             'paid_on' => '2026-03-10',
             'note' => null,
+            'created_at' => '2026-03-10T12:00:00.000+00:00',
         ];
     }
 }

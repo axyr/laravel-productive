@@ -30,6 +30,7 @@ final class ServiceAssignmentFactory extends Factory
     protected function definition(): array
     {
         return [
+            'billable' => true,
         ];
     }
 }

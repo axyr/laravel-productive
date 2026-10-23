@@ -31,6 +31,10 @@ final class ExpenseReportFactory extends Factory
     {
         return [
             'total_amount' => '5000.00',
+            'approved_amount' => '4500.00',
+            'pending_amount' => '500.00',
+            'billable_amount' => '3500.00',
+            'person_id' => 12,
             'project_id' => 6899,
             'currency' => 'USD',
         ];

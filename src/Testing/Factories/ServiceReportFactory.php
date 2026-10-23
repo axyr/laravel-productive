@@ -30,6 +30,18 @@ final class ServiceReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'budget_total' => '50000.00',
+            'budget_used' => '32000.00',
+            'revenue' => '38000.00',
+            'cost' => '24000.00',
+            'profit' => '14000.00',
+            'profit_margin' => 0.37,
+            'billable_time' => 24000,
+            'nonbillable_time' => 3000,
+            'worked_time' => 27000,
+            'estimated_time' => 32000,
+            'service_id' => 1856422,
+            'deal_id' => 89,
             'currency' => 'USD',
         ];
     }

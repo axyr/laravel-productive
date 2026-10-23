@@ -8,6 +8,7 @@ namespace Axyr\Productive\Data\Models;
 
 use Axyr\Productive\Data\Attributes;
 use Axyr\Productive\Data\Model;
+use DateTimeImmutable;
 
 /**
  * An invoice template is linked to a specific budget and stores the default settings (document type, bank account, issuer, etc.) used when automatically generating invoice drafts for that budget.
@@ -29,6 +30,8 @@ final readonly class InvoiceTemplate extends Model
      */
     public ?array $bankAccountDetails;
 
+    public ?DateTimeImmutable $createdAt;
+
     /**
      * Custom field values for this invoice template.
      *
@@ -36,12 +39,16 @@ final readonly class InvoiceTemplate extends Model
      */
     public ?array $customFields;
 
+    public ?bool $default;
+
     /**
      * A JSON object containing rules used to determine which services or time entries to include when auto-generating invoice line items.
      *
      * @var array<array-key, mixed>|null
      */
     public ?array $invoiceCreationOptions;
+
+    public ?string $name;
 
     /** The default note text to include on invoices generated from this template. */
     public ?string $note;
@@ -56,8 +63,11 @@ final readonly class InvoiceTemplate extends Model
     protected function hydrate(Attributes $attributes): void
     {
         $this->bankAccountDetails = $attributes->object('bank_account_details');
+        $this->createdAt = $attributes->dateTime('created_at');
         $this->customFields = $attributes->object('custom_fields');
+        $this->default = $attributes->bool('default');
         $this->invoiceCreationOptions = $attributes->object('invoice_creation_options');
+        $this->name = $attributes->string('name');
         $this->note = $attributes->string('note');
         $this->paymentTermsDays = $attributes->int('payment_terms_days');
         $this->paymentTermsType = $attributes->string('payment_terms_type');

@@ -29,6 +29,8 @@ final readonly class DocumentType extends Model
     /** The Liquid template used to render the body content of documents of this type. */
     public ?string $bodyTemplate;
 
+    public ?bool $default;
+
     /** ID of the built-in document template this type is based on. */
     public ?int $documentTemplateId;
 
@@ -101,6 +103,7 @@ final readonly class DocumentType extends Model
     {
         $this->archivedAt = $attributes->dateTime('archived_at');
         $this->bodyTemplate = $attributes->string('body_template');
+        $this->default = $attributes->bool('default');
         $this->documentTemplateId = $attributes->int('document_template_id');
         $this->dualCurrency = $attributes->bool('dual_currency');
         $this->emailData = $attributes->object('email_data');

@@ -41,6 +41,8 @@ final readonly class DealStatus extends Model
     /** The display name of the pipeline stage. */
     public ?string $name;
 
+    public ?string $outcome;
+
     /** The display order position of this stage within the pipeline. */
     public ?int $position;
 
@@ -67,6 +69,7 @@ final readonly class DealStatus extends Model
         $this->expenseTrackingEnabled = $attributes->bool('expense_tracking_enabled');
         $this->lostReasonEnabled = $attributes->bool('lost_reason_enabled');
         $this->name = $attributes->string('name');
+        $this->outcome = $attributes->string('outcome');
         $this->position = $attributes->int('position');
         $this->probability = $attributes->int('probability');
         $this->probabilityEnabled = $attributes->bool('probability_enabled');

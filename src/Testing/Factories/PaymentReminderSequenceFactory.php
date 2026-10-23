@@ -31,6 +31,7 @@ final class PaymentReminderSequenceFactory extends Factory
     {
         return [
             'name' => 'Standard Reminder',
+            'default' => true,
         ];
     }
 }

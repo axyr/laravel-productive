@@ -31,6 +31,16 @@ final readonly class ProjectReport extends Model
     /** Average profit margin in the normalized currency for this project report group. */
     public mixed $averageProfitMarginNormalized;
 
+    public ?int $billableTime;
+
+    public ?string $budgetTotal;
+
+    public ?string $budgetUsed;
+
+    public ?int $companyId;
+
+    public ?string $cost;
+
     /** Number of projects in this report group. */
     public ?int $count;
 
@@ -61,6 +71,14 @@ final readonly class ProjectReport extends Model
     /** Month grouping for this project report row. */
     public ?string $month;
 
+    public ?int $nonbillableTime;
+
+    public ?string $profit;
+
+    public ?float $profitMargin;
+
+    public ?int $projectId;
+
     /** Project status for this project report group. */
     public ?int $projectStatus;
 
@@ -69,6 +87,8 @@ final readonly class ProjectReport extends Model
 
     /** Quarter grouping for this project report row. */
     public ?string $quarter;
+
+    public ?string $revenue;
 
     /** Sum of cost across all records in this project report group. */
     public mixed $totalCost;
@@ -127,6 +147,8 @@ final readonly class ProjectReport extends Model
     /** Sum of revenue in the normalized currency across all records in this project report group. */
     public mixed $totalRevenueNormalized;
 
+    public ?int $totalTime;
+
     /** Sum of worked time across all records in this project report group. */
     public ?float $totalWorkedTime;
 
@@ -141,6 +163,11 @@ final readonly class ProjectReport extends Model
         $this->averageProfitMargin = $attributes->float('average_profit_margin');
         $this->averageProfitMarginDefault = $attributes->float('average_profit_margin_default');
         $this->averageProfitMarginNormalized = $attributes->mixed('average_profit_margin_normalized');
+        $this->billableTime = $attributes->int('billable_time');
+        $this->budgetTotal = $attributes->string('budget_total');
+        $this->budgetUsed = $attributes->string('budget_used');
+        $this->companyId = $attributes->int('company_id');
+        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
         $this->currency = $attributes->string('currency');
@@ -151,9 +178,14 @@ final readonly class ProjectReport extends Model
         $this->group = $attributes->string('group');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
+        $this->nonbillableTime = $attributes->int('nonbillable_time');
+        $this->profit = $attributes->string('profit');
+        $this->profitMargin = $attributes->float('profit_margin');
+        $this->projectId = $attributes->int('project_id');
         $this->projectStatus = $attributes->int('project_status');
         $this->projectType = $attributes->int('project_type');
         $this->quarter = $attributes->string('quarter');
+        $this->revenue = $attributes->string('revenue');
         $this->totalCost = $attributes->mixed('total_cost');
         $this->totalCostDefault = $attributes->mixed('total_cost_default');
         $this->totalCostNormalized = $attributes->mixed('total_cost_normalized');
@@ -173,6 +205,7 @@ final readonly class ProjectReport extends Model
         $this->totalRevenue = $attributes->mixed('total_revenue');
         $this->totalRevenueDefault = $attributes->mixed('total_revenue_default');
         $this->totalRevenueNormalized = $attributes->mixed('total_revenue_normalized');
+        $this->totalTime = $attributes->int('total_time');
         $this->totalWorkedTime = $attributes->float('total_worked_time');
         $this->week = $attributes->string('week');
         $this->year = $attributes->string('year');

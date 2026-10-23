@@ -46,6 +46,8 @@ final readonly class TimeReport extends Model
     /** Hours tracked on client projects. */
     public ?float $clientTime;
 
+    public ?string $cost;
+
     /** Number of time entries in this row. */
     public ?int $count;
 
@@ -57,6 +59,8 @@ final readonly class TimeReport extends Model
 
     /** Monetary values normalized to a common currency for cross-currency comparison. */
     public ?string $currencyNormalized;
+
+    public ?string $date;
 
     /** The date period label for this row (e.g. week, month, quarter range). */
     public mixed $datePeriod;
@@ -97,6 +101,8 @@ final readonly class TimeReport extends Model
     /** Month number this row represents, when grouped by month. */
     public ?string $month;
 
+    public ?int $nonbillableTime;
+
     /** Not in the spec: seen in recorded API responses. */
     public ?int $overtimeTime;
 
@@ -110,6 +116,10 @@ final readonly class TimeReport extends Model
      */
     public ?array $peopleCustomFields;
 
+    public ?int $personId;
+
+    public ?int $projectId;
+
     /** Quarter grouping for this new time report row. */
     public ?string $quarter;
 
@@ -118,6 +128,8 @@ final readonly class TimeReport extends Model
 
     /** Recognized time for this new time report group. */
     public ?float $recognizedTime;
+
+    public ?string $revenue;
 
     /** Total number of hours scheduled on billable services. */
     public ?float $scheduledBillableTime;
@@ -185,6 +197,8 @@ final readonly class TimeReport extends Model
     /** Total scheduled revenue normalized to a common currency for cross-currency comparison. */
     public mixed $totalScheduledRevenueNormalized;
 
+    public ?int $totalTime;
+
     /** Total labor cost of tracked time. */
     public mixed $totalWorkCost;
 
@@ -228,10 +242,12 @@ final readonly class TimeReport extends Model
         $this->billingType = $attributes->int('billing_type');
         $this->capacity = $attributes->float('capacity');
         $this->clientTime = $attributes->float('client_time');
+        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
+        $this->date = $attributes->string('date');
         $this->datePeriod = $attributes->mixed('date_period');
         $this->day = $attributes->string('day');
         $this->draftScheduledBillableTime = $attributes->float('draft_scheduled_billable_time');
@@ -245,12 +261,16 @@ final readonly class TimeReport extends Model
         $this->holidayTime = $attributes->float('holiday_time');
         $this->internalTime = $attributes->float('internal_time');
         $this->month = $attributes->string('month');
+        $this->nonbillableTime = $attributes->int('nonbillable_time');
         $this->overtimeTime = $attributes->int('overtime_time');
         $this->paidEventTime = $attributes->float('paid_event_time');
         $this->peopleCustomFields = $attributes->object('people_custom_fields');
+        $this->personId = $attributes->int('person_id');
+        $this->projectId = $attributes->int('project_id');
         $this->quarter = $attributes->string('quarter');
         $this->recognizedScheduledTime = $attributes->float('recognized_scheduled_time');
         $this->recognizedTime = $attributes->float('recognized_time');
+        $this->revenue = $attributes->string('revenue');
         $this->scheduledBillableTime = $attributes->float('scheduled_billable_time');
         $this->scheduledClientTime = $attributes->float('scheduled_client_time');
         $this->scheduledEventTime = $attributes->float('scheduled_event_time');
@@ -273,6 +293,7 @@ final readonly class TimeReport extends Model
         $this->totalScheduledRevenue = $attributes->mixed('total_scheduled_revenue');
         $this->totalScheduledRevenueDefault = $attributes->mixed('total_scheduled_revenue_default');
         $this->totalScheduledRevenueNormalized = $attributes->mixed('total_scheduled_revenue_normalized');
+        $this->totalTime = $attributes->int('total_time');
         $this->totalWorkCost = $attributes->mixed('total_work_cost');
         $this->totalWorkCostDefault = $attributes->mixed('total_work_cost_default');
         $this->totalWorkCostNormalized = $attributes->mixed('total_work_cost_normalized');

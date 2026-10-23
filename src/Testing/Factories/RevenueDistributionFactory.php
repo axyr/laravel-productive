@@ -31,6 +31,9 @@ final class RevenueDistributionFactory extends Factory
     {
         return [
             'amount' => '10000.00',
+            'recognized_at' => '2026-03-31',
+            'project_id' => 6899,
+            'deal_id' => 89,
             'currency' => 'USD',
         ];
     }

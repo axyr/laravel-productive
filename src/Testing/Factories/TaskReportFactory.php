@@ -30,6 +30,13 @@ final class TaskReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'billable_time' => 480,
+            'nonbillable_time' => 60,
+            'total_time' => 540,
+            'initial_estimate' => 480,
+            'remaining_time' => 0,
+            'task_id' => 120501,
+            'project_id' => 6899,
         ];
     }
 }

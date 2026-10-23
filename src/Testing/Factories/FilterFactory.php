@@ -31,6 +31,8 @@ final class FilterFactory extends Factory
     {
         return [
             'name' => 'My Open Tasks',
+            'item_type' => 'task',
+            'filter_data' => ['assignee_id' => [12], 'closed' => ['eq' => false]],
             'created_at' => '2026-01-15T10:00:00.000+00:00',
         ];
     }

@@ -134,6 +134,8 @@ final readonly class Invoice extends Model
      */
     public ?array $customFields;
 
+    public ?string $date;
+
     /** Soft-deletion timestamp; present if the invoice has been deleted. */
     public ?DateTimeImmutable $deletedAt;
 
@@ -142,6 +144,8 @@ final readonly class Invoice extends Model
 
     /** Discount percentage applied to the invoice total. */
     public ?float $discount;
+
+    public ?string $dueDate;
 
     /** Unique key for email-based interactions with this invoice. */
     public ?string $emailKey;
@@ -206,6 +210,8 @@ final readonly class Invoice extends Model
     /** Invoice note with template variables resolved. */
     public mixed $noteInterpolated;
 
+    public ?string $notes;
+
     /** Unique invoice number. */
     public ?string $number;
 
@@ -236,11 +242,17 @@ final readonly class Invoice extends Model
     /** Date when the invoice was sent to the client. */
     public ?DateTimeImmutable $sentOn;
 
+    public ?string $status;
+
     /** Short description of what is being invoiced. */
     public ?string $subject;
 
+    public ?string $subtotal;
+
     /** Tags applied to this invoice. */
     public ?string $tagList;
+
+    public ?string $tax;
 
     /** Name of the primary tax (e.g. VAT). */
     public ?string $tax1Name;
@@ -253,6 +265,8 @@ final readonly class Invoice extends Model
 
     /** Secondary tax rate percentage. */
     public ?float $tax2Value;
+
+    public ?string $total;
 
     /** Timestamp of the last modification to this invoice. */
     public ?DateTimeImmutable $updatedAt;
@@ -292,9 +306,11 @@ final readonly class Invoice extends Model
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->customFields = $attributes->object('custom_fields');
+        $this->date = $attributes->string('date');
         $this->deletedAt = $attributes->dateTime('deleted_at');
         $this->deliveryOn = $attributes->date('delivery_on');
         $this->discount = $attributes->float('discount');
+        $this->dueDate = $attributes->string('due_date');
         $this->emailKey = $attributes->string('email_key');
         $this->exchangeDate = $attributes->date('exchange_date');
         $this->exchangeRate = $attributes->float('exchange_rate');
@@ -316,6 +332,7 @@ final readonly class Invoice extends Model
         $this->lineItemTax = $attributes->bool('line_item_tax');
         $this->note = $attributes->string('note');
         $this->noteInterpolated = $attributes->mixed('note_interpolated');
+        $this->notes = $attributes->string('notes');
         $this->number = $attributes->string('number');
         $this->paidOn = $attributes->date('paid_on');
         $this->payOn = $attributes->date('pay_on');
@@ -326,12 +343,16 @@ final readonly class Invoice extends Model
         $this->purchaseOrderNumber = $attributes->string('purchase_order_number');
         $this->sampleData = $attributes->bool('sample_data');
         $this->sentOn = $attributes->date('sent_on');
+        $this->status = $attributes->string('status');
         $this->subject = $attributes->string('subject');
+        $this->subtotal = $attributes->string('subtotal');
         $this->tagList = $attributes->string('tag_list');
+        $this->tax = $attributes->string('tax');
         $this->tax1Name = $attributes->string('tax1_name');
         $this->tax1Value = $attributes->float('tax1_value');
         $this->tax2Name = $attributes->string('tax2_name');
         $this->tax2Value = $attributes->float('tax2_value');
+        $this->total = $attributes->string('total');
         $this->updatedAt = $attributes->dateTime('updated_at');
     }
 

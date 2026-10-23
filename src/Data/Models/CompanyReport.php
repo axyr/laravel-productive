@@ -22,6 +22,10 @@ final readonly class CompanyReport extends Model
 {
     public const string TYPE = 'company_reports';
 
+    public ?int $billableTime;
+
+    public ?int $companyId;
+
     /** Street address of the company's primary contact. */
     public mixed $contactAddress;
 
@@ -70,19 +74,27 @@ final readonly class CompanyReport extends Model
     /** The grouping dimension for this company report row. */
     public ?string $group;
 
+    public ?string $invoiced;
+
     /** Time period grouping for last activity date (e.g. week, month, quarter). */
     public mixed $lastActivityAtPeriod;
 
     /** Month number of the time dimension bucket for this report row. */
     public ?string $month;
 
+    public ?string $outstanding;
+
     /** Payment terms in days — number of days after invoice issue that payment is due. */
     public ?int $paymentTerms;
 
     public ?string $paymentTermsType;
 
+    public ?string $payments;
+
     /** Quarter number (1–4) of the time dimension bucket for this report row. */
     public ?string $quarter;
+
+    public ?string $revenue;
 
     /** Status for this company report group. */
     public ?int $status;
@@ -95,6 +107,8 @@ final readonly class CompanyReport extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->billableTime = $attributes->int('billable_time');
+        $this->companyId = $attributes->int('company_id');
         $this->contactAddress = $attributes->mixed('contact_address');
         $this->contactCity = $attributes->mixed('contact_city');
         $this->contactCountry = $attributes->mixed('contact_country');
@@ -111,11 +125,15 @@ final readonly class CompanyReport extends Model
         $this->customFields = $attributes->string('custom_fields');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
+        $this->invoiced = $attributes->string('invoiced');
         $this->lastActivityAtPeriod = $attributes->mixed('last_activity_at_period');
         $this->month = $attributes->string('month');
+        $this->outstanding = $attributes->string('outstanding');
         $this->paymentTerms = $attributes->int('payment_terms');
         $this->paymentTermsType = $attributes->string('payment_terms_type');
+        $this->payments = $attributes->string('payments');
         $this->quarter = $attributes->string('quarter');
+        $this->revenue = $attributes->string('revenue');
         $this->status = $attributes->int('status');
         $this->week = $attributes->string('week');
         $this->year = $attributes->string('year');

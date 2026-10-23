@@ -30,6 +30,11 @@ final class WebhookFactory extends Factory
     protected function definition(): array
     {
         return [
+            'url' => 'https://hooks.example.com/productive',
+            'events' => ['task.created', 'time_entry.created', 'invoice.paid'],
+            'active' => true,
+            'secret' => null,
+            'created_at' => '2026-01-01T00:00:00.000+00:00',
         ];
     }
 }

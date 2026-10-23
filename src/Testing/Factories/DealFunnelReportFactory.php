@@ -30,6 +30,10 @@ final class DealFunnelReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'stage' => 'proposal',
+            'deal_count' => 5,
+            'total_value' => '125000.00',
+            'pipeline_id' => 1,
             'currency' => 'USD',
         ];
     }

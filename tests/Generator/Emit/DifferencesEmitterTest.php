@@ -21,7 +21,7 @@ function differencesApi(): Api
         new Relationship('project', false, 'projects'),
         new Relationship('todos', true, 'todos', undocumented: true),
         new Relationship('owner', false, null, undocumented: true),
-    ], phantom: ['url', 'events']);
+    ], unseen: ['url', 'events']);
     $hidden = new Model('Hidden', 'hidden', '', [new Attribute('x', 'x', AttributeType::Int, specType: AttributeType::String, undocumented: true)], [new Relationship('y', false, null, undocumented: true)]);
 
     return new Api([
@@ -93,9 +93,9 @@ it('lists every difference between the recording and the spec', function () {
         | `Task` | `todos` | to-many | `todos` |
         | `Task` | `owner` | to-one | any |
 
-        ## Example-only attributes the API never sent
+        ## Example-only attributes never seen
 
-        The spec's example has them, its schema does not, and no recorded response of the type carried them, so no property is generated.
+        The spec's example has them, its schema does not, and no recorded response of the type carried them. Their properties are kept, and have always been null, until Productive confirms whether they exist.
 
         | Model | Attribute |
         | --- | --- |

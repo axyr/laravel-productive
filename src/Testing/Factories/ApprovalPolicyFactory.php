@@ -31,6 +31,8 @@ final class ApprovalPolicyFactory extends Factory
     {
         return [
             'name' => 'Time Entry Approval',
+            'policy_type' => 'time_entry',
+            'created_at' => '2026-01-01T00:00:00.000+00:00',
         ];
     }
 }

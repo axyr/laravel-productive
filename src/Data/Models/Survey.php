@@ -32,6 +32,8 @@ final readonly class Survey extends Model
     /** Public UUID used to identify this survey in shareable links. */
     public ?string $publicUuid;
 
+    public ?string $status;
+
     /** Controls who can submit responses to this survey: nobody, project_members, organization, or public. */
     public ?string $submissionAccess;
 
@@ -46,6 +48,7 @@ final readonly class Survey extends Model
         $this->createdAt = $attributes->dateTime('created_at');
         $this->description = $attributes->mixed('description');
         $this->publicUuid = $attributes->string('public_uuid');
+        $this->status = $attributes->string('status');
         $this->submissionAccess = $attributes->string('submission_access');
         $this->title = $attributes->string('title');
         $this->updatedAt = $attributes->dateTime('updated_at');

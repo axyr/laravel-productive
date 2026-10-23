@@ -44,11 +44,11 @@ it('builds a model from a single resource response', function () {
             ['name' => 'subscribers', 'to_many' => true, 'target_type' => null],
         ],
         'example' => ['closed' => false, 'description' => 'x'],
-        'phantom' => [],
+        'unseen' => [],
     ]);
 });
 
-it('leaves out example-only attributes a recording of the type never saw, and keeps them for a type not recorded', function () {
+it('keeps example-only attributes but names the ones a recording of the type never saw', function () {
     $spec = new Spec(['components' => ['schemas' => []]]);
     $recorded = new RecordedTypes(['types' => ['webhooks' => ['attributes' => ['name' => ['string'], 'target_url' => ['string']], 'relationships' => []]]]);
     $builder = new ModelBuilder($spec, new SchemaReader($spec), new RelationshipTypes([], [], []), $recorded);
@@ -58,11 +58,11 @@ it('leaves out example-only attributes a recording of the type never saw, and ke
     $webhook = $builder->build('Webhook', 'webhooks', $response, $example);
     $other = $builder->build('Other', 'others', $response, $example);
 
-    expect(array_map(fn(Attribute $attribute): string => $attribute->name, $webhook->attributes))->toBe(['name', 'target_url', 'test'])
-        ->and($webhook->phantom)->toBe(['url', 'events'])
-        ->and($webhook->example)->toBe(['name' => 'Hook', 'test' => true])
+    expect(array_map(fn(Attribute $attribute): string => $attribute->name, $webhook->attributes))->toBe(['events', 'name', 'target_url', 'test', 'url'])
+        ->and($webhook->unseen)->toBe(['url', 'events'])
+        ->and($webhook->example)->toBe($example['attributes'])
         ->and(array_map(fn(Attribute $attribute): string => $attribute->name, $other->attributes))->toBe(['events', 'name', 'test', 'url'])
-        ->and($other->phantom)->toBe([])
+        ->and($other->unseen)->toBe([])
         ->and($other->example)->toBe($example['attributes']);
 });
 

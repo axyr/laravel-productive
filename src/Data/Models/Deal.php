@@ -153,6 +153,8 @@ final readonly class Deal extends Model
     /** Date when the deal was marked as delivered. */
     public ?DateTimeImmutable $deliveredOn;
 
+    public ?string $description;
+
     /** Default discount percentage applied to services on this deal. */
     public ?float $discount;
 
@@ -238,8 +240,12 @@ final readonly class Deal extends Model
     /** Total amount already invoiced (normalized currency). */
     public mixed $invoicedNormalized;
 
+    public ?bool $isBudget;
+
     /** Timestamp of the most recent change on this deal. */
     public ?DateTimeImmutable $lastActivityAt;
+
+    public ?DateTimeImmutable $lostAt;
 
     /** Notes explaining why the deal was lost. */
     public ?string $lostComment;
@@ -403,6 +409,8 @@ final readonly class Deal extends Model
     /** Revenue from services only, excluding adjustments (normalized currency). */
     public mixed $servicesRevenueNormalized;
 
+    public ?int $statusId;
+
     /** Optional suffix appended to the deal number for display. */
     public ?string $suffix;
 
@@ -434,6 +442,8 @@ final readonly class Deal extends Model
 
     /** How time is tracked on this deal's services. */
     public ?int $trackingTypeId;
+
+    public ?DateTimeImmutable $updatedAt;
 
     /** Whether all expenses must be invoiced before the deal can be closed. */
     public ?bool $validateExpenseWhenClosing;
@@ -485,6 +495,7 @@ final readonly class Deal extends Model
         $this->dealValueTotalNormalized = $attributes->mixed('deal_value_total_normalized');
         $this->deletedAt = $attributes->dateTime('deleted_at');
         $this->deliveredOn = $attributes->date('delivered_on');
+        $this->description = $attributes->string('description');
         $this->discount = $attributes->float('discount');
         $this->draftInvoiced = $attributes->mixed('draft_invoiced');
         $this->draftInvoicedDefault = $attributes->mixed('draft_invoiced_default');
@@ -512,7 +523,9 @@ final readonly class Deal extends Model
         $this->invoiced = $attributes->mixed('invoiced');
         $this->invoicedDefault = $attributes->mixed('invoiced_default');
         $this->invoicedNormalized = $attributes->mixed('invoiced_normalized');
+        $this->isBudget = $attributes->bool('is_budget');
         $this->lastActivityAt = $attributes->dateTime('last_activity_at');
+        $this->lostAt = $attributes->dateTime('lost_at');
         $this->lostComment = $attributes->string('lost_comment');
         $this->manDayMinutes = $attributes->int('man_day_minutes');
         $this->manualInvoicingStatusId = $attributes->int('manual_invoicing_status_id');
@@ -567,6 +580,7 @@ final readonly class Deal extends Model
         $this->servicesRevenue = $attributes->mixed('services_revenue');
         $this->servicesRevenueDefault = $attributes->mixed('services_revenue_default');
         $this->servicesRevenueNormalized = $attributes->mixed('services_revenue_normalized');
+        $this->statusId = $attributes->int('status_id');
         $this->suffix = $attributes->string('suffix');
         $this->tagList = $attributes->list('tag_list');
         $this->timeApproval = $attributes->bool('time_approval');
@@ -575,6 +589,7 @@ final readonly class Deal extends Model
         $this->todoCount = $attributes->int('todo_count');
         $this->todoDueDate = $attributes->date('todo_due_date');
         $this->trackingTypeId = $attributes->int('tracking_type_id');
+        $this->updatedAt = $attributes->dateTime('updated_at');
         $this->validateExpenseWhenClosing = $attributes->bool('validate_expense_when_closing');
         $this->workedTime = $attributes->int('worked_time');
     }

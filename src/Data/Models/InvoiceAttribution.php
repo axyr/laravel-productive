@@ -32,6 +32,8 @@ final readonly class InvoiceAttribution extends Model
     /** The attributed amount converted to the normalized (reporting) currency. */
     public mixed $amountNormalized;
 
+    public ?DateTimeImmutable $attributedAt;
+
     /** The currency of this invoice attribution, inherited from the associated invoice. */
     public ?string $currency;
 
@@ -52,6 +54,7 @@ final readonly class InvoiceAttribution extends Model
         $this->amount = $attributes->int('amount');
         $this->amountDefault = $attributes->mixed('amount_default');
         $this->amountNormalized = $attributes->mixed('amount_normalized');
+        $this->attributedAt = $attributes->dateTime('attributed_at');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');

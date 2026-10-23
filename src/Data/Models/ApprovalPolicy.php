@@ -26,6 +26,8 @@ final readonly class ApprovalPolicy extends Model
     /** Timestamp when the approval policy was archived, or null if active. */
     public ?DateTimeImmutable $archivedAt;
 
+    public ?DateTimeImmutable $createdAt;
+
     /** Indicates whether this is a custom approval policy created for a specific assignment. */
     public ?bool $custom;
 
@@ -38,16 +40,20 @@ final readonly class ApprovalPolicy extends Model
     /** The display name of the approval policy. */
     public ?string $name;
 
+    public ?string $policyType;
+
     /** Numeric identifier for the approval policy type: 1 = absence, 2 = budget, 3 = deal. */
     public ?int $typeId;
 
     protected function hydrate(Attributes $attributes): void
     {
         $this->archivedAt = $attributes->dateTime('archived_at');
+        $this->createdAt = $attributes->dateTime('created_at');
         $this->custom = $attributes->bool('custom');
         $this->default = $attributes->bool('default');
         $this->description = $attributes->string('description');
         $this->name = $attributes->string('name');
+        $this->policyType = $attributes->string('policy_type');
         $this->typeId = $attributes->int('type_id');
     }
 

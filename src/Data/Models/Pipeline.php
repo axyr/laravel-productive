@@ -23,8 +23,12 @@ final readonly class Pipeline extends Model
 {
     public const string TYPE = 'pipelines';
 
+    public ?DateTimeImmutable $archivedAt;
+
     /** Timestamp when the pipeline was created. */
     public ?DateTimeImmutable $createdAt;
+
+    public ?bool $default;
 
     /** Icon ID used to visually identify this pipeline. */
     public ?string $iconId;
@@ -43,7 +47,9 @@ final readonly class Pipeline extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->archivedAt = $attributes->dateTime('archived_at');
         $this->createdAt = $attributes->dateTime('created_at');
+        $this->default = $attributes->bool('default');
         $this->iconId = $attributes->string('icon_id');
         $this->name = $attributes->string('name');
         $this->pipelineTypeId = $attributes->int('pipeline_type_id');

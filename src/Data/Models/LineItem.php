@@ -69,6 +69,8 @@ final readonly class LineItem extends Model
 
     public ?bool $manualEntry;
 
+    public ?string $name;
+
     /** The display order of this line item within the invoice. */
     public ?int $position;
 
@@ -81,8 +83,14 @@ final readonly class LineItem extends Model
     /** The display name of the tax applied to this line item (e.g. VAT). */
     public ?string $taxName;
 
+    public ?string $taxRate;
+
     /** The computed tax amount for this line item (amount × tax_value). */
     public ?float $taxValue;
+
+    public ?string $totalPrice;
+
+    public ?string $unit;
 
     /** ID of the unit of measure for this line item (e.g. hour, day, piece). */
     public ?int $unitId;
@@ -114,11 +122,15 @@ final readonly class LineItem extends Model
         $this->description = $attributes->string('description');
         $this->discount = $attributes->float('discount');
         $this->manualEntry = $attributes->bool('manual_entry');
+        $this->name = $attributes->string('name');
         $this->position = $attributes->int('position');
         $this->quantity = $attributes->float('quantity');
         $this->serviceIds = $attributes->mixed('service_ids');
         $this->taxName = $attributes->string('tax_name');
+        $this->taxRate = $attributes->string('tax_rate');
         $this->taxValue = $attributes->float('tax_value');
+        $this->totalPrice = $attributes->string('total_price');
+        $this->unit = $attributes->string('unit');
         $this->unitId = $attributes->int('unit_id');
         $this->unitPrice = $attributes->int('unit_price');
         $this->unitPriceDefault = $attributes->mixed('unit_price_default');

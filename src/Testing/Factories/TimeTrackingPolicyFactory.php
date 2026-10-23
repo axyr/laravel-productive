@@ -31,6 +31,11 @@ final class TimeTrackingPolicyFactory extends Factory
     {
         return [
             'name' => 'Standard Policy',
+            'track_method_ids' => [1, 2],
+            'default_track_method_id' => 1,
+            'daily_limit' => 720,
+            'requires_task' => false,
+            'requires_service' => true,
         ];
     }
 }

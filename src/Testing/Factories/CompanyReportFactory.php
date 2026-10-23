@@ -30,6 +30,12 @@ final class CompanyReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'revenue' => '250000.00',
+            'invoiced' => '175000.00',
+            'payments' => '140000.00',
+            'outstanding' => '35000.00',
+            'billable_time' => 120000,
+            'company_id' => 65111,
             'currency' => 'USD',
         ];
     }

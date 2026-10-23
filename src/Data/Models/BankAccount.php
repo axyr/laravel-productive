@@ -32,8 +32,14 @@ final readonly class BankAccount extends Model
     /** The name of the bank associated with this account. */
     public ?string $bankName;
 
+    public ?string $bic;
+
+    public ?DateTimeImmutable $createdAt;
+
     /** The ISO 4217 currency code for this bank account (e.g. USD, EUR). */
     public ?string $currency;
+
+    public ?string $iban;
 
     /** Not in the spec: seen in recorded API responses. */
     public mixed $localBankCode;
@@ -52,7 +58,10 @@ final readonly class BankAccount extends Model
         $this->archivedAt = $attributes->dateTime('archived_at');
         $this->bankAddress = $attributes->string('bank_address');
         $this->bankName = $attributes->string('bank_name');
+        $this->bic = $attributes->string('bic');
+        $this->createdAt = $attributes->dateTime('created_at');
         $this->currency = $attributes->string('currency');
+        $this->iban = $attributes->string('iban');
         $this->localBankCode = $attributes->mixed('local_bank_code');
         $this->name = $attributes->string('name');
         $this->number = $attributes->string('number');

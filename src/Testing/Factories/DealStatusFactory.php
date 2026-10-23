@@ -32,6 +32,7 @@ final class DealStatusFactory extends Factory
         return [
             'name' => 'Proposal Sent',
             'position' => 3,
+            'outcome' => 'open',
             'color_id' => '7',
         ];
     }

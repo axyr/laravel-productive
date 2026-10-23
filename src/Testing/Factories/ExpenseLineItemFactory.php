@@ -35,6 +35,9 @@ final class ExpenseLineItemFactory extends Factory
             'unit_price' => 15000,
             'unit_price_default' => 16500,
             'unit_price_normalized' => 16500,
+            'currency' => 'EUR',
+            'currency_default' => 'USD',
+            'currency_normalized' => 'USD',
         ];
     }
 }

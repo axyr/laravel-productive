@@ -32,6 +32,8 @@ final readonly class Payment extends Model
     /** The payment amount converted to the normalized (reporting) currency. */
     public mixed $amountNormalized;
 
+    public ?DateTimeImmutable $createdAt;
+
     /** The currency of this payment, inherited from the associated invoice. */
     public ?string $currency;
 
@@ -58,6 +60,7 @@ final readonly class Payment extends Model
         $this->amount = $attributes->int('amount');
         $this->amountDefault = $attributes->mixed('amount_default');
         $this->amountNormalized = $attributes->mixed('amount_normalized');
+        $this->createdAt = $attributes->dateTime('created_at');
         $this->currency = $attributes->string('currency');
         $this->currencyDefault = $attributes->string('currency_default');
         $this->currencyNormalized = $attributes->string('currency_normalized');

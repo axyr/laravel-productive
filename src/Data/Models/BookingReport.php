@@ -50,6 +50,8 @@ final readonly class BookingReport extends Model
     /** Average recognized margin for this booking report group. */
     public ?float $averageRecognizedMargin;
 
+    public ?int $billableTime;
+
     /** Billing type for this booking report group. */
     public ?int $billingType;
 
@@ -61,6 +63,8 @@ final readonly class BookingReport extends Model
 
     /** Time period grouping for canceled at (e.g. week, month, quarter). */
     public mixed $canceledAtPeriod;
+
+    public ?string $cost;
 
     /** Number of bookings in this report group. */
     public ?int $count;
@@ -92,6 +96,8 @@ final readonly class BookingReport extends Model
     /** End date for this booking report group. */
     public ?DateTimeImmutable $endDate;
 
+    public ?string $endedOn;
+
     /** Formula fields for this booking report group. */
     public mixed $formulaFields;
 
@@ -101,12 +107,18 @@ final readonly class BookingReport extends Model
     /** Mandays for this booking report group. */
     public ?float $mandays;
 
+    public ?int $nonbillableTime;
+
     /**
      * People custom fields for this booking report group.
      *
      * @var array<array-key, mixed>|null
      */
     public ?array $peopleCustomFields;
+
+    public ?int $personId;
+
+    public ?int $projectId;
 
     /** Project type for this booking report group. */
     public ?int $projectType;
@@ -117,11 +129,17 @@ final readonly class BookingReport extends Model
     /** Time period grouping for rejected at (e.g. week, month, quarter). */
     public mixed $rejectedAtPeriod;
 
+    public ?string $revenue;
+
+    public ?int $serviceId;
+
     /** Stage type for this booking report group. */
     public ?int $stageType;
 
     /** Start date for this booking report group. */
     public ?DateTimeImmutable $startDate;
+
+    public ?string $startedOn;
 
     /** Time for this booking report group. */
     public ?float $time;
@@ -165,6 +183,10 @@ final readonly class BookingReport extends Model
     /** Sum of recognized time across all records in this booking report group. */
     public ?float $totalRecognizedTime;
 
+    public ?int $totalTime;
+
+    public ?int $totalWorkingDays;
+
     protected function hydrate(Attributes $attributes): void
     {
         $this->absenceType = $attributes->string('absence_type');
@@ -176,10 +198,12 @@ final readonly class BookingReport extends Model
         $this->averageBlendedRateDefault = $attributes->mixed('average_blended_rate_default');
         $this->averageBlendedRateNormalized = $attributes->mixed('average_blended_rate_normalized');
         $this->averageRecognizedMargin = $attributes->float('average_recognized_margin');
+        $this->billableTime = $attributes->int('billable_time');
         $this->billingType = $attributes->int('billing_type');
         $this->bookingType = $attributes->string('booking_type');
         $this->canceledAt = $attributes->date('canceled_at');
         $this->canceledAtPeriod = $attributes->mixed('canceled_at_period');
+        $this->cost = $attributes->string('cost');
         $this->count = $attributes->int('count');
         $this->createdAt = $attributes->date('created_at');
         $this->createdAtPeriod = $attributes->mixed('created_at_period');
@@ -190,15 +214,22 @@ final readonly class BookingReport extends Model
         $this->datePeriod = $attributes->mixed('date_period');
         $this->draft = $attributes->bool('draft');
         $this->endDate = $attributes->date('end_date');
+        $this->endedOn = $attributes->string('ended_on');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
         $this->mandays = $attributes->float('mandays');
+        $this->nonbillableTime = $attributes->int('nonbillable_time');
         $this->peopleCustomFields = $attributes->object('people_custom_fields');
+        $this->personId = $attributes->int('person_id');
+        $this->projectId = $attributes->int('project_id');
         $this->projectType = $attributes->int('project_type');
         $this->rejectedAt = $attributes->date('rejected_at');
         $this->rejectedAtPeriod = $attributes->mixed('rejected_at_period');
+        $this->revenue = $attributes->string('revenue');
+        $this->serviceId = $attributes->int('service_id');
         $this->stageType = $attributes->int('stage_type');
         $this->startDate = $attributes->date('start_date');
+        $this->startedOn = $attributes->string('started_on');
         $this->time = $attributes->float('time');
         $this->totalBaseCost = $attributes->mixed('total_base_cost');
         $this->totalBaseCostDefault = $attributes->mixed('total_base_cost_default');
@@ -213,6 +244,8 @@ final readonly class BookingReport extends Model
         $this->totalRecognizedRevenueDefault = $attributes->mixed('total_recognized_revenue_default');
         $this->totalRecognizedRevenueNormalized = $attributes->mixed('total_recognized_revenue_normalized');
         $this->totalRecognizedTime = $attributes->float('total_recognized_time');
+        $this->totalTime = $attributes->int('total_time');
+        $this->totalWorkingDays = $attributes->int('total_working_days');
     }
 
     public function booking(): ?Booking

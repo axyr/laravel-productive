@@ -30,6 +30,11 @@ final class EntitlementReportFactory extends Factory
     protected function definition(): array
     {
         return [
+            'allocated' => 1200,
+            'used' => 480,
+            'remaining' => 720,
+            'person_id' => 12,
+            'event_id' => 10,
         ];
     }
 }

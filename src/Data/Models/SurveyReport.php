@@ -23,6 +23,8 @@ final readonly class SurveyReport extends Model
 {
     public const string TYPE = 'survey_reports';
 
+    public ?float $avgScore;
+
     /** Number of surveys in this report group. */
     public ?int $count;
 
@@ -44,11 +46,18 @@ final readonly class SurveyReport extends Model
     /** The grouping dimension for this survey report row. */
     public ?string $group;
 
+    public ?int $projectId;
+
+    public ?int $responseCount;
+
+    public ?int $surveyId;
+
     /** Title for this survey report group. */
     public ?string $title;
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->avgScore = $attributes->float('avg_score');
         $this->count = $attributes->int('count');
         $this->createdAt = $attributes->date('created_at');
         $this->currency = $attributes->string('currency');
@@ -56,6 +65,9 @@ final readonly class SurveyReport extends Model
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->formulaFields = $attributes->mixed('formula_fields');
         $this->group = $attributes->string('group');
+        $this->projectId = $attributes->int('project_id');
+        $this->responseCount = $attributes->int('response_count');
+        $this->surveyId = $attributes->int('survey_id');
         $this->title = $attributes->string('title');
     }
 

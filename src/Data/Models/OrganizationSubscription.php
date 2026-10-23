@@ -63,11 +63,15 @@ final readonly class OrganizationSubscription extends Model
     /** The date the contract with this organization started. */
     public ?DateTimeImmutable $contractDate;
 
+    public ?string $contractEndDate;
+
     /** The minimum number of seats specified in the organization's contract. */
     public ?int $contractMinSeats;
 
     /** The number of seats specified in the organization's current contract. */
     public ?int $contractSeats;
+
+    public ?string $currency;
 
     /** The organization's current billing plan details. */
     public ?string $currentPlan;
@@ -108,6 +112,8 @@ final readonly class OrganizationSubscription extends Model
 
     /** The total number of seats purchased for this subscription. */
     public ?int $seats;
+
+    public ?int $seatsMax;
 
     /** The number of seats with a pending change (e.g. scheduled to be added or removed). */
     public mixed $seatsPending;
@@ -165,8 +171,10 @@ final readonly class OrganizationSubscription extends Model
         $this->cardYear = $attributes->string('card_year');
         $this->collectionMethodId = $attributes->int('collection_method_id');
         $this->contractDate = $attributes->date('contract_date');
+        $this->contractEndDate = $attributes->string('contract_end_date');
         $this->contractMinSeats = $attributes->int('contract_min_seats');
         $this->contractSeats = $attributes->int('contract_seats');
+        $this->currency = $attributes->string('currency');
         $this->currentPlan = $attributes->string('current_plan');
         $this->currentProducts = $attributes->mixed('current_products');
         $this->discount = $attributes->int('discount');
@@ -179,6 +187,7 @@ final readonly class OrganizationSubscription extends Model
         $this->planType = $attributes->mixed('plan_type');
         $this->productTypes = $attributes->list('product_types');
         $this->seats = $attributes->int('seats');
+        $this->seatsMax = $attributes->int('seats_max');
         $this->seatsPending = $attributes->mixed('seats_pending');
         $this->seatsUsed = $attributes->int('seats_used');
         $this->stripeCustomerId = $attributes->string('stripe_customer_id');

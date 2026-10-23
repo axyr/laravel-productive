@@ -32,6 +32,7 @@ final class CustomFieldSectionFactory extends Factory
         return [
             'name' => 'Project Fields',
             'position' => 1,
+            'item_type' => 'project',
         ];
     }
 }
