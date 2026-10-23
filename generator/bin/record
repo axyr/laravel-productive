@@ -52,7 +52,9 @@ $filters = array_fill_keys(require $root . '/generator/config/recording-date-fil
 
 // Relationships the last recording saw without data are included too, to learn their cardinality.
 $untyped = RecordedTypes::fromFile($root . '/generator/recorded-types.json')->untypedRelationships();
-$recorder = new Recorder($api, $connector, require $root . '/generator/config/undocumented.php', $filters, $untyped);
+// A publicly shared page is reachable by its uuid only; `public/artifacts` has no such setting yet.
+$publicIds = array_filter(['public/pages' => $env('RECORDING_PUBLIC_PAGE_UUID')], fn(string $uuid): bool => $uuid !== '');
+$recorder = new Recorder($api, $connector, require $root . '/generator/config/undocumented.php', $filters, $untyped, require $root . '/generator/config/recording-actions.php', $publicIds);
 
 $directory = $root . '/recordings/' . date('Y-m-d-His');
 mkdir($directory, 0o700, true);
