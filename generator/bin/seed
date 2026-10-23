@@ -98,6 +98,21 @@ $where = function (string $resource, string $attribute, mixed $value) use ($clie
     return null;
 };
 
+/** The first record matching the filters, e.g. a template project or its tasks, which the plain lists leave out. */
+$filtered = function (string $resource, array $filters) use ($client): ?string {
+    $query = $client->{$resource}()->query()->perPage(1);
+
+    foreach ($filters as $field => $value) {
+        $query->where($field, $value);
+    }
+
+    try {
+        return $query->get()->all()[0]->id ?? null;
+    } catch (ApiException) {
+        return null;
+    }
+};
+
 /*
  * Each step: the resource, and its attributes built from IDs that exist (null when a dependency is
  * missing). Steps run in order, so later ones can use what earlier ones created.
@@ -116,14 +131,18 @@ $steps = [
     'taskDependencies' => fn() => ($tasks = $first('tasks', 2)) ? ['task_id' => $tasks[0], 'dependent_task_id' => $tasks[1], 'type_id' => 1] : null,
     'timesheets' => fn() => $id('people') ? ['person_id' => $id('people'), 'date' => $today] : null,
     'serviceAssignments' => fn() => ($id('services') && $id('people')) ? ['service_id' => $id('services'), 'person_id' => $id('people')] : null,
-    'placeholders' => fn() => ($projects = $first('projects', 2)) ? ['name' => 'Seed placeholder', 'category' => 'project', 'color' => 'electric', 'icon' => 'icon-cowboy-hat-filled', 'type' => 'person', 'project_id' => $projects[1]] : null,
+    // A placeholder is a slot on a template project; any other project is "project attribute is invalid".
+    'placeholders' => fn() => ($project = $filtered('projects', ['template' => true])) ? ['name' => 'Seed placeholder', 'category' => 'project', 'color' => 'electric', 'icon' => 'icon-cowboy-hat-filled', 'type' => 'person', 'project_id' => $project] : null,
+    // A person placeholder fills the assignee of a task on that template project.
+    'placeholderUsages' => fn() => ($id('placeholders') && ($project = $filtered('projects', ['template' => true])) && ($task = $filtered('tasks', ['project_id' => $project, 'template' => true]))) ? ['field' => 'assignee', 'placeholder_id' => $id('placeholders'), 'task_id' => $task] : null,
     'surveys' => fn() => $id('projects') ? ['title' => 'Seed survey', 'project_id' => $id('projects')] : null,
     // model_attributes (a project type, manager and workflow) is required, though the spec does not say so.
     'templates' => fn() => $id('projects') ? ['name' => 'Seed template', 'target_type' => 'project', 'target_id' => $id('projects'), 'model_attributes' => ['name' => 'Seed template project', 'project_type_id' => 1, 'project_manager_id' => $id('people'), 'workflow_id' => $id('workflows')]] : null,
     'rateCards' => fn() => $id('companies') ? ['name' => 'Seed rate card', 'company_id' => $id('companies')] : null,
     'prices' => fn() => ($id('rateCards') && $id('companies')) ? ['name' => 'Seed price', 'company_id' => $id('companies'), 'rate_card_id' => $id('rateCards'), 'unit_id' => 1, 'currency' => 'USD', 'rate' => 100.0] : null,
     'dealCostRates' => fn() => ($id('deals') && $id('people')) ? ['deal_id' => $id('deals'), 'person_id' => $id('people'), 'currency' => 'USD', 'rate_cents' => 5000.0] : null,
-    'purchaseOrders' => fn() => $id('deals') ? ['currency' => 'USD', 'issued_on' => $today, 'deal_id' => $id('deals'), 'subject' => 'Seed purchase order'] : null,
+    // A vendor (a company) is required, though the spec does not mark it as required.
+    'purchaseOrders' => fn() => ($id('deals') && $id('companies')) ? ['currency' => 'USD', 'issued_on' => $today, 'deal_id' => $id('deals'), 'vendor_id' => $id('companies'), 'subject' => 'Seed purchase order'] : null,
     // A document type of kind 2 (proposal) and a status are required, though the spec documents no body.
     'proposals' => fn() => ($id('deals') && ($type = $where('documentTypes', 'exportable_type_id', 2))) ? ['name' => 'Seed proposal', 'deal_id' => $id('deals'), 'document_type_id' => $type, 'status' => 'draft'] : null,
     'payments' => fn() => $id('invoices') ? ['invoice_id' => $id('invoices'), 'amount' => 100, 'paid_on' => $today, 'note' => 'Seed payment'] : null,
