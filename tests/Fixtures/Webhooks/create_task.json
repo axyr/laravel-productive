@@ -1,0 +1,574 @@
+{
+    "event": "create_task",
+    "item_type": "task",
+    "item_id": 1019,
+    "created": "2026-10-23T23:35:44.468+02:00",
+    "object": {
+        "data": {
+            "id": "1019",
+            "type": "tasks",
+            "attributes": {
+                "title": "Text 25",
+                "description": "",
+                "number": "1",
+                "task_number": "1",
+                "private": false,
+                "due_date": null,
+                "start_date": null,
+                "closed_at": null,
+                "created_at": "2026-10-23T23:35:44.049+02:00",
+                "updated_at": "2026-10-23T23:35:44.074+02:00",
+                "repeat_schedule_id": null,
+                "repeat_on_interval": null,
+                "repeat_on_monthday": null,
+                "repeat_on_weekday": [],
+                "repeat_on_date": null,
+                "repeat_origin_id": null,
+                "email_key": "Text 26",
+                "custom_fields": null,
+                "todo_count": null,
+                "open_todo_count": null,
+                "subtask_count": null,
+                "open_subtask_count": null,
+                "creation_method_id": 1005,
+                "todo_assignee_ids": [],
+                "task_dependency_count": 0,
+                "type_id": 1005,
+                "blocking_dependency_count": 0,
+                "waiting_on_dependency_count": 0,
+                "linked_dependency_count": 0,
+                "placement": 1010000,
+                "subtask_placement": null,
+                "level": 0,
+                "closed": false,
+                "due_time": null,
+                "tag_list": [],
+                "last_activity_at": "2026-10-23T23:35:44.000+02:00",
+                "initial_estimate": null,
+                "remaining_time": null,
+                "billable_time": null,
+                "worked_time": null,
+                "deleted_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1002"
+                    }
+                },
+                "project": {
+                    "data": {
+                        "type": "projects",
+                        "id": "1020"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "last_actor": {
+                    "data": {
+                        "type": "people",
+                        "id": "1006"
+                    }
+                },
+                "task_list": {
+                    "data": {
+                        "type": "task_lists",
+                        "id": "1021"
+                    }
+                },
+                "parent_task": {
+                    "data": null
+                },
+                "root_task": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "workflow_status": {
+                    "data": {
+                        "type": "workflow_statuses",
+                        "id": "1022"
+                    }
+                },
+                "service": {
+                    "data": null
+                },
+                "repeated_task": {
+                    "data": null
+                },
+                "template_object": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "attachments": {
+                    "data": []
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "placeholder_usages": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "todos": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subtasks": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "task_dependencies": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        "included": [
+            {
+                "id": "1020",
+                "type": "projects",
+                "attributes": {
+                    "name": "Text 27",
+                    "number": null,
+                    "preferences": [],
+                    "project_number": null,
+                    "project_type_id": 1005,
+                    "project_color_id": null,
+                    "last_activity_at": "2026-10-11T16:28:48.000+02:00",
+                    "tag_colors": [],
+                    "archived_at": null,
+                    "created_at": "2026-10-11T16:28:48.426+02:00",
+                    "template": true,
+                    "duplication_status": "idle",
+                    "custom_fields": null,
+                    "description": null,
+                    "task_custom_fields_ids": null,
+                    "task_custom_fields_positions": null,
+                    "page_custom_fields_ids": null,
+                    "page_custom_fields_positions": null,
+                    "sample_data": false,
+                    "external_deal_id": null,
+                    "exported": false,
+                    "exported_at": null,
+                    "export_id": null,
+                    "export_url": null,
+                    "export_status": "unexported",
+                    "export_error": null
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "company": {
+                        "data": {
+                            "type": "companies",
+                            "id": "1017"
+                        }
+                    },
+                    "project_manager": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "last_actor": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "workflow": {
+                        "data": {
+                            "type": "workflows",
+                            "id": "1023"
+                        }
+                    },
+                    "import": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "custom_field_people": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "custom_field_attachments": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "project_milestones": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "memberships": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "template_object": {
+                        "meta": {
+                            "included": false
+                        }
+                    }
+                }
+            },
+            {
+                "id": "1006",
+                "type": "people",
+                "attributes": {
+                    "agent": false,
+                    "avatar_url": null,
+                    "contact": [],
+                    "deactivated_at": null,
+                    "email": "person-5@example.test",
+                    "first_name": "Text 6",
+                    "last_name": "Text 7",
+                    "nickname": null,
+                    "original_avatar_url": null,
+                    "role_id": 1005,
+                    "status_emoji": null,
+                    "status_expires_at": null,
+                    "status_text": null,
+                    "time_off_status_sync": true,
+                    "title": null,
+                    "archived_at": null,
+                    "autotracking": false,
+                    "joined_at": "2026-10-09T13:04:07.000+02:00",
+                    "last_seen_at": "2026-10-23T23:35:21.619+02:00",
+                    "invited_at": null,
+                    "is_user": true,
+                    "user_id": 1010,
+                    "tag_list": [],
+                    "virtual": false,
+                    "ai_assistant_instructions": null,
+                    "custom_fields": null,
+                    "created_at": "2026-10-09T13:02:26.422+02:00",
+                    "placeholder": false,
+                    "color_id": null,
+                    "sample_data": false,
+                    "time_unlocked": false,
+                    "time_unlocked_on": null,
+                    "time_unlocked_start_date": null,
+                    "time_unlocked_end_date": null,
+                    "time_unlocked_period_id": null,
+                    "time_unlocked_interval": null,
+                    "last_activity_at": "2026-10-09T13:02:26.776+02:00",
+                    "two_factor_auth": false,
+                    "availabilities": "Text 8",
+                    "external_id": null,
+                    "external_sync": false,
+                    "hrm_type_id": 1005,
+                    "champion": false,
+                    "timesheet_submission_disabled": false,
+                    "offboarding_status": "not_initiated",
+                    "offboarding_id": null,
+                    "time_tracking_policy_id": null
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "company": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "custom_role": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "import": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "manager": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "subsidiary": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "job_role": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "approval_policy_assignment": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "person_session": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "teams": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "service_types": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "custom_field_people": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "custom_field_attachments": {
+                        "meta": {
+                            "included": false
+                        }
+                    }
+                }
+            },
+            {
+                "id": "1021",
+                "type": "task_lists",
+                "attributes": {
+                    "name": "Text 28",
+                    "position": null,
+                    "placement": 1010000,
+                    "archived_at": null,
+                    "email_key": "Text 29"
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "project": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "folder": {
+                        "data": {
+                            "type": "folders",
+                            "id": "1024"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "1022",
+                "type": "workflow_statuses",
+                "attributes": {
+                    "name": "Text 30",
+                    "color_id": "1025",
+                    "position": 1,
+                    "category_id": 1004
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "workflow": {
+                        "meta": {
+                            "included": false
+                        }
+                    }
+                }
+            },
+            {
+                "id": "1017",
+                "type": "companies",
+                "attributes": {
+                    "name": "Text 12",
+                    "billing_name": null,
+                    "vat": null,
+                    "default_currency": "USD",
+                    "created_at": "2026-10-09T13:02:26.348+02:00",
+                    "last_activity_at": "2026-10-09T13:02:26.348+02:00",
+                    "archived_at": null,
+                    "avatar_url": null,
+                    "original_avatar_url": null,
+                    "invoice_email_recipients": [],
+                    "custom_fields": null,
+                    "company_code": "Text 20",
+                    "domains": [],
+                    "projectless_budgets": false,
+                    "default_subsidiary_id": null,
+                    "default_tax_rate_id": null,
+                    "default_document_type_id": null,
+                    "default_payment_reminder_sequence_id": null,
+                    "due_days": null,
+                    "payment_terms_type": null,
+                    "tag_list": [],
+                    "contact": [],
+                    "sample_data": false,
+                    "settings": [],
+                    "external_id": null,
+                    "external_sync": false,
+                    "parent_company_id": null
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "import": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "default_subsidiary": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "default_tax_rate": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "default_document_type": {
+                        "data": null
+                    },
+                    "default_payment_reminder_sequence": {
+                        "data": null
+                    },
+                    "custom_field_people": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "custom_field_attachments": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "integration_exporter_configuration": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "einvoice_identity": {
+                        "meta": {
+                            "included": false
+                        }
+                    },
+                    "parent_company": {
+                        "data": null
+                    }
+                }
+            },
+            {
+                "id": "1023",
+                "type": "workflows",
+                "attributes": {
+                    "name": "Text 31",
+                    "archived_at": null
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "workflow_statuses": {
+                        "data": [
+                            {
+                                "type": "workflow_statuses",
+                                "id": "1022"
+                            },
+                            {
+                                "type": "workflow_statuses",
+                                "id": "1026"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "id": "1024",
+                "type": "folders",
+                "attributes": {
+                    "name": "Text 32",
+                    "position": null,
+                    "placement": 1010000,
+                    "archived_at": null,
+                    "hidden": false
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "project": {
+                        "meta": {
+                            "included": false
+                        }
+                    }
+                }
+            },
+            {
+                "id": "1026",
+                "type": "workflow_statuses",
+                "attributes": {
+                    "name": "Text 33",
+                    "color_id": "1027",
+                    "position": 1,
+                    "category_id": 1015
+                },
+                "relationships": {
+                    "organization": {
+                        "data": {
+                            "type": "organizations",
+                            "id": "1002"
+                        }
+                    },
+                    "workflow": {
+                        "meta": {
+                            "included": false
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

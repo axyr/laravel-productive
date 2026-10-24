@@ -55,13 +55,14 @@ The route answers every verified delivery with 200 right away, so do the work in
 
 | Property | |
 |---|---|
-| `name` | The event as Productive names it: `create_company`, `update_deal`, `archive_person`. |
-| `event()` | The `WebhookEvent` case for that name, or null for a name this version does not know. |
+| `name` | The event as Productive names it: `create_company`, `update_deal`, `archive_person`; `test_create_company` for a test. |
+| `event()` | The `WebhookEvent` case for that name (for a test, the event it tests), or null for a name this version does not know. |
 | `itemType` | The item as Productive names it: `company`, `deal`, `time_entry`. |
-| `itemId` | The item's ID. |
+| `itemId` | The item's ID; null for a test. |
 | `createdAt` | When the event happened. |
-| `model` | The item, hydrated like an API response, with the resources Productive included (its company, creator, status, …). Null when the delivery carries no object. |
+| `model` | The item, hydrated like an API response, with the resources Productive included (its company, creator, status, …). Null when the delivery carries no object, and for a test. |
 | `payload` | The whole decoded body. |
+| `test` | Whether this is the test Productive sends from its webhook settings. |
 
 The body Productive sends looks like this, with `object` a JSON:API document of the item:
 
@@ -84,7 +85,17 @@ WebhookEvent::TaskCreated->deliveryName();  // "create_task"
 WebhookEvent::fromDeliveryName('update_deal'); // WebhookEvent::DealUpdated
 ```
 
-The delivery names of company, deal and person events were recorded from real deliveries; the others follow the same pattern (`<create|update|delete|archive>_<item type>`) and are confirmed as deliveries are captured.
+The delivery names of company, deal, person and task events were recorded from real deliveries, and the test deliveries confirm the names of the time entry, invoice, payment, expense, booking, budget, project and contact create events; the others follow the same pattern (`<create|update|delete|archive>_<item type>`) and are confirmed as deliveries are captured.
+
+### Test deliveries
+
+The "Test webhook" action in Productive's webhook settings sends the webhook's event with a `test_` prefix and no item:
+
+```json
+{"event": "test_create_task", "item_type": "task", "item_id": null, "created": "…", "object": {"data": {"id": null, "type": "tasks", "attributes": [{"Title": "…", "Project": "…"}, …]}}}
+```
+
+Its `attributes` are sample rows, not a resource, so `model` stays null. The route answers it with 200 and dispatches `ProductiveWebhookReceived` like any delivery, with `$delivery->test` true; skip it in a listener that only acts on real items. Its `item_type` does not always match the real one: a time entry test names `time-entry`, a contact test `person`.
 
 ## Verification
 

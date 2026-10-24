@@ -1,0 +1,157 @@
+{
+    "event": "test_create_booking",
+    "item_type": "booking",
+    "item_id": null,
+    "created": "2026-10-23T21:38:43.952+02:00",
+    "object": {
+        "data": {
+            "id": null,
+            "type": "bookings",
+            "attributes": [
+                {
+                    "Project": "Text 34",
+                    "Budget": "Text 35",
+                    "Service": "Text 36",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "Text 38",
+                    "Hours": "2",
+                    "Started on": "2026-10-23",
+                    "Ended on": "2026-11-01"
+                },
+                {
+                    "Project": "Text 34",
+                    "Budget": "Text 35",
+                    "Service": "Text 36",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "Text 38",
+                    "Hours": "3",
+                    "Started on": "2026-10-28",
+                    "Ended on": "2026-11-06"
+                },
+                {
+                    "Project": "Text 39",
+                    "Budget": "Text 40",
+                    "Service": "Text 41",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "",
+                    "Hours": "2",
+                    "Started on": "2026-11-02",
+                    "Ended on": "2026-11-12"
+                },
+                {
+                    "Project": "Text 39",
+                    "Budget": "Text 40",
+                    "Service": "Text 42",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "",
+                    "Hours": "3.5",
+                    "Started on": "2026-11-05",
+                    "Ended on": "2026-11-17"
+                },
+                {
+                    "Project": "Text 39",
+                    "Budget": "Text 40",
+                    "Service": "Text 43",
+                    "Event": "",
+                    "Person": "person-44@example.test",
+                    "Note": "",
+                    "Hours": "3",
+                    "Started on": "2026-11-02",
+                    "Ended on": "2026-11-17"
+                },
+                {
+                    "Project": "Text 39",
+                    "Budget": "Text 40",
+                    "Service": "Text 42",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "",
+                    "Hours": "4",
+                    "Started on": "2026-11-12",
+                    "Ended on": "2026-11-22"
+                },
+                {
+                    "Project": "Text 39",
+                    "Budget": "Text 40",
+                    "Service": "Text 43",
+                    "Event": "",
+                    "Person": "person-44@example.test",
+                    "Note": "",
+                    "Hours": "2",
+                    "Started on": "2026-11-11",
+                    "Ended on": "2026-11-18"
+                },
+                {
+                    "Project": "Text 45",
+                    "Budget": "Text 40",
+                    "Service": "Text 41",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "",
+                    "Hours": "2",
+                    "Started on": "2026-12-02",
+                    "Ended on": "2026-12-17"
+                },
+                {
+                    "Project": "Text 45",
+                    "Budget": "Text 40",
+                    "Service": "Text 46",
+                    "Event": "",
+                    "Person": "person-44@example.test",
+                    "Note": "",
+                    "Hours": "3",
+                    "Started on": "2026-12-12",
+                    "Ended on": "2026-12-22"
+                },
+                {
+                    "Project": "Text 45",
+                    "Budget": "Text 40",
+                    "Service": "Text 47",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "",
+                    "Hours": "4",
+                    "Started on": "2026-12-07",
+                    "Ended on": "2026-12-22"
+                },
+                {
+                    "Project": "Text 45",
+                    "Budget": "Text 40",
+                    "Service": "Text 47",
+                    "Event": "",
+                    "Person": "person-37@example.test",
+                    "Note": "",
+                    "Hours": "3",
+                    "Started on": "2026-11-17",
+                    "Ended on": "2026-11-27"
+                },
+                {
+                    "Project": "",
+                    "Budget": "",
+                    "Service": "",
+                    "Event": "Text 48",
+                    "Person": "person-37@example.test",
+                    "Note": "",
+                    "Hours": "8",
+                    "Started on": "2026-12-24",
+                    "Ended on": "2027-01-01"
+                },
+                {
+                    "Project": "",
+                    "Budget": "",
+                    "Service": "",
+                    "Event": "Text 48",
+                    "Person": "person-44@example.test",
+                    "Note": "",
+                    "Hours": "8",
+                    "Started on": "2026-12-02",
+                    "Ended on": "2026-12-12"
+                }
+            ]
+        }
+    }
+}

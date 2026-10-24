@@ -74,6 +74,17 @@ it('fails loudly without a configured signature token', function (mixed $secrets
     expect(fn() => deliver(FakeWebhook::payload('create_task', ['id' => '1', 'type' => 'tasks'])))->toThrow(WebhookException::class, 'PRODUCTIVE_WEBHOOK_SECRETS');
 })->with(['blank' => [' , '], 'unset' => [null], 'not a string' => [['tok']]]);
 
+it('answers 200 to the test Productive sends from its webhook settings and dispatches it as a test', function () {
+    Event::fake([ProductiveWebhookReceived::class]);
+    $payload = json_decode((string) file_get_contents(dirname(__DIR__, 2) . '/Fixtures/Webhooks/test_create_task.json'), true);
+
+    deliver($payload)->assertOk()->assertExactJson(['received' => true]);
+
+    Event::assertDispatched(ProductiveWebhookReceived::class, fn(ProductiveWebhookReceived $event): bool => $event->delivery->test
+        && $event->delivery->event() === WebhookEvent::TaskCreated
+        && $event->delivery->itemId === null);
+});
+
 it('answers 400 to a signed body that is not a delivery', function () {
     Event::fake([ProductiveWebhookReceived::class]);
 

@@ -87,9 +87,10 @@ enum WebhookEvent: int
      */
     public function itemType(): string
     {
-        $subject = (string) preg_replace('/(Created|Updated|Deleted|Archived)$/', '', $this->name);
+        // Both patterns are valid, so preg_replace() cannot return null; the casts only tell static analysis.
+        $subject = (string) preg_replace('/(Created|Updated|Deleted|Archived)$/', '', $this->name); // @pest-mutate-ignore
 
-        return strtolower((string) preg_replace('/(?<!^)[A-Z]/', '_$0', $subject));
+        return strtolower((string) preg_replace('/(?<!^)[A-Z]/', '_$0', $subject)); // @pest-mutate-ignore
     }
 
     /**
