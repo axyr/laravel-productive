@@ -66,6 +66,26 @@ it('keeps example-only attributes but names the ones a recording of the type nev
         ->and($other->example)->toBe($example['attributes']);
 });
 
+it('types a recorded relationship seen without data like a documented one', function () {
+    $spec = new Spec(['components' => ['schemas' => []]]);
+    $recorded = new RecordedTypes(['types' => ['tasks' => ['attributes' => [], 'relationships' => [
+        'child_tasks' => ['to_many' => true, 'types' => []],
+        'watcher' => ['to_many' => false, 'types' => []],
+        'gadgets' => ['to_many' => true, 'types' => []],
+        'origin' => ['to_many' => false, 'types' => ['people']],
+    ]]]]);
+    $builder = new ModelBuilder($spec, new SchemaReader($spec), new RelationshipTypes([], ['tasks.watcher' => 'people', 'origin' => 'tasks'], ['people', 'tasks']), $recorded, ['people', 'tasks']);
+
+    $model = $builder->build('Task', 'tasks', ['properties' => ['data' => ['properties' => []]]], []);
+
+    expect(array_map(fn(Relationship $relationship): array => $relationship->toArray(), $model->relationships))->toBe([
+        ['name' => 'child_tasks', 'to_many' => true, 'target_type' => 'tasks', 'undocumented' => true],
+        ['name' => 'gadgets', 'to_many' => true, 'target_type' => null, 'undocumented' => true],
+        ['name' => 'origin', 'to_many' => false, 'target_type' => 'people', 'undocumented' => true],
+        ['name' => 'watcher', 'to_many' => false, 'target_type' => 'people', 'undocumented' => true],
+    ]);
+});
+
 it('reads the item schema of a collection response', function () {
     $model = modelBuilder()->build('Row', 'rows', ['properties' => ['data' => ['type' => 'array', 'items' => ['properties' => ['attributes' => ['properties' => ['count' => ['type' => 'integer']]]]]]]], []);
 

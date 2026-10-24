@@ -70,19 +70,37 @@ $log = $root . '/recordings/seed-' . date('Y-m-d-His');
 $today = date('Y-m-d');
 $ids = [];
 
-/** The first IDs of an existing list; null when the list is empty or cannot be read. */
-$first = function (string $resource, int $count = 1) use ($client, &$ids): ?array {
-    if (! array_key_exists($resource, $ids)) {
+/**
+ * The first IDs of an existing list, optionally filtered (a template project or its tasks, which the
+ * plain lists leave out); null when the list is empty or cannot be read, which is reported.
+ */
+$first = function (string $resource, int $count = 1, array $filters = []) use ($client, &$ids): ?array {
+    $key = $filters === [] ? $resource : $resource . json_encode($filters);
+
+    if (! array_key_exists($key, $ids)) {
+        $query = $client->{$resource}()->query()->perPage(5);
+
+        foreach ($filters as $field => $value) {
+            $query->where($field, $value);
+        }
+
         try {
-            $ids[$resource] = array_map(fn(Model $model): string => $model->id, $client->{$resource}()->query()->perPage(5)->get()->all());
-        } catch (ApiException) {
-            $ids[$resource] = [];
+            $ids[$key] = array_map(fn(Model $model): string => $model->id, $query->get()->all());
+        } catch (ApiException $exception) {
+            if ($exception instanceof RateLimitException) {
+                throw $exception;
+            }
+
+            fwrite(STDERR, sprintf("Could not list %s: %s\n", $resource, $exception->getMessage()));
+            $ids[$key] = [];
         }
     }
 
-    return count($ids[$resource]) >= $count ? array_slice($ids[$resource], 0, $count) : null;
+    return count($ids[$key]) >= $count ? array_slice($ids[$key], 0, $count) : null;
 };
 $id = fn(string $resource): ?string => $first($resource)[0] ?? null;
+$template = fn(): ?string => $first('projects', 1, ['template' => true])[0] ?? null;
+$templateTask = fn(): ?string => ($project = $template()) ? ($first('tasks', 1, ['project_id' => $project, 'template' => true])[0] ?? null) : null;
 
 /** The first record whose raw attribute has the given value, e.g. a deal that is a budget. */
 $where = function (string $resource, string $attribute, mixed $value) use ($client): ?string {
@@ -98,25 +116,14 @@ $where = function (string $resource, string $attribute, mixed $value) use ($clie
     return null;
 };
 
-/** The first record matching the filters, e.g. a template project or its tasks, which the plain lists leave out. */
-$filtered = function (string $resource, array $filters) use ($client): ?string {
-    $query = $client->{$resource}()->query()->perPage(1);
-
-    foreach ($filters as $field => $value) {
-        $query->where($field, $value);
-    }
-
-    try {
-        return $query->get()->all()[0]->id ?? null;
-    } catch (ApiException) {
-        return null;
-    }
-};
-
 /*
  * Each step: the resource, and its attributes built from IDs that exist (null when a dependency is
- * missing). Steps run in order, so later ones can use what earlier ones created.
+ * missing). Steps run in order, so later ones can use what earlier ones created. A step named after
+ * something other than its resource says which resource it creates in $resources and when it is
+ * already done in $done.
  */
+$resources = ['templateTasks' => 'tasks'];
+$done = ['templateTasks' => fn(): bool => $templateTask() !== null];
 $steps = [
     'teams' => fn() => ['name' => 'Seed team'],
     'teamMemberships' => fn() => ($id('teams') && $id('people')) ? ['team_id' => $id('teams'), 'person_id' => $id('people')] : null,
@@ -131,13 +138,15 @@ $steps = [
     'taskDependencies' => fn() => ($tasks = $first('tasks', 2)) ? ['task_id' => $tasks[0], 'dependent_task_id' => $tasks[1], 'type_id' => 1] : null,
     'timesheets' => fn() => $id('people') ? ['person_id' => $id('people'), 'date' => $today] : null,
     'serviceAssignments' => fn() => ($id('services') && $id('people')) ? ['service_id' => $id('services'), 'person_id' => $id('people')] : null,
-    // A placeholder is a slot on a template project; any other project is "project attribute is invalid".
-    'placeholders' => fn() => ($project = $filtered('projects', ['template' => true])) ? ['name' => 'Seed placeholder', 'category' => 'project', 'color' => 'electric', 'icon' => 'icon-cowboy-hat-filled', 'type' => 'person', 'project_id' => $project] : null,
-    // A person placeholder fills the assignee of a task on that template project.
-    'placeholderUsages' => fn() => ($id('placeholders') && ($project = $filtered('projects', ['template' => true])) && ($task = $filtered('tasks', ['project_id' => $project, 'template' => true]))) ? ['field' => 'assignee', 'placeholder_id' => $id('placeholders'), 'task_id' => $task] : null,
     'surveys' => fn() => $id('projects') ? ['title' => 'Seed survey', 'project_id' => $id('projects')] : null,
     // model_attributes (a project type, manager and workflow) is required, though the spec does not say so.
     'templates' => fn() => $id('projects') ? ['name' => 'Seed template', 'target_type' => 'project', 'target_id' => $id('projects'), 'model_attributes' => ['name' => 'Seed template project', 'project_type_id' => 1, 'project_manager_id' => $id('people'), 'workflow_id' => $id('workflows')]] : null,
+    // The template project's task, for the placeholder usage below.
+    'templateTasks' => fn() => ($project = $template()) && ($list = $first('taskLists', 1, ['project_id' => $project])) ? ['title' => 'Seed template task', 'project_id' => $project, 'task_list_id' => $list[0]] : null,
+    // A placeholder is a slot on a template project; any other project is "project attribute is invalid".
+    'placeholders' => fn() => ($project = $template()) ? ['name' => 'Seed placeholder', 'category' => 'project', 'color' => 'electric', 'icon' => 'icon-cowboy-hat-filled', 'type' => 'person', 'project_id' => $project] : null,
+    // A person placeholder fills the assignee of a task on that template project.
+    'placeholderUsages' => fn() => ($placeholder = $id('placeholders')) && ($task = $templateTask()) ? ['field' => 'assignee', 'placeholder_id' => $placeholder, 'task_id' => $task] : null,
     'rateCards' => fn() => $id('companies') ? ['name' => 'Seed rate card', 'company_id' => $id('companies')] : null,
     'prices' => fn() => ($id('rateCards') && $id('companies')) ? ['name' => 'Seed price', 'company_id' => $id('companies'), 'rate_card_id' => $id('rateCards'), 'unit_id' => 1, 'currency' => 'USD', 'rate' => 100.0] : null,
     'dealCostRates' => fn() => ($id('deals') && $id('people')) ? ['deal_id' => $id('deals'), 'person_id' => $id('people'), 'currency' => 'USD', 'rate_cents' => 5000.0] : null,
@@ -159,9 +168,11 @@ echo ($execute ? 'Seeding' : 'Dry run (add --execute to create)') . "\n\n";
 $created = 0;
 
 try {
-    foreach ($steps as $resource => $attributes) {
-        if ($first($resource) !== null) {
-            printf("%-24s already has records\n", $resource);
+    foreach ($steps as $step => $attributes) {
+        $resource = $resources[$step] ?? $step;
+
+        if (isset($done[$step]) ? $done[$step]() : $first($resource) !== null) {
+            printf("%-24s already has records\n", $step);
 
             continue;
         }
@@ -169,34 +180,36 @@ try {
         $payload = $attributes();
 
         if ($payload === null) {
-            printf("%-24s skipped: a resource it needs has no records\n", $resource);
+            printf("%-24s skipped: a resource it needs has no records\n", $step);
 
             continue;
         }
 
         if (! $execute) {
-            printf("%-24s would create %s\n", $resource, json_encode($payload, JSON_UNESCAPED_SLASHES));
+            printf("%-24s would create %s\n", $step, json_encode($payload, JSON_UNESCAPED_SLASHES));
 
             continue;
         }
 
         try {
             $model = $client->{$resource}()->create($payload);
-            $ids[$resource] = [$model->id];
+            // A filtered list may now include it; the plain list starts with it when the step creates that resource.
+            $ids = array_filter($ids, fn(string $key): bool => ! str_starts_with($key, $resource . '{'), ARRAY_FILTER_USE_KEY);
+            $ids[$step] = [$model->id];
             $created++;
             $result = ['status' => 'created', 'id' => $model->id, 'attributes' => $model->toArray()];
-            printf("%-24s created %s\n", $resource, $model->id);
+            printf("%-24s created %s\n", $step, $model->id);
         } catch (ApiException $exception) {
             if ($exception instanceof RateLimitException) {
                 throw $exception;
             }
 
             $result = ['status' => $exception->response->status, 'error' => $exception->getMessage()];
-            printf("%-24s failed: %s\n", $resource, $exception->getMessage());
+            printf("%-24s failed: %s\n", $step, $exception->getMessage());
         }
 
         is_dir($log) || mkdir($log, 0o700, true);
-        file_put_contents($log . '/' . $resource . '.json', json_encode(['payload' => $payload, 'result' => Redactor::redact($result)], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
+        file_put_contents($log . '/' . $step . '.json', json_encode(['payload' => $payload, 'result' => Redactor::redact($result)], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
     }
 } catch (RateLimitException $exception) {
     fwrite(STDERR, "\nStopped on a 429: " . $exception->getMessage() . "\n");

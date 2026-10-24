@@ -278,9 +278,9 @@ final readonly class Person extends Model
         return $this->belongsTo('organization', Organization::class);
     }
 
-    public function personSession(): ?Model
+    public function personSession(): ?Session
     {
-        return $this->belongsTo('person_session', Model::class);
+        return $this->belongsTo('person_session', Session::class);
     }
 
     /**

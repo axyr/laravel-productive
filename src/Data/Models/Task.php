@@ -268,11 +268,11 @@ final readonly class Task extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<PlaceholderUsage>
      */
     public function placeholderUsages(): array
     {
-        return $this->hasMany('placeholder_usages', Model::class);
+        return $this->hasMany('placeholder_usages', PlaceholderUsage::class);
     }
 
     public function project(): ?Project

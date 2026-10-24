@@ -18,7 +18,9 @@ use Axyr\Productive\Generator\Recording\ValueKind;
  * - null and empty values never override, so a resource without data keeps the spec's types;
  * - int and float together widen to float, never the other way round;
  * - attributes and relationships the spec does not document are added, flagged as undocumented;
- * - an attribute only the spec's example has, which no recorded response carried, is kept but listed.
+ * - an attribute only the spec's example has, which no recorded response carried, is kept but listed;
+ * - a curated type (generator/config/attribute-types.php) wins over both, for what the samples cannot
+ *   show, such as a discount that was only ever recorded as 0.
  */
 final readonly class RecordedTypes
 {
@@ -38,8 +40,9 @@ final readonly class RecordedTypes
 
     /**
      * @param  array<array-key, mixed>  $summary  As written by `composer record:types`; malformed parts are ignored.
+     * @param  array<string, AttributeType>  $attributeTypes  Curated types by "type.attribute".
      */
-    public function __construct(array $summary = [])
+    public function __construct(array $summary = [], private array $attributeTypes = [])
     {
         $types = Json::map($summary['types'] ?? null);
 
@@ -50,17 +53,20 @@ final readonly class RecordedTypes
         $this->relationships = array_map(fn(mixed $type): array => array_map(self::relationship(...), Json::map(Json::map($type)['relationships'] ?? null)), $types);
     }
 
-    public static function fromFile(string $path): self
+    /**
+     * @param  array<string, AttributeType>  $attributeTypes  Curated types by "type.attribute".
+     */
+    public static function fromFile(string $path, array $attributeTypes = []): self
     {
         if (! is_file($path)) {
-            return new self();
+            return new self(attributeTypes: $attributeTypes);
         }
 
         // The file exists, so the read cannot fail; the cast only tells static analysis.
         $json = (string) file_get_contents($path); // @pest-mutate-ignore
         $summary = json_decode($json, true, flags: JSON_THROW_ON_ERROR);
 
-        return new self(is_array($summary) ? $summary : []);
+        return new self(is_array($summary) ? $summary : [], $attributeTypes);
     }
 
     /**
@@ -75,7 +81,34 @@ final readonly class RecordedTypes
                 : self::undocumented($name, $kinds);
         }
 
+        return $this->curate($type, $attributes);
+    }
+
+    /**
+     * @param  array<string, Attribute>  $attributes
+     * @return array<string, Attribute>
+     */
+    private function curate(string $type, array $attributes): array
+    {
+        foreach ($attributes as $name => $attribute) {
+            $curated = $this->attributeTypes[$type . '.' . $name] ?? $attribute->type;
+            $attributes[$name] = $curated === $attribute->type ? $attribute : self::curated($attribute, $curated);
+        }
+
         return $attributes;
+    }
+
+    private static function curated(Attribute $attribute, AttributeType $type): Attribute
+    {
+        return new Attribute(
+            name: $attribute->name,
+            property: $attribute->property,
+            type: $type,
+            description: $attribute->description,
+            required: $attribute->required,
+            specType: $attribute->undocumented ? null : ($attribute->specType ?? $attribute->type),
+            undocumented: $attribute->undocumented,
+        );
     }
 
     /**

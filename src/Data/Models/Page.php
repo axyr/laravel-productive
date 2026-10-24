@@ -122,11 +122,11 @@ final readonly class Page extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<Page>
      */
     public function childPages(): array
     {
-        return $this->hasMany('child_pages', Model::class);
+        return $this->hasMany('child_pages', Page::class);
     }
 
     public function creator(): ?Person

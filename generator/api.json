@@ -30091,7 +30091,7 @@
                 {
                     "name": "child_pages",
                     "to_many": true,
-                    "target_type": null,
+                    "target_type": "pages",
                     "undocumented": true
                 },
                 {
@@ -31331,7 +31331,7 @@
                 {
                     "name": "person_session",
                     "to_many": false,
-                    "target_type": null,
+                    "target_type": "sessions",
                     "undocumented": true
                 },
                 {
@@ -32066,21 +32066,21 @@
                 {
                     "name": "discount_amount",
                     "property": "discountAmount",
-                    "type": "int",
+                    "type": "float",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
                 },
                 {
                     "name": "discount_amount_default",
                     "property": "discountAmountDefault",
-                    "type": "int",
+                    "type": "float",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
                 },
                 {
                     "name": "discount_amount_normalized",
                     "property": "discountAmountNormalized",
-                    "type": "int",
+                    "type": "float",
                     "description": "Not in the spec: seen in recorded API responses.",
                     "undocumented": true
                 },
@@ -38256,7 +38256,7 @@
                 {
                     "name": "placeholder_usages",
                     "to_many": true,
-                    "target_type": null,
+                    "target_type": "placeholder_usages",
                     "undocumented": true
                 },
                 {
@@ -41785,7 +41785,7 @@
                 {
                     "name": "payload",
                     "property": "payload",
-                    "type": "object",
+                    "type": "json",
                     "description": "The JSON payload that was sent to the target URL.",
                     "spec_type": "string"
                 },

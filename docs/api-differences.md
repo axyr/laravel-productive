@@ -56,7 +56,7 @@ The generated property follows the recorded type. Null and empty values never ov
 | `TimeEntryReport` | `overhead` | int | bool |
 | `TimeEntryReport` | `people_custom_fields` | string | object |
 | `TimeReport` | `people_custom_fields` | string | object |
-| `WebhookLog` | `payload` | string | object |
+| `WebhookLog` | `payload` | string | json |
 
 ## Undocumented attributes
 
@@ -127,9 +127,9 @@ Seen in recorded responses but missing from the spec. They are generated with th
 | `OrganizationMembership` | `recent_data` | list |
 | `OrganizationSubscription` | `trial_plan_ends_on` | mixed |
 | `Person` | `ai_assistant_instructions` | mixed |
-| `Price` | `discount_amount` | int |
-| `Price` | `discount_amount_default` | int |
-| `Price` | `discount_amount_normalized` | int |
+| `Price` | `discount_amount` | float |
+| `Price` | `discount_amount_default` | float |
+| `Price` | `discount_amount_normalized` | float |
 | `Price` | `discount_type` | string |
 | `Project` | `export_error` | mixed |
 | `Project` | `export_id` | mixed |
@@ -191,13 +191,13 @@ Seen with data in recorded responses but missing from the spec.
 | `Artifact` | `organization` | to-one | `organizations` |
 | `ExpenseLineItem` | `organization` | to-one | `organizations` |
 | `Invoice` | `invoiced_budgets` | to-many | any |
-| `Page` | `child_pages` | to-many | any |
-| `Person` | `person_session` | to-one | any |
+| `Page` | `child_pages` | to-many | `pages` |
+| `Person` | `person_session` | to-one | `sessions` |
 | `Project` | `memberships` | to-many | `memberships` |
 | `Project` | `project_milestones` | to-many | any |
 | `ProjectPreference` | `organization` | to-one | `organizations` |
 | `Skill` | `organization` | to-one | `organizations` |
-| `Task` | `placeholder_usages` | to-many | any |
+| `Task` | `placeholder_usages` | to-many | `placeholder_usages` |
 | `Task` | `subtasks` | to-many | `tasks` |
 | `Task` | `task_dependencies` | to-many | `task_dependencies` |
 | `Task` | `todos` | to-many | `todos` |

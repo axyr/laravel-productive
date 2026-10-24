@@ -54,13 +54,13 @@ final readonly class Price extends Model
     public ?float $discount;
 
     /** Not in the spec: seen in recorded API responses. */
-    public ?int $discountAmount;
+    public ?float $discountAmount;
 
     /** Not in the spec: seen in recorded API responses. */
-    public ?int $discountAmountDefault;
+    public ?float $discountAmountDefault;
 
     /** Not in the spec: seen in recorded API responses. */
-    public ?int $discountAmountNormalized;
+    public ?float $discountAmountNormalized;
 
     /** Not in the spec: seen in recorded API responses. */
     public ?string $discountType;
@@ -125,9 +125,9 @@ final readonly class Price extends Model
         $this->customFields = $attributes->object('custom_fields');
         $this->description = $attributes->string('description');
         $this->discount = $attributes->float('discount');
-        $this->discountAmount = $attributes->int('discount_amount');
-        $this->discountAmountDefault = $attributes->int('discount_amount_default');
-        $this->discountAmountNormalized = $attributes->int('discount_amount_normalized');
+        $this->discountAmount = $attributes->float('discount_amount');
+        $this->discountAmountDefault = $attributes->float('discount_amount_default');
+        $this->discountAmountNormalized = $attributes->float('discount_amount_normalized');
         $this->discountType = $attributes->string('discount_type');
         $this->editorConfig = $attributes->object('editor_config');
         $this->estimatedCost = $attributes->float('estimated_cost');

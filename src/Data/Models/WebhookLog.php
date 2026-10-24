@@ -61,7 +61,7 @@ final readonly class WebhookLog extends Model
     {
         $this->createdAt = $attributes->dateTime('created_at');
         $this->eventType = $attributes->string('event_type');
-        $this->payload = $attributes->object('payload');
+        $this->payload = $attributes->json('payload');
         $this->responseBody = $attributes->string('response_body');
         $this->responseCode = $attributes->int('response_code');
         $this->retryAttempt = $attributes->int('retry_attempt');

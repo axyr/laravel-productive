@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Axyr\Productive\Generator;
 
 use Axyr\Productive\Generator\Ir\Api;
+use Axyr\Productive\Generator\Ir\AttributeType;
 use Axyr\Productive\Generator\Ir\Model;
 use Axyr\Productive\Generator\Ir\Operation;
 use Axyr\Productive\Generator\Ir\OperationKind;
@@ -44,13 +45,14 @@ final readonly class IrBuilder
     {
         $removed = is_file($configDirectory . '/removed.php') ? self::config($configDirectory, 'removed') : [];
         $required = is_file($configDirectory . '/required.php') ? self::config($configDirectory, 'required') : [];
+        $attributeTypes = is_file($configDirectory . '/attribute-types.php') ? self::config($configDirectory, 'attribute-types') : [];
 
         return new self(
             Spec::fromFile($specPath),
             self::stringMap(self::config($configDirectory, 'relationship-types'), 'relationship-types', nullable: true),
             self::stringMap(self::config($configDirectory, 'descriptions'), 'descriptions'),
             self::stringMap(self::config($configDirectory, 'method-names'), 'method-names'),
-            RecordedTypes::fromFile(dirname($configDirectory) . '/recorded-types.json'),
+            RecordedTypes::fromFile(dirname($configDirectory) . '/recorded-types.json', self::attributeTypes(self::stringMap($attributeTypes, 'attribute-types'))),
             self::stringMap(Spec::map($removed['relationships'] ?? []), 'removed'),
             array_map(fn(mixed $names): array => Spec::strings($names, 'generator/config/required.php'), $required),
         );
@@ -241,6 +243,22 @@ final readonly class IrBuilder
 
         /** @var array<string, string|null> $config */
         return $config;
+    }
+
+    /**
+     * @param  array<string, string|null>  $config
+     * @return array<string, AttributeType>
+     */
+    private static function attributeTypes(array $config): array
+    {
+        $types = [];
+
+        foreach ($config as $key => $value) {
+            // stringMap() has checked the value is a string; the cast only tells static analysis.
+            $types[$key] = AttributeType::tryFrom((string) $value) ?? throw new RuntimeException(sprintf('generator/config/attribute-types.php: "%s" for "%s" is not an attribute type.', $value, $key)); // @pest-mutate-ignore
+        }
+
+        return $types;
     }
 
     private static function isAllowed(mixed $value, bool $nullable): bool
