@@ -78,6 +78,11 @@ final readonly class ApprovalStatus extends Model
         return $this->belongsTo('expense', Expense::class);
     }
 
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
+    }
+
     public function timeEntry(): ?TimeEntry
     {
         return $this->belongsTo('time_entry', TimeEntry::class);

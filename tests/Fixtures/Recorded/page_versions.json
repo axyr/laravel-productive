@@ -1,0 +1,180 @@
+{
+    "data": [
+        {
+            "id": "1129",
+            "type": "page_versions",
+            "attributes": {
+                "body_snapshot": "Text 175",
+                "created_at": "2026-10-23T21:12:55.191+02:00",
+                "name": null,
+                "restored_from_version_id": null,
+                "title_snapshot": "Text 174",
+                "updated_at": "2026-10-23T21:14:27.492+02:00",
+                "prosemirror_steps": [
+                    {
+                        "to": 2,
+                        "from": 0,
+                        "gapTo": 1,
+                        "slice": {
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "attrs": {
+                                        "id": "e3y5gg0rpd",
+                                        "horizontalAlign": null
+                                    }
+                                }
+                            ]
+                        },
+                        "insert": 1
+                    },
+                    {
+                        "to": 1,
+                        "from": 1,
+                        "slice": {
+                            "content": [
+                                {
+                                    "text": "Text 176",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "stepType": "replace"
+                    },
+                    {
+                        "to": 31,
+                        "from": 31,
+                        "slice": {
+                            "content": [
+                                {
+                                    "text": "Text 177",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "stepType": "replace"
+                    },
+                    {
+                        "to": 14,
+                        "from": 1,
+                        "mark": {
+                            "type": "discussion",
+                            "attrs": {
+                                "resolvedId": "",
+                                "discussionId": "50027"
+                            }
+                        },
+                        "stepType": "Text 178"
+                    }
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "page": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1129",
+            "type": "page_versions",
+            "attributes": {
+                "body_snapshot": "Text 175",
+                "created_at": "2026-10-23T21:12:55.191+02:00",
+                "name": null,
+                "restored_from_version_id": null,
+                "title_snapshot": "Text 174",
+                "updated_at": "2026-10-23T21:14:27.492+02:00",
+                "prosemirror_steps": [
+                    {
+                        "to": 2,
+                        "from": 0,
+                        "gapTo": 1,
+                        "slice": {
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "attrs": {
+                                        "id": "e3y5gg0rpd",
+                                        "horizontalAlign": null
+                                    }
+                                }
+                            ]
+                        },
+                        "insert": 1
+                    },
+                    {
+                        "to": 1,
+                        "from": 1,
+                        "slice": {
+                            "content": [
+                                {
+                                    "text": "Text 176",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "stepType": "replace"
+                    },
+                    {
+                        "to": 31,
+                        "from": 31,
+                        "slice": {
+                            "content": [
+                                {
+                                    "text": "Text 177",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "stepType": "replace"
+                    },
+                    {
+                        "to": 14,
+                        "from": 1,
+                        "mark": {
+                            "type": "discussion",
+                            "attrs": {
+                                "resolvedId": "",
+                                "discussionId": "50027"
+                            }
+                        },
+                        "stepType": "Text 178"
+                    }
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "page": {
+                    "data": {
+                        "type": "pages",
+                        "id": "1092"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+{
+    "data": [
+        {
+            "id": "1178",
+            "type": "survey_responses",
+            "attributes": {
+                "survey_fields": {
+                    "393545": "639833"
+                },
+                "created_at": "2026-10-23T21:22:19.334+02:00",
+                "updated_at": "2026-10-23T21:22:19.334+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "survey": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1178",
+            "type": "survey_responses",
+            "attributes": {
+                "survey_fields": {
+                    "393545": "639833"
+                },
+                "created_at": "2026-10-23T21:22:19.334+02:00",
+                "updated_at": "2026-10-23T21:22:19.334+02:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "survey": {
+                    "data": {
+                        "type": "surveys",
+                        "id": "1176"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "custom_field_attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

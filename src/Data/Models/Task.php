@@ -268,11 +268,11 @@ final readonly class Task extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<PlaceholderUsage>
      */
     public function placeholderUsages(): array
     {
-        return $this->hasMany('placeholder_usages', Model::class);
+        return $this->hasMany('placeholder_usages', PlaceholderUsage::class);
     }
 
     public function project(): ?Project
@@ -291,19 +291,19 @@ final readonly class Task extends Model
     }
 
     /**
-     * @return list<Model>
+     * @return list<Task>
      */
     public function subtasks(): array
     {
-        return $this->hasMany('subtasks', Model::class);
+        return $this->hasMany('subtasks', Task::class);
     }
 
     /**
-     * @return list<Model>
+     * @return list<TaskDependency>
      */
     public function taskDependencies(): array
     {
-        return $this->hasMany('task_dependencies', Model::class);
+        return $this->hasMany('task_dependencies', TaskDependency::class);
     }
 
     public function taskList(): ?TaskList

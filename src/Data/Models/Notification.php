@@ -23,6 +23,9 @@ final readonly class Notification extends Model
 {
     public const string TYPE = 'notifications';
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $agentSessionStatus;
+
     /** A summary of the field changes that triggered this notification. */
     public mixed $changeset;
 
@@ -85,6 +88,7 @@ final readonly class Notification extends Model
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->agentSessionStatus = $attributes->mixed('agent_session_status');
         $this->changeset = $attributes->mixed('changeset');
         $this->dismissed = $attributes->bool('dismissed');
         $this->excerpt = $attributes->string('excerpt');

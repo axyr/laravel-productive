@@ -1,12 +1,12 @@
 {
     "data": [
         {
-            "id": "Text 227",
+            "id": "Text 281",
             "type": "timesheet_reports",
             "attributes": {
                 "group": "person",
-                "count": 15,
-                "week": "Text 38",
+                "count": 21,
+                "week": "Text 50",
                 "monday_time": 0,
                 "monday_capacity": 960,
                 "monday_available": 960,
@@ -16,7 +16,7 @@
                 "wednesday_time": 0,
                 "wednesday_capacity": 960,
                 "wednesday_available": 960,
-                "thursday_time": 0,
+                "thursday_time": 60,
                 "thursday_capacity": 960,
                 "thursday_available": 960,
                 "friday_time": 0,
@@ -27,13 +27,14 @@
                 "saturday_available": 0,
                 "sunday_time": 0,
                 "sunday_capacity": 0,
-                "sunday_available": 0
+                "sunday_available": 0,
+                "week_submission_status": "partially_submitted"
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -47,12 +48,12 @@
             }
         },
         {
-            "id": "Text 227",
+            "id": "Text 281",
             "type": "timesheet_reports",
             "attributes": {
                 "group": "person",
-                "count": 15,
-                "week": "Text 38",
+                "count": 21,
+                "week": "Text 50",
                 "monday_time": 0,
                 "monday_capacity": 960,
                 "monday_available": 960,
@@ -62,7 +63,7 @@
                 "wednesday_time": 0,
                 "wednesday_capacity": 960,
                 "wednesday_available": 960,
-                "thursday_time": 0,
+                "thursday_time": 60,
                 "thursday_capacity": 960,
                 "thursday_available": 960,
                 "friday_time": 0,
@@ -73,13 +74,14 @@
                 "saturday_available": 0,
                 "sunday_time": 0,
                 "sunday_capacity": 0,
-                "sunday_available": 0
+                "sunday_available": 0,
+                "week_submission_status": "partially_submitted"
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -88,7 +90,7 @@
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1023"
                     }
                 }
             }

@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "id": "1039",
+            "type": "approval_policy_assignments",
+            "attributes": {
+                "target_type": "deal"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_policy": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1039",
+            "type": "approval_policy_assignments",
+            "attributes": {
+                "target_type": "deal"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": null
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1004"
+                    }
+                },
+                "approval_policy": {
+                    "data": {
+                        "type": "approval_policies",
+                        "id": "1040"
+                    }
+                }
+            }
+        }
+    ]
+}

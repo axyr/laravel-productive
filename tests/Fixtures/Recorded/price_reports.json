@@ -1,0 +1,103 @@
+{
+    "data": [
+        {
+            "id": "Text 212",
+            "type": "price_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "price",
+                "count": 1,
+                "formula_fields": [],
+                "average_discount": null,
+                "average_markup": null,
+                "rate_card_status": 1,
+                "time_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "average_rate": 100,
+                "average_rate_default": 100,
+                "average_rate_normalized": null,
+                "average_discounted_rate": 100,
+                "average_discounted_rate_default": 100,
+                "average_discounted_rate_normalized": null,
+                "average_discount_amount": 0,
+                "average_discount_amount_default": 0,
+                "average_discount_amount_normalized": null,
+                "average_markup_amount": 0,
+                "average_markup_amount_default": 0,
+                "average_markup_amount_normalized": null,
+                "average_estimated_cost": 0,
+                "average_estimated_cost_default": 0,
+                "average_estimated_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "price": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "Text 212",
+            "type": "price_reports",
+            "attributes": {
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "price",
+                "count": 1,
+                "formula_fields": [],
+                "average_discount": null,
+                "average_markup": null,
+                "rate_card_status": 1,
+                "time_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "average_rate": 100,
+                "average_rate_default": 100,
+                "average_rate_normalized": null,
+                "average_discounted_rate": 100,
+                "average_discounted_rate_default": 100,
+                "average_discounted_rate_normalized": null,
+                "average_discount_amount": 0,
+                "average_discount_amount_default": 0,
+                "average_discount_amount_normalized": null,
+                "average_markup_amount": 0,
+                "average_markup_amount_default": 0,
+                "average_markup_amount_normalized": null,
+                "average_estimated_cost": 0,
+                "average_estimated_cost_default": 0,
+                "average_estimated_cost_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "report": {
+                    "data": null
+                },
+                "price": {
+                    "data": {
+                        "type": "prices",
+                        "id": "1149"
+                    }
+                }
+            }
+        }
+    ]
+}

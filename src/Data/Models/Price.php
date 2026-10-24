@@ -53,6 +53,18 @@ final readonly class Price extends Model
     /** The discount percentage applied to the rate of this price entry. */
     public ?float $discount;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?float $discountAmount;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?float $discountAmountDefault;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?float $discountAmountNormalized;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?string $discountType;
+
     /**
      * Configuration for the rich-text editor associated with this price entry.
      *
@@ -113,6 +125,10 @@ final readonly class Price extends Model
         $this->customFields = $attributes->object('custom_fields');
         $this->description = $attributes->string('description');
         $this->discount = $attributes->float('discount');
+        $this->discountAmount = $attributes->float('discount_amount');
+        $this->discountAmountDefault = $attributes->float('discount_amount_default');
+        $this->discountAmountNormalized = $attributes->float('discount_amount_normalized');
+        $this->discountType = $attributes->string('discount_type');
         $this->editorConfig = $attributes->object('editor_config');
         $this->estimatedCost = $attributes->float('estimated_cost');
         $this->estimatedCostDefault = $attributes->mixed('estimated_cost_default');

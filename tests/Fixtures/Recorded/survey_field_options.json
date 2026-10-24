@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": "1073",
+            "type": "survey_field_options",
+            "attributes": {
+                "name": "Text 75",
+                "archived_at": null,
+                "position": 1,
+                "color_id": "1038"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "survey_field": {
+                    "data": {
+                        "type": "survey_fields",
+                        "id": "1175"
+                    }
+                }
+            }
+        }
+    ]
+}

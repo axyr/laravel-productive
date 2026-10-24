@@ -53,6 +53,21 @@ it('overrides the spec type when a recorded value is unreadable', function (Attr
     'json text sent for a list' => [AttributeType::List, ['json-text'], AttributeType::Json],
 ]);
 
+it('gives a curated type precedence over the recorded one', function () {
+    $types = new RecordedTypes(
+        ['types' => ['tasks' => ['attributes' => ['discount' => ['int'], 'payload' => ['object'], 'level' => ['int']], 'relationships' => []]]],
+        ['tasks.discount' => AttributeType::Float, 'tasks.payload' => AttributeType::Json, 'tasks.title' => AttributeType::String, 'deals.level' => AttributeType::Float],
+    );
+
+    $title = specAttribute('title', AttributeType::String);
+    $attributes = $types->attributes('tasks', ['payload' => specAttribute('payload', AttributeType::String), 'title' => $title]);
+
+    expect($attributes['discount'])->toEqual(new Attribute('discount', 'discount', AttributeType::Float, 'Not in the spec: seen in recorded API responses.', undocumented: true))
+        ->and($attributes['payload'])->toEqual(new Attribute('payload', 'payload', AttributeType::Json, 'From the spec.', required: true, specType: AttributeType::String))
+        ->and($attributes['title'])->toBe($title)
+        ->and($attributes['level']->type)->toBe(AttributeType::Int);
+});
+
 it('adds undocumented attributes with their recorded type', function () {
     $attributes = recorded(['level' => ['int', 'null'], 'type' => ['string'], 'notes' => ['null']])->attributes('tasks', []);
 

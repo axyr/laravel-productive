@@ -4,17 +4,17 @@
 
 Which operations the SDK has seen the live API answer. `composer record` records every GET of a test organization; writes are exercised by a live run that records their responses the same way. One row per operation of every generated resource, from the recording of 2026-10-23.
 
-**453 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
+**424 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
 
 | Status | Operations | Meaning |
 | --- | --- | --- |
-| recorded | 194 | A GET the recording answered with a success. |
+| recorded | 224 | A GET the recording answered with a success. |
 | exercised | 0 | A write a live run answered with a success. |
-| empty list | 38 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
+| empty list | 10 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
 | rejected | 2 | The API answered with an error; the status is shown. |
 | plan-gated | 0 | The test organization's plan does not include it. |
-| skipped | 13 | Left out on purpose; the reason is shown. |
-| not recorded | 4 | A GET nothing has called yet. |
+| skipped | 12 | Left out on purpose; the reason is shown. |
+| not recorded | 3 | A GET nothing has called yet. |
 | not exercised | 411 | A write nothing has called yet. |
 
 ## `activities`
@@ -29,7 +29,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /agent_configs` | `agent_configs.index` | recorded `200` |
-| `GET /agent_configs/{id}` | `agent_configs.show` | empty list |
+| `GET /agent_configs/{id}` | `agent_configs.show` | recorded `200` |
 | `POST /agent_configs` | `agent_configs.create` | not exercised |
 | `PATCH /agent_configs/{id}` | `agent_configs.update` | not exercised |
 | `DELETE /agent_configs/{id}` | `agent_configs.destroy` | not exercised |
@@ -46,7 +46,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /agents` | `agents.index` | recorded `200` |
-| `GET /agents/{id}` | `agents.show` | empty list |
+| `GET /agents/{id}` | `agents.show` | recorded `200` |
 | `POST /agents` | `agents.create` | not exercised |
 | `PATCH /agents/{id}` | `agents.update` | not exercised |
 | `PATCH /agents/{id}/activate` | `agents.activate` | not exercised |
@@ -68,7 +68,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /approval_policy_assignments` | `approval_policy_assignments.index` | recorded `200` |
-| `GET /approval_policy_assignments/{id}` | `approval_policy_assignments.show` | empty list |
+| `GET /approval_policy_assignments/{id}` | `approval_policy_assignments.show` | recorded `200` |
 | `POST /approval_policy_assignments` | `approval_policy_assignments.create` | not exercised |
 | `PATCH /approval_policy_assignments/{id}` | `approval_policy_assignments.update` | not exercised |
 | `DELETE /approval_policy_assignments/{id}` | `approval_policy_assignments.destroy` | not exercised |
@@ -78,7 +78,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /approval_statuses` | `approval_statuses.index` | recorded `200` |
-| `GET /approval_statuses/{id}` | `approval_statuses.show` | empty list |
+| `GET /approval_statuses/{id}` | `approval_statuses.show` | recorded `200` |
 | `PATCH /approval_statuses/{id}/approve` | `approval_statuses.approve` | not exercised |
 | `PATCH /approval_statuses/{id}/reject` | `approval_statuses.reject` | not exercised |
 
@@ -86,7 +86,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 
 | Endpoint | Operation | Status |
 | --- | --- | --- |
-| `GET /approval_workflows/{id}` | `approval_workflows.show` | not recorded |
+| `GET /approval_workflows/{id}` | `approval_workflows.show` | recorded `200` |
 | `POST /approval_workflows` | `approval_workflows.create` | not exercised |
 | `PATCH /approval_workflows/{id}` | `approval_workflows.update` | not exercised |
 | `DELETE /approval_workflows/{id}` | `approval_workflows.destroy` | not exercised |
@@ -96,7 +96,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /artifacts` | `artifacts.index` | recorded `200` |
-| `GET /artifacts/{id}` | `artifacts.show` | empty list |
+| `GET /artifacts/{id}` | `artifacts.show` | recorded `200` |
 | `DELETE /artifacts/{id}` | `artifacts.destroy` | not exercised |
 | `PATCH /artifacts/{id}/publish` | `artifacts.publish` | not exercised |
 | `PATCH /artifacts/{id}/unpublish` | `artifacts.unpublish` | not exercised |
@@ -106,7 +106,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /attachments` | `attachments.index` | recorded `200` |
-| `GET /attachments/{id}` | `attachments.show` | empty list |
+| `GET /attachments/{id}` | `attachments.show` | recorded `200` |
 | `POST /attachments` | `attachments.create` | not exercised |
 | `PATCH /attachments/{id}` | `attachments.update` | not exercised |
 | `DELETE /attachments/{id}` | `attachments.destroy` | not exercised |
@@ -156,7 +156,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /comments` | `comments.index` | recorded `200` |
-| `GET /comments/{id}` | `comments.show` | empty list |
+| `GET /comments/{id}` | `comments.show` | recorded `200` |
 | `POST /comments` | `comments.create` | not exercised |
 | `PATCH /comments/{id}` | `comments.update` | not exercised |
 | `DELETE /comments/{id}` | `comments.destroy` | not exercised |
@@ -191,7 +191,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /contracts` | `contracts.index` | recorded `200` |
-| `GET /contracts/{id}` | `contracts.show` | empty list |
+| `GET /contracts/{id}` | `contracts.show` | recorded `200` |
 | `POST /contracts` | `contracts.create` | not exercised |
 | `PATCH /contracts/{id}` | `contracts.update` | not exercised |
 | `DELETE /contracts/{id}` | `contracts.destroy` | not exercised |
@@ -252,7 +252,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /deal_cost_rates` | `deal_cost_rates.index` | recorded `200` |
-| `GET /deal_cost_rates/{id}` | `deal_cost_rates.show` | empty list |
+| `GET /deal_cost_rates/{id}` | `deal_cost_rates.show` | recorded `200` |
 | `POST /deal_cost_rates` | `deal_cost_rates.create` | not exercised |
 | `PATCH /deal_cost_rates/{id}` | `deal_cost_rates.update` | not exercised |
 | `DELETE /deal_cost_rates/{id}` | `deal_cost_rates.destroy` | not exercised |
@@ -296,7 +296,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /discussions` | `discussions.index` | recorded `200` |
-| `GET /discussions/{id}` | `discussions.show` | empty list |
+| `GET /discussions/{id}` | `discussions.show` | recorded `200` |
 | `POST /discussions` | `discussions.create` | not exercised |
 | `PATCH /discussions/{id}` | `discussions.update` | not exercised |
 | `DELETE /discussions/{id}` | `discussions.destroy` | not exercised |
@@ -575,7 +575,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /notifications` | `notifications.index` | recorded `200` |
-| `GET /notifications/{id}` | `notifications.show` | empty list |
+| `GET /notifications/{id}` | `notifications.show` | recorded `200` |
 | `PATCH /notifications/{id}/dismiss` | `notifications.dismiss` | not exercised |
 | `PATCH /notifications/{id}/read` | `notifications.read` | not exercised |
 | `PATCH /notifications/{id}/undismiss` | `notifications.undismiss` | not exercised |
@@ -627,7 +627,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /page_versions` | `page_versions.index` | recorded `200` |
-| `GET /page_versions/{id}` | `page_versions.show` | empty list |
+| `GET /page_versions/{id}` | `page_versions.show` | recorded `200` |
 | `POST /page_versions` | `page_versions.create` | not exercised |
 | `PATCH /page_versions/{id}` | `page_versions.update` | not exercised |
 
@@ -636,7 +636,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /pages` | `pages.index` | recorded `200` |
-| `GET /pages/{id}` | `pages.show` | empty list |
+| `GET /pages/{id}` | `pages.show` | recorded `200` |
 | `DELETE /pages/{id}` | `pages.destroy` | not exercised |
 | `PATCH /pages/{id}/append_html` | `pages.append_html` | not exercised |
 | `PATCH /pages/{id}/append_markdown` | `pages.append_markdown` | not exercised |
@@ -713,7 +713,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /placeholder_usages` | `placeholder_usages.index` | recorded `200` |
-| `GET /placeholder_usages/{id}` | `placeholder_usages.show` | empty list |
+| `GET /placeholder_usages/{id}` | `placeholder_usages.show` | recorded `200` |
 | `POST /placeholder_usages` | `placeholder_usages.create` | not exercised |
 | `PATCH /placeholder_usages/{id}` | `placeholder_usages.update` | not exercised |
 | `DELETE /placeholder_usages/{id}` | `placeholder_usages.destroy` | not exercised |
@@ -723,7 +723,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /placeholders` | `placeholders.index` | recorded `200` |
-| `GET /placeholders/{id}` | `placeholders.show` | empty list |
+| `GET /placeholders/{id}` | `placeholders.show` | recorded `200` |
 | `POST /placeholders` | `placeholders.create` | not exercised |
 | `PATCH /placeholders/{id}` | `placeholders.update` | not exercised |
 | `DELETE /placeholders/{id}` | `placeholders.destroy` | not exercised |
@@ -733,7 +733,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /prices` | `prices.index` | recorded `200` |
-| `GET /prices/{id}` | `prices.show` | empty list |
+| `GET /prices/{id}` | `prices.show` | recorded `200` |
 | `POST /prices` | `prices.create` | not exercised |
 | `PATCH /prices/{id}` | `prices.update` | not exercised |
 | `DELETE /prices/{id}` | `prices.destroy` | not exercised |
@@ -789,7 +789,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 
 | Endpoint | Operation | Status |
 | --- | --- | --- |
-| `GET /public/pages/{uuid}` | `public.pages.show` | skipped Reachable by the uuid of a publicly shared page: set `RECORDING_PUBLIC_PAGE_UUID` in `.env` to record it. |
+| `GET /public/pages/{uuid}` | `public.pages.show` | recorded `200` |
 
 ## `public/proposals`
 
@@ -814,7 +814,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /purchase_orders` | `purchase_orders.index` | recorded `200` |
-| `GET /purchase_orders/{id}` | `purchase_orders.show` | empty list |
+| `GET /purchase_orders/{id}` | `purchase_orders.show` | recorded `200` |
 | `POST /purchase_orders` | `purchase_orders.create` | not exercised |
 | `PATCH /purchase_orders/{id}` | `purchase_orders.update` | not exercised |
 | `DELETE /purchase_orders/{id}` | `purchase_orders.destroy` | not exercised |
@@ -830,7 +830,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /rate_cards` | `rate_cards.index` | recorded `200` |
-| `GET /rate_cards/{id}` | `rate_cards.show` | empty list |
+| `GET /rate_cards/{id}` | `rate_cards.show` | recorded `200` |
 | `POST /rate_cards` | `rate_cards.create` | not exercised |
 | `PATCH /rate_cards/{id}` | `rate_cards.update` | not exercised |
 | `DELETE /rate_cards/{id}` | `rate_cards.destroy` | not exercised |
@@ -843,7 +843,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /report_categories` | `report_categories.index` | recorded `200` |
-| `GET /report_categories/{id}` | `report_categories.show` | empty list |
+| `GET /report_categories/{id}` | `report_categories.show` | recorded `200` |
 | `POST /report_categories` | `report_categories.create` | not exercised |
 | `PATCH /report_categories/{id}` | `report_categories.update` | not exercised |
 | `DELETE /report_categories/{id}` | `report_categories.destroy` | not exercised |
@@ -1113,7 +1113,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /skills` | `skills.index` | recorded `200` |
-| `GET /skills/{id}` | `skills.show` | empty list |
+| `GET /skills/{id}` | `skills.show` | recorded `200` |
 | `POST /skills` | `skills.create` | not exercised |
 | `PATCH /skills/{id}` | `skills.update` | not exercised |
 | `DELETE /skills/{id}` | `skills.destroy` | not exercised |
@@ -1133,7 +1133,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /survey_field_options` | `survey_field_options.index` | recorded `200` |
-| `GET /survey_field_options/{id}` | `survey_field_options.show` | empty list |
+| `GET /survey_field_options/{id}` | `survey_field_options.show` | recorded `200` |
 | `POST /survey_field_options` | `survey_field_options.create` | not exercised |
 | `PATCH /survey_field_options/{id}` | `survey_field_options.update` | not exercised |
 | `PATCH /survey_field_options/{id}/archive` | `survey_field_options.archive` | not exercised |
@@ -1143,7 +1143,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /survey_fields` | `survey_fields.index` | recorded `200` |
-| `GET /survey_fields/{id}` | `survey_fields.show` | empty list |
+| `GET /survey_fields/{id}` | `survey_fields.show` | recorded `200` |
 | `POST /survey_fields` | `survey_fields.create` | not exercised |
 | `PATCH /survey_fields/{id}` | `survey_fields.update` | not exercised |
 | `PATCH /survey_fields/{id}/archive` | `survey_fields.archive` | not exercised |
@@ -1153,7 +1153,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /survey_responses` | `survey_responses.index` | recorded `200` |
-| `GET /survey_responses/{id}` | `survey_responses.show` | empty list |
+| `GET /survey_responses/{id}` | `survey_responses.show` | recorded `200` |
 | `POST /survey_responses` | `survey_responses.create` | not exercised |
 | `DELETE /survey_responses/{id}` | `survey_responses.destroy` | not exercised |
 
@@ -1180,7 +1180,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /task_dependencies` | `task_dependencies.index` | recorded `200` |
-| `GET /task_dependencies/{id}` | `task_dependencies.show` | empty list |
+| `GET /task_dependencies/{id}` | `task_dependencies.show` | recorded `200` |
 | `POST /task_dependencies` | `task_dependencies.create` | not exercised |
 | `PATCH /task_dependencies/{id}` | `task_dependencies.update` | not exercised |
 | `DELETE /task_dependencies/{id}` | `task_dependencies.destroy` | not exercised |
@@ -1228,7 +1228,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /team_memberships` | `team_memberships.index` | recorded `200` |
-| `GET /team_memberships/{id}` | `team_memberships.show` | empty list |
+| `GET /team_memberships/{id}` | `team_memberships.show` | recorded `200` |
 | `POST /team_memberships` | `team_memberships.create` | not exercised |
 | `DELETE /team_memberships/{id}` | `team_memberships.destroy` | not exercised |
 
@@ -1237,7 +1237,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /teams` | `teams.index` | recorded `200` |
-| `GET /teams/{id}` | `teams.show` | empty list |
+| `GET /teams/{id}` | `teams.show` | recorded `200` |
 | `POST /teams` | `teams.create` | not exercised |
 | `PATCH /teams/{id}` | `teams.update` | not exercised |
 | `DELETE /teams/{id}` | `teams.destroy` | not exercised |
@@ -1295,7 +1295,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /timers` | `timers.index` | recorded `200` |
-| `GET /timers/{id}` | `timers.show` | empty list |
+| `GET /timers/{id}` | `timers.show` | recorded `200` |
 | `POST /timers` | `timers.create` | not exercised |
 | `PATCH /timers/{id}/stop` | `timers.stop` | not exercised |
 
@@ -1304,7 +1304,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /timesheets` | `timesheets.index` | recorded `200` |
-| `GET /timesheets/{id}` | `timesheets.show` | empty list |
+| `GET /timesheets/{id}` | `timesheets.show` | recorded `200` |
 | `POST /timesheets` | `timesheets.create` | not exercised |
 | `DELETE /timesheets/{id}` | `timesheets.destroy` | not exercised |
 

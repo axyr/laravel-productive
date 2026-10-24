@@ -60,6 +60,19 @@ final readonly class ModelBuilder
     }
 
     /**
+     * A recorded relationship seen without data has no target yet: it gets one by the same rules as
+     * a documented relationship, from the curated map or its name ("child_pages" → pages).
+     */
+    private function typed(string $type, Relationship $relationship): Relationship
+    {
+        if (! $relationship->undocumented || $relationship->targetType !== null) {
+            return $relationship;
+        }
+
+        return new Relationship($relationship->name, $relationship->toMany, $this->relationshipTypes->resolve($type, $relationship->name), undocumented: true);
+    }
+
+    /**
      * @param  array<string, mixed>  $data
      * @return list<Relationship>
      */
@@ -73,7 +86,7 @@ final readonly class ModelBuilder
             $relationships[$name] = new Relationship($name, str_ends_with($reference, '_collection_relationship'), $this->relationshipTypes->resolve($type, $name));
         }
 
-        $relationships = $this->recorded->relationships($type, $relationships, $this->modelTypes);
+        $relationships = array_map(fn(Relationship $relationship): Relationship => $this->typed($type, $relationship), $this->recorded->relationships($type, $relationships, $this->modelTypes));
         $relationships = array_filter($relationships, fn(Relationship $relationship): bool => ! in_array($type . '.' . $relationship->name, $this->removedRelationships, true));
         ksort($relationships);
 

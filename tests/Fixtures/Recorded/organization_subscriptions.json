@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1002",
+            "id": "1005",
             "type": "organization_subscriptions",
             "attributes": {
-                "billing_email": "person-124@example.test",
+                "billing_email": "person-159@example.test",
                 "billing_address": {
                     "vat": null,
                     "city": null,
@@ -12,7 +12,7 @@
                     "state": null,
                     "address": null
                 },
-                "subscription_state_id": 1016,
+                "subscription_state_id": 1038,
                 "trial_ends_at": "2026-11-06 23:59:59",
                 "trial_ends_on": "2026-11-06",
                 "subscription_started_at": null,
@@ -22,8 +22,8 @@
                 "grace_period_ends_at": null,
                 "discount": null,
                 "discount_expires_on": null,
-                "payment_method_id": 1016,
-                "collection_method_id": 1016,
+                "payment_method_id": 1038,
+                "collection_method_id": 1038,
                 "seats": 3,
                 "seats_used": 2,
                 "seats_pending": 3,
@@ -39,7 +39,7 @@
                     "currency": "USD",
                     "subscribed_products": [
                         {
-                            "name": "Text 125",
+                            "name": "Text 160",
                             "product_track": "all_in_one_2023",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -50,7 +50,7 @@
                     ],
                     "available_products": [
                         {
-                            "name": "Text 126",
+                            "name": "Text 161",
                             "product_track": "all_in_one_2023",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -59,7 +59,7 @@
                             "active": true
                         },
                         {
-                            "name": "Text 127",
+                            "name": "Text 162",
                             "product_track": "all_in_one_2023",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -68,7 +68,7 @@
                             "active": true
                         },
                         {
-                            "name": "Text 128",
+                            "name": "Text 163",
                             "product_track": "notetaker",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -77,7 +77,7 @@
                             "active": true
                         },
                         {
-                            "name": "Text 129",
+                            "name": "Text 164",
                             "product_track": "notetaker",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -86,7 +86,7 @@
                             "active": true
                         },
                         {
-                            "name": "Text 130",
+                            "name": "Text 165",
                             "product_track": "notetaker",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -130,14 +130,14 @@
                 "contract_date": null,
                 "contract_seats": null,
                 "contract_min_seats": null,
-                "stripe_customer_id": "Text 131",
+                "stripe_customer_id": "Text 166",
                 "balance": "0.0"
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "billing_group_owner": {

@@ -35,10 +35,14 @@ The generated property follows the recorded type. Null and empty values never ov
 | `Organization` | `billing_email` | object | string |
 | `OrganizationSubscription` | `billing_email` | object | string |
 | `OrganizationSubscription` | `stripe_customer_id` | int | string |
+| `Page` | `preferences` | object | json |
 | `PayrollItemReport` | `custom_fields` | string | object |
 | `Person` | `availabilities` | list | json |
 | `PersonReport` | `autotracking` | int | bool |
 | `PersonReport` | `custom_fields` | string | object |
+| `PriceReport` | `booking_tracking_enabled` | int | bool |
+| `PriceReport` | `expense_tracking_enabled` | int | bool |
+| `PriceReport` | `time_tracking_enabled` | int | bool |
 | `Project` | `template` | string | bool |
 | `ProposalReport` | `signed` | int | bool |
 | `SalaryReport` | `people_custom_fields` | string | object |
@@ -52,6 +56,7 @@ The generated property follows the recorded type. Null and empty values never ov
 | `TimeEntryReport` | `overhead` | int | bool |
 | `TimeEntryReport` | `people_custom_fields` | string | object |
 | `TimeReport` | `people_custom_fields` | string | object |
+| `WebhookLog` | `payload` | string | json |
 
 ## Undocumented attributes
 
@@ -60,11 +65,18 @@ Seen in recorded responses but missing from the spec. They are generated with th
 | Model | Attribute | Type |
 | --- | --- | --- |
 | `Activity` | `external_author_name` | mixed |
+| `AgentConfig` | `ai_model` | mixed |
+| `AgentConfig` | `reasoning_effort` | mixed |
+| `AgentConfig` | `slack_triggers` | mixed |
+| `AgentConfig` | `slack_user_group_id` | mixed |
 | `ApprovalPolicy` | `description` | string |
+| `Artifact` | `current_version_number` | int |
+| `Artifact` | `restored_from_version_id` | mixed |
 | `BankAccount` | `local_bank_code` | mixed |
 | `BookingReport` | `booking_type` | string |
 | `BudgetReport` | `average_estimated_time_usage` | string |
 | `BudgetReport` | `total_overtime_time` | int |
+| `Comment` | `creation_method` | string |
 | `ContactEntry` | `external_id` | mixed |
 | `CustomField` | `description` | mixed |
 | `CustomField` | `maximum_value` | mixed |
@@ -105,6 +117,7 @@ Seen in recorded responses but missing from the spec. They are generated with th
 | `LineItem` | `budget_ids` | mixed |
 | `LineItem` | `description` | string |
 | `LineItem` | `service_ids` | mixed |
+| `Notification` | `agent_session_status` | mixed |
 | `Organization` | `create_time_entry_on_timer_start` | bool |
 | `Organization` | `meeting_settings` | object |
 | `Organization` | `release_channel` | string |
@@ -114,6 +127,10 @@ Seen in recorded responses but missing from the spec. They are generated with th
 | `OrganizationMembership` | `recent_data` | list |
 | `OrganizationSubscription` | `trial_plan_ends_on` | mixed |
 | `Person` | `ai_assistant_instructions` | mixed |
+| `Price` | `discount_amount` | float |
+| `Price` | `discount_amount_default` | float |
+| `Price` | `discount_amount_normalized` | float |
+| `Price` | `discount_type` | string |
 | `Project` | `export_error` | mixed |
 | `Project` | `export_id` | mixed |
 | `Project` | `export_status` | string |
@@ -144,6 +161,7 @@ Seen in recorded responses but missing from the spec. They are generated with th
 | `ServiceReport` | `total_tentative_booked_time` | int |
 | `ServiceType` | `deleted_at` | mixed |
 | `Survey` | `description` | mixed |
+| `SurveyField` | `description` | mixed |
 | `Task` | `level` | int |
 | `TimeEntry` | `calendar_event_recurring_id` | mixed |
 | `TimeEntry` | `draft` | bool |
@@ -167,13 +185,21 @@ Seen with data in recorded responses but missing from the spec.
 
 | Model | Relationship | Kind | Target |
 | --- | --- | --- | --- |
+| `Agent` | `organization` | to-one | `organizations` |
+| `AgentConfig` | `organization` | to-one | `organizations` |
+| `ApprovalStatus` | `organization` | to-one | `organizations` |
+| `Artifact` | `organization` | to-one | `organizations` |
 | `ExpenseLineItem` | `organization` | to-one | `organizations` |
 | `Invoice` | `invoiced_budgets` | to-many | any |
-| `Person` | `person_session` | to-one | any |
+| `Page` | `child_pages` | to-many | `pages` |
+| `Person` | `person_session` | to-one | `sessions` |
+| `Project` | `memberships` | to-many | `memberships` |
+| `Project` | `project_milestones` | to-many | any |
 | `ProjectPreference` | `organization` | to-one | `organizations` |
-| `Task` | `placeholder_usages` | to-many | any |
-| `Task` | `subtasks` | to-many | any |
-| `Task` | `task_dependencies` | to-many | any |
+| `Skill` | `organization` | to-one | `organizations` |
+| `Task` | `placeholder_usages` | to-many | `placeholder_usages` |
+| `Task` | `subtasks` | to-many | `tasks` |
+| `Task` | `task_dependencies` | to-many | `task_dependencies` |
 | `Task` | `todos` | to-many | `todos` |
 | `Template` | `organization` | to-one | `organizations` |
 | `TimeEntryReport` | `person_manager` | to-one | `people` |
@@ -186,6 +212,8 @@ The spec's example has them, its schema does not, and no recorded response of th
 | --- | --- |
 | `ApprovalPolicy` | `policy_type` |
 | `ApprovalPolicy` | `created_at` |
+| `ApprovalPolicyAssignment` | `created_at` |
+| `Attachment` | `file_size` |
 | `AutomaticInvoicingRule` | `name` |
 | `AutomaticInvoicingRule` | `frequency` |
 | `AutomaticInvoicingRule` | `active` |
@@ -215,12 +243,19 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `BudgetReport` | `expense_amount` |
 | `BudgetReport` | `project_id` |
 | `BudgetReport` | `deal_id` |
+| `Comment` | `note` |
+| `Comment` | `commentable_id` |
 | `CompanyReport` | `revenue` |
 | `CompanyReport` | `invoiced` |
 | `CompanyReport` | `payments` |
 | `CompanyReport` | `outstanding` |
 | `CompanyReport` | `billable_time` |
 | `CompanyReport` | `company_id` |
+| `Contract` | `name` |
+| `Contract` | `status` |
+| `Contract` | `start_date` |
+| `Contract` | `end_date` |
+| `Contract` | `created_at` |
 | `CustomField` | `field_type` |
 | `CustomField` | `filterable` |
 | `CustomFieldSection` | `item_type` |
@@ -230,6 +265,8 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `Deal` | `updated_at` |
 | `Deal` | `description` |
 | `Deal` | `is_budget` |
+| `DealCostRate` | `rate` |
+| `DealCostRate` | `valid_from` |
 | `DealFunnelReport` | `stage` |
 | `DealFunnelReport` | `deal_count` |
 | `DealFunnelReport` | `total_value` |
@@ -242,6 +279,11 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `DealReport` | `billable_time` |
 | `DealReport` | `deal_id` |
 | `DealStatus` | `outcome` |
+| `Discussion` | `title` |
+| `Discussion` | `note` |
+| `Discussion` | `created_at` |
+| `Discussion` | `updated_at` |
+| `Discussion` | `last_activity_at` |
 | `DocumentStyle` | `created_at` |
 | `DocumentType` | `default` |
 | `EntitlementReport` | `allocated` |
@@ -301,6 +343,11 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `OrganizationSubscription` | `seats_max` |
 | `OrganizationSubscription` | `contract_end_date` |
 | `OrganizationSubscription` | `currency` |
+| `Page` | `note` |
+| `Page` | `archived_at` |
+| `PageReport` | `page_id` |
+| `PageReport` | `project_id` |
+| `PageVersion` | `version_number` |
 | `Payment` | `created_at` |
 | `PaymentReminderSequence` | `default` |
 | `PaymentReport` | `amount` |
@@ -321,6 +368,11 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `PersonReport` | `person_id` |
 | `Pipeline` | `default` |
 | `Pipeline` | `archived_at` |
+| `PriceReport` | `rate` |
+| `PriceReport` | `total` |
+| `PriceReport` | `estimated_hours` |
+| `PriceReport` | `service_type_id` |
+| `PriceReport` | `company_id` |
 | `ProjectReport` | `budget_total` |
 | `ProjectReport` | `budget_used` |
 | `ProjectReport` | `revenue` |
@@ -338,6 +390,11 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `ProposalReport` | `total` |
 | `ProposalReport` | `deal_id` |
 | `ProposalReport` | `company_id` |
+| `PurchaseOrder` | `status` |
+| `PurchaseOrder` | `amount` |
+| `PurchaseOrder` | `date` |
+| `RateCard` | `currency` |
+| `ReportCategory` | `description` |
 | `ResourceRequest` | `requested_hours` |
 | `ResourceRequest` | `start_date` |
 | `ResourceRequest` | `end_date` |
@@ -361,10 +418,18 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `ServiceReport` | `service_id` |
 | `ServiceReport` | `deal_id` |
 | `Survey` | `status` |
+| `SurveyField` | `label` |
+| `SurveyField` | `field_type` |
+| `SurveyFieldOption` | `label` |
+| `SurveyFieldOption` | `value` |
 | `SurveyReport` | `response_count` |
 | `SurveyReport` | `avg_score` |
 | `SurveyReport` | `survey_id` |
 | `SurveyReport` | `project_id` |
+| `SurveyResponse` | `submitted_at` |
+| `SurveyResponse` | `answers` |
+| `TaskDependency` | `dependency_type` |
+| `TaskDependency` | `created_at` |
 | `TaskReport` | `billable_time` |
 | `TaskReport` | `nonbillable_time` |
 | `TaskReport` | `total_time` |
@@ -397,6 +462,11 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `TimeTrackingPolicy` | `daily_limit` |
 | `TimeTrackingPolicy` | `requires_task` |
 | `TimeTrackingPolicy` | `requires_service` |
+| `Timesheet` | `status` |
+| `Timesheet` | `week_starting` |
+| `Timesheet` | `total_time` |
+| `Timesheet` | `submitted_at` |
+| `Timesheet` | `approved_at` |
 | `TimesheetReport` | `status` |
 | `TimesheetReport` | `week_starting` |
 | `TimesheetReport` | `total_time` |
@@ -407,6 +477,12 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `Webhook` | `active` |
 | `Webhook` | `secret` |
 | `Webhook` | `created_at` |
+| `WebhookLog` | `event_type` |
+| `WebhookLog` | `response_code` |
+| `WebhookLog` | `response_body` |
+| `WebhookLog` | `sent_at` |
+| `WebhookLog` | `success` |
+| `WebhookLog` | `url` |
 
 ## Relationships seen without data
 
@@ -415,13 +491,13 @@ Missing from the spec and recorded only as `{"meta": {"included": false}}`, so t
 | Type | Relationships |
 | --- | --- |
 | `activities` | `email_link` |
+| `artifacts` | `memberships`, `thumbnail_attachment` |
 | `booking_items` | `booking` |
 | `contact_entries` | `proposal` |
 | `imports` | `creator` |
 | `invoiced_budgets` | `budget`, `invoice` |
 | `memberships` | `artifact`, `meeting`, `skill` |
 | `payment_reminders` | `creator`, `invoice`, `payment_reminder_sequence`, `updater` |
-| `projects` | `memberships`, `project_milestones` |
 | `proposals` | `attachment`, `scenario` |
 | `tasks` | `root_task` |
 
@@ -432,6 +508,7 @@ The spec documents these relationships, but the API answers 400 "Unsupported inc
 | Operation | Relationships |
 | --- | --- |
 | `invoice_templates.index` | `bank_account`, `budget`, `creator`, `issuer` |
+| `notifications.index` | `owner` |
 | `reports.booking_reports.index` | `organization` |
 | `reports.budget_reports.index` | `organization` |
 | `reports.company_reports.index` | `organization` |
@@ -442,9 +519,11 @@ The spec documents these relationships, but the API answers 400 "Unsupported inc
 | `reports.financial_item_reports.index` | `organization` |
 | `reports.invoice_reports.index` | `organization` |
 | `reports.line_item_reports.index` | `organization` |
+| `reports.page_reports.index` | `organization` |
 | `reports.payment_reports.index` | `deal`, `organization` |
 | `reports.payroll_item_reports.index` | `organization` |
 | `reports.person_reports.index` | `organization` |
+| `reports.price_reports.index` | `organization` |
 | `reports.project_reports.index` | `organization` |
 | `reports.proposal_reports.index` | `organization` |
 | `reports.resource_request_reports.index` | `organization` |
@@ -486,53 +565,19 @@ Their lists were empty in the recording, so they keep the spec's types.
 
 | Resource |
 | --- |
-| `agent_configs` |
 | `agent_roles` |
-| `agents` |
-| `approval_policy_assignments` |
-| `approval_statuses` |
-| `approval_workflows` |
-| `artifacts` |
-| `attachments` |
 | `bills` |
-| `comments` |
-| `contracts` |
 | `custom_domains` |
-| `deal_cost_rates` |
 | `deleted_items` |
-| `discussions` |
 | `einvoice_identities` |
 | `emails` |
 | `integration_exporter_configurations` |
 | `integration_task_management_configurations` |
 | `integrations` |
 | `invitations` |
-| `notifications` |
 | `overheads` |
-| `page_versions` |
-| `pages` |
 | `passwords` |
-| `placeholder_usages` |
-| `placeholders` |
-| `prices` |
-| `public/artifacts` |
-| `public/pages` |
 | `pulses` |
-| `purchase_orders` |
-| `rate_cards` |
-| `report_categories` |
 | `reports/automation_reports` |
-| `reports/page_reports` |
-| `reports/price_reports` |
 | `sessions` |
-| `skills` |
-| `survey_field_options` |
-| `survey_fields` |
-| `survey_responses` |
 | `tags` |
-| `task_dependencies` |
-| `team_memberships` |
-| `teams` |
-| `timers` |
-| `timesheets` |
-| `webhook_logs` |

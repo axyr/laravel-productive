@@ -23,19 +23,35 @@ final readonly class AgentConfig extends Model
 {
     public const string TYPE = 'agent_configs';
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $aiModel;
+
     /** The timestamp when this agent configuration was created. */
     public ?DateTimeImmutable $createdAt;
 
     /** The AI behavior instructions for this agent — describes how it should respond, what tasks it handles, and any operational constraints. */
     public ?string $instructions;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $reasoningEffort;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $slackTriggers;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $slackUserGroupId;
+
     /** The timestamp when this agent configuration was last updated. */
     public ?DateTimeImmutable $updatedAt;
 
     protected function hydrate(Attributes $attributes): void
     {
+        $this->aiModel = $attributes->mixed('ai_model');
         $this->createdAt = $attributes->dateTime('created_at');
         $this->instructions = $attributes->string('instructions');
+        $this->reasoningEffort = $attributes->mixed('reasoning_effort');
+        $this->slackTriggers = $attributes->mixed('slack_triggers');
+        $this->slackUserGroupId = $attributes->mixed('slack_user_group_id');
         $this->updatedAt = $attributes->dateTime('updated_at');
     }
 
@@ -50,5 +66,10 @@ final readonly class AgentConfig extends Model
     public function attachments(): array
     {
         return $this->hasMany('attachments', Attachment::class);
+    }
+
+    public function organization(): ?Organization
+    {
+        return $this->belongsTo('organization', Organization::class);
     }
 }

@@ -103,7 +103,7 @@ final readonly class Page extends Model
         $this->note = $attributes->string('note');
         $this->parentPageId = $attributes->int('parent_page_id');
         $this->position = $attributes->int('position');
-        $this->preferences = $attributes->object('preferences');
+        $this->preferences = $attributes->json('preferences');
         $this->public = $attributes->mixed('public');
         $this->publicAccess = $attributes->bool('public_access');
         $this->publicUuid = $attributes->string('public_uuid');
@@ -119,6 +119,14 @@ final readonly class Page extends Model
     public function attachments(): array
     {
         return $this->hasMany('attachments', Attachment::class);
+    }
+
+    /**
+     * @return list<Page>
+     */
+    public function childPages(): array
+    {
+        return $this->hasMany('child_pages', Page::class);
     }
 
     public function creator(): ?Person

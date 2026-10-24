@@ -185,6 +185,14 @@ final readonly class Project extends Model
         return $this->belongsTo('last_actor', Person::class);
     }
 
+    /**
+     * @return list<Membership>
+     */
+    public function memberships(): array
+    {
+        return $this->hasMany('memberships', Membership::class);
+    }
+
     public function organization(): ?Organization
     {
         return $this->belongsTo('organization', Organization::class);
@@ -193,6 +201,14 @@ final readonly class Project extends Model
     public function projectManager(): ?Person
     {
         return $this->belongsTo('project_manager', Person::class);
+    }
+
+    /**
+     * @return list<Model>
+     */
+    public function projectMilestones(): array
+    {
+        return $this->hasMany('project_milestones', Model::class);
     }
 
     public function templateObject(): ?Model

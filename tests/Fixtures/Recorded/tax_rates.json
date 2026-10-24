@@ -1,11 +1,11 @@
 {
     "data": [
         {
-            "id": "1140",
+            "id": "1189",
             "type": "tax_rates",
             "attributes": {
-                "name": "Text 219",
-                "primary_component_name": "Text 102",
+                "name": "Text 272",
+                "primary_component_name": "Text 137",
                 "primary_component_value": "0.21",
                 "secondary_component_name": null,
                 "secondary_component_value": null,
@@ -15,7 +15,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "subsidiary": {
@@ -26,11 +26,11 @@
             }
         },
         {
-            "id": "1140",
+            "id": "1189",
             "type": "tax_rates",
             "attributes": {
-                "name": "Text 219",
-                "primary_component_name": "Text 102",
+                "name": "Text 272",
+                "primary_component_name": "Text 137",
                 "primary_component_value": "0.21",
                 "secondary_component_name": null,
                 "secondary_component_value": null,
@@ -40,13 +40,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1020"
+                        "id": "1049"
                     }
                 }
             }

@@ -1,0 +1,67 @@
+{
+    "data": [
+        {
+            "id": "1179",
+            "type": "task_dependencies",
+            "attributes": {
+                "type_id": 1038
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "task": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "dependent_task": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "reverse_dependency": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1179",
+            "type": "task_dependencies",
+            "attributes": {
+                "type_id": 1038
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "task": {
+                    "data": {
+                        "type": "tasks",
+                        "id": "1017"
+                    }
+                },
+                "dependent_task": {
+                    "data": {
+                        "type": "tasks",
+                        "id": "1180"
+                    }
+                },
+                "reverse_dependency": {
+                    "data": {
+                        "type": "task_dependencies",
+                        "id": "1181"
+                    }
+                }
+            }
+        }
+    ]
+}

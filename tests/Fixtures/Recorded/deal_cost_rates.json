@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "id": "1008",
+            "type": "deal_cost_rates",
+            "attributes": {
+                "currency": "USD",
+                "rate_cents": "5000.0"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1008",
+            "type": "deal_cost_rates",
+            "attributes": {
+                "currency": "USD",
+                "rate_cents": "5000.0"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "deal": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1004"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1007"
+                    }
+                }
+            }
+        }
+    ]
+}

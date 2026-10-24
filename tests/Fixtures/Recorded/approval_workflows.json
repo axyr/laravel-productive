@@ -1,0 +1,42 @@
+{
+    "data": [
+        {
+            "id": "1042",
+            "type": "approval_workflows",
+            "attributes": {
+                "approval_requirement_id": 1036,
+                "target_type_id": 1036,
+                "dynamic_approver_ids": [],
+                "dynamic_subscriber_ids": []
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "event": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_policy": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approvers": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subscribers": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,13 +1,13 @@
 {
     "data": [
         {
-            "id": "1024",
+            "id": "1053",
             "type": "custom_fields",
             "attributes": {
                 "created_at": "2026-10-09T13:02:26.909+02:00",
                 "updated_at": "2026-10-09T13:02:26.999+02:00",
-                "name": "Text 46",
-                "data_type_id": 1041,
+                "name": "Text 77",
+                "data_type_id": 1075,
                 "required": false,
                 "description": null,
                 "archived_at": null,
@@ -27,7 +27,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "project": {
@@ -53,13 +53,13 @@
             }
         },
         {
-            "id": "1022",
+            "id": "1051",
             "type": "custom_fields",
             "attributes": {
                 "created_at": "2026-10-09T13:02:26.874+02:00",
                 "updated_at": "2026-10-09T13:02:26.874+02:00",
-                "name": "Text 47",
-                "data_type_id": 1042,
+                "name": "Text 78",
+                "data_type_id": 1076,
                 "required": false,
                 "description": null,
                 "archived_at": null,
@@ -79,7 +79,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "project": {
@@ -88,7 +88,7 @@
                 "section": {
                     "data": {
                         "type": "custom_field_sections",
-                        "id": "1040"
+                        "id": "1074"
                     }
                 },
                 "survey": {

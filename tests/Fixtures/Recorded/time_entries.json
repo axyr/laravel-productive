@@ -1,44 +1,44 @@
 {
     "data": [
         {
-            "id": "1142",
+            "id": "1043",
             "type": "time_entries",
             "attributes": {
                 "draft": false,
-                "date": "2026-09-24",
-                "created_at": "2026-10-09T13:02:46.991+02:00",
-                "time": 300,
-                "billable_time": 300,
-                "recognized_time": 300,
-                "note": "Text 220",
-                "track_method_id": 1016,
+                "date": "2026-10-22",
+                "created_at": "2026-10-23T21:26:19.669+02:00",
+                "time": 60,
+                "billable_time": 60,
+                "recognized_time": 60,
+                "note": "Text 273",
+                "track_method_id": 1038,
                 "started_at": null,
                 "timer_started_at": null,
                 "timer_stopped_at": null,
                 "approved": true,
-                "approved_at": "2026-10-09T13:02:42.000+02:00",
-                "updated_at": "2026-10-09T13:02:59.507+02:00",
+                "approved_at": "2026-10-23T21:27:04.000+02:00",
+                "updated_at": "2026-10-23T21:27:23.000+02:00",
                 "calendar_event_id": null,
                 "calendar_event_recurring_id": null,
                 "invoice_attribution_id": null,
                 "invoiced": false,
-                "overhead": false,
+                "overhead": true,
                 "overtime": false,
                 "overtime_cost_multiplier": "1.0",
                 "rejected": false,
                 "rejected_reason": null,
                 "rejected_at": null,
-                "last_activity_at": "2026-10-09T13:02:46.991+02:00",
+                "last_activity_at": "2026-10-23T21:27:04.323+02:00",
                 "submitted": false,
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
-                "cost": 22727,
-                "cost_default": 22727,
-                "cost_normalized": 22727,
-                "work_cost": 22727,
-                "work_cost_default": 22727,
-                "work_cost_normalized": 22727,
+                "cost": 0,
+                "cost_default": 0,
+                "cost_normalized": 0,
+                "work_cost": 0,
+                "work_cost_default": 0,
+                "work_cost_normalized": 0,
                 "overhead_cost": 0,
                 "overhead_cost_default": 0,
                 "overhead_cost_normalized": 0,
@@ -53,7 +53,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "person": {
@@ -124,44 +124,44 @@
             }
         },
         {
-            "id": "1143",
+            "id": "1191",
             "type": "time_entries",
             "attributes": {
                 "draft": false,
-                "date": "2026-10-08",
-                "created_at": "2026-10-09T13:02:47.697+02:00",
-                "time": 300,
-                "billable_time": 300,
-                "recognized_time": 300,
-                "note": "Text 220",
-                "track_method_id": 1016,
-                "started_at": null,
-                "timer_started_at": null,
+                "date": "2026-10-23",
+                "created_at": "2026-10-23T21:11:39.084+02:00",
+                "time": 0,
+                "billable_time": 0,
+                "recognized_time": 0,
+                "note": null,
+                "track_method_id": 1036,
+                "started_at": "2026-10-23T21:11:38.596+02:00",
+                "timer_started_at": "2026-10-23T21:11:39.000+02:00",
                 "timer_stopped_at": null,
                 "approved": true,
-                "approved_at": "2026-10-09T13:02:42.000+02:00",
-                "updated_at": "2026-10-09T13:02:59.585+02:00",
+                "approved_at": "2026-10-23T21:11:39.000+02:00",
+                "updated_at": "2026-10-23T21:11:50.316+02:00",
                 "calendar_event_id": null,
                 "calendar_event_recurring_id": null,
                 "invoice_attribution_id": null,
                 "invoiced": false,
-                "overhead": false,
+                "overhead": true,
                 "overtime": false,
                 "overtime_cost_multiplier": "1.0",
                 "rejected": false,
                 "rejected_reason": null,
                 "rejected_at": null,
-                "last_activity_at": "2026-10-09T13:02:47.697+02:00",
+                "last_activity_at": "2026-10-23T21:11:39.579+02:00",
                 "submitted": false,
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
-                "cost": 22727,
-                "cost_default": 22727,
-                "cost_normalized": 22727,
-                "work_cost": 22727,
-                "work_cost_default": 22727,
-                "work_cost_normalized": 22727,
+                "cost": 0,
+                "cost_default": 0,
+                "cost_normalized": 0,
+                "work_cost": 0,
+                "work_cost_default": 0,
+                "work_cost_normalized": 0,
                 "overhead_cost": 0,
                 "overhead_cost_default": 0,
                 "overhead_cost_normalized": 0,
@@ -176,31 +176,157 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "service": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "task": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approver": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "updater": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "rejecter": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "last_actor": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person_subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal_subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "timesheet": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_attribution": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_statuses": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1043",
+            "type": "time_entries",
+            "attributes": {
+                "draft": false,
+                "date": "2026-10-22",
+                "created_at": "2026-10-23T21:26:19.669+02:00",
+                "time": 60,
+                "billable_time": 60,
+                "recognized_time": 60,
+                "note": "Text 273",
+                "track_method_id": 1038,
+                "started_at": null,
+                "timer_started_at": null,
+                "timer_stopped_at": null,
+                "approved": true,
+                "approved_at": "2026-10-23T21:27:04.000+02:00",
+                "updated_at": "2026-10-23T21:27:23.000+02:00",
+                "calendar_event_id": null,
+                "calendar_event_recurring_id": null,
+                "invoice_attribution_id": null,
+                "invoiced": false,
+                "overhead": true,
+                "overtime": false,
+                "overtime_cost_multiplier": "1.0",
+                "rejected": false,
+                "rejected_reason": null,
+                "rejected_at": null,
+                "last_activity_at": "2026-10-23T21:27:04.323+02:00",
+                "submitted": false,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "cost": 0,
+                "cost_default": 0,
+                "cost_normalized": 0,
+                "work_cost": 0,
+                "work_cost_default": 0,
+                "work_cost_normalized": 0,
+                "overhead_cost": 0,
+                "overhead_cost_default": 0,
+                "overhead_cost_normalized": 0,
+                "internal_overhead_cost": 0,
+                "internal_overhead_cost_default": 0,
+                "internal_overhead_cost_normalized": 0,
+                "facility_overhead_cost": 0,
+                "facility_overhead_cost_default": 0,
+                "facility_overhead_cost_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1123"
+                        "id": "1023"
                     }
                 },
                 "service": {
                     "data": {
                         "type": "services",
-                        "id": "1144"
+                        "id": "1192"
                     }
                 },
                 "task": {
                     "data": null
                 },
                 "approver": {
-                    "data": null
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
                 },
                 "updater": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1023"
                     }
                 },
                 "rejecter": {
@@ -209,25 +335,157 @@
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1023"
                     }
                 },
                 "last_actor": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1023"
                     }
                 },
                 "person_subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1020"
+                        "id": "1049"
                     }
                 },
                 "deal_subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1020"
+                        "id": "1049"
+                    }
+                },
+                "timesheet": {
+                    "data": {
+                        "type": "timesheets",
+                        "id": "1193"
+                    }
+                },
+                "invoice_attribution": {
+                    "data": null
+                },
+                "approval_statuses": {
+                    "data": [
+                        {
+                            "type": "approval_statuses",
+                            "id": "1041"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "1191",
+            "type": "time_entries",
+            "attributes": {
+                "draft": false,
+                "date": "2026-10-23",
+                "created_at": "2026-10-23T21:11:39.084+02:00",
+                "time": 0,
+                "billable_time": 0,
+                "recognized_time": 0,
+                "note": null,
+                "track_method_id": 1036,
+                "started_at": "2026-10-23T21:11:38.596+02:00",
+                "timer_started_at": "2026-10-23T21:11:39.000+02:00",
+                "timer_stopped_at": null,
+                "approved": true,
+                "approved_at": "2026-10-23T21:11:39.000+02:00",
+                "updated_at": "2026-10-23T21:11:50.316+02:00",
+                "calendar_event_id": null,
+                "calendar_event_recurring_id": null,
+                "invoice_attribution_id": null,
+                "invoiced": false,
+                "overhead": true,
+                "overtime": false,
+                "overtime_cost_multiplier": "1.0",
+                "rejected": false,
+                "rejected_reason": null,
+                "rejected_at": null,
+                "last_activity_at": "2026-10-23T21:11:39.579+02:00",
+                "submitted": false,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "cost": 0,
+                "cost_default": 0,
+                "cost_normalized": 0,
+                "work_cost": 0,
+                "work_cost_default": 0,
+                "work_cost_normalized": 0,
+                "overhead_cost": 0,
+                "overhead_cost_default": 0,
+                "overhead_cost_normalized": 0,
+                "internal_overhead_cost": 0,
+                "internal_overhead_cost_default": 0,
+                "internal_overhead_cost_normalized": 0,
+                "facility_overhead_cost": 0,
+                "facility_overhead_cost_default": 0,
+                "facility_overhead_cost_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "person": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "service": {
+                    "data": {
+                        "type": "services",
+                        "id": "1192"
+                    }
+                },
+                "task": {
+                    "data": {
+                        "type": "tasks",
+                        "id": "1017"
+                    }
+                },
+                "approver": {
+                    "data": {
+                        "type": "people",
+                        "id": "1007"
+                    }
+                },
+                "updater": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "rejecter": {
+                    "data": null
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "last_actor": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "person_subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1049"
+                    }
+                },
+                "deal_subsidiary": {
+                    "data": {
+                        "type": "subsidiaries",
+                        "id": "1049"
                     }
                 },
                 "timesheet": {

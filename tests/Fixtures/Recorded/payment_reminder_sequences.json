@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1094",
+            "id": "1130",
             "type": "payment_reminder_sequences",
             "attributes": {
-                "name": "Text 136",
+                "name": "Text 181",
                 "created_at": "2026-10-09T13:02:26.834+02:00",
                 "updated_at": "2026-10-09T13:02:26.861+02:00",
                 "default_sequence": true
@@ -13,7 +13,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -34,10 +34,10 @@
             }
         },
         {
-            "id": "1094",
+            "id": "1130",
             "type": "payment_reminder_sequences",
             "attributes": {
-                "name": "Text 136",
+                "name": "Text 181",
                 "created_at": "2026-10-09T13:02:26.834+02:00",
                 "updated_at": "2026-10-09T13:02:26.861+02:00",
                 "default_sequence": true
@@ -46,7 +46,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -59,11 +59,11 @@
                     "data": [
                         {
                             "type": "payment_reminders",
-                            "id": "1095"
+                            "id": "1131"
                         },
                         {
                             "type": "payment_reminders",
-                            "id": "1096"
+                            "id": "1132"
                         }
                     ]
                 }

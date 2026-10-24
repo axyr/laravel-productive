@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 191",
+            "id": "Text 238",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -113,7 +113,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -142,7 +142,7 @@
             }
         },
         {
-            "id": "Text 192",
+            "id": "Text 239",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -164,7 +164,7 @@
                 "section_name": null,
                 "stage_type": 2,
                 "limitation_type": "no_limitation",
-                "recurring": false,
+                "recurring": true,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
                 "booking_tracking_enabled": true,
@@ -254,7 +254,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -283,7 +283,7 @@
             }
         },
         {
-            "id": "Text 193",
+            "id": "Text 240",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -305,7 +305,7 @@
                 "section_name": null,
                 "stage_type": 2,
                 "limitation_type": "no_limitation",
-                "recurring": false,
+                "recurring": true,
                 "time_tracking_enabled": true,
                 "expense_tracking_enabled": true,
                 "booking_tracking_enabled": true,
@@ -395,7 +395,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -424,7 +424,7 @@
             }
         },
         {
-            "id": "Text 194",
+            "id": "Text 241",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -434,7 +434,7 @@
                 "count": 1,
                 "formula_fields": [],
                 "budget_status": 1,
-                "stage_status_id": 1028,
+                "stage_status_id": 1036,
                 "project_type": 2,
                 "billing_type": 1,
                 "unit": 1,
@@ -443,7 +443,7 @@
                 "average_discount": null,
                 "average_markup": null,
                 "average_retainer_interval_count": 1,
-                "section_name": "Text 190",
+                "section_name": "Text 237",
                 "stage_type": 1,
                 "limitation_type": "no_limitation",
                 "recurring": false,
@@ -536,7 +536,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -565,7 +565,7 @@
             }
         },
         {
-            "id": "Text 195",
+            "id": "Text 242",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -575,7 +575,7 @@
                 "count": 1,
                 "formula_fields": [],
                 "budget_status": 1,
-                "stage_status_id": 1028,
+                "stage_status_id": 1036,
                 "project_type": 2,
                 "billing_type": 3,
                 "unit": 1,
@@ -584,7 +584,7 @@
                 "average_discount": null,
                 "average_markup": null,
                 "average_retainer_interval_count": 1,
-                "section_name": "Text 196",
+                "section_name": "Text 90",
                 "stage_type": 1,
                 "limitation_type": "no_limitation",
                 "recurring": false,
@@ -677,7 +677,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -706,7 +706,7 @@
             }
         },
         {
-            "id": "Text 191",
+            "id": "Text 238",
             "type": "service_reports",
             "attributes": {
                 "currency": "USD",
@@ -818,7 +818,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "report": {
@@ -827,7 +827,7 @@
                 "service": {
                     "data": {
                         "type": "services",
-                        "id": "1119"
+                        "id": "1162"
                     }
                 },
                 "origin_deal": {

@@ -1,10 +1,550 @@
 {
     "data": [
         {
-            "id": "1018",
+            "id": "1004",
             "type": "deals",
             "attributes": {
-                "name": "Text 58",
+                "name": "Text 1",
+                "date": "2026-08-09",
+                "end_date": null,
+                "number": null,
+                "deal_number": null,
+                "suffix": null,
+                "time_approval": true,
+                "expense_approval": true,
+                "time_entry_requirements": [],
+                "client_access": false,
+                "deal_type_id": 1036,
+                "budget": false,
+                "sales_status_updated_at": "2026-10-09T13:02:35.000+02:00",
+                "tag_list": [],
+                "origin_deal_id": null,
+                "profit_margin": "100.0",
+                "profit_margin_normalized": "100.0",
+                "profit_margin_default": "100.0",
+                "email_key": "Text 89",
+                "purchase_order_number": null,
+                "custom_fields": null,
+                "position": 1,
+                "service_type_restricted_tracking": false,
+                "tracking_type_id": 1038,
+                "editor_config": null,
+                "discount": null,
+                "man_day_minutes": 480,
+                "rounding_interval_id": null,
+                "rounding_method_id": 1038,
+                "validate_expense_when_closing": false,
+                "revenue_distribution_type": "even",
+                "revenue_distribution_start_on": "2026-08-09",
+                "revenue_distribution_end_on": "2026-08-09",
+                "color_id": null,
+                "revenue_distribution_method": null,
+                "revenue_distribution_base": "weighted",
+                "retainer_interval": null,
+                "retainer_interval_count": 1,
+                "deal_value": "8780000.0",
+                "deal_value_source": "from_services",
+                "deal_value_total": 8780000,
+                "deal_value_total_default": 8780000,
+                "deal_value_total_normalized": 8780000,
+                "billable_time": 0,
+                "budget_warning": null,
+                "estimated_time": 45660,
+                "budgeted_time": 45660,
+                "worked_time": 0,
+                "overtime_time": 0,
+                "time_to_close": null,
+                "days_since_created": 14,
+                "days_since_last_activity": 0,
+                "days_in_current_stage": 14,
+                "probability": 40,
+                "previous_probability": null,
+                "note_interpolated": null,
+                "proposal_note_interpolated": null,
+                "footer_interpolated": null,
+                "proposal_footer_interpolated": null,
+                "todo_count": 0,
+                "todo_due_date": null,
+                "note": null,
+                "proposal_note": null,
+                "lost_comment": null,
+                "closed_at": null,
+                "delivered_on": null,
+                "last_activity_at": "2026-10-23T23:38:24.000+02:00",
+                "deleted_at": null,
+                "created_at": "2026-10-09T13:02:35.194+02:00",
+                "sales_closed_at": null,
+                "exchange_rate": "1.0",
+                "exchange_date": "2026-08-09",
+                "sales_closed_on": null,
+                "sample_data": true,
+                "external_id": null,
+                "external_sync": false,
+                "manual_invoicing_status_id": 1038,
+                "footer": null,
+                "proposal_footer": null,
+                "access_to_deal": true,
+                "overtime_enabled": false,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "revenue": 8780000,
+                "revenue_default": 8780000,
+                "revenue_normalized": 8780000,
+                "services_revenue": 8780000,
+                "services_revenue_default": 8780000,
+                "services_revenue_normalized": 8780000,
+                "budget_total": 8780000,
+                "budget_total_default": 8780000,
+                "budget_total_normalized": 8780000,
+                "budget_used": 0,
+                "budget_used_default": 0,
+                "budget_used_normalized": 0,
+                "projected_revenue": 3512000,
+                "projected_revenue_default": 3512000,
+                "projected_revenue_normalized": 3512000,
+                "cost": 0,
+                "cost_default": 0,
+                "cost_normalized": 0,
+                "profit": 8780000,
+                "profit_default": 8780000,
+                "profit_normalized": 8780000,
+                "invoiced": 0,
+                "invoiced_default": 0,
+                "invoiced_normalized": 0,
+                "pending_invoicing": 8780000,
+                "pending_invoicing_default": 8780000,
+                "pending_invoicing_normalized": 8780000,
+                "manually_invoiced": 0,
+                "manually_invoiced_default": 0,
+                "manually_invoiced_normalized": 0,
+                "draft_invoiced": 0,
+                "draft_invoiced_default": 0,
+                "draft_invoiced_normalized": 0,
+                "amount_credited": 0,
+                "amount_credited_default": 0,
+                "amount_credited_normalized": 0,
+                "expense": 0,
+                "expense_default": 0,
+                "expense_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "proposal_document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "responsible": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal_status": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "lost_reason": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "contract": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "contact": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "pipeline": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "origin_deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_policy_assignment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "next_todo": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense_approval_workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_approval_workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "automatic_invoicing_rule": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "primary_contact": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "contacts": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1082",
+            "type": "deals",
+            "attributes": {
+                "name": "Text 90",
+                "date": "2026-04-09",
+                "end_date": null,
+                "number": "4",
+                "deal_number": "4",
+                "suffix": null,
+                "time_approval": true,
+                "expense_approval": false,
+                "time_entry_requirements": [],
+                "client_access": false,
+                "deal_type_id": 1036,
+                "budget": true,
+                "sales_status_updated_at": null,
+                "tag_list": [],
+                "origin_deal_id": null,
+                "profit_margin": "85.88",
+                "profit_margin_normalized": "85.88",
+                "profit_margin_default": "85.88",
+                "email_key": "Text 91",
+                "purchase_order_number": null,
+                "custom_fields": null,
+                "position": 1,
+                "service_type_restricted_tracking": false,
+                "tracking_type_id": 1038,
+                "editor_config": [],
+                "discount": null,
+                "man_day_minutes": 480,
+                "rounding_interval_id": null,
+                "rounding_method_id": 1038,
+                "validate_expense_when_closing": false,
+                "revenue_distribution_type": "default",
+                "revenue_distribution_start_on": null,
+                "revenue_distribution_end_on": null,
+                "color_id": null,
+                "revenue_distribution_method": null,
+                "revenue_distribution_base": "weighted",
+                "retainer_interval": null,
+                "retainer_interval_count": 1,
+                "deal_value": "0.0",
+                "deal_value_source": "from_services",
+                "deal_value_total": 4600000,
+                "deal_value_total_default": 4600000,
+                "deal_value_total_normalized": 4600000,
+                "billable_time": 6360,
+                "budget_warning": null,
+                "estimated_time": 18060,
+                "budgeted_time": 18060,
+                "worked_time": 6360,
+                "overtime_time": 0,
+                "time_to_close": null,
+                "days_since_created": 14,
+                "days_since_last_activity": 0,
+                "days_in_current_stage": null,
+                "probability": 100,
+                "previous_probability": null,
+                "note_interpolated": null,
+                "proposal_note_interpolated": null,
+                "footer_interpolated": null,
+                "proposal_footer_interpolated": null,
+                "todo_count": 0,
+                "todo_due_date": null,
+                "note": null,
+                "proposal_note": null,
+                "lost_comment": null,
+                "closed_at": null,
+                "delivered_on": null,
+                "last_activity_at": "2026-10-23T21:25:00.000+02:00",
+                "deleted_at": null,
+                "created_at": "2026-10-09T13:02:39.215+02:00",
+                "sales_closed_at": null,
+                "exchange_rate": "1.0",
+                "exchange_date": "2026-04-09",
+                "sales_closed_on": null,
+                "sample_data": true,
+                "external_id": null,
+                "external_sync": false,
+                "manual_invoicing_status_id": 1038,
+                "footer": null,
+                "proposal_footer": null,
+                "access_to_deal": true,
+                "overtime_enabled": false,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "revenue": 4800000,
+                "revenue_default": 4800000,
+                "revenue_normalized": 4800000,
+                "services_revenue": 4600000,
+                "services_revenue_default": 4600000,
+                "services_revenue_normalized": 4600000,
+                "budget_total": 4600000,
+                "budget_total_default": 4600000,
+                "budget_total_normalized": 4600000,
+                "budget_used": 1790000,
+                "budget_used_default": 1790000,
+                "budget_used_normalized": 1790000,
+                "projected_revenue": 0,
+                "projected_revenue_default": 0,
+                "projected_revenue_normalized": 0,
+                "cost": 677837,
+                "cost_default": 677837,
+                "cost_normalized": 677837,
+                "profit": 4122163,
+                "profit_default": 4122163,
+                "profit_normalized": 4122163,
+                "invoiced": 1400000,
+                "invoiced_default": 1400000,
+                "invoiced_normalized": 1400000,
+                "pending_invoicing": 3400000,
+                "pending_invoicing_default": 3400000,
+                "pending_invoicing_normalized": 3400000,
+                "manually_invoiced": 0,
+                "manually_invoiced_default": 0,
+                "manually_invoiced_normalized": 0,
+                "draft_invoiced": 0,
+                "draft_invoiced_default": 0,
+                "draft_invoiced_normalized": 0,
+                "amount_credited": 0,
+                "amount_credited_default": 0,
+                "amount_credited_normalized": 0,
+                "expense": 200000,
+                "expense_default": 200000,
+                "expense_normalized": 200000,
+                "exported": false,
+                "exported_at": null,
+                "export_id": null,
+                "export_url": null,
+                "export_status": "unexported",
+                "export_error": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "proposal_document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "responsible": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "deal_status": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "lost_reason": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "contract": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "contact": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "pipeline": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "origin_deal": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "import": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "approval_policy_assignment": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "next_todo": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "expense_approval_workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "time_approval_workflow": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "invoice_template": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "automatic_invoicing_rule": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "primary_contact": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "contacts": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1047",
+            "type": "deals",
+            "attributes": {
+                "name": "Text 92",
                 "date": "2026-04-09",
                 "end_date": null,
                 "number": "1",
@@ -14,7 +554,7 @@
                 "expense_approval": false,
                 "time_entry_requirements": [],
                 "client_access": false,
-                "deal_type_id": 1016,
+                "deal_type_id": 1038,
                 "budget": true,
                 "sales_status_updated_at": null,
                 "tag_list": [],
@@ -22,17 +562,17 @@
                 "profit_margin": 0,
                 "profit_margin_normalized": 0,
                 "profit_margin_default": 0,
-                "email_key": "Text 59",
+                "email_key": "Text 93",
                 "purchase_order_number": null,
                 "custom_fields": null,
                 "position": 1,
                 "service_type_restricted_tracking": false,
-                "tracking_type_id": 1016,
+                "tracking_type_id": 1038,
                 "editor_config": [],
                 "discount": null,
                 "man_day_minutes": 480,
                 "rounding_interval_id": null,
-                "rounding_method_id": 1016,
+                "rounding_method_id": 1038,
                 "validate_expense_when_closing": false,
                 "revenue_distribution_type": "default",
                 "revenue_distribution_start_on": null,
@@ -80,7 +620,7 @@
                 "sample_data": true,
                 "external_id": null,
                 "external_sync": false,
-                "manual_invoicing_status_id": 1016,
+                "manual_invoicing_status_id": 1038,
                 "footer": null,
                 "proposal_footer": null,
                 "access_to_deal": true,
@@ -138,7 +678,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -274,63 +814,63 @@
             }
         },
         {
-            "id": "1044",
+            "id": "1071",
             "type": "deals",
             "attributes": {
-                "name": "Text 60",
-                "date": "2026-08-09",
-                "end_date": null,
-                "number": null,
-                "deal_number": null,
-                "suffix": null,
+                "name": "Text 90",
+                "date": "2026-04-09",
+                "end_date": "2026-11-30",
+                "number": "2",
+                "deal_number": "2",
+                "suffix": "Text 94",
                 "time_approval": false,
                 "expense_approval": false,
                 "time_entry_requirements": [],
                 "client_access": false,
-                "deal_type_id": 1028,
-                "budget": false,
-                "sales_status_updated_at": "2026-10-09T13:02:35.000+02:00",
+                "deal_type_id": 1036,
+                "budget": true,
+                "sales_status_updated_at": null,
                 "tag_list": [],
                 "origin_deal_id": null,
-                "profit_margin": "100.0",
-                "profit_margin_normalized": "100.0",
-                "profit_margin_default": "100.0",
-                "email_key": "Text 61",
+                "profit_margin": "53.82",
+                "profit_margin_normalized": "53.82",
+                "profit_margin_default": "53.82",
+                "email_key": "Text 95",
                 "purchase_order_number": null,
                 "custom_fields": null,
                 "position": 1,
                 "service_type_restricted_tracking": false,
-                "tracking_type_id": 1016,
-                "editor_config": null,
+                "tracking_type_id": 1038,
+                "editor_config": [],
                 "discount": null,
                 "man_day_minutes": 480,
                 "rounding_interval_id": null,
-                "rounding_method_id": 1016,
+                "rounding_method_id": 1038,
                 "validate_expense_when_closing": false,
-                "revenue_distribution_type": "even",
-                "revenue_distribution_start_on": "2026-08-09",
-                "revenue_distribution_end_on": "2026-08-09",
+                "revenue_distribution_type": "default",
+                "revenue_distribution_start_on": null,
+                "revenue_distribution_end_on": null,
                 "color_id": null,
                 "revenue_distribution_method": null,
                 "revenue_distribution_base": "weighted",
                 "retainer_interval": null,
                 "retainer_interval_count": 1,
-                "deal_value": "8780000.0",
+                "deal_value": "0.0",
                 "deal_value_source": "from_services",
-                "deal_value_total": 8780000,
-                "deal_value_total_default": 8780000,
-                "deal_value_total_normalized": 8780000,
-                "billable_time": 0,
+                "deal_value_total": 4150000,
+                "deal_value_total_default": 4150000,
+                "deal_value_total_normalized": 4150000,
+                "billable_time": 14700,
                 "budget_warning": null,
-                "estimated_time": 45660,
-                "budgeted_time": 45660,
-                "worked_time": 0,
+                "estimated_time": 15060,
+                "budgeted_time": 15060,
+                "worked_time": 14700,
                 "overtime_time": 0,
                 "time_to_close": null,
                 "days_since_created": 14,
-                "days_since_last_activity": 12,
-                "days_in_current_stage": 14,
-                "probability": 40,
+                "days_since_last_activity": 0,
+                "days_in_current_stage": null,
+                "probability": 100,
                 "previous_probability": null,
                 "note_interpolated": null,
                 "proposal_note_interpolated": null,
@@ -343,17 +883,17 @@
                 "lost_comment": null,
                 "closed_at": null,
                 "delivered_on": null,
-                "last_activity_at": "2026-10-11T16:27:18.000+02:00",
+                "last_activity_at": "2026-10-23T21:19:25.000+02:00",
                 "deleted_at": null,
-                "created_at": "2026-10-09T13:02:35.194+02:00",
+                "created_at": "2026-10-09T13:02:39.111+02:00",
                 "sales_closed_at": null,
                 "exchange_rate": "1.0",
-                "exchange_date": "2026-08-09",
+                "exchange_date": "2026-04-09",
                 "sales_closed_on": null,
                 "sample_data": true,
                 "external_id": null,
                 "external_sync": false,
-                "manual_invoicing_status_id": 1016,
+                "manual_invoicing_status_id": 1038,
                 "footer": null,
                 "proposal_footer": null,
                 "access_to_deal": true,
@@ -361,33 +901,33 @@
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
-                "revenue": 8780000,
-                "revenue_default": 8780000,
-                "revenue_normalized": 8780000,
-                "services_revenue": 8780000,
-                "services_revenue_default": 8780000,
-                "services_revenue_normalized": 8780000,
-                "budget_total": 8780000,
-                "budget_total_default": 8780000,
-                "budget_total_normalized": 8780000,
-                "budget_used": 0,
-                "budget_used_default": 0,
-                "budget_used_normalized": 0,
-                "projected_revenue": 3512000,
-                "projected_revenue_default": 3512000,
-                "projected_revenue_normalized": 3512000,
-                "cost": 0,
-                "cost_default": 0,
-                "cost_normalized": 0,
-                "profit": 8780000,
-                "profit_default": 8780000,
-                "profit_normalized": 8780000,
-                "invoiced": 0,
-                "invoiced_default": 0,
-                "invoiced_normalized": 0,
-                "pending_invoicing": 8780000,
-                "pending_invoicing_default": 8780000,
-                "pending_invoicing_normalized": 8780000,
+                "revenue": 5450000,
+                "revenue_default": 5450000,
+                "revenue_normalized": 5450000,
+                "services_revenue": 3850000,
+                "services_revenue_default": 3850000,
+                "services_revenue_normalized": 3850000,
+                "budget_total": 4150000,
+                "budget_total_default": 4150000,
+                "budget_total_normalized": 4150000,
+                "budget_used": 5450000,
+                "budget_used_default": 5450000,
+                "budget_used_normalized": 5450000,
+                "projected_revenue": 0,
+                "projected_revenue_default": 0,
+                "projected_revenue_normalized": 0,
+                "cost": 2516930,
+                "cost_default": 2516930,
+                "cost_normalized": 2516930,
+                "profit": 2933070,
+                "profit_default": 2933070,
+                "profit_normalized": 2933070,
+                "invoiced": 3750000,
+                "invoiced_default": 3750000,
+                "invoiced_normalized": 3750000,
+                "pending_invoicing": 1700000,
+                "pending_invoicing_default": 1700000,
+                "pending_invoicing_normalized": 1700000,
                 "manually_invoiced": 0,
                 "manually_invoiced_default": 0,
                 "manually_invoiced_normalized": 0,
@@ -397,15 +937,21 @@
                 "amount_credited": 0,
                 "amount_credited_default": 0,
                 "amount_credited_normalized": 0,
-                "expense": 0,
-                "expense_default": 0,
-                "expense_normalized": 0
+                "expense": 1400000,
+                "expense_default": 1400000,
+                "expense_normalized": 1400000,
+                "exported": false,
+                "exported_at": null,
+                "export_id": null,
+                "export_url": null,
+                "export_status": "unexported",
+                "export_error": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -541,10 +1087,10 @@
             }
         },
         {
-            "id": "1049",
+            "id": "1083",
             "type": "deals",
             "attributes": {
-                "name": "Text 62",
+                "name": "Text 96",
                 "date": "2026-07-09",
                 "end_date": null,
                 "number": null,
@@ -554,7 +1100,7 @@
                 "expense_approval": false,
                 "time_entry_requirements": [],
                 "client_access": false,
-                "deal_type_id": 1028,
+                "deal_type_id": 1036,
                 "budget": false,
                 "sales_status_updated_at": "2026-10-19T23:51:33.000+02:00",
                 "tag_list": [],
@@ -562,17 +1108,17 @@
                 "profit_margin": "100.0",
                 "profit_margin_normalized": "100.0",
                 "profit_margin_default": "100.0",
-                "email_key": "Text 63",
+                "email_key": "Text 97",
                 "purchase_order_number": null,
                 "custom_fields": null,
                 "position": 1,
                 "service_type_restricted_tracking": false,
-                "tracking_type_id": 1016,
+                "tracking_type_id": 1038,
                 "editor_config": null,
                 "discount": null,
                 "man_day_minutes": 480,
                 "rounding_interval_id": null,
-                "rounding_method_id": 1016,
+                "rounding_method_id": 1038,
                 "validate_expense_when_closing": false,
                 "revenue_distribution_type": "even",
                 "revenue_distribution_start_on": "2026-07-09",
@@ -620,7 +1166,7 @@
                 "sample_data": true,
                 "external_id": null,
                 "external_sync": false,
-                "manual_invoicing_status_id": 1016,
+                "manual_invoicing_status_id": 1038,
                 "footer": null,
                 "proposal_footer": null,
                 "access_to_deal": true,
@@ -672,7 +1218,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -808,10 +1354,10 @@
             }
         },
         {
-            "id": "1050",
+            "id": "1084",
             "type": "deals",
             "attributes": {
-                "name": "Text 62",
+                "name": "Text 96",
                 "date": "2026-10-19",
                 "end_date": null,
                 "number": "5",
@@ -821,27 +1367,27 @@
                 "expense_approval": false,
                 "time_entry_requirements": [],
                 "client_access": true,
-                "deal_type_id": 1028,
+                "deal_type_id": 1036,
                 "budget": true,
                 "sales_status_updated_at": null,
                 "tag_list": [],
-                "origin_deal_id": 1049,
+                "origin_deal_id": 1083,
                 "profit_margin": "100.0",
                 "profit_margin_normalized": "100.0",
                 "profit_margin_default": "100.0",
-                "email_key": "Text 64",
+                "email_key": "Text 98",
                 "purchase_order_number": null,
                 "custom_fields": null,
                 "position": 1,
                 "service_type_restricted_tracking": false,
-                "tracking_type_id": 1016,
+                "tracking_type_id": 1038,
                 "editor_config": {
                     "enabled": false
                 },
                 "discount": null,
                 "man_day_minutes": 480,
                 "rounding_interval_id": null,
-                "rounding_method_id": 1016,
+                "rounding_method_id": 1038,
                 "validate_expense_when_closing": false,
                 "revenue_distribution_type": "default",
                 "revenue_distribution_start_on": null,
@@ -889,7 +1435,7 @@
                 "sample_data": false,
                 "external_id": null,
                 "external_sync": false,
-                "manual_invoicing_status_id": 1016,
+                "manual_invoicing_status_id": 1038,
                 "footer": null,
                 "proposal_footer": null,
                 "access_to_deal": true,
@@ -947,7 +1493,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -1083,10 +1629,10 @@
             }
         },
         {
-            "id": "1051",
+            "id": "1085",
             "type": "deals",
             "attributes": {
-                "name": "Text 5",
+                "name": "Text 99",
                 "date": "2026-10-23",
                 "end_date": null,
                 "number": "9",
@@ -1096,7 +1642,7 @@
                 "expense_approval": false,
                 "time_entry_requirements": [],
                 "client_access": false,
-                "deal_type_id": 1028,
+                "deal_type_id": 1036,
                 "budget": false,
                 "sales_status_updated_at": "2026-10-23T13:41:28.000+02:00",
                 "tag_list": [],
@@ -1104,12 +1650,12 @@
                 "profit_margin": 0,
                 "profit_margin_normalized": 0,
                 "profit_margin_default": 0,
-                "email_key": "Text 65",
+                "email_key": "Text 100",
                 "purchase_order_number": null,
                 "custom_fields": null,
                 "position": null,
                 "service_type_restricted_tracking": false,
-                "tracking_type_id": 1028,
+                "tracking_type_id": 1036,
                 "editor_config": {
                     "enabled": true,
                     "budget_type": "3",
@@ -1119,7 +1665,7 @@
                 "discount": null,
                 "man_day_minutes": 480,
                 "rounding_interval_id": null,
-                "rounding_method_id": 1016,
+                "rounding_method_id": 1038,
                 "validate_expense_when_closing": false,
                 "revenue_distribution_type": "even",
                 "revenue_distribution_start_on": "2026-10-23",
@@ -1167,7 +1713,7 @@
                 "sample_data": false,
                 "external_id": null,
                 "external_sync": false,
-                "manual_invoicing_status_id": 1016,
+                "manual_invoicing_status_id": 1038,
                 "footer": null,
                 "proposal_footer": null,
                 "access_to_deal": true,
@@ -1219,7 +1765,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
@@ -1355,20 +1901,20 @@
             }
         },
         {
-            "id": "1044",
+            "id": "1004",
             "type": "deals",
             "attributes": {
-                "name": "Text 60",
+                "name": "Text 1",
                 "date": "2026-08-09",
                 "end_date": null,
                 "number": null,
                 "deal_number": null,
                 "suffix": null,
-                "time_approval": false,
-                "expense_approval": false,
+                "time_approval": true,
+                "expense_approval": true,
                 "time_entry_requirements": [],
                 "client_access": false,
-                "deal_type_id": 1028,
+                "deal_type_id": 1036,
                 "budget": false,
                 "sales_status_updated_at": "2026-10-09T13:02:35.000+02:00",
                 "tag_list": [],
@@ -1376,17 +1922,17 @@
                 "profit_margin": "100.0",
                 "profit_margin_normalized": "100.0",
                 "profit_margin_default": "100.0",
-                "email_key": "Text 61",
+                "email_key": "Text 89",
                 "purchase_order_number": null,
                 "custom_fields": null,
                 "position": 1,
                 "service_type_restricted_tracking": false,
-                "tracking_type_id": 1016,
+                "tracking_type_id": 1038,
                 "editor_config": null,
                 "discount": null,
                 "man_day_minutes": 480,
                 "rounding_interval_id": null,
-                "rounding_method_id": 1016,
+                "rounding_method_id": 1038,
                 "validate_expense_when_closing": false,
                 "revenue_distribution_type": "even",
                 "revenue_distribution_start_on": "2026-08-09",
@@ -1409,7 +1955,7 @@
                 "overtime_time": 0,
                 "time_to_close": null,
                 "days_since_created": 14,
-                "days_since_last_activity": 12,
+                "days_since_last_activity": 0,
                 "days_in_current_stage": 14,
                 "probability": 40,
                 "previous_probability": null,
@@ -1424,7 +1970,7 @@
                 "lost_comment": null,
                 "closed_at": null,
                 "delivered_on": null,
-                "last_activity_at": "2026-10-11T16:27:18.000+02:00",
+                "last_activity_at": "2026-10-23T23:38:24.000+02:00",
                 "deleted_at": null,
                 "created_at": "2026-10-09T13:02:35.194+02:00",
                 "sales_closed_at": null,
@@ -1434,7 +1980,7 @@
                 "sample_data": true,
                 "external_id": null,
                 "external_sync": false,
-                "manual_invoicing_status_id": 1016,
+                "manual_invoicing_status_id": 1038,
                 "footer": null,
                 "proposal_footer": null,
                 "access_to_deal": true,
@@ -1486,19 +2032,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1031"
+                        "id": "1007"
                     }
                 },
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1032"
+                        "id": "1063"
                     }
                 },
                 "document_type": {
@@ -1510,13 +2056,13 @@
                 "responsible": {
                     "data": {
                         "type": "people",
-                        "id": "1031"
+                        "id": "1007"
                     }
                 },
                 "deal_status": {
                     "data": {
                         "type": "deal_statuses",
-                        "id": "1047"
+                        "id": "1080"
                     }
                 },
                 "project": {
@@ -1534,7 +2080,7 @@
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1020"
+                        "id": "1049"
                     }
                 },
                 "template": {
@@ -1546,7 +2092,7 @@
                 "pipeline": {
                     "data": {
                         "type": "pipelines",
-                        "id": "1045"
+                        "id": "1078"
                     }
                 },
                 "origin_deal": {
@@ -1555,20 +2101,29 @@
                 "import": {
                     "data": {
                         "type": "imports",
-                        "id": "1035"
+                        "id": "1066"
                     }
                 },
                 "approval_policy_assignment": {
-                    "data": null
+                    "data": {
+                        "type": "approval_policy_assignments",
+                        "id": "1039"
+                    }
                 },
                 "next_todo": {
                     "data": null
                 },
                 "expense_approval_workflow": {
-                    "data": null
+                    "data": {
+                        "type": "approval_workflows",
+                        "id": "1086"
+                    }
                 },
                 "time_approval_workflow": {
-                    "data": null
+                    "data": {
+                        "type": "approval_workflows",
+                        "id": "1087"
+                    }
                 },
                 "invoice_template": {
                     "data": null
@@ -1591,10 +2146,10 @@
             }
         },
         {
-            "id": "1052",
+            "id": "1088",
             "type": "deals",
             "attributes": {
-                "name": "Text 66",
+                "name": "Text 101",
                 "date": "2026-06-09",
                 "end_date": null,
                 "number": null,
@@ -1604,7 +2159,7 @@
                 "expense_approval": false,
                 "time_entry_requirements": [],
                 "client_access": false,
-                "deal_type_id": 1028,
+                "deal_type_id": 1036,
                 "budget": false,
                 "sales_status_updated_at": "2026-10-09T13:02:35.000+02:00",
                 "tag_list": [],
@@ -1612,17 +2167,17 @@
                 "profit_margin": 0,
                 "profit_margin_normalized": 0,
                 "profit_margin_default": 0,
-                "email_key": "Text 67",
+                "email_key": "Text 102",
                 "purchase_order_number": null,
                 "custom_fields": null,
                 "position": 1,
                 "service_type_restricted_tracking": false,
-                "tracking_type_id": 1016,
+                "tracking_type_id": 1038,
                 "editor_config": null,
                 "discount": null,
                 "man_day_minutes": 480,
                 "rounding_interval_id": null,
-                "rounding_method_id": 1016,
+                "rounding_method_id": 1038,
                 "validate_expense_when_closing": false,
                 "revenue_distribution_type": "even",
                 "revenue_distribution_start_on": "2026-06-09",
@@ -1670,7 +2225,7 @@
                 "sample_data": true,
                 "external_id": null,
                 "external_sync": false,
-                "manual_invoicing_status_id": 1016,
+                "manual_invoicing_status_id": 1038,
                 "footer": null,
                 "proposal_footer": null,
                 "access_to_deal": true,
@@ -1722,19 +2277,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1031"
+                        "id": "1007"
                     }
                 },
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1053"
+                        "id": "1089"
                     }
                 },
                 "document_type": {
@@ -1746,13 +2301,13 @@
                 "responsible": {
                     "data": {
                         "type": "people",
-                        "id": "1031"
+                        "id": "1007"
                     }
                 },
                 "deal_status": {
                     "data": {
                         "type": "deal_statuses",
-                        "id": "1054"
+                        "id": "1090"
                     }
                 },
                 "project": {
@@ -1761,7 +2316,7 @@
                 "lost_reason": {
                     "data": {
                         "type": "lost_reasons",
-                        "id": "1055"
+                        "id": "1091"
                     }
                 },
                 "contract": {
@@ -1773,7 +2328,7 @@
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1020"
+                        "id": "1049"
                     }
                 },
                 "template": {
@@ -1785,7 +2340,7 @@
                 "pipeline": {
                     "data": {
                         "type": "pipelines",
-                        "id": "1045"
+                        "id": "1078"
                     }
                 },
                 "origin_deal": {
@@ -1794,7 +2349,7 @@
                 "import": {
                     "data": {
                         "type": "imports",
-                        "id": "1035"
+                        "id": "1066"
                     }
                 },
                 "approval_policy_assignment": {

@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1017",
+            "id": "1046",
             "type": "automatic_invoicing_rules",
             "attributes": {
                 "creation_offset": 0,
@@ -15,7 +15,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "budget": {
@@ -31,7 +31,7 @@
             }
         },
         {
-            "id": "1017",
+            "id": "1046",
             "type": "automatic_invoicing_rules",
             "attributes": {
                 "creation_offset": 0,
@@ -45,19 +45,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "budget": {
                     "data": {
                         "type": "deals",
-                        "id": "1018"
+                        "id": "1047"
                     }
                 },
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1009"
+                        "id": "1023"
                     }
                 }
             }

@@ -1,21 +1,21 @@
 {
     "data": [
         {
-            "id": "1045",
+            "id": "1078",
             "type": "pipelines",
             "attributes": {
-                "name": "Text 163",
+                "name": "Text 209",
                 "created_at": "2026-10-09T13:02:26.271+02:00",
                 "updated_at": "2026-10-09T13:02:26.271+02:00",
                 "position": 1,
                 "icon_id": "funnel",
-                "pipeline_type_id": 1016
+                "pipeline_type_id": 1038
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "creator": {

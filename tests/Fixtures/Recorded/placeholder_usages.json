@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "id": "1147",
+            "type": "placeholder_usages",
+            "attributes": {
+                "id": 1147,
+                "target_id": 1014,
+                "target_type": "Text 210",
+                "field": "assignee",
+                "placeholder_id": 1148,
+                "interval_value": null,
+                "interval_unit": null,
+                "interval_direction": null,
+                "skip_weekends": false,
+                "created_at": "2026-10-23T23:37:29.284+02:00",
+                "updated_at": "2026-10-23T23:37:29.284+02:00"
+            },
+            "relationships": {
+                "placeholder": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "task": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1147",
+            "type": "placeholder_usages",
+            "attributes": {
+                "id": 1147,
+                "target_id": 1014,
+                "target_type": "Text 210",
+                "field": "assignee",
+                "placeholder_id": 1148,
+                "interval_value": null,
+                "interval_unit": null,
+                "interval_direction": null,
+                "skip_weekends": false,
+                "created_at": "2026-10-23T23:37:29.284+02:00",
+                "updated_at": "2026-10-23T23:37:29.284+02:00"
+            },
+            "relationships": {
+                "placeholder": {
+                    "data": {
+                        "type": "placeholders",
+                        "id": "1148"
+                    }
+                },
+                "task": {
+                    "data": {
+                        "type": "tasks",
+                        "id": "1014"
+                    }
+                }
+            }
+        }
+    ]
+}

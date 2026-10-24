@@ -129,8 +129,9 @@ it('applies recorded types and removed relationships from files', function () {
     }
 
     file_put_contents($directory . '/removed.php', '<?php return ["relationships" => ["tasks.board" => "Gone."]];');
+    file_put_contents($directory . '/attribute-types.php', '<?php return ["tasks.discount" => "float"];');
     file_put_contents($base . '/recorded-types.json', json_encode(['types' => ['tasks' => [
-        'attributes' => ['level' => ['int']],
+        'attributes' => ['level' => ['int'], 'discount' => ['int']],
         'relationships' => ['board' => ['to_many' => false, 'types' => ['boards']], 'parent' => ['to_many' => false, 'types' => ['tasks']]],
     ]]]));
     $response = ['200' => ['content' => ['application/vnd.api+json' => ['schema' => [
@@ -144,7 +145,7 @@ it('applies recorded types and removed relationships from files', function () {
 
     $model = IrBuilder::fromFiles($spec, $directory)->build()->model('Task')?->toArray();
 
-    expect(array_column($model['attributes'] ?? [], 'type', 'name'))->toBe(['level' => 'int', 'title' => 'string'])
+    expect(array_column($model['attributes'] ?? [], 'type', 'name'))->toBe(['discount' => 'float', 'level' => 'int', 'title' => 'string'])
         ->and($model['relationships'] ?? [])->toBe([['name' => 'parent', 'to_many' => false, 'target_type' => 'tasks', 'undocumented' => true]]);
 
     array_map(unlink(...), [...glob($directory . '/*'), $base . '/recorded-types.json', $spec]);
@@ -157,7 +158,7 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     $directory = $base . '/config';
     mkdir($directory, recursive: true);
 
-    foreach (['relationship-types', 'descriptions', 'method-names', 'removed', 'required'] as $name) {
+    foreach (['relationship-types', 'descriptions', 'method-names', 'removed', 'required', 'attribute-types'] as $name) {
         file_put_contents($directory . '/' . $name . '.php', $name === $file ? $contents : '<?php return [];');
     }
 
@@ -174,6 +175,8 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     ['method-names', '<?php return ["tasks.index" => ["all"]];', 'generator/config/method-names.php: the value for "tasks.index" must be a string.'],
     ['removed', '<?php return ["relationships" => ["tasks.board" => 1]];', 'generator/config/removed.php: the value for "tasks.board" must be a string.'],
     ['required', '<?php return ["CreateTaskData" => [5]];', 'generator/config/required.php must only contain strings, int found.'],
+    ['attribute-types', '<?php return ["prices.discount_amount" => 5];', 'generator/config/attribute-types.php: the value for "prices.discount_amount" must be a string.'],
+    ['attribute-types', '<?php return ["prices.discount_amount" => "decimal"];', 'generator/config/attribute-types.php: "decimal" for "prices.discount_amount" is not an attribute type.'],
 ]);
 
 it('does not trust an example type owned by a nested resource', function () {

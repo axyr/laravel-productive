@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "id": "1150",
+            "type": "rate_cards",
+            "attributes": {
+                "name": "Text 228",
+                "created_at": "2026-10-23T23:37:33.920+02:00",
+                "updated_at": "2026-10-23T23:37:36.395+02:00",
+                "archived_at": null,
+                "prices_count": 1
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "creator": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1150",
+            "type": "rate_cards",
+            "attributes": {
+                "name": "Text 228",
+                "created_at": "2026-10-23T23:37:33.920+02:00",
+                "updated_at": "2026-10-23T23:37:36.395+02:00",
+                "archived_at": null,
+                "prices_count": 1
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "company": {
+                    "data": {
+                        "type": "companies",
+                        "id": "1002"
+                    }
+                },
+                "creator": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                }
+            }
+        }
+    ]
+}

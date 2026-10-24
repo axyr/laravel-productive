@@ -15267,6 +15267,12 @@
                     "target_type": "people"
                 },
                 {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
+                },
+                {
                     "name": "person",
                     "to_many": false,
                     "target_type": "people"
@@ -15281,6 +15287,13 @@
             "description": "Represents the configuration for an AI agent, including its AI behavior instructions and Slack integration trigger settings.",
             "attributes": [
                 {
+                    "name": "ai_model",
+                    "property": "aiModel",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "created_at",
                     "property": "createdAt",
                     "type": "date-time",
@@ -15291,6 +15304,27 @@
                     "property": "instructions",
                     "type": "string",
                     "description": "The AI behavior instructions for this agent \u2014 describes how it should respond, what tasks it handles, and any operational constraints."
+                },
+                {
+                    "name": "reasoning_effort",
+                    "property": "reasoningEffort",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "slack_triggers",
+                    "property": "slackTriggers",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "slack_user_group_id",
+                    "property": "slackUserGroupId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "updated_at",
@@ -15309,6 +15343,12 @@
                     "name": "attachments",
                     "to_many": true,
                     "target_type": "attachments"
+                },
+                {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
                 }
             ],
             "example": [],
@@ -15554,7 +15594,9 @@
             "example": {
                 "created_at": "2026-01-15T10:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "created_at"
+            ]
         },
         {
             "class": "ApprovalStatus",
@@ -15644,6 +15686,12 @@
                     "name": "expense",
                     "to_many": false,
                     "target_type": "expenses"
+                },
+                {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
                 },
                 {
                     "name": "time_entry",
@@ -15740,6 +15788,13 @@
                     "type": "date-time"
                 },
                 {
+                    "name": "current_version_number",
+                    "property": "currentVersionNumber",
+                    "type": "int",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "description",
                     "property": "description",
                     "type": "string"
@@ -15760,6 +15815,13 @@
                     "type": "string"
                 },
                 {
+                    "name": "restored_from_version_id",
+                    "property": "restoredFromVersionId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "updated_at",
                     "property": "updatedAt",
                     "type": "date-time"
@@ -15775,6 +15837,12 @@
                     "name": "creator",
                     "to_many": false,
                     "target_type": "people"
+                },
+                {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
                 }
             ],
             "example": [],
@@ -15953,7 +16021,9 @@
                 "created_at": "2026-03-10T10:00:00.000+00:00",
                 "url": null
             },
-            "unseen": []
+            "unseen": [
+                "file_size"
+            ]
         },
         {
             "class": "AutomaticInvoicingRule",
@@ -18193,6 +18263,13 @@
                     "description": "Timestamp when this comment was created."
                 },
                 {
+                    "name": "creation_method",
+                    "property": "creationMethod",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "deleted_at",
                     "property": "deletedAt",
                     "type": "date-time",
@@ -18315,7 +18392,10 @@
                 "commentable_type": "task",
                 "commentable_id": 120501
             },
-            "unseen": []
+            "unseen": [
+                "note",
+                "commentable_id"
+            ]
         },
         {
             "class": "Company",
@@ -19064,7 +19144,13 @@
                 "end_date": "2026-12-31",
                 "created_at": "2026-01-01T00:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "name",
+                "status",
+                "start_date",
+                "end_date",
+                "created_at"
+            ]
         },
         {
             "class": "CustomDomain",
@@ -20619,7 +20705,10 @@
                 "currency": "USD",
                 "valid_from": "2026-01-01"
             },
-            "unseen": []
+            "unseen": [
+                "rate",
+                "valid_from"
+            ]
         },
         {
             "class": "DealFunnelReport",
@@ -21681,7 +21770,13 @@
                 "updated_at": "2026-03-01T09:00:00.000+00:00",
                 "last_activity_at": "2026-03-01T09:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "title",
+                "note",
+                "created_at",
+                "updated_at",
+                "last_activity_at"
+            ]
         },
         {
             "class": "DocumentStyle",
@@ -27881,6 +27976,13 @@
             "description": "An inbox notification for a user about changes to subscribed entities.",
             "attributes": [
                 {
+                    "name": "agent_session_status",
+                    "property": "agentSessionStatus",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "changeset",
                     "property": "changeset",
                     "type": "mixed",
@@ -29933,8 +30035,9 @@
                 {
                     "name": "preferences",
                     "property": "preferences",
-                    "type": "object",
-                    "description": "Page-level display preferences such as layout width, font size and default edit access."
+                    "type": "json",
+                    "description": "Page-level display preferences such as layout width, font size and default edit access.",
+                    "spec_type": "object"
                 },
                 {
                     "name": "public",
@@ -29986,6 +30089,12 @@
                     "target_type": "attachments"
                 },
                 {
+                    "name": "child_pages",
+                    "to_many": true,
+                    "target_type": "pages",
+                    "undocumented": true
+                },
+                {
                     "name": "creator",
                     "to_many": false,
                     "target_type": "people"
@@ -30030,7 +30139,10 @@
                 "position": 1,
                 "archived_at": null
             },
-            "unseen": []
+            "unseen": [
+                "note",
+                "archived_at"
+            ]
         },
         {
             "class": "PageReport",
@@ -30151,7 +30263,10 @@
                 "project_id": 6899,
                 "created_at": "2026-01-20T10:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "page_id",
+                "project_id"
+            ]
         },
         {
             "class": "PageVersion",
@@ -30227,7 +30342,9 @@
                 "version_number": 3,
                 "created_at": "2026-03-10T15:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "version_number"
+            ]
         },
         {
             "class": "Password",
@@ -31214,7 +31331,7 @@
                 {
                     "name": "person_session",
                     "to_many": false,
-                    "target_type": null,
+                    "target_type": "sessions",
                     "undocumented": true
                 },
                 {
@@ -31947,6 +32064,34 @@
                     "description": "The discount percentage applied to the rate of this price entry."
                 },
                 {
+                    "name": "discount_amount",
+                    "property": "discountAmount",
+                    "type": "float",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "discount_amount_default",
+                    "property": "discountAmountDefault",
+                    "type": "float",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "discount_amount_normalized",
+                    "property": "discountAmountNormalized",
+                    "type": "float",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
+                    "name": "discount_type",
+                    "property": "discountType",
+                    "type": "string",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "editor_config",
                     "property": "editorConfig",
                     "type": "object",
@@ -32210,8 +32355,9 @@
                 {
                     "name": "booking_tracking_enabled",
                     "property": "bookingTrackingEnabled",
-                    "type": "int",
-                    "description": "Booking tracking enabled for this price report group."
+                    "type": "bool",
+                    "description": "Booking tracking enabled for this price report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "company_id",
@@ -32250,8 +32396,9 @@
                 {
                     "name": "expense_tracking_enabled",
                     "property": "expenseTrackingEnabled",
-                    "type": "int",
-                    "description": "Expense tracking enabled for this price report group."
+                    "type": "bool",
+                    "description": "Expense tracking enabled for this price report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "formula_fields",
@@ -32288,8 +32435,9 @@
                 {
                     "name": "time_tracking_enabled",
                     "property": "timeTrackingEnabled",
-                    "type": "int",
-                    "description": "Time tracking enabled for this price report group."
+                    "type": "bool",
+                    "description": "Time tracking enabled for this price report group.",
+                    "spec_type": "int"
                 },
                 {
                     "name": "total",
@@ -32342,7 +32490,13 @@
                 "company_id": 65111,
                 "currency": "USD"
             },
-            "unseen": []
+            "unseen": [
+                "rate",
+                "total",
+                "estimated_hours",
+                "service_type_id",
+                "company_id"
+            ]
         },
         {
             "class": "Project",
@@ -32549,6 +32703,12 @@
                     "target_type": "people"
                 },
                 {
+                    "name": "memberships",
+                    "to_many": true,
+                    "target_type": "memberships",
+                    "undocumented": true
+                },
+                {
                     "name": "organization",
                     "to_many": false,
                     "target_type": "organizations"
@@ -32557,6 +32717,12 @@
                     "name": "project_manager",
                     "to_many": false,
                     "target_type": "people"
+                },
+                {
+                    "name": "project_milestones",
+                    "to_many": true,
+                    "target_type": null,
+                    "undocumented": true
                 },
                 {
                     "name": "template_object",
@@ -34066,7 +34232,11 @@
                 "date": "2026-02-01",
                 "created_at": "2026-02-01T10:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "status",
+                "amount",
+                "date"
+            ]
         },
         {
             "class": "RateCard",
@@ -34132,7 +34302,9 @@
                 "created_at": "2026-01-01T00:00:00.000+00:00",
                 "updated_at": "2026-01-01T00:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "currency"
+            ]
         },
         {
             "class": "ReportCategory",
@@ -34180,7 +34352,9 @@
                 "name": "Financial",
                 "description": "Revenue, cost, and profitability reports"
             },
-            "unseen": []
+            "unseen": [
+                "description"
+            ]
         },
         {
             "class": "ResourceRequest",
@@ -37086,6 +37260,12 @@
                     "name": "memberships",
                     "to_many": true,
                     "target_type": "memberships"
+                },
+                {
+                    "name": "organization",
+                    "to_many": false,
+                    "target_type": "organizations",
+                    "undocumented": true
                 }
             ],
             "example": [],
@@ -37362,6 +37542,13 @@
                     ]
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "field_type",
                     "property": "fieldType",
                     "type": "string"
@@ -37459,7 +37646,10 @@
                 "required": true,
                 "position": 1
             },
-            "unseen": []
+            "unseen": [
+                "label",
+                "field_type"
+            ]
         },
         {
             "class": "SurveyFieldOption",
@@ -37518,7 +37708,10 @@
                 "value": "5",
                 "position": 1
             },
-            "unseen": []
+            "unseen": [
+                "label",
+                "value"
+            ]
         },
         {
             "class": "SurveyReport",
@@ -37701,7 +37894,10 @@
                     "45": 5
                 }
             },
-            "unseen": []
+            "unseen": [
+                "submitted_at",
+                "answers"
+            ]
         },
         {
             "class": "Tag",
@@ -38060,7 +38256,7 @@
                 {
                     "name": "placeholder_usages",
                     "to_many": true,
-                    "target_type": null,
+                    "target_type": "placeholder_usages",
                     "undocumented": true
                 },
                 {
@@ -38081,13 +38277,13 @@
                 {
                     "name": "subtasks",
                     "to_many": true,
-                    "target_type": null,
+                    "target_type": "tasks",
                     "undocumented": true
                 },
                 {
                     "name": "task_dependencies",
                     "to_many": true,
-                    "target_type": null,
+                    "target_type": "task_dependencies",
                     "undocumented": true
                 },
                 {
@@ -38203,7 +38399,10 @@
                 "dependency_type": "blocking",
                 "created_at": "2026-03-01T10:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "dependency_type",
+                "created_at"
+            ]
         },
         {
             "class": "TaskList",
@@ -40904,7 +41103,13 @@
                 "submitted_at": "2026-03-17T09:00:00.000+00:00",
                 "approved_at": null
             },
-            "unseen": []
+            "unseen": [
+                "status",
+                "week_starting",
+                "total_time",
+                "submitted_at",
+                "approved_at"
+            ]
         },
         {
             "class": "TimesheetReport",
@@ -41580,8 +41785,9 @@
                 {
                     "name": "payload",
                     "property": "payload",
-                    "type": "string",
-                    "description": "The JSON payload that was sent to the target URL."
+                    "type": "json",
+                    "description": "The JSON payload that was sent to the target URL.",
+                    "spec_type": "string"
                 },
                 {
                     "name": "response_body",
@@ -41653,7 +41859,14 @@
                 "success": true,
                 "url": "https://hooks.example.com/productive"
             },
-            "unseen": []
+            "unseen": [
+                "event_type",
+                "response_code",
+                "response_body",
+                "sent_at",
+                "success",
+                "url"
+            ]
         },
         {
             "class": "Widget",

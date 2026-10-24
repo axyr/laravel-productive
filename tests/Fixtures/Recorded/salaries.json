@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1091",
+            "id": "1125",
             "type": "salaries",
             "attributes": {
                 "default_salary": true,
@@ -10,7 +10,7 @@
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": true,
-                "salary_type_id": 1016,
+                "salary_type_id": 1038,
                 "started_on": "2026-10-09",
                 "working_hours": [
                     8,
@@ -34,7 +34,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "person": {
@@ -50,17 +50,17 @@
             }
         },
         {
-            "id": "1122",
+            "id": "1033",
             "type": "salaries",
             "attributes": {
                 "default_salary": false,
                 "ended_on": null,
-                "exchange_date": "2026-04-09",
+                "exchange_date": "2025-10-23",
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": false,
-                "salary_type_id": 1016,
-                "started_on": "2026-04-09",
+                "salary_type_id": 1038,
+                "started_on": "2025-10-23",
                 "working_hours": [
                     8,
                     8,
@@ -72,30 +72,30 @@
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
-                "cost": 800000,
-                "cost_default": 800000,
-                "cost_normalized": 800000,
-                "hourly_rate": 5000,
-                "hourly_rate_default": 5000,
-                "hourly_rate_normalized": 5000
+                "cost": 1000,
+                "cost_default": 1000,
+                "cost_normalized": 1000,
+                "hourly_rate": 6,
+                "hourly_rate_default": 6,
+                "hourly_rate_normalized": 6
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1123"
+                        "id": "1030"
                     }
                 },
                 "holiday_calendar": {
                     "data": {
                         "type": "holiday_calendars",
-                        "id": "1075"
+                        "id": "1109"
                     }
                 }
             }

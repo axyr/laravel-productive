@@ -1,0 +1,145 @@
+{
+    "data": [
+        {
+            "id": "1149",
+            "type": "prices",
+            "attributes": {
+                "name": "Text 213",
+                "billing_type_id": null,
+                "unit_id": 1038,
+                "quantity": "0.0",
+                "updated_at": "2026-10-23T23:37:36.388+02:00",
+                "description": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "markup": null,
+                "time_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "editor_config": [],
+                "budget_cap_enabled": false,
+                "estimated_hours": null,
+                "custom_fields": null,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "rate": 100,
+                "rate_default": 100,
+                "rate_normalized": 100,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "company": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "updater": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "rate_card": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_attachments": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1149",
+            "type": "prices",
+            "attributes": {
+                "name": "Text 213",
+                "billing_type_id": null,
+                "unit_id": 1038,
+                "quantity": "0.0",
+                "updated_at": "2026-10-23T23:37:36.388+02:00",
+                "description": null,
+                "discount": null,
+                "discount_type": "percentage",
+                "markup": null,
+                "time_tracking_enabled": true,
+                "booking_tracking_enabled": true,
+                "expense_tracking_enabled": true,
+                "editor_config": [],
+                "budget_cap_enabled": false,
+                "estimated_hours": null,
+                "custom_fields": null,
+                "discount_amount": 0,
+                "discount_amount_default": 0,
+                "discount_amount_normalized": 0,
+                "currency": "USD",
+                "currency_default": "USD",
+                "currency_normalized": "USD",
+                "rate": 100,
+                "rate_default": 100,
+                "rate_normalized": 100,
+                "estimated_cost": 0,
+                "estimated_cost_default": 0,
+                "estimated_cost_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "service_type": {
+                    "data": null
+                },
+                "company": {
+                    "data": {
+                        "type": "companies",
+                        "id": "1002"
+                    }
+                },
+                "updater": {
+                    "data": {
+                        "type": "people",
+                        "id": "1023"
+                    }
+                },
+                "rate_card": {
+                    "data": {
+                        "type": "rate_cards",
+                        "id": "1150"
+                    }
+                },
+                "custom_field_people": {
+                    "data": []
+                },
+                "custom_field_attachments": {
+                    "data": []
+                }
+            }
+        }
+    ]
+}

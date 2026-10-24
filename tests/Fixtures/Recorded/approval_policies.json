@@ -1,21 +1,41 @@
 {
     "data": [
         {
-            "id": "1015",
+            "id": "1035",
             "type": "approval_policies",
             "attributes": {
                 "archived_at": null,
-                "custom": false,
+                "custom": true,
                 "default": false,
-                "description": "Text 7",
-                "name": "Text 8",
-                "type_id": 1016
+                "description": null,
+                "name": null,
+                "type_id": 1036
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
+                    }
+                }
+            }
+        },
+        {
+            "id": "1037",
+            "type": "approval_policies",
+            "attributes": {
+                "archived_at": null,
+                "custom": false,
+                "default": false,
+                "description": "Text 24",
+                "name": "Text 25",
+                "type_id": 1038
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
                     }
                 }
             }

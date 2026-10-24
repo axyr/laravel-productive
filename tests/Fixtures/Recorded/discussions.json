@@ -1,0 +1,29 @@
+{
+    "data": [
+        {
+            "id": "1061",
+            "type": "discussions",
+            "attributes": {
+                "excerpt": "Text 103",
+                "resolved_at": null,
+                "subscriber_ids": [
+                    1023
+                ]
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "page": {
+                    "data": {
+                        "type": "pages",
+                        "id": "1092"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "1160",
+            "type": "report_categories",
+            "attributes": {
+                "name": "Text 229",
+                "position": null,
+                "color_id": "1081",
+                "deleted_at": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,15 +1,15 @@
 {
     "data": [
         {
-            "id": "1059",
+            "id": "1096",
             "type": "events",
             "attributes": {
-                "name": "Text 72",
-                "event_type_id": 1016,
+                "name": "Text 108",
+                "event_type_id": 1038,
                 "icon_id": null,
-                "color_id": "1016",
+                "color_id": "1038",
                 "archived_at": null,
-                "limitation_type_id": 1028,
+                "limitation_type_id": 1036,
                 "sync_personal_integrations": true,
                 "half_day_bookings": true,
                 "description": null,
@@ -19,7 +19,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1002"
+                        "id": "1005"
                     }
                 }
             }

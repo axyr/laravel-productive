@@ -1,0 +1,57 @@
+{
+    "data": [
+        {
+            "id": "1070",
+            "type": "contracts",
+            "attributes": {
+                "ends_on": null,
+                "starts_on": "2026-10-23",
+                "next_occurrence_on": "2026-12-01",
+                "interval_id": 1038,
+                "copy_purchase_order_number": false,
+                "copy_expenses": false,
+                "use_rollover_hours": false
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "template": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1070",
+            "type": "contracts",
+            "attributes": {
+                "ends_on": null,
+                "starts_on": "2026-10-23",
+                "next_occurrence_on": "2026-12-01",
+                "interval_id": 1038,
+                "copy_purchase_order_number": false,
+                "copy_expenses": false,
+                "use_rollover_hours": false
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1005"
+                    }
+                },
+                "template": {
+                    "data": {
+                        "type": "deals",
+                        "id": "1071"
+                    }
+                }
+            }
+        }
+    ]
+}
