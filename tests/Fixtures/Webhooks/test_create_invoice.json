@@ -1,0 +1,56 @@
+{
+    "event": "test_create_invoice",
+    "item_type": "invoice",
+    "item_id": null,
+    "created": "2026-10-23T21:38:27.326+02:00",
+    "object": {
+        "data": {
+            "id": null,
+            "type": "invoices",
+            "attributes": [
+                {
+                    "Project": "Text 39",
+                    "Budget": "Text 40",
+                    "Subject": "Text 69",
+                    "Invoiced on": "2026-07-23",
+                    "Pay on": "2026-08-23",
+                    "Finalized on": "2026-06-23",
+                    "Sent on": "2026-06-23",
+                    "Number": "Text 70",
+                    "Purchase Order": "",
+                    "Creator": "person-37@example.test",
+                    "Note": "",
+                    "Amount": "37500"
+                },
+                {
+                    "Project": "Text 45",
+                    "Budget": "Text 40",
+                    "Subject": "Text 71",
+                    "Invoiced on": "2026-06-23",
+                    "Pay on": "2026-07-23",
+                    "Finalized on": "2026-06-23",
+                    "Sent on": "2026-06-23",
+                    "Number": "Text 72",
+                    "Purchase Order": "",
+                    "Creator": "person-37@example.test",
+                    "Note": "",
+                    "Amount": "14000"
+                },
+                {
+                    "Project": "Text 53",
+                    "Budget": "Text 51",
+                    "Subject": "Text 73",
+                    "Invoiced on": "2026-08-23",
+                    "Pay on": "2026-09-23",
+                    "Finalized on": "",
+                    "Sent on": "",
+                    "Number": "Text 74",
+                    "Purchase Order": "",
+                    "Creator": "person-37@example.test",
+                    "Note": "",
+                    "Amount": "5000"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "event": "test_create_contact",
+    "item_type": "person",
+    "item_id": null,
+    "created": "2026-10-23T21:39:00.339+02:00",
+    "object": {
+        "data": {
+            "id": null,
+            "type": "people",
+            "attributes": [
+                {
+                    "First Name": "Text 55",
+                    "Last Name": "Text 56",
+                    "Email": "person-57@example.test",
+                    "Title": "Text 58",
+                    "Company": "Text 52",
+                    "Phone": "3345689873",
+                    "Address": "Text 59",
+                    "City": "Text 60",
+                    "State": "",
+                    "Country": "Text 61"
+                }
+            ]
+        }
+    }
+}

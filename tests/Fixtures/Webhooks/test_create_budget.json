@@ -1,0 +1,50 @@
+{
+    "event": "test_create_budget",
+    "item_type": "budget",
+    "item_id": null,
+    "created": "2026-10-23T21:38:49.334+02:00",
+    "object": {
+        "data": {
+            "id": null,
+            "type": "budgets",
+            "attributes": [
+                {
+                    "Name": "Text 35",
+                    "Company": "Text 49",
+                    "Project": "Text 34",
+                    "Responsible": "person-37@example.test",
+                    "Currency DEPRECATED": "EUR",
+                    "Date": "2026-04-23",
+                    "Budget": true
+                },
+                {
+                    "Name": "Text 40",
+                    "Company": "Text 50",
+                    "Project": "Text 39",
+                    "Responsible": "person-37@example.test",
+                    "Currency DEPRECATED": "USD",
+                    "Date": "2026-04-23",
+                    "Budget": true
+                },
+                {
+                    "Name": "Text 51",
+                    "Company": "Text 52",
+                    "Project": "Text 53",
+                    "Responsible": "person-37@example.test",
+                    "Currency DEPRECATED": "EUR",
+                    "Date": "2026-04-23",
+                    "Budget": true
+                },
+                {
+                    "Name": "Text 40",
+                    "Company": "Text 54",
+                    "Project": "Text 45",
+                    "Responsible": "person-37@example.test",
+                    "Currency DEPRECATED": "USD",
+                    "Date": "2026-04-23",
+                    "Budget": true
+                }
+            ]
+        }
+    }
+}

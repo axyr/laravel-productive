@@ -1,0 +1,47 @@
+{
+    "event": "test_create_expense",
+    "item_type": "expense",
+    "item_id": null,
+    "created": "2026-10-23T21:38:38.759+02:00",
+    "object": {
+        "data": {
+            "id": null,
+            "type": "expenses",
+            "attributes": [
+                {
+                    "Name": "Text 62",
+                    "Project": "Text 39",
+                    "Budget": "Text 40",
+                    "Service Type": "Text 63",
+                    "Date": "2026-09-23",
+                    "Amount": "14000",
+                    "Billable Amount": "16000",
+                    "Service": "Text 64",
+                    "Currency": "USD"
+                },
+                {
+                    "Name": "Text 65",
+                    "Project": "Text 45",
+                    "Budget": "Text 40",
+                    "Service Type": "Text 66",
+                    "Date": "2026-08-23",
+                    "Amount": "2000",
+                    "Billable Amount": "2000",
+                    "Service": "Text 67",
+                    "Currency": "USD"
+                },
+                {
+                    "Name": "Text 68",
+                    "Project": "Text 53",
+                    "Budget": "Text 51",
+                    "Service Type": "Text 66",
+                    "Date": "2026-07-23",
+                    "Amount": "800",
+                    "Billable Amount": "880",
+                    "Service": "Text 67",
+                    "Currency": "EUR"
+                }
+            ]
+        }
+    }
+}

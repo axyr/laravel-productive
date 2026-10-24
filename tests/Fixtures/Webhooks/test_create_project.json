@@ -1,0 +1,46 @@
+{
+    "event": "test_create_project",
+    "item_type": "project",
+    "item_id": null,
+    "created": "2026-10-23T21:38:54.964+02:00",
+    "object": {
+        "data": {
+            "id": null,
+            "type": "projects",
+            "attributes": [
+                {
+                    "Name": "Text 34",
+                    "Company": "Text 49",
+                    "Manager": "person-37@example.test",
+                    "Currency DEPRECATED": "USD",
+                    "Type": "internal",
+                    "Workflow": "Text 31"
+                },
+                {
+                    "Name": "Text 45",
+                    "Company": "Text 54",
+                    "Manager": "person-37@example.test",
+                    "Currency DEPRECATED": "USD",
+                    "Type": "client",
+                    "Workflow": "Text 31"
+                },
+                {
+                    "Name": "Text 53",
+                    "Company": "Text 52",
+                    "Manager": "person-37@example.test",
+                    "Currency DEPRECATED": "USD",
+                    "Type": "client",
+                    "Workflow": "Text 31"
+                },
+                {
+                    "Name": "Text 39",
+                    "Company": "Text 50",
+                    "Manager": "person-37@example.test",
+                    "Currency DEPRECATED": "USD",
+                    "Type": "client",
+                    "Workflow": "Text 31"
+                }
+            ]
+        }
+    }
+}
