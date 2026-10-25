@@ -228,3 +228,19 @@ composer seed -- --execute
 - **Nothing that acts outside Productive:** no webhooks, invitations, sending, integrations or custom domains.
 
 It is also the first real check of the write side. It found creates whose required fields the spec does not mark: the payloads in `generator/bin/seed` carry them, with a comment each, and `generator/config/required.php` makes them required in the generated input classes. It also found features a trial plan does not include.
+
+### Exercising the write side
+
+`composer record:writes` runs the recipes in `generator/config/recipes.php`: per resource a create, an update and its actions, then the cleanup of what the run created, in reverse order.
+
+```bash
+composer record:writes -- --tier=1                    # dry run: reads what the recipes refer to, prints every request
+composer record:writes -- --tier=1 --execute          # run it, recorded to recordings/writes-<date-time>/
+composer record:writes -- --resource=dashboards,widgets --execute   # several, in recipe order
+composer record:writes -- --tier=1 --execute --keep   # keep what it created, to inspect
+```
+
+- **Recipes** name their records "SDK check …" and refer to `{created:<path>}` (the record this run created), `{first:<path>}` (the first existing record) and `{date:+N}`. A step whose reference has no record is skipped and says why.
+- **Cleanup** is `destroy` by default, `archive` for a resource the API cannot delete, or `none`. It also runs after a failed step; `--keep` leaves everything in place.
+- **Never written:** custom domains, e-invoice identities, emails, integrations, invitations, organization memberships and subscriptions, organizations, passwords, sessions and users, nor any action that sends (`WritePlan` refuses such a recipe).
+- **Same guards as `composer record`**, and the requests go out raw, as the SDK would build them, so the recordings show what the API itself requires rather than what the SDK's inputs check.

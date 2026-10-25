@@ -269,20 +269,9 @@ final class Recorder
             $response = $exception->response;
         }
 
-        $body = Json::decode($response->body);
-        $this->ids->remember($response->successful() ? $body : null);
+        $this->ids->remember($response->successful() ? Json::decode($response->body) : null);
 
-        return [
-            'request' => ['method' => 'GET', 'path' => $path, 'query' => $query],
-            'status' => $response->status,
-            'headers' => array_filter([
-                'Content-Type' => $response->header('Content-Type'),
-                'X-RateLimit-Limit' => $response->header('X-RateLimit-Limit'),
-                'X-RateLimit-Remaining' => $response->header('X-RateLimit-Remaining'),
-                'X-RateLimit-Reset' => $response->header('X-RateLimit-Reset'),
-            ], fn(?string $value): bool => $value !== null),
-            'body' => Redactor::redact($body),
-        ];
+        return ['request' => ['method' => 'GET', 'path' => $path, 'query' => $query], ...Exchange::response($response)];
     }
 
 

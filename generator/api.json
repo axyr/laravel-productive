@@ -44462,6 +44462,13 @@
             "bulk": false,
             "attributes": [
                 {
+                    "name": "styles",
+                    "property": "styles",
+                    "type": "object",
+                    "description": "A JSON object containing the CSS and layout settings that define the visual appearance of documents using this style.",
+                    "required": true
+                },
+                {
                     "name": "attachment_ids",
                     "property": "attachmentIds",
                     "type": "mixed",
@@ -44472,12 +44479,6 @@
                     "property": "name",
                     "type": "string",
                     "description": "The display name of this document style."
-                },
-                {
-                    "name": "styles",
-                    "property": "styles",
-                    "type": "object",
-                    "description": "A JSON object containing the CSS and layout settings that define the visual appearance of documents using this style."
                 }
             ]
         },
@@ -44487,6 +44488,13 @@
             "plain": false,
             "bulk": false,
             "attributes": [
+                {
+                    "name": "locale",
+                    "property": "locale",
+                    "type": "string",
+                    "description": "The locale (language/region) used for formatting numbers, dates, and translations in documents of this type.",
+                    "required": true
+                },
                 {
                     "name": "attachment_ids",
                     "property": "attachmentIds",
@@ -44561,12 +44569,6 @@
                     "property": "footer",
                     "type": "string",
                     "description": "Legacy footer text included at the bottom of documents of this type."
-                },
-                {
-                    "name": "locale",
-                    "property": "locale",
-                    "type": "string",
-                    "description": "The locale (language/region) used for formatting numbers, dates, and translations in documents of this type."
                 },
                 {
                     "name": "name",
@@ -46913,6 +46915,7 @@
                     "property": "baseRoleId",
                     "type": "int",
                     "description": "ID of the base role type this custom role is derived from (determines the permission baseline).",
+                    "required": true,
                     "enum": [
                         1,
                         2,
@@ -48460,16 +48463,24 @@
                     "required": true
                 },
                 {
+                    "name": "column_position",
+                    "property": "columnPosition",
+                    "type": "int",
+                    "description": "The horizontal column position of this widget within the dashboard grid.",
+                    "required": true
+                },
+                {
+                    "name": "row_position",
+                    "property": "rowPosition",
+                    "type": "int",
+                    "description": "The vertical row position of this widget within the dashboard grid.",
+                    "required": true
+                },
+                {
                     "name": "attachment_ids",
                     "property": "attachmentIds",
                     "type": "mixed",
                     "description": "IDs of attachments to associate with this widget."
-                },
-                {
-                    "name": "column_position",
-                    "property": "columnPosition",
-                    "type": "int",
-                    "description": "The horizontal column position of this widget within the dashboard grid."
                 },
                 {
                     "name": "content",
@@ -48482,12 +48493,6 @@
                     "property": "filterId",
                     "type": "int",
                     "description": "ID of the saved filter applied to this widget's data."
-                },
-                {
-                    "name": "row_position",
-                    "property": "rowPosition",
-                    "type": "int",
-                    "description": "The vertical row position of this widget within the dashboard grid."
                 },
                 {
                     "name": "title",

@@ -41,7 +41,7 @@ it('roles.show: GET /roles/{id}', function () {
 it('roles.create: POST /roles', function () {
     fakeHttp(['*' => Fixtures::response('roles-create', 'resource', 'roles', 201)]);
 
-    $result = Productive::roles()->create(['name' => 'Example', 'user_type_id' => 1]);
+    $result = Productive::roles()->create(['name' => 'Example', 'user_type_id' => 1, 'base_role_id' => 1]);
 
     expect($result)->toBeInstanceOf(Role::class);
     Http::assertSent(function (HttpRequest $request): bool {
@@ -50,7 +50,7 @@ it('roles.create: POST /roles', function () {
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('roles')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'roles', 'attributes' => ['name' => 'Example', 'user_type_id' => 1]]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'roles', 'attributes' => ['name' => 'Example', 'user_type_id' => 1, 'base_role_id' => 1]]];
     });
 });
 

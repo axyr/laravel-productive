@@ -22,6 +22,7 @@ final readonly class CreateDocumentTypeData extends InputData
      * @param  array<string, mixed>|Undefined|null  $emailData  A JSON object containing additional data passed to the email template when sending documents of this type.
      */
     public function __construct(
+        public string $locale,
         public array|Undefined|null $attachmentIds = Undefined::Value,
         public int|string|Undefined|null $documentStyleId = Undefined::Value,
         public int|string|Undefined|null $documentTemplateId = Undefined::Value,
@@ -33,7 +34,6 @@ final readonly class CreateDocumentTypeData extends InputData
         public string|Undefined|null $exporterOptions = Undefined::Value,
         public string|Undefined|null $filenameSchema = Undefined::Value,
         public string|Undefined|null $footer = Undefined::Value,
-        public string|Undefined|null $locale = Undefined::Value,
         public string|Undefined|null $name = Undefined::Value,
         public string|Undefined|null $note = Undefined::Value,
         public int|string|Undefined|null $subsidiaryId = Undefined::Value,
@@ -47,6 +47,7 @@ final readonly class CreateDocumentTypeData extends InputData
     public function toAttributes(): array
     {
         return self::filter([
+            'locale' => $this->locale,
             'attachment_ids' => $this->attachmentIds,
             'document_style_id' => $this->documentStyleId,
             'document_template_id' => $this->documentTemplateId,
@@ -58,7 +59,6 @@ final readonly class CreateDocumentTypeData extends InputData
             'exporter_options' => $this->exporterOptions,
             'filename_schema' => $this->filenameSchema,
             'footer' => $this->footer,
-            'locale' => $this->locale,
             'name' => $this->name,
             'note' => $this->note,
             'subsidiary_id' => $this->subsidiaryId,

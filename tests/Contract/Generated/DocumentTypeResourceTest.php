@@ -41,7 +41,7 @@ it('document_types.show: GET /document_types/{id}', function () {
 it('document_types.create: POST /document_types', function () {
     fakeHttp(['*' => Fixtures::response('document_types-create', 'resource', 'document_types', 201)]);
 
-    $result = Productive::documentTypes()->create(['attachment_ids' => [1]]);
+    $result = Productive::documentTypes()->create(['locale' => 'Example']);
 
     expect($result)->toBeInstanceOf(DocumentType::class);
     Http::assertSent(function (HttpRequest $request): bool {
@@ -50,7 +50,7 @@ it('document_types.create: POST /document_types', function () {
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('document_types')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'document_types', 'attributes' => ['attachment_ids' => [1]]]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'document_types', 'attributes' => ['locale' => 'Example']]];
     });
 });
 

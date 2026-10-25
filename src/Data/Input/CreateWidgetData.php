@@ -25,11 +25,11 @@ final readonly class CreateWidgetData extends InputData
         public int $width,
         public int|string $widgetTypeId,
         public int|string $dashboardId,
+        public int $columnPosition,
+        public int $rowPosition,
         public array|Undefined|null $attachmentIds = Undefined::Value,
-        public int|Undefined|null $columnPosition = Undefined::Value,
         public string|Undefined|null $content = Undefined::Value,
         public int|string|Undefined|null $filterId = Undefined::Value,
-        public int|Undefined|null $rowPosition = Undefined::Value,
         public string|Undefined|null $title = Undefined::Value,
     ) {}
 
@@ -40,11 +40,11 @@ final readonly class CreateWidgetData extends InputData
             'width' => $this->width,
             'widget_type_id' => $this->widgetTypeId,
             'dashboard_id' => $this->dashboardId,
-            'attachment_ids' => $this->attachmentIds,
             'column_position' => $this->columnPosition,
+            'row_position' => $this->rowPosition,
+            'attachment_ids' => $this->attachmentIds,
             'content' => $this->content,
             'filter_id' => $this->filterId,
-            'row_position' => $this->rowPosition,
             'title' => $this->title,
         ]);
     }

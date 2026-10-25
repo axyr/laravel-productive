@@ -15,21 +15,21 @@ use Axyr\Productive\Data\Undefined;
 final readonly class CreateDocumentStyleData extends InputData
 {
     /**
+     * @param  array<string, mixed>  $styles  A JSON object containing the CSS and layout settings that define the visual appearance of documents using this style.
      * @param  list<int|string>|Undefined|null  $attachmentIds  IDs of attachments (e.g. logo images) associated with this document style.
-     * @param  array<string, mixed>|Undefined|null  $styles  A JSON object containing the CSS and layout settings that define the visual appearance of documents using this style.
      */
     public function __construct(
+        public array $styles,
         public array|Undefined|null $attachmentIds = Undefined::Value,
         public string|Undefined|null $name = Undefined::Value,
-        public array|Undefined|null $styles = Undefined::Value,
     ) {}
 
     public function toAttributes(): array
     {
         return self::filter([
+            'styles' => $this->styles,
             'attachment_ids' => $this->attachmentIds,
             'name' => $this->name,
-            'styles' => $this->styles,
         ]);
     }
 }

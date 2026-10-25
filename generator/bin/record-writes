@@ -1,0 +1,114 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Exercises the write side with the recipes in generator/config/recipes.php: per resource a create,
+ * an update and its actions, then the cleanup of what the run created, in reverse order, also after
+ * a failure. A dry run by default: it reads the lists the recipes refer to and prints every request.
+ *
+ *   composer record:writes -- --tier=1                  the dry run of tier 1
+ *   composer record:writes -- --tier=1 --execute        run it and record every exchange
+ *   composer record:writes -- --resource=holidays       one resource (with --execute to run it)
+ *   composer record:writes -- --resource=dashboards,widgets  several, in recipe order: a parent with what refers to it
+ *   composer record:writes -- --tier=1 --execute --keep keep what it created, to inspect
+ *
+ * The same guards as the recorder: only the organization in RECORDING_ORGANIZATION_ID, one request
+ * per second, no redirects, a 429 stops the run. Recordings go to recordings/writes-<date-time>/.
+ */
+
+use Axyr\Productive\Config\ProductiveConfig;
+use Axyr\Productive\Exceptions\RateLimitException;
+use Axyr\Productive\Generator\IrBuilder;
+use Axyr\Productive\Generator\Recording\WritePlan;
+use Axyr\Productive\Generator\Recording\WriteRecorder;
+use Axyr\Productive\Http\CacheThrottle;
+use Axyr\Productive\Http\Connector;
+use Axyr\Productive\Http\RetryPolicy;
+use Dotenv\Dotenv;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
+use Illuminate\Http\Client\Factory;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$root = dirname(__DIR__, 2);
+Dotenv::createImmutable($root)->safeLoad();
+
+$env = function (string $key): string {
+    $value = $_ENV[$key] ?? getenv($key);
+
+    return is_string($value) ? $value : '';
+};
+$organization = $env('PRODUCTIVE_ORGANIZATION_ID');
+
+if ($organization === '' || $organization !== $env('RECORDING_ORGANIZATION_ID')) {
+    fwrite(STDERR, "Refusing to write: PRODUCTIVE_ORGANIZATION_ID must equal RECORDING_ORGANIZATION_ID in .env.\n");
+    exit(1);
+}
+
+$option = function (string $name) use ($argv): ?string {
+    foreach ($argv as $argument) {
+        if (str_starts_with($argument, '--' . $name . '=')) {
+            return substr($argument, strlen('--' . $name . '='));
+        }
+    }
+
+    return null;
+};
+$execute = in_array('--execute', $argv, true);
+$keep = in_array('--keep', $argv, true);
+$tier = $option('tier');
+$resource = $option('resource');
+
+if ($tier === null && $resource === null) {
+    fwrite(STDERR, "Name a tier (--tier=1) or a resource (--resource=holidays).\n");
+    exit(1);
+}
+
+$api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $root . '/generator/config')->build();
+$steps = WritePlan::steps($api, require $root . '/generator/config/recipes.php', $tier === null ? null : (int) $tier, $resource === null ? [] : array_values(array_filter(array_map(trim(...), explode(',', $resource)))));
+
+// One attempt only, and no redirects: a 429 stops the run, and X-Auth-Token never follows a redirect.
+$config = new ProductiveConfig(
+    token: $env('PRODUCTIVE_API_TOKEN'),
+    organizationId: $organization,
+    baseUrl: $env('PRODUCTIVE_BASE_URL') !== '' ? $env('PRODUCTIVE_BASE_URL') : ProductiveConfig::DEFAULT_BASE_URL,
+    maxAttempts: 1,
+);
+$connector = new Connector($config, (new Factory())->globalOptions(['allow_redirects' => false]), new CacheThrottle(new Repository(new ArrayStore())), new RetryPolicy(1, 0));
+$recorder = new WriteRecorder($connector, date('Y-m-d'));
+$directory = $root . '/recordings/writes-' . date('Y-m-d-His');
+
+echo ($execute ? 'Writing' : 'Dry run (add --execute to run it)') . ': ' . count($steps) . " requests.\n\n";
+
+try {
+    foreach ($recorder->run($steps, $execute, $keep) as $name => $recording) {
+        if (isset($recording['skipped'])) {
+            printf("%-46s skipped: %s\n", $name, $recording['skipped']);
+
+            continue;
+        }
+
+        $request = $recording['request'];
+        printf("%-46s %s %s%s\n", $name, $request['method'], $request['path'], isset($recording['status']) ? ' -> ' . $recording['status'] : '');
+
+        if ($request['body'] !== null) {
+            echo '    ' . json_encode($request['body']['data']['attributes'] ?? $request['body'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n";
+        }
+
+        if ($execute) {
+            is_dir($directory) || mkdir($directory, 0o700, true);
+            file_put_contents($directory . '/' . $name . '.json', json_encode($recording, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR) . "\n");
+        }
+    }
+} catch (RateLimitException $exception) {
+    fwrite(STDERR, "\nStopped on a 429: " . $exception->getMessage() . "\n");
+    exit(1);
+}
+
+if ($execute && is_dir($directory)) {
+    touch($directory . '/.complete');
+    echo "\nRecorded to " . $directory . "\n";
+}
