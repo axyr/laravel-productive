@@ -32,6 +32,9 @@ final readonly class RecordedTypes
     /** @var array<string, list<string>> */
     private array $rejectedIncludes;
 
+    /** @var array<string, list<string>> */
+    private array $required;
+
     /** @var array<string, array<string, array<ValueKind>>> Kinds by attribute, by type. */
     private array $attributes;
 
@@ -49,6 +52,7 @@ final readonly class RecordedTypes
         $this->recordedOn = is_string($summary['recorded_on'] ?? null) ? $summary['recorded_on'] : '';
         $this->statuses = array_filter(Json::map($summary['statuses'] ?? null), is_int(...));
         $this->rejectedIncludes = array_map(self::strings(...), Json::map($summary['rejected_includes'] ?? null));
+        $this->required = array_map(self::strings(...), Json::map($summary['required'] ?? null));
         $this->attributes = array_map(fn(mixed $type): array => array_map(self::kinds(...), Json::map(Json::map($type)['attributes'] ?? null)), $types);
         $this->relationships = array_map(fn(mixed $type): array => array_map(self::relationship(...), Json::map(Json::map($type)['relationships'] ?? null)), $types);
     }
@@ -177,6 +181,25 @@ final readonly class RecordedTypes
     public function rejectedIncludes(): array
     {
         return $this->rejectedIncludes;
+    }
+
+    /**
+     * The attributes a create answered "can't be blank" for, by input class:
+     * "document_styles.create" gives CreateDocumentStyleData.
+     *
+     * @return array<string, list<string>>
+     */
+    public function requiredOnCreate(): array
+    {
+        $required = [];
+
+        foreach ($this->required as $key => $names) {
+            if (str_ends_with($key, '.create')) {
+                $required['Create' . Naming::modelName(basename(substr($key, 0, -strlen('.create')))) . 'Data'] = $names;
+            }
+        }
+
+        return $required;
     }
 
     public function hasType(string $type): bool

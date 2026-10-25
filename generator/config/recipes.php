@@ -6,15 +6,16 @@ declare(strict_types=1);
  * Recipes of `composer record:writes`, by resource path, in run order: a parent before what refers
  * to it. Each recipe has its tier, the create's attributes, an optional update, actions on the
  * created record (null sends no body) and its cleanup: destroy (the default), archive for a
- * resource the API cannot delete, none, or a list such as ["archive", "destroy"]. Attributes may refer to "{created:<path>}" (the record
- * this run created), "{first:<path>}" (the first existing record) and "{date:+N}" (N days from
- * today). Every record is named "SDK check …". WritePlan refuses recipes for anything that leaves
- * Productive or changes the account (PLAN.md, phase 5, step 5).
+ * resource the API cannot delete, none, or a list such as ["archive", "destroy"]. A recipe named
+ * "<path>#<label>" makes a second record of the resource, for a merge or a copy; `create_with`
+ * names the operation that makes it when that is not the create. Attributes may refer to
+ * "{created:<recipe>}" (the record this run created), "{first:<path>}" (the first existing record)
+ * and "{date:+N}" (N days from today). Every record is named "SDK check …". WritePlan refuses
+ * recipes for anything that leaves Productive or changes the account (PLAN.md, phase 5, step 5).
  *
- * Tier 1, settings. Not in it: tags (the API cannot write them), the copies (dashboards,
- * document_styles, document_types: a copy creates a record the run cannot clean up) and the merges
- * (deal_statuses, service_types: they need a second record), which follow once the first run shows
- * what their bodies take.
+ * Tier 1, settings. Not in it: tags, which the API cannot write, and the merges of deal statuses
+ * and service types, whose bodies no attempt found (generator/config/coverage.php). The copies
+ * take template_id, the record to copy, which the spec does not document.
  */
 return [
     'holiday_calendars' => [
@@ -72,6 +73,12 @@ return [
         // document and a recipe cannot name; deleting the workflow removes the status.
         'cleanup' => 'none',
     ],
+    'workflow_statuses#deleted' => [
+        'tier' => 1,
+        'create' => ['name' => 'SDK check workflow status to delete', 'workflow_id' => '{created:workflows}', 'category_id' => 1],
+        'actions' => ['destroy' => ['target_workflow_status_id' => '{created:workflow_statuses}']],
+        'cleanup' => 'none',
+    ],
     'custom_field_sections' => [
         'tier' => 1,
         'create' => ['name' => 'SDK check section', 'customizable_type' => 'tasks'],
@@ -97,11 +104,22 @@ return [
         'create' => ['name' => 'SDK check style', 'styles' => ['elements' => []]],
         'update' => ['name' => 'SDK check style, renamed'],
     ],
+    'document_styles#copy' => [
+        'tier' => 1,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:document_styles}'],
+    ],
     'document_types' => [
         'tier' => 1,
         // locale is required, though the spec does not say so.
         'create' => ['name' => 'SDK check document type', 'exportable_type_id' => 1, 'locale' => 'en_US', 'document_template_id' => 1, 'document_style_id' => '{created:document_styles}'],
         'update' => ['name' => 'SDK check document type, renamed'],
+        'cleanup' => 'archive',
+    ],
+    'document_types#copy' => [
+        'tier' => 1,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:document_types}'],
         'cleanup' => 'archive',
     ],
     'filters' => [
@@ -113,6 +131,11 @@ return [
         'tier' => 1,
         'create' => ['name' => 'SDK check dashboard', 'is_private' => true],
         'update' => ['name' => 'SDK check dashboard, renamed'],
+    ],
+    'dashboards#copy' => [
+        'tier' => 1,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:dashboards}', 'name' => 'SDK check dashboard copy'],
     ],
     'widgets' => [
         'tier' => 1,

@@ -240,7 +240,9 @@ composer record:writes -- --resource=dashboards,widgets --execute   # several, i
 composer record:writes -- --tier=1 --execute --keep   # keep what it created, to inspect
 ```
 
-- **Recipes** name their records "SDK check …" and refer to `{created:<path>}` (the record this run created), `{first:<path>}` (the first existing record) and `{date:+N}`. A step whose reference has no record is skipped and says why.
-- **Cleanup** is `destroy` by default, `archive` for a resource the API cannot delete, or `none`. It also runs after a failed step; `--keep` leaves everything in place.
+- **Recipes** name their records "SDK check …" and refer to `{created:<recipe>}` (the record this run created), `{first:<path>}` (the first existing record) and `{date:+N}`. A step whose reference has no record is skipped and says why.
+- **A second record** of a resource has its own recipe, named `<path>#<label>`, such as `dashboards#copy`. `create_with` names the operation that makes it when that is not the create: `'create_with' => 'copy'`.
+- **Cleanup** is `destroy` by default, `archive` for a resource the API cannot delete, `none`, or a list such as `['archive', 'destroy']`. It also runs after a failed step; `--keep` leaves everything in place.
 - **Never written:** custom domains, e-invoice identities, emails, integrations, invitations, organization memberships and subscriptions, organizations, passwords, sessions and users, nor any action that sends (`WritePlan` refuses such a recipe).
 - **Same guards as `composer record`**, and the requests go out raw, as the SDK would build them, so the recordings show what the API itself requires rather than what the SDK's inputs check.
+- **`composer record:types` learns from every finished write run.** A success marks the operation exercised in `docs/coverage.md` (the latest run wins), and an attribute a create answered 422 "can't be blank" for becomes required in its generated input. An operation that cannot be exercised gets its reason in `generator/config/coverage.php`.

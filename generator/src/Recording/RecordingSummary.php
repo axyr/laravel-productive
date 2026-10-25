@@ -6,8 +6,9 @@ namespace Axyr\Productive\Generator\Recording;
 
 /**
  * Reduces recordings to what the generator may learn from them: the kinds of value each attribute
- * had, the relationships each type had, the includes the API rejected and the status of every
- * call. It keeps no values, names or IDs, so the summary is safe to commit.
+ * had, the relationships each type had, the includes the API rejected, the attributes a 422 said
+ * "can't be blank" for, and the status of every call. It keeps no values, names or IDs, so the
+ * summary is safe to commit.
  */
 final class RecordingSummary
 {
@@ -18,21 +19,71 @@ final class RecordingSummary
     private array $relationships = [];
 
     /**
-     * @param  array<string, array<string, mixed>>  $recordings  Recordings by name, as `composer record` writes them.
-     * @return array{statuses: array<string, int>, rejected_includes: array<string, list<string>>, types: array<string, array{attributes: array<string, list<string>>, relationships: array<string, array{to_many: bool|null, types: list<string>}>}>}
+     * Recordings of a write run are named "<run>/<step>.<operation>", e.g.
+     * "writes-2026-10-25-122437/028.custom_fields.create". In name order, so the status of a later
+     * run wins, while the attributes any run found required are all kept.
+     *
+     * @param  array<string, array<string, mixed>>  $recordings  Recordings by name, as `composer record` and `composer record:writes` write them.
+     * @return array{statuses: array<string, int>, rejected_includes: array<string, list<string>>, required: array<string, list<string>>, types: array<string, array{attributes: array<string, list<string>>, relationships: array<string, array{to_many: bool|null, types: list<string>}>}>}
      */
     public function summarize(array $recordings): array
     {
         ksort($recordings);
-        $statuses = array_map(fn(array $recording): int => is_int($recording['status'] ?? null) ? $recording['status'] : 0, $recordings);
+        $statuses = [];
         $rejected = [];
+        $required = [];
 
         foreach ($recordings as $name => $recording) {
-            $rejected = self::withRejectedInclude($rejected, $name, $statuses[$name]);
-            $this->observe(self::isSuccessful($statuses[$name]) ? $recording['body'] ?? null : null);
+            $key = self::operationKey($name);
+            $statuses[$key] = is_int($recording['status'] ?? null) ? $recording['status'] : 0;
+            $rejected = self::withRejectedInclude($rejected, $key, $statuses[$key]);
+            $required = self::withBlankAttributes($required, $key, $recording);
+            $this->observe(self::isSuccessful($statuses[$key]) ? $recording['body'] ?? null : null);
         }
 
-        return ['statuses' => $statuses, 'rejected_includes' => $rejected, 'types' => $this->types()];
+        ksort($statuses);
+        ksort($required);
+
+        return ['statuses' => $statuses, 'rejected_includes' => $rejected, 'required' => array_map(self::unique(...), $required), 'types' => $this->types()];
+    }
+
+    private static function operationKey(string $name): string
+    {
+        // The pattern is valid, so preg_replace cannot fail; the cast only tells static analysis.
+        return (string) preg_replace('/^(?:[^\/]*\/)?\d+\./', '', $name); // @pest-mutate-ignore
+    }
+
+    /**
+     * A 422 whose errors say "can't be blank" names attributes the operation requires.
+     *
+     * @param  array<string, list<string>>  $required
+     * @param  array<string, mixed>  $recording
+     * @return array<string, list<string>>
+     */
+    private static function withBlankAttributes(array $required, string $key, array $recording): array
+    {
+        $errors = ($recording['status'] ?? null) === 422 ? Json::list(Json::map($recording['body'] ?? null)['errors'] ?? null) : [];
+
+        foreach ($errors as $error) {
+            $attribute = self::blankAttribute(Json::map($error));
+            $required = $attribute === null ? $required : [...$required, $key => [...$required[$key] ?? [], $attribute]];
+        }
+
+        return $required;
+    }
+
+    /**
+     * @param  array<string, mixed>  $error
+     */
+    private static function blankAttribute(array $error): ?string
+    {
+        $pointer = Json::map($error['source'] ?? null)['pointer'] ?? null;
+
+        if (($error['detail'] ?? null) !== "can't be blank" || ! is_string($pointer) || preg_match('/^\/?data\/attributes\/([a-z_]+)$/', $pointer, $match) !== 1) {
+            return null;
+        }
+
+        return $match[1];
     }
 
     private static function isSuccessful(int $status): bool

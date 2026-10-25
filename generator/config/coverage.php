@@ -15,6 +15,8 @@ return [
         'public/pages' => 'Reachable by the uuid of a publicly shared page: set `RECORDING_PUBLIC_PAGE_UUID` in `.env` to record it.',
         'integrations.check' => 'Runs the integration check.',
         'integrations.sync' => 'Starts a sync.',
+        'deal_statuses.merge' => 'The body is undocumented, and `winner` and `loser` in its attributes answered 404 for two statuses the run created.',
+        'service_types.merge' => 'The body is undocumented: an empty body answers 422 "can\'t be blank" for `winner` and `loser`, and so do those attributes as IDs, integers, objects and relationships.',
     ],
     'plan_gated' => [],
 ];

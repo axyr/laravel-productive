@@ -4,8 +4,10 @@
 declare(strict_types=1);
 
 /*
- * Writes generator/recorded-types.json from a `composer record` run (the latest by default):
- * value kinds, relationships, rejected includes and statuses. No values, so it is safe to commit.
+ * Writes generator/recorded-types.json from a `composer record` run (the latest by default) and
+ * every finished `composer record:writes` run: value kinds, relationships, rejected includes,
+ * statuses and the attributes a write answered "can't be blank" for. No values, so it is safe to
+ * commit.
  */
 
 use Axyr\Productive\Generator\Recording\RecordingSummary;
@@ -30,7 +32,15 @@ foreach (glob($directory . '/*.json') ?: [] as $file) {
     $recordings[basename($file, '.json')] = json_decode((string) file_get_contents($file), true, flags: JSON_THROW_ON_ERROR);
 }
 
+$writes = array_map(dirname(...), glob($root . '/recordings/writes-*/.complete') ?: []);
+
+foreach ($writes as $run) {
+    foreach (glob($run . '/*.json') ?: [] as $file) {
+        $recordings[basename($run) . '/' . basename($file, '.json')] = json_decode((string) file_get_contents($file), true, flags: JSON_THROW_ON_ERROR);
+    }
+}
+
 $summary = ['recorded_on' => substr(basename($directory), 0, 10), ...(new RecordingSummary())->summarize($recordings)];
 file_put_contents($root . '/generator/recorded-types.json', json_encode($summary, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
 
-echo 'Summarized ' . count($recordings) . ' recordings from ' . basename($directory) . " into generator/recorded-types.json.\n";
+echo 'Summarized ' . count($recordings) . ' recordings from ' . basename($directory) . ' and ' . count($writes) . " write runs into generator/recorded-types.json.\n";

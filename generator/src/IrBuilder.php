@@ -39,7 +39,8 @@ final readonly class IrBuilder
 
     /**
      * Reads the curated maps from the config directory (removed.php is optional), and
-     * recorded-types.json, when present, from its parent.
+     * recorded-types.json, when present, from its parent. The attributes a recorded create
+     * answered "can't be blank" for are required, with those of required.php.
      */
     public static function fromFiles(string $specPath, string $configDirectory): self
     {
@@ -47,15 +48,31 @@ final readonly class IrBuilder
         $required = is_file($configDirectory . '/required.php') ? self::config($configDirectory, 'required') : [];
         $attributeTypes = is_file($configDirectory . '/attribute-types.php') ? self::config($configDirectory, 'attribute-types') : [];
 
+        $recorded = RecordedTypes::fromFile(dirname($configDirectory) . '/recorded-types.json', self::attributeTypes(self::stringMap($attributeTypes, 'attribute-types')));
+
         return new self(
             Spec::fromFile($specPath),
             self::stringMap(self::config($configDirectory, 'relationship-types'), 'relationship-types', nullable: true),
             self::stringMap(self::config($configDirectory, 'descriptions'), 'descriptions'),
             self::stringMap(self::config($configDirectory, 'method-names'), 'method-names'),
-            RecordedTypes::fromFile(dirname($configDirectory) . '/recorded-types.json', self::attributeTypes(self::stringMap($attributeTypes, 'attribute-types'))),
+            $recorded,
             self::stringMap(Spec::map($removed['relationships'] ?? []), 'removed'),
-            array_map(fn(mixed $names): array => Spec::strings($names, 'generator/config/required.php'), $required),
+            self::required($recorded->requiredOnCreate(), array_map(fn(mixed $names): array => Spec::strings($names, 'generator/config/required.php'), $required)),
         );
+    }
+
+    /**
+     * @param  array<string, list<string>>  $learned  From the write recordings, by input class.
+     * @param  array<string, list<string>>  $curated  From required.php, by input class.
+     * @return array<string, list<string>>
+     */
+    private static function required(array $learned, array $curated): array
+    {
+        foreach ($curated as $class => $names) {
+            $learned[$class] = [...$learned[$class] ?? [], ...$names];
+        }
+
+        return $learned;
     }
 
     public function build(): Api

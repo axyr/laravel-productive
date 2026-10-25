@@ -12,8 +12,10 @@ use RuntimeException;
 /**
  * Turns the recipes (generator/config/recipes.php) into the steps of a write run: per recipe a
  * create, an optional update and its actions, and, after all of them, the cleanup of what was
- * created in reverse order. Recipes for anything that leaves Productive or changes the account
- * are refused, so no recipe can send, invite or touch users, sessions or the subscription.
+ * created in reverse order. A recipe named "<path>#<label>" makes a second record of the resource,
+ * referenced as "{created:<path>#<label>}", and `create_with` makes it with another operation,
+ * such as a copy. Recipes for anything that leaves Productive or changes the account are refused,
+ * so no recipe can send, invite or touch users, sessions or the subscription.
  */
 final readonly class WritePlan
 {
@@ -29,8 +31,8 @@ final readonly class WritePlan
     private const array CLEANUPS = ['destroy', 'archive', 'none'];
 
     /**
-     * @param  array<string, array<string, mixed>>  $recipes  By resource path, in run order.
-     * @param  list<string>  $resources  Only these resource paths, in recipe order; all of them when empty.
+     * @param  array<string, array<string, mixed>>  $recipes  By resource path, or "<path>#<label>", in run order.
+     * @param  list<string>  $resources  Only these recipes, in recipe order; all of them when empty.
      * @return list<WriteStep>
      *
      * @throws RuntimeException For a recipe of an unknown or forbidden resource, operation or cleanup.
@@ -41,10 +43,10 @@ final readonly class WritePlan
         $steps = [];
         $cleanups = [];
 
-        foreach ($selected as $path => $recipe) {
-            $target = self::resource($api, $path);
-            $steps = [...$steps, ...self::recipeSteps($target, $recipe)];
-            $cleanups = [...self::cleanup($target, $recipe), ...$cleanups];
+        foreach ($selected as $name => $recipe) {
+            $target = self::resource($api, $name);
+            $steps = [...$steps, ...self::recipeSteps($target, $name, $recipe)];
+            $cleanups = [...self::cleanup($target, $name, $recipe), ...$cleanups];
         }
 
         return [...$steps, ...$cleanups];
@@ -54,32 +56,29 @@ final readonly class WritePlan
      * @param  array<string, mixed>  $recipe
      * @return list<WriteStep>
      */
-    private static function recipeSteps(Resource $resource, array $recipe): array
+    private static function recipeSteps(Resource $resource, string $name, array $recipe): array
     {
-        $steps = [new WriteStep(self::operation($resource, 'create'), $resource->path, $resource->type, self::attributes($recipe['create'] ?? null), creates: true)];
+        $creator = is_string($recipe['create_with'] ?? null) ? $recipe['create_with'] : 'create';
+        $steps = [new WriteStep(self::operation($resource, $creator), $name, $resource->type, self::attributes($recipe['create'] ?? null), creates: true)];
 
         if (isset($recipe['update'])) {
-            $steps[] = new WriteStep(self::operation($resource, 'update'), $resource->path, $resource->type, self::attributes($recipe['update']), onCreated: true);
+            $steps[] = new WriteStep(self::operation($resource, 'update'), $name, $resource->type, self::attributes($recipe['update']), onCreated: true);
         }
 
-        return [...$steps, ...self::actionSteps($resource, self::map($recipe['actions'] ?? []))];
+        return [...$steps, ...self::actionSteps($resource, $name, self::map($recipe['actions'] ?? []))];
     }
 
     /**
      * @param  array<string, mixed>  $actions  Attributes by action name; null sends no body.
      * @return list<WriteStep>
      */
-    private static function actionSteps(Resource $resource, array $actions): array
+    private static function actionSteps(Resource $resource, string $name, array $actions): array
     {
         $steps = [];
 
         foreach ($actions as $action => $attributes) {
-            if (in_array($action, self::SENDING, true)) {
-                throw new RuntimeException(sprintf('The recipe of "%s" may not run "%s": it sends something out of Productive.', $resource->path, $action));
-            }
-
             $operation = self::operation($resource, $action);
-            $steps[] = new WriteStep($operation, $resource->path, $resource->type, $attributes === null ? null : self::attributes($attributes), onCreated: str_contains($operation->path, '{id}'));
+            $steps[] = new WriteStep($operation, $name, $resource->type, $attributes === null ? null : self::attributes($attributes), onCreated: str_contains($operation->path, '{id}'));
         }
 
         return $steps;
@@ -92,16 +91,16 @@ final readonly class WritePlan
      * @param  array<string, mixed>  $recipe
      * @return list<WriteStep>
      */
-    private static function cleanup(Resource $resource, array $recipe): array
+    private static function cleanup(Resource $resource, string $name, array $recipe): array
     {
         $cleanup = $recipe['cleanup'] ?? 'destroy';
         $steps = [];
 
-        foreach (is_array($cleanup) ? $cleanup : [$cleanup] as $name) {
-            $checked = self::cleanupName($resource, $name);
+        foreach (is_array($cleanup) ? $cleanup : [$cleanup] as $step) {
+            $checked = self::cleanupName($resource, $step);
 
             if ($checked !== 'none') {
-                $steps[] = new WriteStep(self::operation($resource, $checked), $resource->path, $resource->type, null, onCreated: true, cleanup: true);
+                $steps[] = new WriteStep(self::operation($resource, $checked), $name, $resource->type, null, onCreated: true, cleanup: true);
             }
         }
 
@@ -117,8 +116,10 @@ final readonly class WritePlan
         return $name;
     }
 
-    private static function resource(Api $api, string $path): Resource
+    private static function resource(Api $api, string $name): Resource
     {
+        $path = explode('#', $name)[0];
+
         if (in_array($path, self::NEVER, true)) {
             throw new RuntimeException(sprintf('"%s" is never written: it leaves Productive or changes the account.', $path));
         }
@@ -128,6 +129,10 @@ final readonly class WritePlan
 
     private static function operation(Resource $resource, string $action): Operation
     {
+        if (in_array($action, self::SENDING, true)) {
+            throw new RuntimeException(sprintf('The recipe of "%s" may not run "%s": it sends something out of Productive.', $resource->path, $action));
+        }
+
         return $resource->operation($resource->path . '.' . $action) ?? throw new RuntimeException(sprintf('"%s" has no "%s" operation.', $resource->path, $action));
     }
 
