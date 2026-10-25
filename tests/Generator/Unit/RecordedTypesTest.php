@@ -135,6 +135,23 @@ it('exposes the statuses, rejected includes and recording date', function () {
         ->and((new RecordedTypes())->statuses())->toBe([]);
 });
 
+it('requires on create what a recorded create answered "can\'t be blank" for, by input class', function () {
+    $recorded = new RecordedTypes(['required' => [
+        'document_styles.create' => ['styles', 5],
+        'reports/time_reports.create' => ['group'],
+        'workflow_statuses.destroy' => ['target_workflow_status_id'],
+        'tasks.recreate' => ['title'],
+        'widgets.create' => 'column_position',
+    ]]);
+
+    expect($recorded->requiredOnCreate())->toBe([
+        'CreateDocumentStyleData' => ['styles'],
+        'CreateTimeReportData' => ['group'],
+        'CreateWidgetData' => [],
+    ])
+        ->and((new RecordedTypes())->requiredOnCreate())->toBe([]);
+});
+
 it('reads the summary from a file, or nothing when there is none or it is not an object', function () {
     $path = tempnam(sys_get_temp_dir(), 'recorded');
 

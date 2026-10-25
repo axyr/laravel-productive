@@ -130,7 +130,8 @@ it('applies recorded types and removed relationships from files', function () {
 
     file_put_contents($directory . '/removed.php', '<?php return ["relationships" => ["tasks.board" => "Gone."]];');
     file_put_contents($directory . '/attribute-types.php', '<?php return ["tasks.discount" => "float"];');
-    file_put_contents($base . '/recorded-types.json', json_encode(['types' => ['tasks' => [
+    file_put_contents($directory . '/required.php', '<?php return ["CreateTaskData" => ["title"]];');
+    file_put_contents($base . '/recorded-types.json', json_encode(['required' => ['tasks.create' => ['level'], 'tasks.update' => ['notes']], 'types' => ['tasks' => [
         'attributes' => ['level' => ['int'], 'discount' => ['int']],
         'relationships' => ['board' => ['to_many' => false, 'types' => ['boards']], 'parent' => ['to_many' => false, 'types' => ['tasks']]],
     ]]]));
@@ -141,12 +142,22 @@ it('applies recorded types and removed relationships from files', function () {
         ]]],
     ]]]]];
     $spec = tempnam(sys_get_temp_dir(), 'spec');
-    file_put_contents($spec, json_encode(['paths' => ['/api/v2/tasks/{id}' => ['get' => ['responses' => $response]]]]));
+    $body = ['content' => ['application/vnd.api+json' => ['schema' => ['properties' => ['data' => ['properties' => [
+        'attributes' => ['properties' => ['title' => ['type' => 'string'], 'level' => ['type' => 'integer'], 'notes' => ['type' => 'string']]],
+    ]]]]]]];
+    file_put_contents($spec, json_encode(['paths' => [
+        '/api/v2/tasks' => ['post' => ['requestBody' => $body, 'responses' => $response]],
+        '/api/v2/tasks/{id}' => ['get' => ['responses' => $response], 'patch' => ['requestBody' => $body, 'responses' => $response]],
+    ]]));
 
-    $model = IrBuilder::fromFiles($spec, $directory)->build()->model('Task')?->toArray();
+    $api = IrBuilder::fromFiles($spec, $directory)->build();
+    $model = $api->model('Task')?->toArray();
+    $required = fn(string $key): array => array_keys(array_filter(array_column($api->resource('tasks')?->operation($key)?->input?->toArray()['attributes'] ?? [], 'required', 'name')));
 
     expect(array_column($model['attributes'] ?? [], 'type', 'name'))->toBe(['discount' => 'float', 'level' => 'int', 'title' => 'string'])
-        ->and($model['relationships'] ?? [])->toBe([['name' => 'parent', 'to_many' => false, 'target_type' => 'tasks', 'undocumented' => true]]);
+        ->and($model['relationships'] ?? [])->toBe([['name' => 'parent', 'to_many' => false, 'target_type' => 'tasks', 'undocumented' => true]])
+        ->and($required('tasks.create'))->toBe(['level', 'title'])
+        ->and($required('tasks.update'))->toBe([]);
 
     array_map(unlink(...), [...glob($directory . '/*'), $base . '/recorded-types.json', $spec]);
     rmdir($directory);

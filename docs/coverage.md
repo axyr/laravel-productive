@@ -4,18 +4,18 @@
 
 Which operations the SDK has seen the live API answer. `composer record` records every GET of a test organization; writes are exercised by a live run that records their responses the same way. One row per operation of every generated resource, from the recording of 2026-10-23.
 
-**424 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
+**341 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
 
 | Status | Operations | Meaning |
 | --- | --- | --- |
 | recorded | 224 | A GET the recording answered with a success. |
-| exercised | 0 | A write a live run answered with a success. |
+| exercised | 81 | A write a live run answered with a success. |
 | empty list | 10 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
 | rejected | 2 | The API answered with an error; the status is shown. |
 | plan-gated | 0 | The test organization's plan does not include it. |
-| skipped | 12 | Left out on purpose; the reason is shown. |
+| skipped | 14 | Left out on purpose; the reason is shown. |
 | not recorded | 3 | A GET nothing has called yet. |
-| not exercised | 411 | A write nothing has called yet. |
+| not exercised | 328 | A write nothing has called yet. |
 
 ## `activities`
 
@@ -212,9 +212,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /custom_field_options` | `custom_field_options.index` | recorded `200` |
 | `GET /custom_field_options/{id}` | `custom_field_options.show` | recorded `200` |
-| `POST /custom_field_options` | `custom_field_options.create` | not exercised |
-| `PATCH /custom_field_options/{id}` | `custom_field_options.update` | not exercised |
-| `PATCH /custom_field_options/{id}/archive` | `custom_field_options.archive` | not exercised |
+| `POST /custom_field_options` | `custom_field_options.create` | exercised `201` |
+| `PATCH /custom_field_options/{id}` | `custom_field_options.update` | exercised `200` |
+| `PATCH /custom_field_options/{id}/archive` | `custom_field_options.archive` | exercised `200` |
 
 ## `custom_field_sections`
 
@@ -222,9 +222,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /custom_field_sections` | `custom_field_sections.index` | recorded `200` |
 | `GET /custom_field_sections/{id}` | `custom_field_sections.show` | recorded `200` |
-| `POST /custom_field_sections` | `custom_field_sections.create` | not exercised |
-| `PATCH /custom_field_sections/{id}` | `custom_field_sections.update` | not exercised |
-| `PATCH /custom_field_sections/{id}/archive` | `custom_field_sections.archive` | not exercised |
+| `POST /custom_field_sections` | `custom_field_sections.create` | exercised `201` |
+| `PATCH /custom_field_sections/{id}` | `custom_field_sections.update` | exercised `200` |
+| `PATCH /custom_field_sections/{id}/archive` | `custom_field_sections.archive` | exercised `200` |
 
 ## `custom_fields`
 
@@ -232,9 +232,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /custom_fields` | `custom_fields.index` | recorded `200` |
 | `GET /custom_fields/{id}` | `custom_fields.show` | recorded `200` |
-| `POST /custom_fields` | `custom_fields.create` | not exercised |
-| `PATCH /custom_fields/{id}` | `custom_fields.update` | not exercised |
-| `PATCH /custom_fields/{id}/archive` | `custom_fields.archive` | not exercised |
+| `POST /custom_fields` | `custom_fields.create` | exercised `201` |
+| `PATCH /custom_fields/{id}` | `custom_fields.update` | exercised `200` |
+| `PATCH /custom_fields/{id}/archive` | `custom_fields.archive` | exercised `200` |
 
 ## `dashboards`
 
@@ -242,10 +242,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /dashboards` | `dashboards.index` | recorded `200` |
 | `GET /dashboards/{id}` | `dashboards.show` | recorded `200` |
-| `POST /dashboards` | `dashboards.create` | not exercised |
-| `PATCH /dashboards/{id}` | `dashboards.update` | not exercised |
-| `DELETE /dashboards/{id}` | `dashboards.destroy` | not exercised |
-| `POST /dashboards/copy` | `dashboards.copy` | not exercised |
+| `POST /dashboards` | `dashboards.create` | exercised `201` |
+| `PATCH /dashboards/{id}` | `dashboards.update` | exercised `200` |
+| `DELETE /dashboards/{id}` | `dashboards.destroy` | exercised `204` |
+| `POST /dashboards/copy` | `dashboards.copy` | exercised `201` |
 
 ## `deal_cost_rates`
 
@@ -263,11 +263,11 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /deal_statuses` | `deal_statuses.index` | recorded `200` |
 | `GET /deal_statuses/{id}` | `deal_statuses.show` | recorded `200` |
-| `POST /deal_statuses` | `deal_statuses.create` | not exercised |
-| `PATCH /deal_statuses/{id}` | `deal_statuses.update` | not exercised |
-| `DELETE /deal_statuses/{id}` | `deal_statuses.destroy` | not exercised |
-| `PATCH /deal_statuses/{id}/archive` | `deal_statuses.archive` | not exercised |
-| `PATCH /deal_statuses/merge` | `deal_statuses.merge` | not exercised |
+| `POST /deal_statuses` | `deal_statuses.create` | exercised `201` |
+| `PATCH /deal_statuses/{id}` | `deal_statuses.update` | exercised `200` |
+| `DELETE /deal_statuses/{id}` | `deal_statuses.destroy` | exercised `204` |
+| `PATCH /deal_statuses/{id}/archive` | `deal_statuses.archive` | exercised `200` |
+| `PATCH /deal_statuses/merge` | `deal_statuses.merge` | skipped The body is undocumented, and `winner` and `loser` in its attributes answered 404 for two statuses the run created. |
 
 ## `deals`
 
@@ -311,10 +311,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /document_styles` | `document_styles.index` | recorded `200` |
 | `GET /document_styles/{id}` | `document_styles.show` | recorded `200` |
-| `POST /document_styles` | `document_styles.create` | not exercised |
-| `PATCH /document_styles/{id}` | `document_styles.update` | not exercised |
-| `DELETE /document_styles/{id}` | `document_styles.destroy` | not exercised |
-| `POST /document_styles/copy` | `document_styles.copy` | not exercised |
+| `POST /document_styles` | `document_styles.create` | exercised `201` |
+| `PATCH /document_styles/{id}` | `document_styles.update` | exercised `200` |
+| `DELETE /document_styles/{id}` | `document_styles.destroy` | exercised `204` |
+| `POST /document_styles/copy` | `document_styles.copy` | exercised `201` |
 
 ## `document_types`
 
@@ -322,10 +322,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /document_types` | `document_types.index` | recorded `200` |
 | `GET /document_types/{id}` | `document_types.show` | recorded `200` |
-| `POST /document_types` | `document_types.create` | not exercised |
-| `PATCH /document_types/{id}` | `document_types.update` | not exercised |
-| `PATCH /document_types/{id}/archive` | `document_types.archive` | not exercised |
-| `POST /document_types/copy` | `document_types.copy` | not exercised |
+| `POST /document_types` | `document_types.create` | exercised `201` |
+| `PATCH /document_types/{id}` | `document_types.update` | exercised `200` |
+| `PATCH /document_types/{id}/archive` | `document_types.archive` | exercised `200` |
+| `POST /document_types/copy` | `document_types.copy` | exercised `201` |
 
 ## `einvoice_identities`
 
@@ -411,9 +411,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /filters` | `filters.index` | recorded `200` |
 | `GET /filters/{id}` | `filters.show` | recorded `200` |
-| `POST /filters` | `filters.create` | not exercised |
-| `PATCH /filters/{id}` | `filters.update` | not exercised |
-| `DELETE /filters/{id}` | `filters.destroy` | not exercised |
+| `POST /filters` | `filters.create` | exercised `201` |
+| `PATCH /filters/{id}` | `filters.update` | exercised `200` |
+| `DELETE /filters/{id}` | `filters.destroy` | exercised `204` |
 
 ## `folders`
 
@@ -435,9 +435,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /holiday_calendars` | `holiday_calendars.index` | recorded `200` |
 | `GET /holiday_calendars/{id}` | `holiday_calendars.show` | recorded `200` |
-| `POST /holiday_calendars` | `holiday_calendars.create` | not exercised |
-| `PATCH /holiday_calendars/{id}` | `holiday_calendars.update` | not exercised |
-| `DELETE /holiday_calendars/{id}` | `holiday_calendars.destroy` | not exercised |
+| `POST /holiday_calendars` | `holiday_calendars.create` | exercised `201` |
+| `PATCH /holiday_calendars/{id}` | `holiday_calendars.update` | exercised `200` |
+| `DELETE /holiday_calendars/{id}` | `holiday_calendars.destroy` | exercised `204` |
 
 ## `holidays`
 
@@ -445,9 +445,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /holidays` | `holidays.index` | recorded `200` |
 | `GET /holidays/{id}` | `holidays.show` | recorded `200` |
-| `POST /holidays` | `holidays.create` | not exercised |
-| `PATCH /holidays/{id}` | `holidays.update` | not exercised |
-| `DELETE /holidays/{id}` | `holidays.destroy` | not exercised |
+| `POST /holidays` | `holidays.create` | exercised `201` |
+| `PATCH /holidays/{id}` | `holidays.update` | exercised `200` |
+| `DELETE /holidays/{id}` | `holidays.destroy` | exercised `204` |
 
 ## `integration_exporter_configurations`
 
@@ -531,10 +531,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /job_roles` | `job_roles.index` | recorded `200` |
 | `GET /job_roles/{id}` | `job_roles.show` | recorded `200` |
-| `POST /job_roles` | `job_roles.create` | not exercised |
-| `PATCH /job_roles/{id}` | `job_roles.update` | not exercised |
-| `PATCH /job_roles/{id}/archive` | `job_roles.archive` | not exercised |
-| `PATCH /job_roles/{id}/restore` | `job_roles.restore` | not exercised |
+| `POST /job_roles` | `job_roles.create` | exercised `201` |
+| `PATCH /job_roles/{id}` | `job_roles.update` | exercised `200` |
+| `PATCH /job_roles/{id}/archive` | `job_roles.archive` | exercised `200` |
+| `PATCH /job_roles/{id}/restore` | `job_roles.restore` | exercised `200` |
 
 ## `line_items`
 
@@ -556,9 +556,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /lost_reasons` | `lost_reasons.index` | recorded `200` |
 | `GET /lost_reasons/{id}` | `lost_reasons.show` | recorded `200` |
-| `POST /lost_reasons` | `lost_reasons.create` | not exercised |
-| `PATCH /lost_reasons/{id}` | `lost_reasons.update` | not exercised |
-| `PATCH /lost_reasons/{id}/archive` | `lost_reasons.archive` | not exercised |
+| `POST /lost_reasons` | `lost_reasons.create` | exercised `201` |
+| `PATCH /lost_reasons/{id}` | `lost_reasons.update` | exercised `200` |
+| `PATCH /lost_reasons/{id}/archive` | `lost_reasons.archive` | exercised `200` |
 
 ## `memberships`
 
@@ -704,9 +704,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /pipelines` | `pipelines.index` | recorded `200` |
 | `GET /pipelines/{id}` | `pipelines.show` | recorded `200` |
-| `POST /pipelines` | `pipelines.create` | not exercised |
-| `PATCH /pipelines/{id}` | `pipelines.update` | not exercised |
-| `DELETE /pipelines/{id}` | `pipelines.destroy` | not exercised |
+| `POST /pipelines` | `pipelines.create` | exercised `201` |
+| `PATCH /pipelines/{id}` | `pipelines.update` | exercised `200` |
+| `DELETE /pipelines/{id}` | `pipelines.destroy` | exercised `204` |
 
 ## `placeholder_usages`
 
@@ -844,9 +844,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /report_categories` | `report_categories.index` | recorded `200` |
 | `GET /report_categories/{id}` | `report_categories.show` | recorded `200` |
-| `POST /report_categories` | `report_categories.create` | not exercised |
-| `PATCH /report_categories/{id}` | `report_categories.update` | not exercised |
-| `DELETE /report_categories/{id}` | `report_categories.destroy` | not exercised |
+| `POST /report_categories` | `report_categories.create` | exercised `201` |
+| `PATCH /report_categories/{id}` | `report_categories.update` | exercised `200` |
+| `DELETE /report_categories/{id}` | `report_categories.destroy` | exercised `204` |
 
 ## `reports/automation_reports`
 
@@ -1033,9 +1033,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /roles` | `roles.index` | recorded `200` |
 | `GET /roles/{id}` | `roles.show` | recorded `200` |
-| `POST /roles` | `roles.create` | not exercised |
-| `PATCH /roles/{id}` | `roles.update` | not exercised |
-| `DELETE /roles/{id}` | `roles.destroy` | not exercised |
+| `POST /roles` | `roles.create` | exercised `201` |
+| `PATCH /roles/{id}` | `roles.update` | exercised `200` |
+| `DELETE /roles/{id}` | `roles.destroy` | exercised `204` |
 
 ## `salaries`
 
@@ -1083,10 +1083,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /service_types` | `service_types.index` | recorded `200` |
 | `GET /service_types/{id}` | `service_types.show` | recorded `200` |
-| `POST /service_types` | `service_types.create` | not exercised |
-| `PATCH /service_types/{id}` | `service_types.update` | not exercised |
-| `PATCH /service_types/{id}/archive` | `service_types.archive` | not exercised |
-| `PATCH /service_types/merge` | `service_types.merge` | not exercised |
+| `POST /service_types` | `service_types.create` | exercised `201` |
+| `PATCH /service_types/{id}` | `service_types.update` | exercised `200` |
+| `PATCH /service_types/{id}/archive` | `service_types.archive` | exercised `200` |
+| `PATCH /service_types/merge` | `service_types.merge` | skipped The body is undocumented: an empty body answers 422 "can't be blank" for `winner` and `loser`, and so do those attributes as IDs, integers, objects and relationships. |
 
 ## `services`
 
@@ -1218,10 +1218,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /tax_rates` | `tax_rates.index` | recorded `200` |
 | `GET /tax_rates/{id}` | `tax_rates.show` | recorded `200` |
-| `POST /tax_rates` | `tax_rates.create` | not exercised |
-| `PATCH /tax_rates/{id}` | `tax_rates.update` | not exercised |
-| `PATCH /tax_rates/{id}/archive` | `tax_rates.archive` | not exercised |
-| `PATCH /tax_rates/{id}/restore` | `tax_rates.restore` | not exercised |
+| `POST /tax_rates` | `tax_rates.create` | exercised `201` |
+| `PATCH /tax_rates/{id}` | `tax_rates.update` | exercised `200` |
+| `PATCH /tax_rates/{id}/archive` | `tax_rates.archive` | exercised `200` |
+| `PATCH /tax_rates/{id}/restore` | `tax_rates.restore` | exercised `200` |
 
 ## `team_memberships`
 
@@ -1229,8 +1229,8 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /team_memberships` | `team_memberships.index` | recorded `200` |
 | `GET /team_memberships/{id}` | `team_memberships.show` | recorded `200` |
-| `POST /team_memberships` | `team_memberships.create` | not exercised |
-| `DELETE /team_memberships/{id}` | `team_memberships.destroy` | not exercised |
+| `POST /team_memberships` | `team_memberships.create` | exercised `201` |
+| `DELETE /team_memberships/{id}` | `team_memberships.destroy` | exercised `204` |
 
 ## `teams`
 
@@ -1238,9 +1238,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /teams` | `teams.index` | recorded `200` |
 | `GET /teams/{id}` | `teams.show` | recorded `200` |
-| `POST /teams` | `teams.create` | not exercised |
-| `PATCH /teams/{id}` | `teams.update` | not exercised |
-| `DELETE /teams/{id}` | `teams.destroy` | not exercised |
+| `POST /teams` | `teams.create` | exercised `201` |
+| `PATCH /teams/{id}` | `teams.update` | exercised `200` |
+| `DELETE /teams/{id}` | `teams.destroy` | exercised `204` |
 
 ## `templates`
 
@@ -1248,9 +1248,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /templates` | `templates.index` | recorded `200` |
 | `GET /templates/{id}` | `templates.show` | recorded `200` |
-| `POST /templates` | `templates.create` | not exercised |
-| `PATCH /templates/{id}` | `templates.update` | not exercised |
-| `DELETE /templates/{id}` | `templates.destroy` | not exercised |
+| `POST /templates` | `templates.create` | exercised `201` |
+| `PATCH /templates/{id}` | `templates.update` | exercised `200` |
+| `DELETE /templates/{id}` | `templates.destroy` | exercised `204` |
 
 ## `time_entries`
 
@@ -1284,11 +1284,11 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /time_tracking_policies` | `time_tracking_policies.index` | recorded `200` |
 | `GET /time_tracking_policies/{id}` | `time_tracking_policies.show` | recorded `200` |
-| `POST /time_tracking_policies` | `time_tracking_policies.create` | not exercised |
-| `PATCH /time_tracking_policies/{id}` | `time_tracking_policies.update` | not exercised |
-| `DELETE /time_tracking_policies/{id}` | `time_tracking_policies.destroy` | not exercised |
-| `PATCH /time_tracking_policies/{id}/archive` | `time_tracking_policies.archive` | not exercised |
-| `PATCH /time_tracking_policies/{id}/restore` | `time_tracking_policies.restore` | not exercised |
+| `POST /time_tracking_policies` | `time_tracking_policies.create` | exercised `201` |
+| `PATCH /time_tracking_policies/{id}` | `time_tracking_policies.update` | exercised `200` |
+| `DELETE /time_tracking_policies/{id}` | `time_tracking_policies.destroy` | exercised `204` |
+| `PATCH /time_tracking_policies/{id}/archive` | `time_tracking_policies.archive` | exercised `200` |
+| `PATCH /time_tracking_policies/{id}/restore` | `time_tracking_policies.restore` | exercised `200` |
 
 ## `timers`
 
@@ -1348,9 +1348,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /widgets` | `widgets.index` | recorded `200` |
 | `GET /widgets/{id}` | `widgets.show` | recorded `200` |
-| `POST /widgets` | `widgets.create` | not exercised |
-| `PATCH /widgets/{id}` | `widgets.update` | not exercised |
-| `DELETE /widgets/{id}` | `widgets.destroy` | not exercised |
+| `POST /widgets` | `widgets.create` | exercised `201` |
+| `PATCH /widgets/{id}` | `widgets.update` | exercised `200` |
+| `DELETE /widgets/{id}` | `widgets.destroy` | exercised `204` |
 
 ## `workflow_statuses`
 
@@ -1358,9 +1358,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /workflow_statuses` | `workflow_statuses.index` | recorded `200` |
 | `GET /workflow_statuses/{id}` | `workflow_statuses.show` | recorded `200` |
-| `POST /workflow_statuses` | `workflow_statuses.create` | not exercised |
-| `PATCH /workflow_statuses/{id}` | `workflow_statuses.update` | not exercised |
-| `DELETE /workflow_statuses/{id}` | `workflow_statuses.destroy` | not exercised |
+| `POST /workflow_statuses` | `workflow_statuses.create` | exercised `201` |
+| `PATCH /workflow_statuses/{id}` | `workflow_statuses.update` | exercised `200` |
+| `DELETE /workflow_statuses/{id}` | `workflow_statuses.destroy` | exercised `204` |
 
 ## `workflows`
 
@@ -1368,8 +1368,8 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /workflows` | `workflows.index` | recorded `200` |
 | `GET /workflows/{id}` | `workflows.show` | recorded `200` |
-| `POST /workflows` | `workflows.create` | not exercised |
-| `PATCH /workflows/{id}` | `workflows.update` | not exercised |
-| `DELETE /workflows/{id}` | `workflows.destroy` | not exercised |
-| `PATCH /workflows/{id}/archive` | `workflows.archive` | not exercised |
-| `PATCH /workflows/{id}/restore` | `workflows.restore` | not exercised |
+| `POST /workflows` | `workflows.create` | exercised `201` |
+| `PATCH /workflows/{id}` | `workflows.update` | exercised `200` |
+| `DELETE /workflows/{id}` | `workflows.destroy` | exercised `204` |
+| `PATCH /workflows/{id}/archive` | `workflows.archive` | exercised `200` |
+| `PATCH /workflows/{id}/restore` | `workflows.restore` | exercised `200` |
