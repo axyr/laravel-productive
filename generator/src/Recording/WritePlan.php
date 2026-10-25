@@ -30,13 +30,14 @@ final readonly class WritePlan
 
     /**
      * @param  array<string, array<string, mixed>>  $recipes  By resource path, in run order.
+     * @param  list<string>  $resources  Only these resource paths, in recipe order; all of them when empty.
      * @return list<WriteStep>
      *
      * @throws RuntimeException For a recipe of an unknown or forbidden resource, operation or cleanup.
      */
-    public static function steps(Api $api, array $recipes, ?int $tier = null, ?string $resource = null): array
+    public static function steps(Api $api, array $recipes, ?int $tier = null, array $resources = []): array
     {
-        $selected = array_filter($recipes, fn(array $recipe, string $path): bool => in_array($tier, [null, $recipe['tier'] ?? null], true) && in_array($resource, [null, $path], true), ARRAY_FILTER_USE_BOTH);
+        $selected = array_filter($recipes, fn(array $recipe, string $path): bool => in_array($tier, [null, $recipe['tier'] ?? null], true) && ($resources === [] || in_array($path, $resources, true)), ARRAY_FILTER_USE_BOTH);
         $steps = [];
         $cleanups = [];
 
@@ -85,18 +86,35 @@ final readonly class WritePlan
     }
 
     /**
+     * The cleanup steps, in their order: one name, or a list such as ["archive", "destroy"] for a
+     * resource the API only deletes once it is archived.
+     *
      * @param  array<string, mixed>  $recipe
-     * @return list<WriteStep>  The cleanup step, or none.
+     * @return list<WriteStep>
      */
     private static function cleanup(Resource $resource, array $recipe): array
     {
         $cleanup = $recipe['cleanup'] ?? 'destroy';
+        $steps = [];
 
-        if (! in_array($cleanup, self::CLEANUPS, true)) {
-            throw new RuntimeException(sprintf('The recipe of "%s" has cleanup "%s": use destroy, archive or none.', $resource->path, is_string($cleanup) ? $cleanup : get_debug_type($cleanup)));
+        foreach (is_array($cleanup) ? $cleanup : [$cleanup] as $name) {
+            $checked = self::cleanupName($resource, $name);
+
+            if ($checked !== 'none') {
+                $steps[] = new WriteStep(self::operation($resource, $checked), $resource->path, $resource->type, null, onCreated: true, cleanup: true);
+            }
         }
 
-        return $cleanup === 'none' ? [] : [new WriteStep(self::operation($resource, $cleanup), $resource->path, $resource->type, null, onCreated: true, cleanup: true)];
+        return $steps;
+    }
+
+    private static function cleanupName(Resource $resource, mixed $name): string
+    {
+        if (! is_string($name) || ! in_array($name, self::CLEANUPS, true)) {
+            throw new RuntimeException(sprintf('The recipe of "%s" has cleanup "%s": use destroy, archive or none.', $resource->path, is_string($name) ? $name : get_debug_type($name)));
+        }
+
+        return $name;
     }
 
     private static function resource(Api $api, string $path): Resource

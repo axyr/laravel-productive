@@ -11,6 +11,7 @@ declare(strict_types=1);
  *   composer record:writes -- --tier=1                  the dry run of tier 1
  *   composer record:writes -- --tier=1 --execute        run it and record every exchange
  *   composer record:writes -- --resource=holidays       one resource (with --execute to run it)
+ *   composer record:writes -- --resource=dashboards,widgets  several, in recipe order: a parent with what refers to it
  *   composer record:writes -- --tier=1 --execute --keep keep what it created, to inspect
  *
  * The same guards as the recorder: only the organization in RECORDING_ORGANIZATION_ID, one request
@@ -67,7 +68,7 @@ if ($tier === null && $resource === null) {
 }
 
 $api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $root . '/generator/config')->build();
-$steps = WritePlan::steps($api, require $root . '/generator/config/recipes.php', $tier === null ? null : (int) $tier, $resource);
+$steps = WritePlan::steps($api, require $root . '/generator/config/recipes.php', $tier === null ? null : (int) $tier, $resource === null ? [] : array_values(array_filter(array_map(trim(...), explode(',', $resource)))));
 
 // One attempt only, and no redirects: a 429 stops the run, and X-Auth-Token never follows a redirect.
 $config = new ProductiveConfig(

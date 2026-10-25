@@ -20,7 +20,7 @@ final readonly class CreateRoleData extends InputData
     public function __construct(
         public string $name,
         public int|string $userTypeId,
-        public int|string|Undefined|null $baseRoleId = Undefined::Value,
+        public int|string $baseRoleId,
         public string|Undefined|null $description = Undefined::Value,
         public array|Undefined|null $permissions = Undefined::Value,
     ) {}

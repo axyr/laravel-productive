@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Recipes of `composer record:writes`, by resource path, in run order: a parent before what refers
  * to it. Each recipe has its tier, the create's attributes, an optional update, actions on the
  * created record (null sends no body) and its cleanup: destroy (the default), archive for a
- * resource the API cannot delete, or none. Attributes may refer to "{created:<path>}" (the record
+ * resource the API cannot delete, none, or a list such as ["archive", "destroy"]. Attributes may refer to "{created:<path>}" (the record
  * this run created), "{first:<path>}" (the first existing record) and "{date:+N}" (N days from
  * today). Every record is named "SDK check …". WritePlan refuses recipes for anything that leaves
  * Productive or changes the account (PLAN.md, phase 5, step 5).
@@ -68,16 +68,20 @@ return [
         'tier' => 1,
         'create' => ['name' => 'SDK check workflow status', 'workflow_id' => '{created:workflows}', 'category_id' => 1],
         'update' => ['name' => 'SDK check workflow status, renamed'],
+        // Its delete needs target_workflow_status_id (where tasks move to), which the spec does not
+        // document and a recipe cannot name; deleting the workflow removes the status.
+        'cleanup' => 'none',
     ],
     'custom_field_sections' => [
         'tier' => 1,
-        'create' => ['name' => 'SDK check section', 'customizable_type' => 'Task'],
+        'create' => ['name' => 'SDK check section', 'customizable_type' => 'tasks'],
         'update' => ['name' => 'SDK check section, renamed'],
         'cleanup' => 'archive',
     ],
     'custom_fields' => [
         'tier' => 1,
-        'create' => ['name' => 'SDK check field', 'data_type_id' => 3, 'customizable_type' => 'Task', 'section_id' => '{created:custom_field_sections}'],
+        // customizable_type is lowercase and plural, as the spec's description says ("tasks, projects, people").
+        'create' => ['name' => 'SDK check field', 'data_type_id' => 3, 'customizable_type' => 'tasks', 'section_id' => '{created:custom_field_sections}'],
         'update' => ['name' => 'SDK check field, renamed'],
         'cleanup' => 'archive',
     ],
@@ -89,12 +93,14 @@ return [
     ],
     'document_styles' => [
         'tier' => 1,
-        'create' => ['name' => 'SDK check style'],
+        // styles is required, though the spec does not say so: an object of elements and their properties.
+        'create' => ['name' => 'SDK check style', 'styles' => ['elements' => []]],
         'update' => ['name' => 'SDK check style, renamed'],
     ],
     'document_types' => [
         'tier' => 1,
-        'create' => ['name' => 'SDK check document type', 'exportable_type_id' => 1, 'document_style_id' => '{created:document_styles}'],
+        // locale is required, though the spec does not say so.
+        'create' => ['name' => 'SDK check document type', 'exportable_type_id' => 1, 'locale' => 'en_US', 'document_template_id' => 1, 'document_style_id' => '{created:document_styles}'],
         'update' => ['name' => 'SDK check document type, renamed'],
         'cleanup' => 'archive',
     ],
@@ -110,7 +116,8 @@ return [
     ],
     'widgets' => [
         'tier' => 1,
-        'create' => ['title' => 'SDK check widget', 'height' => 2, 'width' => 2, 'widget_type_id' => 1, 'dashboard_id' => '{created:dashboards}'],
+        // column_position and row_position are required, though the spec does not say so.
+        'create' => ['title' => 'SDK check widget', 'height' => 2, 'width' => 2, 'column_position' => 0, 'row_position' => 0, 'widget_type_id' => 1, 'dashboard_id' => '{created:dashboards}'],
         'update' => ['title' => 'SDK check widget, renamed'],
     ],
     'teams' => [
@@ -127,6 +134,8 @@ return [
         'create' => ['name' => 'SDK check policy'],
         'update' => ['name' => 'SDK check policy, renamed'],
         'actions' => ['archive' => null, 'restore' => null],
+        // An active policy cannot be deleted (409 Conflict): it is archived first.
+        'cleanup' => ['archive', 'destroy'],
     ],
     'service_types' => [
         'tier' => 1,
@@ -136,7 +145,8 @@ return [
     ],
     'roles' => [
         'tier' => 1,
-        'create' => ['name' => 'SDK check role', 'user_type_id' => 1],
+        // base_role_id (the built-in role it extends: 1 admin, 3 staff, ...) is required, though the spec does not say so.
+        'create' => ['name' => 'SDK check role', 'user_type_id' => 1, 'base_role_id' => 3],
         'update' => ['name' => 'SDK check role, renamed'],
     ],
     'report_categories' => [

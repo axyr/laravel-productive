@@ -41,7 +41,7 @@ it('widgets.show: GET /widgets/{id}', function () {
 it('widgets.create: POST /widgets', function () {
     fakeHttp(['*' => Fixtures::response('widgets-create', 'resource', 'widgets', 201)]);
 
-    $result = Productive::widgets()->create(['height' => 1, 'width' => 1, 'widget_type_id' => 1, 'dashboard_id' => 1]);
+    $result = Productive::widgets()->create(['height' => 1, 'width' => 1, 'widget_type_id' => 1, 'dashboard_id' => 1, 'column_position' => 1, 'row_position' => 1]);
 
     expect($result)->toBeInstanceOf(Widget::class);
     Http::assertSent(function (HttpRequest $request): bool {
@@ -50,7 +50,7 @@ it('widgets.create: POST /widgets', function () {
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('widgets')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'widgets', 'attributes' => ['height' => 1, 'width' => 1, 'widget_type_id' => 1, 'dashboard_id' => 1]]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'widgets', 'attributes' => ['height' => 1, 'width' => 1, 'widget_type_id' => 1, 'dashboard_id' => 1, 'column_position' => 1, 'row_position' => 1]]];
     });
 });
 

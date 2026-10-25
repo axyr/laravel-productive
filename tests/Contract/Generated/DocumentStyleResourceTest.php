@@ -41,7 +41,7 @@ it('document_styles.show: GET /document_styles/{id}', function () {
 it('document_styles.create: POST /document_styles', function () {
     fakeHttp(['*' => Fixtures::response('document_styles-create', 'resource', 'document_styles', 201)]);
 
-    $result = Productive::documentStyles()->create(['attachment_ids' => [1]]);
+    $result = Productive::documentStyles()->create(['styles' => [1 => 'value']]);
 
     expect($result)->toBeInstanceOf(DocumentStyle::class);
     Http::assertSent(function (HttpRequest $request): bool {
@@ -50,7 +50,7 @@ it('document_styles.create: POST /document_styles', function () {
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('document_styles')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'document_styles', 'attributes' => ['attachment_ids' => [1]]]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'document_styles', 'attributes' => ['styles' => [1 => 'value']]]];
     });
 });
 

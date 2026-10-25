@@ -36,7 +36,7 @@ function writeApi(): Api
     ));
 
     return new Api([
-        $resource('holiday_calendars', 'holiday_calendars', ['create', 'update', 'destroy']),
+        $resource('holiday_calendars', 'holiday_calendars', ['create', 'update', 'destroy', 'archive']),
         $resource('holidays', 'holidays', ['create', 'update', 'destroy']),
         $resource('tax_rates', 'tax_rates', ['create', 'archive', 'restore', 'send', 'merge']),
         $resource('invitations', 'invitations', ['create']),
@@ -76,6 +76,15 @@ it('plans each recipe as a create, an update and its actions, then cleans up in 
         ->and($steps[6]->onCreated)->toBeTrue();
 });
 
+it('runs a cleanup of several steps in their order, such as archive before destroy', function () {
+    $steps = WritePlan::steps(writeApi(), [
+        'holiday_calendars' => ['create' => ['name' => 'SDK check'], 'cleanup' => ['archive', 'none', 'destroy']],
+        'holidays' => ['create' => ['name' => 'SDK check'], 'cleanup' => ['none']],
+    ]);
+
+    expect(stepKeys($steps))->toBe(['holiday_calendars.create', 'holidays.create', 'holiday_calendars.archive (cleanup)', 'holiday_calendars.destroy (cleanup)']);
+});
+
 it('plans one tier or one resource, and leaves out a cleanup of none', function () {
     $recipes = [
         'holiday_calendars' => ['tier' => 1, 'create' => ['name' => 'SDK check'], 'cleanup' => 'none'],
@@ -83,8 +92,9 @@ it('plans one tier or one resource, and leaves out a cleanup of none', function 
     ];
 
     expect(stepKeys(WritePlan::steps(writeApi(), $recipes, tier: 1)))->toBe(['holiday_calendars.create'])
-        ->and(stepKeys(WritePlan::steps(writeApi(), $recipes, resource: 'holidays')))->toBe(['holidays.create', 'holidays.destroy (cleanup)'])
-        ->and(WritePlan::steps(writeApi(), $recipes, tier: 1, resource: 'holidays'))->toBe([]);
+        ->and(stepKeys(WritePlan::steps(writeApi(), $recipes, resources: ['holidays'])))->toBe(['holidays.create', 'holidays.destroy (cleanup)'])
+        ->and(stepKeys(WritePlan::steps(writeApi(), $recipes, resources: ['holidays', 'holiday_calendars'])))->toBe(['holiday_calendars.create', 'holidays.create', 'holidays.destroy (cleanup)'])
+        ->and(WritePlan::steps(writeApi(), $recipes, tier: 1, resources: ['holidays']))->toBe([]);
 });
 
 it('refuses recipes it cannot or may not run', function (array $recipes, string $message) {
@@ -96,6 +106,7 @@ it('refuses recipes it cannot or may not run', function (array $recipes, string 
     'a sending action' => [['tax_rates' => ['create' => [], 'actions' => ['send' => null]]], 'The recipe of "tax_rates" may not run "send": it sends something out of Productive.'],
     'an unknown cleanup' => [['holidays' => ['create' => [], 'cleanup' => 'shred']], 'The recipe of "holidays" has cleanup "shred": use destroy, archive or none.'],
     'a cleanup that is not a string' => [['holidays' => ['create' => [], 'cleanup' => 5]], 'The recipe of "holidays" has cleanup "int": use destroy, archive or none.'],
+    'an unknown step in a cleanup list' => [['holidays' => ['create' => [], 'cleanup' => ['destroy', 'shred']]], 'The recipe of "holidays" has cleanup "shred": use destroy, archive or none.'],
     'no create' => [['holidays' => []], 'A recipe\'s create, update and action attributes must be arrays.'],
     'action attributes that are not an array' => [['tax_rates' => ['create' => [], 'actions' => ['merge' => 'all']]], 'A recipe\'s create, update and action attributes must be arrays.'],
 ]);

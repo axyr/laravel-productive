@@ -236,7 +236,7 @@ It is also the first real check of the write side. It found creates whose requir
 ```bash
 composer record:writes -- --tier=1                    # dry run: reads what the recipes refer to, prints every request
 composer record:writes -- --tier=1 --execute          # run it, recorded to recordings/writes-<date-time>/
-composer record:writes -- --resource=holidays --execute
+composer record:writes -- --resource=dashboards,widgets --execute   # several, in recipe order
 composer record:writes -- --tier=1 --execute --keep   # keep what it created, to inspect
 ```
 
