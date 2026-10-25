@@ -1,9 +1,11 @@
 name: Mutation testing
 
-# Mutates the package core (src/, about an hour) nightly and on demand, at a 100% gate that blocks
-# pull requests through the CI check. The generator is not part of the nightly: its output is pinned
-# by the emitter tests, the drift check, and the input-schema, spec-consistency and hydration tests.
-# Mutate it by hand when changing it: `composer test:mutate -- --scope=generator` (PLAN.md, step 7).
+# Mutates the package core (src/) nightly and on demand, at a 100% gate that blocks pull requests
+# through the CI check. The files are split over six jobs, balanced by size, that run side by side:
+# about ten minutes instead of an hour. The run succeeds only when every shard does. The generator
+# is not part of the nightly: its output is pinned by the emitter tests, the drift check, and the
+# input-schema, spec-consistency and hydration tests. A pull request mutates the files it changes,
+# generator included, in CI ("Mutation testing of the changed files").
 
 on:
   schedule:
@@ -13,8 +15,12 @@ on:
 jobs:
   mutation:
     runs-on: ubuntu-latest
-    name: Mutation testing (core, 100%)
-    timeout-minutes: 240
+    name: Mutation testing (core, shard ${{ matrix.shard }}/6, 100%)
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
 
     steps:
       - uses: actions/checkout@v4
@@ -31,4 +37,4 @@ jobs:
         run: composer update --prefer-stable --prefer-dist --no-interaction
 
       - name: Mutation testing
-        run: php generator/bin/mutate --scope=core
+        run: php generator/bin/mutate --scope=core --shard=${{ matrix.shard }}/6
