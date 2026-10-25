@@ -39,12 +39,19 @@
         "comments.index": 200,
         "comments.index.include": 200,
         "comments.show": 200,
+        "companies.archive": 200,
+        "companies.create": 201,
         "companies.index": 200,
         "companies.index.include": 200,
+        "companies.restore": 200,
         "companies.show": 200,
+        "companies.update": 200,
+        "contact_entries.create": 201,
+        "contact_entries.destroy": 204,
         "contact_entries.index": 200,
         "contact_entries.index.include": 200,
         "contact_entries.show": 200,
+        "contact_entries.update": 200,
         "contracts.index": 200,
         "contracts.index.include": 200,
         "contracts.show": 200,
@@ -74,20 +81,30 @@
         "dashboards.index.include": 200,
         "dashboards.show": 200,
         "dashboards.update": 200,
+        "deal_cost_rates.create": 201,
+        "deal_cost_rates.destroy": 204,
         "deal_cost_rates.index": 200,
         "deal_cost_rates.index.include": 200,
         "deal_cost_rates.show": 200,
+        "deal_cost_rates.update": 200,
         "deal_statuses.archive": 200,
         "deal_statuses.create": 201,
-        "deal_statuses.destroy": 204,
+        "deal_statuses.destroy": 409,
         "deal_statuses.index": 200,
         "deal_statuses.index.include": 200,
         "deal_statuses.merge": 404,
         "deal_statuses.show": 200,
         "deal_statuses.update": 200,
+        "deals.close": 200,
+        "deals.copy": 201,
+        "deals.create": 201,
+        "deals.create_from_origin": 201,
+        "deals.destroy": 204,
         "deals.index": 200,
         "deals.index.include": 200,
+        "deals.open": 200,
         "deals.show": 200,
+        "deals.update": 200,
         "deleted_items.index": 200,
         "discussions.index": 200,
         "discussions.index.include": 200,
@@ -204,9 +221,15 @@
         "payments.index": 200,
         "payments.index.include": 200,
         "payments.show": 200,
+        "people.archive": 200,
+        "people.create": 201,
         "people.index": 200,
         "people.index.include": 200,
+        "people.merge": 422,
+        "people.restore": 200,
         "people.show": 200,
+        "people.update": 200,
+        "people.virtualize": 409,
         "pipelines.create": 201,
         "pipelines.destroy": 204,
         "pipelines.index": 200,
@@ -219,28 +242,43 @@
         "placeholders.index": 200,
         "placeholders.index.include": 200,
         "placeholders.show": 200,
+        "prices.create": 201,
+        "prices.destroy": 204,
         "prices.index": 200,
         "prices.index.include": 200,
         "prices.show": 200,
+        "prices.update": 200,
         "project_preferences.index": 200,
         "project_preferences.index.include": 200,
         "project_preferences.show": 200,
+        "projects.create": 201,
+        "projects.destroy": 204,
         "projects.index": 200,
         "projects.index.include": 200,
         "projects.show": 200,
+        "proposals.create": 201,
+        "proposals.destroy": 204,
         "proposals.index": 200,
         "proposals.index.include": 200,
         "proposals.show": 200,
         "proposals.signed_pdf": 404,
+        "proposals.sync": 200,
         "proposals.sync_status": 200,
+        "proposals.update": 200,
         "public.pages.show": 200,
         "pulses.index": 200,
         "purchase_orders.index": 200,
         "purchase_orders.index.include": 200,
         "purchase_orders.show": 200,
+        "rate_cards.archive": 200,
+        "rate_cards.copy": 201,
+        "rate_cards.create": 201,
+        "rate_cards.destroy": 204,
         "rate_cards.index": 200,
         "rate_cards.index.include": 200,
+        "rate_cards.restore": 200,
         "rate_cards.show": 200,
+        "rate_cards.update": 200,
         "report_categories.create": 201,
         "report_categories.destroy": 204,
         "report_categories.index": 200,
@@ -424,9 +462,12 @@
         "skills.index": 200,
         "skills.index.include": 200,
         "skills.show": 200,
+        "subsidiaries.archive": 200,
+        "subsidiaries.create": 201,
         "subsidiaries.index": 200,
         "subsidiaries.index.include": 200,
         "subsidiaries.show": 200,
+        "subsidiaries.update": 200,
         "survey_field_options.index": 200,
         "survey_field_options.index.include": 200,
         "survey_field_options.show": 200,
@@ -640,6 +681,10 @@
             "budget_ids",
             "display_format",
             "invoicing_method"
+        ],
+        "people.merge": [
+            "loser",
+            "winner"
         ],
         "roles.create": [
             "base_role_id"
@@ -2147,6 +2192,7 @@
         "companies": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "avatar_url": [
@@ -3145,6 +3191,7 @@
                     "bool"
                 ],
                 "closed_at": [
+                    "date-time",
                     "null"
                 ],
                 "color_id": [
@@ -3213,6 +3260,7 @@
                     "null"
                 ],
                 "delivered_on": [
+                    "date",
                     "null"
                 ],
                 "discount": [
@@ -7699,6 +7747,7 @@
                     "null"
                 ],
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "autotracking": [
@@ -7720,6 +7769,7 @@
                 ],
                 "contact": [
                     "empty",
+                    "null",
                     "object"
                 ],
                 "created_at": [
@@ -8307,7 +8357,8 @@
                     "string"
                 ],
                 "editor_config": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "estimated_cost": [
                     "int"
@@ -8624,6 +8675,7 @@
                 ],
                 "preferences": [
                     "empty",
+                    "null",
                     "object"
                 ],
                 "project_color_id": [
@@ -8878,7 +8930,8 @@
                     "null"
                 ],
                 "number": [
-                    "integer-string"
+                    "integer-string",
+                    "string"
                 ],
                 "password": [
                     "null"
@@ -9159,6 +9212,7 @@
         "rate_cards": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "created_at": [
@@ -10405,6 +10459,7 @@
         "subsidiaries": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "export_integration_type_id": [
@@ -10414,7 +10469,8 @@
                     "int"
                 ],
                 "facility_costs_breakdown": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "facility_costs_default": [
                     "int"
@@ -10426,6 +10482,7 @@
                     "null"
                 ],
                 "invoice_number_format": [
+                    "null",
                     "string"
                 ],
                 "invoice_number_scope": [

@@ -120,6 +120,7 @@ it('reads write runs by operation, the later status winning, and keeps what any 
             ['detail' => "can't be blank", 'source' => ['pointer' => 'data/relationships/project']],
             ['detail' => "can't be blank", 'source' => ['parameter' => 'title']],
             ['detail' => "can't be blank", 'source' => ['pointer' => 'data/attributes/Title']],
+            ['detail' => "can't be blank", 'meta' => ['if' => 'sales_pipeline?'], 'source' => ['pointer' => 'data/attributes/probability']],
             'junk',
         ]]],
         '2.tasks.update' => ['status' => 400, 'body' => ['errors' => [['detail' => "can't be blank", 'source' => ['pointer' => 'data/attributes/title']]]]],
