@@ -55,10 +55,13 @@ $git = fn(string $key): string => trim((string) shell_exec('git -C ' . escapeshe
 $terms = [
     'the organization ID' => $env('PRODUCTIVE_ORGANIZATION_ID'),
     'the API token' => $env('PRODUCTIVE_API_TOKEN'),
-    'the webhook secrets' => $env('PRODUCTIVE_WEBHOOK_SECRET'),
     'the git user name' => $git('user.name'),
     'the git user email' => $git('user.email'),
 ];
+
+foreach (array_values(array_filter(array_map(trim(...), explode(',', $env('PRODUCTIVE_WEBHOOK_SECRETS') . ',' . $env('PRODUCTIVE_WEBHOOK_SECRET'))))) as $index => $secret) {
+    $terms['webhook token #' . ($index + 1)] = $secret;
+}
 
 foreach (array_filter(array_map(trim(...), explode(',', $env('RECORDING_LEAK_TERMS')))) as $index => $term) {
     $terms['RECORDING_LEAK_TERMS #' . ($index + 1)] = $term;

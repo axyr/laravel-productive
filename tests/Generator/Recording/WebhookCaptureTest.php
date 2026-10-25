@@ -15,7 +15,7 @@ it('records a delivery with its raw body, redacted JSON and verified signature',
     $body = '{"event":"task.created","data":{"id":"1","type":"tasks","attributes":{"title":"Hi","api_token":"x"}}}';
     $headers = ['Content-Type' => 'application/json', 'Productive-Signature' => capturedSignature($body, 'tok'), 'Authorization' => 'Bearer mine', 'X-Custom' => 'yes'];
 
-    $recording = (new WebhookCapture('tok'))->record(new DateTimeImmutable('2026-10-23T12:00:00+02:00'), 'POST', '/hooks?x=1', $headers, $body, 200);
+    $recording = (new WebhookCapture(['tok']))->record(new DateTimeImmutable('2026-10-23T12:00:00+02:00'), 'POST', '/hooks?x=1', $headers, $body, 200);
 
     expect($recording)->toBe([
         'received_at' => '2026-10-23T12:00:00+02:00',
@@ -29,7 +29,7 @@ it('records a delivery with its raw body, redacted JSON and verified signature',
 });
 
 it('tells a hex signature from a base64 one, and an invalid one', function (string $header, string|false $valid) {
-    $recording = (new WebhookCapture('tok'))->record(new DateTimeImmutable(), 'POST', '/', ['productive-signature' => $header], '{}', 500);
+    $recording = (new WebhookCapture(['tok']))->record(new DateTimeImmutable(), 'POST', '/', ['productive-signature' => $header], '{}', 500);
 
     expect($recording['signature']['valid'])->toBe($valid)
         ->and($recording['responded_with'])->toBe(500);
@@ -39,6 +39,14 @@ it('tells a hex signature from a base64 one, and an invalid one', function (stri
     'wrong secret' => [capturedSignature('{}', 'other'), false],
     'wrong timestamp' => ['t=1,' . explode(',', capturedSignature('{}', 'tok'))[1], false],
 ]);
+
+it('checks the signature against every webhook token it knows, since each webhook has its own', function () {
+    $capture = new WebhookCapture(['first', 'second', 'third']);
+
+    expect($capture->record(new DateTimeImmutable(), 'POST', '/', ['Productive-Signature' => capturedSignature('{}', 'second')], '{}', 200)['signature']['valid'])->toBe('hex')
+        ->and($capture->record(new DateTimeImmutable(), 'POST', '/', ['Productive-Signature' => capturedSignature('{}', 'third', base64: true)], '{}', 200)['signature']['valid'])->toBe('base64')
+        ->and($capture->record(new DateTimeImmutable(), 'POST', '/', ['Productive-Signature' => capturedSignature('{}', 'fourth')], '{}', 200)['signature']['valid'])->toBeFalse();
+});
 
 it('does not check a signature without the token, and records none without the header', function () {
     $capture = new WebhookCapture();

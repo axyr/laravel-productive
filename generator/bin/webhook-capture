@@ -7,8 +7,9 @@ declare(strict_types=1);
  * Receives webhook deliveries from Productive and writes each one to recordings/webhooks-<date-time>/.
  * Run it, expose the port with a tunnel (`cloudflared tunnel --url http://127.0.0.1:8787`), and use
  * the tunnel's URL as the webhook's target URL in Productive. Every delivery is answered with 200,
- * or 500 with `--fail`, to make Productive log and retry it. With PRODUCTIVE_WEBHOOK_SECRET in .env
- * (the webhook's signature token, shown in Productive's webhook logs) each delivery is also verified.
+ * or 500 with `--fail`, to make Productive log and retry it. With the webhooks' signature tokens in
+ * .env (PRODUCTIVE_WEBHOOK_SECRETS, comma separated, as the receiver reads them; each webhook has its
+ * own, shown under "View secret") each delivery is also verified. PRODUCTIVE_WEBHOOK_SECRET still works.
  *
  *   composer webhook:capture -- --port=8787 [--fail]
  *
@@ -23,7 +24,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 if (PHP_SAPI === 'cli-server') {
     $directory = (string) getenv('WEBHOOK_CAPTURE_DIR');
     $status = (int) getenv('WEBHOOK_CAPTURE_STATUS');
-    $secret = (string) getenv('PRODUCTIVE_WEBHOOK_SECRET');
+    $secrets = array_values(array_filter(explode(',', (string) getenv('WEBHOOK_CAPTURE_SECRETS'))));
     $headers = [];
 
     foreach ($_SERVER as $key => $value) {
@@ -38,7 +39,7 @@ if (PHP_SAPI === 'cli-server') {
         }
     }
 
-    $recording = (new WebhookCapture($secret === '' ? null : $secret))->record(
+    $recording = (new WebhookCapture($secrets))->record(
         new DateTimeImmutable(),
         (string) ($_SERVER['REQUEST_METHOD'] ?? 'GET'),
         (string) ($_SERVER['REQUEST_URI'] ?? '/'),
@@ -80,13 +81,20 @@ foreach (array_slice($argv, 1) as $argument) {
 $directory = $root . '/recordings/webhooks-' . date('Y-m-d-His');
 mkdir($directory, 0o700, true);
 
-$secret = $_ENV['PRODUCTIVE_WEBHOOK_SECRET'] ?? getenv('PRODUCTIVE_WEBHOOK_SECRET');
+$secrets = [];
+
+foreach (['PRODUCTIVE_WEBHOOK_SECRETS', 'PRODUCTIVE_WEBHOOK_SECRET'] as $key) {
+    $value = $_ENV[$key] ?? getenv($key);
+    $secrets = [...$secrets, ...array_filter(array_map(trim(...), explode(',', is_string($value) ? $value : '')))];
+}
+
+$secrets = array_values(array_unique($secrets));
 putenv('WEBHOOK_CAPTURE_DIR=' . $directory);
 putenv('WEBHOOK_CAPTURE_STATUS=' . $status);
-putenv('PRODUCTIVE_WEBHOOK_SECRET=' . (is_string($secret) ? $secret : ''));
+putenv('WEBHOOK_CAPTURE_SECRETS=' . implode(',', $secrets));
 
 echo "Capturing webhook deliveries on http://127.0.0.1:{$port}/ into {$directory}\n";
-echo 'Every delivery is answered with ' . $status . (is_string($secret) && $secret !== '' ? ' and its signature is checked' : '; set PRODUCTIVE_WEBHOOK_SECRET in .env to check signatures') . ".\n";
+echo 'Every delivery is answered with ' . $status . ($secrets !== [] ? ' and its signature is checked against ' . count($secrets) . ' webhook token' . (count($secrets) === 1 ? '' : 's') : '; set PRODUCTIVE_WEBHOOK_SECRETS in .env to check signatures') . ".\n";
 echo "Expose the port, e.g. `cloudflared tunnel --url http://127.0.0.1:{$port}`, and use that URL as the webhook's target URL. Ctrl-C stops.\n\n";
 
 passthru(sprintf('%s -S 127.0.0.1:%s %s', escapeshellarg(PHP_BINARY), escapeshellarg($port), escapeshellarg(__FILE__)), $code);
