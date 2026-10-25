@@ -21,7 +21,10 @@ final readonly class WebhookCapture
     /** Headers that would carry a credential of the receiver, blanked before anything is written. */
     private const array BLANKED = ['authorization', 'cookie', 'proxy-authorization', 'x-auth-token'];
 
-    public function __construct(private ?string $secret = null) {}
+    /**
+     * @param  list<string>  $secrets  The signature tokens of the webhooks that deliver here: each webhook has its own.
+     */
+    public function __construct(private array $secrets = []) {}
 
     /**
      * @param  array<string, string>  $headers
@@ -106,18 +109,32 @@ final readonly class WebhookCapture
         return null;
     }
 
+    /**
+     * The encoding that verifies with one of the tokens; false when none does, null without tokens.
+     */
     private function verify(string $timestamp, string $signature, string $body): string|false|null
     {
-        if ($this->secret === null) {
+        if ($this->secrets === []) {
             return null;
         }
 
-        $digest = hash_hmac('sha256', $timestamp . '.' . $body, $this->secret, true);
+        foreach ($this->secrets as $secret) {
+            $encoding = self::encoding(hash_hmac('sha256', $timestamp . '.' . $body, $secret, true), $signature);
 
+            if ($encoding !== null) {
+                return $encoding;
+            }
+        }
+
+        return false;
+    }
+
+    private static function encoding(string $digest, string $signature): ?string
+    {
         return match (true) {
             hash_equals(bin2hex($digest), $signature) => 'hex',
             hash_equals(base64_encode($digest), $signature) => 'base64',
-            default => false,
+            default => null,
         };
     }
 }
