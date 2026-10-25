@@ -8,7 +8,10 @@ declare(strict_types=1);
  * classes are left out: their faults come from the emitters, which are mutated here, and their
  * output is covered by the contract tests and the drift check (PLAN.md, Phase 4 step 7).
  * `--scope=core` mutates src/ only, `--scope=generator` generator/src/ only; the default is both.
- * The nightly runs the two scopes as parallel jobs. Other arguments are passed to Pest, e.g.
+ * `--changed=<ref>` keeps the files changed since that ref (`git diff <ref>...HEAD`), as a pull
+ * request does. `--shard=N/M` keeps the Nth of M shares, balanced by the seconds each file took
+ * (generator/config/mutation-weights.php), so M jobs can run side by side: the nightly runs six.
+ * Other arguments are passed to Pest, e.g.
  * `composer test:mutate -- --id=abc123`.
  */
 
@@ -21,18 +24,33 @@ chdir($root);
 
 $scopes = ['core' => ['src'], 'generator' => ['generator/src'], 'all' => ['src', 'generator/src']];
 $arguments = array_slice($argv, 1);
-$scope = 'all';
+$options = ['scope' => 'all', 'changed' => null, 'shard' => null];
 
 foreach ($arguments as $index => $argument) {
-    if (str_starts_with($argument, '--scope=')) {
-        $scope = substr($argument, strlen('--scope='));
-        unset($arguments[$index]);
+    foreach (array_keys($options) as $option) {
+        if (str_starts_with($argument, '--' . $option . '=')) {
+            $options[$option] = substr($argument, strlen('--' . $option . '='));
+            unset($arguments[$index]);
+        }
     }
 }
+
+$scope = $options['scope'];
 
 if (! isset($scopes[$scope])) {
     fwrite(STDERR, 'Unknown scope "' . $scope . '": use core, generator or all.' . "\n");
     exit(1);
+}
+
+$shard = null;
+
+if ($options['shard'] !== null) {
+    if (preg_match('/^(\d+)\/(\d+)$/', $options['shard'], $match) !== 1 || (int) $match[1] < 1 || (int) $match[1] > (int) $match[2]) {
+        fwrite(STDERR, 'Invalid shard "' . $options['shard'] . '": use N/M with 1 <= N <= M, e.g. 2/6.' . "\n");
+        exit(1);
+    }
+
+    $shard = ['index' => (int) $match[1], 'count' => (int) $match[2]];
 }
 
 $paths = [];
@@ -48,8 +66,46 @@ foreach ($scopes[$scope] as $directory) {
 }
 
 sort($paths);
+$label = $scope;
 
-echo 'Mutating ' . count($paths) . ' hand-written files (' . $scope . ").\n";
+if ($options['changed'] !== null) {
+    exec('git diff --name-only --diff-filter=AMR ' . escapeshellarg($options['changed'] . '...HEAD'), $changed, $status);
+
+    if ($status !== 0) {
+        fwrite(STDERR, 'Could not list the files changed since "' . $options['changed'] . '".' . "\n");
+        exit(1);
+    }
+
+    $paths = array_values(array_intersect($paths, $changed));
+    $label .= ', changed since ' . $options['changed'];
+}
+
+if ($shard !== null) {
+    // Slowest first, each to the share with the least time so far, by the measured seconds per file.
+    $weights = require $root . '/generator/config/mutation-weights.php';
+    $weight = fn(string $path): int => $weights[$path] ?? 30;
+    usort($paths, fn(string $a, string $b): int => $weight($b) <=> $weight($a) ?: strcmp($a, $b));
+    $shares = array_fill(1, $shard['count'], ['seconds' => 0, 'paths' => []]);
+
+    foreach ($paths as $path) {
+        $seconds = array_map(fn(array $share): int => $share['seconds'], $shares);
+        $lightest = array_search(min($seconds), $seconds, true);
+        $shares[$lightest]['seconds'] += $weight($path);
+        $shares[$lightest]['paths'][] = $path;
+    }
+
+    $paths = $shares[$shard['index']]['paths'];
+    sort($paths);
+    $label .= ', shard ' . $options['shard'];
+}
+
+// An empty --path would make Pest mutate everything, so nothing to mutate means done.
+if ($paths === []) {
+    echo 'No hand-written files to mutate (' . $label . ").\n";
+    exit(0);
+}
+
+echo 'Mutating ' . count($paths) . ' hand-written files (' . $label . ").\n";
 
 // Not --parallel: parallel mutation runs report escaped mutants as killed.
 $command = [
