@@ -9,8 +9,9 @@ declare(strict_types=1);
  * output is covered by the contract tests and the drift check (PLAN.md, Phase 4 step 7).
  * `--scope=core` mutates src/ only, `--scope=generator` generator/src/ only; the default is both.
  * `--changed=<ref>` keeps the files changed since that ref (`git diff <ref>...HEAD`), as a pull
- * request does. `--shard=N/M` keeps the Nth of M shares, balanced by file size, so M jobs can run
- * side by side: the nightly runs six. Other arguments are passed to Pest, e.g.
+ * request does. `--shard=N/M` keeps the Nth of M shares, balanced by the seconds each file took
+ * (generator/config/mutation-weights.php), so M jobs can run side by side: the nightly runs six.
+ * Other arguments are passed to Pest, e.g.
  * `composer test:mutate -- --id=abc123`.
  */
 
@@ -80,14 +81,16 @@ if ($options['changed'] !== null) {
 }
 
 if ($shard !== null) {
-    // Largest first, each to the lightest share so far: the shares get a similar amount of code.
-    usort($paths, fn(string $a, string $b): int => filesize($b) <=> filesize($a) ?: strcmp($a, $b));
-    $shares = array_fill(1, $shard['count'], ['size' => 0, 'paths' => []]);
+    // Slowest first, each to the share with the least time so far, by the measured seconds per file.
+    $weights = require $root . '/generator/config/mutation-weights.php';
+    $weight = fn(string $path): int => $weights[$path] ?? 30;
+    usort($paths, fn(string $a, string $b): int => $weight($b) <=> $weight($a) ?: strcmp($a, $b));
+    $shares = array_fill(1, $shard['count'], ['seconds' => 0, 'paths' => []]);
 
     foreach ($paths as $path) {
-        $sizes = array_map(fn(array $share): int => $share['size'], $shares);
-        $lightest = array_search(min($sizes), $sizes, true);
-        $shares[$lightest]['size'] += filesize($path);
+        $seconds = array_map(fn(array $share): int => $share['seconds'], $shares);
+        $lightest = array_search(min($seconds), $seconds, true);
+        $shares[$lightest]['seconds'] += $weight($path);
         $shares[$lightest]['paths'][] = $path;
     }
 

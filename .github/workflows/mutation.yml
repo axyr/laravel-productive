@@ -1,11 +1,12 @@
 name: Mutation testing
 
 # Mutates the package core (src/) nightly and on demand, at a 100% gate that blocks pull requests
-# through the CI check. The files are split over six jobs, balanced by size, that run side by side:
-# about ten minutes instead of an hour. The run succeeds only when every shard does. The generator
-# is not part of the nightly: its output is pinned by the emitter tests, the drift check, and the
-# input-schema, spec-consistency and hydration tests. A pull request mutates the files it changes,
-# generator included, in CI ("Mutation testing of the changed files").
+# through the CI check. The files are split over six jobs that run side by side, balanced by the
+# seconds each file took (generator/config/mutation-weights.php): about half an hour instead of an
+# hour, bounded by the config, which most tests cover. The run succeeds only when every shard does.
+# The generator is not part of the nightly: its output is pinned by the emitter tests, the drift
+# check, and the input-schema, spec-consistency and hydration tests. A pull request mutates the
+# files it changes, generator included, in CI ("Mutation testing of the changed files").
 
 on:
   schedule:

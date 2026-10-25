@@ -16,7 +16,7 @@ jobs:
     # Mutation testing of the whole core runs nightly, in six shards that succeed or fail as one
     # run. Unless the latest nightly run on main succeeded, pull requests are blocked, so the 100%
     # gate keeps its meaning. The PR that repairs a red run can unblock itself: start "Mutation
-    # testing" manually on the PR branch (about ten minutes), and a successful run for the PR's
+    # testing" manually on the PR branch (about half an hour), and a successful run for the PR's
     # head commit makes this check pass.
     #
     # MUTATION_GATE "paused" turns a red nightly into a warning, for when the gate itself needs
