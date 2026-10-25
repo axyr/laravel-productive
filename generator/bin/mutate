@@ -119,6 +119,16 @@ $command = [
     ...$arguments,
 ];
 
-passthru(implode(' ', array_map(escapeshellarg(...), $command)), $code);
+// Pest fails --min when the files hold nothing to mutate (a shard of only value objects), so
+// that run passes: there is no mutant to escape.
+$process = popen(implode(' ', array_map(escapeshellarg(...), $command)) . ' 2>&1', 'r');
+$unmutated = false;
 
-exit($code);
+while (($line = fgets($process)) !== false) {
+    echo $line;
+    $unmutated = $unmutated || str_contains($line, 'No mutations created.');
+}
+
+$code = pclose($process);
+
+exit($unmutated ? 0 : $code);
