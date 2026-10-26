@@ -54,13 +54,14 @@ it('sends the authentication, organization and JSON:API headers', function () {
         && $request->body() === '');
 });
 
-it('sends a JSON:API body with its content type', function (ContentType $contentType) {
+it('sends a JSON:API body with its content type, and accepts the same', function (ContentType $contentType) {
     fakeHttp(['*' => Http::response(['data' => null], 201)]);
 
     connector()->send(new Request(Method::Post, 'tasks', body: ['data' => ['type' => 'tasks', 'attributes' => ['estimate' => 1.0, 'url' => 'a/b']]], contentType: $contentType));
 
     Http::assertSent(fn(HttpRequest $request): bool => $request->method() === 'POST'
         && $request->header('Content-Type') === [$contentType->value]
+        && $request->header('Accept') === [$contentType->value]
         && $request->body() === '{"data":{"type":"tasks","attributes":{"estimate":1.0,"url":"a/b"}}}');
 })->with([ContentType::JsonApi, ContentType::JsonApiBulk]);
 

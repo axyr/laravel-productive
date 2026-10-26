@@ -10,7 +10,7 @@ use Axyr\Productive\Generator\Ir\ResponseKind;
 use Axyr\Productive\Generator\Recording\WritePlan;
 use Axyr\Productive\Generator\Recording\WriteStep;
 
-function writeOperation(string $key, string $method, string $path): Operation
+function writeOperation(string $key, string $method, string $path, bool $bulk = false): Operation
 {
     $kind = match (substr($key, strrpos($key, '.') + 1)) {
         'create' => OperationKind::Create,
@@ -19,7 +19,7 @@ function writeOperation(string $key, string $method, string $path): Operation
         default => OperationKind::Action,
     };
 
-    return new Operation($key, 'x', $kind, $method, $path, str_contains($path, '{id}') ? ['id'] : [], ResponseKind::Resource, false, true, $key);
+    return new Operation($key, 'x', $kind, $method, $path, str_contains($path, '{id}') ? ['id'] : [], ResponseKind::Resource, $bulk, true, $key);
 }
 
 function writeApi(): Api
@@ -41,6 +41,10 @@ function writeApi(): Api
         $resource('holidays', 'holidays', ['create', 'update', 'destroy']),
         $resource('tax_rates', 'tax_rates', ['create', 'archive', 'restore', 'send', 'merge']),
         $resource('invitations', 'invitations', ['create']),
+        new Resource('time_entries', 'X', 'X', 'time_entries', null, [
+            writeOperation('time_entries.create_bulk', 'POST', 'time_entries', bulk: true),
+            writeOperation('time_entries.approve_bulk', 'PATCH', 'time_entries/approve', bulk: true),
+        ]),
     ], []);
 }
 
@@ -109,6 +113,29 @@ it('makes a second record of a resource under a label, with the create or anothe
         ->and($steps[4]->attributes)->toBe(['target_id' => '{created:holiday_calendars}']);
 });
 
+it('points a bulk operation at the record the run created, though its path names none', function () {
+    $steps = WritePlan::steps(writeApi(), [
+        'time_entries' => ['create_with' => 'create_bulk', 'create' => ['note' => 'SDK check'], 'actions' => ['approve_bulk' => null], 'cleanup' => 'none'],
+    ]);
+
+    expect(stepKeys($steps))->toBe(['time_entries.create_bulk', 'time_entries.approve_bulk'])
+        ->and($steps[0]->onCreated)->toBeFalse()
+        ->and($steps[0]->creates)->toBeTrue()
+        ->and($steps[1]->onCreated)->toBeTrue();
+});
+
+it('acts on the record of another recipe later in the run, and leaves the cleanup to that recipe', function () {
+    $steps = WritePlan::steps(writeApi(), [
+        'tax_rates' => ['create' => ['name' => 'SDK check'], 'cleanup' => 'archive'],
+        'holidays' => ['create' => ['name' => 'SDK check']],
+        'tax_rates#restored' => ['on' => 'tax_rates', 'actions' => ['restore' => null]],
+    ]);
+
+    expect(stepKeys($steps))->toBe(['tax_rates.create', 'holidays.create', 'tax_rates.restore', 'holidays.destroy (cleanup)', 'tax_rates.archive (cleanup)'])
+        ->and($steps[2]->resource)->toBe('tax_rates')
+        ->and($steps[2]->onCreated)->toBeTrue();
+});
+
 it('plans one tier or one resource, and leaves out a cleanup of none', function () {
     $recipes = [
         'holiday_calendars' => ['tier' => 1, 'create' => ['name' => 'SDK check'], 'cleanup' => 'none'],
@@ -135,6 +162,7 @@ it('refuses recipes it cannot or may not run', function (array $recipes, string 
     'a cleanup that is not a string' => [['holidays' => ['create' => [], 'cleanup' => 5]], 'The recipe of "holidays" has cleanup "int": use destroy, archive or none.'],
     'an unknown step in a cleanup list' => [['holidays' => ['create' => [], 'cleanup' => ['destroy', 'shred']]], 'The recipe of "holidays" has cleanup "shred": use destroy, archive or none.'],
     'no create' => [['holidays' => []], 'A recipe\'s create, update and action attributes must be arrays.'],
+    'acting on a record of another resource' => [['tax_rates#restored' => ['on' => 'holidays', 'actions' => []]], 'The recipe of "tax_rates#restored" acts on "holidays", a recipe of another resource.'],
     'action attributes that are not an array' => [['tax_rates' => ['create' => [], 'actions' => ['merge' => 'all']]], 'A recipe\'s create, update and action attributes must be arrays.'],
 ]);
 

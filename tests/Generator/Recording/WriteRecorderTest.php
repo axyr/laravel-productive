@@ -10,6 +10,7 @@ use Axyr\Productive\Generator\Ir\OperationKind;
 use Axyr\Productive\Generator\Ir\ResponseKind;
 use Axyr\Productive\Generator\Recording\WriteRecorder;
 use Axyr\Productive\Generator\Recording\WriteStep;
+use Axyr\Productive\Http\ContentType;
 use Axyr\Productive\Http\Request;
 use Axyr\Productive\Http\Response;
 
@@ -35,11 +36,11 @@ final class WriteTestConnector implements ConnectorInterface
     }
 }
 
-function writerStep(string $key, string $method, string $path, ?array $attributes, bool $onCreated = false, bool $creates = false, bool $cleanup = false): WriteStep
+function writerStep(string $key, string $method, string $path, ?array $attributes, bool $onCreated = false, bool $creates = false, bool $cleanup = false, bool $bulk = false): WriteStep
 {
     $resource = substr($key, 0, (int) strpos($key, '.'));
 
-    return new WriteStep(new Operation($key, 'x', OperationKind::Action, $method, $path, [], ResponseKind::Resource, false, true, $key), $resource, $resource, $attributes, $onCreated, $creates, $cleanup);
+    return new WriteStep(new Operation($key, 'x', OperationKind::Action, $method, $path, [], ResponseKind::Resource, $bulk, true, $key), $resource, $resource, $attributes, $onCreated, $creates, $cleanup);
 }
 
 /**
@@ -139,6 +140,56 @@ it('skips a step whose reference has no record, saying which', function () {
         ->and(iterator_to_array((new WriteRecorder($forbidden, '2025-01-15'))->run([calendarSteps()[0]], execute: false))['001.holiday_calendars.create']['skipped'])->toStartWith('Could not list subsidiaries: ')
         ->and(iterator_to_array((new WriteRecorder($notCreated, '2025-01-15'))->run([calendarSteps()[2]], execute: true)))->toBe(['001.holidays.create' => ['skipped' => 'This run created no holiday_calendars.']])
         ->and($empty->sent)->toHaveCount(1);
+});
+
+it('sends a bulk operation as a one-item bulk document about the record the run created', function () {
+    $connector = new WriteTestConnector(fn(Request $request): Response => match ($request->method->value) {
+        'POST' => writerResponse(201, ['data' => [['id' => 31, 'type' => 'time_entries']]]),
+        'DELETE' => writerResponse(204),
+        default => writerResponse(200, ['data' => [['id' => '31', 'type' => 'time_entries']]]),
+    });
+    $steps = [
+        writerStep('time_entries.create_bulk', 'POST', 'time_entries', ['note' => 'SDK check'], creates: true, bulk: true),
+        writerStep('time_entries.update_bulk', 'PATCH', 'time_entries', ['note' => 'SDK check 2'], onCreated: true, bulk: true),
+        writerStep('time_entries.approve_bulk', 'PATCH', 'time_entries/approve', null, onCreated: true, bulk: true),
+        writerStep('time_entries.destroy_bulk', 'DELETE', 'time_entries', null, onCreated: true, cleanup: true, bulk: true),
+    ];
+    $emptyCreate = writerStep('time_entries.create_bulk', 'POST', 'time_entries', null, creates: true, bulk: true);
+
+    $dryRun = iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run($steps, execute: false));
+    iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run($steps, execute: true));
+
+    expect(iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run([$emptyCreate], execute: false))['001.time_entries.create_bulk']['request']['body'])->toBe(['data' => []])
+        ->and($dryRun['003.time_entries.approve_bulk']['request'])->toBe(['method' => 'PATCH', 'path' => 'time_entries/approve', 'body' => ['data' => [['type' => 'time_entries', 'id' => '{created:time_entries}']]]])
+        ->and(array_map(fn(Request $request): string => $request->method->value . ' ' . $request->path, $connector->sent))->toBe(['POST time_entries', 'PATCH time_entries', 'PATCH time_entries/approve', 'DELETE time_entries'])
+        ->and(array_map(fn(Request $request): ContentType => $request->contentType, $connector->sent))->each->toBe(ContentType::JsonApiBulk)
+        ->and(array_map(fn(Request $request): ?array => $request->body, $connector->sent))->toBe([
+            ['data' => [['type' => 'time_entries', 'attributes' => ['note' => 'SDK check']]]],
+            ['data' => [['type' => 'time_entries', 'id' => '31', 'attributes' => ['note' => 'SDK check 2']]]],
+            ['data' => [['type' => 'time_entries', 'id' => '31']]],
+            ['data' => [['type' => 'time_entries', 'id' => '31']]],
+        ]);
+});
+
+it('sends a single operation as a plain JSON:API document', function () {
+    $connector = writerApi();
+
+    iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run([calendarSteps()[0]], execute: true));
+
+    expect($connector->sent[1]->contentType)->toBe(ContentType::JsonApi);
+});
+
+it('reads the first record of a filtered list, apart from the unfiltered one', function () {
+    $connector = writerApi();
+    $steps = [writerStep('holidays.create', 'POST', 'holidays', ['person_id' => '{first:people?filter[role_id]=1}', 'other_id' => '{first:people}', 'task_id' => '{first:tasks?filter[title]=Why?}'])];
+
+    iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run($steps, execute: false));
+
+    expect(array_map(fn(Request $request): string => $request->path . '?' . $request->query . ' ' . $request->operation, $connector->sent))->toBe([
+        'people?filter[role_id]=1&page[size]=1 people.index',
+        'people?page[size]=1 people.index',
+        'tasks?filter[title]=Why?&page[size]=1 tasks.index',
+    ]);
 });
 
 it('reads a list once and remembers that it is empty', function () {

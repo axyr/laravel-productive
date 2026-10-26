@@ -48,7 +48,7 @@ Every Monday the **Spec drift** workflow (`.github/workflows/spec-drift.yml`) do
 
 Known spec quirks the SDK handles:
 
-- **Bulk operations replace their single-resource twins.** OpenAPI allows one operation per path and method, so `POST /time_entries` only appears as `time_entries-create-bulk`. The single variant uses the same path with `Content-Type: application/vnd.api+json`; the bulk variant uses `; ext=bulk`. The same applies to line items, expense line items, expenses and purchase orders.
+- **Bulk operations replace their single-resource twins.** OpenAPI allows one operation per path and method, so `POST /time_entries` only appears as `time_entries-create-bulk`. The single variant uses the same path with `Content-Type: application/vnd.api+json`; the bulk variant uses `; ext=bulk`, in `Accept` as well (without it Productive answers 400). The same applies to line items, expense line items, expenses and purchase orders.
 - **Create and update share one request schema**, including its `required` list. Update inputs make every field optional.
 - **`resource_*` schemas mix attributes with filter-only fields.** Response attributes are taken from the response schemas plus the response examples; request attributes come from the request body schemas.
 - **Relationship target types are not in the schema.** They come from the response examples, with a curated map for the rest.
@@ -240,7 +240,9 @@ composer record:writes -- --resource=dashboards,widgets --execute   # several, i
 composer record:writes -- --tier=1 --execute --keep   # keep what it created, to inspect
 ```
 
-- **Recipes** name their records "SDK check …" and refer to `{created:<recipe>}` (the record this run created), `{first:<path>}` (the first existing record) and `{date:+N}`. A step whose reference has no record is skipped and says why.
+- **Recipes** name their records "SDK check …" and refer to `{created:<recipe>}` (the record this run created), `{first:<path>}` (the first existing record; `{first:people?filter[role_id]=1}` filters the list first) and `{date:+N}`. A step whose reference has no record is skipped and says why.
+- **Bulk operations** (`create_bulk`, `update_bulk`, `approve_bulk`, ...) are sent with `ext=bulk` as a list of one: the attributes for a create, the created record's ID and attributes for an update, its identifier alone for an action or a delete.
+- **`on`** makes a recipe without a create that acts on another recipe's record later in the run, and leaves the cleanup to that recipe: time entries are approved only once a timesheet submitted their day, and none is made on a submitted day.
 - **A second record** of a resource has its own recipe, named `<path>#<label>`, such as `dashboards#copy`. `create_with` names the operation that makes it when that is not the create: `'create_with' => 'copy'`.
 - **Cleanup** is `destroy` by default, `archive` for a resource the API cannot delete, `none`, or a list such as `['archive', 'destroy']`. It also runs after a failed step; `--keep` leaves everything in place.
 - **Never written:** custom domains, e-invoice identities, emails, integrations, invitations, organization memberships and subscriptions, organizations, passwords, sessions and users, nor any action that sends (`WritePlan` refuses such a recipe).
