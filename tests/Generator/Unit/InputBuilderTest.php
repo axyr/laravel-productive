@@ -42,6 +42,15 @@ it('orders required attributes first, then the rest by name', function () {
         ->and(array_map(fn(Attribute $attribute): bool => $attribute->required, $input->attributes))->toBe([true, true, false, false]);
 });
 
+it('requires the ID attribute of a relationship a create answered blank for', function () {
+    $spec = new Spec(['components' => []]);
+    $builder = new InputBuilder($spec, new SchemaReader($spec), ['C' => ['subsidiary', 'note', 'unknown']]);
+    $input = $builder->build(['requestBody' => body(['properties' => ['attributes' => ['properties' => ['subsidiary_id' => [], 'note' => [], 'name' => []]]]])], 'C');
+
+    expect(names($input->attributes))->toBe(['subsidiary_id', 'note', 'name'])
+        ->and(array_map(fn(Attribute $attribute): bool => $attribute->required, $input->attributes))->toBe([true, true, false]);
+});
+
 it('ignores the required list for updates', function () {
     $input = inputBuilder()->build(['requestBody' => body(['properties' => ['attributes' => ['properties' => ['b' => [], 'a' => []], 'required' => ['b']]]])], 'U', allOptional: true);
 

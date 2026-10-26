@@ -26,12 +26,22 @@
         "attachments.index": 200,
         "attachments.index.include": 200,
         "attachments.show": 200,
+        "automatic_invoicing_rules.create": 201,
+        "automatic_invoicing_rules.destroy": 204,
         "automatic_invoicing_rules.index": 200,
         "automatic_invoicing_rules.index.include": 200,
         "automatic_invoicing_rules.show": 200,
+        "automatic_invoicing_rules.update": 200,
+        "bank_accounts.archive": 200,
+        "bank_accounts.create": 201,
         "bank_accounts.index": 200,
         "bank_accounts.index.include": 200,
+        "bank_accounts.restore": 200,
         "bank_accounts.show": 200,
+        "bank_accounts.update": 200,
+        "bills.create": 201,
+        "bills.destroy": 204,
+        "bills.update": 200,
         "boards.index": 404,
         "bookings.create": 201,
         "bookings.destroy": 204,
@@ -99,7 +109,7 @@
         "deal_cost_rates.update": 200,
         "deal_statuses.archive": 200,
         "deal_statuses.create": 201,
-        "deal_statuses.destroy": 409,
+        "deal_statuses.destroy": 204,
         "deal_statuses.index": 200,
         "deal_statuses.index.include": 200,
         "deal_statuses.merge": 404,
@@ -150,12 +160,27 @@
         "events.show": 200,
         "events.update": 200,
         "exchange_rates.index": 200,
+        "expense_line_items.create": 404,
+        "expense_line_items.create_bulk": 201,
+        "expense_line_items.destroy_bulk": 204,
         "expense_line_items.index": 200,
         "expense_line_items.index.include": 200,
         "expense_line_items.show": 200,
+        "expense_line_items.update_bulk": 200,
+        "expenses.approve": 200,
+        "expenses.bulk_approve": 200,
+        "expenses.copy": 201,
+        "expenses.create": 201,
+        "expenses.destroy": 204,
+        "expenses.destroy_bulk": 204,
         "expenses.index": 200,
         "expenses.index.include": 200,
+        "expenses.reject": 200,
         "expenses.show": 200,
+        "expenses.unapprove": 200,
+        "expenses.unreject": 409,
+        "expenses.update": 200,
+        "expenses.update_bulk": 200,
         "filters.create": 201,
         "filters.destroy": 204,
         "filters.index": 200,
@@ -187,9 +212,14 @@
         "integration_exporter_configurations.index": 200,
         "integration_task_management_configurations.index": 200,
         "integrations.index": 200,
+        "invoice_attributions.create": 201,
+        "invoice_attributions.destroy": 204,
         "invoice_attributions.index": 200,
         "invoice_attributions.index.include": 200,
         "invoice_attributions.show": 200,
+        "invoice_attributions.update": 200,
+        "invoice_templates.create": 201,
+        "invoice_templates.destroy": 204,
         "invoice_templates.index": 200,
         "invoice_templates.index.include.bank_account": 400,
         "invoice_templates.index.include.budget": 400,
@@ -198,10 +228,15 @@
         "invoice_templates.index.include.issuer": 400,
         "invoice_templates.index.include.organization+subsidiary": 200,
         "invoice_templates.show": 200,
+        "invoice_templates.update": 200,
+        "invoices.create": 201,
+        "invoices.destroy": 204,
+        "invoices.finalize": 200,
         "invoices.index": 200,
         "invoices.index.include": 200,
         "invoices.preview": 422,
         "invoices.show": 200,
+        "invoices.update": 200,
         "job_roles.archive": 200,
         "job_roles.create": 201,
         "job_roles.index": 200,
@@ -209,9 +244,16 @@
         "job_roles.restore": 200,
         "job_roles.show": 200,
         "job_roles.update": 200,
+        "line_items.create": 201,
+        "line_items.create_bulk": 201,
+        "line_items.destroy": 204,
+        "line_items.destroy_bulk": 204,
+        "line_items.generate": 422,
         "line_items.index": 200,
         "line_items.index.include": 200,
         "line_items.show": 200,
+        "line_items.update": 200,
+        "line_items.update_bulk": 200,
         "lost_reasons.archive": 200,
         "lost_reasons.create": 201,
         "lost_reasons.index": 200,
@@ -240,12 +282,18 @@
         "pages.index": 200,
         "pages.index.include": 200,
         "pages.show": 200,
+        "payment_reminder_sequences.create": 201,
+        "payment_reminder_sequences.destroy": 204,
         "payment_reminder_sequences.index": 200,
         "payment_reminder_sequences.index.include": 200,
         "payment_reminder_sequences.show": 200,
+        "payment_reminder_sequences.update": 200,
+        "payments.create": 201,
+        "payments.destroy": 204,
         "payments.index": 200,
         "payments.index.include": 200,
         "payments.show": 200,
+        "payments.update": 200,
         "people.archive": 200,
         "people.create": 201,
         "people.index": 200,
@@ -300,9 +348,15 @@
         "proposals.update": 200,
         "public.pages.show": 200,
         "pulses.index": 200,
+        "purchase_orders.copy": 201,
+        "purchase_orders.create": 201,
+        "purchase_orders.destroy": 204,
+        "purchase_orders.destroy_bulk": 204,
         "purchase_orders.index": 200,
         "purchase_orders.index.include": 200,
         "purchase_orders.show": 200,
+        "purchase_orders.update": 200,
+        "purchase_orders.update_bulk": 200,
         "rate_cards.archive": 200,
         "rate_cards.copy": 201,
         "rate_cards.create": 201,
@@ -467,9 +521,12 @@
         "resource_requests.resolve": 200,
         "resource_requests.show": 200,
         "resource_requests.update": 200,
+        "revenue_distributions.create": 201,
+        "revenue_distributions.destroy": 204,
         "revenue_distributions.index": 200,
         "revenue_distributions.index.include": 200,
         "revenue_distributions.show": 200,
+        "revenue_distributions.update": 200,
         "roles.create": 201,
         "roles.destroy": 204,
         "roles.index": 200,
@@ -769,10 +826,25 @@
         "document_types.create": [
             "locale"
         ],
+        "invoice_templates.create": [
+            "subsidiary"
+        ],
         "invoices.preview": [
             "budget_ids",
             "display_format",
             "invoicing_method"
+        ],
+        "line_items.create": [
+            "description",
+            "unit_id"
+        ],
+        "line_items.create_bulk": [
+            "description",
+            "unit"
+        ],
+        "line_items.generate": [
+            "invoice",
+            "tax_rate"
         ],
         "people.merge": [
             "loser",
@@ -1401,6 +1473,7 @@
         "bank_accounts": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "bank_address": [
@@ -1437,6 +1510,79 @@
                     "types": [
                         "subsidiaries"
                     ]
+                }
+            }
+        },
+        "bills": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "currency": [
+                    "string"
+                ],
+                "currency_default": [
+                    "string"
+                ],
+                "currency_normalized": [
+                    "string"
+                ],
+                "date": [
+                    "date"
+                ],
+                "deleted_at": [
+                    "null"
+                ],
+                "description": [
+                    "null"
+                ],
+                "due_date": [
+                    "date"
+                ],
+                "invoice_number": [
+                    "string"
+                ],
+                "total_cost": [
+                    "int"
+                ],
+                "total_cost_default": [
+                    "int"
+                ],
+                "total_cost_normalized": [
+                    "int"
+                ],
+                "total_received": [
+                    "int"
+                ],
+                "total_received_default": [
+                    "int"
+                ],
+                "total_received_normalized": [
+                    "int"
+                ]
+            },
+            "relationships": {
+                "attachment": {
+                    "to_many": null,
+                    "types": []
+                },
+                "creator": {
+                    "to_many": null,
+                    "types": []
+                },
+                "deal": {
+                    "to_many": null,
+                    "types": []
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                },
+                "purchase_order": {
+                    "to_many": null,
+                    "types": []
                 }
             }
         },
@@ -4346,7 +4492,8 @@
                     "bool"
                 ],
                 "approved_at": [
-                    "date-time"
+                    "date-time",
+                    "null"
                 ],
                 "billable_amount": [
                     "int"
@@ -5633,7 +5780,8 @@
                     "date-time"
                 ],
                 "creation_options": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "credited": [
                     "bool"
@@ -5690,6 +5838,7 @@
                     "null"
                 ],
                 "finalized_at": [
+                    "date-time",
                     "null"
                 ],
                 "finalized_on": [
@@ -5718,22 +5867,27 @@
                     "bool"
                 ],
                 "note": [
+                    "null",
                     "string"
                 ],
                 "note_interpolated": [
+                    "null",
                     "string"
                 ],
                 "number": [
+                    "null",
                     "string"
                 ],
                 "paid_on": [
                     "null"
                 ],
                 "pay_on": [
-                    "date"
+                    "date",
+                    "null"
                 ],
                 "payment_terms": [
-                    "int"
+                    "int",
+                    "null"
                 ],
                 "payment_terms_days": [
                     "null"
@@ -5758,10 +5912,12 @@
                     "empty"
                 ],
                 "tax1_name": [
+                    "null",
                     "string"
                 ],
                 "tax1_value": [
-                    "decimal-string"
+                    "decimal-string",
+                    "null"
                 ],
                 "tax2_name": [
                     "null"
@@ -6025,9 +6181,11 @@
                     "null"
                 ],
                 "tax_name": [
-                    "null"
+                    "null",
+                    "string"
                 ],
                 "tax_value": [
+                    "decimal-string",
                     "null"
                 ],
                 "unit_id": [

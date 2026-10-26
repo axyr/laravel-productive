@@ -22,6 +22,7 @@ final readonly class CreateLineItemData extends InputData
         public int $unitPrice,
         public float|int $quantity,
         public int|string $taxRateId,
+        public int|string $unitId,
         public float|int|Undefined|null $discount = Undefined::Value,
         public int|string|Undefined|null $expenseId = Undefined::Value,
         public int|string|Undefined|null $kpdCodeId = Undefined::Value,
@@ -31,7 +32,6 @@ final readonly class CreateLineItemData extends InputData
         public int|string|Undefined|null $serviceTypeId = Undefined::Value,
         public string|Undefined|null $taxName = Undefined::Value,
         public float|int|Undefined|null $taxValue = Undefined::Value,
-        public int|string|Undefined|null $unitId = Undefined::Value,
     ) {}
 
     public function toAttributes(): array
@@ -41,6 +41,7 @@ final readonly class CreateLineItemData extends InputData
             'unit_price' => $this->unitPrice,
             'quantity' => $this->quantity,
             'tax_rate_id' => $this->taxRateId,
+            'unit_id' => $this->unitId,
             'discount' => $this->discount,
             'expense_id' => $this->expenseId,
             'kpd_code_id' => $this->kpdCodeId,
@@ -50,7 +51,6 @@ final readonly class CreateLineItemData extends InputData
             'service_type_id' => $this->serviceTypeId,
             'tax_name' => $this->taxName,
             'tax_value' => $this->taxValue,
-            'unit_id' => $this->unitId,
         ]);
     }
 }

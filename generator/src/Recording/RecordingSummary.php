@@ -47,6 +47,98 @@ final class RecordingSummary
         return ['statuses' => $statuses, 'rejected_includes' => $rejected, 'required' => array_map(self::unique(...), $required), 'types' => $this->types()];
     }
 
+    /**
+     * The committed summary with a new one laid over it, so recordings made elsewhere, such as the
+     * write runs of another machine, are not lost: a new status replaces an old one, and every
+     * required attribute, rejected include, kind and relationship type of either is kept.
+     *
+     * @param  array<string, mixed>  $previous  As summarize() returned it, read back from JSON.
+     * @param  array{statuses: array<string, int>, rejected_includes: array<string, list<string>>, required: array<string, list<string>>, types: array<string, array{attributes: array<string, list<string>>, relationships: array<string, array{to_many: bool|null, types: list<string>}>}>}  $current
+     * @return array{statuses: array<string, int>, rejected_includes: array<string, list<string>>, required: array<string, list<string>>, types: array<string, array{attributes: array<string, list<string>>, relationships: array<string, array{to_many: bool|null, types: list<string>}>}>}
+     */
+    public static function merge(array $previous, array $current): array
+    {
+        /** @var array<string, int> $statuses */
+        $statuses = [...Json::map($previous['statuses'] ?? null), ...$current['statuses']];
+        ksort($statuses);
+
+        return [
+            'statuses' => $statuses,
+            'rejected_includes' => self::mergeLists(Json::map($previous['rejected_includes'] ?? null), $current['rejected_includes']),
+            'required' => self::mergeLists(Json::map($previous['required'] ?? null), $current['required']),
+            'types' => self::mergeTypes(Json::map($previous['types'] ?? null), $current['types']),
+        ];
+    }
+
+    /**
+     * @param  array<string, mixed>  $previous
+     * @param  array<string, list<string>>  $current
+     * @return array<string, list<string>>
+     */
+    private static function mergeLists(array $previous, array $current): array
+    {
+        $merged = $current;
+
+        foreach ($previous as $key => $values) {
+            $merged[$key] = self::unique([...Json::strings($values), ...$current[$key] ?? []]);
+        }
+
+        ksort($merged);
+
+        return $merged;
+    }
+
+    /**
+     * @param  array<string, mixed>  $previous
+     * @param  array<string, array{attributes: array<string, list<string>>, relationships: array<string, array{to_many: bool|null, types: list<string>}>}>  $current
+     * @return array<string, array{attributes: array<string, list<string>>, relationships: array<string, array{to_many: bool|null, types: list<string>}>}>
+     */
+    private static function mergeTypes(array $previous, array $current): array
+    {
+        $merged = $current;
+
+        foreach ($previous as $type => $seen) {
+            $seen = Json::map($seen);
+            $merged[$type] = [
+                'attributes' => self::mergeLists(Json::map($seen['attributes'] ?? null), $current[$type]['attributes'] ?? []),
+                'relationships' => self::mergeRelationships(Json::map($seen['relationships'] ?? null), $current[$type]['relationships'] ?? []),
+            ];
+        }
+
+        ksort($merged);
+
+        return $merged;
+    }
+
+    /**
+     * A relationship seen as a list stays to-many, and one seen with data keeps what it was seen as.
+     *
+     * @param  array<string, mixed>  $previous
+     * @param  array<string, array{to_many: bool|null, types: list<string>}>  $current
+     * @return array<string, array{to_many: bool|null, types: list<string>}>
+     */
+    private static function mergeRelationships(array $previous, array $current): array
+    {
+        $merged = $current;
+
+        foreach ($previous as $name => $relationship) {
+            $relationship = Json::map($relationship);
+            $now = $current[$name] ?? ['to_many' => null, 'types' => []];
+            $merged[$name] = ['to_many' => self::toMany($relationship['to_many'] ?? null, $now['to_many']), 'types' => self::unique([...Json::strings($relationship['types'] ?? null), ...$now['types']])];
+        }
+
+        ksort($merged);
+
+        return $merged;
+    }
+
+    private static function toMany(mixed $before, ?bool $now): ?bool
+    {
+        $before = is_bool($before) ? $before : null;
+
+        return $before === true || $now === true ? true : $now ?? $before;
+    }
+
     private static function operationKey(string $name): string
     {
         // The pattern is valid, so preg_replace cannot fail; the cast only tells static analysis.
