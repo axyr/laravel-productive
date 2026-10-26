@@ -16,6 +16,10 @@ declare(strict_types=1);
  * Tier 1, settings. Not in it: tags, which the API cannot write, and the merges of deal statuses
  * and service types, whose bodies no attempt found (generator/config/coverage.php). The copies
  * take template_id, the record to copy, which the spec does not document.
+ *
+ * Tier 2, CRM. Not in it: inviting or resending to a person, activating, deactivating or
+ * virtualizing one (a user's seat), regenerating recovery codes, and the merge of people, whose
+ * body no attempt found (generator/config/coverage.php).
  */
 return [
     'holiday_calendars' => [
@@ -182,5 +186,106 @@ return [
         'tier' => 1,
         'create' => ['name' => 'SDK check template', 'target_type' => 'project', 'target_id' => '{first:projects}', 'model_attributes' => ['name' => 'SDK check template project', 'project_type_id' => 1, 'project_manager_id' => '{first:people}', 'workflow_id' => '{first:workflows}']],
         'update' => ['name' => 'SDK check template, renamed'],
+    ],
+
+    'subsidiaries' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check subsidiary'],
+        'update' => ['name' => 'SDK check subsidiary, renamed'],
+        'cleanup' => 'archive',
+    ],
+    'companies' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check company', 'default_currency' => 'USD'],
+        'update' => ['name' => 'SDK check company, renamed'],
+        'actions' => ['archive' => null, 'restore' => null],
+        'cleanup' => 'archive',
+    ],
+    // A contact: a person of a client company, never invited, so without a role or an email.
+    'people' => [
+        'tier' => 2,
+        'create' => ['first_name' => 'SDK check', 'last_name' => 'contact', 'company_id' => '{created:companies}'],
+        'update' => ['last_name' => 'contact, renamed'],
+        'actions' => ['archive' => null, 'restore' => null],
+        'cleanup' => 'archive',
+    ],
+    'contact_entries' => [
+        'tier' => 2,
+        'create' => ['type' => 'phone', 'name' => 'SDK check phone', 'phone' => '0000000000', 'contactable_type' => 'person', 'person_id' => '{created:people}'],
+        'update' => ['name' => 'SDK check phone, renamed'],
+    ],
+    'deals' => [
+        'tier' => 2,
+        // A deal in a sales pipeline needs a deal status and a probability; a budget needs neither.
+        'create' => ['name' => 'SDK check deal', 'deal_type_id' => 2, 'date' => '{date:+0}', 'responsible_id' => '{first:people}', 'company_id' => '{created:companies}', 'currency' => 'USD', 'deal_status_id' => '{first:deal_statuses}', 'probability' => 50],
+        'update' => ['name' => 'SDK check deal, renamed'],
+    ],
+    'deals#budget' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check budget', 'budget' => true, 'deal_type_id' => 2, 'date' => '{date:+0}', 'responsible_id' => '{first:people}', 'company_id' => '{created:companies}', 'currency' => 'USD'],
+        'update' => ['name' => 'SDK check budget, renamed'],
+        // Only a budget closes and opens; a deal answers 409 "invalid_action".
+        'actions' => ['close' => null, 'open' => null],
+    ],
+    'deals#copy' => [
+        'tier' => 2,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:deals}', 'name' => 'SDK check deal copy'],
+    ],
+    // Only a won deal becomes a budget: an open one is "origin_deal attribute is invalid".
+    'deal_statuses#won' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check won', 'pipeline_id' => '{first:pipelines}', 'status_id' => 2, 'probability' => 100],
+        // A deleted deal still uses it (409 "deal_status_in_use"), so it is archived.
+        'cleanup' => 'archive',
+    ],
+    'deals#won' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check won deal', 'deal_type_id' => 2, 'date' => '{date:+0}', 'responsible_id' => '{first:people}', 'company_id' => '{created:companies}', 'currency' => 'USD', 'deal_status_id' => '{created:deal_statuses#won}', 'probability' => 100],
+    ],
+    // The client project the budget belongs to, of the deal's company.
+    'projects#budget' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check budget project', 'project_type_id' => 2, 'company_id' => '{created:companies}', 'project_manager_id' => '{first:people}', 'workflow_id' => '{first:workflows}'],
+    ],
+    'deals#from_origin' => [
+        'tier' => 2,
+        'create_with' => 'create_from_origin',
+        // A budget belongs to a project of the deal's company: any other is "project attribute is invalid".
+        'create' => ['origin_deal_id' => '{created:deals#won}', 'project_id' => '{created:projects#budget}'],
+    ],
+    'deal_cost_rates' => [
+        'tier' => 2,
+        'create' => ['deal_id' => '{created:deals#budget}', 'person_id' => '{first:people}', 'currency' => 'USD', 'rate_cents' => 5000],
+        'update' => ['rate_cents' => 6000],
+    ],
+    'rate_cards' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check rate card', 'company_id' => '{created:companies}'],
+        'update' => ['name' => 'SDK check rate card, renamed'],
+        'actions' => ['archive' => null, 'restore' => null],
+    ],
+    'rate_cards#copy' => [
+        'tier' => 2,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:rate_cards}', 'name' => 'SDK check rate card copy'],
+    ],
+    'prices' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check price', 'company_id' => '{created:companies}', 'rate_card_id' => '{created:rate_cards}', 'unit_id' => 1, 'currency' => 'USD', 'rate' => 100.0],
+        'update' => ['name' => 'SDK check price, renamed'],
+    ],
+    // A proposal needs a document type of kind 2 (proposal), which a {first:} reference cannot pick.
+    'document_types#proposal' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check proposal type', 'exportable_type_id' => 2, 'locale' => 'en_US', 'document_template_id' => 1, 'document_style_id' => '{first:document_styles}'],
+        'cleanup' => 'archive',
+    ],
+    // Never sent. document_type_id and status are required, though the spec documents no body.
+    'proposals' => [
+        'tier' => 2,
+        'create' => ['name' => 'SDK check proposal', 'deal_id' => '{created:deals}', 'document_type_id' => '{created:document_types#proposal}', 'status' => 'draft'],
+        'update' => ['name' => 'SDK check proposal, renamed'],
+        'actions' => ['sync' => null],
     ],
 ];

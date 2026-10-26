@@ -4,18 +4,18 @@
 
 Which operations the SDK has seen the live API answer. `composer record` records every GET of a test organization; writes are exercised by a live run that records their responses the same way. One row per operation of every generated resource, from the recording of 2026-10-23.
 
-**341 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
+**295 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
 
 | Status | Operations | Meaning |
 | --- | --- | --- |
 | recorded | 224 | A GET the recording answered with a success. |
-| exercised | 81 | A write a live run answered with a success. |
+| exercised | 119 | A write a live run answered with a success. |
 | empty list | 10 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
 | rejected | 2 | The API answered with an error; the status is shown. |
 | plan-gated | 0 | The test organization's plan does not include it. |
-| skipped | 14 | Left out on purpose; the reason is shown. |
+| skipped | 22 | Left out on purpose; the reason is shown. |
 | not recorded | 3 | A GET nothing has called yet. |
-| not exercised | 328 | A write nothing has called yet. |
+| not exercised | 282 | A write nothing has called yet. |
 
 ## `activities`
 
@@ -171,10 +171,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /companies` | `companies.index` | recorded `200` |
 | `GET /companies/{id}` | `companies.show` | recorded `200` |
-| `POST /companies` | `companies.create` | not exercised |
-| `PATCH /companies/{id}` | `companies.update` | not exercised |
-| `PATCH /companies/{id}/archive` | `companies.archive` | not exercised |
-| `PATCH /companies/{id}/restore` | `companies.restore` | not exercised |
+| `POST /companies` | `companies.create` | exercised `201` |
+| `PATCH /companies/{id}` | `companies.update` | exercised `200` |
+| `PATCH /companies/{id}/archive` | `companies.archive` | exercised `200` |
+| `PATCH /companies/{id}/restore` | `companies.restore` | exercised `200` |
 
 ## `contact_entries`
 
@@ -182,9 +182,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /contact_entries` | `contact_entries.index` | recorded `200` |
 | `GET /contact_entries/{id}` | `contact_entries.show` | recorded `200` |
-| `POST /contact_entries` | `contact_entries.create` | not exercised |
-| `PATCH /contact_entries/{id}` | `contact_entries.update` | not exercised |
-| `DELETE /contact_entries/{id}` | `contact_entries.destroy` | not exercised |
+| `POST /contact_entries` | `contact_entries.create` | exercised `201` |
+| `PATCH /contact_entries/{id}` | `contact_entries.update` | exercised `200` |
+| `DELETE /contact_entries/{id}` | `contact_entries.destroy` | exercised `204` |
 
 ## `contracts`
 
@@ -253,9 +253,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /deal_cost_rates` | `deal_cost_rates.index` | recorded `200` |
 | `GET /deal_cost_rates/{id}` | `deal_cost_rates.show` | recorded `200` |
-| `POST /deal_cost_rates` | `deal_cost_rates.create` | not exercised |
-| `PATCH /deal_cost_rates/{id}` | `deal_cost_rates.update` | not exercised |
-| `DELETE /deal_cost_rates/{id}` | `deal_cost_rates.destroy` | not exercised |
+| `POST /deal_cost_rates` | `deal_cost_rates.create` | exercised `201` |
+| `PATCH /deal_cost_rates/{id}` | `deal_cost_rates.update` | exercised `200` |
+| `DELETE /deal_cost_rates/{id}` | `deal_cost_rates.destroy` | exercised `204` |
 
 ## `deal_statuses`
 
@@ -265,7 +265,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | `GET /deal_statuses/{id}` | `deal_statuses.show` | recorded `200` |
 | `POST /deal_statuses` | `deal_statuses.create` | exercised `201` |
 | `PATCH /deal_statuses/{id}` | `deal_statuses.update` | exercised `200` |
-| `DELETE /deal_statuses/{id}` | `deal_statuses.destroy` | exercised `204` |
+| `DELETE /deal_statuses/{id}` | `deal_statuses.destroy` | rejected `409` |
 | `PATCH /deal_statuses/{id}/archive` | `deal_statuses.archive` | exercised `200` |
 | `PATCH /deal_statuses/merge` | `deal_statuses.merge` | skipped The body is undocumented, and `winner` and `loser` in its attributes answered 404 for two statuses the run created. |
 
@@ -275,13 +275,13 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /deals` | `deals.index` | recorded `200` |
 | `GET /deals/{id}` | `deals.show` | recorded `200` |
-| `POST /deals` | `deals.create` | not exercised |
-| `PATCH /deals/{id}` | `deals.update` | not exercised |
-| `DELETE /deals/{id}` | `deals.destroy` | not exercised |
-| `PATCH /deals/{id}/close` | `deals.close` | not exercised |
-| `POST /deals/copy` | `deals.copy` | not exercised |
-| `POST /deals/create_from_origin` | `deals.create_from_origin` | not exercised |
-| `PATCH /deals/{id}/open` | `deals.open` | not exercised |
+| `POST /deals` | `deals.create` | exercised `201` |
+| `PATCH /deals/{id}` | `deals.update` | exercised `200` |
+| `DELETE /deals/{id}` | `deals.destroy` | exercised `204` |
+| `PATCH /deals/{id}/close` | `deals.close` | exercised `200` |
+| `POST /deals/copy` | `deals.copy` | exercised `201` |
+| `POST /deals/create_from_origin` | `deals.create_from_origin` | exercised `201` |
+| `PATCH /deals/{id}/open` | `deals.open` | exercised `200` |
 
 ## `deleted_items`
 
@@ -686,17 +686,17 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /people` | `people.index` | recorded `200` |
 | `GET /people/{id}` | `people.show` | recorded `200` |
-| `POST /people` | `people.create` | not exercised |
-| `PATCH /people/{id}` | `people.update` | not exercised |
-| `PATCH /people/{id}/activate` | `people.activate` | not exercised |
-| `PATCH /people/{id}/archive` | `people.archive` | not exercised |
-| `PATCH /people/{id}/deactivate` | `people.deactivate` | not exercised |
-| `PATCH /people/{id}/invite` | `people.invite` | not exercised |
-| `PATCH /people/merge` | `people.merge` | not exercised |
-| `PATCH /people/{id}/regenerate_recovery_codes` | `people.regenerate_recovery_codes` | not exercised |
-| `PATCH /people/{id}/resend` | `people.resend` | not exercised |
-| `PATCH /people/{id}/restore` | `people.restore` | not exercised |
-| `PATCH /people/{id}/virtualize` | `people.virtualize` | not exercised |
+| `POST /people` | `people.create` | exercised `201` |
+| `PATCH /people/{id}` | `people.update` | exercised `200` |
+| `PATCH /people/{id}/activate` | `people.activate` | skipped Makes a person a user, which takes a seat of the subscription. |
+| `PATCH /people/{id}/archive` | `people.archive` | exercised `200` |
+| `PATCH /people/{id}/deactivate` | `people.deactivate` | skipped Frees a user's seat; the test organization has no user to spare. |
+| `PATCH /people/{id}/invite` | `people.invite` | skipped Sends an invitation email. |
+| `PATCH /people/merge` | `people.merge` | skipped The body is undocumented: an empty body answers 422 "can't be blank" for `winner` and `loser`, and so do those attributes as IDs and integers, as `winner_id` and `loser_id`, as relationships, as plain JSON and as query parameters. |
+| `PATCH /people/{id}/regenerate_recovery_codes` | `people.regenerate_recovery_codes` | skipped Replaces a user's two-factor recovery codes. |
+| `PATCH /people/{id}/resend` | `people.resend` | skipped Sends an invitation email again. |
+| `PATCH /people/{id}/restore` | `people.restore` | exercised `200` |
+| `PATCH /people/{id}/virtualize` | `people.virtualize` | skipped Only a user can be virtualized (a contact answers 409 `person_not_user`), and that changes the account. |
 
 ## `pipelines`
 
@@ -734,9 +734,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /prices` | `prices.index` | recorded `200` |
 | `GET /prices/{id}` | `prices.show` | recorded `200` |
-| `POST /prices` | `prices.create` | not exercised |
-| `PATCH /prices/{id}` | `prices.update` | not exercised |
-| `DELETE /prices/{id}` | `prices.destroy` | not exercised |
+| `POST /prices` | `prices.create` | exercised `201` |
+| `PATCH /prices/{id}` | `prices.update` | exercised `200` |
+| `DELETE /prices/{id}` | `prices.destroy` | exercised `204` |
 
 ## `project_preferences`
 
@@ -754,9 +754,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /projects` | `projects.index` | recorded `200` |
 | `GET /projects/{id}` | `projects.show` | recorded `200` |
-| `POST /projects` | `projects.create` | not exercised |
+| `POST /projects` | `projects.create` | exercised `201` |
 | `PATCH /projects/{id}` | `projects.update` | not exercised |
-| `DELETE /projects/{id}` | `projects.destroy` | not exercised |
+| `DELETE /projects/{id}` | `projects.destroy` | exercised `204` |
 | `PATCH /projects/{id}/apply_navigation_tabs` | `projects.apply_navigation_tabs` | not exercised |
 | `PATCH /projects/{id}/archive` | `projects.archive` | not exercised |
 | `PATCH /projects/{id}/change_workflow` | `projects.change_workflow` | not exercised |
@@ -771,11 +771,11 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /proposals` | `proposals.index` | recorded `200` |
 | `GET /proposals/{id}` | `proposals.show` | recorded `200` |
-| `POST /proposals` | `proposals.create` | not exercised |
-| `PATCH /proposals/{id}` | `proposals.update` | not exercised |
-| `DELETE /proposals/{id}` | `proposals.destroy` | not exercised |
-| `GET /proposals/{id}/signed_pdf` | `proposals.signed_pdf` | rejected `404` |
-| `PATCH /proposals/{id}/sync` | `proposals.sync` | not exercised |
+| `POST /proposals` | `proposals.create` | exercised `201` |
+| `PATCH /proposals/{id}` | `proposals.update` | exercised `200` |
+| `DELETE /proposals/{id}` | `proposals.destroy` | exercised `204` |
+| `GET /proposals/{id}/signed_pdf` | `proposals.signed_pdf` | skipped Only a signed proposal has one (an unsigned one answers 404), and only the client signs. |
+| `PATCH /proposals/{id}/sync` | `proposals.sync` | exercised `200` |
 | `GET /proposals/{id}/sync_status` | `proposals.sync_status` | recorded `200` |
 
 ## `public/artifacts`
@@ -831,12 +831,12 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /rate_cards` | `rate_cards.index` | recorded `200` |
 | `GET /rate_cards/{id}` | `rate_cards.show` | recorded `200` |
-| `POST /rate_cards` | `rate_cards.create` | not exercised |
-| `PATCH /rate_cards/{id}` | `rate_cards.update` | not exercised |
-| `DELETE /rate_cards/{id}` | `rate_cards.destroy` | not exercised |
-| `PATCH /rate_cards/{id}/archive` | `rate_cards.archive` | not exercised |
-| `POST /rate_cards/copy` | `rate_cards.copy` | not exercised |
-| `PATCH /rate_cards/{id}/restore` | `rate_cards.restore` | not exercised |
+| `POST /rate_cards` | `rate_cards.create` | exercised `201` |
+| `PATCH /rate_cards/{id}` | `rate_cards.update` | exercised `200` |
+| `DELETE /rate_cards/{id}` | `rate_cards.destroy` | exercised `204` |
+| `PATCH /rate_cards/{id}/archive` | `rate_cards.archive` | exercised `200` |
+| `POST /rate_cards/copy` | `rate_cards.copy` | exercised `201` |
+| `PATCH /rate_cards/{id}/restore` | `rate_cards.restore` | exercised `200` |
 
 ## `report_categories`
 
@@ -1124,9 +1124,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /subsidiaries` | `subsidiaries.index` | recorded `200` |
 | `GET /subsidiaries/{id}` | `subsidiaries.show` | recorded `200` |
-| `POST /subsidiaries` | `subsidiaries.create` | not exercised |
-| `PATCH /subsidiaries/{id}` | `subsidiaries.update` | not exercised |
-| `PATCH /subsidiaries/{id}/archive` | `subsidiaries.archive` | not exercised |
+| `POST /subsidiaries` | `subsidiaries.create` | exercised `201` |
+| `PATCH /subsidiaries/{id}` | `subsidiaries.update` | exercised `200` |
+| `PATCH /subsidiaries/{id}/archive` | `subsidiaries.archive` | exercised `200` |
 
 ## `survey_field_options`
 

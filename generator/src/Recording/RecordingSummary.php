@@ -54,7 +54,9 @@ final class RecordingSummary
     }
 
     /**
-     * A 422 whose errors say "can't be blank" names attributes the operation requires.
+     * A 422 whose errors say "can't be blank" names attributes the operation requires, unless the
+     * error's meta names the condition it applies under, such as a deal's probability in a sales
+     * pipeline ("if": "sales_pipeline?"), which a budget does without.
      *
      * @param  array<string, list<string>>  $required
      * @param  array<string, mixed>  $recording
@@ -79,11 +81,19 @@ final class RecordingSummary
     {
         $pointer = Json::map($error['source'] ?? null)['pointer'] ?? null;
 
-        if (($error['detail'] ?? null) !== "can't be blank" || ! is_string($pointer) || preg_match('/^\/?data\/attributes\/([a-z_]+)$/', $pointer, $match) !== 1) {
+        if (! self::isUnconditionallyBlank($error) || ! is_string($pointer) || preg_match('/^\/?data\/attributes\/([a-z_]+)$/', $pointer, $match) !== 1) {
             return null;
         }
 
         return $match[1];
+    }
+
+    /**
+     * @param  array<string, mixed>  $error
+     */
+    private static function isUnconditionallyBlank(array $error): bool
+    {
+        return ($error['detail'] ?? null) === "can't be blank" && ! isset(Json::map($error['meta'] ?? null)['if']);
     }
 
     private static function isSuccessful(int $status): bool
