@@ -33,12 +33,22 @@
         "bank_accounts.index.include": 200,
         "bank_accounts.show": 200,
         "boards.index": 404,
+        "bookings.create": 201,
+        "bookings.destroy": 204,
         "bookings.index": 200,
         "bookings.index.include": 200,
         "bookings.show": 200,
+        "bookings.update": 200,
+        "comments.add_reaction": 200,
+        "comments.create": 201,
+        "comments.destroy": 204,
         "comments.index": 200,
         "comments.index.include": 200,
+        "comments.pin": 200,
+        "comments.remove_reaction": 200,
         "comments.show": 200,
+        "comments.unpin": 200,
+        "comments.update": 200,
         "companies.archive": 200,
         "companies.create": 201,
         "companies.index": 200,
@@ -125,12 +135,20 @@
         "document_types.update": 200,
         "einvoice_identities.index": 200,
         "emails.index": 200,
+        "entitlements.create": 201,
+        "entitlements.destroy": 204,
         "entitlements.index": 200,
         "entitlements.index.include": 200,
         "entitlements.show": 200,
+        "entitlements.update": 200,
+        "events.archive": 200,
+        "events.create": 201,
+        "events.destroy": 204,
         "events.index": 200,
         "events.index.include": 200,
+        "events.restore": 200,
         "events.show": 200,
+        "events.update": 200,
         "exchange_rates.index": 200,
         "expense_line_items.index": 200,
         "expense_line_items.index.include": 200,
@@ -144,9 +162,16 @@
         "filters.index.include": 200,
         "filters.show": 200,
         "filters.update": 200,
+        "folders.archive": 200,
+        "folders.copy": 201,
+        "folders.create": 201,
         "folders.index": 200,
         "folders.index.include": 200,
+        "folders.move": 200,
+        "folders.reposition": 200,
+        "folders.restore": 200,
         "folders.show": 200,
+        "folders.update": 200,
         "holiday_calendars.create": 201,
         "holiday_calendars.destroy": 204,
         "holiday_calendars.index": 200,
@@ -251,11 +276,19 @@
         "project_preferences.index": 200,
         "project_preferences.index.include": 200,
         "project_preferences.show": 200,
+        "projects.apply_navigation_tabs": 200,
+        "projects.archive": 200,
+        "projects.change_workflow": 200,
+        "projects.copy": 201,
         "projects.create": 201,
         "projects.destroy": 204,
         "projects.index": 200,
         "projects.index.include": 200,
+        "projects.restore": 200,
         "projects.show": 200,
+        "projects.subscribe": 200,
+        "projects.unsubscribe": 200,
+        "projects.update": 200,
         "proposals.create": 201,
         "proposals.destroy": 204,
         "proposals.index": 200,
@@ -425,9 +458,15 @@
         "reports.timesheet_reports.index": 200,
         "reports.timesheet_reports.index.include.organization": 400,
         "reports.timesheet_reports.index.include.person+report": 200,
+        "resource_requests.cancel": 200,
+        "resource_requests.create": 201,
+        "resource_requests.destroy": 204,
         "resource_requests.index": 200,
         "resource_requests.index.include": 200,
+        "resource_requests.reject": 200,
+        "resource_requests.resolve": 200,
         "resource_requests.show": 200,
+        "resource_requests.update": 200,
         "revenue_distributions.index": 200,
         "revenue_distributions.index.include": 200,
         "revenue_distributions.show": 200,
@@ -437,15 +476,24 @@
         "roles.index.include": 200,
         "roles.show": 200,
         "roles.update": 200,
+        "salaries.create": 201,
+        "salaries.destroy": 204,
         "salaries.index": 200,
         "salaries.index.include": 200,
         "salaries.show": 200,
+        "salaries.update": 200,
+        "sections.create": 201,
+        "sections.destroy": 204,
         "sections.index": 200,
         "sections.index.include": 200,
         "sections.show": 200,
+        "sections.update": 200,
+        "service_assignments.create": 201,
+        "service_assignments.destroy": 204,
         "service_assignments.index": 200,
         "service_assignments.index.include": 200,
         "service_assignments.show": 200,
+        "service_assignments.update": 200,
         "service_type_assignments.index": 200,
         "service_type_assignments.index.include": 200,
         "service_type_assignments.show": 200,
@@ -456,9 +504,12 @@
         "service_types.merge": 422,
         "service_types.show": 200,
         "service_types.update": 200,
+        "services.create": 201,
+        "services.destroy": 204,
         "services.index": 200,
         "services.index.include": 200,
         "services.show": 200,
+        "services.update": 200,
         "skills.index": 200,
         "skills.index.include": 200,
         "skills.show": 200,
@@ -481,15 +532,31 @@
         "surveys.index.include": 200,
         "surveys.show": 200,
         "tags.index": 200,
+        "task_dependencies.create": 201,
+        "task_dependencies.destroy": 204,
         "task_dependencies.index": 200,
         "task_dependencies.index.include": 200,
         "task_dependencies.show": 200,
+        "task_dependencies.update": 200,
+        "task_lists.archive": 200,
+        "task_lists.copy": 200,
+        "task_lists.create": 201,
         "task_lists.index": 200,
         "task_lists.index.include": 200,
+        "task_lists.move": 200,
+        "task_lists.reposition": 200,
+        "task_lists.restore": 200,
         "task_lists.show": 200,
+        "task_lists.update": 200,
+        "tasks.copy": 201,
+        "tasks.create": 201,
+        "tasks.destroy": 204,
         "tasks.index": 200,
         "tasks.index.include": 200,
+        "tasks.move_dependent": 200,
+        "tasks.reposition": 204,
         "tasks.show": 200,
+        "tasks.update": 200,
         "tax_rates.archive": 200,
         "tax_rates.create": 201,
         "tax_rates.index": 200,
@@ -514,9 +581,21 @@
         "templates.index.include": 200,
         "templates.show": 200,
         "templates.update": 200,
+        "time_entries.approve": 200,
+        "time_entries.approve_bulk": 200,
+        "time_entries.create": 201,
+        "time_entries.create_bulk": 201,
+        "time_entries.destroy": 204,
+        "time_entries.destroy_bulk": 204,
         "time_entries.index": 200,
         "time_entries.index.include": 200,
+        "time_entries.reject": 200,
         "time_entries.show": 200,
+        "time_entries.unapprove": 200,
+        "time_entries.unapprove_bulk": 200,
+        "time_entries.unreject": 200,
+        "time_entries.update": 200,
+        "time_entries.update_bulk": 200,
         "time_entry_versions.index": 200,
         "time_entry_versions.index.include": 200,
         "time_entry_versions.show": 200,
@@ -528,15 +607,22 @@
         "time_tracking_policies.restore": 200,
         "time_tracking_policies.show": 200,
         "time_tracking_policies.update": 200,
+        "timers.create": 201,
         "timers.index": 200,
         "timers.index.include": 200,
         "timers.show": 200,
+        "timers.stop": 200,
+        "timesheets.create": 201,
+        "timesheets.destroy": 204,
         "timesheets.index": 200,
         "timesheets.index.include": 200,
         "timesheets.show": 200,
+        "todos.create": 201,
+        "todos.destroy": 204,
         "todos.index": 200,
         "todos.index.include": 200,
         "todos.show": 200,
+        "todos.update": 200,
         "undocumented.allocations": 200,
         "undocumented.automation_runs": 200,
         "undocumented.automation_versions": 404,
@@ -671,6 +757,12 @@
         ]
     },
     "required": {
+        "comments.add_reaction": [
+            "reaction"
+        ],
+        "comments.remove_reaction": [
+            "reaction"
+        ],
         "document_styles.create": [
             "styles"
         ],
@@ -685,6 +777,9 @@
         "people.merge": [
             "loser",
             "winner"
+        ],
+        "resource_requests.resolve": [
+            "bookings"
         ],
         "roles.create": [
             "base_role_id"
@@ -2111,16 +2206,19 @@
                     "bool"
                 ],
                 "edited_at": [
+                    "date-time",
                     "null"
                 ],
                 "hidden": [
                     "bool"
                 ],
                 "pinned_at": [
+                    "date-time",
                     "null"
                 ],
                 "reactions": [
-                    "empty"
+                    "empty",
+                    "object"
                 ],
                 "updated_at": [
                     "date-time"
@@ -3914,7 +4012,8 @@
                     "date"
                 ],
                 "note": [
-                    "null"
+                    "null",
+                    "string"
                 ],
                 "pending": [
                     "decimal-string"
@@ -3957,6 +4056,7 @@
                     "string"
                 ],
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "color_id": [
@@ -4985,6 +5085,7 @@
         "folders": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "hidden": [
@@ -8621,6 +8722,7 @@
         "projects": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "created_at": [
@@ -9342,6 +9444,7 @@
                     "int"
                 ],
                 "canceled_at": [
+                    "date-time",
                     "null"
                 ],
                 "created_at": [
@@ -9357,7 +9460,8 @@
                     "string"
                 ],
                 "custom_fields": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "ended_on": [
                     "date"
@@ -9393,6 +9497,7 @@
                     "null"
                 ],
                 "resolved_at": [
+                    "date-time",
                     "null"
                 ],
                 "started_on": [
@@ -9405,6 +9510,7 @@
                     "int"
                 ],
                 "time_to_close": [
+                    "int",
                     "null"
                 ],
                 "title": [
@@ -9580,6 +9686,7 @@
                     "bool"
                 ],
                 "ended_on": [
+                    "date",
                     "null"
                 ],
                 "exchange_date": [
@@ -9598,7 +9705,8 @@
                     "int"
                 ],
                 "note": [
-                    "null"
+                    "null",
+                    "string"
                 ],
                 "overhead": [
                     "bool"
@@ -9640,7 +9748,8 @@
                     "null"
                 ],
                 "editor_config": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "name": [
                     "string"
@@ -9649,7 +9758,8 @@
                     "int"
                 ],
                 "preferences": [
-                    "empty"
+                    "empty",
+                    "null"
                 ]
             },
             "relationships": {
@@ -10800,6 +10910,7 @@
         "task_lists": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "email_key": [
@@ -10952,6 +11063,7 @@
                     "null"
                 ],
                 "description": [
+                    "null",
                     "string"
                 ],
                 "due_date": [
@@ -11015,6 +11127,7 @@
                     "null"
                 ],
                 "start_date": [
+                    "date",
                     "null"
                 ],
                 "subtask_count": [
@@ -11038,7 +11151,8 @@
                     "string"
                 ],
                 "todo_assignee_ids": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "todo_count": [
                     "int",
@@ -11316,7 +11430,8 @@
                     "bool"
                 ],
                 "approved_at": [
-                    "date-time"
+                    "date-time",
+                    "null"
                 ],
                 "billable_time": [
                     "int"
@@ -11410,6 +11525,7 @@
                     "bool"
                 ],
                 "rejected_at": [
+                    "date-time",
                     "null"
                 ],
                 "rejected_reason": [
@@ -11430,6 +11546,7 @@
                     "null"
                 ],
                 "timer_stopped_at": [
+                    "date-time",
                     "null"
                 ],
                 "track_method_id": [
@@ -11919,6 +12036,7 @@
                     "date-time"
                 ],
                 "stopped_at": [
+                    "date-time",
                     "null"
                 ],
                 "total_time": [

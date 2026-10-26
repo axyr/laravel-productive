@@ -119,7 +119,8 @@ final readonly class Connector implements ConnectorInterface
     {
         $headers = [
             'X-Auth-Token' => $this->config->token,
-            'Accept' => $request->expect === Expect::Binary ? '*/*' : ContentType::JsonApi->value,
+            // A bulk request answers 400 unless it also accepts the bulk extension.
+            'Accept' => $request->expect === Expect::Binary ? '*/*' : $request->contentType->value,
             'User-Agent' => 'axyr/laravel-productive/' . Version::VERSION,
         ];
 

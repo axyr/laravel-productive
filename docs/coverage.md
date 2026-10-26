@@ -4,18 +4,18 @@
 
 Which operations the SDK has seen the live API answer. `composer record` records every GET of a test organization; writes are exercised by a live run that records their responses the same way. One row per operation of every generated resource, from the recording of 2026-10-23.
 
-**295 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
+**209 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
 
 | Status | Operations | Meaning |
 | --- | --- | --- |
 | recorded | 224 | A GET the recording answered with a success. |
-| exercised | 119 | A write a live run answered with a success. |
+| exercised | 205 | A write a live run answered with a success. |
 | empty list | 10 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
 | rejected | 2 | The API answered with an error; the status is shown. |
 | plan-gated | 0 | The test organization's plan does not include it. |
 | skipped | 22 | Left out on purpose; the reason is shown. |
 | not recorded | 3 | A GET nothing has called yet. |
-| not exercised | 282 | A write nothing has called yet. |
+| not exercised | 196 | A write nothing has called yet. |
 
 ## `activities`
 
@@ -147,9 +147,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /bookings` | `bookings.index` | recorded `200` |
 | `GET /bookings/{id}` | `bookings.show` | recorded `200` |
-| `POST /bookings` | `bookings.create` | not exercised |
-| `PATCH /bookings/{id}` | `bookings.update` | not exercised |
-| `DELETE /bookings/{id}` | `bookings.destroy` | not exercised |
+| `POST /bookings` | `bookings.create` | exercised `201` |
+| `PATCH /bookings/{id}` | `bookings.update` | exercised `200` |
+| `DELETE /bookings/{id}` | `bookings.destroy` | exercised `204` |
 
 ## `comments`
 
@@ -157,13 +157,13 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /comments` | `comments.index` | recorded `200` |
 | `GET /comments/{id}` | `comments.show` | recorded `200` |
-| `POST /comments` | `comments.create` | not exercised |
-| `PATCH /comments/{id}` | `comments.update` | not exercised |
-| `DELETE /comments/{id}` | `comments.destroy` | not exercised |
-| `PATCH /comments/{id}/add_reaction` | `comments.add_reaction` | not exercised |
-| `PATCH /comments/{id}/pin` | `comments.pin` | not exercised |
-| `PATCH /comments/{id}/remove_reaction` | `comments.remove_reaction` | not exercised |
-| `PATCH /comments/{id}/unpin` | `comments.unpin` | not exercised |
+| `POST /comments` | `comments.create` | exercised `201` |
+| `PATCH /comments/{id}` | `comments.update` | exercised `200` |
+| `DELETE /comments/{id}` | `comments.destroy` | exercised `204` |
+| `PATCH /comments/{id}/add_reaction` | `comments.add_reaction` | exercised `200` |
+| `PATCH /comments/{id}/pin` | `comments.pin` | exercised `200` |
+| `PATCH /comments/{id}/remove_reaction` | `comments.remove_reaction` | exercised `200` |
+| `PATCH /comments/{id}/unpin` | `comments.unpin` | exercised `200` |
 
 ## `companies`
 
@@ -352,9 +352,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /entitlements` | `entitlements.index` | recorded `200` |
 | `GET /entitlements/{id}` | `entitlements.show` | recorded `200` |
-| `POST /entitlements` | `entitlements.create` | not exercised |
-| `PATCH /entitlements/{id}` | `entitlements.update` | not exercised |
-| `DELETE /entitlements/{id}` | `entitlements.destroy` | not exercised |
+| `POST /entitlements` | `entitlements.create` | exercised `201` |
+| `PATCH /entitlements/{id}` | `entitlements.update` | exercised `200` |
+| `DELETE /entitlements/{id}` | `entitlements.destroy` | exercised `204` |
 
 ## `events`
 
@@ -362,11 +362,11 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /events` | `events.index` | recorded `200` |
 | `GET /events/{id}` | `events.show` | recorded `200` |
-| `POST /events` | `events.create` | not exercised |
-| `PATCH /events/{id}` | `events.update` | not exercised |
-| `DELETE /events/{id}` | `events.destroy` | not exercised |
-| `PATCH /events/{id}/archive` | `events.archive` | not exercised |
-| `PATCH /events/{id}/restore` | `events.restore` | not exercised |
+| `POST /events` | `events.create` | exercised `201` |
+| `PATCH /events/{id}` | `events.update` | exercised `200` |
+| `DELETE /events/{id}` | `events.destroy` | exercised `204` |
+| `PATCH /events/{id}/archive` | `events.archive` | exercised `200` |
+| `PATCH /events/{id}/restore` | `events.restore` | exercised `200` |
 
 ## `exchange_rates`
 
@@ -421,13 +421,13 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /folders` | `folders.index` | recorded `200` |
 | `GET /folders/{id}` | `folders.show` | recorded `200` |
-| `POST /folders` | `folders.create` | not exercised |
-| `PATCH /folders/{id}` | `folders.update` | not exercised |
-| `PATCH /folders/{id}/archive` | `folders.archive` | not exercised |
-| `POST /folders/copy` | `folders.copy` | not exercised |
-| `PATCH /folders/{id}/move` | `folders.move` | not exercised |
-| `PATCH /folders/{id}/reposition` | `folders.reposition` | not exercised |
-| `PATCH /folders/{id}/restore` | `folders.restore` | not exercised |
+| `POST /folders` | `folders.create` | exercised `201` |
+| `PATCH /folders/{id}` | `folders.update` | exercised `200` |
+| `PATCH /folders/{id}/archive` | `folders.archive` | exercised `200` |
+| `POST /folders/copy` | `folders.copy` | exercised `201` |
+| `PATCH /folders/{id}/move` | `folders.move` | exercised `200` |
+| `PATCH /folders/{id}/reposition` | `folders.reposition` | exercised `200` |
+| `PATCH /folders/{id}/restore` | `folders.restore` | exercised `200` |
 
 ## `holiday_calendars`
 
@@ -755,15 +755,15 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | `GET /projects` | `projects.index` | recorded `200` |
 | `GET /projects/{id}` | `projects.show` | recorded `200` |
 | `POST /projects` | `projects.create` | exercised `201` |
-| `PATCH /projects/{id}` | `projects.update` | not exercised |
+| `PATCH /projects/{id}` | `projects.update` | exercised `200` |
 | `DELETE /projects/{id}` | `projects.destroy` | exercised `204` |
-| `PATCH /projects/{id}/apply_navigation_tabs` | `projects.apply_navigation_tabs` | not exercised |
-| `PATCH /projects/{id}/archive` | `projects.archive` | not exercised |
-| `PATCH /projects/{id}/change_workflow` | `projects.change_workflow` | not exercised |
-| `POST /projects/copy` | `projects.copy` | not exercised |
-| `PATCH /projects/{id}/restore` | `projects.restore` | not exercised |
-| `PATCH /projects/{id}/subscribe` | `projects.subscribe` | not exercised |
-| `PATCH /projects/{id}/unsubscribe` | `projects.unsubscribe` | not exercised |
+| `PATCH /projects/{id}/apply_navigation_tabs` | `projects.apply_navigation_tabs` | exercised `200` |
+| `PATCH /projects/{id}/archive` | `projects.archive` | exercised `200` |
+| `PATCH /projects/{id}/change_workflow` | `projects.change_workflow` | exercised `200` |
+| `POST /projects/copy` | `projects.copy` | exercised `201` |
+| `PATCH /projects/{id}/restore` | `projects.restore` | exercised `200` |
+| `PATCH /projects/{id}/subscribe` | `projects.subscribe` | exercised `200` |
+| `PATCH /projects/{id}/unsubscribe` | `projects.unsubscribe` | exercised `200` |
 
 ## `proposals`
 
@@ -1010,12 +1010,12 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /resource_requests` | `resource_requests.index` | recorded `200` |
 | `GET /resource_requests/{id}` | `resource_requests.show` | recorded `200` |
-| `POST /resource_requests` | `resource_requests.create` | not exercised |
-| `PATCH /resource_requests/{id}` | `resource_requests.update` | not exercised |
-| `DELETE /resource_requests/{id}` | `resource_requests.destroy` | not exercised |
-| `PATCH /resource_requests/{id}/cancel` | `resource_requests.cancel` | not exercised |
-| `PATCH /resource_requests/{id}/reject` | `resource_requests.reject` | not exercised |
-| `POST /resource_requests/{id}/resolve` | `resource_requests.resolve` | not exercised |
+| `POST /resource_requests` | `resource_requests.create` | exercised `201` |
+| `PATCH /resource_requests/{id}` | `resource_requests.update` | exercised `200` |
+| `DELETE /resource_requests/{id}` | `resource_requests.destroy` | exercised `204` |
+| `PATCH /resource_requests/{id}/cancel` | `resource_requests.cancel` | exercised `200` |
+| `PATCH /resource_requests/{id}/reject` | `resource_requests.reject` | exercised `200` |
+| `POST /resource_requests/{id}/resolve` | `resource_requests.resolve` | exercised `200` |
 
 ## `revenue_distributions`
 
@@ -1043,9 +1043,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /salaries` | `salaries.index` | recorded `200` |
 | `GET /salaries/{id}` | `salaries.show` | recorded `200` |
-| `POST /salaries` | `salaries.create` | not exercised |
-| `PATCH /salaries/{id}` | `salaries.update` | not exercised |
-| `DELETE /salaries/{id}` | `salaries.destroy` | not exercised |
+| `POST /salaries` | `salaries.create` | exercised `201` |
+| `PATCH /salaries/{id}` | `salaries.update` | exercised `200` |
+| `DELETE /salaries/{id}` | `salaries.destroy` | exercised `204` |
 
 ## `sections`
 
@@ -1053,9 +1053,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /sections` | `sections.index` | recorded `200` |
 | `GET /sections/{id}` | `sections.show` | recorded `200` |
-| `POST /sections` | `sections.create` | not exercised |
-| `PATCH /sections/{id}` | `sections.update` | not exercised |
-| `DELETE /sections/{id}` | `sections.destroy` | not exercised |
+| `POST /sections` | `sections.create` | exercised `201` |
+| `PATCH /sections/{id}` | `sections.update` | exercised `200` |
+| `DELETE /sections/{id}` | `sections.destroy` | exercised `204` |
 
 ## `service_assignments`
 
@@ -1063,9 +1063,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /service_assignments` | `service_assignments.index` | recorded `200` |
 | `GET /service_assignments/{id}` | `service_assignments.show` | recorded `200` |
-| `POST /service_assignments` | `service_assignments.create` | not exercised |
-| `PATCH /service_assignments/{id}` | `service_assignments.update` | not exercised |
-| `DELETE /service_assignments/{id}` | `service_assignments.destroy` | not exercised |
+| `POST /service_assignments` | `service_assignments.create` | exercised `201` |
+| `PATCH /service_assignments/{id}` | `service_assignments.update` | exercised `200` |
+| `DELETE /service_assignments/{id}` | `service_assignments.destroy` | exercised `204` |
 
 ## `service_type_assignments`
 
@@ -1094,9 +1094,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /services` | `services.index` | recorded `200` |
 | `GET /services/{id}` | `services.show` | recorded `200` |
-| `POST /services` | `services.create` | not exercised |
-| `PATCH /services/{id}` | `services.update` | not exercised |
-| `DELETE /services/{id}` | `services.destroy` | not exercised |
+| `POST /services` | `services.create` | exercised `201` |
+| `PATCH /services/{id}` | `services.update` | exercised `200` |
+| `DELETE /services/{id}` | `services.destroy` | exercised `204` |
 
 ## `sessions`
 
@@ -1181,9 +1181,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /task_dependencies` | `task_dependencies.index` | recorded `200` |
 | `GET /task_dependencies/{id}` | `task_dependencies.show` | recorded `200` |
-| `POST /task_dependencies` | `task_dependencies.create` | not exercised |
-| `PATCH /task_dependencies/{id}` | `task_dependencies.update` | not exercised |
-| `DELETE /task_dependencies/{id}` | `task_dependencies.destroy` | not exercised |
+| `POST /task_dependencies` | `task_dependencies.create` | exercised `201` |
+| `PATCH /task_dependencies/{id}` | `task_dependencies.update` | exercised `200` |
+| `DELETE /task_dependencies/{id}` | `task_dependencies.destroy` | exercised `204` |
 
 ## `task_lists`
 
@@ -1191,13 +1191,13 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /task_lists` | `task_lists.index` | recorded `200` |
 | `GET /task_lists/{id}` | `task_lists.show` | recorded `200` |
-| `POST /task_lists` | `task_lists.create` | not exercised |
-| `PATCH /task_lists/{id}` | `task_lists.update` | not exercised |
-| `PATCH /task_lists/{id}/archive` | `task_lists.archive` | not exercised |
-| `POST /task_lists/copy` | `task_lists.copy` | not exercised |
-| `PATCH /task_lists/{id}/move` | `task_lists.move` | not exercised |
-| `PATCH /task_lists/{id}/reposition` | `task_lists.reposition` | not exercised |
-| `PATCH /task_lists/{id}/restore` | `task_lists.restore` | not exercised |
+| `POST /task_lists` | `task_lists.create` | exercised `201` |
+| `PATCH /task_lists/{id}` | `task_lists.update` | exercised `200` |
+| `PATCH /task_lists/{id}/archive` | `task_lists.archive` | exercised `200` |
+| `POST /task_lists/copy` | `task_lists.copy` | exercised `200` |
+| `PATCH /task_lists/{id}/move` | `task_lists.move` | exercised `200` |
+| `PATCH /task_lists/{id}/reposition` | `task_lists.reposition` | exercised `200` |
+| `PATCH /task_lists/{id}/restore` | `task_lists.restore` | exercised `200` |
 
 ## `tasks`
 
@@ -1205,12 +1205,12 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /tasks` | `tasks.index` | recorded `200` |
 | `GET /tasks/{id}` | `tasks.show` | recorded `200` |
-| `POST /tasks` | `tasks.create` | not exercised |
-| `PATCH /tasks/{id}` | `tasks.update` | not exercised |
-| `DELETE /tasks/{id}` | `tasks.destroy` | not exercised |
-| `POST /tasks/copy` | `tasks.copy` | not exercised |
-| `PATCH /tasks/{id}/move_dependent` | `tasks.move_dependent` | not exercised |
-| `PATCH /tasks/{id}/reposition` | `tasks.reposition` | not exercised |
+| `POST /tasks` | `tasks.create` | exercised `201` |
+| `PATCH /tasks/{id}` | `tasks.update` | exercised `200` |
+| `DELETE /tasks/{id}` | `tasks.destroy` | exercised `204` |
+| `POST /tasks/copy` | `tasks.copy` | exercised `201` |
+| `PATCH /tasks/{id}/move_dependent` | `tasks.move_dependent` | exercised `200` |
+| `PATCH /tasks/{id}/reposition` | `tasks.reposition` | exercised `204` |
 
 ## `tax_rates`
 
@@ -1258,18 +1258,18 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /time_entries` | `time_entries.index` | recorded `200` |
 | `GET /time_entries/{id}` | `time_entries.show` | recorded `200` |
-| `POST /time_entries` | `time_entries.create` | not exercised |
-| `PATCH /time_entries/{id}` | `time_entries.update` | not exercised |
-| `DELETE /time_entries/{id}` | `time_entries.destroy` | not exercised |
-| `PATCH /time_entries/{id}/approve` | `time_entries.approve` | not exercised |
-| `PATCH /time_entries/{id}/reject` | `time_entries.reject` | not exercised |
-| `PATCH /time_entries/{id}/unapprove` | `time_entries.unapprove` | not exercised |
-| `PATCH /time_entries/{id}/unreject` | `time_entries.unreject` | not exercised |
-| `POST /time_entries` (bulk) | `time_entries.create_bulk` | not exercised |
-| `PATCH /time_entries` (bulk) | `time_entries.update_bulk` | not exercised |
-| `DELETE /time_entries` (bulk) | `time_entries.destroy_bulk` | not exercised |
-| `PATCH /time_entries/approve` (bulk) | `time_entries.approve_bulk` | not exercised |
-| `PATCH /time_entries/unapprove` (bulk) | `time_entries.unapprove_bulk` | not exercised |
+| `POST /time_entries` | `time_entries.create` | exercised `201` |
+| `PATCH /time_entries/{id}` | `time_entries.update` | exercised `200` |
+| `DELETE /time_entries/{id}` | `time_entries.destroy` | exercised `204` |
+| `PATCH /time_entries/{id}/approve` | `time_entries.approve` | exercised `200` |
+| `PATCH /time_entries/{id}/reject` | `time_entries.reject` | exercised `200` |
+| `PATCH /time_entries/{id}/unapprove` | `time_entries.unapprove` | exercised `200` |
+| `PATCH /time_entries/{id}/unreject` | `time_entries.unreject` | exercised `200` |
+| `POST /time_entries` (bulk) | `time_entries.create_bulk` | exercised `201` |
+| `PATCH /time_entries` (bulk) | `time_entries.update_bulk` | exercised `200` |
+| `DELETE /time_entries` (bulk) | `time_entries.destroy_bulk` | exercised `204` |
+| `PATCH /time_entries/approve` (bulk) | `time_entries.approve_bulk` | exercised `200` |
+| `PATCH /time_entries/unapprove` (bulk) | `time_entries.unapprove_bulk` | exercised `200` |
 
 ## `time_entry_versions`
 
@@ -1296,8 +1296,8 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /timers` | `timers.index` | recorded `200` |
 | `GET /timers/{id}` | `timers.show` | recorded `200` |
-| `POST /timers` | `timers.create` | not exercised |
-| `PATCH /timers/{id}/stop` | `timers.stop` | not exercised |
+| `POST /timers` | `timers.create` | exercised `201` |
+| `PATCH /timers/{id}/stop` | `timers.stop` | exercised `200` |
 
 ## `timesheets`
 
@@ -1305,8 +1305,8 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /timesheets` | `timesheets.index` | recorded `200` |
 | `GET /timesheets/{id}` | `timesheets.show` | recorded `200` |
-| `POST /timesheets` | `timesheets.create` | not exercised |
-| `DELETE /timesheets/{id}` | `timesheets.destroy` | not exercised |
+| `POST /timesheets` | `timesheets.create` | exercised `201` |
+| `DELETE /timesheets/{id}` | `timesheets.destroy` | exercised `204` |
 
 ## `todos`
 
@@ -1314,9 +1314,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /todos` | `todos.index` | recorded `200` |
 | `GET /todos/{id}` | `todos.show` | recorded `200` |
-| `POST /todos` | `todos.create` | not exercised |
-| `PATCH /todos/{id}` | `todos.update` | not exercised |
-| `DELETE /todos/{id}` | `todos.destroy` | not exercised |
+| `POST /todos` | `todos.create` | exercised `201` |
+| `PATCH /todos/{id}` | `todos.update` | exercised `200` |
+| `DELETE /todos/{id}` | `todos.destroy` | exercised `204` |
 
 ## `users`
 

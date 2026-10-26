@@ -7,6 +7,7 @@ namespace Axyr\Productive\Generator\Recording;
 use Axyr\Productive\Contracts\ConnectorInterface;
 use Axyr\Productive\Exceptions\ApiException;
 use Axyr\Productive\Exceptions\RateLimitException;
+use Axyr\Productive\Http\ContentType;
 use Axyr\Productive\Http\Method;
 use Axyr\Productive\Http\Request;
 use Axyr\Productive\Http\Response;
@@ -18,7 +19,9 @@ use Throwable;
 /**
  * Runs the steps of a write plan against the API, or only shows them (a dry run). Attributes may
  * reference "{created:<path>}" (the record this run created of a resource), "{first:<path>}" (the
- * first existing record, read with one GET) and "{date:+N}" (N days from today). A step whose
+ * first existing record, read with one GET; "{first:<path>?<query>}" filters the list) and
+ * "{date:+N}" (N days from today). A bulk operation is sent as a bulk document of one item: the
+ * created record's attributes, its ID with attributes, or its identifier alone. A step whose
  * reference has no record is skipped and says why. Every request and response is recorded,
  * redacted, like the recorder's. What the run created is cleaned up in reverse order after the
  * other steps, also when one of them throws, unless the run keeps it. A 429 stops the run; it is
@@ -104,7 +107,7 @@ final class WriteRecorder
         $body = self::body($step, $method, $id, $attributes);
         $recording = ['request' => ['method' => $method->value, 'path' => $path, 'body' => $body]];
 
-        return $execute ? [...$recording, ...$this->send($step, new Request($method, $path, body: $body, operation: $step->operation->key, requiresOrganization: $step->operation->requiresOrganization, rateLimits: [Recorder::pace()]))] : $recording;
+        return $execute ? [...$recording, ...$this->send($step, new Request($method, $path, body: $body, contentType: $step->operation->bulk ? ContentType::JsonApiBulk : ContentType::JsonApi, operation: $step->operation->key, requiresOrganization: $step->operation->requiresOrganization, rateLimits: [Recorder::pace()]))] : $recording;
     }
 
     /**
@@ -115,7 +118,29 @@ final class WriteRecorder
      */
     private static function body(WriteStep $step, Method $method, ?string $id, ?array $attributes): ?array
     {
-        return $attributes === null ? null : DocumentBuilder::resource($step->type, $attributes, $method === Method::Post ? null : $id);
+        $id = $method === Method::Post ? null : $id;
+
+        if ($step->operation->bulk) {
+            return self::bulkBody($step->type, $id, $attributes);
+        }
+
+        return $attributes === null ? null : DocumentBuilder::resource($step->type, $attributes, $id);
+    }
+
+    /**
+     * A bulk document of one item: attributes for a create, the ID and attributes for an update,
+     * the identifier alone for an action or a delete.
+     *
+     * @param  array<string, mixed>|null  $attributes
+     * @return array<string, mixed>
+     */
+    private static function bulkBody(string $type, ?string $id, ?array $attributes): array
+    {
+        if ($attributes === null) {
+            return DocumentBuilder::identifiers($type, $id === null ? [] : [$id]);
+        }
+
+        return DocumentBuilder::bulk($type, [$id === null ? ['attributes' => $attributes] : ['id' => $id, 'attributes' => $attributes]]);
     }
 
     /**
@@ -157,7 +182,8 @@ final class WriteRecorder
             return;
         }
 
-        $id = self::idOf(data_get(Json::decode($response->body), 'data.id'));
+        $document = Json::decode($response->body);
+        $id = self::idOf(data_get($document, 'data.id') ?? data_get($document, 'data.0.id'));
 
         if ($id !== null) {
             $this->created[$step->resource] = $id;
@@ -228,12 +254,16 @@ final class WriteRecorder
     }
 
     /**
+     * @param  string  $list  The resource path, optionally with a query: "people?filter[role_id]=1".
+     *
      * @throws MissingReference When the list cannot be read.
      */
-    private function readFirstId(string $path): ?string
+    private function readFirstId(string $list): ?string
     {
+        [$path, $query] = [...explode('?', $list, 2), ''];
+
         try {
-            $response = $this->connector->send(new Request(Method::Get, $path, 'page[size]=1', operation: $path . '.index', rateLimits: [Recorder::pace()]));
+            $response = $this->connector->send(new Request(Method::Get, $path, ltrim($query . '&page[size]=1', '&'), operation: $path . '.index', rateLimits: [Recorder::pace()]));
         } catch (RateLimitException $exception) {
             throw $exception;
         } catch (ApiException $exception) {

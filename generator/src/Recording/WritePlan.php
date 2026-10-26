@@ -14,8 +14,10 @@ use RuntimeException;
  * create, an optional update and its actions, and, after all of them, the cleanup of what was
  * created in reverse order. A recipe named "<path>#<label>" makes a second record of the resource,
  * referenced as "{created:<path>#<label>}", and `create_with` makes it with another operation,
- * such as a copy. Recipes for anything that leaves Productive or changes the account are refused,
- * so no recipe can send, invite or touch users, sessions or the subscription.
+ * such as a copy, and `on` runs its actions on the record of another recipe of the resource. A
+ * bulk operation acts on the record the recipe created, as a list of one. Recipes for anything
+ * that leaves Productive or changes the account are refused, so no recipe can send, invite or
+ * touch users, sessions or the subscription.
  */
 final readonly class WritePlan
 {
@@ -44,12 +46,35 @@ final readonly class WritePlan
         $cleanups = [];
 
         foreach ($selected as $name => $recipe) {
-            $target = self::resource($api, $name);
-            $steps = [...$steps, ...self::recipeSteps($target, $name, $recipe)];
-            $cleanups = [...self::cleanup($target, $name, $recipe), ...$cleanups];
+            [$recipeSteps, $recipeCleanup] = self::plan(self::resource($api, $name), $name, $recipe);
+            $steps = [...$steps, ...$recipeSteps];
+            $cleanups = [...$recipeCleanup, ...$cleanups];
         }
 
         return [...$steps, ...$cleanups];
+    }
+
+    /**
+     * A recipe's steps and its cleanup. A recipe with "on" acts on the record of another recipe,
+     * such as approving time entries once a later recipe submitted their day: it makes no record
+     * and leaves the cleanup to that recipe.
+     *
+     * @param  array<string, mixed>  $recipe
+     * @return array{list<WriteStep>, list<WriteStep>}
+     */
+    private static function plan(Resource $resource, string $name, array $recipe): array
+    {
+        $on = is_string($recipe['on'] ?? null) ? $recipe['on'] : null;
+
+        if ($on === null) {
+            return [self::recipeSteps($resource, $name, $recipe), self::cleanup($resource, $name, $recipe)];
+        }
+
+        if (explode('#', $on)[0] !== $resource->path) {
+            throw new RuntimeException(sprintf('The recipe of "%s" acts on "%s", a recipe of another resource.', $name, $on));
+        }
+
+        return [self::actionSteps($resource, $on, self::map($recipe['actions'] ?? [])), []];
     }
 
     /**
@@ -78,7 +103,7 @@ final readonly class WritePlan
 
         foreach ($actions as $action => $attributes) {
             $operation = self::operation($resource, $action);
-            $steps[] = new WriteStep($operation, $name, $resource->type, $attributes === null ? null : self::attributes($attributes), onCreated: str_contains($operation->path, '{id}'));
+            $steps[] = new WriteStep($operation, $name, $resource->type, $attributes === null ? null : self::attributes($attributes), onCreated: $operation->bulk || str_contains($operation->path, '{id}'));
         }
 
         return $steps;
