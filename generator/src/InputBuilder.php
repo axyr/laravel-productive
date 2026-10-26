@@ -35,7 +35,7 @@ final readonly class InputBuilder
             return null;
         }
 
-        $required = $allOptional ? [] : array_unique([...Spec::strings($attributes['required'] ?? [], 'Required attributes'), ...$this->required[$class] ?? []]);
+        $required = $allOptional ? [] : array_unique([...Spec::strings($attributes['required'] ?? [], 'Required attributes'), ...array_map(fn(string $name): string => self::attributeName($name, $properties), $this->required[$class] ?? [])]);
 
         return new Input($class, self::bodyName($body), self::order($this->reader->attributes($properties, required: $required, model: false), $required), $plain, $bulk);
     }
@@ -66,6 +66,17 @@ final readonly class InputBuilder
         $content = Spec::map($this->spec->resolve($body)['content'] ?? []);
 
         return $this->spec->resolve(Spec::map(reset($content) ?: [])['schema'] ?? []);
+    }
+
+    /**
+     * The attribute a required name stands for: a 422 on a relationship names it without its
+     * suffix ("subsidiary" for subsidiary_id).
+     *
+     * @param  array<string, mixed>  $properties
+     */
+    private static function attributeName(string $name, array $properties): string
+    {
+        return ! array_key_exists($name, $properties) && array_key_exists($name . '_id', $properties) ? $name . '_id' : $name;
     }
 
     /**

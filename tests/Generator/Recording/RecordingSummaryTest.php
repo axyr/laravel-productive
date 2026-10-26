@@ -147,3 +147,52 @@ it('reads write runs by operation, the later status winning, and keeps what any 
         ->and($summary['rejected_includes'])->toBe(['tasks.index' => ['project']])
         ->and($summary['types'])->toBe(['widgets' => ['attributes' => ['title' => ['string']], 'relationships' => []]]);
 });
+
+it('lays a new summary over the committed one, the new status winning and nothing found before lost', function () {
+    $previous = [
+        'statuses' => ['deals.create' => 201, 'tasks.destroy' => 409],
+        'rejected_includes' => ['tasks.index' => ['owner']],
+        'required' => ['deals.create' => ['name', 'company']],
+        'types' => [
+            'deals' => [
+                'attributes' => ['name' => ['string'], 'closed_at' => ['null']],
+                'relationships' => ['company' => ['to_many' => false, 'types' => ['companies']], 'contacts' => ['to_many' => true, 'types' => ['people']], 'files' => ['to_many' => null, 'types' => []]],
+            ],
+            'pages' => ['attributes' => ['title' => ['string']], 'relationships' => []],
+        ],
+    ];
+    $current = [
+        'statuses' => ['tasks.destroy' => 204, 'bills.create' => 201],
+        'rejected_includes' => ['tasks.index' => ['owner', 'parent'], 'bills.index' => ['vendor']],
+        'required' => ['deals.create' => ['currency', 'name'], 'bills.create' => ['purchase_order']],
+        'types' => [
+            'bills' => ['attributes' => ['date' => ['date']], 'relationships' => []],
+            'deals' => [
+                'attributes' => ['closed_at' => ['date-time']],
+                'relationships' => ['company' => ['to_many' => null, 'types' => []], 'contacts' => ['to_many' => false, 'types' => ['people']], 'files' => ['to_many' => false, 'types' => ['attachments']], 'project' => ['to_many' => false, 'types' => ['projects']]],
+            ],
+        ],
+    ];
+
+    expect(RecordingSummary::merge($previous, $current))->toBe([
+        'statuses' => ['bills.create' => 201, 'deals.create' => 201, 'tasks.destroy' => 204],
+        'rejected_includes' => ['bills.index' => ['vendor'], 'tasks.index' => ['owner', 'parent']],
+        'required' => ['bills.create' => ['purchase_order'], 'deals.create' => ['company', 'currency', 'name']],
+        'types' => [
+            'bills' => ['attributes' => ['date' => ['date']], 'relationships' => []],
+            'deals' => [
+                'attributes' => ['closed_at' => ['date-time', 'null'], 'name' => ['string']],
+                'relationships' => ['company' => ['to_many' => false, 'types' => ['companies']], 'contacts' => ['to_many' => true, 'types' => ['people']], 'files' => ['to_many' => false, 'types' => ['attachments']], 'project' => ['to_many' => false, 'types' => ['projects']]],
+            ],
+            'pages' => ['attributes' => ['title' => ['string']], 'relationships' => []],
+        ],
+    ]);
+});
+
+it('merges into an empty or malformed committed summary', function () {
+    $current = ['statuses' => ['b.create' => 201, 'a.create' => 201], 'rejected_includes' => [], 'required' => [], 'types' => []];
+
+    expect(RecordingSummary::merge([], $current))->toBe(['statuses' => ['a.create' => 201, 'b.create' => 201], 'rejected_includes' => [], 'required' => [], 'types' => []])
+        ->and(RecordingSummary::merge(['types' => ['x' => ['relationships' => ['r' => ['to_many' => 'yes', 'types' => [1, 'y']]]]], 'required' => ['k' => 'v']], $current)['types'])
+        ->toBe(['x' => ['attributes' => [], 'relationships' => ['r' => ['to_many' => null, 'types' => ['y']]]]]);
+});

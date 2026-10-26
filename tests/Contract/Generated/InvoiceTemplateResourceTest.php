@@ -41,7 +41,7 @@ it('invoice_templates.show: GET /invoice_templates/{id}', function () {
 it('invoice_templates.create: POST /invoice_templates', function () {
     fakeHttp(['*' => Fixtures::response('invoice_templates-create', 'resource', 'invoice_templates', 201)]);
 
-    $result = Productive::invoiceTemplates()->create(['budget_id' => 1, 'document_type_id' => 1]);
+    $result = Productive::invoiceTemplates()->create(['subsidiary_id' => 1, 'budget_id' => 1, 'document_type_id' => 1]);
 
     expect($result)->toBeInstanceOf(InvoiceTemplate::class);
     Http::assertSent(function (HttpRequest $request): bool {
@@ -50,7 +50,7 @@ it('invoice_templates.create: POST /invoice_templates', function () {
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('invoice_templates')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'invoice_templates', 'attributes' => ['budget_id' => 1, 'document_type_id' => 1]]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'invoice_templates', 'attributes' => ['subsidiary_id' => 1, 'budget_id' => 1, 'document_type_id' => 1]]];
     });
 });
 
