@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Axyr\Productive\Generator\Emit;
 
+use Axyr\Productive\Generator\Ir\Api;
 use Axyr\Productive\Generator\IrBuilder;
 use Axyr\Productive\Generator\RecordedTypes;
 
@@ -34,6 +35,7 @@ final class ProjectFiles
                 $recorded,
                 ['resources' => self::stringMap($removed['resources'] ?? []), 'relationships' => self::stringMap($removed['relationships'] ?? [])],
             ),
+            SpecReportEmitter::PATH => self::specReport($api, $enabled, $recorded, $config, $removed),
             CoverageEmitter::PATH => CoverageEmitter::emit(
                 $api,
                 $enabled,
@@ -44,11 +46,86 @@ final class ProjectFiles
     }
 
     /**
+     * @param  list<string>  $enabled
+     * @param  array<array-key, mixed>  $removed
+     */
+    private static function specReport(Api $api, array $enabled, RecordedTypes $recorded, string $config, array $removed): string
+    {
+        return (new SpecReportEmitter(
+            $api,
+            $enabled,
+            $recorded,
+            self::listMap(require $config . '/required.php'),
+            [...self::stringMap($removed['resources'] ?? []), ...self::stringMap($removed['relationships'] ?? [])],
+            self::recipes(require $config . '/recipes.php'),
+            self::findings(require $config . '/spec-findings.php'),
+        ))->emit();
+    }
+
+    /**
      * @return array<array-key, mixed>
      */
     private static function config(mixed $config): array
     {
         return is_array($config) ? $config : [];
+    }
+
+    /**
+     * Lists of strings by key, such as required.php's attributes by input class.
+     *
+     * @return array<string, list<string>>
+     */
+    private static function listMap(mixed $config): array
+    {
+        $lists = [];
+
+        foreach (self::config($config) as $key => $values) {
+            $lists[(string) $key] = array_values(self::stringMap($values));
+        }
+
+        return $lists;
+    }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    private static function recipes(mixed $config): array
+    {
+        $recipes = [];
+
+        foreach (self::config($config) as $name => $recipe) {
+            if (is_array($recipe)) {
+                $recipes[(string) $name] = $recipe;
+            }
+        }
+
+        /** @var array<string, array<string, mixed>> $recipes */
+        return $recipes;
+    }
+
+    /**
+     * @return array{written: string, findings: array<string, list<array{endpoint: string, spec: string, api: string, reproduce: string}>>}
+     */
+    private static function findings(mixed $config): array
+    {
+        $config = self::config($config);
+        $findings = [];
+
+        foreach (self::config($config['findings'] ?? []) as $section => $entries) {
+            $findings[(string) $section] = array_values(array_map(self::finding(...), self::config($entries)));
+        }
+
+        return ['written' => is_string($config['written'] ?? null) ? $config['written'] : '', 'findings' => $findings];
+    }
+
+    /**
+     * @return array{endpoint: string, spec: string, api: string, reproduce: string}
+     */
+    private static function finding(mixed $entry): array
+    {
+        $entry = self::stringMap($entry);
+
+        return ['endpoint' => $entry['endpoint'] ?? '', 'spec' => $entry['spec'] ?? '', 'api' => $entry['api'] ?? '', 'reproduce' => $entry['reproduce'] ?? ''];
     }
 
     /**

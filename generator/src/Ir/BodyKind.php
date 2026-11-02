@@ -30,4 +30,12 @@ enum BodyKind: string
      * when it is empty.
      */
     case OptionalData = 'optional_data';
+
+    /**
+     * Whether the spec documents the operation without its attributes, which the caller passes.
+     */
+    public function documentsNoAttributes(): bool
+    {
+        return in_array($this, [self::Data, self::OptionalData], true);
+    }
 }
