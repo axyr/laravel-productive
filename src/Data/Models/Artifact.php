@@ -61,8 +61,21 @@ final readonly class Artifact extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
+    /**
+     * @return list<Membership>
+     */
+    public function memberships(): array
+    {
+        return $this->hasMany('memberships', Membership::class);
+    }
+
     public function organization(): ?Organization
     {
         return $this->belongsTo('organization', Organization::class);
+    }
+
+    public function thumbnailAttachment(): ?Attachment
+    {
+        return $this->belongsTo('thumbnail_attachment', Attachment::class);
     }
 }

@@ -1,12 +1,12 @@
 {
     "data": [
         {
-            "id": "1173",
+            "id": "1189",
             "type": "skills",
             "attributes": {
-                "name": "Text 248",
-                "description": "Text 249",
-                "instructions": "Text 250",
+                "name": "Text 263",
+                "description": "Text 264",
+                "instructions": "Text 265",
                 "auto_load": true,
                 "smart_action_locations": [],
                 "created_at": "2026-10-23T21:31:38.250+02:00",
@@ -16,7 +16,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "creator": {
@@ -32,12 +32,12 @@
             }
         },
         {
-            "id": "1173",
+            "id": "1189",
             "type": "skills",
             "attributes": {
-                "name": "Text 248",
-                "description": "Text 249",
-                "instructions": "Text 250",
+                "name": "Text 263",
+                "description": "Text 264",
+                "instructions": "Text 265",
                 "auto_load": true,
                 "smart_action_locations": [],
                 "created_at": "2026-10-23T21:31:38.250+02:00",
@@ -47,20 +47,20 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 },
                 "memberships": {
                     "data": [
                         {
                             "type": "memberships",
-                            "id": "1174"
+                            "id": "1190"
                         }
                     ]
                 }

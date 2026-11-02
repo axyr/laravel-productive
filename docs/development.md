@@ -238,14 +238,16 @@ composer record:writes -- --tier=1                    # dry run: reads what the 
 composer record:writes -- --tier=1 --execute          # run it, recorded to recordings/writes-<date-time>/
 composer record:writes -- --resource=dashboards,widgets --execute   # several, in recipe order
 composer record:writes -- --tier=1 --execute --keep   # keep what it created, to inspect
+composer record:writes -- --probe-rate-limit          # eleven report reads in a burst; records the 429
 ```
 
 - **Recipes** name their records "SDK check …" and refer to `{created:<recipe>}` (the record this run created), `{first:<path>}` (the first existing record; `{first:people?filter[role_id]=1}` filters the list first) and `{date:+N}`. A step whose reference has no record is skipped and says why.
 - **Bulk operations** (`create_bulk`, `update_bulk`, `approve_bulk`, ...) are sent with `ext=bulk` as a list of one: the attributes for a create, the created record's ID and attributes for an update, its identifier alone for an action or a delete.
-- **`on`** makes a recipe without a create that acts on another recipe's record later in the run, and leaves the cleanup to that recipe: time entries are approved only once a timesheet submitted their day, and none is made on a submitted day.
+- **`on`** makes a recipe without a create that acts on another recipe's record later in the run, and leaves the cleanup to that recipe: time entries are approved only once a timesheet submitted their day, and none is made on a submitted day. `'on' => '{first:notifications}'` acts on an existing record instead, which the run does not clean up.
 - **A second record** of a resource has its own recipe, named `<path>#<label>`, such as `dashboards#copy`. `create_with` names the operation that makes it when that is not the create: `'create_with' => 'copy'`.
 - **Cleanup** is `destroy` by default, `archive` for a resource the API cannot delete, `none`, or a list such as `['archive', 'destroy']`. It also runs after a failed step; `--keep` leaves everything in place.
 - **Never written:** custom domains, e-invoice identities, emails, integrations, invitations, organization memberships and subscriptions, organizations, passwords, sessions and users, nor any action that sends (`WritePlan` refuses such a recipe).
+- **Plain JSON bodies**, such as a page's `{"markdown": "…"}`, are sent as the attributes themselves, not as a JSON:API document.
 - **Same guards as `composer record`**, and the requests go out raw, as the SDK would build them, so the recordings show what the API itself requires rather than what the SDK's inputs check.
 - **`composer record:types` learns from every finished write run.** A success marks the operation exercised in `docs/coverage.md` (the latest run wins), and an attribute a create answered 422 "can't be blank" for becomes required in its generated input. An operation that cannot be exercised gets its reason in `generator/config/coverage.php`.
 - **`composer record:types` lays its summary over the committed `generator/recorded-types.json`.** A run made on another machine is not lost when only its summary reached git: a new status replaces an old one, and every kind, relationship type, rejected include and required attribute found before is kept.

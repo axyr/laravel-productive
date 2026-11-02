@@ -1,19 +1,19 @@
 {
     "data": [
         {
-            "id": "1160",
+            "id": "1173",
             "type": "report_categories",
             "attributes": {
-                "name": "Text 229",
+                "name": "Text 242",
                 "position": null,
-                "color_id": "1081",
+                "color_id": "1078",
                 "deleted_at": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }

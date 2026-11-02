@@ -1,13 +1,13 @@
 {
     "data": [
         {
-            "id": "1053",
+            "id": "1042",
             "type": "custom_fields",
             "attributes": {
                 "created_at": "2026-10-09T13:02:26.909+02:00",
                 "updated_at": "2026-10-09T13:02:26.999+02:00",
-                "name": "Text 77",
-                "data_type_id": 1075,
+                "name": "Text 75",
+                "data_type_id": 1070,
                 "required": false,
                 "description": null,
                 "archived_at": null,
@@ -27,7 +27,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "project": {
@@ -53,13 +53,70 @@
             }
         },
         {
-            "id": "1051",
+            "id": "1071",
+            "type": "custom_fields",
+            "attributes": {
+                "created_at": "2026-10-25T13:37:09.887+01:00",
+                "updated_at": "2026-10-25T13:37:33.685+01:00",
+                "name": "Text 76",
+                "data_type_id": 1070,
+                "required": false,
+                "description": null,
+                "archived_at": "2026-10-25T13:37:33.000+01:00",
+                "aggregation_type_id": null,
+                "formatting_type_id": null,
+                "global": false,
+                "show_in_add_edit_views": true,
+                "sensitive": false,
+                "position": 1,
+                "quick_add_enabled": false,
+                "minimum_value": null,
+                "maximum_value": null,
+                "tag_field": false,
+                "customizable_type": "tasks"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "project": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "section": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "survey": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_field_people": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "options": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1040",
             "type": "custom_fields",
             "attributes": {
                 "created_at": "2026-10-09T13:02:26.874+02:00",
                 "updated_at": "2026-10-09T13:02:26.874+02:00",
-                "name": "Text 78",
-                "data_type_id": 1076,
+                "name": "Text 77",
+                "data_type_id": 1072,
                 "required": false,
                 "description": null,
                 "archived_at": null,
@@ -79,7 +136,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "project": {
@@ -88,7 +145,7 @@
                 "section": {
                     "data": {
                         "type": "custom_field_sections",
-                        "id": "1074"
+                        "id": "1069"
                     }
                 },
                 "survey": {

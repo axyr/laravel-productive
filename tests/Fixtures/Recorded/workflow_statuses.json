@@ -1,19 +1,19 @@
 {
     "data": [
         {
-            "id": "1185",
+            "id": "1204",
             "type": "workflow_statuses",
             "attributes": {
-                "name": "Text 297",
-                "color_id": "1208",
+                "name": "Text 320",
+                "color_id": "1229",
                 "position": 1,
-                "category_id": 1036
+                "category_id": 1019
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "workflow": {
@@ -24,25 +24,25 @@
             }
         },
         {
-            "id": "1185",
+            "id": "1204",
             "type": "workflow_statuses",
             "attributes": {
-                "name": "Text 297",
-                "color_id": "1208",
+                "name": "Text 320",
+                "color_id": "1229",
                 "position": 1,
-                "category_id": 1036
+                "category_id": 1019
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "workflow": {
                     "data": {
                         "type": "workflows",
-                        "id": "1155"
+                        "id": "1165"
                     }
                 }
             }

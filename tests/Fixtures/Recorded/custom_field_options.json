@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1072",
+            "id": "1066",
             "type": "custom_field_options",
             "attributes": {
-                "name": "Text 74",
+                "name": "Text 71",
                 "archived_at": null,
                 "position": 1,
                 "color_id": null
@@ -13,7 +13,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "custom_field": {
@@ -24,19 +24,19 @@
             }
         },
         {
-            "id": "1073",
+            "id": "1067",
             "type": "custom_field_options",
             "attributes": {
-                "name": "Text 75",
+                "name": "Text 72",
                 "archived_at": null,
                 "position": 1,
-                "color_id": "1038"
+                "color_id": "1021"
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "custom_field": {
@@ -47,10 +47,33 @@
             }
         },
         {
-            "id": "1072",
+            "id": "1068",
             "type": "custom_field_options",
             "attributes": {
-                "name": "Text 74",
+                "name": "Text 73",
+                "archived_at": "2026-10-25T13:37:32.000+01:00",
+                "position": 1,
+                "color_id": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "custom_field": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1066",
+            "type": "custom_field_options",
+            "attributes": {
+                "name": "Text 71",
                 "archived_at": null,
                 "position": 1,
                 "color_id": null
@@ -59,13 +82,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "custom_field": {
                     "data": {
                         "type": "custom_fields",
-                        "id": "1053"
+                        "id": "1042"
                     }
                 }
             }

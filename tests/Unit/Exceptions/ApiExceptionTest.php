@@ -151,6 +151,16 @@ it('reads the rate limit reset and limits', function () {
         ->and($exception->period())->toBe(3600);
 });
 
+it('reads the 429 the reports answered when recorded on 2026-11-02', function () {
+    /** @var RateLimitException $exception */
+    $exception = apiException(errorResponse(429, [['status' => 429, 'title' => 'Too many requests', 'detail' => 'Rate limit reached. Try again later', 'limit' => 10, 'period' => 30]], ['X-RateLimit-Limit' => '10', 'X-RateLimit-Remaining' => '0', 'X-RateLimit-Reset' => '4']));
+
+    expect($exception->retryAfter())->toBe(4)
+        ->and($exception->isServerTimeLimit())->toBeFalse()
+        ->and($exception->limit())->toBe(10)
+        ->and($exception->period())->toBe(30);
+});
+
 it('falls back to Retry-After and handles missing values', function () {
     /** @var RateLimitException $withRetryAfter */
     $withRetryAfter = apiException(errorResponse(429, [['title' => 'Too many requests']], ['Retry-After' => '7']));

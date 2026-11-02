@@ -196,6 +196,9 @@ final readonly class Organization extends Model
     /** Number of minutes in a man-day, used to convert between hours and days in reports and scheduling. */
     public ?int $manDayMinutes;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $mcpServerEnabled;
+
     /**
      * Not in the spec: seen in recorded API responses.
      *
@@ -295,6 +298,9 @@ final readonly class Organization extends Model
 
     /** Number of active subsidiaries within the organization. */
     public mixed $subsidiaryCount;
+
+    /** Not in the spec: seen in recorded API responses. */
+    public ?bool $taskDueTimeEnabled;
 
     /** Time display format preference (e.g. 12-hour or 24-hour clock). */
     public ?int $timeDisplayId;
@@ -421,6 +427,7 @@ final readonly class Organization extends Model
         $this->limitedServiceTypes = $attributes->mixed('limited_service_types');
         $this->locale = $attributes->string('locale');
         $this->manDayMinutes = $attributes->int('man_day_minutes');
+        $this->mcpServerEnabled = $attributes->bool('mcp_server_enabled');
         $this->meetingSettings = $attributes->object('meeting_settings');
         $this->metrics = $attributes->mixed('metrics');
         $this->name = $attributes->string('name');
@@ -452,6 +459,7 @@ final readonly class Organization extends Model
         $this->singleSignOn = $attributes->bool('single_sign_on');
         $this->subdomain = $attributes->string('subdomain');
         $this->subsidiaryCount = $attributes->mixed('subsidiary_count');
+        $this->taskDueTimeEnabled = $attributes->bool('task_due_time_enabled');
         $this->timeDisplayId = $attributes->int('time_display_id');
         $this->timeFormatId = $attributes->int('time_format_id');
         $this->timeLocking = $attributes->bool('time_locking');

@@ -1,17 +1,17 @@
 {
     "data": [
         {
-            "id": "1155",
+            "id": "1165",
             "type": "workflows",
             "attributes": {
-                "name": "Text 298",
+                "name": "Text 321",
                 "archived_at": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "workflow_statuses": {
@@ -22,28 +22,28 @@
             }
         },
         {
-            "id": "1155",
+            "id": "1165",
             "type": "workflows",
             "attributes": {
-                "name": "Text 298",
+                "name": "Text 321",
                 "archived_at": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "workflow_statuses": {
                     "data": [
                         {
                             "type": "workflow_statuses",
-                            "id": "1185"
+                            "id": "1204"
                         },
                         {
                             "type": "workflow_statuses",
-                            "id": "1209"
+                            "id": "1230"
                         }
                     ]
                 }

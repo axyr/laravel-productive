@@ -1,58 +1,51 @@
 {
     "data": [
         {
-            "id": "1200",
+            "id": "1221",
             "type": "webhook_logs",
             "attributes": {
-                "target_url": "https://example.test/286",
+                "target_url": "https://example.test/306",
                 "status_code": 200,
                 "retry_attempt": 0,
-                "retry_job_id": "Text 287",
-                "created_at": "2026-10-23T23:32:05.152+02:00",
+                "retry_job_id": "Text 307",
+                "created_at": "2026-10-25T13:16:46.438+01:00",
                 "payload": {
-                    "event": "test_create_task",
-                    "item_type": "task",
+                    "event": "test_create_project",
+                    "item_type": "project",
                     "item_id": null,
-                    "created": "2026-10-23T23:32:04.816+02:00",
+                    "created": "2026-10-25T13:16:46.169+01:00",
                     "object": {
                         "data": {
                             "id": null,
-                            "type": "tasks",
+                            "type": "projects",
                             "attributes": [
                                 {
-                                    "Title": "Text 262",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 308",
+                                    "Company": "Text 309",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "internal"
                                 },
                                 {
-                                    "Title": "Text 288",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 226",
+                                    "Company": "Text 310",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "client"
                                 },
                                 {
-                                    "Title": "Text 259",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 311",
+                                    "Company": "Text 52",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "client"
                                 },
                                 {
-                                    "Title": "Text 268",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": "person-195@example.test"
-                                },
-                                {
-                                    "Title": "Text 289",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 312",
+                                    "Company": "Text 313",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "client"
                                 }
                             ]
                         }
@@ -63,7 +56,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "webhook": {
@@ -74,58 +67,51 @@
             }
         },
         {
-            "id": "1200",
+            "id": "1221",
             "type": "webhook_logs",
             "attributes": {
-                "target_url": "https://example.test/286",
+                "target_url": "https://example.test/306",
                 "status_code": 200,
                 "retry_attempt": 0,
-                "retry_job_id": "Text 287",
-                "created_at": "2026-10-23T23:32:05.152+02:00",
+                "retry_job_id": "Text 307",
+                "created_at": "2026-10-25T13:16:46.438+01:00",
                 "payload": {
-                    "event": "test_create_task",
-                    "item_type": "task",
+                    "event": "test_create_project",
+                    "item_type": "project",
                     "item_id": null,
-                    "created": "2026-10-23T23:32:04.816+02:00",
+                    "created": "2026-10-25T13:16:46.169+01:00",
                     "object": {
                         "data": {
                             "id": null,
-                            "type": "tasks",
+                            "type": "projects",
                             "attributes": [
                                 {
-                                    "Title": "Text 262",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 308",
+                                    "Company": "Text 309",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "internal"
                                 },
                                 {
-                                    "Title": "Text 288",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 226",
+                                    "Company": "Text 310",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "client"
                                 },
                                 {
-                                    "Title": "Text 259",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 311",
+                                    "Company": "Text 52",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "client"
                                 },
                                 {
-                                    "Title": "Text 268",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": "person-195@example.test"
-                                },
-                                {
-                                    "Title": "Text 289",
-                                    "Project": "Text 15",
-                                    "Folder": "Text 131",
-                                    "Task List": "Text 256",
-                                    "Assignee": ""
+                                    "Name": "Text 312",
+                                    "Company": "Text 313",
+                                    "Manager": "person-212@example.test",
+                                    "Currency DEPRECATED": "USD",
+                                    "Type": "client"
                                 }
                             ]
                         }
@@ -136,13 +122,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "webhook": {
                     "data": {
                         "type": "webhooks",
-                        "id": "1201"
+                        "id": "1222"
                     }
                 }
             }

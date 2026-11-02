@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1074",
+            "id": "1069",
             "type": "custom_field_sections",
             "attributes": {
-                "name": "Text 76",
+                "name": "Text 74",
                 "description": null,
                 "position": 1
             },
@@ -12,7 +12,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }

@@ -13,6 +13,7 @@ declare(strict_types=1);
  *   composer record:writes -- --resource=holidays       one resource (with --execute to run it)
  *   composer record:writes -- --resource=dashboards,widgets  several, in recipe order: a parent with what refers to it
  *   composer record:writes -- --tier=1 --execute --keep keep what it created, to inspect
+ *   composer record:writes -- --probe-rate-limit        eleven report reads in a burst, to record a 429
  *
  * The same guards as the recorder: only the organization in RECORDING_ORGANIZATION_ID, one request
  * per second, no redirects, a 429 stops the run. Recordings go to recordings/writes-<date-time>/.
@@ -21,10 +22,13 @@ declare(strict_types=1);
 use Axyr\Productive\Config\ProductiveConfig;
 use Axyr\Productive\Exceptions\RateLimitException;
 use Axyr\Productive\Generator\IrBuilder;
+use Axyr\Productive\Generator\Recording\Exchange;
 use Axyr\Productive\Generator\Recording\WritePlan;
 use Axyr\Productive\Generator\Recording\WriteRecorder;
 use Axyr\Productive\Http\CacheThrottle;
 use Axyr\Productive\Http\Connector;
+use Axyr\Productive\Http\Method;
+use Axyr\Productive\Http\Request;
 use Axyr\Productive\Http\RetryPolicy;
 use Dotenv\Dotenv;
 use Illuminate\Cache\ArrayStore;
@@ -58,17 +62,15 @@ $option = function (string $name) use ($argv): ?string {
     return null;
 };
 $execute = in_array('--execute', $argv, true);
+$probe = in_array('--probe-rate-limit', $argv, true);
 $keep = in_array('--keep', $argv, true);
 $tier = $option('tier');
 $resource = $option('resource');
 
-if ($tier === null && $resource === null) {
+if ($tier === null && $resource === null && ! $probe) {
     fwrite(STDERR, "Name a tier (--tier=1) or a resource (--resource=holidays).\n");
     exit(1);
 }
-
-$api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $root . '/generator/config')->build();
-$steps = WritePlan::steps($api, require $root . '/generator/config/recipes.php', $tier === null ? null : (int) $tier, $resource === null ? [] : array_values(array_filter(array_map(trim(...), explode(',', $resource)))));
 
 // One attempt only, and no redirects: a 429 stops the run, and X-Auth-Token never follows a redirect.
 $config = new ProductiveConfig(
@@ -78,6 +80,29 @@ $config = new ProductiveConfig(
     maxAttempts: 1,
 );
 $connector = new Connector($config, (new Factory())->globalOptions(['allow_redirects' => false]), new CacheThrottle(new Repository(new ArrayStore())), new RetryPolicy(1, 0));
+
+if ($probe) {
+    // Reports allow ten requests per 30 seconds, so the eleventh of a burst answers 429: its status,
+    // headers and errors show how the API states the limit and when it resets.
+    for ($request = 1; $request <= 11; $request++) {
+        try {
+            $connector->send(new Request(Method::Get, 'reports/time_reports', 'page[size]=1', operation: 'reports/time_reports.index'));
+        } catch (RateLimitException $exception) {
+            $file = $root . '/recordings/rate-limit-' . date('Y-m-d-His') . '.json';
+            file_put_contents($file, json_encode(['request' => $request, ...Exchange::response($exception->response)], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
+            printf("Request %d answered 429, retry after %s seconds. Recorded to %s\n", $request, var_export($exception->retryAfter(), true), $file);
+
+            exit(0);
+        }
+    }
+
+    fwrite(STDERR, "No 429 after 11 report requests.\n");
+    exit(1);
+}
+
+$api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $root . '/generator/config')->build();
+$steps = WritePlan::steps($api, require $root . '/generator/config/recipes.php', $tier === null ? null : (int) $tier, $resource === null ? [] : array_values(array_filter(array_map(trim(...), explode(',', $resource)))));
+
 $recorder = new WriteRecorder($connector, date('Y-m-d'));
 $directory = $root . '/recordings/writes-' . date('Y-m-d-His');
 

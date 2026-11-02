@@ -1,13 +1,13 @@
 {
     "data": [
         {
-            "id": "1175",
+            "id": "1192",
             "type": "survey_fields",
             "attributes": {
                 "created_at": "2026-10-23T21:20:29.358+02:00",
                 "updated_at": "2026-10-23T21:21:41.439+02:00",
-                "name": "Text 252",
-                "data_type_id": 1075,
+                "name": "Text 268",
+                "data_type_id": 1070,
                 "required": false,
                 "description": null,
                 "archived_at": null,
@@ -24,7 +24,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "survey": {
@@ -50,13 +50,13 @@
             }
         },
         {
-            "id": "1175",
+            "id": "1192",
             "type": "survey_fields",
             "attributes": {
                 "created_at": "2026-10-23T21:20:29.358+02:00",
                 "updated_at": "2026-10-23T21:21:41.439+02:00",
-                "name": "Text 252",
-                "data_type_id": 1075,
+                "name": "Text 268",
+                "data_type_id": 1070,
                 "required": false,
                 "description": null,
                 "archived_at": null,
@@ -73,13 +73,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "survey": {
                     "data": {
                         "type": "surveys",
-                        "id": "1176"
+                        "id": "1193"
                     }
                 },
                 "origin_field": {
@@ -89,11 +89,11 @@
                     "data": [
                         {
                             "type": "survey_field_options",
-                            "id": "1073"
+                            "id": "1067"
                         },
                         {
                             "type": "survey_field_options",
-                            "id": "1177"
+                            "id": "1194"
                         }
                     ]
                 },

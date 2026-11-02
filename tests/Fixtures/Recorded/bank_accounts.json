@@ -1,13 +1,13 @@
 {
     "data": [
         {
-            "id": "1048",
+            "id": "1036",
             "type": "bank_accounts",
             "attributes": {
-                "bank_name": "Text 36",
+                "bank_name": "Text 27",
                 "bank_address": null,
-                "name": "Text 37",
-                "number": "Text 38",
+                "name": "Text 28",
+                "number": "Text 29",
                 "currency": "USD",
                 "swift_code": null,
                 "local_bank_code": null,
@@ -17,7 +17,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "subsidiary": {
@@ -28,13 +28,40 @@
             }
         },
         {
-            "id": "1048",
+            "id": "1037",
             "type": "bank_accounts",
             "attributes": {
-                "bank_name": "Text 36",
+                "bank_name": "Text 30",
                 "bank_address": null,
-                "name": "Text 37",
-                "number": "Text 38",
+                "name": "Text 31",
+                "number": "Text 32",
+                "currency": "USD",
+                "swift_code": null,
+                "local_bank_code": null,
+                "archived_at": "2026-10-26T16:04:51.000+01:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1036",
+            "type": "bank_accounts",
+            "attributes": {
+                "bank_name": "Text 27",
+                "bank_address": null,
+                "name": "Text 28",
+                "number": "Text 29",
                 "currency": "USD",
                 "swift_code": null,
                 "local_bank_code": null,
@@ -44,13 +71,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1049"
+                        "id": "1038"
                     }
                 }
             }

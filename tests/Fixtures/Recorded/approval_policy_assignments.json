@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1039",
+            "id": "1022",
             "type": "approval_policy_assignments",
             "attributes": {
                 "target_type": "deal"
@@ -10,7 +10,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -31,7 +31,7 @@
             }
         },
         {
-            "id": "1039",
+            "id": "1022",
             "type": "approval_policy_assignments",
             "attributes": {
                 "target_type": "deal"
@@ -40,7 +40,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -49,13 +49,13 @@
                 "deal": {
                     "data": {
                         "type": "deals",
-                        "id": "1004"
+                        "id": "1023"
                     }
                 },
                 "approval_policy": {
                     "data": {
                         "type": "approval_policies",
-                        "id": "1040"
+                        "id": "1024"
                     }
                 }
             }

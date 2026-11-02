@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1035",
+            "id": "1018",
             "type": "approval_policies",
             "attributes": {
                 "archived_at": null,
@@ -9,33 +9,33 @@
                 "default": false,
                 "description": null,
                 "name": null,
-                "type_id": 1036
+                "type_id": 1019
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }
         },
         {
-            "id": "1037",
+            "id": "1020",
             "type": "approval_policies",
             "attributes": {
                 "archived_at": null,
                 "custom": false,
                 "default": false,
-                "description": "Text 24",
-                "name": "Text 25",
-                "type_id": 1038
+                "description": "Text 11",
+                "name": "Text 12",
+                "type_id": 1021
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }

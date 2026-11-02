@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Axyr\Productive\Contracts\ConnectorInterface;
 use Axyr\Productive\Exceptions\ApiException;
 use Axyr\Productive\Exceptions\RateLimitException;
+use Axyr\Productive\Generator\Ir\BodyKind;
 use Axyr\Productive\Generator\Ir\Operation;
 use Axyr\Productive\Generator\Ir\OperationKind;
 use Axyr\Productive\Generator\Ir\ResponseKind;
@@ -171,6 +172,17 @@ it('sends a bulk operation as a one-item bulk document about the record the run 
         ]);
 });
 
+it('sends a plain JSON body as the attributes themselves', function () {
+    $connector = writerApi();
+    $append = writerStep('pages.append_markdown', 'PATCH', 'pages/{id}/append_markdown', ['markdown' => 'SDK check']);
+    $operation = new Operation('pages.append_markdown', 'x', OperationKind::Action, 'PATCH', 'pages/7/append_markdown', [], ResponseKind::Resource, false, true, 'pages.append_markdown', body: BodyKind::Plain);
+
+    $recordings = iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run([new WriteStep($operation, 'pages', 'pages', $append->attributes)], execute: true));
+
+    expect($recordings['001.pages.append_markdown']['request']['body'])->toBe(['markdown' => 'SDK check'])
+        ->and(json_decode((string) json_encode($connector->sent[0]->body), true))->toBe(['markdown' => 'SDK check']);
+});
+
 it('sends a single operation as a plain JSON:API document', function () {
     $connector = writerApi();
 
@@ -191,6 +203,17 @@ it('reads the first record of a filtered list, apart from the unfiltered one', f
         'tasks?filter[title]=Why?&page[size]=1 tasks.index',
     ]);
 });
+
+it('acts on the first record of a list, in a dry run as when it runs', function (bool $execute) {
+    $connector = writerApi();
+    $read = writerStep('subsidiaries.read', 'PATCH', 'subsidiaries/{id}/read', null, onCreated: true);
+    $step = new WriteStep($read->operation, '{first:subsidiaries?filter[read]=false}', 'subsidiaries', null, onCreated: true);
+
+    $recordings = iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run([$step], execute: $execute));
+
+    expect($recordings['001.subsidiaries.read']['request']['path'])->toBe('subsidiaries/7/read')
+        ->and($connector->sent[0]->path . '?' . $connector->sent[0]->query)->toBe('subsidiaries?filter[read]=false&page[size]=1');
+})->with([false, true]);
 
 it('reads a list once and remembers that it is empty', function () {
     $empty = new WriteTestConnector(fn(Request $request): Response => writerResponse(200, ['data' => []]));

@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 42",
+            "id": "Text 36",
             "type": "budget_reports",
             "attributes": {
                 "currency": "USD",
@@ -11,14 +11,14 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 43",
-                "month": "Text 44",
-                "week": "Text 45",
+                "quarter": "Text 37",
+                "month": "Text 38",
+                "week": "Text 39",
                 "purchase_order_number": null,
                 "status": 1,
                 "project_type": 1,
                 "deal_type": 1,
-                "tracking_type_id": 1038,
+                "tracking_type_id": 1021,
                 "recurring_interval_id": null,
                 "revenue_distribution_type": "default",
                 "total_estimated_time": 1800,
@@ -27,10 +27,10 @@
                 "total_worked_time": 600,
                 "total_unapproved_time": 0,
                 "total_overtime_time": 0,
-                "total_future_booked_time": 480,
+                "total_future_booked_time": 0,
                 "total_billable_time": 0,
-                "total_forecasted_billable_time": 480,
-                "average_forecasted_time_usage": "26.67",
+                "total_forecasted_billable_time": 0,
+                "average_forecasted_time_usage": "0.0",
                 "average_estimated_time_usage": "33.33",
                 "average_profit_margin": null,
                 "average_profit_margin_default": null,
@@ -38,11 +38,11 @@
                 "average_budget_usage": "33.3333",
                 "average_budget_usage_default": "33.3333",
                 "average_budget_usage_normalized": null,
-                "average_forecasted_budget_overrun": "66.6667",
-                "average_forecasted_budget_overrun_default": "66.6667",
+                "average_forecasted_budget_overrun": "200.0",
+                "average_forecasted_budget_overrun_default": "200.0",
                 "average_forecasted_budget_overrun_normalized": null,
-                "average_forecasted_budget_usage": "60.0",
-                "average_forecasted_budget_usage_default": "60.0",
+                "average_forecasted_budget_usage": "33.3333",
+                "average_forecasted_budget_usage_default": "33.3333",
                 "average_forecasted_budget_usage_normalized": null,
                 "average_invoiced_percentage": null,
                 "average_invoiced_percentage_default": null,
@@ -67,14 +67,14 @@
                 "total_profit": -45455,
                 "total_profit_default": -45455,
                 "total_profit_normalized": null,
-                "total_future_cost": 36364,
-                "total_future_cost_default": 36364,
+                "total_future_cost": 0,
+                "total_future_cost_default": 0,
                 "total_future_cost_normalized": null,
                 "total_estimated_cost": 0,
                 "total_estimated_cost_default": 0,
                 "total_estimated_cost_normalized": null,
-                "total_forecasted_cost": 81818,
-                "total_forecasted_cost_default": 81818,
+                "total_forecasted_cost": 45455,
+                "total_forecasted_cost_default": 45455,
                 "total_forecasted_cost_normalized": null,
                 "total_revenue": 0,
                 "total_revenue_default": 0,
@@ -94,14 +94,14 @@
                 "average_actual_rate": 0,
                 "average_actual_rate_default": 0,
                 "average_actual_rate_normalized": null,
-                "total_future_budget_used": 80000,
-                "total_future_budget_used_default": 80000,
+                "total_future_budget_used": 0,
+                "total_future_budget_used_default": 0,
                 "total_future_budget_used_normalized": null,
-                "total_forecasted_budget_used": 180000,
-                "total_forecasted_budget_used_default": 180000,
+                "total_forecasted_budget_used": 100000,
+                "total_forecasted_budget_used_default": 100000,
                 "total_forecasted_budget_used_normalized": null,
-                "total_forecasted_budget_overrun": 120000,
-                "total_forecasted_budget_overrun_default": 120000,
+                "total_forecasted_budget_overrun": 200000,
+                "total_forecasted_budget_overrun_default": 200000,
                 "total_forecasted_budget_overrun_normalized": null,
                 "total_expense_billable": 0,
                 "total_expense_billable_default": 0,
@@ -132,7 +132,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -156,7 +156,7 @@
             }
         },
         {
-            "id": "Text 46",
+            "id": "Text 40",
             "type": "budget_reports",
             "attributes": {
                 "currency": "USD",
@@ -166,14 +166,14 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 43",
-                "month": "Text 44",
-                "week": "Text 45",
+                "quarter": "Text 37",
+                "month": "Text 38",
+                "week": "Text 39",
                 "purchase_order_number": null,
                 "status": 1,
                 "project_type": 2,
                 "deal_type": 2,
-                "tracking_type_id": 1038,
+                "tracking_type_id": 1021,
                 "recurring_interval_id": null,
                 "revenue_distribution_type": "default",
                 "total_estimated_time": 15060,
@@ -182,10 +182,10 @@
                 "total_worked_time": 14700,
                 "total_unapproved_time": 0,
                 "total_overtime_time": 0,
-                "total_future_booked_time": 16320,
+                "total_future_booked_time": 5760,
                 "total_billable_time": 14700,
-                "total_forecasted_billable_time": 31020,
-                "average_forecasted_time_usage": "205.98",
+                "total_forecasted_billable_time": 20460,
+                "average_forecasted_time_usage": "135.86",
                 "average_estimated_time_usage": "97.61",
                 "average_profit_margin": "53.8178",
                 "average_profit_margin_default": "53.8178",
@@ -193,11 +193,11 @@
                 "average_budget_usage": "131.3253",
                 "average_budget_usage_default": "131.3253",
                 "average_budget_usage_normalized": null,
-                "average_forecasted_budget_overrun": "-58.2075",
-                "average_forecasted_budget_overrun_default": "-58.2075",
+                "average_forecasted_budget_overrun": "-42.1199",
+                "average_forecasted_budget_overrun_default": "-42.1199",
                 "average_forecasted_budget_overrun_normalized": null,
-                "average_forecasted_budget_usage": "239.2771",
-                "average_forecasted_budget_usage_default": "239.2771",
+                "average_forecasted_budget_usage": "172.7711",
+                "average_forecasted_budget_usage_default": "172.7711",
                 "average_forecasted_budget_usage_normalized": null,
                 "average_invoiced_percentage": "68.8073",
                 "average_invoiced_percentage_default": "68.8073",
@@ -222,14 +222,14 @@
                 "total_profit": 2933070,
                 "total_profit_default": 2933070,
                 "total_profit_normalized": null,
-                "total_future_cost": 1257143,
-                "total_future_cost_default": 1257143,
+                "total_future_cost": 457143,
+                "total_future_cost_default": 457143,
                 "total_future_cost_normalized": null,
                 "total_estimated_cost": 0,
                 "total_estimated_cost_default": 0,
                 "total_estimated_cost_normalized": null,
-                "total_forecasted_cost": 3774073,
-                "total_forecasted_cost_default": 3774073,
+                "total_forecasted_cost": 2974073,
+                "total_forecasted_cost_default": 2974073,
                 "total_forecasted_cost_normalized": null,
                 "total_revenue": 5450000,
                 "total_revenue_default": 5450000,
@@ -249,14 +249,14 @@
                 "average_actual_rate": 22244,
                 "average_actual_rate_default": 22244,
                 "average_actual_rate_normalized": null,
-                "total_future_budget_used": 4480000,
-                "total_future_budget_used_default": 4480000,
+                "total_future_budget_used": 1720000,
+                "total_future_budget_used_default": 1720000,
                 "total_future_budget_used_normalized": null,
-                "total_forecasted_budget_used": 9930000,
-                "total_forecasted_budget_used_default": 9930000,
+                "total_forecasted_budget_used": 7170000,
+                "total_forecasted_budget_used_default": 7170000,
                 "total_forecasted_budget_used_normalized": null,
-                "total_forecasted_budget_overrun": -5780000,
-                "total_forecasted_budget_overrun_default": -5780000,
+                "total_forecasted_budget_overrun": -3020000,
+                "total_forecasted_budget_overrun_default": -3020000,
                 "total_forecasted_budget_overrun_normalized": null,
                 "total_expense_billable": 1600000,
                 "total_expense_billable_default": 1600000,
@@ -287,7 +287,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -311,7 +311,7 @@
             }
         },
         {
-            "id": "Text 47",
+            "id": "Text 41",
             "type": "budget_reports",
             "attributes": {
                 "currency": "USD",
@@ -321,14 +321,14 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 48",
-                "month": "Text 49",
-                "week": "Text 50",
+                "quarter": "Text 42",
+                "month": "Text 43",
+                "week": "Text 44",
                 "purchase_order_number": null,
                 "status": 1,
                 "project_type": 2,
                 "deal_type": 2,
-                "tracking_type_id": 1038,
+                "tracking_type_id": 1021,
                 "recurring_interval_id": null,
                 "revenue_distribution_type": "default",
                 "total_estimated_time": 37800,
@@ -442,7 +442,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -466,7 +466,7 @@
             }
         },
         {
-            "id": "Text 51",
+            "id": "Text 45",
             "type": "budget_reports",
             "attributes": {
                 "currency": "USD",
@@ -476,14 +476,14 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 48",
-                "month": "Text 49",
-                "week": "Text 50",
+                "quarter": "Text 42",
+                "month": "Text 43",
+                "week": "Text 44",
                 "purchase_order_number": null,
                 "status": 1,
                 "project_type": 2,
                 "deal_type": 2,
-                "tracking_type_id": 1036,
+                "tracking_type_id": 1019,
                 "recurring_interval_id": null,
                 "revenue_distribution_type": "default",
                 "total_estimated_time": 0,
@@ -597,7 +597,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -621,7 +621,7 @@
             }
         },
         {
-            "id": "Text 42",
+            "id": "Text 36",
             "type": "budget_reports",
             "attributes": {
                 "currency": "USD",
@@ -631,14 +631,14 @@
                 "count": 1,
                 "formula_fields": [],
                 "year": "2026",
-                "quarter": "Text 43",
-                "month": "Text 44",
-                "week": "Text 45",
+                "quarter": "Text 37",
+                "month": "Text 38",
+                "week": "Text 39",
                 "purchase_order_number": null,
                 "status": 1,
                 "project_type": 1,
                 "deal_type": 1,
-                "tracking_type_id": 1038,
+                "tracking_type_id": 1021,
                 "recurring_interval_id": null,
                 "revenue_distribution_type": "default",
                 "total_estimated_time": 1800,
@@ -647,10 +647,10 @@
                 "total_worked_time": 600,
                 "total_unapproved_time": 0,
                 "total_overtime_time": 0,
-                "total_future_booked_time": 480,
+                "total_future_booked_time": 0,
                 "total_billable_time": 0,
-                "total_forecasted_billable_time": 480,
-                "average_forecasted_time_usage": "26.67",
+                "total_forecasted_billable_time": 0,
+                "average_forecasted_time_usage": "0.0",
                 "average_estimated_time_usage": "33.33",
                 "average_profit_margin": null,
                 "average_profit_margin_default": null,
@@ -658,11 +658,11 @@
                 "average_budget_usage": "33.3333",
                 "average_budget_usage_default": "33.3333",
                 "average_budget_usage_normalized": null,
-                "average_forecasted_budget_overrun": "66.6667",
-                "average_forecasted_budget_overrun_default": "66.6667",
+                "average_forecasted_budget_overrun": "200.0",
+                "average_forecasted_budget_overrun_default": "200.0",
                 "average_forecasted_budget_overrun_normalized": null,
-                "average_forecasted_budget_usage": "60.0",
-                "average_forecasted_budget_usage_default": "60.0",
+                "average_forecasted_budget_usage": "33.3333",
+                "average_forecasted_budget_usage_default": "33.3333",
                 "average_forecasted_budget_usage_normalized": null,
                 "average_invoiced_percentage": null,
                 "average_invoiced_percentage_default": null,
@@ -687,14 +687,14 @@
                 "total_profit": -45455,
                 "total_profit_default": -45455,
                 "total_profit_normalized": null,
-                "total_future_cost": 36364,
-                "total_future_cost_default": 36364,
+                "total_future_cost": 0,
+                "total_future_cost_default": 0,
                 "total_future_cost_normalized": null,
                 "total_estimated_cost": 0,
                 "total_estimated_cost_default": 0,
                 "total_estimated_cost_normalized": null,
-                "total_forecasted_cost": 81818,
-                "total_forecasted_cost_default": 81818,
+                "total_forecasted_cost": 45455,
+                "total_forecasted_cost_default": 45455,
                 "total_forecasted_cost_normalized": null,
                 "total_revenue": 0,
                 "total_revenue_default": 0,
@@ -714,14 +714,14 @@
                 "average_actual_rate": 0,
                 "average_actual_rate_default": 0,
                 "average_actual_rate_normalized": null,
-                "total_future_budget_used": 80000,
-                "total_future_budget_used_default": 80000,
+                "total_future_budget_used": 0,
+                "total_future_budget_used_default": 0,
                 "total_future_budget_used_normalized": null,
-                "total_forecasted_budget_used": 180000,
-                "total_forecasted_budget_used_default": 180000,
+                "total_forecasted_budget_used": 100000,
+                "total_forecasted_budget_used_default": 100000,
                 "total_forecasted_budget_used_normalized": null,
-                "total_forecasted_budget_overrun": 120000,
-                "total_forecasted_budget_overrun_default": 120000,
+                "total_forecasted_budget_overrun": 200000,
+                "total_forecasted_budget_overrun_default": 200000,
                 "total_forecasted_budget_overrun_normalized": null,
                 "total_expense_billable": 0,
                 "total_expense_billable_default": 0,
@@ -752,7 +752,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -763,7 +763,7 @@
                 "budget": {
                     "data": {
                         "type": "deals",
-                        "id": "1047"
+                        "id": "1035"
                     }
                 },
                 "deal_status": {

@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id": "1005",
+            "id": "1004",
             "type": "organization_subscriptions",
             "attributes": {
-                "billing_email": "person-159@example.test",
+                "billing_email": "person-165@example.test",
                 "billing_address": {
                     "vat": null,
                     "city": null,
@@ -12,7 +12,7 @@
                     "state": null,
                     "address": null
                 },
-                "subscription_state_id": 1038,
+                "subscription_state_id": 1021,
                 "trial_ends_at": "2026-11-06 23:59:59",
                 "trial_ends_on": "2026-11-06",
                 "subscription_started_at": null,
@@ -22,8 +22,8 @@
                 "grace_period_ends_at": null,
                 "discount": null,
                 "discount_expires_on": null,
-                "payment_method_id": 1038,
-                "collection_method_id": 1038,
+                "payment_method_id": 1021,
+                "collection_method_id": 1021,
                 "seats": 3,
                 "seats_used": 2,
                 "seats_pending": 3,
@@ -37,9 +37,10 @@
                 "current_products": {
                     "cycle": "month",
                     "currency": "USD",
+                    "multiproduct": false,
                     "subscribed_products": [
                         {
-                            "name": "Text 160",
+                            "name": "Text 166",
                             "product_track": "all_in_one_2023",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -50,7 +51,7 @@
                     ],
                     "available_products": [
                         {
-                            "name": "Text 161",
+                            "name": "Text 167",
                             "product_track": "all_in_one_2023",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -59,7 +60,7 @@
                             "active": true
                         },
                         {
-                            "name": "Text 162",
+                            "name": "Text 168",
                             "product_track": "all_in_one_2023",
                             "product_groups": [
                                 "all_in_one_group_2023"
@@ -68,55 +69,36 @@
                             "active": true
                         },
                         {
-                            "name": "Text 163",
+                            "name": "Text 169",
                             "product_track": "notetaker",
                             "product_groups": [
-                                "all_in_one_group_2023"
+                                "all_in_one_group_2023",
+                                "modularization_2026"
                             ],
                             "standalone": false,
                             "active": true
                         },
                         {
-                            "name": "Text 164",
+                            "name": "Text 170",
                             "product_track": "notetaker",
                             "product_groups": [
-                                "all_in_one_group_2023"
+                                "all_in_one_group_2023",
+                                "modularization_2026"
                             ],
                             "standalone": false,
                             "active": true
                         },
                         {
-                            "name": "Text 165",
+                            "name": "Text 171",
                             "product_track": "notetaker",
                             "product_groups": [
-                                "all_in_one_group_2023"
+                                "all_in_one_group_2023",
+                                "modularization_2026"
                             ],
                             "standalone": false,
                             "active": true
                         }
-                    ],
-                    "combined_features": {
-                        "automations": {
-                            "type": "metered",
-                            "limit": 5000
-                        },
-                        "autotracking": {
-                            "type": "switch",
-                            "available": true
-                        },
-                        "billable_time_rounding": {
-                            "type": "switch",
-                            "available": true
-                        },
-                        "client_access_to_budgets": {
-                            "type": "switch",
-                            "available": true
-                        },
-                        "comment_visibility": {
-                            "type": "switch",
-                            "available": true
-                        }
-                    }
+                    ]
                 },
                 "product_types": [
                     {
@@ -130,14 +112,14 @@
                 "contract_date": null,
                 "contract_seats": null,
                 "contract_min_seats": null,
-                "stripe_customer_id": "Text 166",
+                "stripe_customer_id": "Text 172",
                 "balance": "0.0"
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "billing_group_owner": {
