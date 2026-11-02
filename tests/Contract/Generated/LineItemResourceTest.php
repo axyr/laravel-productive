@@ -41,14 +41,14 @@ it('line_items.show: GET /line_items/{id}', function () {
 it('line_items.create: POST /line_items', function () {
     fakeHttp(['*' => Fixtures::response(null, 'resource', 'line_items', 201)]);
 
-    $result = Productive::lineItems()->create(['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1]);
+    $result = Productive::lineItems()->create(['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1, 'unit_id' => 1]);
 
     expect($result)->toBeInstanceOf(LineItem::class);
     Http::assertSent(function (HttpRequest $request): bool {
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('line_items')
             && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'line_items', 'attributes' => ['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1]]];
+            && json_decode($request->body(), true) === ['data' => ['type' => 'line_items', 'attributes' => ['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1, 'unit_id' => 1]]];
     });
 });
 
@@ -97,14 +97,14 @@ it('line_items.generate: POST /line_items/generate', function () {
 it('line_items.create_bulk: POST /line_items', function () {
     fakeHttp(['*' => Fixtures::response('line_items-create-bulk', 'collection', 'line_items', 201)]);
 
-    $result = Productive::lineItems()->bulkCreate([['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1]]);
+    $result = Productive::lineItems()->bulkCreate([['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1, 'unit_id' => 1]]);
 
     expect($result)->toBeInstanceOf(ModelCollection::class);
     Http::assertSent(function (HttpRequest $request): bool {
         return $request->method() === 'POST'
             && urldecode($request->url()) === apiUrl('line_items')
             && $request->header('Content-Type') === ['application/vnd.api+json; ext=bulk']
-            && json_decode($request->body(), true) === ['data' => [['type' => 'line_items', 'attributes' => ['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1]]]];
+            && json_decode($request->body(), true) === ['data' => [['type' => 'line_items', 'attributes' => ['invoice_id' => 1, 'unit_price' => 1, 'quantity' => 1.5, 'tax_rate_id' => 1, 'unit_id' => 1]]]];
     });
 });
 

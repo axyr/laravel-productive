@@ -16381,6 +16381,13 @@
                     "description": "Timestamp when the bill was deleted, or null if active."
                 },
                 {
+                    "name": "description",
+                    "property": "description",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "due_date",
                     "property": "dueDate",
                     "type": "date",
@@ -16474,7 +16481,11 @@
                 "status": "pending",
                 "created_at": "2026-03-01T09:00:00.000+00:00"
             },
-            "unseen": []
+            "unseen": [
+                "name",
+                "amount",
+                "status"
+            ]
         },
         {
             "class": "Board",
@@ -45606,6 +45617,13 @@
             "bulk": false,
             "attributes": [
                 {
+                    "name": "subsidiary_id",
+                    "property": "subsidiaryId",
+                    "type": "int",
+                    "description": "ID of the subsidiary used as the issuing entity on invoices generated from this template.",
+                    "required": true
+                },
+                {
                     "name": "budget_id",
                     "property": "budgetId",
                     "type": "int",
@@ -45654,12 +45672,6 @@
                     "property": "note",
                     "type": "string",
                     "description": "The default note text to include on invoices generated from this template."
-                },
-                {
-                    "name": "subsidiary_id",
-                    "property": "subsidiaryId",
-                    "type": "int",
-                    "description": "ID of the subsidiary used as the issuing entity on invoices generated from this template."
                 }
             ]
         },
@@ -45710,6 +45722,18 @@
                     "type": "int",
                     "description": "ID of the tax rate applied to this line item, or null if tax is not applied.",
                     "required": true
+                },
+                {
+                    "name": "unit_id",
+                    "property": "unitId",
+                    "type": "int",
+                    "description": "ID of the unit of measure for this line item (e.g. hour, day, piece).",
+                    "required": true,
+                    "enum": [
+                        1,
+                        2,
+                        3
+                    ]
                 },
                 {
                     "name": "discount",
@@ -45763,17 +45787,6 @@
                     "property": "taxValue",
                     "type": "float",
                     "description": "The computed tax amount for this line item (amount \u00d7 tax_value)."
-                },
-                {
-                    "name": "unit_id",
-                    "property": "unitId",
-                    "type": "int",
-                    "description": "ID of the unit of measure for this line item (e.g. hour, day, piece).",
-                    "enum": [
-                        1,
-                        2,
-                        3
-                    ]
                 }
             ]
         },

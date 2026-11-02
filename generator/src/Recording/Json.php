@@ -35,6 +35,16 @@ final class Json
     }
 
     /**
+     * The strings of a list; anything else in it is left out.
+     *
+     * @return list<string>
+     */
+    public static function strings(mixed $value): array
+    {
+        return array_values(array_filter(self::list($value), is_string(...)));
+    }
+
+    /**
      * A response body as a recording holds it: the decoded JSON, else the text, else a note for a
      * binary body (a PDF), which JSON cannot carry.
      */

@@ -25,6 +25,13 @@ declare(strict_types=1);
  *
  * Tier 3, work. Everything is in it. The time entries go on a seeded budget with time approval,
  * and a project's change of workflow maps the seeded default workflow's statuses by their IDs.
+ *
+ * Tier 4, finance, on the seeded budget "Monthly retainer" (4391270), which has no invoice template
+ * or automatic invoicing rule yet, its company and the seeded invoice and purchase order document
+ * types. Not in it: sending an invoice or a purchase order, the e-invoice, and the exports and
+ * their updates, which go to an accounting integration; the overheads, of which the organization
+ * has none to update; the create of one expense line item, whose route does not exist; and the
+ * generating of line items, whose body no attempt found (generator/config/coverage.php).
  */
 return [
     'holiday_calendars' => [
@@ -507,5 +514,120 @@ return [
         'tier' => 3,
         'create' => ['person_id' => '{first:people?filter[role_id]=1}', 'salary_type_id' => 1, 'cost' => 0, 'currency' => 'USD', 'working_hours' => [8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0], 'started_on' => '2020-01-01', 'ended_on' => '2020-01-31', 'note' => 'SDK check salary'],
         'update' => ['note' => 'SDK check salary, edited'],
+    ],
+    'bank_accounts' => [
+        'tier' => 4,
+        'create' => ['name' => 'SDK check bank account', 'number' => 'SDK-CHECK-0001', 'bank_name' => 'SDK check bank', 'currency' => 'USD', 'subsidiary_id' => '{first:subsidiaries}'],
+        'update' => ['name' => 'SDK check bank account, renamed'],
+        'actions' => ['archive' => null, 'restore' => null],
+        'cleanup' => 'archive',
+    ],
+    'payment_reminder_sequences' => [
+        'tier' => 4,
+        'create' => ['name' => 'SDK check reminder sequence', 'default_sequence' => false],
+        'update' => ['name' => 'SDK check reminder sequence, renamed'],
+    ],
+    'invoice_templates' => [
+        'tier' => 4,
+        'create' => ['budget_id' => 4391270, 'document_type_id' => 191187, 'subsidiary_id' => '{first:subsidiaries}', 'note' => 'SDK check invoice template'],
+        'update' => ['note' => 'SDK check invoice template, edited'],
+    ],
+    'automatic_invoicing_rules' => [
+        'tier' => 4,
+        'create' => ['budget_id' => 4391270, 'creation_offset' => 0, 'creation_offset_unit' => 'day', 'reference_date' => 'end_date', 'skip_weekends' => false],
+        'update' => ['creation_offset' => 1],
+    ],
+    'invoices' => [
+        'tier' => 4,
+        'create' => ['company_id' => 1555948, 'currency' => 'USD', 'invoiced_on' => '{date:+0}', 'document_type_id' => 191187, 'subsidiary_id' => '{first:subsidiaries}', 'subject' => 'SDK check invoice'],
+        'update' => ['subject' => 'SDK check invoice, renamed'],
+    ],
+    'line_items' => [
+        'tier' => 4,
+        'create' => ['invoice_id' => '{created:invoices}', 'description' => 'SDK check line item', 'unit_id' => 1, 'unit_price' => 100, 'quantity' => 1.0, 'tax_rate_id' => 19081],
+        'update' => ['quantity' => 2.0],
+    ],
+    'line_items#bulk' => [
+        'tier' => 4,
+        'create_with' => 'create_bulk',
+        'create' => ['invoice_id' => '{created:invoices}', 'description' => 'SDK check line item', 'unit_id' => 1, 'unit_price' => 100, 'quantity' => 1.0, 'tax_rate_id' => 19081],
+        'actions' => ['update_bulk' => ['quantity' => 3.0], 'destroy_bulk' => null],
+        'cleanup' => 'none',
+    ],
+    'invoice_attributions' => [
+        'tier' => 4,
+        'create' => ['invoice_id' => '{created:invoices}', 'budget_id' => 4391270, 'amount' => 100],
+        'update' => ['amount' => 200],
+    ],
+    // Finalized and marked as sent with sent_on, never sent: a payment is only made on a sent invoice
+    // (422 "invoice_not_sent").
+    'invoices#finalized' => [
+        'tier' => 4,
+        'create' => ['company_id' => 1555948, 'currency' => 'USD', 'invoiced_on' => '{date:+0}', 'document_type_id' => 191187, 'subsidiary_id' => '{first:subsidiaries}', 'subject' => 'SDK check finalized invoice', 'sent_on' => '{date:+0}'],
+        'actions' => ['finalize' => null],
+    ],
+    'payments' => [
+        'tier' => 4,
+        'create' => ['invoice_id' => '{created:invoices#finalized}', 'amount' => 100, 'paid_on' => '{date:+0}', 'note' => 'SDK check payment'],
+        'update' => ['note' => 'SDK check payment, edited'],
+    ],
+    // A deal of the run's own: none is made on a deal of the default distribution type (422
+    // "invalid_revenue_distribution_type"), and every budget has that type.
+    'deals#revenue' => [
+        'tier' => 4,
+        'create' => ['name' => 'SDK check revenue deal', 'deal_type_id' => 2, 'date' => '{date:+0}', 'responsible_id' => '{first:people?filter[role_id]=1}', 'company_id' => 1555948, 'currency' => 'USD', 'deal_status_id' => '{first:deal_statuses}', 'probability' => 50, 'revenue_distribution_type' => 'even'],
+    ],
+    'revenue_distributions' => [
+        'tier' => 4,
+        'create' => ['deal_id' => '{created:deals#revenue}', 'start_on' => '{date:+0}', 'end_on' => '{date:+30}', 'amount_percent' => 10],
+        'update' => ['amount_percent' => 20],
+    ],
+    // On the budget's expense service. Without an approval policy an expense is approved when it is
+    // made (409 "record_already_approved"), and rejecting leaves it as it was, so there is nothing to
+    // unreject (generator/config/coverage.php).
+    'expenses' => [
+        'tier' => 4,
+        'create' => ['name' => 'SDK check expense', 'currency' => 'USD', 'date' => '{date:+0}', 'amount' => 100, 'quantity' => 1.0, 'service_id' => 17413715],
+        'update' => ['name' => 'SDK check expense, renamed'],
+        'actions' => ['unapprove' => null, 'approve' => null, 'reject' => ['rejected_reason' => 'SDK check']],
+    ],
+    'expense_line_items#bulk' => [
+        'tier' => 4,
+        'create_with' => 'create_bulk',
+        'create' => ['name' => 'SDK check bulk expense line item', 'quantity' => 1.0, 'unit_price' => 100, 'expense_id' => '{created:expenses}'],
+        'actions' => ['update_bulk' => ['quantity' => 2.0], 'destroy_bulk' => null],
+        'cleanup' => 'none',
+    ],
+    'expenses#copy' => [
+        'tier' => 4,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:expenses}', 'service_id' => 17413715, 'name' => 'SDK check expense copy'],
+        'cleanup' => 'none',
+    ],
+    'expenses#bulk' => [
+        'tier' => 4,
+        'on' => 'expenses#copy',
+        'actions' => ['update_bulk' => ['name' => 'SDK check expense copy, renamed'], 'bulk_approve' => null, 'destroy_bulk' => null],
+    ],
+    'purchase_orders' => [
+        'tier' => 4,
+        'create' => ['currency' => 'USD', 'issued_on' => '{date:+0}', 'vendor_id' => 1555948, 'deal_id' => 4391270, 'document_type_id' => 191190, 'subject' => 'SDK check purchase order'],
+        'update' => ['subject' => 'SDK check purchase order, renamed'],
+    ],
+    'bills' => [
+        'tier' => 4,
+        'create' => ['purchase_order_id' => '{created:purchase_orders}', 'date' => '{date:+0}', 'due_date' => '{date:+30}', 'invoice_number' => 'SDK-CHECK-1'],
+        'update' => ['invoice_number' => 'SDK-CHECK-2'],
+    ],
+    'purchase_orders#copy' => [
+        'tier' => 4,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:purchase_orders}', 'deal_id' => 4391270],
+        'cleanup' => 'none',
+    ],
+    'purchase_orders#bulk' => [
+        'tier' => 4,
+        'on' => 'purchase_orders#copy',
+        'actions' => ['update_bulk' => ['subject' => 'SDK check purchase order copy, renamed'], 'destroy_bulk' => null],
     ],
 ];

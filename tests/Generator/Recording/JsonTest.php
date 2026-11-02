@@ -22,6 +22,12 @@ it('reads maps and lists defensively', function () {
         ->and(Json::list(null))->toBe([]);
 });
 
+it('reads the strings of a list', function () {
+    expect(Json::strings(['a', 1, null, 'b']))->toBe(['a', 'b'])
+        ->and(Json::strings(['x' => 'a']))->toBe([])
+        ->and(Json::strings('a'))->toBe([]);
+});
+
 it('decodes a body to JSON, text, or a note for binary', function () {
     expect(Json::decode('{"data": []}'))->toBe(['data' => []])
         ->and(Json::decode('Bad gateway'))->toBe('Bad gateway')

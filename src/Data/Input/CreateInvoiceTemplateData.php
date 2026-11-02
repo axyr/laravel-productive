@@ -20,6 +20,7 @@ final readonly class CreateInvoiceTemplateData extends InputData
      * @param  array<string, mixed>|Undefined|null  $invoiceCreationOptions  A JSON object containing rules used to determine which services or time entries to include when auto-generating invoice line items.
      */
     public function __construct(
+        public int|string $subsidiaryId,
         public int|string $budgetId,
         public int|string $documentTypeId,
         public array|Undefined|null $bankAccountDetails = Undefined::Value,
@@ -28,12 +29,12 @@ final readonly class CreateInvoiceTemplateData extends InputData
         public array|Undefined|null $invoiceCreationOptions = Undefined::Value,
         public int|string|Undefined|null $issuerId = Undefined::Value,
         public string|Undefined|null $note = Undefined::Value,
-        public int|string|Undefined|null $subsidiaryId = Undefined::Value,
     ) {}
 
     public function toAttributes(): array
     {
         return self::filter([
+            'subsidiary_id' => $this->subsidiaryId,
             'budget_id' => $this->budgetId,
             'document_type_id' => $this->documentTypeId,
             'bank_account_details' => $this->bankAccountDetails,
@@ -42,7 +43,6 @@ final readonly class CreateInvoiceTemplateData extends InputData
             'invoice_creation_options' => $this->invoiceCreationOptions,
             'issuer_id' => $this->issuerId,
             'note' => $this->note,
-            'subsidiary_id' => $this->subsidiaryId,
         ]);
     }
 }

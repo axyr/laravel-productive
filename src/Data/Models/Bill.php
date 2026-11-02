@@ -43,6 +43,9 @@ final readonly class Bill extends Model
     /** Timestamp when the bill was deleted, or null if active. */
     public ?DateTimeImmutable $deletedAt;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $description;
+
     /** The payment due date for this bill. */
     public ?DateTimeImmutable $dueDate;
 
@@ -80,6 +83,7 @@ final readonly class Bill extends Model
         $this->currencyNormalized = $attributes->string('currency_normalized');
         $this->date = $attributes->date('date');
         $this->deletedAt = $attributes->dateTime('deleted_at');
+        $this->description = $attributes->mixed('description');
         $this->dueDate = $attributes->date('due_date');
         $this->invoiceNumber = $attributes->string('invoice_number');
         $this->name = $attributes->string('name');

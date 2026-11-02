@@ -73,6 +73,7 @@ Seen in recorded responses but missing from the spec. They are generated with th
 | `Artifact` | `current_version_number` | int |
 | `Artifact` | `restored_from_version_id` | mixed |
 | `BankAccount` | `local_bank_code` | mixed |
+| `Bill` | `description` | mixed |
 | `BookingReport` | `booking_type` | string |
 | `BudgetReport` | `average_estimated_time_usage` | string |
 | `BudgetReport` | `total_overtime_time` | int |
@@ -221,6 +222,9 @@ The spec's example has them, its schema does not, and no recorded response of th
 | `BankAccount` | `iban` |
 | `BankAccount` | `bic` |
 | `BankAccount` | `created_at` |
+| `Bill` | `name` |
+| `Bill` | `amount` |
+| `Bill` | `status` |
 | `BookingReport` | `total_time` |
 | `BookingReport` | `billable_time` |
 | `BookingReport` | `nonbillable_time` |
@@ -566,7 +570,6 @@ Their lists were empty in the recording, so they keep the spec's types.
 | Resource |
 | --- |
 | `agent_roles` |
-| `bills` |
 | `custom_domains` |
 | `deleted_items` |
 | `einvoice_identities` |

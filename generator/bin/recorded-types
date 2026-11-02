@@ -40,7 +40,11 @@ foreach ($writes as $run) {
     }
 }
 
-$summary = ['recorded_on' => substr(basename($directory), 0, 10), ...(new RecordingSummary())->summarize($recordings)];
-file_put_contents($root . '/generator/recorded-types.json', json_encode($summary, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
+// Laid over the committed summary, which may hold runs made on another machine: a recording adds
+// or retypes, and never removes what an earlier one found.
+$file = $root . '/generator/recorded-types.json';
+$previous = is_file($file) ? json_decode((string) file_get_contents($file), true, flags: JSON_THROW_ON_ERROR) : [];
+$summary = ['recorded_on' => substr(basename($directory), 0, 10), ...RecordingSummary::merge(is_array($previous) ? $previous : [], (new RecordingSummary())->summarize($recordings))];
+file_put_contents($file, json_encode($summary, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
 
 echo 'Summarized ' . count($recordings) . ' recordings from ' . basename($directory) . ' and ' . count($writes) . " write runs into generator/recorded-types.json.\n";

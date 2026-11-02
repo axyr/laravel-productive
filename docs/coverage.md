@@ -4,18 +4,18 @@
 
 Which operations the SDK has seen the live API answer. `composer record` records every GET of a test organization; writes are exercised by a live run that records their responses the same way. One row per operation of every generated resource, from the recording of 2026-10-23.
 
-**209 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
+**152 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
 
 | Status | Operations | Meaning |
 | --- | --- | --- |
 | recorded | 224 | A GET the recording answered with a success. |
-| exercised | 205 | A write a live run answered with a success. |
+| exercised | 260 | A write a live run answered with a success. |
 | empty list | 10 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
-| rejected | 2 | The API answered with an error; the status is shown. |
+| rejected | 1 | The API answered with an error; the status is shown. |
 | plan-gated | 0 | The test organization's plan does not include it. |
-| skipped | 22 | Left out on purpose; the reason is shown. |
+| skipped | 25 | Left out on purpose; the reason is shown. |
 | not recorded | 3 | A GET nothing has called yet. |
-| not exercised | 196 | A write nothing has called yet. |
+| not exercised | 139 | A write nothing has called yet. |
 
 ## `activities`
 
@@ -117,9 +117,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /automatic_invoicing_rules` | `automatic_invoicing_rules.index` | recorded `200` |
 | `GET /automatic_invoicing_rules/{id}` | `automatic_invoicing_rules.show` | recorded `200` |
-| `POST /automatic_invoicing_rules` | `automatic_invoicing_rules.create` | not exercised |
-| `PATCH /automatic_invoicing_rules/{id}` | `automatic_invoicing_rules.update` | not exercised |
-| `DELETE /automatic_invoicing_rules/{id}` | `automatic_invoicing_rules.destroy` | not exercised |
+| `POST /automatic_invoicing_rules` | `automatic_invoicing_rules.create` | exercised `201` |
+| `PATCH /automatic_invoicing_rules/{id}` | `automatic_invoicing_rules.update` | exercised `200` |
+| `DELETE /automatic_invoicing_rules/{id}` | `automatic_invoicing_rules.destroy` | exercised `204` |
 
 ## `bank_accounts`
 
@@ -127,19 +127,19 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /bank_accounts` | `bank_accounts.index` | recorded `200` |
 | `GET /bank_accounts/{id}` | `bank_accounts.show` | recorded `200` |
-| `POST /bank_accounts` | `bank_accounts.create` | not exercised |
-| `PATCH /bank_accounts/{id}` | `bank_accounts.update` | not exercised |
-| `PATCH /bank_accounts/{id}/archive` | `bank_accounts.archive` | not exercised |
-| `PATCH /bank_accounts/{id}/restore` | `bank_accounts.restore` | not exercised |
+| `POST /bank_accounts` | `bank_accounts.create` | exercised `201` |
+| `PATCH /bank_accounts/{id}` | `bank_accounts.update` | exercised `200` |
+| `PATCH /bank_accounts/{id}/archive` | `bank_accounts.archive` | exercised `200` |
+| `PATCH /bank_accounts/{id}/restore` | `bank_accounts.restore` | exercised `200` |
 
 ## `bills`
 
 | Endpoint | Operation | Status |
 | --- | --- | --- |
 | `GET /bills/{id}` | `bills.show` | not recorded |
-| `POST /bills` | `bills.create` | not exercised |
-| `PATCH /bills/{id}` | `bills.update` | not exercised |
-| `DELETE /bills/{id}` | `bills.destroy` | not exercised |
+| `POST /bills` | `bills.create` | exercised `201` |
+| `PATCH /bills/{id}` | `bills.update` | exercised `200` |
+| `DELETE /bills/{id}` | `bills.destroy` | exercised `204` |
 
 ## `bookings`
 
@@ -265,7 +265,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | `GET /deal_statuses/{id}` | `deal_statuses.show` | recorded `200` |
 | `POST /deal_statuses` | `deal_statuses.create` | exercised `201` |
 | `PATCH /deal_statuses/{id}` | `deal_statuses.update` | exercised `200` |
-| `DELETE /deal_statuses/{id}` | `deal_statuses.destroy` | rejected `409` |
+| `DELETE /deal_statuses/{id}` | `deal_statuses.destroy` | exercised `204` |
 | `PATCH /deal_statuses/{id}/archive` | `deal_statuses.archive` | exercised `200` |
 | `PATCH /deal_statuses/merge` | `deal_statuses.merge` | skipped The body is undocumented, and `winner` and `loser` in its attributes answered 404 for two statuses the run created. |
 
@@ -380,10 +380,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /expense_line_items` | `expense_line_items.index` | recorded `200` |
 | `GET /expense_line_items/{id}` | `expense_line_items.show` | recorded `200` |
-| `POST /expense_line_items` | `expense_line_items.create` | not exercised |
-| `POST /expense_line_items` (bulk) | `expense_line_items.create_bulk` | not exercised |
-| `PATCH /expense_line_items` (bulk) | `expense_line_items.update_bulk` | not exercised |
-| `DELETE /expense_line_items` (bulk) | `expense_line_items.destroy_bulk` | not exercised |
+| `POST /expense_line_items` | `expense_line_items.create` | skipped The route does not exist (404 `route_not_found`): line items of an expense are made in bulk. |
+| `POST /expense_line_items` (bulk) | `expense_line_items.create_bulk` | exercised `201` |
+| `PATCH /expense_line_items` (bulk) | `expense_line_items.update_bulk` | exercised `200` |
+| `DELETE /expense_line_items` (bulk) | `expense_line_items.destroy_bulk` | exercised `204` |
 
 ## `expenses`
 
@@ -391,19 +391,19 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /expenses` | `expenses.index` | recorded `200` |
 | `GET /expenses/{id}` | `expenses.show` | recorded `200` |
-| `POST /expenses` | `expenses.create` | not exercised |
-| `PATCH /expenses/{id}` | `expenses.update` | not exercised |
-| `DELETE /expenses/{id}` | `expenses.destroy` | not exercised |
-| `PATCH /expenses/{id}/approve` | `expenses.approve` | not exercised |
-| `POST /expenses/copy` | `expenses.copy` | not exercised |
+| `POST /expenses` | `expenses.create` | exercised `201` |
+| `PATCH /expenses/{id}` | `expenses.update` | exercised `200` |
+| `DELETE /expenses/{id}` | `expenses.destroy` | exercised `204` |
+| `PATCH /expenses/{id}/approve` | `expenses.approve` | exercised `200` |
+| `POST /expenses/copy` | `expenses.copy` | exercised `201` |
 | `PATCH /expenses/{id}/export` | `expenses.export` | not exercised |
 | `PATCH /expenses/{id}/export_update` | `expenses.export_update` | not exercised |
-| `PATCH /expenses/{id}/reject` | `expenses.reject` | not exercised |
-| `PATCH /expenses/{id}/unapprove` | `expenses.unapprove` | not exercised |
-| `PATCH /expenses/{id}/unreject` | `expenses.unreject` | not exercised |
-| `PATCH /expenses` (bulk) | `expenses.update_bulk` | not exercised |
-| `DELETE /expenses` (bulk) | `expenses.destroy_bulk` | not exercised |
-| `PATCH /expenses/bulk_approve` (bulk) | `expenses.bulk_approve` | not exercised |
+| `PATCH /expenses/{id}/reject` | `expenses.reject` | exercised `200` |
+| `PATCH /expenses/{id}/unapprove` | `expenses.unapprove` | exercised `200` |
+| `PATCH /expenses/{id}/unreject` | `expenses.unreject` | skipped Only a rejected expense is unrejected (409 `record_already_unrejected`), and without an expense approval policy, which only the UI assigns, rejecting answers 200 and leaves the expense as it was. |
+| `PATCH /expenses` (bulk) | `expenses.update_bulk` | exercised `200` |
+| `DELETE /expenses` (bulk) | `expenses.destroy_bulk` | exercised `204` |
+| `PATCH /expenses/bulk_approve` (bulk) | `expenses.bulk_approve` | exercised `200` |
 
 ## `filters`
 
@@ -495,9 +495,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /invoice_attributions` | `invoice_attributions.index` | recorded `200` |
 | `GET /invoice_attributions/{id}` | `invoice_attributions.show` | recorded `200` |
-| `POST /invoice_attributions` | `invoice_attributions.create` | not exercised |
-| `PATCH /invoice_attributions/{id}` | `invoice_attributions.update` | not exercised |
-| `DELETE /invoice_attributions/{id}` | `invoice_attributions.destroy` | not exercised |
+| `POST /invoice_attributions` | `invoice_attributions.create` | exercised `201` |
+| `PATCH /invoice_attributions/{id}` | `invoice_attributions.update` | exercised `200` |
+| `DELETE /invoice_attributions/{id}` | `invoice_attributions.destroy` | exercised `204` |
 
 ## `invoice_templates`
 
@@ -505,9 +505,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /invoice_templates` | `invoice_templates.index` | recorded `200` |
 | `GET /invoice_templates/{id}` | `invoice_templates.show` | recorded `200` |
-| `POST /invoice_templates` | `invoice_templates.create` | not exercised |
-| `PATCH /invoice_templates/{id}` | `invoice_templates.update` | not exercised |
-| `DELETE /invoice_templates/{id}` | `invoice_templates.destroy` | not exercised |
+| `POST /invoice_templates` | `invoice_templates.create` | exercised `201` |
+| `PATCH /invoice_templates/{id}` | `invoice_templates.update` | exercised `200` |
+| `DELETE /invoice_templates/{id}` | `invoice_templates.destroy` | exercised `204` |
 
 ## `invoices`
 
@@ -515,12 +515,12 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /invoices` | `invoices.index` | recorded `200` |
 | `GET /invoices/{id}` | `invoices.show` | recorded `200` |
-| `POST /invoices` | `invoices.create` | not exercised |
-| `PATCH /invoices/{id}` | `invoices.update` | not exercised |
-| `DELETE /invoices/{id}` | `invoices.destroy` | not exercised |
+| `POST /invoices` | `invoices.create` | exercised `201` |
+| `PATCH /invoices/{id}` | `invoices.update` | exercised `200` |
+| `DELETE /invoices/{id}` | `invoices.destroy` | exercised `204` |
 | `PATCH /invoices/{id}/export` | `invoices.export` | not exercised |
 | `PATCH /invoices/{id}/export_update` | `invoices.export_update` | not exercised |
-| `PATCH /invoices/{id}/finalize` | `invoices.finalize` | not exercised |
+| `PATCH /invoices/{id}/finalize` | `invoices.finalize` | exercised `200` |
 | `GET /invoices/{id}/preview` | `invoices.preview` | rejected `422` |
 | `PATCH /invoices/{id}/send` | `invoices.send` | not exercised |
 | `PATCH /invoices/{id}/send_einvoice` | `invoices.send_einvoice` | not exercised |
@@ -542,13 +542,13 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /line_items` | `line_items.index` | recorded `200` |
 | `GET /line_items/{id}` | `line_items.show` | recorded `200` |
-| `POST /line_items` | `line_items.create` | not exercised |
-| `PATCH /line_items/{id}` | `line_items.update` | not exercised |
-| `DELETE /line_items/{id}` | `line_items.destroy` | not exercised |
-| `POST /line_items/generate` | `line_items.generate` | not exercised |
-| `POST /line_items` (bulk) | `line_items.create_bulk` | not exercised |
-| `PATCH /line_items` (bulk) | `line_items.update_bulk` | not exercised |
-| `DELETE /line_items` (bulk) | `line_items.destroy_bulk` | not exercised |
+| `POST /line_items` | `line_items.create` | exercised `201` |
+| `PATCH /line_items/{id}` | `line_items.update` | exercised `200` |
+| `DELETE /line_items/{id}` | `line_items.destroy` | exercised `204` |
+| `POST /line_items/generate` | `line_items.generate` | skipped The body is undocumented: `invoice_id` and `tax_rate_id` answer 422 "can't be blank" for `invoice` and `tax_rate` as attributes, as strings, as relationships, as query parameters and under another resource type, and plain JSON answers 400. |
+| `POST /line_items` (bulk) | `line_items.create_bulk` | exercised `201` |
+| `PATCH /line_items` (bulk) | `line_items.update_bulk` | exercised `200` |
+| `DELETE /line_items` (bulk) | `line_items.destroy_bulk` | exercised `204` |
 
 ## `lost_reasons`
 
@@ -666,9 +666,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /payment_reminder_sequences` | `payment_reminder_sequences.index` | recorded `200` |
 | `GET /payment_reminder_sequences/{id}` | `payment_reminder_sequences.show` | recorded `200` |
-| `POST /payment_reminder_sequences` | `payment_reminder_sequences.create` | not exercised |
-| `PATCH /payment_reminder_sequences/{id}` | `payment_reminder_sequences.update` | not exercised |
-| `DELETE /payment_reminder_sequences/{id}` | `payment_reminder_sequences.destroy` | not exercised |
+| `POST /payment_reminder_sequences` | `payment_reminder_sequences.create` | exercised `201` |
+| `PATCH /payment_reminder_sequences/{id}` | `payment_reminder_sequences.update` | exercised `200` |
+| `DELETE /payment_reminder_sequences/{id}` | `payment_reminder_sequences.destroy` | exercised `204` |
 
 ## `payments`
 
@@ -676,9 +676,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /payments` | `payments.index` | recorded `200` |
 | `GET /payments/{id}` | `payments.show` | recorded `200` |
-| `POST /payments` | `payments.create` | not exercised |
-| `PATCH /payments/{id}` | `payments.update` | not exercised |
-| `DELETE /payments/{id}` | `payments.destroy` | not exercised |
+| `POST /payments` | `payments.create` | exercised `201` |
+| `PATCH /payments/{id}` | `payments.update` | exercised `200` |
+| `DELETE /payments/{id}` | `payments.destroy` | exercised `204` |
 
 ## `people`
 
@@ -815,15 +815,15 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /purchase_orders` | `purchase_orders.index` | recorded `200` |
 | `GET /purchase_orders/{id}` | `purchase_orders.show` | recorded `200` |
-| `POST /purchase_orders` | `purchase_orders.create` | not exercised |
-| `PATCH /purchase_orders/{id}` | `purchase_orders.update` | not exercised |
-| `DELETE /purchase_orders/{id}` | `purchase_orders.destroy` | not exercised |
-| `POST /purchase_orders/copy` | `purchase_orders.copy` | not exercised |
+| `POST /purchase_orders` | `purchase_orders.create` | exercised `201` |
+| `PATCH /purchase_orders/{id}` | `purchase_orders.update` | exercised `200` |
+| `DELETE /purchase_orders/{id}` | `purchase_orders.destroy` | exercised `204` |
+| `POST /purchase_orders/copy` | `purchase_orders.copy` | exercised `201` |
 | `PATCH /purchase_orders/{id}/export` | `purchase_orders.export` | not exercised |
 | `PATCH /purchase_orders/{id}/export_update` | `purchase_orders.export_update` | not exercised |
 | `PATCH /purchase_orders/{id}/send` | `purchase_orders.send` | not exercised |
-| `PATCH /purchase_orders` (bulk) | `purchase_orders.update_bulk` | not exercised |
-| `DELETE /purchase_orders` (bulk) | `purchase_orders.destroy_bulk` | not exercised |
+| `PATCH /purchase_orders` (bulk) | `purchase_orders.update_bulk` | exercised `200` |
+| `DELETE /purchase_orders` (bulk) | `purchase_orders.destroy_bulk` | exercised `204` |
 
 ## `rate_cards`
 
@@ -1023,9 +1023,9 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /revenue_distributions` | `revenue_distributions.index` | recorded `200` |
 | `GET /revenue_distributions/{id}` | `revenue_distributions.show` | recorded `200` |
-| `POST /revenue_distributions` | `revenue_distributions.create` | not exercised |
-| `PATCH /revenue_distributions/{id}` | `revenue_distributions.update` | not exercised |
-| `DELETE /revenue_distributions/{id}` | `revenue_distributions.destroy` | not exercised |
+| `POST /revenue_distributions` | `revenue_distributions.create` | exercised `201` |
+| `PATCH /revenue_distributions/{id}` | `revenue_distributions.update` | exercised `200` |
+| `DELETE /revenue_distributions/{id}` | `revenue_distributions.destroy` | exercised `204` |
 
 ## `roles`
 
