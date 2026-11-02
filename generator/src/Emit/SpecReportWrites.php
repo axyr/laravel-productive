@@ -58,7 +58,7 @@ final readonly class SpecReportWrites
      * Operations the spec documents without a body that a write run answered with a success,
      * with the attributes its recipe sent.
      *
-     * @return list<list<string>>
+     * @return array<string, list<string>>  Rows by endpoint.
      */
     public function bodyRows(): array
     {
@@ -67,15 +67,15 @@ final readonly class SpecReportWrites
         foreach ($this->recipes as $name => $recipe) {
             foreach (self::recipeBodies(explode('#', $name)[0], $recipe) as $key => $attributes) {
                 $operation = self::operation($this->api, $key);
-                $status = $this->recorded->statuses()[$key] ?? 0;
-                $rows[] = self::acceptedUndocumented($operation, $status) ? [self::endpoint($operation), Markdown::codes(array_map(strval(...), array_keys($attributes))), sprintf('Send these attributes: %d.', $status)] : null;
+                $status = $this->recorded->statuses()[$key] ?? null;
+                $rows[] = self::acceptedUndocumented($operation, $status) ? [self::endpoint($operation), Markdown::codes(array_keys($attributes)), sprintf('Send these attributes: %d.', $status)] : null;
             }
         }
 
         $rows = array_column(array_filter($rows), null, 0);
         ksort($rows);
 
-        return array_values($rows);
+        return $rows;
     }
 
     public static function operation(Api $api, string $key): ?Operation
@@ -92,10 +92,11 @@ final readonly class SpecReportWrites
 
     /**
      * @phpstan-assert-if-true Operation $operation
+     * @phpstan-assert-if-true int $status
      */
-    private static function acceptedUndocumented(?Operation $operation, int $status): bool
+    private static function acceptedUndocumented(?Operation $operation, ?int $status): bool
     {
-        return $operation?->body->documentsNoAttributes() === true && $status >= 200 && $status < 300;
+        return $operation?->body->documentsNoAttributes() === true && $status !== null && $status >= 200 && $status < 300;
     }
 
     /**
@@ -106,7 +107,7 @@ final readonly class SpecReportWrites
         $documented = array_map(fn(Attribute $attribute): string => $attribute->name, $operation->input->attributes ?? []);
         // A 422 on a relationship names it without its suffix: "subsidiary" for subsidiary_id.
         $attributes = array_map(fn(string $name): string => ! in_array($name, $documented, true) && in_array($name . '_id', $documented, true) ? $name . '_id' : $name, $names);
-        $unique = array_values(array_unique($attributes));
+        $unique = array_unique($attributes);
         sort($unique);
 
         return implode(', ', array_map(fn(string $name): string => '`' . $name . '`' . (in_array($name, $documented, true) ? '' : ' (undocumented)'), $unique));

@@ -23,7 +23,7 @@ final readonly class SpecReportEmitter
     /**
      * @param  list<string>  $enabled  The generated resource paths.
      * @param  array<string, list<string>>  $required  Required attributes `composer seed` found, by input class (generator/config/required.php).
-     * @param  array<string, string>  $removed  Reasons by resource path or "type.relationship" (generator/config/removed.php).
+     * @param  array<string, string>  $removed  Reasons by resource path, "type.relationship" or operation key (generator/config/removed.php).
      * @param  array<string, array<string, mixed>>  $recipes  The write recipes (generator/config/recipes.php).
      * @param  array{written: string, findings: array<string, list<array{endpoint: string, spec: string, api: string, reproduce: string}>>}  $findings  generator/config/spec-findings.php.
      */
@@ -53,7 +53,7 @@ final readonly class SpecReportEmitter
             ...Markdown::section('Undocumented relationships', 'Recorded responses carry them with data; the spec does not list them.', ['Endpoint', 'Relationships'], $this->modelRows(fn(Model $model): array => self::undocumentedRelationships($model))),
             ...Markdown::section('Example-only attributes', 'The spec\'s example has them, its schema does not, and no recorded response carried them.', ['Endpoint', 'Attributes'], $this->modelRows(fn(Model $model): array => $model->unseen)),
             ...Markdown::section('Includes the API rejects', 'The spec documents these relationships; including them answers 400 "Unsupported include".', ['Endpoint', 'Relationships', 'Reproduce'], $this->rejectedRows()),
-            ...Markdown::section('Removed from the API', 'The spec still documents them.', ['Resource or relationship', 'What the API does'], self::pairs($this->removed)),
+            ...Markdown::section('Removed from the API', 'The spec still documents them.', ['Resource, relationship or operation', 'What the API does'], self::pairs($this->removed)),
             ...Markdown::section('Resources outside the spec', 'The official Ruby client knows them and the API answers 200; the spec does not document them.', ['Endpoint'], $this->outsideRows()),
             ...$this->findingSections(),
         ];
@@ -82,8 +82,8 @@ final readonly class SpecReportEmitter
     /**
      * One row per model with names, read where the model is listed.
      *
-     * @param  callable(Model): list<string>  $names
-     * @return list<list<string>>
+     * @param  callable(Model): array<string>  $names
+     * @return array<list<string>>
      */
     private function modelRows(callable $names): array
     {
@@ -94,23 +94,23 @@ final readonly class SpecReportEmitter
             $rows[] = $found === [] ? null : ['`GET /' . $path . '`', Markdown::codes($found)];
         }
 
-        return array_values(array_filter($rows));
+        return array_filter($rows);
     }
 
     /**
-     * @return list<string>
+     * @return array<string>
      */
     private static function undocumentedAttributes(Model $model): array
     {
-        return array_values(array_map(fn(Attribute $attribute): string => $attribute->name, array_filter($model->attributes, fn(Attribute $attribute): bool => $attribute->undocumented)));
+        return array_map(fn(Attribute $attribute): string => $attribute->name, array_filter($model->attributes, fn(Attribute $attribute): bool => $attribute->undocumented));
     }
 
     /**
-     * @return list<string>
+     * @return array<string>
      */
     private static function undocumentedRelationships(Model $model): array
     {
-        return array_values(array_map(fn(Relationship $relationship): string => $relationship->name, array_filter($model->relationships, fn(Relationship $relationship): bool => $relationship->undocumented)));
+        return array_map(fn(Relationship $relationship): string => $relationship->name, array_filter($model->relationships, fn(Relationship $relationship): bool => $relationship->undocumented));
     }
 
     /**
@@ -155,8 +155,7 @@ final readonly class SpecReportEmitter
         $lines = [];
 
         foreach ($this->findings['findings'] as $title => $findings) {
-            $rows = array_map(fn(array $finding): array => [$finding['endpoint'], $finding['spec'], $finding['api'], $finding['reproduce']], $findings);
-            $lines = [...$lines, ...Markdown::section($title, 'Found by hand while recording and generating: the recordings alone do not show them.', ['Endpoint', 'Spec', 'API', 'Reproduce'], $rows)];
+            $lines = [...$lines, ...Markdown::section($title, 'Found by hand while recording and generating: the recordings alone do not show them.', ['Endpoint', 'Spec', 'API', 'Reproduce'], $findings)];
         }
 
         return $lines;

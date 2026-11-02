@@ -26,6 +26,7 @@ final readonly class IrBuilder
      * @param  array<string, string>  $methodNames
      * @param  array<string, string>  $removedRelationships  Reasons by "type.relationship", for relationships the API no longer has.
      * @param  array<string, list<string>>  $required  Attributes the API requires on create beyond the spec's list, by input class.
+     * @param  list<string>  $removedOperations  Keys of operations the API does not have, such as a synthesized single twin.
      */
     public function __construct(
         private Spec $spec,
@@ -35,6 +36,7 @@ final readonly class IrBuilder
         private RecordedTypes $recorded = new RecordedTypes(),
         private array $removedRelationships = [],
         private array $required = [],
+        private array $removedOperations = [],
     ) {}
 
     /**
@@ -58,6 +60,7 @@ final readonly class IrBuilder
             $recorded,
             self::stringMap(Spec::map($removed['relationships'] ?? []), 'removed'),
             self::required($recorded->requiredOnCreate(), array_map(fn(mixed $names): array => Spec::strings($names, 'generator/config/required.php'), $required)),
+            array_keys(self::stringMap(Spec::map($removed['operations'] ?? []), 'removed')),
         );
     }
 
@@ -157,7 +160,7 @@ final readonly class IrBuilder
             namespace: $namespace,
             type: $source->type,
             model: $source->schema === null ? null : $classByType[$source->type],
-            operations: self::sortOperations(self::withSynthesizedCreate($operations)),
+            operations: self::sortOperations(array_filter(self::withSynthesizedCreate($operations), fn(Operation $operation): bool => ! in_array($operation->key, $this->removedOperations, true))),
             sorts: ParameterValues::forIndex($this->spec, $entries, 'sort'),
             groups: ParameterValues::forIndex($this->spec, $entries, 'group'),
             supportsCursor: ! str_starts_with($path, 'reports/'),
@@ -236,7 +239,7 @@ final readonly class IrBuilder
     }
 
     /**
-     * @param  list<Operation>  $operations
+     * @param  array<Operation>  $operations
      * @return list<Operation>
      */
     private static function sortOperations(array $operations): array

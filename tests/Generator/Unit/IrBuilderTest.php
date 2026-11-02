@@ -128,7 +128,7 @@ it('applies recorded types and removed relationships from files', function () {
         file_put_contents($directory . '/' . $name . '.php', '<?php return [];');
     }
 
-    file_put_contents($directory . '/removed.php', '<?php return ["relationships" => ["tasks.board" => "Gone."]];');
+    file_put_contents($directory . '/removed.php', '<?php return ["relationships" => ["tasks.board" => "Gone."], "operations" => ["tasks.destroy" => "No route."]];');
     file_put_contents($directory . '/attribute-types.php', '<?php return ["tasks.discount" => "float"];');
     file_put_contents($directory . '/required.php', '<?php return ["CreateTaskData" => ["title"]];');
     file_put_contents($base . '/recorded-types.json', json_encode(['required' => ['tasks.create' => ['level'], 'tasks.update' => ['notes']], 'types' => ['tasks' => [
@@ -147,7 +147,7 @@ it('applies recorded types and removed relationships from files', function () {
     ]]]]]]];
     file_put_contents($spec, json_encode(['paths' => [
         '/api/v2/tasks' => ['post' => ['requestBody' => $body, 'responses' => $response]],
-        '/api/v2/tasks/{id}' => ['get' => ['responses' => $response], 'patch' => ['requestBody' => $body, 'responses' => $response]],
+        '/api/v2/tasks/{id}' => ['get' => ['responses' => $response], 'patch' => ['requestBody' => $body, 'responses' => $response], 'delete' => ['responses' => ['204' => []]]],
     ]]));
 
     $api = IrBuilder::fromFiles($spec, $directory)->build();
@@ -157,7 +157,8 @@ it('applies recorded types and removed relationships from files', function () {
     expect(array_column($model['attributes'] ?? [], 'type', 'name'))->toBe(['discount' => 'float', 'level' => 'int', 'title' => 'string'])
         ->and($model['relationships'] ?? [])->toBe([['name' => 'parent', 'to_many' => false, 'target_type' => 'tasks', 'undocumented' => true]])
         ->and($required('tasks.create'))->toBe(['level', 'title'])
-        ->and($required('tasks.update'))->toBe([]);
+        ->and($required('tasks.update'))->toBe([])
+        ->and(array_map(fn(Operation $operation): string => $operation->key, $api->resource('tasks')->operations ?? []))->toBe(['tasks.show', 'tasks.create', 'tasks.update']);
 
     array_map(unlink(...), [...glob($directory . '/*'), $base . '/recorded-types.json', $spec]);
     rmdir($directory);
@@ -185,6 +186,7 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     ['descriptions', '<?php return ["a" => null];', 'generator/config/descriptions.php: the value for "a" must be a string.'],
     ['method-names', '<?php return ["tasks.index" => ["all"]];', 'generator/config/method-names.php: the value for "tasks.index" must be a string.'],
     ['removed', '<?php return ["relationships" => ["tasks.board" => 1]];', 'generator/config/removed.php: the value for "tasks.board" must be a string.'],
+    ['removed', '<?php return ["operations" => ["tasks.destroy" => 1]];', 'generator/config/removed.php: the value for "tasks.destroy" must be a string.'],
     ['required', '<?php return ["CreateTaskData" => [5]];', 'generator/config/required.php must only contain strings, int found.'],
     ['attribute-types', '<?php return ["prices.discount_amount" => 5];', 'generator/config/attribute-types.php: the value for "prices.discount_amount" must be a string.'],
     ['attribute-types', '<?php return ["prices.discount_amount" => "decimal"];', 'generator/config/attribute-types.php: "decimal" for "prices.discount_amount" is not an attribute type.'],

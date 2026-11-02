@@ -37,20 +37,6 @@ it('expense_line_items.show: GET /expense_line_items/{id}', function () {
     });
 });
 
-it('expense_line_items.create: POST /expense_line_items', function () {
-    fakeHttp(['*' => Fixtures::response(null, 'resource', 'expense_line_items', 201)]);
-
-    $result = Productive::expenseLineItems()->create(['name' => 'Example', 'quantity' => 1.5, 'unit_price' => 1, 'expense_id' => 1]);
-
-    expect($result)->toBeInstanceOf(ExpenseLineItem::class);
-    Http::assertSent(function (HttpRequest $request): bool {
-        return $request->method() === 'POST'
-            && urldecode($request->url()) === apiUrl('expense_line_items')
-            && $request->header('Content-Type') === ['application/vnd.api+json']
-            && json_decode($request->body(), true) === ['data' => ['type' => 'expense_line_items', 'attributes' => ['name' => 'Example', 'quantity' => 1.5, 'unit_price' => 1, 'expense_id' => 1]]];
-    });
-});
-
 it('expense_line_items.create_bulk: POST /expense_line_items', function () {
     fakeHttp(['*' => Fixtures::response('expense_line_items-create-bulk', 'collection', 'expense_line_items', 201)]);
 

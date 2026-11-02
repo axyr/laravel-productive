@@ -50,7 +50,7 @@ it('lists every difference between the recording and the spec', function () {
             'hidden' => ['relationships' => ['y' => ['to_many' => null]]],
         ],
     ]);
-    $removed = ['resources' => ['boards' => 'Gone.'], 'relationships' => ['task_lists.board' => 'Folders now.']];
+    $removed = ['resources' => ['boards' => 'Gone.'], 'relationships' => ['task_lists.board' => 'Folders now.'], 'operations' => ['expense_line_items.create' => 'No route.']];
 
     expect(DifferencesEmitter::emit(differencesApi(), ['tasks', 'teams', 'reports/time_reports'], $recorded, $removed))->toBe(<<<'MD'
         # API differences
@@ -63,10 +63,11 @@ it('lists every difference between the recording and the spec', function () {
 
         The API no longer has these, so no code is generated for them.
 
-        | Resource or relationship | Why |
+        | Resource, relationship or operation | Why |
         | --- | --- |
         | `boards` | Gone. |
         | `task_lists.board` | Folders now. |
+        | `expense_line_items.create` | No route. |
 
         ## Types that differ from the spec
 

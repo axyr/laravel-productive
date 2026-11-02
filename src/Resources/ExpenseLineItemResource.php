@@ -47,18 +47,6 @@ final class ExpenseLineItemResource extends Resource
     }
 
     /**
-     * Create a single resource (synthesized: the spec only documents the bulk variant).
-     *
-     * POST /expense_line_items
-     *
-     * @param  CreateExpenseLineItemData|array<string, mixed>  $data
-     */
-    public function create(CreateExpenseLineItemData|array $data): ExpenseLineItem
-    {
-        return $this->write(ExpenseLineItem::class, Method::Post, $this->path(), 'expense_line_items.create', $data);
-    }
-
-    /**
      * Create expense line items.
      *
      * POST /expense_line_items (bulk)

@@ -284,11 +284,12 @@ The spec documents these relationships; including them answers 400 "Unsupported 
 
 The spec still documents them.
 
-| Resource or relationship | What the API does |
+| Resource, relationship or operation | What the API does |
 | --- | --- |
 | `boards` | GET /boards returns 404 Route Not Found (recorded 2026-10-09). The official Ruby client dropped its board resource as well; task lists now belong to folders. |
 | `task_lists.board` | Task lists now belong to a folder: recorded responses have "folder", not "board". |
 | `task_reports.board` | The API rejects include=board on task reports (recorded 2026-10-09), and boards no longer exist. |
+| `expense_line_items.create` | POST /expense_line_items with one resource object answers 404 route_not_found (recorded 2026-10-26): the spec documents the route with a bulk body only, and the single create was synthesized from it. Use createBulk(). |
 
 ## Resources outside the spec
 

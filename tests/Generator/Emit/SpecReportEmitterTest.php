@@ -42,6 +42,11 @@ function reportApi(): Api
             reportOperation('tasks.update', 'PATCH tasks/{id}', BodyKind::Data),
             reportOperation('tasks.merge', 'PATCH tasks/merge', BodyKind::Data),
             reportOperation('tasks.close', 'PATCH tasks/{id}/close'),
+            reportOperation('tasks.low', 'PATCH tasks/{id}/low', BodyKind::Data),
+            reportOperation('tasks.first', 'PATCH tasks/{id}/first', BodyKind::Data),
+            reportOperation('tasks.last', 'PATCH tasks/{id}/last', BodyKind::Data),
+            reportOperation('tasks.high', 'PATCH tasks/{id}/high', BodyKind::Data),
+            reportOperation('tasks.unrecorded', 'PATCH tasks/{id}/unrecorded', BodyKind::Data),
         ]),
         new Resource('tasks/archive', 'ArchiveResource', 'X', 'tasks', 'Task', []),
         new Resource('reports/time_reports', 'TimeReportResource', 'X', 'time_reports', null, []),
@@ -60,6 +65,10 @@ function reportEmitter(?RecordedTypes $recorded = null, array $findings = ['writ
             'tasks.update' => 200,
             'tasks.merge' => 422,
             'tasks.close' => 200,
+            'tasks.low' => 199,
+            'tasks.first' => 200,
+            'tasks.last' => 299,
+            'tasks.high' => 300,
             'undocumented.meetings' => 200,
             'undocumented.reports.purchase_order_reports' => 200,
             'undocumented.secrets' => 404,
@@ -68,7 +77,7 @@ function reportEmitter(?RecordedTypes $recorded = null, array $findings = ['writ
         'rejected_includes' => ['tasks.index' => ['owner', 'parent'], 'ghosts.index' => ['x']],
     ]);
     $recipes = [
-        'tasks' => ['create' => ['title' => 'SDK check'], 'update' => ['title' => 'SDK check, renamed'], 'actions' => ['close' => ['note' => 'x'], 'merge' => ['winner' => 1]]],
+        'tasks' => ['create' => ['title' => 'SDK check'], 'update' => ['title' => 'SDK check, renamed'], 'actions' => ['close' => ['note' => 'x'], 'merge' => ['winner' => 1], 'vanish' => ['x' => 1], 'low' => ['a' => 1], 'first' => ['b' => 1], 'last' => ['c' => 1], 'high' => ['d' => 1], 'unrecorded' => ['e' => 1]]],
         'tasks#copy' => ['create_with' => 'copy', 'create' => ['template_id' => 1]],
         'tasks#copy_again' => ['create_with' => 'copy', 'create' => ['template_id' => 1, 'name' => 'SDK check']],
         'tasks#empty' => ['create_with' => 'copy', 'create' => []],
@@ -106,6 +115,8 @@ it('reports every difference with its endpoint and how to reproduce it', functio
 
         | Endpoint | Attributes | Reproduce |
         | --- | --- | --- |
+        | `PATCH /tasks/{id}/first` | `b` | Send these attributes: 200. |
+        | `PATCH /tasks/{id}/last` | `c` | Send these attributes: 299. |
         | `PATCH /tasks/{id}` | `title` | Send these attributes: 200. |
         | `POST /tasks/copy` | `template_id`, `name` | Send these attributes: 201. |
 
@@ -153,7 +164,7 @@ it('reports every difference with its endpoint and how to reproduce it', functio
 
         The spec still documents them.
 
-        | Resource or relationship | What the API does |
+        | Resource, relationship or operation | What the API does |
         | --- | --- |
         | `boards` | Gone. |
 

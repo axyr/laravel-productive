@@ -13,7 +13,7 @@ final class Markdown
      * A section with a table, or nothing without rows.
      *
      * @param  list<string>  $headers
-     * @param  array<list<string>>  $rows
+     * @param  array<array<string>>  $rows
      * @return list<string>
      */
     public static function section(string $title, string $description, array $headers, array $rows): array
@@ -32,10 +32,10 @@ final class Markdown
     }
 
     /**
-     * @param  list<string>  $names
+     * @param  array<int|string>  $names
      */
     public static function codes(array $names): string
     {
-        return implode(', ', array_map(fn(string $name): string => '`' . $name . '`', $names));
+        return implode(', ', array_map(fn(int|string $name): string => '`' . $name . '`', $names));
     }
 }
