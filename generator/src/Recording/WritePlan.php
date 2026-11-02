@@ -70,11 +70,20 @@ final readonly class WritePlan
             return [self::recipeSteps($resource, $name, $recipe), self::cleanup($resource, $name, $recipe)];
         }
 
-        if (explode('#', $on)[0] !== $resource->path) {
+        if (self::targetPath($on) !== $resource->path) {
             throw new RuntimeException(sprintf('The recipe of "%s" acts on "%s", a recipe of another resource.', $name, $on));
         }
 
         return [self::actionSteps($resource, $on, self::map($recipe['actions'] ?? [])), []];
+    }
+
+    /**
+     * The resource a recipe acts on: "tasks" for "tasks#copy", and for an existing record,
+     * "notifications" for "{first:notifications}" or "{first:notifications?filter[read]=false}".
+     */
+    private static function targetPath(string $on): string
+    {
+        return preg_match('/^\{first:([^?}]+)/', $on, $match) === 1 ? $match[1] : explode('#', $on)[0];
     }
 
     /**

@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "1125",
+            "id": "1127",
             "type": "salaries",
             "attributes": {
                 "default_salary": true,
@@ -10,7 +10,7 @@
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": true,
-                "salary_type_id": 1038,
+                "salary_type_id": 1021,
                 "started_on": "2026-10-09",
                 "working_hours": [
                     8,
@@ -34,7 +34,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
@@ -50,7 +50,7 @@
             }
         },
         {
-            "id": "1033",
+            "id": "1177",
             "type": "salaries",
             "attributes": {
                 "default_salary": false,
@@ -59,7 +59,7 @@
                 "exchange_rate": "1.0",
                 "note": null,
                 "overhead": false,
-                "salary_type_id": 1038,
+                "salary_type_id": 1021,
                 "started_on": "2025-10-23",
                 "working_hours": [
                     8,
@@ -83,13 +83,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1030"
+                        "id": "1146"
                     }
                 },
                 "holiday_calendar": {

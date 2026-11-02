@@ -1,12 +1,12 @@
 {
     "data": [
         {
-            "id": "1149",
+            "id": "1159",
             "type": "prices",
             "attributes": {
-                "name": "Text 213",
+                "name": "Text 222",
                 "billing_type_id": null,
-                "unit_id": 1038,
+                "unit_id": 1021,
                 "quantity": "0.0",
                 "updated_at": "2026-10-23T23:37:36.388+02:00",
                 "description": null,
@@ -37,7 +37,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "service_type": {
@@ -73,12 +73,12 @@
             }
         },
         {
-            "id": "1149",
+            "id": "1159",
             "type": "prices",
             "attributes": {
-                "name": "Text 213",
+                "name": "Text 222",
                 "billing_type_id": null,
-                "unit_id": 1038,
+                "unit_id": 1021,
                 "quantity": "0.0",
                 "updated_at": "2026-10-23T23:37:36.388+02:00",
                 "description": null,
@@ -109,7 +109,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "service_type": {
@@ -118,19 +118,19 @@
                 "company": {
                     "data": {
                         "type": "companies",
-                        "id": "1002"
+                        "id": "1053"
                     }
                 },
                 "updater": {
                     "data": {
                         "type": "people",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 },
                 "rate_card": {
                     "data": {
                         "type": "rate_cards",
-                        "id": "1150"
+                        "id": "1160"
                     }
                 },
                 "custom_field_people": {

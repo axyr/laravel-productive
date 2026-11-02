@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 133",
+            "id": "Text 136",
             "type": "invoice_reports",
             "attributes": {
                 "currency": "USD",
@@ -16,7 +16,7 @@
                 "invoice_status": 2,
                 "invoice_aging": 3,
                 "invoice_state": 2,
-                "average_due_in": -76,
+                "average_due_in": -85,
                 "average_paid_in": null,
                 "currency_id": "USD",
                 "invoice_type": 1,
@@ -67,7 +67,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -81,7 +81,7 @@
             }
         },
         {
-            "id": "Text 134",
+            "id": "Text 137",
             "type": "invoice_reports",
             "attributes": {
                 "currency": "USD",
@@ -96,7 +96,7 @@
                 "invoice_status": 4,
                 "invoice_aging": 0,
                 "invoice_state": 1,
-                "average_due_in": -45,
+                "average_due_in": -54,
                 "average_paid_in": null,
                 "currency_id": "USD",
                 "invoice_type": 1,
@@ -147,7 +147,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -161,7 +161,7 @@
             }
         },
         {
-            "id": "Text 133",
+            "id": "Text 136",
             "type": "invoice_reports",
             "attributes": {
                 "currency": "USD",
@@ -176,7 +176,7 @@
                 "invoice_status": 2,
                 "invoice_aging": 3,
                 "invoice_state": 2,
-                "average_due_in": -76,
+                "average_due_in": -85,
                 "average_paid_in": null,
                 "currency_id": "USD",
                 "invoice_type": 1,
@@ -227,7 +227,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {

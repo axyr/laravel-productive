@@ -1,31 +1,46 @@
 {
-    "recorded_on": "2026-10-23",
+    "recorded_on": "2026-11-02",
     "statuses": {
         "activities.index": 200,
         "activities.index.include": 200,
         "activities.show": 200,
+        "agent_configs.create": 201,
+        "agent_configs.destroy": 204,
         "agent_configs.index": 200,
         "agent_configs.index.include": 200,
         "agent_configs.show": 200,
+        "agent_configs.update": 200,
+        "agents.activate": 200,
+        "agents.create": 201,
+        "agents.deactivate": 200,
         "agents.index": 200,
         "agents.index.include": 200,
         "agents.show": 200,
+        "agents.update": 200,
+        "approval_policies.create": 409,
         "approval_policies.index": 200,
         "approval_policies.index.include": 200,
         "approval_policies.show": 200,
         "approval_policy_assignments.index": 200,
         "approval_policy_assignments.index.include": 200,
         "approval_policy_assignments.show": 200,
+        "approval_statuses.approve": 403,
         "approval_statuses.index": 200,
         "approval_statuses.index.include": 200,
+        "approval_statuses.reject": 403,
         "approval_statuses.show": 200,
         "approval_workflows.show": 200,
         "artifacts.index": 200,
         "artifacts.index.include": 200,
+        "artifacts.publish": 200,
         "artifacts.show": 200,
+        "artifacts.unpublish": 200,
+        "attachments.create": 201,
+        "attachments.destroy": 204,
         "attachments.index": 200,
         "attachments.index.include": 200,
         "attachments.show": 200,
+        "attachments.update": 200,
         "automatic_invoicing_rules.create": 201,
         "automatic_invoicing_rules.destroy": 204,
         "automatic_invoicing_rules.index": 200,
@@ -72,9 +87,13 @@
         "contact_entries.index.include": 200,
         "contact_entries.show": 200,
         "contact_entries.update": 200,
+        "contracts.create": 201,
+        "contracts.destroy": 204,
+        "contracts.generate": 200,
         "contracts.index": 200,
         "contracts.index.include": 200,
         "contracts.show": 200,
+        "contracts.update": 200,
         "custom_domains.index": 200,
         "custom_field_options.archive": 200,
         "custom_field_options.create": 201,
@@ -126,9 +145,19 @@
         "deals.show": 200,
         "deals.update": 200,
         "deleted_items.index": 200,
+        "deleted_items.index.include": 200,
+        "deleted_items.restore": 200,
+        "deleted_items.show": 200,
+        "discussions.create": 201,
+        "discussions.destroy": 204,
         "discussions.index": 200,
         "discussions.index.include": 200,
+        "discussions.reopen": 200,
+        "discussions.resolve": 200,
         "discussions.show": 200,
+        "discussions.subscribe": 200,
+        "discussions.unsubscribe": 200,
+        "discussions.update": 200,
         "document_styles.copy": 201,
         "document_styles.create": 201,
         "document_styles.destroy": 204,
@@ -260,28 +289,53 @@
         "lost_reasons.index.include": 200,
         "lost_reasons.show": 200,
         "lost_reasons.update": 200,
+        "memberships.create": 201,
+        "memberships.destroy": 204,
         "memberships.index": 200,
         "memberships.index.include": 200,
         "memberships.show": 200,
+        "memberships.update": 200,
+        "notifications.dismiss": 200,
         "notifications.index": 200,
         "notifications.index.include.actor": 200,
         "notifications.index.include.organization": 200,
         "notifications.index.include.owner": 400,
+        "notifications.read": 200,
         "notifications.show": 200,
+        "notifications.undismiss": 200,
+        "notifications.unread": 200,
         "organization_memberships.index": 200,
-        "organization_memberships.index.include": 200,
+        "organization_memberships.index.include": 500,
         "organization_memberships.show": 200,
         "organization_subscriptions.show": 200,
         "organizations.index": 200,
         "organizations.index.include": 200,
         "organizations.show": 200,
         "overheads.index": 200,
+        "page_versions.create": 201,
         "page_versions.index": 200,
         "page_versions.index.include": 200,
         "page_versions.show": 200,
+        "page_versions.update": 200,
+        "pages.append_html": 200,
+        "pages.append_markdown": 200,
+        "pages.apply_template_as_doc": 422,
+        "pages.convert_to_doc": 200,
+        "pages.copy": 201,
+        "pages.create_with_markdown": 201,
+        "pages.destroy": 204,
         "pages.index": 200,
         "pages.index.include": 200,
+        "pages.index.include.attachments": 200,
+        "pages.index.include.child_pages": 400,
+        "pages.index.include.creator+organization+parent_page": 200,
+        "pages.index.include.project+root_page+template_object+updater+memberships": 200,
+        "pages.move": 200,
+        "pages.publish": 200,
+        "pages.replace_body_with_html": 200,
+        "pages.replace_body_with_markdown": 200,
         "pages.show": 200,
+        "pages.unpublish": 200,
         "payment_reminder_sequences.create": 201,
         "payment_reminder_sequences.destroy": 204,
         "payment_reminder_sequences.index": 200,
@@ -309,21 +363,30 @@
         "pipelines.index.include": 200,
         "pipelines.show": 200,
         "pipelines.update": 200,
+        "placeholder_usages.create": 201,
+        "placeholder_usages.destroy": 204,
         "placeholder_usages.index": 200,
         "placeholder_usages.index.include": 200,
         "placeholder_usages.show": 200,
+        "placeholder_usages.update": 200,
+        "placeholders.create": 201,
+        "placeholders.destroy": 204,
         "placeholders.index": 200,
         "placeholders.index.include": 200,
         "placeholders.show": 200,
+        "placeholders.update": 200,
         "prices.create": 201,
         "prices.destroy": 204,
         "prices.index": 200,
         "prices.index.include": 200,
         "prices.show": 200,
         "prices.update": 200,
+        "project_preferences.create": 201,
+        "project_preferences.destroy": 204,
         "project_preferences.index": 200,
         "project_preferences.index.include": 200,
         "project_preferences.show": 200,
+        "project_preferences.update": 200,
         "projects.apply_navigation_tabs": 200,
         "projects.archive": 200,
         "projects.change_workflow": 200,
@@ -551,9 +614,12 @@
         "service_assignments.index.include": 200,
         "service_assignments.show": 200,
         "service_assignments.update": 200,
+        "service_type_assignments.create": 201,
+        "service_type_assignments.destroy": 204,
         "service_type_assignments.index": 200,
         "service_type_assignments.index.include": 200,
         "service_type_assignments.show": 200,
+        "service_type_assignments.update": 200,
         "service_types.archive": 200,
         "service_types.create": 201,
         "service_types.index": 200,
@@ -567,27 +633,42 @@
         "services.index.include": 200,
         "services.show": 200,
         "services.update": 200,
+        "skills.create": 201,
+        "skills.destroy": 204,
         "skills.index": 200,
         "skills.index.include": 200,
         "skills.show": 200,
+        "skills.update": 200,
         "subsidiaries.archive": 200,
         "subsidiaries.create": 201,
         "subsidiaries.index": 200,
         "subsidiaries.index.include": 200,
         "subsidiaries.show": 200,
         "subsidiaries.update": 200,
+        "survey_field_options.archive": 200,
+        "survey_field_options.create": 201,
         "survey_field_options.index": 200,
         "survey_field_options.index.include": 200,
         "survey_field_options.show": 200,
+        "survey_field_options.update": 200,
+        "survey_fields.archive": 200,
+        "survey_fields.create": 201,
         "survey_fields.index": 200,
         "survey_fields.index.include": 200,
         "survey_fields.show": 200,
+        "survey_fields.update": 200,
+        "survey_responses.create": 201,
+        "survey_responses.destroy": 204,
         "survey_responses.index": 200,
         "survey_responses.index.include": 200,
         "survey_responses.show": 200,
+        "surveys.copy": 201,
+        "surveys.create": 201,
+        "surveys.destroy": 204,
         "surveys.index": 200,
         "surveys.index.include": 200,
         "surveys.show": 200,
+        "surveys.update": 200,
         "tags.index": 200,
         "task_dependencies.create": 201,
         "task_dependencies.destroy": 204,
@@ -735,6 +816,9 @@
         "notifications.index": [
             "owner"
         ],
+        "pages.index": [
+            "child_pages"
+        ],
         "reports.booking_reports.index": [
             "organization"
         ],
@@ -846,6 +930,10 @@
             "invoice",
             "tax_rate"
         ],
+        "memberships.create": [
+            "access_type_id",
+            "type_id"
+        ],
         "people.merge": [
             "loser",
             "winner"
@@ -859,6 +947,9 @@
         "service_types.merge": [
             "loser",
             "winner"
+        ],
+        "surveys.copy": [
+            "project"
         ],
         "widgets.create": [
             "column_position",
@@ -1016,7 +1107,8 @@
                     "null"
                 ],
                 "slack_triggers": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "slack_user_group_id": [
                     "null"
@@ -1047,12 +1139,14 @@
         "agents": {
             "attributes": {
                 "avatar_url": [
+                    "null",
                     "string"
                 ],
                 "created_at": [
                     "date-time"
                 ],
                 "deactivated_at": [
+                    "date-time",
                     "null"
                 ],
                 "name": [
@@ -1062,7 +1156,8 @@
                     "string"
                 ],
                 "title": [
-                    "null"
+                    "null",
+                    "string"
                 ],
                 "updated_at": [
                     "date-time"
@@ -1085,6 +1180,12 @@
                     "to_many": false,
                     "types": [
                         "people"
+                    ]
+                },
+                "memberships": {
+                    "to_many": true,
+                    "types": [
+                        "memberships"
                     ]
                 },
                 "organization": {
@@ -1287,7 +1388,8 @@
                     "bool"
                 ],
                 "public_uuid": [
-                    "null"
+                    "null",
+                    "string"
                 ],
                 "restored_from_version_id": [
                     "null"
@@ -1310,8 +1412,10 @@
                     ]
                 },
                 "memberships": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": true,
+                    "types": [
+                        "memberships"
+                    ]
                 },
                 "organization": {
                     "to_many": false,
@@ -1320,18 +1424,24 @@
                     ]
                 },
                 "thumbnail_attachment": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "attachments"
+                    ]
                 }
             }
         },
         "attachments": {
             "attributes": {
                 "attachable_type": [
+                    "null",
                     "string"
                 ],
                 "attachment_type": [
                     "null"
+                ],
+                "aws_policy": [
+                    "object"
                 ],
                 "content_type": [
                     "string"
@@ -1358,6 +1468,7 @@
                     "int"
                 ],
                 "temp_url": [
+                    "null",
                     "string"
                 ],
                 "thumb": [
@@ -2769,6 +2880,7 @@
                     "bool"
                 ],
                 "ends_on": [
+                    "date",
                     "null"
                 ],
                 "interval_id": [
@@ -2965,6 +3077,10 @@
                         "people"
                     ]
                 },
+                "memberships": {
+                    "to_many": null,
+                    "types": []
+                },
                 "organization": {
                     "to_many": false,
                     "types": [
@@ -3013,6 +3129,7 @@
                     "int"
                 ],
                 "currency": [
+                    "null",
                     "string"
                 ],
                 "currency_default": [
@@ -3031,7 +3148,8 @@
                     "int"
                 ],
                 "total_budget_total": [
-                    "int"
+                    "int",
+                    "null"
                 ],
                 "total_budget_total_default": [
                     "int"
@@ -3040,7 +3158,8 @@
                     "null"
                 ],
                 "total_projected_revenue": [
-                    "int"
+                    "int",
+                    "null"
                 ],
                 "total_projected_revenue_default": [
                     "int"
@@ -3873,6 +3992,10 @@
                         "lost_reasons"
                     ]
                 },
+                "memberships": {
+                    "to_many": null,
+                    "types": []
+                },
                 "next_todo": {
                     "to_many": null,
                     "types": []
@@ -3933,15 +4056,59 @@
                 }
             }
         },
+        "deleted_items": {
+            "attributes": {
+                "created_at": [
+                    "date-time"
+                ],
+                "deleter_id": [
+                    "int"
+                ],
+                "item_id": [
+                    "int"
+                ],
+                "item_type": [
+                    "string"
+                ],
+                "location": [
+                    "string"
+                ],
+                "name": [
+                    "string"
+                ],
+                "private": [
+                    "bool"
+                ],
+                "recovered_at": [
+                    "null"
+                ]
+            },
+            "relationships": {
+                "deleter": {
+                    "to_many": false,
+                    "types": [
+                        "people"
+                    ]
+                },
+                "organization": {
+                    "to_many": false,
+                    "types": [
+                        "organizations"
+                    ]
+                }
+            }
+        },
         "discussions": {
             "attributes": {
                 "excerpt": [
                     "string"
                 ],
                 "resolved_at": [
+                    "date-time",
                     "null"
                 ],
                 "subscriber_ids": [
+                    "empty",
                     "list"
                 ]
             },
@@ -4213,6 +4380,9 @@
                 ],
                 "event_type_id": [
                     "int"
+                ],
+                "external_id": [
+                    "null"
                 ],
                 "half_day_bookings": [
                     "bool"
@@ -6180,6 +6350,9 @@
                 "service_ids": [
                     "null"
                 ],
+                "source_id": [
+                    "null"
+                ],
                 "tax_name": [
                     "null",
                     "string"
@@ -6270,7 +6443,8 @@
                     "null"
                 ],
                 "options": [
-                    "empty"
+                    "empty",
+                    "null"
                 ],
                 "target_type": [
                     "string"
@@ -6708,6 +6882,7 @@
                     "string"
                 ],
                 "first_unread_activity_id": [
+                    "int",
                     "null"
                 ],
                 "important": [
@@ -7269,6 +7444,9 @@
                 "man_day_minutes": [
                     "int"
                 ],
+                "mcp_server_enabled": [
+                    "bool"
+                ],
                 "meeting_settings": [
                     "object"
                 ],
@@ -7358,6 +7536,9 @@
                 ],
                 "subsidiary_count": [
                     "int"
+                ],
+                "task_due_time_enabled": [
+                    "bool"
                 ],
                 "time_display_id": [
                     "int"
@@ -7493,10 +7674,13 @@
                     "date-time"
                 ],
                 "name": [
-                    "null"
+                    "null",
+                    "string"
                 ],
                 "prosemirror_steps": [
-                    "list"
+                    "empty",
+                    "list",
+                    "null"
                 ],
                 "restored_from_version_id": [
                     "null"
@@ -7556,13 +7740,17 @@
                     "date-time"
                 ],
                 "parent_page_id": [
+                    "int",
                     "null"
                 ],
                 "position": [
+                    "int",
                     "null"
                 ],
                 "preferences": [
-                    "json-text"
+                    "empty",
+                    "json-text",
+                    "null"
                 ],
                 "public": [
                     "bool"
@@ -7574,6 +7762,7 @@
                     "string"
                 ],
                 "root_page_id": [
+                    "int",
                     "null"
                 ],
                 "title": [
@@ -7583,7 +7772,8 @@
                     "date-time"
                 ],
                 "version_number": [
-                    "int"
+                    "int",
+                    "null"
                 ]
             },
             "relationships": {
@@ -7599,6 +7789,12 @@
                     "to_many": false,
                     "types": [
                         "people"
+                    ]
+                },
+                "memberships": {
+                    "to_many": true,
+                    "types": [
+                        "memberships"
                     ]
                 },
                 "organization": {
@@ -8038,6 +8234,7 @@
                     "null"
                 ],
                 "deactivated_at": [
+                    "date-time",
                     "null"
                 ],
                 "email": [
@@ -9452,8 +9649,10 @@
                     ]
                 },
                 "document_type": {
-                    "to_many": null,
-                    "types": []
+                    "to_many": false,
+                    "types": [
+                        "document_types"
+                    ]
                 },
                 "organization": {
                     "to_many": false,
@@ -10809,10 +11008,12 @@
         "survey_field_options": {
             "attributes": {
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "color_id": [
-                    "integer-string"
+                    "integer-string",
+                    "null"
                 ],
                 "name": [
                     "string"
@@ -10842,6 +11043,7 @@
                     "null"
                 ],
                 "archived_at": [
+                    "date-time",
                     "null"
                 ],
                 "created_at": [
@@ -10953,6 +11155,7 @@
                     "date-time"
                 ],
                 "survey_fields": [
+                    "null",
                     "object"
                 ],
                 "updated_at": [
@@ -11010,6 +11213,12 @@
                     "to_many": false,
                     "types": [
                         "people"
+                    ]
+                },
+                "memberships": {
+                    "to_many": true,
+                    "types": [
+                        "memberships"
                     ]
                 },
                 "organization": {
@@ -12031,6 +12240,10 @@
                 ]
             },
             "relationships": {
+                "designated_approver": {
+                    "to_many": null,
+                    "types": []
+                },
                 "organization": {
                     "to_many": false,
                     "types": [

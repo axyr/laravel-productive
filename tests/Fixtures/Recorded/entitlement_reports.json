@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 107",
+            "id": "Text 111",
             "type": "entitlement_reports",
             "attributes": {
                 "group": "entitlement",
@@ -10,11 +10,11 @@
                 "description": null,
                 "absence_type": "time_off",
                 "people_custom_fields": {
-                    "1051": null,
-                    "1052": null,
-                    "1053": null,
-                    "1054": null,
-                    "1055": null
+                    "1040": null,
+                    "1041": null,
+                    "1042": null,
+                    "1043": null,
+                    "1044": null
                 },
                 "total_allocated": "22.0",
                 "total_used": "0.0",
@@ -31,7 +31,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "id": "Text 107",
+            "id": "Text 111",
             "type": "entitlement_reports",
             "attributes": {
                 "group": "entitlement",
@@ -54,11 +54,11 @@
                 "description": null,
                 "absence_type": "time_off",
                 "people_custom_fields": {
-                    "1051": null,
-                    "1052": null,
-                    "1053": null,
-                    "1054": null,
-                    "1055": null
+                    "1040": null,
+                    "1041": null,
+                    "1042": null,
+                    "1043": null,
+                    "1044": null
                 },
                 "total_allocated": "22.0",
                 "total_used": "0.0",
@@ -75,7 +75,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {

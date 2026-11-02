@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 212",
+            "id": "Text 221",
             "type": "price_reports",
             "attributes": {
                 "currency": "USD",
@@ -36,7 +36,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -50,7 +50,7 @@
             }
         },
         {
-            "id": "Text 212",
+            "id": "Text 221",
             "type": "price_reports",
             "attributes": {
                 "currency": "USD",
@@ -85,7 +85,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -94,7 +94,7 @@
                 "price": {
                     "data": {
                         "type": "prices",
-                        "id": "1149"
+                        "id": "1159"
                     }
                 }
             }

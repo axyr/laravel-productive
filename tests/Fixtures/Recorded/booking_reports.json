@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "id": "Text 39",
+            "id": "Text 33",
             "type": "booking_reports",
             "attributes": {
                 "currency": "USD",
@@ -27,11 +27,11 @@
                 "autotracking": false,
                 "average_recognized_margin": null,
                 "people_custom_fields": {
-                    "1051": null,
-                    "1052": null,
-                    "1053": null,
-                    "1054": null,
-                    "1055": null
+                    "1040": null,
+                    "1041": null,
+                    "1042": null,
+                    "1043": null,
+                    "1044": null
                 },
                 "custom_fields": [],
                 "total_recognized_time": 0,
@@ -61,7 +61,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -75,17 +75,17 @@
             }
         },
         {
-            "id": "Text 40",
+            "id": "Text 34",
             "type": "booking_reports",
             "attributes": {
                 "currency": "USD",
                 "currency_default": "USD",
                 "currency_normalized": "USD",
                 "group": "booking",
-                "count": 5,
+                "count": 12,
                 "formula_fields": [],
-                "start_date": "2026-10-19",
-                "end_date": "2026-10-23",
+                "start_date": "2026-10-22",
+                "end_date": "2026-11-02",
                 "approved_at": "2026-10-09",
                 "created_at": "2026-10-09",
                 "rejected_at": null,
@@ -96,46 +96,46 @@
                 "approval_status": 1,
                 "stage_type": 2,
                 "absence_type": null,
-                "mandays": 5,
+                "mandays": 8,
                 "draft": false,
                 "autotracking": false,
-                "average_recognized_margin": "-127.2727",
+                "average_recognized_margin": "-82.9004",
                 "people_custom_fields": {
-                    "1051": null,
-                    "1052": null,
-                    "1053": null,
-                    "1054": null,
-                    "1055": null
+                    "1040": null,
+                    "1041": null,
+                    "1042": null,
+                    "1043": null,
+                    "1044": null
                 },
                 "custom_fields": [],
                 "total_recognized_time": 480,
-                "time": 2400,
+                "time": 3840,
                 "date_period": null,
                 "approved_at_period": null,
                 "created_at_period": null,
                 "rejected_at_period": null,
                 "canceled_at_period": null,
-                "average_blended_rate": 50000,
-                "average_blended_rate_default": 50000,
-                "average_blended_rate_normalized": 50000,
-                "total_recognized_revenue": 80000,
-                "total_recognized_revenue_default": 80000,
-                "total_recognized_revenue_normalized": 80000,
-                "total_cost": 181818,
-                "total_cost_default": 181818,
-                "total_cost_normalized": 181818,
-                "total_base_cost": 181818,
-                "total_base_cost_default": 181818,
-                "total_base_cost_normalized": 181818,
-                "total_recognized_profit": -101818,
-                "total_recognized_profit_default": -101818,
-                "total_recognized_profit_normalized": -101818
+                "average_blended_rate": 240000,
+                "average_blended_rate_default": 240000,
+                "average_blended_rate_normalized": 240000,
+                "total_recognized_revenue": 160000,
+                "total_recognized_revenue_default": 160000,
+                "total_recognized_revenue_normalized": 160000,
+                "total_cost": 292641,
+                "total_cost_default": 292641,
+                "total_cost_normalized": 292641,
+                "total_base_cost": 292641,
+                "total_base_cost_default": 292641,
+                "total_base_cost_normalized": 292641,
+                "total_recognized_profit": -132641,
+                "total_recognized_profit_default": -132641,
+                "total_recognized_profit_normalized": -132641
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -149,7 +149,7 @@
             }
         },
         {
-            "id": "Text 39",
+            "id": "Text 33",
             "type": "booking_reports",
             "attributes": {
                 "currency": "USD",
@@ -175,11 +175,11 @@
                 "autotracking": false,
                 "average_recognized_margin": null,
                 "people_custom_fields": {
-                    "1051": null,
-                    "1052": null,
-                    "1053": null,
-                    "1054": null,
-                    "1055": null
+                    "1040": null,
+                    "1041": null,
+                    "1042": null,
+                    "1043": null,
+                    "1044": null
                 },
                 "custom_fields": [],
                 "total_recognized_time": 0,
@@ -209,7 +209,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {
@@ -220,7 +220,7 @@
                 "booking": {
                     "data": {
                         "type": "bookings",
-                        "id": "1056"
+                        "id": "1045"
                     }
                 }
             }

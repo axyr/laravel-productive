@@ -136,6 +136,18 @@ it('acts on the record of another recipe later in the run, and leaves the cleanu
         ->and($steps[2]->onCreated)->toBeTrue();
 });
 
+it('acts on the first record of a list, which the run neither creates nor cleans up', function () {
+    $steps = WritePlan::steps(writeApi(), [
+        'tax_rates#existing' => ['on' => '{first:tax_rates?filter[archived]=true}', 'actions' => ['restore' => null]],
+        'tax_rates#plain' => ['on' => '{first:tax_rates}', 'actions' => ['restore' => null]],
+    ]);
+
+    expect(stepKeys($steps))->toBe(['tax_rates.restore', 'tax_rates.restore'])
+        ->and($steps[0]->resource)->toBe('{first:tax_rates?filter[archived]=true}')
+        ->and($steps[1]->resource)->toBe('{first:tax_rates}')
+        ->and($steps[0]->onCreated)->toBeTrue();
+});
+
 it('plans one tier or one resource, and leaves out a cleanup of none', function () {
     $recipes = [
         'holiday_calendars' => ['tier' => 1, 'create' => ['name' => 'SDK check'], 'cleanup' => 'none'],
@@ -163,6 +175,7 @@ it('refuses recipes it cannot or may not run', function (array $recipes, string 
     'an unknown step in a cleanup list' => [['holidays' => ['create' => [], 'cleanup' => ['destroy', 'shred']]], 'The recipe of "holidays" has cleanup "shred": use destroy, archive or none.'],
     'no create' => [['holidays' => []], 'A recipe\'s create, update and action attributes must be arrays.'],
     'acting on a record of another resource' => [['tax_rates#restored' => ['on' => 'holidays', 'actions' => []]], 'The recipe of "tax_rates#restored" acts on "holidays", a recipe of another resource.'],
+    'acting on the first record of another resource' => [['tax_rates#restored' => ['on' => '{first:holidays}', 'actions' => []]], 'The recipe of "tax_rates#restored" acts on "{first:holidays}", a recipe of another resource.'],
     'action attributes that are not an array' => [['tax_rates' => ['create' => [], 'actions' => ['merge' => 'all']]], 'A recipe\'s create, update and action attributes must be arrays.'],
 ]);
 

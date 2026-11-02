@@ -12,7 +12,7 @@ use Axyr\Productive\Http\Response;
  */
 final class Exchange
 {
-    private const array HEADERS = ['Content-Type', 'X-RateLimit-Limit', 'X-RateLimit-Remaining', 'X-RateLimit-Reset'];
+    private const array HEADERS = ['Content-Type', 'X-RateLimit-Limit', 'X-RateLimit-Remaining', 'X-RateLimit-Reset', 'Retry-After'];
 
     /**
      * @return array{status: int, headers: array<string, string>, body: mixed}

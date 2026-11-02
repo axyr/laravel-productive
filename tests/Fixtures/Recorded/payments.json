@@ -1,12 +1,12 @@
 {
     "data": [
         {
-            "id": "1133",
+            "id": "1138",
             "type": "payments",
             "attributes": {
                 "paid_on": "2026-10-11",
                 "written_off_on": null,
-                "note": "Text 186",
+                "note": "Text 192",
                 "external_id": null,
                 "currency": "USD",
                 "currency_default": "USD",
@@ -19,7 +19,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "invoice": {
@@ -30,12 +30,12 @@
             }
         },
         {
-            "id": "1133",
+            "id": "1138",
             "type": "payments",
             "attributes": {
                 "paid_on": "2026-10-11",
                 "written_off_on": null,
-                "note": "Text 186",
+                "note": "Text 192",
                 "external_id": null,
                 "currency": "USD",
                 "currency_default": "USD",
@@ -48,7 +48,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "invoice": {

@@ -1,11 +1,11 @@
 {
     "data": [
         {
-            "id": "1042",
+            "id": "1026",
             "type": "approval_workflows",
             "attributes": {
-                "approval_requirement_id": 1036,
-                "target_type_id": 1036,
+                "approval_requirement_id": 1019,
+                "target_type_id": 1019,
                 "dynamic_approver_ids": [],
                 "dynamic_subscriber_ids": []
             },
@@ -13,7 +13,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "event": {

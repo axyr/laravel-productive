@@ -1,20 +1,20 @@
 {
     "data": [
         {
-            "id": "1126",
+            "id": "1128",
             "type": "notifications",
             "attributes": {
-                "target_id": 1017,
+                "target_id": 1033,
                 "target_type": "task",
-                "target_title": "Text 14",
-                "parent_id": 1018,
+                "target_title": "Text 152",
+                "parent_id": 1108,
                 "parent_type": "project",
-                "parent_title": "Text 148",
-                "title": "Text 149",
+                "parent_title": "Text 153",
+                "title": "Text 154",
                 "read": true,
                 "dismissed": false,
                 "new_activities_count": 0,
-                "excerpt": "Text 150",
+                "excerpt": "Text 155",
                 "last_action_at": "2026-10-23T23:28:40.973+02:00",
                 "first_unread_activity_id": null,
                 "changeset": [],
@@ -30,7 +30,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "actor": {
@@ -41,26 +41,26 @@
                 "owner": {
                     "data": {
                         "type": "organization_memberships",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 }
             }
         },
         {
-            "id": "1126",
+            "id": "1128",
             "type": "notifications",
             "attributes": {
-                "target_id": 1017,
+                "target_id": 1033,
                 "target_type": "task",
-                "target_title": "Text 14",
-                "parent_id": 1018,
+                "target_title": "Text 152",
+                "parent_id": 1108,
                 "parent_type": "project",
-                "parent_title": "Text 148",
-                "title": "Text 149",
+                "parent_title": "Text 153",
+                "title": "Text 154",
                 "read": true,
                 "dismissed": false,
                 "new_activities_count": 0,
-                "excerpt": "Text 150",
+                "excerpt": "Text 155",
                 "last_action_at": "2026-10-23T23:28:40.973+02:00",
                 "first_unread_activity_id": null,
                 "changeset": [],
@@ -76,19 +76,19 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "actor": {
                     "data": {
                         "type": "people",
-                        "id": "1020"
+                        "id": "1129"
                     }
                 },
                 "owner": {
                     "data": {
                         "type": "organization_memberships",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 }
             }

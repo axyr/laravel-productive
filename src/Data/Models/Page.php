@@ -134,6 +134,14 @@ final readonly class Page extends Model
         return $this->belongsTo('creator', Person::class);
     }
 
+    /**
+     * @return list<Membership>
+     */
+    public function memberships(): array
+    {
+        return $this->hasMany('memberships', Membership::class);
+    }
+
     public function organization(): ?Organization
     {
         return $this->belongsTo('organization', Organization::class);

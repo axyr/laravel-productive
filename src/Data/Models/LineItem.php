@@ -80,6 +80,9 @@ final readonly class LineItem extends Model
     /** Not in the spec: seen in recorded API responses. */
     public mixed $serviceIds;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $sourceId;
+
     /** The display name of the tax applied to this line item (e.g. VAT). */
     public ?string $taxName;
 
@@ -126,6 +129,7 @@ final readonly class LineItem extends Model
         $this->position = $attributes->int('position');
         $this->quantity = $attributes->float('quantity');
         $this->serviceIds = $attributes->mixed('service_ids');
+        $this->sourceId = $attributes->mixed('source_id');
         $this->taxName = $attributes->string('tax_name');
         $this->taxRate = $attributes->string('tax_rate');
         $this->taxValue = $attributes->float('tax_value');

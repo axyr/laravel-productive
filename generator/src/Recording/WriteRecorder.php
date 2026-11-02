@@ -11,7 +11,6 @@ use Axyr\Productive\Http\ContentType;
 use Axyr\Productive\Http\Method;
 use Axyr\Productive\Http\Request;
 use Axyr\Productive\Http\Response;
-use Axyr\Productive\JsonApi\DocumentBuilder;
 use DateTimeImmutable;
 use Generator;
 use Throwable;
@@ -104,43 +103,10 @@ final class WriteRecorder
 
         $method = Method::from($step->operation->httpMethod);
         $path = str_replace('{id}', (string) $id, $step->operation->path);
-        $body = self::body($step, $method, $id, $attributes);
+        $body = WriteBody::build($step, $method, $id, $attributes);
         $recording = ['request' => ['method' => $method->value, 'path' => $path, 'body' => $body]];
 
         return $execute ? [...$recording, ...$this->send($step, new Request($method, $path, body: $body, contentType: $step->operation->bulk ? ContentType::JsonApiBulk : ContentType::JsonApi, operation: $step->operation->key, requiresOrganization: $step->operation->requiresOrganization, rateLimits: [Recorder::pace()]))] : $recording;
-    }
-
-    /**
-     * The JSON:API document of the request; an update carries the record's ID, a create none.
-     *
-     * @param  array<string, mixed>|null  $attributes
-     * @return array<string, mixed>|null
-     */
-    private static function body(WriteStep $step, Method $method, ?string $id, ?array $attributes): ?array
-    {
-        $id = $method === Method::Post ? null : $id;
-
-        if ($step->operation->bulk) {
-            return self::bulkBody($step->type, $id, $attributes);
-        }
-
-        return $attributes === null ? null : DocumentBuilder::resource($step->type, $attributes, $id);
-    }
-
-    /**
-     * A bulk document of one item: attributes for a create, the ID and attributes for an update,
-     * the identifier alone for an action or a delete.
-     *
-     * @param  array<string, mixed>|null  $attributes
-     * @return array<string, mixed>
-     */
-    private static function bulkBody(string $type, ?string $id, ?array $attributes): array
-    {
-        if ($attributes === null) {
-            return DocumentBuilder::identifiers($type, $id === null ? [] : [$id]);
-        }
-
-        return DocumentBuilder::bulk($type, [$id === null ? ['attributes' => $attributes] : ['id' => $id, 'attributes' => $attributes]]);
     }
 
     /**
@@ -216,12 +182,17 @@ final class WriteRecorder
     }
 
     /**
-     * The ID of the record this run created of a resource; a placeholder in a dry run.
+     * The ID of the record this run created of a resource, a placeholder in a dry run; or, for a
+     * recipe acting on an existing record ("{first:notifications}"), the first of that list.
      *
      * @throws MissingReference
      */
     private function createdId(string $resource, bool $execute): string
     {
+        if (preg_match('/^\{first:([^}]+)\}$/', $resource, $first) === 1) {
+            return $this->firstId($first[1]);
+        }
+
         return $execute ? $this->created[$resource] ?? throw new MissingReference(sprintf('This run created no %s.', $resource)) : '{created:' . $resource . '}';
     }
 

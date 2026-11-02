@@ -1,21 +1,21 @@
 {
     "data": [
         {
-            "id": "1189",
+            "id": "1208",
             "type": "tax_rates",
             "attributes": {
-                "name": "Text 272",
-                "primary_component_name": "Text 137",
-                "primary_component_value": "0.21",
+                "name": "Text 289",
+                "primary_component_name": "Text 10",
+                "primary_component_value": "0.0",
                 "secondary_component_name": null,
                 "secondary_component_value": null,
-                "archived_at": null
+                "archived_at": "2026-10-25T13:25:47.000+01:00"
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "subsidiary": {
@@ -26,11 +26,11 @@
             }
         },
         {
-            "id": "1189",
+            "id": "1209",
             "type": "tax_rates",
             "attributes": {
-                "name": "Text 272",
-                "primary_component_name": "Text 137",
+                "name": "Text 290",
+                "primary_component_name": "Text 140",
                 "primary_component_value": "0.21",
                 "secondary_component_name": null,
                 "secondary_component_value": null,
@@ -40,13 +40,38 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
+                    }
+                },
+                "subsidiary": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1208",
+            "type": "tax_rates",
+            "attributes": {
+                "name": "Text 289",
+                "primary_component_name": "Text 10",
+                "primary_component_value": "0.0",
+                "secondary_component_name": null,
+                "secondary_component_value": null,
+                "archived_at": "2026-10-25T13:25:47.000+01:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
                     }
                 },
                 "subsidiary": {
                     "data": {
                         "type": "subsidiaries",
-                        "id": "1049"
+                        "id": "1038"
                     }
                 }
             }

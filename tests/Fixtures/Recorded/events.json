@@ -4,22 +4,23 @@
             "id": "1096",
             "type": "events",
             "attributes": {
-                "name": "Text 108",
-                "event_type_id": 1038,
+                "name": "Text 112",
+                "event_type_id": 1021,
                 "icon_id": null,
-                "color_id": "1038",
+                "color_id": "1021",
                 "archived_at": null,
-                "limitation_type_id": 1036,
+                "limitation_type_id": 1019,
                 "sync_personal_integrations": true,
                 "half_day_bookings": true,
                 "description": null,
-                "absence_type": "time_off"
+                "absence_type": "time_off",
+                "external_id": null
             },
             "relationships": {
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }

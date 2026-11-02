@@ -1,13 +1,13 @@
 {
     "data": [
         {
-            "id": "1028",
+            "id": "1013",
             "type": "agents",
             "attributes": {
-                "avatar_url": "https://example.test/23",
+                "avatar_url": "https://example.test/8",
                 "created_at": "2026-10-23T21:29:22.172+02:00",
                 "deactivated_at": null,
-                "name": "Text 19",
+                "name": "Text 9",
                 "status": "active",
                 "title": null,
                 "updated_at": "2026-10-23T21:29:34.739+02:00"
@@ -16,7 +16,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "custom_role": {
@@ -35,6 +35,11 @@
                     }
                 },
                 "agent_config": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "memberships": {
                     "meta": {
                         "included": false
                     }
@@ -42,13 +47,59 @@
             }
         },
         {
-            "id": "1028",
+            "id": "1014",
             "type": "agents",
             "attributes": {
-                "avatar_url": "https://example.test/23",
+                "avatar_url": null,
+                "created_at": "2026-11-02T16:37:50.575+01:00",
+                "deactivated_at": "2026-11-02T16:37:53.000+01:00",
+                "name": "Text 6",
+                "status": "deactivated",
+                "title": "Text 10",
+                "updated_at": "2026-11-02T16:38:23.006+01:00"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "custom_role": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "manager": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "person": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "agent_config": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "memberships": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1013",
+            "type": "agents",
+            "attributes": {
+                "avatar_url": "https://example.test/8",
                 "created_at": "2026-10-23T21:29:22.172+02:00",
                 "deactivated_at": null,
-                "name": "Text 19",
+                "name": "Text 9",
                 "status": "active",
                 "title": null,
                 "updated_at": "2026-10-23T21:29:34.739+02:00"
@@ -57,32 +108,44 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "custom_role": {
                     "data": {
                         "type": "roles",
-                        "id": "1034"
+                        "id": "1015"
                     }
                 },
                 "manager": {
                     "data": {
                         "type": "people",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 },
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1028"
+                        "id": "1013"
                     }
                 },
                 "agent_config": {
                     "data": {
                         "type": "agent_configs",
-                        "id": "1027"
+                        "id": "1012"
                     }
+                },
+                "memberships": {
+                    "data": [
+                        {
+                            "type": "memberships",
+                            "id": "1016"
+                        },
+                        {
+                            "type": "memberships",
+                            "id": "1017"
+                        }
+                    ]
                 }
             }
         }

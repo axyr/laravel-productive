@@ -1,11 +1,11 @@
 {
     "data": [
         {
-            "id": "1049",
+            "id": "1038",
             "type": "subsidiaries",
             "attributes": {
-                "name": "Text 2",
-                "invoice_number_format": "Text 251",
+                "name": "Text 48",
+                "invoice_number_format": "Text 266",
                 "invoice_number_scope": null,
                 "archived_at": null,
                 "show_delivery_date": false,
@@ -20,7 +20,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "bill_from": {
@@ -66,11 +66,76 @@
             }
         },
         {
-            "id": "1049",
+            "id": "1191",
             "type": "subsidiaries",
             "attributes": {
-                "name": "Text 2",
-                "invoice_number_format": "Text 251",
+                "name": "Text 267",
+                "invoice_number_format": null,
+                "invoice_number_scope": null,
+                "archived_at": "2026-10-25T20:21:40.000+01:00",
+                "show_delivery_date": false,
+                "facility_costs_breakdown": [],
+                "export_integration_type_id": null,
+                "invoice_logo_url": null,
+                "facility_costs": 0,
+                "facility_costs_default": 0,
+                "facility_costs_normalized": 0
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "bill_from": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "custom_domain": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_tax_rate": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_bank_account": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "default_document_type": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "integration": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "einvoice_configuration": {
+                    "meta": {
+                        "included": false
+                    }
+                },
+                "einvoice_identity": {
+                    "meta": {
+                        "included": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1038",
+            "type": "subsidiaries",
+            "attributes": {
+                "name": "Text 48",
+                "invoice_number_format": "Text 266",
                 "invoice_number_scope": null,
                 "archived_at": null,
                 "show_delivery_date": false,
@@ -85,13 +150,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "bill_from": {
                     "data": {
                         "type": "contact_entries",
-                        "id": "1067"
+                        "id": "1060"
                     }
                 },
                 "custom_domain": {

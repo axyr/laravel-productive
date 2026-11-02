@@ -1,6 +1,36 @@
 {
     "data": [
         {
+            "id": "Text 79",
+            "type": "deal_funnel_reports",
+            "attributes": {
+                "currency": null,
+                "currency_default": "USD",
+                "currency_normalized": null,
+                "group": "deal_funnel",
+                "count": 0,
+                "formula_fields": [],
+                "lost_count": 0,
+                "total_projected_revenue": null,
+                "total_projected_revenue_default": 0,
+                "total_projected_revenue_normalized": null,
+                "total_budget_total": null,
+                "total_budget_total_default": 0,
+                "total_budget_total_normalized": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
+                    }
+                },
+                "report": {
+                    "data": null
+                }
+            }
+        },
+        {
             "id": "Text 80",
             "type": "deal_funnel_reports",
             "attributes": {
@@ -8,7 +38,7 @@
                 "currency_default": "USD",
                 "currency_normalized": null,
                 "group": "deal_funnel",
-                "count": 7,
+                "count": 8,
                 "formula_fields": [],
                 "lost_count": 0,
                 "total_projected_revenue": 11872000,
@@ -22,7 +52,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "report": {

@@ -15267,6 +15267,12 @@
                     "target_type": "people"
                 },
                 {
+                    "name": "memberships",
+                    "to_many": true,
+                    "target_type": "memberships",
+                    "undocumented": true
+                },
+                {
                     "name": "organization",
                     "to_many": false,
                     "target_type": "organizations",
@@ -15839,9 +15845,21 @@
                     "target_type": "people"
                 },
                 {
+                    "name": "memberships",
+                    "to_many": true,
+                    "target_type": "memberships",
+                    "undocumented": true
+                },
+                {
                     "name": "organization",
                     "to_many": false,
                     "target_type": "organizations",
+                    "undocumented": true
+                },
+                {
+                    "name": "thumbnail_attachment",
+                    "to_many": false,
+                    "target_type": "attachments",
                     "undocumented": true
                 }
             ],
@@ -21711,7 +21729,11 @@
                 "deleted_at": "2026-03-10T10:00:00.000+00:00",
                 "restorable": true
             },
-            "unseen": []
+            "unseen": [
+                "item_name",
+                "deleted_at",
+                "restorable"
+            ]
         },
         {
             "class": "Discussion",
@@ -22624,6 +22646,13 @@
                         1,
                         2
                     ]
+                },
+                {
+                    "name": "external_id",
+                    "property": "externalId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "half_day_bookings",
@@ -27487,6 +27516,13 @@
                     "undocumented": true
                 },
                 {
+                    "name": "source_id",
+                    "property": "sourceId",
+                    "type": "mixed",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "tax_name",
                     "property": "taxName",
                     "type": "string",
@@ -28506,6 +28542,13 @@
                     "description": "Number of minutes in a man-day, used to convert between hours and days in reports and scheduling."
                 },
                 {
+                    "name": "mcp_server_enabled",
+                    "property": "mcpServerEnabled",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
+                },
+                {
                     "name": "meeting_settings",
                     "property": "meetingSettings",
                     "type": "object",
@@ -28732,6 +28775,13 @@
                     "property": "subsidiaryCount",
                     "type": "mixed",
                     "description": "Number of active subsidiaries within the organization."
+                },
+                {
+                    "name": "task_due_time_enabled",
+                    "property": "taskDueTimeEnabled",
+                    "type": "bool",
+                    "description": "Not in the spec: seen in recorded API responses.",
+                    "undocumented": true
                 },
                 {
                     "name": "time_display_id",
@@ -30109,6 +30159,12 @@
                     "name": "creator",
                     "to_many": false,
                     "target_type": "people"
+                },
+                {
+                    "name": "memberships",
+                    "to_many": true,
+                    "target_type": "memberships",
+                    "undocumented": true
                 },
                 {
                     "name": "organization",
@@ -37482,6 +37538,12 @@
                     "name": "creator",
                     "to_many": false,
                     "target_type": "people"
+                },
+                {
+                    "name": "memberships",
+                    "to_many": true,
+                    "target_type": "memberships",
+                    "undocumented": true
                 },
                 {
                     "name": "organization",

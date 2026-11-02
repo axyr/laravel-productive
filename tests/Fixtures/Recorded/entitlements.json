@@ -15,7 +15,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "event": {
@@ -50,7 +50,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "event": {
@@ -62,7 +62,7 @@
                 "person": {
                     "data": {
                         "type": "people",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 },
                 "approval_workflow": {

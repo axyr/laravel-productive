@@ -38,6 +38,9 @@ final readonly class Event extends Model
     /** ID of the event type indicating whether this absence is paid (1) or unpaid (2). */
     public ?int $eventTypeId;
 
+    /** Not in the spec: seen in recorded API responses. */
+    public mixed $externalId;
+
     /** When true, bookings for this event can be created in half-day increments. */
     public ?bool $halfDayBookings;
 
@@ -60,6 +63,7 @@ final readonly class Event extends Model
         $this->colorId = $attributes->string('color_id');
         $this->description = $attributes->string('description');
         $this->eventTypeId = $attributes->int('event_type_id');
+        $this->externalId = $attributes->mixed('external_id');
         $this->halfDayBookings = $attributes->bool('half_day_bookings');
         $this->iconId = $attributes->string('icon_id');
         $this->limitationTypeId = $attributes->int('limitation_type_id');

@@ -9,7 +9,8 @@ declare(strict_types=1);
  * resource the API cannot delete, none, or a list such as ["archive", "destroy"]. A recipe named
  * "<path>#<label>" makes a second record of the resource, for a merge or a copy; `create_with`
  * names the operation that makes it when that is not the create, and `on` names the recipe whose
- * record a recipe without a create acts on, later in the run. Attributes may refer to
+ * record a recipe without a create acts on, later in the run, or "{first:<path>}" for an existing
+ * record, which the run does not clean up. Attributes may refer to
  * "{created:<recipe>}" (the record this run created), "{first:<path>}" or
  * "{first:<path>?<query>}" (the first existing record, of a filtered list) and "{date:+N}" (N days
  * from today). Every record is named "SDK check …". WritePlan refuses
@@ -31,7 +32,15 @@ declare(strict_types=1);
  * types. Not in it: sending an invoice or a purchase order, the e-invoice, and the exports and
  * their updates, which go to an accounting integration; the overheads, of which the organization
  * has none to update; the create of one expense line item, whose route does not exist; and the
- * generating of line items, whose body no attempt found (generator/config/coverage.php).
+ * generating of line items, whose body no attempt found (generator/config/coverage.php). *
+ * Tier 5, docs and the rest, on the seeded project of "Monthly retainer" (1074975) and the seeded
+ * template project (1075963), where placeholders live. People added to a page or a project are
+ * the virtual person Lucy (1478602), so no one is mailed. The notification, the approval status,
+ * the artifact and a deleted item are existing records ("on" => "{first:…}"). Not in it: the
+ * approvals, which the trial's plan does not include (409 "approval_addon_disabled"); pulses
+ * and webhooks, which mail or post outside Productive; the agent roles, whose route does not
+ * exist; deleting the one artifact, which only the UI makes; and the overheads, of which the
+ * organization has none (generator/config/coverage.php).
  */
 return [
     'holiday_calendars' => [
@@ -629,5 +638,171 @@ return [
         'tier' => 4,
         'on' => 'purchase_orders#copy',
         'actions' => ['update_bulk' => ['subject' => 'SDK check purchase order copy, renamed'], 'destroy_bulk' => null],
+    ],
+    // A template task: the placeholder usage fills its assignee.
+    'tasks#template' => [
+        'tier' => 5,
+        'create' => ['title' => 'SDK check template task', 'project_id' => 1075963, 'task_list_id' => 2941108],
+    ],
+    'placeholders' => [
+        'tier' => 5,
+        'create' => ['name' => 'SDK check placeholder', 'category' => 'project', 'color' => 'electric', 'icon' => 'icon-cowboy-hat-filled', 'type' => 'person', 'project_id' => 1075963],
+        'update' => ['name' => 'SDK check placeholder, renamed'],
+    ],
+    'placeholder_usages' => [
+        'tier' => 5,
+        'create' => ['field' => 'assignee', 'placeholder_id' => '{created:placeholders}', 'task_id' => '{created:tasks#template}'],
+        'update' => ['skip_weekends' => true],
+    ],
+    'attachments' => [
+        'tier' => 5,
+        'create' => ['name' => 'sdk-check.txt', 'content_type' => 'text/plain', 'size' => 9, 'attachable_type' => 'task', 'task_id' => '{created:tasks#template}'],
+        'update' => ['name' => 'sdk-check-renamed.txt'],
+    ],
+    'pages' => [
+        'tier' => 5,
+        'create_with' => 'create_with_markdown',
+        'create' => ['title' => 'SDK check page', 'markdown' => 'SDK check', 'project_id' => 1074975],
+        'actions' => [
+            'append_markdown' => ['markdown' => 'SDK check, appended'],
+            'append_html' => ['html' => '<p>SDK check, appended</p>'],
+            'replace_body_with_markdown' => ['markdown' => 'SDK check, replaced'],
+            'replace_body_with_html' => ['html' => '<p>SDK check, replaced</p>'],
+            'publish' => null,
+            'unpublish' => null,
+        ],
+    ],
+    'pages#target' => [
+        'tier' => 5,
+        'create_with' => 'create_with_markdown',
+        'create' => ['title' => 'SDK check target page', 'markdown' => 'SDK check', 'project_id' => 1074975],
+    ],
+    'pages#moved' => [
+        'tier' => 5,
+        'create_with' => 'create_with_markdown',
+        'create' => ['title' => 'SDK check moved page', 'markdown' => 'SDK check', 'project_id' => 1074975],
+        'actions' => ['move' => ['target_doc_id' => '{created:pages#target}'], 'convert_to_doc' => null],
+    ],
+    'pages#copy' => [
+        'tier' => 5,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:pages}', 'project_id' => 1074975, 'title' => 'SDK check page copy'],
+    ],
+    // Deleted with the page.
+    'page_versions' => [
+        'tier' => 5,
+        'create' => ['page_id' => '{created:pages}', 'name' => 'SDK check version'],
+        'update' => ['name' => 'SDK check version, renamed'],
+        'cleanup' => 'none',
+    ],
+    'discussions' => [
+        'tier' => 5,
+        'create' => ['page_id' => '{created:pages}', 'excerpt' => 'SDK check'],
+        'update' => ['excerpt' => 'SDK check, edited'],
+        'actions' => ['resolve' => null, 'reopen' => null, 'subscribe' => null, 'unsubscribe' => null],
+    ],
+    // type_id and access_type_id are required, though the spec does not document them.
+    'memberships' => [
+        'tier' => 5,
+        'create' => ['page_id' => '{created:pages}', 'person_id' => 1478602, 'type_id' => 1, 'access_type_id' => 1],
+        'update' => ['access_type_id' => 2],
+    ],
+    'surveys' => [
+        'tier' => 5,
+        // A survey takes no response from anyone by default ("nobody").
+        'create' => ['title' => 'SDK check survey', 'project_id' => 1074975, 'submission_access' => 'organization'],
+        'update' => ['title' => 'SDK check survey, renamed'],
+    ],
+    'surveys#copy' => [
+        'tier' => 5,
+        'create_with' => 'copy',
+        'create' => ['template_id' => '{created:surveys}', 'project_id' => 1074975, 'title' => 'SDK check survey copy'],
+    ],
+    // Fields and options are archived, not deleted; deleting the survey removes them.
+    'survey_fields' => [
+        'tier' => 5,
+        'create' => ['data_type_id' => 1, 'name' => 'SDK check question', 'survey_id' => '{created:surveys}'],
+        'update' => ['name' => 'SDK check question, renamed'],
+        'actions' => ['archive' => null],
+        'cleanup' => 'none',
+    ],
+    'survey_fields#select' => [
+        'tier' => 5,
+        'create' => ['data_type_id' => 3, 'name' => 'SDK check choice', 'survey_id' => '{created:surveys}'],
+        'cleanup' => 'none',
+    ],
+    'survey_field_options' => [
+        'tier' => 5,
+        'create' => ['survey_field_id' => '{created:survey_fields#select}', 'name' => 'SDK check option'],
+        'update' => ['name' => 'SDK check option, renamed'],
+        'actions' => ['archive' => null],
+        'cleanup' => 'none',
+    ],
+    'survey_responses' => [
+        'tier' => 5,
+        'create' => ['survey_id' => '{created:surveys}'],
+    ],
+    'service_type_assignments' => [
+        'tier' => 5,
+        'create' => ['service_type_id' => 467291, 'person_id' => 1478602],
+        'update' => ['service_type_id' => 467290],
+    ],
+    'project_preferences' => [
+        'tier' => 5,
+        'create' => ['project_id' => 1074975, 'person_id' => 1478602, 'watched' => true],
+        'update' => ['watched' => false],
+    ],
+    // A contract repeats the budget.
+    'contracts' => [
+        'tier' => 5,
+        'create' => ['interval_id' => 1, 'template_id' => 4391270, 'next_occurrence_on' => '{date:+30}', 'ends_on' => '{date:+90}'],
+        'update' => ['use_rollover_hours' => false],
+    ],
+    // Generating makes the contract's next budget; the contract is then not deleted (409
+    // "contract_not_destroyable"), so both stay.
+    'contracts#generated' => [
+        'tier' => 5,
+        'create' => ['interval_id' => 1, 'template_id' => 4391270, 'next_occurrence_on' => '{date:+30}', 'ends_on' => '{date:+90}'],
+        'actions' => ['generate' => null],
+        'cleanup' => 'none',
+    ],
+    // An agent starts active (409 "already_active") and cannot be deleted: it ends deactivated.
+    'agents' => [
+        'tier' => 5,
+        'create' => ['name' => 'SDK check agent', 'manager_id' => '{first:people?filter[role_id]=1}'],
+        'update' => ['title' => 'SDK check'],
+        'actions' => ['deactivate' => null, 'activate' => null],
+        'cleanup' => 'none',
+    ],
+    'agents#deactivated' => [
+        'tier' => 5,
+        'on' => 'agents',
+        'actions' => ['deactivate' => null],
+    ],
+    'agent_configs' => [
+        'tier' => 5,
+        'create' => ['agent_id' => '{created:agents}', 'instructions' => 'SDK check'],
+        'update' => ['instructions' => 'SDK check, edited'],
+    ],
+    'skills' => [
+        'tier' => 5,
+        'create' => ['name' => 'SDK check skill', 'description' => 'SDK check', 'instructions' => 'SDK check'],
+        'update' => ['description' => 'SDK check, edited'],
+    ],
+    'notifications#existing' => [
+        'tier' => 5,
+        'on' => '{first:notifications}',
+        'actions' => ['unread' => null, 'read' => null, 'dismiss' => null, 'undismiss' => null],
+    ],
+    'artifacts#existing' => [
+        'tier' => 5,
+        'on' => '{first:artifacts}',
+        'actions' => ['publish' => null, 'unpublish' => null],
+    ],
+    // A record an earlier run deleted, which stays restored.
+    'deleted_items#existing' => [
+        'tier' => 5,
+        'on' => '{first:deleted_items}',
+        'actions' => ['restore' => null],
     ],
 ];

@@ -4,7 +4,7 @@
             "id": "1100",
             "type": "service_types",
             "attributes": {
-                "name": "Text 237",
+                "name": "Text 250",
                 "archived_at": null,
                 "deleted_at": null,
                 "description": null
@@ -13,7 +13,25 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
+                    }
+                }
+            }
+        },
+        {
+            "id": "1182",
+            "type": "service_types",
+            "attributes": {
+                "name": "Text 256",
+                "archived_at": "2026-10-25T15:24:57.000+01:00",
+                "deleted_at": null,
+                "description": null
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "type": "organizations",
+                        "id": "1004"
                     }
                 }
             }

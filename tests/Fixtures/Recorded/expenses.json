@@ -4,7 +4,7 @@
             "id": "1098",
             "type": "expenses",
             "attributes": {
-                "name": "Text 109",
+                "name": "Text 113",
                 "description": null,
                 "date": "2026-09-09",
                 "pay_on": null,
@@ -73,7 +73,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "deal": {
@@ -167,7 +167,7 @@
             "id": "1098",
             "type": "expenses",
             "attributes": {
-                "name": "Text 109",
+                "name": "Text 113",
                 "description": null,
                 "date": "2026-09-09",
                 "pay_on": null,
@@ -236,13 +236,13 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 },
                 "deal": {
                     "data": {
                         "type": "deals",
-                        "id": "1071"
+                        "id": "1065"
                     }
                 },
                 "service_type": {
@@ -257,19 +257,19 @@
                 "creator": {
                     "data": {
                         "type": "people",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 },
                 "updater": {
                     "data": {
                         "type": "people",
-                        "id": "1023"
+                        "id": "1011"
                     }
                 },
                 "approver": {
                     "data": {
                         "type": "people",
-                        "id": "1007"
+                        "id": "1049"
                     }
                 },
                 "rejecter": {

@@ -4,8 +4,8 @@
             "id": "1109",
             "type": "holiday_calendars",
             "attributes": {
-                "name": "Text 69",
-                "country": "Text 69",
+                "name": "Text 66",
+                "country": "Text 66",
                 "state": null,
                 "autogenerate_holidays": true
             },
@@ -13,7 +13,7 @@
                 "organization": {
                     "data": {
                         "type": "organizations",
-                        "id": "1005"
+                        "id": "1004"
                     }
                 }
             }

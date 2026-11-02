@@ -71,7 +71,7 @@ it('records the index, the first record and the index with every relationship in
         recordingOperation('tasks.create', OperationKind::Create, 'tasks', 'POST'),
         recordingOperation('tasks.show', OperationKind::Show, 'tasks/{id}'),
     ], 'Task')], [recordingModel('Task', ['assignee', 'project'])]);
-    $connector = new RecordingTestConnector(fn(Request $request): Response => jsonResponse(200, ['data' => [['id' => 7, 'type' => 'tasks']]], ['X-RateLimit-Limit' => ['100'], 'X-RateLimit-Remaining' => ['99'], 'X-RateLimit-Reset' => ['9'], 'Content-Type' => ['application/vnd.api+json'], 'Set-Cookie' => ['x']]));
+    $connector = new RecordingTestConnector(fn(Request $request): Response => jsonResponse(200, ['data' => [['id' => 7, 'type' => 'tasks']]], ['X-RateLimit-Limit' => ['100'], 'X-RateLimit-Remaining' => ['99'], 'X-RateLimit-Reset' => ['9'], 'Retry-After' => ['9'], 'Content-Type' => ['application/vnd.api+json'], 'Set-Cookie' => ['x']]));
 
     $recordings = iterator_to_array((new Recorder($api, $connector))->record());
 
@@ -79,7 +79,7 @@ it('records the index, the first record and the index with every relationship in
         ->and($recordings['tasks.index'])->toBe([
             'request' => ['method' => 'GET', 'path' => 'tasks', 'query' => 'page[size]=20'],
             'status' => 200,
-            'headers' => ['Content-Type' => 'application/vnd.api+json', 'X-RateLimit-Limit' => '100', 'X-RateLimit-Remaining' => '99', 'X-RateLimit-Reset' => '9'],
+            'headers' => ['Content-Type' => 'application/vnd.api+json', 'X-RateLimit-Limit' => '100', 'X-RateLimit-Remaining' => '99', 'X-RateLimit-Reset' => '9', 'Retry-After' => '9'],
             'body' => ['data' => [['id' => 7, 'type' => 'tasks']]],
         ])
         ->and($recordings['tasks.show']['request'])->toBe(['method' => 'GET', 'path' => 'tasks/7', 'query' => ''])
