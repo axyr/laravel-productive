@@ -151,14 +151,15 @@ it('reads write runs by operation, the later status winning, and keeps what any 
 it('lays a new summary over the committed one, the new status winning and nothing found before lost', function () {
     $previous = [
         'statuses' => ['deals.create' => 201, 'tasks.destroy' => 409],
-        'rejected_includes' => ['tasks.index' => ['owner']],
+        'rejected_includes' => ['tasks.index' => ['owner'], 'notifications.index' => ['owner']],
         'required' => ['deals.create' => ['name', 'company']],
         'types' => [
             'deals' => [
                 'attributes' => ['name' => ['string'], 'closed_at' => ['null']],
-                'relationships' => ['company' => ['to_many' => false, 'types' => ['companies']], 'contacts' => ['to_many' => true, 'types' => ['people']], 'files' => ['to_many' => null, 'types' => []]],
+                'relationships' => ['company' => ['to_many' => false, 'types' => ['companies']], 'contacts' => ['to_many' => true, 'types' => ['people']], 'files' => ['to_many' => null, 'types' => []], 'assignee' => ['to_many' => false, 'types' => ['people']]],
             ],
             'pages' => ['attributes' => ['title' => ['string']], 'relationships' => []],
+            'activities' => ['attributes' => [], 'relationships' => []],
         ],
     ];
     $current = [
@@ -176,13 +177,14 @@ it('lays a new summary over the committed one, the new status winning and nothin
 
     expect(RecordingSummary::merge($previous, $current))->toBe([
         'statuses' => ['bills.create' => 201, 'deals.create' => 201, 'tasks.destroy' => 204],
-        'rejected_includes' => ['bills.index' => ['vendor'], 'tasks.index' => ['owner', 'parent']],
+        'rejected_includes' => ['bills.index' => ['vendor'], 'notifications.index' => ['owner'], 'tasks.index' => ['owner', 'parent']],
         'required' => ['bills.create' => ['purchase_order'], 'deals.create' => ['company', 'currency', 'name']],
         'types' => [
+            'activities' => ['attributes' => [], 'relationships' => []],
             'bills' => ['attributes' => ['date' => ['date']], 'relationships' => []],
             'deals' => [
                 'attributes' => ['closed_at' => ['date-time', 'null'], 'name' => ['string']],
-                'relationships' => ['company' => ['to_many' => false, 'types' => ['companies']], 'contacts' => ['to_many' => true, 'types' => ['people']], 'files' => ['to_many' => false, 'types' => ['attachments']], 'project' => ['to_many' => false, 'types' => ['projects']]],
+                'relationships' => ['assignee' => ['to_many' => false, 'types' => ['people']], 'company' => ['to_many' => false, 'types' => ['companies']], 'contacts' => ['to_many' => true, 'types' => ['people']], 'files' => ['to_many' => false, 'types' => ['attachments']], 'project' => ['to_many' => false, 'types' => ['projects']]],
             ],
             'pages' => ['attributes' => ['title' => ['string']], 'relationships' => []],
         ],
