@@ -1,0 +1,40 @@
+name: Re-record reminder
+
+# Monthly: open an issue to record the live API again. Recording needs the API token of a test
+# organization, which CI does not have, so the run itself stays manual (docs/development.md).
+# Nothing is opened while an earlier reminder is still open.
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    name: Open the re-record issue
+
+    steps:
+      - name: Open the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create re-record --color 0E8A16 --description 'Record the live API again' --force
+          if [ "$(gh issue list --label re-record --state open --json number --jq length)" != "0" ]; then
+            echo "A re-record issue is still open."
+            exit 0
+          fi
+          gh issue create --label re-record --title "Re-record the live API ($(date +%Y-%m))" --body-file - <<'BODY'
+          Record the live API again, so the models, inputs and docs follow what Productive answers today. It needs `PRODUCTIVE_API_TOKEN`, `PRODUCTIVE_ORGANIZATION_ID` and `RECORDING_ORGANIZATION_ID` of a test organization in `.env` ([Development](docs/development.md)).
+
+          - [ ] `composer record` (about 15 minutes)
+          - [ ] `composer record:writes -- --tier=N` for each tier, dry run first, then `--execute`
+          - [ ] `composer record:types`, `composer record:fixtures`, `composer generate`
+          - [ ] `composer quality`
+          - [ ] Review the diff of `docs/api-differences.md`, `docs/coverage.md` and `docs/spec-report.md`: a recording may add or retype, never remove
+          - [ ] Open a pull request
+          BODY
