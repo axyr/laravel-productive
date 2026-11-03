@@ -80,11 +80,15 @@ it('enables every resource in the spec that the API still has', function () {
         ->and(array_intersect($enabled, $removed))->toBe([]);
 });
 
-it('synthesizes only the single creates that bulk operations hide', function () {
+it('synthesizes only the single creates that bulk operations hide, and the API has', function () {
     $synthesized = array_values(array_filter(api()->operations(), fn(Operation $operation): bool => $operation->isSynthesized()));
+    $removed = (require dirname(__DIR__, 2) . '/generator/config/removed.php')['operations'];
 
     expect(sorted(array_map(fn(Operation $operation): string => $operation->key, $synthesized)))
-        ->toBe(['expense_line_items.create', 'line_items.create', 'time_entries.create']);
+        ->toBe(['line_items.create', 'time_entries.create'])
+        ->and(array_keys($removed))->toBe(['expense_line_items.create'])
+        ->and(api()->resource('expense_line_items')?->operation('expense_line_items.create'))->toBeNull()
+        ->and(api()->resource('expense_line_items')?->operation('expense_line_items.create_bulk'))->not->toBeNull();
 });
 
 it('gives every operation a unique key and every method a unique name per resource', function () {

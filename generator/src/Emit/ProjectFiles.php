@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Axyr\Productive\Generator\Emit;
 
+use Axyr\Productive\Generator\Ir\Api;
 use Axyr\Productive\Generator\IrBuilder;
 use Axyr\Productive\Generator\RecordedTypes;
 
@@ -20,52 +21,44 @@ final class ProjectFiles
     {
         $config = $root . '/generator/config';
         $api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $config)->build();
-        $enabled = array_values(self::stringMap(require $config . '/resources.php'));
-        $removed = self::config(require $config . '/removed.php');
-        $coverage = self::config(require $config . '/coverage.php');
+        $enabled = ConfigMaps::list(require $config . '/resources.php');
+        $removed = ConfigMaps::config(require $config . '/removed.php');
+        $coverage = ConfigMaps::config(require $config . '/coverage.php');
         $recorded = RecordedTypes::fromFile($root . '/generator/recorded-types.json');
 
         return [
-            ...(new CodeGenerator($api, $enabled, self::stringMap(require $config . '/type-aliases.php')))->files(),
+            ...(new CodeGenerator($api, $enabled, ConfigMaps::strings(require $config . '/type-aliases.php')))->files(),
             ReferenceEmitter::PATH => ReferenceEmitter::emit($api, $enabled),
             DifferencesEmitter::PATH => DifferencesEmitter::emit(
                 $api,
                 $enabled,
                 $recorded,
-                ['resources' => self::stringMap($removed['resources'] ?? []), 'relationships' => self::stringMap($removed['relationships'] ?? [])],
+                ['resources' => ConfigMaps::strings($removed['resources'] ?? []), 'relationships' => ConfigMaps::strings($removed['relationships'] ?? []), 'operations' => ConfigMaps::strings($removed['operations'] ?? [])],
             ),
+            SpecReportEmitter::PATH => self::specReport($api, $enabled, $recorded, $config, $removed),
             CoverageEmitter::PATH => CoverageEmitter::emit(
                 $api,
                 $enabled,
                 $recorded,
-                ['skipped' => self::stringMap($coverage['skipped'] ?? []), 'plan_gated' => self::stringMap($coverage['plan_gated'] ?? [])],
+                ['skipped' => ConfigMaps::strings($coverage['skipped'] ?? []), 'plan_gated' => ConfigMaps::strings($coverage['plan_gated'] ?? [])],
             ),
         ];
     }
 
     /**
-     * @return array<array-key, mixed>
+     * @param  list<string>  $enabled
+     * @param  array<array-key, mixed>  $removed
      */
-    private static function config(mixed $config): array
+    private static function specReport(Api $api, array $enabled, RecordedTypes $recorded, string $config, array $removed): string
     {
-        return is_array($config) ? $config : [];
-    }
-
-    /**
-     * The string values of a config array, by key.
-     *
-     * @return array<string, string>
-     */
-    private static function stringMap(mixed $config): array
-    {
-        $strings = [];
-
-        foreach (self::config($config) as $key => $value) {
-            if (is_string($value)) {
-                $strings[(string) $key] = $value;
-            }
-        }
-
-        return $strings;
+        return (new SpecReportEmitter(
+            $api,
+            $enabled,
+            $recorded,
+            ConfigMaps::lists(require $config . '/required.php'),
+            [...ConfigMaps::strings($removed['resources'] ?? []), ...ConfigMaps::strings($removed['relationships'] ?? []), ...ConfigMaps::strings($removed['operations'] ?? [])],
+            ConfigMaps::recipes(require $config . '/recipes.php'),
+            ConfigMaps::findings(require $config . '/spec-findings.php'),
+        ))->emit();
     }
 }

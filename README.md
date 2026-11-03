@@ -122,6 +122,7 @@ Full reference in [docs/](docs/README.md):
 - [Development](docs/development.md): quality gate, the vendored spec, recording real responses and how endpoints are added
 - [Endpoint reference](docs/reference.md): every endpoint with the SDK method that calls it and its operation key
 - [API differences](docs/api-differences.md): where the live API differs from Productive's spec, and what the SDK does about it
+- [Spec report](docs/spec-report.md): the same differences written for Productive, each with how to reproduce it
 
 ## Endpoint coverage
 
@@ -141,7 +142,7 @@ The SDK is built against Productive's OpenAPI spec, vendored at `resources/opena
 How the code is generated is described in [Development](docs/development.md).
 
 > [!IMPORTANT]
-> **Reads are checked against the live API; writes only partly.** Every method is generated from Productive's OpenAPI spec. The models are also checked against real responses recorded from a trial organization: where the spec's types are wrong, the SDK follows the API, and [API differences](docs/api-differences.md) lists every case. Of the writes, 14 creates were sent to the live API, and the fields it required are required in the inputs. Updates, deletes and actions are checked against the spec and the testing fake. Please open an issue if a call behaves differently from what is documented here.
+> **Checked against the live API.** Every method is generated from Productive's OpenAPI spec. The models are also checked against real responses recorded from a trial organization: where the spec's types are wrong, the SDK follows the API, and [API differences](docs/api-differences.md) lists every case. The writes were sent to the live API too, and the fields it required are required in the inputs: [coverage](docs/coverage.md) shows, per operation, whether it was recorded or exercised, and why not where it cannot be (sending, integrations, account settings, plan-gated features). Please open an issue if a call behaves differently from what is documented here.
 
 ## Quality
 

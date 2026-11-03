@@ -4,7 +4,7 @@
 
 Which operations the SDK has seen the live API answer. `composer record` records every GET of a test organization; writes are exercised by a live run that records their responses the same way. One row per operation of every generated resource, from the recording of 2026-11-02.
 
-**0 of 662 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
+**0 of 661 operations are open:** recorded, exercised, or with the reason they cannot be is the goal; "empty list", "not recorded" and "not exercised" are the work left.
 
 | Status | Operations | Meaning |
 | --- | --- | --- |
@@ -13,7 +13,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | empty list | 0 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
 | rejected | 1 | The API answered with an error; the status is shown. |
 | plan-gated | 12 | The test organization's plan does not include it. |
-| skipped | 93 | Left out on purpose; the reason is shown. |
+| skipped | 92 | Left out on purpose; the reason is shown. |
 | not recorded | 0 | A GET nothing has called yet. |
 | not exercised | 0 | A write nothing has called yet. |
 
@@ -380,7 +380,6 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | --- | --- | --- |
 | `GET /expense_line_items` | `expense_line_items.index` | recorded `200` |
 | `GET /expense_line_items/{id}` | `expense_line_items.show` | recorded `200` |
-| `POST /expense_line_items` | `expense_line_items.create` | skipped The route does not exist (404 `route_not_found`): line items of an expense are made in bulk. |
 | `POST /expense_line_items` (bulk) | `expense_line_items.create_bulk` | exercised `201` |
 | `PATCH /expense_line_items` (bulk) | `expense_line_items.update_bulk` | exercised `200` |
 | `DELETE /expense_line_items` (bulk) | `expense_line_items.destroy_bulk` | exercised `204` |

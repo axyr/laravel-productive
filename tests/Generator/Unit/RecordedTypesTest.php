@@ -149,6 +149,13 @@ it('requires on create what a recorded create answered "can\'t be blank" for, by
         'CreateTimeReportData' => ['group'],
         'CreateWidgetData' => [],
     ])
+        ->and($recorded->required())->toBe([
+            'document_styles.create' => ['styles'],
+            'reports/time_reports.create' => ['group'],
+            'workflow_statuses.destroy' => ['target_workflow_status_id'],
+            'tasks.recreate' => ['title'],
+            'widgets.create' => [],
+        ])
         ->and((new RecordedTypes())->requiredOnCreate())->toBe([]);
 });
 

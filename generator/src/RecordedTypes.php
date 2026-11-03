@@ -184,6 +184,16 @@ final readonly class RecordedTypes
     }
 
     /**
+     * The attributes a write answered "can't be blank" for, by operation key.
+     *
+     * @return array<string, list<string>>
+     */
+    public function required(): array
+    {
+        return $this->required;
+    }
+
+    /**
      * The attributes a create answered "can't be blank" for, by input class:
      * "document_styles.create" gives CreateDocumentStyleData.
      *

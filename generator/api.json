@@ -3576,20 +3576,6 @@
                     "summary": "Gets an expense line item"
                 },
                 {
-                    "key": "expense_line_items.create",
-                    "method": "create",
-                    "kind": "create",
-                    "http": "POST expense_line_items",
-                    "parameters": [],
-                    "response": "resource",
-                    "bulk": false,
-                    "requires_organization": true,
-                    "operation_id": null,
-                    "body": "attributes",
-                    "input": "CreateExpenseLineItemData",
-                    "summary": "Create a single resource (synthesized: the spec only documents the bulk variant)."
-                },
-                {
                     "key": "expense_line_items.create_bulk",
                     "method": "bulkCreate",
                     "kind": "create_bulk",
