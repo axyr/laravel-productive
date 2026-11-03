@@ -28,7 +28,7 @@ final class ConfigMaps
 
         foreach (self::config($config) as $key => $values) {
             // PHP keeps a numeric key an int whatever it is cast to; the cast only tells static analysis.
-            $list = array_values(self::strings($values));
+            $list = self::list($values);
             $lists[(string) $key] = $list; // @pest-mutate-ignore
         }
 
@@ -78,6 +78,16 @@ final class ConfigMaps
         $entry = self::strings($entry);
 
         return ['endpoint' => $entry['endpoint'] ?? '', 'spec' => $entry['spec'] ?? '', 'api' => $entry['api'] ?? '', 'reproduce' => $entry['reproduce'] ?? ''];
+    }
+
+    /**
+     * The string values of a config array, as a list.
+     *
+     * @return list<string>
+     */
+    public static function list(mixed $config): array
+    {
+        return array_values(self::strings($config));
     }
 
     /**

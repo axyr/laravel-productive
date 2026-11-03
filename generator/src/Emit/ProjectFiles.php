@@ -21,7 +21,7 @@ final class ProjectFiles
     {
         $config = $root . '/generator/config';
         $api = IrBuilder::fromFiles($root . '/resources/openapi/productive.json', $config)->build();
-        $enabled = array_values(ConfigMaps::strings(require $config . '/resources.php'));
+        $enabled = ConfigMaps::list(require $config . '/resources.php');
         $removed = ConfigMaps::config(require $config . '/removed.php');
         $coverage = ConfigMaps::config(require $config . '/coverage.php');
         $recorded = RecordedTypes::fromFile($root . '/generator/recorded-types.json');
