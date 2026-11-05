@@ -104,9 +104,19 @@ final class WriteRecorder
         $method = Method::from($step->operation->httpMethod);
         $path = str_replace('{id}', (string) $id, $step->operation->path);
         $body = WriteBody::build($step, $method, $id, $attributes);
-        $recording = ['request' => ['method' => $method->value, 'path' => $path, 'body' => $body]];
+        $query = WriteBody::query($method, $attributes);
+        $recording = ['request' => self::requestRecording($method, $path, $query, $body)];
 
-        return $execute ? [...$recording, ...$this->send($step, new Request($method, $path, body: $body, contentType: $step->operation->bulk ? ContentType::JsonApiBulk : ContentType::JsonApi, operation: $step->operation->key, requiresOrganization: $step->operation->requiresOrganization, rateLimits: [Recorder::pace()]))] : $recording;
+        return $execute ? [...$recording, ...$this->send($step, new Request($method, $path, $query, body: $body, contentType: $step->operation->bulk ? ContentType::JsonApiBulk : ContentType::JsonApi, operation: $step->operation->key, requiresOrganization: $step->operation->requiresOrganization, rateLimits: [Recorder::pace()]))] : $recording;
+    }
+
+    /**
+     * @param  array<string, mixed>|null  $body
+     * @return array<string, mixed>
+     */
+    private static function requestRecording(Method $method, string $path, string $query, ?array $body): array
+    {
+        return ['method' => $method->value, 'path' => $path, ...($query === '' ? [] : ['query' => $query]), 'body' => $body];
     }
 
     /**

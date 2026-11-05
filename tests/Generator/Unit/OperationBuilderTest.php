@@ -20,6 +20,22 @@ function path(string $resource, bool $member = false, array $actions = [], array
     return new ClassifiedPath($resource . ($member ? '/{id}' : '') . ($actions === [] ? '' : '/' . implode('/', $actions)), $resource, $member, $parameters, $actions);
 }
 
+it('makes a GET action of query-actions.php a raw read that takes its query parameters', function () {
+    $spec = new Spec(['paths' => []]);
+    $builder = new OperationBuilder($spec, new InputBuilder($spec, new SchemaReader($spec)), [], ['invoices.preview' => ['locale' => 'The language.']]);
+    $response = ['responses' => ['200' => ['content' => ['application/vnd.api+json' => ['schema' => ['properties' => ['data' => ['properties' => ['id' => []]]]]]]]]];
+
+    $preview = $builder->build(path('invoices', true, ['preview']), 'GET', $response, 'Invoice');
+    $other = $builder->build(path('invoices', true, ['other']), 'GET', $response, 'Invoice');
+
+    expect($preview->response)->toBe(ResponseKind::Raw)
+        ->and($preview->query)->toBe(['locale' => 'The language.'])
+        ->and($preview->toArray()['query'])->toBe(['locale' => 'The language.'])
+        ->and($other->response)->toBe(ResponseKind::Resource)
+        ->and($other->query)->toBe([])
+        ->and($other->toArray())->not->toHaveKey('query');
+});
+
 it('derives the operation kind from path and method', function (ClassifiedPath $path, string $method, bool $bulk, OperationKind $kind) {
     expect(OperationBuilder::kind($path, $method, $bulk))->toBe($kind);
 })->with([

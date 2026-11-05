@@ -131,6 +131,7 @@ it('applies recorded types and removed relationships from files', function () {
     file_put_contents($directory . '/removed.php', '<?php return ["relationships" => ["tasks.board" => "Gone."], "operations" => ["tasks.destroy" => "No route."]];');
     file_put_contents($directory . '/attribute-types.php', '<?php return ["tasks.discount" => "float"];');
     file_put_contents($directory . '/required.php', '<?php return ["CreateTaskData" => ["title"]];');
+    file_put_contents($directory . '/query-actions.php', '<?php return ["tasks.show" => ["locale" => "The language."]];');
     file_put_contents($base . '/recorded-types.json', json_encode(['required' => ['tasks.create' => ['level'], 'tasks.update' => ['notes']], 'types' => ['tasks' => [
         'attributes' => ['level' => ['int'], 'discount' => ['int']],
         'relationships' => ['board' => ['to_many' => false, 'types' => ['boards']], 'parent' => ['to_many' => false, 'types' => ['tasks']]],
@@ -158,6 +159,7 @@ it('applies recorded types and removed relationships from files', function () {
         ->and($model['relationships'] ?? [])->toBe([['name' => 'parent', 'to_many' => false, 'target_type' => 'tasks', 'undocumented' => true]])
         ->and($required('tasks.create'))->toBe(['level', 'title'])
         ->and($required('tasks.update'))->toBe([])
+        ->and($api->resource('tasks')?->operation('tasks.show')?->query)->toBe(['locale' => 'The language.'])
         ->and(array_map(fn(Operation $operation): string => $operation->key, $api->resource('tasks')->operations ?? []))->toBe(['tasks.show', 'tasks.create', 'tasks.update']);
 
     array_map(unlink(...), [...glob($directory . '/*'), $base . '/recorded-types.json', $spec]);
@@ -170,7 +172,7 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     $directory = $base . '/config';
     mkdir($directory, recursive: true);
 
-    foreach (['relationship-types', 'descriptions', 'method-names', 'removed', 'required', 'attribute-types'] as $name) {
+    foreach (['relationship-types', 'descriptions', 'method-names', 'removed', 'required', 'attribute-types', 'query-actions'] as $name) {
         file_put_contents($directory . '/' . $name . '.php', $name === $file ? $contents : '<?php return [];');
     }
 
@@ -186,6 +188,7 @@ it('stops on malformed curated maps', function (string $file, string $contents, 
     ['descriptions', '<?php return ["a" => null];', 'generator/config/descriptions.php: the value for "a" must be a string.'],
     ['method-names', '<?php return ["tasks.index" => ["all"]];', 'generator/config/method-names.php: the value for "tasks.index" must be a string.'],
     ['removed', '<?php return ["relationships" => ["tasks.board" => 1]];', 'generator/config/removed.php: the value for "tasks.board" must be a string.'],
+    ['query-actions', '<?php return ["tasks.show" => ["locale" => 1]];', 'generator/config/query-actions.php: the value for "locale" must be a string.'],
     ['removed', '<?php return ["operations" => ["tasks.destroy" => 1]];', 'generator/config/removed.php: the value for "tasks.destroy" must be a string.'],
     ['required', '<?php return ["CreateTaskData" => [5]];', 'generator/config/required.php must only contain strings, int found.'],
     ['attribute-types', '<?php return ["prices.discount_amount" => 5];', 'generator/config/attribute-types.php: the value for "prices.discount_amount" must be a string.'],

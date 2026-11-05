@@ -10,6 +10,7 @@ final readonly class Operation
      * @param  string  $key  Stable operation key used by the testing fake, e.g. "tasks.reposition".
      * @param  string|null  $operationId  The spec's operationId; null for operations the spec cannot express.
      * @param  list<string>  $parameters  Path parameters in order, e.g. ["id"].
+     * @param  array<string, string>  $query  What each query parameter means, for a GET action the spec documents without them.
      */
     public function __construct(
         public string $key,
@@ -25,6 +26,7 @@ final readonly class Operation
         public ?Input $input = null,
         public string $summary = '',
         public BodyKind $body = BodyKind::None,
+        public array $query = [],
     ) {}
 
     /**
@@ -60,6 +62,7 @@ final readonly class Operation
             'body' => $this->body->value,
             'input' => $this->input?->class,
             'summary' => $this->summary,
+            ...($this->query === [] ? [] : ['query' => $this->query]),
         ];
     }
 }

@@ -8,10 +8,10 @@ Which operations the SDK has seen the live API answer. `composer record` records
 
 | Status | Operations | Meaning |
 | --- | --- | --- |
-| recorded | 225 | A GET the recording answered with a success. |
+| recorded | 226 | A GET the recording answered with a success. |
 | exercised | 331 | A write a live run answered with a success. |
 | empty list | 0 | The list was empty, so there was no record to fetch. Seed the organization and record again. |
-| rejected | 1 | The API answered with an error; the status is shown. |
+| rejected | 0 | The API answered with an error; the status is shown. |
 | plan-gated | 12 | The test organization's plan does not include it. |
 | skipped | 92 | Left out on purpose; the reason is shown. |
 | not recorded | 0 | A GET nothing has called yet. |
@@ -520,7 +520,7 @@ Which operations the SDK has seen the live API answer. `composer record` records
 | `PATCH /invoices/{id}/export` | `invoices.export` | skipped Exports the invoice to the accounting integration. |
 | `PATCH /invoices/{id}/export_update` | `invoices.export_update` | skipped Updates the invoice in the accounting integration. |
 | `PATCH /invoices/{id}/finalize` | `invoices.finalize` | exercised `200` |
-| `GET /invoices/{id}/preview` | `invoices.preview` | rejected `422` |
+| `GET /invoices/{id}/preview` | `invoices.preview` | recorded `200` |
 | `PATCH /invoices/{id}/send` | `invoices.send` | skipped Mails the invoice to the client. |
 | `PATCH /invoices/{id}/send_einvoice` | `invoices.send_einvoice` | skipped Sends the invoice through the e-invoicing network. |
 

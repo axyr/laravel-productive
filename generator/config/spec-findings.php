@@ -53,6 +53,12 @@ return [
                 'reproduce' => 'POST with `bookings` as a list of attribute objects: 400. As resource objects: 200.',
             ],
             [
+                'endpoint' => '`GET /invoices/{id}/preview`',
+                'spec' => 'Documents only the path parameter, and a single invoice as the response.',
+                'api' => 'Needs `budget_ids[]`, `invoicing_method` (`uninvoiced_time_and_expenses`, `uninvoiced_amount` or `percentage`, not the integers of the invoice\'s `invoicing_method`) and `display_format` as query parameters, `locale` for `uninvoiced_time_and_expenses` and `percentage` for `percentage`. It answers a plain list of line items and invoice attributions, each with an `object_type`, without `id`, `type` or `attributes`.',
+                'reproduce' => 'GET without parameters: 422. GET `?budget_ids[]={id}&invoicing_method=uninvoiced_time_and_expenses&display_format=service&locale=en`: 200 with `{"data": [{"object_type": "line_item", …}]}`.',
+            ],
+            [
                 'endpoint' => '`POST /tasks`, `PATCH /tasks/{id}`',
                 'spec' => 'Documents `tag_list`.',
                 'api' => 'Ignores it: the task answers `"tag_list": []`, and `GET /tags` stays empty.',

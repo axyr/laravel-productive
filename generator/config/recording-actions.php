@@ -7,7 +7,6 @@ declare(strict_types=1);
  * `integrations/{id}/check` and `sync` are left out because they act on the integration.
  */
 return [
-    'invoices.preview',
     'proposals.signed_pdf',
     'proposals.sync_status',
 ];

@@ -39,6 +39,24 @@ final class QuerySerializer
     }
 
     /**
+     * Plain query parameters of an endpoint that takes them beside the filters: a list repeats its
+     * key with brackets (`budget_ids[]=1&budget_ids[]=2`).
+     *
+     * @param  array<string, scalar|list<scalar>>  $parameters
+     */
+    public static function parameters(array $parameters): string
+    {
+        $pairs = [];
+
+        foreach ($parameters as $name => $value) {
+            $key = is_array($value) ? $name . '[]' : $name;
+            $pairs = [...$pairs, ...array_map(fn(int|float|string|bool $item): string => $key . '=' . self::encode((string) $item), (array) $value)];
+        }
+
+        return implode('&', $pairs);
+    }
+
+    /**
      * A flat AND without repeated field/operator pairs uses the simple form, which every endpoint
      * supports: `filter[project_id]=1`, or `filter[date][gt_eq]=…&filter[date][lt_eq]=…` for a range.
      * Anything else uses the logical form (`filter[$op]=or&filter[0][…]`).

@@ -13,6 +13,12 @@ it('serializes a root OR group in the logical form', function () {
     expect(QuerySerializer::serialize($filters))->toBe('filter[$op]=or&filter[0][a][eq]=1&filter[1][b][eq]=2');
 });
 
+it('serializes plain parameters, a list with brackets and values encoded', function () {
+    expect(QuerySerializer::parameters(['budget_ids' => [1, '2'], 'method' => 'a b+c', 'percentage' => 10, 'none' => []]))
+        ->toBe('budget_ids[]=1&budget_ids[]=2&method=a%20b%2Bc&percentage=10')
+        ->and(QuerySerializer::parameters([]))->toBe('');
+});
+
 it('serializes an empty query', function () {
     expect(QuerySerializer::serialize(new FilterGroup()))->toBe('');
 });

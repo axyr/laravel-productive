@@ -10,6 +10,7 @@ use Axyr\Productive\Generator\Ir\OperationKind;
 use Axyr\Productive\Generator\Ir\Resource;
 use Axyr\Productive\Generator\Ir\ResponseKind;
 use Axyr\Productive\Generator\Naming;
+use Axyr\Productive\Query\QuerySerializer;
 
 /**
  * One contract test per operation: the exact request on the wire, the request body against
@@ -73,6 +74,7 @@ final class ContractTestEmitter
         $sample = Samples::attributes($operation->input, $operation->kind);
 
         $arguments = match (true) {
+            $operation->query !== [] => [Literal::export(self::querySample($operation))],
             $operation->kind === OperationKind::CreateBulk => [Literal::export([$sample])],
             $operation->kind === OperationKind::UpdateBulk => [Literal::export(['1' => $sample])],
             in_array($operation->kind, [OperationKind::DestroyBulk, OperationKind::ActionBulk], true) => ['[1, 2]'],
@@ -167,7 +169,19 @@ final class ContractTestEmitter
     {
         $placeholders = array_map(fn(string $name): string => '{' . $name . '}', $operation->parameters);
 
-        return str_replace($placeholders, array_map(self::parameterValue(...), $operation->parameters), $operation->path);
+        $path = str_replace($placeholders, array_map(self::parameterValue(...), $operation->parameters), $operation->path);
+
+        return $operation->query === [] ? $path : $path . '?' . QuerySerializer::parameters(self::querySample($operation));
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private static function querySample(Operation $operation): array
+    {
+        $names = array_keys($operation->query);
+
+        return array_combine($names, array_map(self::parameterValue(...), $names));
     }
 
     private static function parameterValue(string $name): string

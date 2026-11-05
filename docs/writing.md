@@ -47,6 +47,21 @@ Productive::timeEntries()->reject($id);
 
 Actions that return the changed resource return its model; actions that answer `204 No Content` return `void`.
 
+### Previewing an invoice
+
+`invoices()->preview()` shows the line items and invoice attributions an invoicing method would create, without changing the invoice. Its parameters come from calling the API, because Productive's spec does not document them. The answer is not a JSON:API document, so the method returns the raw response:
+
+```php
+$rows = Productive::invoices()->preview($id, [
+    'budget_ids' => [$budgetId],
+    'invoicing_method' => 'uninvoiced_time_and_expenses', // or uninvoiced_amount, or percentage with 'percentage' => 10
+    'display_format' => 'service',
+    'locale' => 'en',
+])->json()['data'];
+
+// [['object_type' => 'line_item', 'description' => 'Plug in', 'amount' => 88000, …], ['object_type' => 'invoice_attribution', …]]
+```
+
 ## Bulk operations
 
 Resources with a bulk endpoint (`Content-Type: application/vnd.api+json; ext=bulk`) have `bulk*` methods:

@@ -54,6 +54,19 @@ it('writes the method and its imports for each kind of operation', function (Clo
                 return $this->newQuery(Task::class, 'tasks.go');
             }
         PHP, ['Axyr\\Productive\\Resources\\PendingQuery']],
+    'a read with query parameters' => [fn(): Operation => new Operation('tasks.go', 'preview', OperationKind::Action, 'GET', 'tasks/{id}/preview', ['id'], ResponseKind::Raw, false, true, 'x', query: ['budget_ids' => 'The budgets.', 'locale' => 'The language.']), <<<'PHP'
+            /**
+             * GET /tasks/{id}/preview
+             *
+             * @param  array<string, scalar|list<scalar>>  $query  Query parameters the spec does not document:
+             *     - budget_ids: The budgets.
+             *     - locale: The language.
+             */
+            public function preview(int|string $id, array $query): Response
+            {
+                return $this->fetchRaw($this->path($id, 'preview'), 'tasks.go', $query);
+            }
+        PHP, ['Axyr\\Productive\\Http\\Response']],
     'show' => [fn(): Operation => methodOperation(OperationKind::Show, 'GET', 'tasks/{id}', ['id'], ResponseKind::Resource, summary: 'Get a task', method: 'find'), <<<'PHP'
             /**
              * Get a task.

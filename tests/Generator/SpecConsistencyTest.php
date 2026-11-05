@@ -97,6 +97,8 @@ it('describes every operation with the response kind and organization header the
     expect($differences)->toBe([
         // Bulk actions send IDs and return nothing, whatever the spec documents.
         'expenses.bulk_approve: spec collection/org, described no_content/org',
+        // Answers a plain list of line items and attributions: generator/config/query-actions.php.
+        'invoices.preview: spec resource/org, described raw/org',
         // Bulk writes return the written resources; the spec documents the single-resource response.
         'line_items.create_bulk: spec resource/org, described collection/org',
         // A PDF download, though the spec documents a JSON resource.

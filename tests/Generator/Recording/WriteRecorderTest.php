@@ -172,6 +172,26 @@ it('sends a bulk operation as a one-item bulk document about the record the run 
         ]);
 });
 
+it('sends the attributes of a GET action as its query, without a body', function (bool $execute) {
+    $connector = writerApi();
+    $step = writerStep('invoices.preview', 'GET', 'invoices/3/preview', ['budget_ids' => [1, 2], 'locale' => 'en']);
+
+    $recordings = iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run([$step], execute: $execute));
+
+    expect($recordings['001.invoices.preview']['request'])->toBe(['method' => 'GET', 'path' => 'invoices/3/preview', 'query' => 'budget_ids[]=1&budget_ids[]=2&locale=en', 'body' => null])
+        ->and($connector->sent === [] ? null : $connector->sent[0]->query)->toBe($execute ? 'budget_ids[]=1&budget_ids[]=2&locale=en' : null);
+})->with([false, true]);
+
+it('sends a GET action without attributes without a query', function () {
+    $connector = writerApi();
+    $step = writerStep('invoices.preview', 'GET', 'invoices/3/preview', null);
+
+    $recordings = iterator_to_array((new WriteRecorder($connector, '2025-01-15'))->run([$step], execute: true));
+
+    expect($recordings['001.invoices.preview']['request'])->toBe(['method' => 'GET', 'path' => 'invoices/3/preview', 'body' => null])
+        ->and($connector->sent[0]->query)->toBe('');
+});
+
 it('sends a plain JSON body as the attributes themselves', function () {
     $connector = writerApi();
     $append = writerStep('pages.append_markdown', 'PATCH', 'pages/{id}/append_markdown', ['markdown' => 'SDK check']);
