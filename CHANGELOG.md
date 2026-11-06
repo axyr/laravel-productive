@@ -4,9 +4,9 @@ All notable changes to this package are documented here. The format follows [Kee
 
 ## [Unreleased]
 
-## [0.2.0] - 2026-11-03
+## [0.2.0] - 2026-11-06
 
-Checked against the live API, writes included: of the 661 operations, 225 reads are recorded and 331 writes exercised against a trial organization, and every other one says why it cannot be (sending, integrations, account settings, features the trial's plan lacks). See [coverage](docs/coverage.md).
+Checked against the live API, writes included: of the 661 operations, 226 reads are recorded and 331 writes exercised against a trial organization, and every other one says why it cannot be (sending, integrations, account settings, features the trial's plan lacks). See [coverage](docs/coverage.md).
 
 ### Added
 
