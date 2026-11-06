@@ -23,6 +23,7 @@ use Axyr\Productive\JsonApi\ResourceObject;
 use Axyr\Productive\Pagination\FollowedLinks;
 use Axyr\Productive\Pagination\ModelCollection;
 use Axyr\Productive\Query\Query;
+use Axyr\Productive\Query\QuerySerializer;
 use Generator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\LazyCollection;
@@ -196,6 +197,16 @@ abstract class Resource
     protected function raw(Method $method, string $path, string $operation, InputData|array|null $attributes = null, ?string $id = null): Response
     {
         return $this->sendRequest($method, $path, $operation, Expect::Binary, $this->requestDocument($attributes, $id));
+    }
+
+    /**
+     * A read whose answer is not a JSON:API document, with the query parameters it takes.
+     *
+     * @param  array<string, scalar|list<scalar>>  $query
+     */
+    protected function fetchRaw(string $path, string $operation, array $query): Response
+    {
+        return $this->sendRequest(Method::Get, $path, $operation, Expect::Binary, query: QuerySerializer::parameters($query));
     }
 
     /**

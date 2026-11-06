@@ -103,7 +103,7 @@ it('generates raw, optional, plain and untyped body methods', function () {
         ->toContain("RequestSchema::assertValid('deals-copy-copy'")
         ->toContain("'application/vnd.api+json; ext=bulk'")
         ->and(generated('src/Resources/InvoiceResource.php'))
-        ->toContain("return \$this->fetchOne(Invoice::class, \$this->path(\$id, 'preview'), 'invoices.preview');");
+        ->toContain("return \$this->fetchRaw(\$this->path(\$id, 'preview'), 'invoices.preview', \$query);");
 });
 
 it('generates the report resources with page pagination and their rate limit', function () {

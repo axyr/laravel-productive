@@ -256,6 +256,7 @@ it('describes the operations that are not plain JSON:API', function () {
         'document_styles.copy' => 'optional_resource / optional_data',
         'document_types.copy' => 'optional_resource / optional_data',
         'integrations.create' => 'resource / data',
+        'invoices.preview' => 'raw / none',
         'line_items.generate' => 'resource / optional_data',
         'pages.append_html' => 'resource / plain',
         'pages.append_markdown' => 'resource / plain',

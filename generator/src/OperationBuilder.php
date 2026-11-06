@@ -14,11 +14,13 @@ final readonly class OperationBuilder
 {
     /**
      * @param  array<string, string>  $methodOverrides  PHP method names by operation key, for names the rules get wrong.
+     * @param  array<string, array<string, string>>  $queryActions  What each query parameter means, by operation key, for GET actions the spec documents without them.
      */
     public function __construct(
         private Spec $spec,
         private InputBuilder $inputs,
         private array $methodOverrides = [],
+        private array $queryActions = [],
     ) {}
 
     /**
@@ -37,13 +39,14 @@ final readonly class OperationBuilder
             httpMethod: $httpMethod,
             path: $path->path,
             parameters: $path->parameters,
-            response: self::response($kind, ResponseShape::fromOperation($this->spec, $operation)),
+            response: isset($this->queryActions[$key]) ? ResponseKind::Raw : self::response($kind, ResponseShape::fromOperation($this->spec, $operation)),
             bulk: $kind->isBulk(),
             requiresOrganization: self::requiresOrganization($operation),
             operationId: is_string($operation['operationId'] ?? null) ? $operation['operationId'] : null,
             input: $input,
             summary: Spec::string($operation['summary'] ?? null),
             body: self::body($kind, $input, $httpMethod, $path->member),
+            query: $this->queryActions[$key] ?? [],
         );
     }
 

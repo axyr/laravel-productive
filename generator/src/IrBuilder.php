@@ -27,6 +27,7 @@ final readonly class IrBuilder
      * @param  array<string, string>  $removedRelationships  Reasons by "type.relationship", for relationships the API no longer has.
      * @param  array<string, list<string>>  $required  Attributes the API requires on create beyond the spec's list, by input class.
      * @param  list<string>  $removedOperations  Keys of operations the API does not have, such as a synthesized single twin.
+     * @param  array<string, array<string, string>>  $queryActions  What each query parameter means, by operation key, for GET actions the spec documents without them.
      */
     public function __construct(
         private Spec $spec,
@@ -37,6 +38,7 @@ final readonly class IrBuilder
         private array $removedRelationships = [],
         private array $required = [],
         private array $removedOperations = [],
+        private array $queryActions = [],
     ) {}
 
     /**
@@ -61,7 +63,18 @@ final readonly class IrBuilder
             self::stringMap(Spec::map($removed['relationships'] ?? []), 'removed'),
             self::required($recorded->requiredOnCreate(), array_map(fn(mixed $names): array => Spec::strings($names, 'generator/config/required.php'), $required)),
             array_keys(self::stringMap(Spec::map($removed['operations'] ?? []), 'removed')),
+            self::queryActions($configDirectory),
         );
+    }
+
+    /**
+     * @return array<string, array<string, string>>
+     */
+    private static function queryActions(string $configDirectory): array
+    {
+        $actions = is_file($configDirectory . '/query-actions.php') ? self::config($configDirectory, 'query-actions') : [];
+
+        return array_map(fn(mixed $parameters): array => self::stringMap(Spec::map($parameters), 'query-actions'), $actions);
     }
 
     /**
@@ -150,7 +163,7 @@ final readonly class IrBuilder
     private function resource(string $path, array $entries, ModelSource $source, array $classByType): Resource
     {
         $name = Naming::modelName(basename($path));
-        $builder = new OperationBuilder($this->spec, new InputBuilder($this->spec, new SchemaReader($this->spec, $this->descriptions), $this->required), $this->methodNames);
+        $builder = new OperationBuilder($this->spec, new InputBuilder($this->spec, new SchemaReader($this->spec, $this->descriptions), $this->required), $this->methodNames, $this->queryActions);
         $operations = array_map(fn(array $entry): Operation => $builder->build($entry[0], $entry[1], $entry[2], $name), $entries);
         [$namespace, $class] = self::className($path, $name);
 

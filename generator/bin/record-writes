@@ -117,7 +117,7 @@ try {
         }
 
         $request = $recording['request'];
-        printf("%-46s %s %s%s\n", $name, $request['method'], $request['path'], isset($recording['status']) ? ' -> ' . $recording['status'] : '');
+        printf("%-46s %s %s%s%s\n", $name, $request['method'], $request['path'], isset($request['query']) ? '?' . $request['query'] : '', isset($recording['status']) ? ' -> ' . $recording['status'] : '');
 
         if ($request['body'] !== null) {
             echo '    ' . json_encode($request['body']['data']['attributes'] ?? $request['body'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n";

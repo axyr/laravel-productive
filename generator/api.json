@@ -5072,13 +5072,20 @@
                     "parameters": [
                         "id"
                     ],
-                    "response": "resource",
+                    "response": "raw",
                     "bulk": false,
                     "requires_organization": true,
                     "operation_id": "invoices-preview-preview",
                     "body": "none",
                     "input": null,
-                    "summary": "Preview invoice"
+                    "summary": "Preview invoice",
+                    "query": {
+                        "budget_ids": "A list of the IDs of the budgets to invoice.",
+                        "invoicing_method": "uninvoiced_time_and_expenses, uninvoiced_amount or percentage.",
+                        "display_format": "How line items are grouped, such as service, budget, project or task. Required; the API accepts any value.",
+                        "locale": "The language of the line items, such as en. Required for uninvoiced_time_and_expenses.",
+                        "percentage": "The percentage to invoice. Required for the percentage method."
+                    }
                 },
                 {
                     "key": "invoices.send",
