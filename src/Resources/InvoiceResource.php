@@ -11,6 +11,7 @@ use Axyr\Productive\Data\Input\SendEinvoiceInvoiceData;
 use Axyr\Productive\Data\Input\UpdateInvoiceData;
 use Axyr\Productive\Data\Models\Invoice;
 use Axyr\Productive\Http\Method;
+use Axyr\Productive\Http\Response;
 use Axyr\Productive\Query\Query;
 
 /**
@@ -116,10 +117,17 @@ final class InvoiceResource extends Resource
      * Preview invoice.
      *
      * GET /invoices/{id}/preview
+     *
+     * @param  array<string, scalar|list<scalar>>  $query  Query parameters the spec does not document:
+     *     - budget_ids: A list of the IDs of the budgets to invoice.
+     *     - invoicing_method: uninvoiced_time_and_expenses, uninvoiced_amount or percentage.
+     *     - display_format: How line items are grouped, such as service, budget, project or task. Required; the API accepts any value.
+     *     - locale: The language of the line items, such as en. Required for uninvoiced_time_and_expenses.
+     *     - percentage: The percentage to invoice. Required for the percentage method.
      */
-    public function preview(int|string $id): Invoice
+    public function preview(int|string $id, array $query): Response
     {
-        return $this->fetchOne(Invoice::class, $this->path($id, 'preview'), 'invoices.preview');
+        return $this->fetchRaw($this->path($id, 'preview'), 'invoices.preview', $query);
     }
 
     /**

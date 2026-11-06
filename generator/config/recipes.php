@@ -591,6 +591,12 @@ return [
         'create' => ['deal_id' => '{created:deals#revenue}', 'start_on' => '{date:+0}', 'end_on' => '{date:+30}', 'amount_percent' => 10],
         'update' => ['amount_percent' => 20],
     ],
+    // A GET whose attributes are its query parameters (generator/config/query-actions.php).
+    'invoices#preview' => [
+        'tier' => 4,
+        'on' => '{first:invoices}',
+        'actions' => ['preview' => ['budget_ids' => [4391270], 'invoicing_method' => 'uninvoiced_time_and_expenses', 'display_format' => 'service', 'locale' => 'en']],
+    ],
     // On the budget's expense service. Without an approval policy an expense is approved when it is
     // made (409 "record_already_approved"), and rejecting leaves it as it was, so there is nothing to
     // unreject (generator/config/coverage.php).

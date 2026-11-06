@@ -263,7 +263,7 @@
         "invoices.finalize": 200,
         "invoices.index": 200,
         "invoices.index.include": 200,
-        "invoices.preview": 422,
+        "invoices.preview": 200,
         "invoices.show": 200,
         "invoices.update": 200,
         "job_roles.archive": 200,

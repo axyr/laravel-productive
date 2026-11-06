@@ -252,6 +252,20 @@ it('writes the request, body and result expectations for each kind of operation'
             });
         });
         PHP],
+    'query parameters' => [fn(): Operation => new Operation('tasks.preview', 'preview', OperationKind::Action, 'GET', 'tasks/{id}/preview', ['id'], ResponseKind::Raw, false, true, 'tasks-preview', query: ['budget_ids' => 'The budgets.', 'locale' => 'The language.']), <<<'PHP'
+        it('tasks.preview: GET /tasks/{id}/preview', function () {
+            fakeHttp(['*' => Fixtures::response('tasks-preview', 'raw', 'tasks', 200)]);
+
+            $result = Productive::tasks()->preview('1', ['budget_ids' => 'budgetIds-1', 'locale' => 'locale-1']);
+
+            expect($result)->toBeInstanceOf(Response::class);
+            Http::assertSent(function (HttpRequest $request): bool {
+                return $request->method() === 'GET'
+                    && urldecode($request->url()) === apiUrl('tasks/1/preview?budget_ids=budgetIds-1&locale=locale-1')
+                    && $request->body() === '';
+            });
+        });
+        PHP],
     'synthesized create with a data body' => [fn(): Operation => contractOperation('tasks.create', 'create', OperationKind::Create, 'POST', 'tasks', [], ResponseKind::Resource, body: BodyKind::Data), <<<'PHP'
         it('tasks.create: POST /tasks', function () {
             fakeHttp(['*' => Fixtures::response(null, 'resource', 'tasks', 201)]);

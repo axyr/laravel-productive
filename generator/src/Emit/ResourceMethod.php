@@ -78,6 +78,7 @@ final readonly class ResourceMethod
         $parameters = array_map(fn(string $name): string => ($name === 'id' ? 'int|string' : 'string') . ' $' . Naming::camel($name), $this->operation->parameters);
 
         return [...$parameters, ...match (true) {
+            $this->operation->query !== [] => ['array $query'],
             $this->operation->kind === OperationKind::Show => ['array $include = []'],
             $this->operation->kind === OperationKind::CreateBulk => ['array $entries'],
             $this->operation->kind === OperationKind::UpdateBulk => ['array $updates'],
@@ -97,6 +98,7 @@ final readonly class ResourceMethod
         $input = $this->operation->input === null ? '' : $this->operation->input->class . '|';
 
         return match (true) {
+            $this->operation->query !== [] => $this->queryDocs(),
             $this->operation->kind === OperationKind::Show => ['@param  list<string>  $include'],
             $this->operation->kind === OperationKind::CreateBulk => ['@param  list<' . $input . 'array<string, mixed>>  $entries'],
             $this->operation->kind === OperationKind::UpdateBulk => ['@param  array<int|string, ' . $input . 'array<string, mixed>>  $updates  Keyed by ID.'],
@@ -105,6 +107,16 @@ final readonly class ResourceMethod
             $this->operation->body !== BodyKind::None => ['@param  ' . $input . 'array<string, mixed>  $data'],
             default => [],
         };
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function queryDocs(): array
+    {
+        $parameters = array_map(fn(string $name, string $meaning): string => '    - ' . $name . ': ' . $meaning, array_keys($this->operation->query), $this->operation->query);
+
+        return ['@param  array<string, scalar|list<scalar>>  $query  Query parameters the spec does not document:', ...$parameters];
     }
 
     /**
@@ -150,9 +162,11 @@ final readonly class ResourceMethod
      */
     private function read(): array
     {
-        return $this->operation->response === ResponseKind::Raw
-            ? ['return $this->raw(' . $this->method() . ', ' . $this->path() . ', ' . $this->key() . ');']
-            : ['return $this->fetchOne(' . $this->model . '::class, ' . $this->path() . ', ' . $this->key() . ');'];
+        return match (true) {
+            $this->operation->query !== [] => ['return $this->fetchRaw(' . $this->path() . ', ' . $this->key() . ', $query);'],
+            $this->operation->response === ResponseKind::Raw => ['return $this->raw(' . $this->method() . ', ' . $this->path() . ', ' . $this->key() . ');'],
+            default => ['return $this->fetchOne(' . $this->model . '::class, ' . $this->path() . ', ' . $this->key() . ');'],
+        };
     }
 
     /**

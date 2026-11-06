@@ -30,6 +30,7 @@ Checked against the live API, writes included: of the 661 operations, 225 reads 
 
 ### Fixed
 
+- **`Productive::invoices()->preview()` works.** It could only answer 422: the API needs query parameters the spec does not document, and it answers with a plain list of line items and invoice attributions rather than an invoice. The method now takes them and returns the raw response: `preview($id, ['budget_ids' => [1], 'invoicing_method' => 'uninvoiced_time_and_expenses', 'display_format' => 'service', 'locale' => 'en'])->json()['data']`. Its signature and return type change; no earlier call could succeed.
 - **Bulk requests are accepted.** Productive answered a bulk time entry create with 400 because its `Accept` header did not name the bulk extension. The connector now accepts the media type it sends, so `bulkCreate`, `bulkUpdate`, `bulkDelete`, `bulkApprove` and `bulkUnapprove` send `ext=bulk` in both headers; on time entries all five answer with a success.
 
 ## [0.1.0] - 2026-10-12
