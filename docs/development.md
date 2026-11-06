@@ -168,9 +168,11 @@ Writes `generator/recorded-types.json`: for every type, the *kinds* of value eac
 - Attributes and relationships the spec does not document are added and flagged as undocumented. A relationship seen without data has no known cardinality, so it waits for a recording that includes it. One seen with data but always empty gets its target by the same rules as a documented relationship (`child_pages` → `pages`).
 - What the samples cannot show is curated in `generator/config/attribute-types.php`, by `type.attribute`, and wins over both the spec and the recording: a discount only ever recorded as `0` would otherwise read as an `int`.
 - An attribute that only the spec's example has (its schema does not list it) and that no recorded response of the type carried is kept, always null so far, and listed on the differences page as never seen. The examples look invented in places (`revenue` and `cost` on reports, `url` and `events` on webhooks), but an absence in a recording is not proof, so nothing is dropped until Productive confirms.
-- Resources and relationships the API no longer has are listed in `generator/config/removed.php`.
+- Resources, relationships and operations the API does not have are listed in `generator/config/removed.php`, and get no code. An operation goes there when the live API answers its route with 404 `route_not_found`, such as the single create of expense line items that the generator synthesized from a bulk-only route.
 
 Every difference is listed in the generated [API differences](api-differences.md) page, and the generated [API coverage](coverage.md) page gives every operation a status: recorded, exercised, empty list, rejected, plan-gated, skipped, not recorded or not exercised. A success in the recording always shows as recorded; `generator/config/coverage.php` gives the reasons for the operations the test organization's plan does not include and the ones left out on purpose. The page is done when no row is open.
+
+The generated [spec report](spec-report.md) says the same for Productive, each entry with how to reproduce it: the required attributes and undocumented bodies come from the write runs and the recipes, the type differences from the recorded types, and what no recording expresses (missing routes, behaviour, the spec's structure) from `generator/config/spec-findings.php`. It names no organization, person or record: keep it that way when adding findings, with `{id}` for an ID.
 
 ```bash
 composer record:fixtures
@@ -252,3 +254,7 @@ composer record:writes -- --probe-rate-limit          # eleven report reads in a
 - **Same guards as `composer record`**, and the requests go out raw, as the SDK would build them, so the recordings show what the API itself requires rather than what the SDK's inputs check.
 - **`composer record:types` learns from every finished write run.** A success marks the operation exercised in `docs/coverage.md` (the latest run wins), and an attribute a create answered 422 "can't be blank" for becomes required in its generated input. An operation that cannot be exercised gets its reason in `generator/config/coverage.php`.
 - **`composer record:types` lays its summary over the committed `generator/recorded-types.json`.** A run made on another machine is not lost when only its summary reached git: a new status replaces an old one, and every kind, relationship type, rejected include and required attribute found before is kept.
+
+### Recording again
+
+A recording is a snapshot: Productive changes its API without changing the spec. Recording needs a test organization's token, which CI does not have, so it is run by hand. A run is `composer record`, the write tiers with `composer record:writes`, then `composer record:types`, `composer record:fixtures`, `composer generate` and `composer quality`, and a pull request whose review is the diff of the generated docs: a recording may add or retype, never remove. The weekly spec drift workflow keeps following the spec itself.
